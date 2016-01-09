@@ -1,0 +1,23 @@
+[  
+   {  
+      "modid":"DarkUtils",
+      "name":"Dark Utilities",
+      "description":"A mod that adds a bunch of new utilities to the game.",
+      "version":"${version}",
+      "mcversion":"${mcversion}",
+      "url":"http://www.darkhax.net",
+      "updateUrl":"",
+      "authorList":[  
+         "Darkhax"
+      ],
+      "credits":"assets/darkutils/textures/logo.png",
+      "logoFile":"",
+      "screenshots":[  
+
+      ],
+      "parent":"",
+      "dependencies":[  
+
+      ]
+   }
+]
