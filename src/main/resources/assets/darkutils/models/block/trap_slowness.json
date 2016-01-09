@@ -1,0 +1,7 @@
+{
+    "parent": "block/carpet",
+    "textures": {
+        "particle": "darkutils:blocks/trap_slowness",
+        "wool": "darkutils:blocks/trap_slowness"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/carpet",
+    "textures": {
+        "particle": "darkutils:blocks/trap_harming",
+        "wool": "darkutils:blocks/trap_harming"
+    }
+}

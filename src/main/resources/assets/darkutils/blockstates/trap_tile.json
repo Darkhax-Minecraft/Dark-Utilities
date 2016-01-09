@@ -1,0 +1,22 @@
+{
+    "variants": {
+        "variant=poison": {
+            "model": "darkutils:trap_poison"
+        },
+        "variant=weakness": {
+            "model": "darkutils:trap_weakness"
+        },
+        "variant=harming": {
+            "model": "darkutils:trap_harming"
+        },
+        "variant=slowness": {
+            "model": "darkutils:trap_slowness"
+        },
+        "variant=fire": {
+            "model": "darkutils:trap_fire"
+        },
+        "variant=wither": {
+            "model": "darkutils:trap_wither"
+        }
+    }
+}

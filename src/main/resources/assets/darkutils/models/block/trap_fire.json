@@ -1,0 +1,7 @@
+{
+    "parent": "block/carpet",
+    "textures": {
+        "particle": "darkutils:blocks/trap_fire",
+        "wool": "darkutils:blocks/trap_fire"
+    }
+}
