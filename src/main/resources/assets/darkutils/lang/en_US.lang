@@ -1,0 +1,7 @@
+#Blocks
+tile.trap.poison.name=Poison Trap
+tile.trap.weakness.name=Weakness Trap
+tile.trap.harming.name=Damage Trap
+tile.trap.slowness.name=Slowness Trap
+tile.trap.fire.name=Flame Trap
+tile.trap.wither.name=Wither Trap
