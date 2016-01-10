@@ -35,7 +35,7 @@ public class BlockTrapTile extends Block {
         super(Material.rock);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, BlockTrapTile.EnumType.POISON));
         this.setCreativeTab(CreativeTabs.tabBlock);
-        this.setUnlocalizedName("trap");
+        this.setUnlocalizedName("darkutils.trap");
         this.setHardness(3.0F);
         this.setResistance(120f);
         this.setHarvestLevel("pickaxe", 1);
