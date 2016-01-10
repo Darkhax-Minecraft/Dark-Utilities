@@ -1,8 +1,10 @@
 package net.darkhax.darkutils;
 
-import net.darkhax.darkutils.client.handler.ContentHandler;
 import net.darkhax.darkutils.common.ProxyCommon;
+import net.darkhax.darkutils.handler.ContentHandler;
+import net.darkhax.darkutils.handler.ForgeEventHandler;
 import net.darkhax.darkutils.libs.Constants;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -24,5 +26,6 @@ public class DarkUtils {
         ContentHandler.initItems();
         ContentHandler.initRecipes();
         proxy.onPreInit();
+        MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
     }
 }
