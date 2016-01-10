@@ -1,10 +1,11 @@
 #Blocks
-tile.trap.poison.name=Poison Trap
-tile.trap.weakness.name=Weakness Trap
-tile.trap.harming.name=Damage Trap
-tile.trap.slowness.name=Slowness Trap
-tile.trap.fire.name=Flame Trap
-tile.trap.wither.name=Wither Trap
+tile.darkutils.trap.poison.name=Poison Trap
+tile.darkutils.trap.weakness.name=Weakness Trap
+tile.darkutils.trap.harming.name=Damage Trap
+tile.darkutils.trap.slowness.name=Slowness Trap
+tile.darkutils.trap.fire.name=Flame Trap
+tile.darkutils.trap.wither.name=Wither Trap
+tile.darkutils.endertether.name=Ender Tether
 
 #JEI
 jei.darkutils.trap.poison.desc=The poison trap is a tile that can be placed on any solid block. When a mob steps on this tile they will recieve 3 seconds of poison. Keep in mind that many hostile mobs such as skeletons, zombies and spiders can not be effected by poison. The attack timer for poison is reset every time it is re-applied to a mob, so mobs will not be damaged until they step off the plate. The poison effect created by this effect can not be cured. 
@@ -13,3 +14,4 @@ jei.darkutils.trap.harming.desc=The Damage trap is a tile that can be placed on 
 jei.darkutils.trap.slowness.desc=The Slowness trap is a tile that can be placed on any solid block. When a mob steps on this tile, they will recieve a slowness debuff for 3 seconds. This debuff can not be cured. 
 jei.darkutils.trap.fire.desc=The Flame trap is a tile that can be placed on any solid block. When a mob steps on this tile, they will recieve one point of fire damage. 
 jei.darkutils.trap.wither.desc=The Wither trap is a tile that can be placed on any solid block. When a mob steps on this tile, they will recieve 3 seconds of the wither effect. Every time the effect is applied to a mob, the damage counter will be reset. Because of this, the mob will not be damaged until they step off of the trap. This effect is not curable. 
+jei.darkutils.endertether.desc=The Ender Tether is a block that can be placed similarly to a torch. When a form of ender teleportation occurs within 32 blocks of the tether, the teleportation will be redirected to the tether block. Some examples of ender teleportation include Endermen teleporting and ender pearls. The tether must be placed on a block, and if that block were to be removed the tether will break. Keep that in mind when working with Endermen. 

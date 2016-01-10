@@ -7,8 +7,7 @@ import mezz.jei.api.IModRegistry;
 import mezz.jei.api.IRecipeRegistry;
 import mezz.jei.api.JEIPlugin;
 import net.darkhax.darkutils.blocks.BlockTrapTile;
-import net.darkhax.darkutils.client.handler.ContentHandler;
-import net.minecraft.init.Blocks;
+import net.darkhax.darkutils.handler.ContentHandler;
 import net.minecraft.item.ItemStack;
 
 @JEIPlugin
@@ -18,9 +17,11 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
     
     @Override
     public void register (IModRegistry registry) {
-
+        
         for (BlockTrapTile.EnumType type : BlockTrapTile.EnumType.values())
-            registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta ), "jei.darkutils.trap." + type.type + ".desc");
+            registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta), "jei.darkutils.trap." + type.type + ".desc");
+            
+        registry.addDescription(new ItemStack(ContentHandler.blockEnderTether), "jei.darkutils.endertether.desc");
     }
     
     @Override
@@ -38,7 +39,7 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
     public void onRecipeRegistryAvailable (IRecipeRegistry recipeRegistry) {
     
     }
-
+    
     @Override
     public boolean isModLoaded () {
         
