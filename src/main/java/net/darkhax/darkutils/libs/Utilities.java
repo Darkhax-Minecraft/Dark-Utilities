@@ -2,6 +2,7 @@ package net.darkhax.darkutils.libs;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 
 public class Utilities {
     
@@ -44,6 +45,27 @@ public class Utilities {
         double distanceX = destination.posX - entityToMove.posX;
         double distanceY = destination.posY - entityToMove.posY;
         double distanceZ = destination.posZ - entityToMove.posZ;
+        double distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
+        
+        if (distance > 0) {
+            
+            entityToMove.motionX = distanceX / distance * force;
+            entityToMove.motionY = distanceY / distance * force;
+            entityToMove.motionZ = distanceZ / distance * force;
+        }
+    }
+    
+    public static void pushTowards (Entity entityToMove, EnumFacing direction, double force) {
+        
+        pushTowards(entityToMove, entityToMove.getPosition().offset(direction.getOpposite(), 1), force);
+    }
+    
+    public static void pushTowards (Entity entityToMove, BlockPos pos, double force) {
+        
+        BlockPos entityPos = entityToMove.getPosition();
+        double distanceX = pos.getX() - entityPos.getX();
+        double distanceY = pos.getY() - entityPos.getY();
+        double distanceZ = pos.getZ() - entityPos.getZ();
         double distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
         
         if (distance > 0) {
