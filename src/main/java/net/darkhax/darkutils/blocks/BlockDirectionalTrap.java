@@ -1,24 +1,34 @@
 package net.darkhax.darkutils.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirectional;
-import net.minecraft.block.material.Material;
+import net.darkhax.darkutils.libs.Utilities;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-public class BlockDirectionalTrap extends BlockDirectional {
+public class BlockDirectionalTrap extends BlockTrapBase {
+    
+    public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     
     public BlockDirectionalTrap() {
         
-        super(Material.rock);
+        super();
+        this.setUnlocalizedName("darkutils.trap.movement");
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.setCreativeTab(CreativeTabs.tabBlock);
+    }
+    
+    @Override
+    public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
+        
+        if (entity != null)
+            Utilities.pushTowards(entity, state.getValue(FACING), 0.02);
     }
     
     @Override
@@ -31,5 +41,21 @@ public class BlockDirectionalTrap extends BlockDirectional {
     protected BlockState createBlockState () {
         
         return new BlockState(this, new IProperty[] { FACING });
+    }
+    
+    /**
+     * Convert the given metadata into a BlockState for this Block
+     */
+    public IBlockState getStateFromMeta (int meta) {
+        
+        return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
+    }
+    
+    /**
+     * Convert the BlockState into the correct metadata value
+     */
+    public int getMetaFromState (IBlockState state) {
+        
+        return ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();
     }
 }

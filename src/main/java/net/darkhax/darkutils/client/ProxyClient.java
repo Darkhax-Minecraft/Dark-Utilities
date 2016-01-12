@@ -19,6 +19,9 @@ public class ProxyClient extends ProxyCommon {
             
         Item itemEnderTether = Item.getItemFromBlock(ContentHandler.blockEnderTether);
         ModelLoader.setCustomModelResourceLocation(itemEnderTether, 0, new ModelResourceLocation("darkutils:ender_tether", "inventory"));
+        
+        Item itemTrapMove = Item.getItemFromBlock(ContentHandler.blockTrapMovement);
+        ModelLoader.setCustomModelResourceLocation(itemTrapMove, 0, new ModelResourceLocation("darkutils:trap_move", "inventory"));
     }
     
     @Override

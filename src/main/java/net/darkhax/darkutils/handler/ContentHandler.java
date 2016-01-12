@@ -1,11 +1,9 @@
 package net.darkhax.darkutils.handler;
 
 import net.darkhax.darkutils.blocks.BlockDirectionalTrap;
-import net.darkhax.darkutils.blocks.BlockDog;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockTrapTile;
 import net.darkhax.darkutils.items.ItemBlockBasic;
-import net.darkhax.darkutils.tileentity.TileEntityDog;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -26,7 +24,7 @@ public class ContentHandler {
         GameRegistry.registerTileEntity(TileEntityEnderTether.class, "ender_tether");
         
         blockTrapMovement = new BlockDirectionalTrap();
-        GameRegistry.registerBlock(blockTrapMovement, "trap_movement");
+        GameRegistry.registerBlock(blockTrapMovement, "trap_move");
         
     }
     
