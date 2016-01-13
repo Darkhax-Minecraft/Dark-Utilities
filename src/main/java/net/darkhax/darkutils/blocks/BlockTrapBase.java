@@ -1,30 +1,13 @@
 package net.darkhax.darkutils.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTrapBase extends Block {
     
@@ -72,12 +55,6 @@ public class BlockTrapBase extends Block {
     public MapColor getMapColor (IBlockState state) {
         
         return MapColor.obsidianColor;
-    }
-    
-    @Override
-    public AxisAlignedBB getCollisionBoundingBox (World worldIn, BlockPos pos, IBlockState state) {
-        
-        return new AxisAlignedBB((double) pos.getX() + 0.0625F, (double) pos.getY(), (double) pos.getZ() + 0.0625F, (double) pos.getX() + 0.9375F, (double) pos.getY() + 0.0125F, (double) pos.getZ() + 0.9375F);
     }
     
     @Override
