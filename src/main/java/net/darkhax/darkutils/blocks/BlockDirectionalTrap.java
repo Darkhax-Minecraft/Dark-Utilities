@@ -21,6 +21,7 @@ public class BlockDirectionalTrap extends BlockTrapBase {
         super();
         this.setUnlocalizedName("darkutils.trap.movement");
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        this.slipperiness = 0.98F;
         this.setCreativeTab(CreativeTabs.tabBlock);
     }
     
@@ -28,7 +29,7 @@ public class BlockDirectionalTrap extends BlockTrapBase {
     public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
         
         if (entity != null)
-            Utilities.pushTowards(entity, state.getValue(FACING), 0.02);
+            Utilities.pushTowards(entity, state.getValue(FACING), 0.06);
     }
     
     @Override
