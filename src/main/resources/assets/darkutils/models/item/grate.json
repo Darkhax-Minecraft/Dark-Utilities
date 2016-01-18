@@ -1,15 +1,20 @@
 {
-    "parent": "darkutils:block/grate",
-    "display": {
-        "thirdperson": {
-            "rotation": [10, -45, 170],
+	"parent": "darkutils:block/grate",
+	"display": {
+		"thirdperson": {
+			"rotation": [10, -45, 170],
 			"translation": [0, 3.72, -2.75],
-            "scale": [0.375, 0.375, 0.375]
-        },
-        "firstperson": {
-            "rotation": [0, 0, 0],
-            "translation": [0, 1.78, 0],
-            "scale": [1, 1, 1]
-        }
-    }
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson": {
+			"rotation": [0, 0, 0],
+			"translation": [0, 1.78, 0],
+			"scale": [1, 1, 1]
+		},
+		"gui": {
+			"rotation": [0, 0, 0],
+			"translation": [0, -3.72, 0],
+			"scale": [1, 1, 1]
+		}
+	}
 }
