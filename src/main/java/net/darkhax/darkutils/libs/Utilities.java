@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.libs;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -10,9 +11,34 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Vec3;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class Utilities {
+    
+    public static void centerDirectional(BlockPos block, Entity entity, EnumFacing facing) {
+        
+        Vec3 entPos = entity.getPositionVector();
+        
+        if (facing == EnumFacing.EAST || facing == EnumFacing.WEST)
+            entity.setPositionAndUpdate(entPos.xCoord, entPos.yCoord, block.getZ() + 0.5);
+        
+        else
+            entity.setPositionAndUpdate(block.getX() + 0.5, entPos.yCoord, entPos.zCoord);
+    }
+    
+    public static boolean requireCentering(BlockPos block, Vec3 entPos, EnumFacing facing) {
+        
+        if (facing == EnumFacing.EAST || facing == EnumFacing.WEST)
+            return !isInRange(block.getZ() + 0.35, block.getZ() + 0.65, entPos.zCoord);
+        
+        return !isInRange(block.getX() + 0.35, block.getX() + 0.65, entPos.xCoord);
+    }
+    
+    public static boolean isInRange(double min, double max, double value) {
+        
+        return (value <= max && value >= min);
+    }
     
     /**
      * A simple check to make sure that an EntityPlayer actually exists.
