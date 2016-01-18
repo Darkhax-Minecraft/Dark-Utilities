@@ -2,6 +2,7 @@ package net.darkhax.darkutils.handler;
 
 import net.darkhax.darkutils.blocks.BlockDirectionalTrap;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
+import net.darkhax.darkutils.blocks.BlockGrate;
 import net.darkhax.darkutils.blocks.BlockTrapTile;
 import net.darkhax.darkutils.items.ItemBlockBasic;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
@@ -13,6 +14,7 @@ public class ContentHandler {
     public static Block blockTrap;
     public static Block blockEnderTether;
     public static Block blockTrapMovement;
+    public static Block blockGrate;
     
     public static void initBlocks () {
         
@@ -26,6 +28,8 @@ public class ContentHandler {
         blockTrapMovement = new BlockDirectionalTrap();
         GameRegistry.registerBlock(blockTrapMovement, "trap_move");
         
+        blockGrate = new BlockGrate();
+        GameRegistry.registerBlock(blockGrate, "grate");
     }
     
     public static void initItems () {

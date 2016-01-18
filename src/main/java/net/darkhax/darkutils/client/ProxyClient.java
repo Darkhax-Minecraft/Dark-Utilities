@@ -22,6 +22,9 @@ public class ProxyClient extends ProxyCommon {
         
         Item itemTrapMove = Item.getItemFromBlock(ContentHandler.blockTrapMovement);
         ModelLoader.setCustomModelResourceLocation(itemTrapMove, 0, new ModelResourceLocation("darkutils:trap_move", "inventory"));
+        
+        Item itemGrate = Item.getItemFromBlock(ContentHandler.blockGrate);
+        ModelLoader.setCustomModelResourceLocation(itemGrate, 0, new ModelResourceLocation("darkutils:grate", "inventory"));
     }
     
     @Override
