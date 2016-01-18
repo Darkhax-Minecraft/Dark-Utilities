@@ -12,19 +12,21 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void onPreInit () {
         
-        Item itemBlockTrap = Item.getItemFromBlock(ContentHandler.blockTrap);
+        Item itemBlock;
+        
+        itemBlock = Item.getItemFromBlock(ContentHandler.blockTrap);
         
         for (BlockTrapTile.EnumType varient : BlockTrapTile.EnumType.values())
-            ModelLoader.setCustomModelResourceLocation(itemBlockTrap, varient.meta, new ModelResourceLocation("darkutils:trap_" + varient.name(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(itemBlock, varient.meta, new ModelResourceLocation("darkutils:trap_" + varient.name(), "inventory"));
             
-        Item itemEnderTether = Item.getItemFromBlock(ContentHandler.blockEnderTether);
-        ModelLoader.setCustomModelResourceLocation(itemEnderTether, 0, new ModelResourceLocation("darkutils:ender_tether", "inventory"));
+        itemBlock = Item.getItemFromBlock(ContentHandler.blockEnderTether);
+        ModelLoader.setCustomModelResourceLocation(itemBlock, 0, new ModelResourceLocation("darkutils:ender_tether", "inventory"));
         
-        Item itemTrapMove = Item.getItemFromBlock(ContentHandler.blockTrapMovement);
-        ModelLoader.setCustomModelResourceLocation(itemTrapMove, 0, new ModelResourceLocation("darkutils:trap_move", "inventory"));
+        itemBlock = Item.getItemFromBlock(ContentHandler.blockTrapMovement);
+        ModelLoader.setCustomModelResourceLocation(itemBlock, 0, new ModelResourceLocation("darkutils:trap_move", "inventory"));
         
-        Item itemGrate = Item.getItemFromBlock(ContentHandler.blockGrate);
-        ModelLoader.setCustomModelResourceLocation(itemGrate, 0, new ModelResourceLocation("darkutils:grate", "inventory"));
+        itemBlock = Item.getItemFromBlock(ContentHandler.blockGrate);
+        ModelLoader.setCustomModelResourceLocation(itemBlock, 0, new ModelResourceLocation("darkutils:grate", "inventory"));
     }
     
     @Override
