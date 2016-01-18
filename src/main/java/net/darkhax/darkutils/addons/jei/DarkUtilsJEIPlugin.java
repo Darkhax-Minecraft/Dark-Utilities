@@ -18,10 +18,12 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
     @Override
     public void register (IModRegistry registry) {
         
+        registry.addDescription(new ItemStack(ContentHandler.blockEnderTether), "jei.darkutils.endertether.desc");
+        registry.addDescription(new ItemStack(ContentHandler.blockTrapMovement), "jei.darkutils.trap.vector.desc");
+        registry.addDescription(new ItemStack(ContentHandler.blockGrate), "jei.darkutils.grate.desc");
+        
         for (BlockTrapTile.EnumType type : BlockTrapTile.EnumType.values())
             registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta), "jei.darkutils.trap." + type.type + ".desc");
-            
-        registry.addDescription(new ItemStack(ContentHandler.blockEnderTether), "jei.darkutils.endertether.desc");
     }
     
     @Override
