@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.client;
 
-import net.darkhax.darkutils.blocks.BlockTrapTile;
+import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -16,7 +16,7 @@ public class ProxyClient extends ProxyCommon {
         
         itemBlock = Item.getItemFromBlock(ContentHandler.blockTrap);
         
-        for (BlockTrapTile.EnumType varient : BlockTrapTile.EnumType.values())
+        for (BlockTrapEffect.EnumType varient : BlockTrapEffect.EnumType.values())
             ModelLoader.setCustomModelResourceLocation(itemBlock, varient.meta, new ModelResourceLocation("darkutils:trap_" + varient.name(), "inventory"));
             
         itemBlock = Item.getItemFromBlock(ContentHandler.blockEnderTether);

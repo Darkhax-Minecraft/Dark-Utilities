@@ -22,27 +22,27 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockTrapTile extends BlockTrapBase {
+public class BlockTrapEffect extends BlockTrapBase {
     
-    public static final PropertyEnum<BlockTrapTile.EnumType> VARIANT = PropertyEnum.<BlockTrapTile.EnumType> create("variant", BlockTrapTile.EnumType.class);
+    public static final PropertyEnum<BlockTrapEffect.EnumType> VARIANT = PropertyEnum.<BlockTrapEffect.EnumType> create("variant", BlockTrapEffect.EnumType.class);
     
-    public BlockTrapTile() {
+    public BlockTrapEffect() {
         
         super();
-        this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, BlockTrapTile.EnumType.POISON));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, BlockTrapEffect.EnumType.POISON));
         this.setUnlocalizedName("darkutils.trap");
     }
     
     @Override
     public int damageDropped (IBlockState state) {
         
-        return ((BlockTrapTile.EnumType) state.getValue(VARIANT)).meta;
+        return ((BlockTrapEffect.EnumType) state.getValue(VARIANT)).meta;
     }
     
     @Override
     public IBlockState getStateFromMeta (int meta) {
         
-        return this.getDefaultState().withProperty(VARIANT, BlockTrapTile.EnumType.fromMeta(meta));
+        return this.getDefaultState().withProperty(VARIANT, BlockTrapEffect.EnumType.fromMeta(meta));
     }
     
     @Override
@@ -54,7 +54,7 @@ public class BlockTrapTile extends BlockTrapBase {
     @Override
     public int getMetaFromState (IBlockState state) {
         
-        return ((BlockTrapTile.EnumType) state.getValue(VARIANT)).meta;
+        return ((BlockTrapEffect.EnumType) state.getValue(VARIANT)).meta;
     }
     
     @Override
@@ -103,7 +103,7 @@ public class BlockTrapTile extends BlockTrapBase {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks (Item itemIn, CreativeTabs tab, List<ItemStack> list) {
         
-        for (BlockTrapTile.EnumType type : BlockTrapTile.EnumType.values())
+        for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
             list.add(new ItemStack(itemIn, 1, type.meta));
     }
     

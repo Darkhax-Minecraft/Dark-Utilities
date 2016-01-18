@@ -11,11 +11,11 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-public class BlockDirectionalTrap extends BlockTrapBase {
+public class BlockTrapMovement extends BlockTrapBase {
     
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     
-    public BlockDirectionalTrap() {
+    public BlockTrapMovement() {
         
         super();
         this.setUnlocalizedName("darkutils.trap.movement");

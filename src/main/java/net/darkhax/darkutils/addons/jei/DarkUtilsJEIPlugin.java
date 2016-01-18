@@ -6,7 +6,7 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.IRecipeRegistry;
 import mezz.jei.api.JEIPlugin;
-import net.darkhax.darkutils.blocks.BlockTrapTile;
+import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.minecraft.item.ItemStack;
 
@@ -22,7 +22,7 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
         registry.addDescription(new ItemStack(ContentHandler.blockTrapMovement), "jei.darkutils.trap.vector.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockGrate), "jei.darkutils.grate.desc");
         
-        for (BlockTrapTile.EnumType type : BlockTrapTile.EnumType.values())
+        for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
             registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta), "jei.darkutils.trap." + type.type + ".desc");
     }
     
