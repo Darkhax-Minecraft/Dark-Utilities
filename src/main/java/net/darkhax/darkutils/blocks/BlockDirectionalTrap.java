@@ -5,7 +5,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.BlockPos;
@@ -22,7 +21,6 @@ public class BlockDirectionalTrap extends BlockTrapBase {
         this.setUnlocalizedName("darkutils.trap.movement");
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.slipperiness = 0.98F;
-        this.setCreativeTab(CreativeTabs.tabBlock);
     }
     
     @Override

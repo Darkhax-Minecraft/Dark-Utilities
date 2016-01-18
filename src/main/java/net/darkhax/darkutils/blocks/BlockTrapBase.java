@@ -1,10 +1,10 @@
 package net.darkhax.darkutils.blocks;
 
+import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
@@ -14,7 +14,7 @@ public class BlockTrapBase extends Block {
     public BlockTrapBase() {
         
         super(Material.rock);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(DarkUtils.tab);
         this.setHardness(3.0F);
         this.setResistance(120f);
         this.setHarvestLevel("pickaxe", 1);

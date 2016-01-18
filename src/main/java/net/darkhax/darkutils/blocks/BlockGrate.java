@@ -1,9 +1,9 @@
 package net.darkhax.darkutils.blocks;
 
+import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.BlockPos;
@@ -19,7 +19,7 @@ public class BlockGrate extends Block {
         
         super(Material.rock);
         this.setUnlocalizedName("darkutils.grate");
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(DarkUtils.tab);
         this.setBlockBounds(0f, 0.87f, 0f, 1f, 1f, 1f);
     }
     

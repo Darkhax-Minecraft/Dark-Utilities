@@ -2,11 +2,11 @@ package net.darkhax.darkutils.blocks;
 
 import java.util.Random;
 
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -19,7 +19,7 @@ public class BlockEnderTether extends BlockTorch implements ITileEntityProvider 
     public BlockEnderTether() {
         
         this.isBlockContainer = true;
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(DarkUtils.tab);
         this.setUnlocalizedName("darkutils.endertether");
     }
     
