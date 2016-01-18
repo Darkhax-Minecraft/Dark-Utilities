@@ -26,6 +26,17 @@ public class BlockDirectionalTrap extends BlockTrapBase {
     @Override
     public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
         
+        if (entity.isSneaking())
+            return;
+        
+        EnumFacing direction = state.getValue(FACING);
+        
+        if (Utilities.requireCentering(pos, entity.getPositionVector(), direction)) {
+            
+            Utilities.centerDirectional(pos, entity, direction);
+            System.out.println("Centering");
+        }
+        
         if (entity != null)
             Utilities.pushTowards(entity, state.getValue(FACING), 0.06);
     }
