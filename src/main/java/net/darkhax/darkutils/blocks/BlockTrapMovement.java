@@ -28,7 +28,7 @@ public class BlockTrapMovement extends BlockTrapBase {
         
         if (entity.isSneaking())
             return;
-        
+            
         EnumFacing direction = state.getValue(FACING);
         
         if (Utilities.requireCentering(pos, entity.getPositionVector(), direction)) {
