@@ -29,10 +29,12 @@ public class ItemMaterial extends Item {
     @Override
     public String getUnlocalizedName (ItemStack stack) {
         
-        if (stack.getMetadata() >= varients.length)
+        int meta = stack.getMetadata();
+        
+        if (!((meta >= 0) && (meta < varients.length)))
             return super.getUnlocalizedName() + "." + varients[0];
             
-        return super.getUnlocalizedName() + "." + varients[stack.getMetadata()];
+        return super.getUnlocalizedName() + "." + varients[meta];
     }
     
     @Override
@@ -40,6 +42,6 @@ public class ItemMaterial extends Item {
     public void getSubItems (Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
         
         for (int meta = 0; meta < varients.length; meta++)
-            subItems.add(new ItemStack(this, 1, 0));
+            subItems.add(new ItemStack(this, 1, meta));
     }
 }
