@@ -1,0 +1,6 @@
+{
+	"parent": "darkutils:item/default",
+	"textures": {
+		"layer0": "darkutils:items/material_unstable"
+	}
+}

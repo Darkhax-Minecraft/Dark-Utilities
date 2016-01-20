@@ -5,8 +5,12 @@ import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockGrate;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.items.ItemBlockBasic;
+import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ContentHandler {
@@ -15,6 +19,8 @@ public class ContentHandler {
     public static Block blockEnderTether;
     public static Block blockTrapMovement;
     public static Block blockGrate;
+    
+    public static Item itemMaterial;
     
     public static void initBlocks () {
         
@@ -33,10 +39,13 @@ public class ContentHandler {
     }
     
     public static void initItems () {
-    
+        
+        itemMaterial = new ItemMaterial();
+        GameRegistry.registerItem(itemMaterial, "material");
     }
     
     public static void initRecipes () {
-    
+        
+        GameRegistry.addShapelessRecipe(new ItemStack(blockGrate), Blocks.iron_bars, Blocks.stone, Blocks.trapdoor);
     }
 }
