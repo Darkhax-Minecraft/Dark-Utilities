@@ -26,20 +26,26 @@ minecraft {
 
 repositories {
 
-  maven {
-  
-    url "http://dvs1.progwml6.com/files/maven"
-  }
+    maven {
+
+        url "http://dvs1.progwml6.com/files/maven"
+    }
+
+    maven {
+
+        url "http://mobiusstrip.eu/maven"
+    }
 }
 
 minecraft {
 
-  useDepAts = true
+    useDepAts = true
 }
 
 dependencies {
-    
+
     deobfCompile "mezz.jei:jei_1.8.9:2.13.7.99"
+    deobfCompile "mcp.mobius.waila:Waila:1.6.0-B3_1.8.8"
 }
 
 processResources {
@@ -48,13 +54,13 @@ processResources {
     inputs.property "mcversion", project.minecraft.version
 
     from(sourceSets.main.resources.srcDirs) {
-    
+
         include 'mcmod.info'
         expand 'version': project.version, 'mcversion': project.minecraft.version
     }
 
     from(sourceSets.main.resources.srcDirs) {
-    
+
         exclude 'mcmod.info'
     }
 }
