@@ -24,6 +24,24 @@ minecraft {
     mappings = "stable_20"
 }
 
+repositories {
+
+  maven {
+  
+    url "http://dvs1.progwml6.com/files/maven"
+  }
+}
+
+minecraft {
+
+  useDepAts = true
+}
+
+dependencies {
+    
+    deobfCompile "mezz.jei:jei_1.8.9:2.13.7.99"
+}
+
 processResources {
 
     inputs.property "version", project.version
