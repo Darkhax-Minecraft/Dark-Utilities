@@ -28,6 +28,7 @@ public class DarkUtils {
         
         ContentHandler.initBlocks();
         ContentHandler.initItems();
+        ContentHandler.initMisc();
         ContentHandler.initRecipes();
         proxy.onPreInit();
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
