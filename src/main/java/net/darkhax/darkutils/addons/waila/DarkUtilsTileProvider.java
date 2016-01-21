@@ -6,12 +6,15 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class DarkUtilsTileProvider implements IWailaDataProvider {
@@ -30,6 +33,9 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
+        
+        if (data.getBlock() instanceof BlockFilter && !(stack.getMetadata() > BlockFilter.EnumType.getTypes().length))
+            tip.add(StatCollector.translateToLocal("tooltip.filter.type") + ": " + EnumChatFormatting.AQUA + StatCollector.translateToLocal("tooltip.filter.type." + BlockFilter.EnumType.getTypes()[stack.getMetadata()]));
         
         return tip;
     }
@@ -53,5 +59,6 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         
         DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
         register.registerStackProvider(dataProvider, BlockTrapMovement.class);
+        register.registerBodyProvider(dataProvider, BlockFilter.class);
     }
 }
