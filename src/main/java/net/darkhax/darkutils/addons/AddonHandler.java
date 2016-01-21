@@ -9,8 +9,8 @@ public class AddonHandler {
      * A special pre-init method used to handle all addon specific things.
      */
     public static void preInit () {
-    
-        if(Loader.isModLoaded("Waila"))
+        
+        if (Loader.isModLoaded("Waila"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.darkutils.addons.waila.DarkUtilsTileProvider.registerAddon");
     }
 }
