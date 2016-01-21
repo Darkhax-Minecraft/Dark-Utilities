@@ -8,6 +8,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3;
@@ -28,7 +29,7 @@ public class BlockTrapMovement extends BlockTrapBase {
     @Override
     public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
         
-        if (entity.isSneaking())
+        if (!(entity instanceof EntityLivingBase || entity instanceof EntityItem) || entity.isSneaking())
             return;
             
         EnumFacing direction = state.getValue(FACING);
