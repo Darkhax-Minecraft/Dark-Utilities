@@ -8,6 +8,23 @@ tile.darkutils.trap.wither.name=Wither Trap
 tile.darkutils.endertether.name=Ender Tether
 tile.darkutils.trap.movement.name=Vector Plate
 tile.darkutils.grate.name=Item Grate
+tile.darkutils.filter.name=Mob Filter
+
+#Items
+item.darkutils.material.wither.name=Wither Dust
+item.darkutils.material.unstable.name=Unstable Ender Pearl
+
+#Tooltips
+tooltip.filter.type=Type
+tooltip.filter.type.player=Player
+tooltip.filter.type.undead=Undead
+tooltip.filter.type.arthropod=Arthropod
+tooltip.filter.type.monster=Hostile
+tooltip.filter.type.animal=Peaceful
+tooltip.filter.type.water=Water
+tooltip.filter.type.baby=Baby
+tooltip.filter.type.pet=Pet
+
 
 #JEI
 jei.darkutils.trap.poison.desc=The poison trap is a tile that can be placed on any solid block. When a mob steps on this tile they will recieve 3 seconds of poison. Keep in mind that many hostile mobs such as skeletons, zombies and spiders can not be effected by poison. The attack timer for poison is reset every time it is re-applied to a mob, so mobs will not be damaged until they step off the plate. The poison effect created by this effect can not be cured. 
@@ -19,3 +36,11 @@ jei.darkutils.trap.wither.desc=The Wither trap is a tile that can be placed on a
 jei.darkutils.endertether.desc=The Ender Tether is a block that can be placed similarly to a torch. When a form of ender teleportation occurs within 32 blocks of the tether, the teleportation will be redirected to the tether block. Some examples of ender teleportation include Endermen teleporting and ender pearls. The tether must be placed on a block, and if that block were to be removed the tether will break. Keep that in mind when working with Endermen. 
 jei.darkutils.trap.vector.desc=The Vector Plate will cause an entity to move in the direction depicted on the plate.
 jei.darkutils.grate.desc=The Item Grate is a special block which allows only items to move through it. For the item to move through, the block below must be an air block. Items which touch the grate will be centered on the grate and fall through.
+jei.darkutils.filter.player.desc=The Player Filter will let players move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
+jei.darkutils.filter.undead.desc=The Undead Filter will let undead mobs such as Skeletons and Zombies move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
+jei.darkutils.filter.arthropod.desc=The Arthropod Filter will let Arthropods such as Spiders and Silverfish move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
+jei.darkutils.filter.monster.desc=The Hostile Filter will let hostile mobs such as Zombies and Skeletons move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
+jei.darkutils.filter.animal.desc=The Peaceful Filter will let peaceful mobs such as Sheep and Pigs move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
+jei.darkutils.filter.water.desc=The Water Filter will let water mobs such as Squid move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid. 
+jei.darkutils.filter.baby.desc=The Baby Filter will let child mobs like Baby Sheep and Baby Zombies move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
+jei.darkutils.filter.pet.desc=The Pet Filter will let tameable mobs like Ocelots and Wolves move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid. 
