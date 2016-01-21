@@ -5,12 +5,13 @@
       "description":"A mod that adds a bunch of new utilities to the game.",
       "version":"${version}",
       "mcversion":"${mcversion}",
+      "logoFile": "assets/darkutils/textures/logo.png",
       "url":"http://www.darkhax.net",
       "updateUrl":"",
       "authorList":[  
          "Darkhax"
       ],
-      "credits":"assets/darkutils/textures/logo.png",
+      "credits":"",
       "logoFile":"",
       "screenshots":[  
 
