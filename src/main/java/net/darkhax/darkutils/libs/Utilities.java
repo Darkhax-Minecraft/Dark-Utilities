@@ -1,8 +1,10 @@
 package net.darkhax.darkutils.libs;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -11,9 +13,22 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3;
+import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class Utilities {
+    
+    /**
+     * Checks if a block is a fluid or not.
+     *
+     * @param block: An instance of the block being checked.
+     * @return boolean: If the block is a fluid, true will be returned. If not, false will be
+     *         returned.
+     */
+    public static boolean isFluid (Block block) {
+        
+        return (block == Blocks.lava || block == Blocks.water || block instanceof IFluidBlock);
+    }
     
     public static void centerDirectional (BlockPos block, Entity entity, EnumFacing facing) {
         
