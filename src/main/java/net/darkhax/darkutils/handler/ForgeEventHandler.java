@@ -5,9 +5,15 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ForgeEventHandler {
+    
+    @SubscribeEvent
+    public void onLivingDrops (LivingDropsEvent event) {
+    
+    }
     
     @SubscribeEvent
     public void onEnderTeleport (EnderTeleportEvent event) {

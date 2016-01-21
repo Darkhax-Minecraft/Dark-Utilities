@@ -1,6 +1,7 @@
 package net.darkhax.darkutils.blocks;
 
-import net.darkhax.darkutils.libs.Utilities;
+import net.darkhax.bookshelf.lib.util.EntityUtils;
+import net.darkhax.bookshelf.lib.util.MathsUtils;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
@@ -9,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class BlockTrapMovement extends BlockTrapBase {
@@ -31,14 +33,11 @@ public class BlockTrapMovement extends BlockTrapBase {
             
         EnumFacing direction = state.getValue(FACING);
         
-        if (Utilities.requireCentering(pos, entity.getPositionVector(), direction)) {
+        if (requireCentering(pos, entity.getPositionVector(), direction))
+            centerDirectional(pos, entity, direction);
             
-            Utilities.centerDirectional(pos, entity, direction);
-            System.out.println("Centering");
-        }
-        
         if (entity != null)
-            Utilities.pushTowards(entity, state.getValue(FACING), 0.06);
+            EntityUtils.pushTowards(entity, state.getValue(FACING), 0.06);
     }
     
     @Override
@@ -53,19 +52,34 @@ public class BlockTrapMovement extends BlockTrapBase {
         return new BlockState(this, new IProperty[] { FACING });
     }
     
-    /**
-     * Convert the given metadata into a BlockState for this Block
-     */
+    @Override
     public IBlockState getStateFromMeta (int meta) {
         
         return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
     }
     
-    /**
-     * Convert the BlockState into the correct metadata value
-     */
+    @Override
     public int getMetaFromState (IBlockState state) {
         
         return ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();
+    }
+    
+    private void centerDirectional (BlockPos block, Entity entity, EnumFacing facing) {
+        
+        Vec3 entPos = entity.getPositionVector();
+        
+        if (facing == EnumFacing.EAST || facing == EnumFacing.WEST)
+            entity.setPositionAndUpdate(entPos.xCoord, entPos.yCoord, block.getZ() + 0.5);
+            
+        else
+            entity.setPositionAndUpdate(block.getX() + 0.5, entPos.yCoord, entPos.zCoord);
+    }
+    
+    private boolean requireCentering (BlockPos block, Vec3 entPos, EnumFacing facing) {
+        
+        if (facing == EnumFacing.EAST || facing == EnumFacing.WEST)
+            return !MathsUtils.isInRange(block.getZ() + 0.35, block.getZ() + 0.65, entPos.zCoord);
+            
+        return !MathsUtils.isInRange(block.getX() + 0.35, block.getX() + 0.65, entPos.xCoord);
     }
 }

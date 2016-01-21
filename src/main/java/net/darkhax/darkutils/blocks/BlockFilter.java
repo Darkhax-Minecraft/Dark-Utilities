@@ -3,8 +3,9 @@ package net.darkhax.darkutils.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.darkhax.bookshelf.lib.util.EntityUtils;
+import net.darkhax.bookshelf.lib.util.Utilities;
 import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.libs.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -119,7 +120,7 @@ public class BlockFilter extends Block {
     private void snagMob (EntityLivingBase living, BlockPos pos) {
         
         if (Utilities.isFluid(living.getEntityWorld().getBlockState(pos.offset(EnumFacing.UP)).getBlock()))
-            Utilities.pushTowards(living, pos.offset(EnumFacing.DOWN), 0.6f);
+            EntityUtils.pushTowards(living, pos.offset(EnumFacing.DOWN), 0.6f);
     }
     
     public static enum EnumType implements IStringSerializable {
