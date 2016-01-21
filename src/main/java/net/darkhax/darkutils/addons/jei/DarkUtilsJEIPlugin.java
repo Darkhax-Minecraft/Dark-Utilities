@@ -6,6 +6,7 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.IRecipeRegistry;
 import mezz.jei.api.JEIPlugin;
+import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.minecraft.item.ItemStack;
@@ -18,12 +19,15 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
     @Override
     public void register (IModRegistry registry) {
         
+        for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
+            registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta), "jei.darkutils.trap." + type.type + ".desc");
+            
         registry.addDescription(new ItemStack(ContentHandler.blockEnderTether), "jei.darkutils.endertether.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockTrapMovement), "jei.darkutils.trap.vector.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockGrate), "jei.darkutils.grate.desc");
         
-        for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
-            registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta), "jei.darkutils.trap." + type.type + ".desc");
+        for (BlockFilter.EnumType type : BlockFilter.EnumType.values())
+            registry.addDescription(new ItemStack(ContentHandler.blockFilter, 1, type.meta), "jei.darkutils.filter." + type.type + ".desc");
     }
     
     @Override
