@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.client;
 
+import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.handler.ContentHandler;
@@ -29,6 +30,10 @@ public class ProxyClient extends ProxyCommon {
         item = Item.getItemFromBlock(ContentHandler.blockGrate);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:grate", "inventory"));
         
+        item = Item.getItemFromBlock(ContentHandler.blockFilter);
+        for (BlockFilter.EnumType varient : BlockFilter.EnumType.values())
+            ModelLoader.setCustomModelResourceLocation(item, varient.meta, new ModelResourceLocation("darkutils:filter_" + varient.name(), "inventory"));
+            
         for (int materialMeta = 0; materialMeta < ItemMaterial.varients.length; materialMeta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemMaterial, materialMeta, new ModelResourceLocation("darkutils:material_" + ItemMaterial.varients[materialMeta], "inventory"));
     }

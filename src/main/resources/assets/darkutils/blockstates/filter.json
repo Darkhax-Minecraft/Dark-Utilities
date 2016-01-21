@@ -1,0 +1,28 @@
+{
+	"variants": {
+		"variant=player": {
+			"model": "darkutils:filter_player"
+		},
+		"variant=undead": {
+			"model": "darkutils:filter_undead"
+		},
+		"variant=arthropod": {
+			"model": "darkutils:filter_arthropod"
+		},
+		"variant=monster": {
+			"model": "darkutils:filter_monster"
+		},
+		"variant=animal": {
+			"model": "darkutils:filter_animal"
+		},
+		"variant=water": {
+			"model": "darkutils:filter_water"
+		},
+		"variant=baby": {
+			"model": "darkutils:filter_baby"
+		},
+		"variant=pet": {
+			"model": "darkutils:filter_pet"
+		}
+	}
+}
