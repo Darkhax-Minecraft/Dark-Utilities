@@ -67,6 +67,9 @@ public class ContentHandler {
         
         for (BlockFilter.EnumType type : BlockFilter.EnumType.values())
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, type.meta), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGate", 's', Blocks.stone, 'i', filterIngredients[type.meta] }));
+            
+        GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.skull, 1, 1));
+        GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), Items.ender_pearl);
     }
     
     public static void initMisc () {
