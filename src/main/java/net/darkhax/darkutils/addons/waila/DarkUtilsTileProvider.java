@@ -36,7 +36,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         
         if (data.getBlock() instanceof BlockFilter && !(stack.getMetadata() > BlockFilter.EnumType.getTypes().length))
             tip.add(StatCollector.translateToLocal("tooltip.filter.type") + ": " + EnumChatFormatting.AQUA + StatCollector.translateToLocal("tooltip.filter.type." + BlockFilter.EnumType.getTypes()[stack.getMetadata()]));
-        
+            
         return tip;
     }
     
