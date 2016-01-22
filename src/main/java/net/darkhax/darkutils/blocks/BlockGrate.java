@@ -7,7 +7,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -20,14 +19,14 @@ public class BlockGrate extends Block {
         super(Material.rock);
         this.setUnlocalizedName("darkutils.grate");
         this.setCreativeTab(DarkUtils.tab);
-        this.setBlockBounds(0f, 0.87f, 0f, 1f, 1f, 1f);
+        this.setBlockBounds(0.01f, 0.87f, 0.01f, 0.99f, 0.99f, 0.99f);
     }
     
     @Override
     public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
         
-        if (entity instanceof EntityItem && world.isAirBlock(pos.offset(EnumFacing.DOWN, 1)))
-            entity.setPositionAndUpdate(pos.getX() + 0.5f, pos.getY() - 0.3f, pos.getZ() + 0.5f);
+        if (entity instanceof EntityItem)
+            entity.setPositionAndUpdate(pos.getX() + 0.5f, pos.getY() - 0.2f, pos.getZ() + 0.5f);
     }
     
     @Override
