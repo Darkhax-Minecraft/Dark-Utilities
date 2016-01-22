@@ -1,18 +1,45 @@
 package net.darkhax.darkutils.handler;
 
+import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.bookshelf.lib.util.MathsUtils;
+import net.darkhax.darkutils.items.ItemSourcedSword;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.DamageSource;
+import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ForgeEventHandler {
     
     @SubscribeEvent
-    public void onLivingDrops (LivingDropsEvent event) {
+    public void onLivingHurt (LivingHurtEvent event) {
+        
+        if (event.source.getEntity() instanceof EntityLivingBase) {
+            
+            EntityLivingBase attacker = (EntityLivingBase) event.source.getEntity();
+            
+            if (ItemStackUtils.isValidStack(attacker.getHeldItem()) && attacker.getHeldItem().getItem() instanceof ItemSourcedSword) {
+                
+                ItemSourcedSword sword = (ItemSourcedSword) attacker.getHeldItem().getItem();
+                event.entityLiving.attackEntityFrom(MathsUtils.tryPercentage(sword.effectChance) ? sword.source : DamageSource.generic, sword.attackDamage);
+                event.setCanceled(true);
+            }
+        }
+    }
     
+    @SubscribeEvent
+    public void onLivingDrops (PotionBrewEvent.Pre event) {
+        
+        for (int pos = 0; pos < event.getLength(); pos++) {
+            
+            ItemStack stack = event.getItem(pos);
+            System.out.println("Slot: " + pos + " " + (ItemStackUtils.isValidStack(stack) ? stack.getDisplayName() : "null"));
+        }
     }
     
     @SubscribeEvent
