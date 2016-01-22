@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.client;
 
+import net.darkhax.darkutils.addons.thaumcraft.DarkUtilsThaumcraftAddon;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.common.ProxyCommon;
@@ -46,5 +47,11 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void onPostInit () {
     
+    }
+    
+    @Override
+    public void thaumcraftPreInit () {
+        
+        ModelLoader.setCustomModelResourceLocation(DarkUtilsThaumcraftAddon.deathSword, 0, new ModelResourceLocation("darkutils:sword_death", "inventory"));
     }
 }

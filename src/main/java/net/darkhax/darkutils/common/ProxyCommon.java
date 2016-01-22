@@ -13,4 +13,8 @@ public class ProxyCommon {
     public void onPostInit () {
     
     }
+    
+    public void thaumcraftPreInit () {
+    
+    }
 }
