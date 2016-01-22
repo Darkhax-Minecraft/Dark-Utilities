@@ -25,6 +25,24 @@ tooltip.filter.type.water=Water
 tooltip.filter.type.baby=Baby
 tooltip.filter.type.pet=Pet
 
+tooltip.damagetype.inFire=Fire Damage
+tooltip.damagetype.lightningBolt=Lightning Damage
+tooltip.damagetype.onFire=Fire Damage
+tooltip.damagetype.lava=Lava Damage
+tooltip.damagetype.inWall=Suffocation Damage
+tooltip.damagetype.drown=Drowning Damage
+tooltip.damagetype.starve=Starving Damage
+tooltip.damagetype.cactus=Poke Damage
+tooltip.damagetype.fall=Fall Damage
+tooltip.damagetype.outOfWorld=Void Damage
+tooltip.damagetype.generic=General Damage
+tooltip.damagetype.magic=Magic Damage
+tooltip.damagetype.wither=Wither Damage
+tooltip.damagetype.anvil=Anvil Damage
+tooltip.damagetype.fallingBlock=Block Damage
+tooltip.damagetype.taint=Taint Damage
+tooltip.damagetype.dissolve=Dissolve Damage
+
 
 #JEI
 jei.darkutils.trap.poison.desc=The poison trap is a tile that can be placed on any solid block. When a mob steps on this tile they will recieve 3 seconds of poison. Keep in mind that many hostile mobs such as skeletons, zombies and spiders can not be effected by poison. The attack timer for poison is reset every time it is re-applied to a mob, so mobs will not be damaged until they step off the plate. The poison effect created by this effect can not be cured. 
