@@ -5,7 +5,6 @@ import net.darkhax.bookshelf.lib.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import thaumcraft.api.research.IScanThing;

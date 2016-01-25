@@ -3,12 +3,14 @@ package net.darkhax.darkutils.handler;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
+import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
 import net.darkhax.darkutils.items.ItemBlockBasic;
 import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
+import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -25,6 +27,7 @@ public class ContentHandler {
     public static Block blockTrapMovement;
     public static Block blockGrate;
     public static Block blockFilter;
+    public static Block blockTimer;
     
     public static Item itemMaterial;
     
@@ -45,6 +48,10 @@ public class ContentHandler {
         
         blockFilter = new BlockFilter();
         GameRegistry.registerBlock(blockFilter, ItemBlockFilter.class, "filter", new Object[] { BlockFilter.EnumType.getTypes() });
+        
+        blockTimer = new BlockTimer();
+        GameRegistry.registerBlock(blockTimer, "timer");
+        GameRegistry.registerTileEntity(TileEntityTimer.class, "timer");
     }
     
     public static void initItems () {

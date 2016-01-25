@@ -1,8 +1,5 @@
 package net.darkhax.darkutils.addons;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.darkhax.darkutils.addons.thaumcraft.DarkUtilsThaumcraftAddon;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
