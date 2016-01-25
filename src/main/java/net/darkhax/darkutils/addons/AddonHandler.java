@@ -1,14 +1,14 @@
 package net.darkhax.darkutils.addons;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.darkhax.darkutils.addons.thaumcraft.DarkUtilsThaumcraftAddon;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 public class AddonHandler {
     
-    /**
-     * A special pre-init method used to handle all addon specific things.
-     */
     public static void preInit () {
         
         if (Loader.isModLoaded("Waila"))
@@ -16,5 +16,15 @@ public class AddonHandler {
             
         if (Loader.isModLoaded("Thaumcraft"))
             DarkUtilsThaumcraftAddon.preInit();
+    }
+    
+    public static void init () {
+    
+    }
+    
+    public static void postInit () {
+        
+        if (Loader.isModLoaded("Thaumcraft"))
+            DarkUtilsThaumcraftAddon.postInit();
     }
 }
