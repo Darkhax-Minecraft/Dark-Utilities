@@ -79,3 +79,6 @@ tc.research_category.DARKUTILS=Dark Utilities
 tc.research_page.darkutils.1=After taking a closer look, you notice that several things seem to be surrounded with some form of message that has been engraved directly into the thaumic field itself! You have no idea how that might be possible, or who could have caused this, however that is probably for the best. Knowing that there are still mysteries to be explored fills you with determination. 
 tc.research_name.DARKUTILS_LANDING=Dark Utilities
 tc.research_text.DARKUTILS_LANDING=What do we have here?
+tc.research_name.DARKUTILS_DEATH_SWORD=Crystalized Death!
+tc.research_text.DARKUTILS_DEATH_SWORD=Has science gone too far?
+tc.research_page.darkutils.sword=Your research has revealed a unique interaction with Thaumium and Liquid Death. When infused together, the Thaumium takes on properties of the liquid death. When applied to a Thaumium blade, mobs slain with it will ocasionally be dissolved into essentia crystals. 
