@@ -13,6 +13,7 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftMaterials;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.damagesource.DamageSourceThaumcraft;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.research.ResearchCategories;
@@ -55,7 +56,7 @@ public class DarkUtilsThaumcraftAddon {
     
     public static void init () {
         
-        ConfigResearch.recipes.put("DeathSword", ThaumcraftApi.addInfusionCraftingRecipe("ELEMENTALTOOLS", new ItemStack(deathSword), 4, new AspectList().add(Aspect.DEATH, 8).add(Aspect.AVERSION, 8).add(Aspect.ENTROPY, 32), new ItemStack(ItemsTC.thaumiumSword), new Object[] { new ItemStack(ItemsTC.bucketDeath), new ItemStack(ItemsTC.bucketDeath), new ItemStack(ItemsTC.bucketDeath) }));
+        ConfigResearch.recipes.put("DarkUtils:DeathSword", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_DEATH_SWORD", new ItemStack(deathSword), 4, new AspectList().add(Aspect.DEATH, 8).add(Aspect.AVERSION, 8).add(Aspect.ENTROPY, 32), new ItemStack(ItemsTC.thaumiumSword), new Object[] { new ItemStack(ItemsTC.bucketDeath), new ItemStack(ItemsTC.bucketDeath), new ItemStack(ItemsTC.bucketDeath) }));
     }
     
     public static void postInit () {
@@ -63,7 +64,7 @@ public class DarkUtilsThaumcraftAddon {
         ResearchCategories.registerCategory("DARKUTILS", "DARKUTILS_LANDING", new ResourceLocation("darkutils:textures/research/research_darkutils.png"), new ResourceLocation("darkutils:textures/research/gui_research_darkutils_background.png"), new ResourceLocation("darkutils:textures/research/gui_research_darkutils_background_overlay.png"));
         
         new ResearchItem("DARKUTILS_LANDING", "DARKUTILS", new AspectList(), 0, 0, 0, new Object[] { new ResourceLocation("darkutils:textures/research/research_darkutils.png") }).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.darkutils.1") }).setStub().setHidden().setRound().setSpecial().registerResearchItem();
-        new ResearchItem("DARKUTILS_DEATH_SWORD", "DARKUTILS", new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2), 0, 2, 0, new Object[] { new ItemStack(deathSword) }).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.sword") }).setRound().setParents("DARKUTILS_LANDING").registerResearchItem();
+        new ResearchItem("DARKUTILS_DEATH_SWORD", "DARKUTILS", new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2), 0, 2, 0, new Object[] { new ItemStack(deathSword) }).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.darkutils.sword"), new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("DarkUtils:DeathSword")) }).setRound().setParents("DARKUTILS_LANDING").registerResearchItem();
         
         ScanningManager.addScannableThing(new ScanDarkUtils());
     }
