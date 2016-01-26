@@ -16,7 +16,9 @@ public class AddonHandler {
     }
     
     public static void init () {
-    
+        
+        if (Loader.isModLoaded("Thaumcraft"))
+            DarkUtilsThaumcraftAddon.init();
     }
     
     public static void postInit () {
