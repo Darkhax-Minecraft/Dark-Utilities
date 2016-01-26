@@ -31,7 +31,7 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
         
         for (BlockFilter.EnumType type : BlockFilter.EnumType.values())
             registry.addDescription(new ItemStack(ContentHandler.blockFilter, 1, type.meta), "jei.darkutils.filter." + type.type + ".desc");
-        
+            
         registry.addDescription(new ItemStack(ContentHandler.blockTimer), "jei.darkutils.timer.desc");
         
         for (int meta = 0; meta < ItemMaterial.varients.length; meta++)
