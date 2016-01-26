@@ -9,6 +9,7 @@ tile.darkutils.endertether.name=Ender Tether
 tile.darkutils.trap.movement.name=Vector Plate
 tile.darkutils.grate.name=Item Grate
 tile.darkutils.filter.name=Mob Filter
+tile.darkutils.timer.name=Timer
 
 #Items
 item.darkutils.material.wither.name=Wither Dust
