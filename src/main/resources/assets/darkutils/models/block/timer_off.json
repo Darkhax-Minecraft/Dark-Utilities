@@ -4,6 +4,6 @@
 		"type": "darkutils:blocks/timer_off",
 		"base": "blocks/stone_slab_top",
 		"torch": "blocks/redstone_torch_off",
-		"particle": "darkutils:blocksétimer_off"
+		"particle": "darkutils:blocks/timer_off"
 	}
 }
