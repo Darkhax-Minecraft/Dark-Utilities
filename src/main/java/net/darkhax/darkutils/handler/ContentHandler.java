@@ -1,7 +1,5 @@
 package net.darkhax.darkutils.handler;
 
-import net.darkhax.bookshelf.lib.util.ItemStackUtils;
-import net.darkhax.bookshelf.recipe.NBTBrewingRecipe;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
@@ -18,11 +16,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -98,5 +92,25 @@ public class ContentHandler {
         OreDictionary.registerOre("fenceGate", Blocks.spruce_fence_gate);
         
         BrewingRecipeRegistry.addRecipe(PotionReferences.AWKWARD, new ItemStack(itemMaterial, 1, 0), PotionReferences.WITHER_I_0_45);
+        
+        // BrewingRecipeRegistry.addRecipe(new
+        // NBTBrewingRecipe(PotionReferences.WITHER_I_0_45.copy(), new
+        // ItemStack(Items.glowstone_dust), PotionReferences.WITHER_II_0_22.copy()));
+        
+        // BrewingRecipeRegistry.addRecipe(new
+        // NBTBrewingRecipe(PotionReferences.WITHER_I_0_45.copy(), new
+        // ItemStack(Items.redstone), PotionReferences.WITHER_I_2_00.copy()));
+        
+        // BrewingRecipeRegistry.addRecipe(new
+        // NBTBrewingRecipe(PotionReferences.WITHER_I_0_45.copy(), new
+        // ItemStack(Items.gunpowder), PotionReferences.WITHER_SPLASH_I_0_33.copy()));
+        
+        // BrewingRecipeRegistry.addRecipe(new
+        // NBTBrewingRecipe(PotionReferences.WITHER_I_2_00.copy(), new
+        // ItemStack(Items.gunpowder), PotionReferences.WITHER_SPLASH_I_1_30.copy()));
+        
+        // BrewingRecipeRegistry.addRecipe(new
+        // NBTBrewingRecipe(PotionReferences.WITHER_II_0_22.copy(), new
+        // ItemStack(Items.gunpowder), PotionReferences.WITHER_SPLASH_II_0_16.copy()));
     }
 }
