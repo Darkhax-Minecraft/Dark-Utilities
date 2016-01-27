@@ -1,5 +1,7 @@
 package net.darkhax.darkutils.handler;
 
+import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.bookshelf.recipe.NBTBrewingRecipe;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
@@ -9,13 +11,19 @@ import net.darkhax.darkutils.blocks.BlockTrapMovement;
 import net.darkhax.darkutils.items.ItemBlockBasic;
 import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
+import net.darkhax.darkutils.libs.PotionReferences;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -88,5 +96,7 @@ public class ContentHandler {
         OreDictionary.registerOre("fenceGate", Blocks.dark_oak_fence_gate);
         OreDictionary.registerOre("fenceGate", Blocks.jungle_fence_gate);
         OreDictionary.registerOre("fenceGate", Blocks.spruce_fence_gate);
+        
+        BrewingRecipeRegistry.addRecipe(PotionReferences.AWKWARD, new ItemStack(itemMaterial, 1, 0), PotionReferences.WITHER_I_0_45);
     }
 }
