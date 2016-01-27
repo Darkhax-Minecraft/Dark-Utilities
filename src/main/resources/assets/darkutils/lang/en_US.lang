@@ -52,6 +52,9 @@ gui.darkutils.timer.desc.2=10 seconds is 200 ticks. 30 seconds is 600 ticks. A m
 gui.darkutils.timer.desc.3=Press the Done button or Enter key to save the settings. 
 gui.darkutils.timer.desc.4=The minimum is 10 and the maximum is 12000. 
 
+#Misc
+itemGroup.darkutils=Dark Utilities
+
 #JEI
 jei.darkutils.trap.poison.desc=The poison trap is a tile that can be placed on any solid block. When a mob steps on this tile they will recieve 3 seconds of poison. Keep in mind that many hostile mobs such as skeletons, zombies and spiders can not be effected by poison. The attack timer for poison is reset every time it is re-applied to a mob, so mobs will not be damaged until they step off the plate. The poison effect created by this effect can not be cured. 
 jei.darkutils.trap.weakness.desc=The Weakness trap is a tile that can be placed on any solid block. When a mob steps on this tile, they will recieve 3 seconds of the weakness debuff. This debuff can not be cured. 
