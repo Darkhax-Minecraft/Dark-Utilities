@@ -23,6 +23,9 @@
 		},
 		"variant=pet": {
 			"model": "darkutils:filter_pet"
+		},
+		"variant=slime": {
+			"model": "darkutils:filter_slime"
 		}
 	}
 }

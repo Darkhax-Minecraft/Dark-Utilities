@@ -16,6 +16,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
@@ -43,7 +44,7 @@ public class BlockFilter extends Block {
         this.setUnlocalizedName("darkutils.filter");
         this.setCreativeTab(DarkUtils.tab);
         this.setHardness(3.0F);
-        this.setResistance(120f);
+        this.setResistance(10f);
         this.setHarvestLevel("pickaxe", 1);
     }
     
@@ -92,7 +93,7 @@ public class BlockFilter extends Block {
             
             EntityLivingBase living = (EntityLivingBase) collidingEntity;
             
-            if ((meta == 0 && living instanceof EntityPlayer) || (meta == 1 && living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) || (meta == 2 && living.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD) || (meta == 3 && living instanceof IMob) || (meta == 4 && living instanceof EntityAnimal) || (meta == 5 && living instanceof EntityWaterMob) || (meta == 6 && living.isChild()) || (meta == 7 && living instanceof EntityTameable)) {
+            if ((meta == 0 && living instanceof EntityPlayer) || (meta == 1 && living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) || (meta == 2 && living.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD) || (meta == 3 && living instanceof IMob) || (meta == 4 && living instanceof EntityAnimal) || (meta == 5 && living instanceof EntityWaterMob) || (meta == 6 && living.isChild()) || (meta == 7 && living instanceof EntityTameable) || (meta == 8 && living instanceof EntitySlime)) {
                 
                 snagMob(living, pos);
                 return;
@@ -132,7 +133,8 @@ public class BlockFilter extends Block {
         ANIMAL(4, "animal"),
         WATER(5, "water"),
         BABY(6, "baby"),
-        PET(7, "pet");
+        PET(7, "pet"),
+        SLIME(8, "slime");
         
         private static String[] nameList;
         
