@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.handler;
 
+import net.darkhax.darkutils.blocks.BlockAntiSlime;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
@@ -10,6 +11,7 @@ import net.darkhax.darkutils.items.ItemBlockBasic;
 import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.libs.PotionReferences;
+import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
@@ -30,6 +32,7 @@ public class ContentHandler {
     public static Block blockGrate;
     public static Block blockFilter;
     public static Block blockTimer;
+    public static Block blockAntiSlime;
     
     public static Item itemMaterial;
     
@@ -54,6 +57,10 @@ public class ContentHandler {
         blockTimer = new BlockTimer();
         GameRegistry.registerBlock(blockTimer, "timer");
         GameRegistry.registerTileEntity(TileEntityTimer.class, "timer");
+        
+        blockAntiSlime = new BlockAntiSlime();
+        GameRegistry.registerBlock(blockAntiSlime, "anti_slime");
+        GameRegistry.registerTileEntity(TileEntityAntiSlime.class, "anti_slime");
     }
     
     public static void initItems () {
@@ -65,7 +72,7 @@ public class ContentHandler {
     public static void initRecipes () {
         
         final Object[] trapIngredients = new Object[] { Items.spider_eye, Items.fermented_spider_eye, Items.iron_sword, Blocks.soul_sand, Items.flint_and_steel, new ItemStack(itemMaterial, 1, 0) };
-        final Object[] filterIngredients = new Object[] { Items.golden_pickaxe, Items.bone, Items.spider_eye, Items.rotten_flesh, Items.wheat, Items.water_bucket, Items.egg, Items.milk_bucket };
+        final Object[] filterIngredients = new Object[] { Items.golden_pickaxe, Items.bone, Items.spider_eye, Items.rotten_flesh, Items.wheat, Items.water_bucket, Items.egg, Items.milk_bucket, Blocks.slime_block };
         
         for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
             GameRegistry.addShapedRecipe(new ItemStack(blockTrap, 1, type.meta), new Object[] { "sis", 's', Blocks.stone, 'i', trapIngredients[type.meta] });

@@ -3,13 +3,14 @@ package net.darkhax.darkutils.handler;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.bookshelf.lib.util.MathsUtils;
 import net.darkhax.darkutils.items.ItemSourcedSword;
+import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.event.brewing.PotionBrewEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -33,26 +34,35 @@ public class ForgeEventHandler {
     }
     
     @SubscribeEvent
-    public void onLivingDrops (PotionBrewEvent.Pre event) {
-        
-        for (int pos = 0; pos < event.getLength(); pos++) {
-            
-            ItemStack stack = event.getItem(pos);
-            System.out.println("Slot: " + pos + " " + (ItemStackUtils.isValidStack(stack) ? stack.getDisplayName() : "null"));
-        }
-    }
-    
-    @SubscribeEvent
     public void onEnderTeleport (EnderTeleportEvent event) {
         
         if (event.entityLiving instanceof EntityLivingBase && event.entityLiving.getEntityWorld() != null) {
+            
             for (TileEntity tile : event.entityLiving.getEntityWorld().loadedTileEntityList) {
+                
                 if (tile instanceof TileEntityEnderTether && ((TileEntityEnderTether) tile).isEntityCloseEnough(event.entityLiving)) {
                     
                     BlockPos pos = tile.getPos();
                     event.targetX = pos.getX();
                     event.targetY = pos.getY();
                     event.targetZ = pos.getZ();
+                    break;
+                }
+            }
+        }
+    }
+    
+    @SubscribeEvent
+    public void onEntitySpawn (EntityJoinWorldEvent event) {
+        
+        if (event.entity instanceof EntityLivingBase && event.entity.getEntityWorld() != null) {
+            
+            for (TileEntity tile : event.entity.getEntityWorld().loadedTileEntityList) {
+                
+                if (tile instanceof TileEntityAntiSlime && event.entity instanceof EntitySlime && !event.entity.hasCustomName() && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.entity)) {
+                    
+                    event.entity.setDead();
+                    event.setCanceled(true);
                     break;
                 }
             }
