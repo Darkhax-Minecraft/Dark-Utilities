@@ -85,8 +85,11 @@ public class ContentHandler {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, type.meta), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGate", 's', Blocks.stone, 'i', filterIngredients[type.meta] }));
             
         GameRegistry.addShapedRecipe(new ItemStack(blockTimer), new Object[] { "sts", "tct", "sts", 's', Blocks.stone, 't', Blocks.redstone_torch, 'c', Items.clock });
+        
+        GameRegistry.addShapedRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', Blocks.stone, 'w', Blocks.cobblestone_wall, 'c', new ItemStack(itemMaterial, 1, 2) });
         GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.skull, 1, 1));
         GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), Items.ender_pearl);
+        GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), Items.slime_ball);
     }
     
     public static void initMisc () {
@@ -99,25 +102,5 @@ public class ContentHandler {
         OreDictionary.registerOre("fenceGate", Blocks.spruce_fence_gate);
         
         BrewingRecipeRegistry.addRecipe(PotionReferences.AWKWARD, new ItemStack(itemMaterial, 1, 0), PotionReferences.WITHER_I_0_45);
-        
-        // BrewingRecipeRegistry.addRecipe(new
-        // NBTBrewingRecipe(PotionReferences.WITHER_I_0_45.copy(), new
-        // ItemStack(Items.glowstone_dust), PotionReferences.WITHER_II_0_22.copy()));
-        
-        // BrewingRecipeRegistry.addRecipe(new
-        // NBTBrewingRecipe(PotionReferences.WITHER_I_0_45.copy(), new
-        // ItemStack(Items.redstone), PotionReferences.WITHER_I_2_00.copy()));
-        
-        // BrewingRecipeRegistry.addRecipe(new
-        // NBTBrewingRecipe(PotionReferences.WITHER_I_0_45.copy(), new
-        // ItemStack(Items.gunpowder), PotionReferences.WITHER_SPLASH_I_0_33.copy()));
-        
-        // BrewingRecipeRegistry.addRecipe(new
-        // NBTBrewingRecipe(PotionReferences.WITHER_I_2_00.copy(), new
-        // ItemStack(Items.gunpowder), PotionReferences.WITHER_SPLASH_I_1_30.copy()));
-        
-        // BrewingRecipeRegistry.addRecipe(new
-        // NBTBrewingRecipe(PotionReferences.WITHER_II_0_22.copy(), new
-        // ItemStack(Items.gunpowder), PotionReferences.WITHER_SPLASH_II_0_16.copy()));
     }
 }
