@@ -7,6 +7,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.darkutils.blocks.BlockFilter;
+import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -15,6 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
 
 public class DarkUtilsTileProvider implements IWailaDataProvider {
@@ -37,6 +39,15 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         if (data.getBlock() instanceof BlockFilter && !(stack.getMetadata() > BlockFilter.EnumType.getTypes().length))
             tip.add(StatCollector.translateToLocal("tooltip.darkutils.filter.type") + ": " + EnumChatFormatting.AQUA + StatCollector.translateToLocal("tooltip.darkutils.filter.type." + BlockFilter.EnumType.getTypes()[stack.getMetadata()]));
             
+        else if (data.getBlock() instanceof BlockTimer && data.getTileEntity() != null && !data.getTileEntity().isInvalid()) {
+            
+            int delay = data.getNBTData().getInteger("TickRate");
+            int currentTime = data.getNBTData().getInteger("CurrentTime");
+            
+            tip.add(StatCollector.translateToLocal("gui.darkutils.timer.delay") + ": " + delay);
+            tip.add(StatCollector.translateToLocal("gui.darkutils.timer.remaining") + ": " + StringUtils.ticksToElapsedTime((delay - currentTime)));
+        }
+        
         return tip;
     }
     
@@ -60,5 +71,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
         register.registerStackProvider(dataProvider, BlockTrapMovement.class);
         register.registerBodyProvider(dataProvider, BlockFilter.class);
+        register.registerBodyProvider(dataProvider, BlockTimer.class);
+        register.registerNBTProvider(dataProvider, BlockTimer.class);
     }
 }

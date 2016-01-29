@@ -50,6 +50,7 @@ tooltip.darkutils.damagetype.dissolve=Dissolve Damage
 #Gui
 gui.darkutils.timer.title=Timer Settings
 gui.darkutils.timer.delay=Timer Delay
+gui.darkutils.timer.remaining=Remaining Time
 gui.darkutils.timer.desc.1=Time is entered as ticks. There are 20 ticks in a second.
 gui.darkutils.timer.desc.2=10 seconds is 200 ticks. 30 seconds is 600 ticks. A minute is 1200.
 gui.darkutils.timer.desc.3=Press the Done button or Enter key to save the settings. 
