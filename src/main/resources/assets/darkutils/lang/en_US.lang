@@ -83,6 +83,7 @@ jei.darkutils.material.unstable.desc=An Ender Pearl that has become corrupted by
 jei.darkutils.material.cream.desc=A cream that contains the essence of death itself. It has little use outside of crafting.
 jei.darkutils.potion.cure.desc=A mysterious white potion. When consumed by a player, it will grant the saturation buff for a few seconds. It also has the ability to cure villager zombies.
 jei.darkutils.potion.zombie.desc=A mysterious green potion. When consumed by a player, it will grant the hunger debuff for a few seconds. It also has the ability to infect villagers, turning them into a zombie.
+jei.darkutils.antislime.desc=The Anti Slime Block prevents slimes from spawning in the same chunk as it. If the slime has a custom name, it will not be harmed. 
 
 #Thaumcraft
 tc.research_category.DARKUTILS=Dark Utilities
