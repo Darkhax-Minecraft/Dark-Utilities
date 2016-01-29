@@ -28,6 +28,6 @@ public class ItemBlockFilter extends ItemBlockBasic {
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
         if (!(stack.getMetadata() > names.length))
-            tooltip.add(StatCollector.translateToLocal("tooltip.filter.type") + ": " + EnumChatFormatting.AQUA + StatCollector.translateToLocal("tooltip.filter.type." + names[stack.getMetadata()]));
+            tooltip.add(StatCollector.translateToLocal("tooltip.darkutils.filter.type") + ": " + EnumChatFormatting.AQUA + StatCollector.translateToLocal("tooltip.darkutils.filter.type." + names[stack.getMetadata()]));
     }
 }

@@ -10,39 +10,41 @@ tile.darkutils.trap.movement.name=Vector Plate
 tile.darkutils.grate.name=Item Grate
 tile.darkutils.filter.name=Mob Filter
 tile.darkutils.timer.name=Timer
+tile.darkutils.antislime.name=Anti-Slime Block
 
 #Items
 item.darkutils.material.wither.name=Wither Dust
 item.darkutils.material.unstable.name=Unstable Ender Pearl
 
 #Tooltips
-tooltip.filter.type=Type
-tooltip.filter.type.player=Player
-tooltip.filter.type.undead=Undead
-tooltip.filter.type.arthropod=Arthropod
-tooltip.filter.type.monster=Hostile
-tooltip.filter.type.animal=Peaceful
-tooltip.filter.type.water=Water
-tooltip.filter.type.baby=Baby
-tooltip.filter.type.pet=Pet
+tooltip.darkutils.filter.type=Type
+tooltip.darkutils.filter.type.player=Player
+tooltip.darkutils.filter.type.undead=Undead
+tooltip.darkutils.filter.type.arthropod=Arthropod
+tooltip.darkutils.filter.type.monster=Hostile
+tooltip.darkutils.filter.type.animal=Peaceful
+tooltip.darkutils.filter.type.water=Water
+tooltip.darkutils.filter.type.baby=Baby
+tooltip.darkutils.filter.type.pet=Pet
+tooltip.darkutils.filter.type.slime=Slime
 
-tooltip.damagetype.inFire=Fire Damage
-tooltip.damagetype.lightningBolt=Lightning Damage
-tooltip.damagetype.onFire=Fire Damage
-tooltip.damagetype.lava=Lava Damage
-tooltip.damagetype.inWall=Suffocation Damage
-tooltip.damagetype.drown=Drowning Damage
-tooltip.damagetype.starve=Starving Damage
-tooltip.damagetype.cactus=Poke Damage
-tooltip.damagetype.fall=Fall Damage
-tooltip.damagetype.outOfWorld=Void Damage
-tooltip.damagetype.generic=General Damage
-tooltip.damagetype.magic=Magic Damage
-tooltip.damagetype.wither=Wither Damage
-tooltip.damagetype.anvil=Anvil Damage
-tooltip.damagetype.fallingBlock=Block Damage
-tooltip.damagetype.taint=Taint Damage
-tooltip.damagetype.dissolve=Dissolve Damage
+tooltip.darkutils.damagetype.inFire=Fire Damage
+tooltip.darkutils.damagetype.lightningBolt=Lightning Damage
+tooltip.darkutils.damagetype.onFire=Fire Damage
+tooltip.darkutils.damagetype.lava=Lava Damage
+tooltip.darkutils.damagetype.inWall=Suffocation Damage
+tooltip.darkutils.damagetype.drown=Drowning Damage
+tooltip.darkutils.damagetype.starve=Starving Damage
+tooltip.darkutils.damagetype.cactus=Poke Damage
+tooltip.darkutils.damagetype.fall=Fall Damage
+tooltip.darkutils.damagetype.outOfWorld=Void Damage
+tooltip.darkutils.damagetype.generic=General Damage
+tooltip.darkutils.damagetype.magic=Magic Damage
+tooltip.darkutils.damagetype.wither=Wither Damage
+tooltip.darkutils.damagetype.anvil=Anvil Damage
+tooltip.darkutils.damagetype.fallingBlock=Block Damage
+tooltip.darkutils.damagetype.taint=Taint Damage
+tooltip.darkutils.damagetype.dissolve=Dissolve Damage
 
 #Gui
 gui.darkutils.timer.title=Timer Settings
