@@ -6,6 +6,7 @@ import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
+import net.darkhax.darkutils.items.ItemMysteriousPotion;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -43,6 +44,9 @@ public class ProxyClient extends ProxyCommon {
         
         for (int materialMeta = 0; materialMeta < ItemMaterial.varients.length; materialMeta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemMaterial, materialMeta, new ModelResourceLocation("darkutils:material_" + ItemMaterial.varients[materialMeta], "inventory"));
+            
+        for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
+            ModelLoader.setCustomModelResourceLocation(ContentHandler.itemPotion, meta, new ModelResourceLocation("bottle_drinkable", "inventory"));
     }
     
     @Override

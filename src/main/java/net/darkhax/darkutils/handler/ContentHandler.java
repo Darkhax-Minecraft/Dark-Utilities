@@ -10,6 +10,7 @@ import net.darkhax.darkutils.blocks.BlockTrapMovement;
 import net.darkhax.darkutils.items.ItemBlockBasic;
 import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
+import net.darkhax.darkutils.items.ItemMysteriousPotion;
 import net.darkhax.darkutils.libs.PotionReferences;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
@@ -35,6 +36,7 @@ public class ContentHandler {
     public static Block blockAntiSlime;
     
     public static Item itemMaterial;
+    public static Item itemPotion;
     
     public static void initBlocks () {
         
@@ -67,6 +69,9 @@ public class ContentHandler {
         
         itemMaterial = new ItemMaterial();
         GameRegistry.registerItem(itemMaterial, "material");
+        
+        itemPotion = new ItemMysteriousPotion();
+        GameRegistry.registerItem(itemPotion, "mystery_potion");
     }
     
     public static void initRecipes () {

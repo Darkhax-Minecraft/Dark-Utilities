@@ -16,6 +16,7 @@ tile.darkutils.antislime.name=Anti-Slime Block
 item.darkutils.material.wither.name=Wither Dust
 item.darkutils.material.unstable.name=Unstable Ender Pearl
 item.darkutils.material.cream.name=Dwindle Cream
+item.darkutils.potion.name=Mysterious Potion
 
 #Tooltips
 tooltip.darkutils.filter.type=Type
@@ -28,7 +29,6 @@ tooltip.darkutils.filter.type.water=Water
 tooltip.darkutils.filter.type.baby=Baby
 tooltip.darkutils.filter.type.pet=Pet
 tooltip.darkutils.filter.type.slime=Slime
-
 tooltip.darkutils.damagetype.inFire=Fire Damage
 tooltip.darkutils.damagetype.lightningBolt=Lightning Damage
 tooltip.darkutils.damagetype.onFire=Fire Damage
