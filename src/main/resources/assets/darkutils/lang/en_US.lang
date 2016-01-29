@@ -15,6 +15,7 @@ tile.darkutils.antislime.name=Anti-Slime Block
 #Items
 item.darkutils.material.wither.name=Wither Dust
 item.darkutils.material.unstable.name=Unstable Ender Pearl
+item.darkutils.material.cream.name=Dwindle Cream
 
 #Tooltips
 tooltip.darkutils.filter.type=Type

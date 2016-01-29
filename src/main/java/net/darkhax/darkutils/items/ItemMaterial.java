@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMaterial extends Item {
     
-    public static String[] varients = new String[] { "wither", "unstable" };
+    public static String[] varients = new String[] { "wither", "unstable", "cream" };
     
     public ItemMaterial() {
         
