@@ -51,6 +51,6 @@ public class ItemSourcedSword extends ItemSword {
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
-        tooltip.add(this.displayColor + "+" + this.attackDamage + " " + StatCollector.translateToLocal("tooltip.damagetype." + source.damageType));
+        tooltip.add(this.displayColor + "+" + this.attackDamage + " " + StatCollector.translateToLocal("tooltip.darkutils.damagetype." + source.damageType));
     }
 }
