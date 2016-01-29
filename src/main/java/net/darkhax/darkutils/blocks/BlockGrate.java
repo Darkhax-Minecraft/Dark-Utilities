@@ -19,6 +19,8 @@ public class BlockGrate extends Block {
         super(Material.rock);
         this.setUnlocalizedName("darkutils.grate");
         this.setCreativeTab(DarkUtils.tab);
+        this.setHardness(3.0F);
+        this.setResistance(5f);
         this.setBlockBounds(0.01f, 0.87f, 0.01f, 0.99f, 0.99f, 0.99f);
     }
     

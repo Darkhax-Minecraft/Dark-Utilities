@@ -30,7 +30,7 @@ public class BlockTimer extends BlockContainer {
         this.setDefaultState(blockState.getBaseState().withProperty(POWERED, false));
         this.setUnlocalizedName("darkutils.timer");
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
-        this.setHardness(3f);
+        this.setHardness(1f);
         this.setCreativeTab(DarkUtils.tab);
     }
     
@@ -101,6 +101,12 @@ public class BlockTimer extends BlockContainer {
     public int getRenderType () {
         
         return 3;
+    }
+    
+    @Override
+    public boolean isFullCube () {
+        
+        return false;
     }
     
     @Override

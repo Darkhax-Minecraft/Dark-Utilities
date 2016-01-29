@@ -20,6 +20,7 @@ public class BlockEnderTether extends BlockTorch implements ITileEntityProvider 
         
         this.isBlockContainer = true;
         this.setCreativeTab(DarkUtils.tab);
+        this.setResistance(2000f);
         this.setUnlocalizedName("darkutils.endertether");
     }
     

@@ -16,7 +16,7 @@ public class BlockTrapBase extends Block {
         super(Material.rock);
         this.setCreativeTab(DarkUtils.tab);
         this.setHardness(3.0F);
-        this.setResistance(120f);
+        this.setResistance(10f);
         this.setHarvestLevel("pickaxe", 1);
         this.setBlockBounds(0F, 0F, 0.0625F, 1F, 0.0125F, 1F);
     }
