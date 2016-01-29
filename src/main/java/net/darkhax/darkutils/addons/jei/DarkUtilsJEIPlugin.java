@@ -11,6 +11,7 @@ import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
+import net.darkhax.darkutils.items.ItemMysteriousPotion;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
 
@@ -37,6 +38,8 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
         for (int meta = 0; meta < ItemMaterial.varients.length; meta++)
             registry.addDescription(new ItemStack(ContentHandler.itemMaterial, 1, meta), "jei.darkutils.material." + ItemMaterial.varients[meta] + ".desc");
             
+        for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
+            registry.addDescription(new ItemStack(ContentHandler.itemPotion, 1, meta), "jei.darkutils.potion." + ItemMysteriousPotion.varients[meta] + ".desc");
         if (Loader.isModLoaded("Thaumcraft"))
             DarkUtilsThaumcraftAddon.jeiRegisterHook(registry);
     }
