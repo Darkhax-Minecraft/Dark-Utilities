@@ -87,6 +87,7 @@ jei.darkutils.material.cream.desc=A cream that contains the essence of death its
 jei.darkutils.potion.cure.desc=A mysterious white potion. When consumed by a player, it will grant the saturation buff for a few seconds. It also has the ability to cure villager zombies.
 jei.darkutils.potion.zombie.desc=A mysterious green potion. When consumed by a player, it will grant the hunger debuff for a few seconds. It also has the ability to infect villagers, turning them into a zombie.
 jei.darkutils.antislime.desc=The Anti Slime Block prevents slimes from spawning in the same chunk as it. If the slime has a custom name, it will not be harmed. 
+jei.darkutils.ring.fortune.desc=While in the players inventory, the Ring of Fortune adds an additional level of looting to the player. Using multiple Ring of Fortune will not increase the intensity of this effect. This item will work while in the Baubles inventory.
 
 #Thaumcraft
 item.darkutils.swordDeath.name=Sword of the Mortifer 
