@@ -1,9 +1,19 @@
 package net.darkhax.darkutils.addons.thaumcraft;
 
 import mezz.jei.api.IModRegistry;
+import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemSourcedSword;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntityRabbit;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -21,6 +31,13 @@ import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.api.research.ScanningManager;
 import thaumcraft.common.config.ConfigResearch;
+import thaumcraft.common.entities.monster.tainted.EntityTaintChicken;
+import thaumcraft.common.entities.monster.tainted.EntityTaintCow;
+import thaumcraft.common.entities.monster.tainted.EntityTaintCreeper;
+import thaumcraft.common.entities.monster.tainted.EntityTaintPig;
+import thaumcraft.common.entities.monster.tainted.EntityTaintRabbit;
+import thaumcraft.common.entities.monster.tainted.EntityTaintSheep;
+import thaumcraft.common.entities.monster.tainted.EntityTaintVillager;
 
 public class DarkUtilsThaumcraftAddon {
     
@@ -71,5 +88,52 @@ public class DarkUtilsThaumcraftAddon {
     
     public static void jeiRegisterHook (IModRegistry registry) {
     
+    }
+    
+    /**
+     * A special hook that handles Thaumcraft logic for the Mysterious Potion cure.
+     * 
+     * @param stack: The potion stack.
+     * @param player: The player doing the curing.
+     * @param entity: The entity being cured.
+     * @return boolean: Whether or not something was cured.
+     */
+    public static boolean cureHook (ItemStack stack, EntityPlayer player, EntityLivingBase entity) {
+        
+        EntityLivingBase normal = null;
+        
+        if (entity instanceof EntityTaintChicken)
+            normal = new EntityChicken(entity.worldObj);
+            
+        else if (entity instanceof EntityTaintCow)
+            normal = new EntityCow(entity.worldObj);
+            
+        else if (entity instanceof EntityTaintCreeper)
+            normal = new EntityCreeper(entity.worldObj);
+            
+        else if (entity instanceof EntityTaintPig)
+            normal = new EntityPig(entity.worldObj);
+            
+        else if (entity instanceof EntityTaintRabbit)
+            normal = new EntityRabbit(entity.worldObj);
+            
+        else if (entity instanceof EntityTaintSheep)
+            normal = new EntitySheep(entity.worldObj);
+            
+        else if (entity instanceof EntityTaintVillager)
+            normal = new EntityVillager(entity.worldObj);
+            
+        if (normal != null) {
+            
+            if (player.worldObj.isRemote)
+                return true;
+                
+            ItemStackUtils.decreaseStackSize(stack, 1);
+            normal.copyLocationAndAnglesFrom(entity);
+            entity.worldObj.spawnEntityInWorld(normal);
+            entity.setDead();
+            return true;
+        }
+        return false;
     }
 }

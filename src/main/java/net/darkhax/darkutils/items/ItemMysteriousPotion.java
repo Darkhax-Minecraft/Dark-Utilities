@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.DarkUtils;
+import net.darkhax.darkutils.addons.thaumcraft.DarkUtilsThaumcraftAddon;
 import net.darkhax.darkutils.libs.Constants;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -35,19 +37,25 @@ public class ItemMysteriousPotion extends Item {
     @Override
     public boolean itemInteractionForEntity (ItemStack stack, EntityPlayer player, EntityLivingBase entity) {
         
-        if (entity instanceof EntityZombie && stack.getMetadata() == 0) {
+        if (stack.getMetadata() == 0) {
             
-            if (player.worldObj.isRemote)
-                return true;
+            if (entity instanceof EntityZombie) {
                 
-            EntityZombie zombie = (EntityZombie) entity;
-            
-            if (zombie.isVillager()) {
+                if (player.worldObj.isRemote)
+                    return true;
+                    
+                EntityZombie zombie = (EntityZombie) entity;
                 
-                ItemStackUtils.decreaseStackSize(stack, 1);
-                zombie.startConversion(Constants.RANDOM.nextInt(2401) + 3600);
-                return true;
+                if (zombie.isVillager()) {
+                    
+                    ItemStackUtils.decreaseStackSize(stack, 1);
+                    zombie.startConversion(Constants.RANDOM.nextInt(2401) + 3600);
+                    return true;
+                }
             }
+            
+            else if (Loader.isModLoaded("Thaumcraft"))
+                return DarkUtilsThaumcraftAddon.cureHook(stack, player, entity);
         }
         
         if (entity instanceof EntityVillager && stack.getMetadata() == 1) {
