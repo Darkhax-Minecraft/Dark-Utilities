@@ -87,6 +87,7 @@ jei.darkutils.potion.zombie.desc=A mysterious green potion. When consumed by a p
 jei.darkutils.antislime.desc=The Anti Slime Block prevents slimes from spawning in the same chunk as it. If the slime has a custom name, it will not be harmed. 
 
 #Thaumcraft
+item.darkutils.swordDeath.name=Sword of the Mortifer 
 tc.research_category.DARKUTILS=Dark Utilities
 tc.research_page.darkutils.1=After taking a closer look, you notice that several things seem to be surrounded with some form of message that has been engraved directly into the thaumic field itself! You have no idea how that might be possible, or who could have caused this, however that is probably for the best. Knowing that there are still mysteries to be explored fills you with determination. 
 tc.research_name.DARKUTILS_LANDING=Dark Utilities
