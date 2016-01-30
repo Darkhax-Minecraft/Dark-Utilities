@@ -17,7 +17,13 @@ item.darkutils.material.wither.name=Wither Dust
 item.darkutils.material.unstable.name=Unstable Ender Pearl
 item.darkutils.material.cream.name=Dwindle Cream
 item.darkutils.potion.name=Mysterious Potion
-item.darkutils.ring.fortune.name=Ring of Fortune
+item.darkutils.ring.knockback.name=Titan Ring
+item.darkutils.ring.fire.name=Pyromancer Ring
+item.darkutils.ring.fortune.name=Ring of Fortunes
+item.darkutils.ring.loot.name=Bandit Ring
+item.darkutils.ring.lure.name=Angler Ring
+item.darkutils.ring.luck.name=Ring of the Sea
+item.darkutils.ring.efficiency.name=Prospector Ring
 
 #Tooltips
 tooltip.darkutils.filter.type=Type
@@ -47,7 +53,6 @@ tooltip.darkutils.damagetype.anvil=Anvil Damage
 tooltip.darkutils.damagetype.fallingBlock=Block Damage
 tooltip.darkutils.damagetype.taint=Taint Damage
 tooltip.darkutils.damagetype.dissolve=Dissolve Damage
-tooltip.darkutils.ring.fortune=+1 Looting
 
 #Gui
 gui.darkutils.timer.title=Timer Settings

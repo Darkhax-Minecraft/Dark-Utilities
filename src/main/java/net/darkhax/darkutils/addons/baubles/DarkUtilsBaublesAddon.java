@@ -4,7 +4,6 @@ import baubles.api.BaublesApi;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class DarkUtilsBaublesAddon {

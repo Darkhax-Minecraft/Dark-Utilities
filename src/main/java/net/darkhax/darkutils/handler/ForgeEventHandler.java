@@ -1,6 +1,13 @@
 package net.darkhax.darkutils.handler;
 
-import net.darkhax.bookshelf.event.LootingEvent;
+import net.darkhax.bookshelf.event.EnchantmentLevelEvent;
+import net.darkhax.bookshelf.event.EnchantmentLevelEvent.EfficiencyEvent;
+import net.darkhax.bookshelf.event.EnchantmentLevelEvent.FireAspectEvent;
+import net.darkhax.bookshelf.event.EnchantmentLevelEvent.FortuneEvent;
+import net.darkhax.bookshelf.event.EnchantmentLevelEvent.KnockbackEvent;
+import net.darkhax.bookshelf.event.EnchantmentLevelEvent.LootingEvent;
+import net.darkhax.bookshelf.event.EnchantmentLevelEvent.LuckOfSeaEvent;
+import net.darkhax.bookshelf.event.EnchantmentLevelEvent.LureEvent;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.bookshelf.lib.util.MathsUtils;
 import net.darkhax.darkutils.addons.baubles.DarkUtilsBaublesAddon;
@@ -10,6 +17,7 @@ import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
@@ -22,16 +30,45 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ForgeEventHandler {
     
+    public static String[] varients = new String[] { "knockback", "fire", "fortune", "loot", "lure", "luck", "efficiency" };
+    
     @SubscribeEvent
-    public void onLooting (LootingEvent event) {
+    public void onLooting (EnchantmentLevelEvent event) {
         
         if (event.entityLiving instanceof EntityPlayer) {
             
             EntityPlayer player = (EntityPlayer) event.entityLiving;
             
-            if (player.inventory.hasItem(ContentHandler.itemFortuneRing) || (Loader.isModLoaded("Baubles") && DarkUtilsBaublesAddon.isPlayerWearingRing(player, ContentHandler.itemFortuneRing))) {
+            int meta = -1;
+            
+            if (event instanceof KnockbackEvent)
+                meta = 0;
                 
-                event.lootingModifier++;
+            else if (event instanceof FireAspectEvent)
+                meta = 1;
+                
+            else if (event instanceof FortuneEvent)
+                meta = 2;
+                
+            else if (event instanceof LootingEvent)
+                meta = 3;
+                
+            else if (event instanceof LureEvent)
+                meta = 4;
+                
+            else if (event instanceof LuckOfSeaEvent)
+                meta = 5;
+                
+            else if (event instanceof EfficiencyEvent)
+                meta = 6;
+                
+            if (meta == -1)
+                return;
+                
+            final ItemStack stack = new ItemStack(ContentHandler.itemFortuneRing, 1, meta);
+            if (meta != -1 && player.inventory.hasItemStack(stack) || (Loader.isModLoaded("Baubles") && DarkUtilsBaublesAddon.isPlayerWearingRing(player, stack))) {
+                
+                event.levels++;
                 event.setResult(Result.ALLOW);
             }
         }
