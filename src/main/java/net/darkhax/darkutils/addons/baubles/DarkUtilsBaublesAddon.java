@@ -8,6 +8,13 @@ import net.minecraft.item.ItemStack;
 
 public class DarkUtilsBaublesAddon {
     
+    /**
+     * A simple check to see if the player is wearing a certain item in the amulet slot.
+     * 
+     * @param player: The Player to check.
+     * @param item: The Item being looked for.
+     * @return boolean: True if the player is wearing the specified bauble.
+     */
     public static boolean isPlayerWearingAmulet (EntityPlayer player, ItemStack item) {
         
         return isPlayerWearingBauble(player, item, 0);
@@ -18,7 +25,7 @@ public class DarkUtilsBaublesAddon {
      * 
      * @param player: The Player to check.
      * @param item: The Item being looked for.
-     * @return bollean: True if the player is wearing the specified item in either ring slot.
+     * @return bolean: True if the player is wearing the specified item in either ring slot.
      */
     public static boolean isPlayerWearingRing (EntityPlayer player, ItemStack item) {
         

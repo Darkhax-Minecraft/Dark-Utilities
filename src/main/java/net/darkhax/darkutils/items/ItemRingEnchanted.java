@@ -13,7 +13,6 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemRingEnchanted extends Item implements IBauble {
     
     public static String[] varients = new String[] { "knockback", "fire", "fortune", "loot", "lure", "luck", "efficiency" };
-    public static Enchantment[] enchants = new Enchantment[] {Enchantment.knockback, Enchantment.fireAspect, Enchantment.fortune, Enchantment.looting, Enchantment.lure, Enchantment.luckOfTheSea, Enchantment.efficiency};
+    public static Enchantment[] enchants = new Enchantment[] { Enchantment.knockback, Enchantment.fireAspect, Enchantment.fortune, Enchantment.looting, Enchantment.lure, Enchantment.luckOfTheSea, Enchantment.efficiency };
     
     public ItemRingEnchanted() {
         
