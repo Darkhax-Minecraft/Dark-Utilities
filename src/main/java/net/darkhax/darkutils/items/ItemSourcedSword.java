@@ -8,6 +8,7 @@ import com.google.common.collect.Multimap;
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.DamageSource;
@@ -39,6 +40,12 @@ public class ItemSourcedSword extends ItemSword {
         this.source = source;
         this.displayColor = displayColor;
         this.effectChance = effectChance;
+    }
+    
+    @Override
+    public EnumRarity getRarity (ItemStack itemstack) {
+        
+        return EnumRarity.RARE;
     }
     
     @Override
