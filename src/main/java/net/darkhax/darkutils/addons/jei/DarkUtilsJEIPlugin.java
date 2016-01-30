@@ -23,29 +23,25 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
     
     @Override
     public void register (IModRegistry registry) {
-        
-        for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
-            registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta), "jei.darkutils.trap." + type.type + ".desc");
             
         registry.addDescription(new ItemStack(ContentHandler.blockEnderTether), "jei.darkutils.endertether.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockTrapMovement), "jei.darkutils.trap.vector.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockGrate), "jei.darkutils.grate.desc");
+        registry.addDescription(new ItemStack(ContentHandler.blockTimer), "jei.darkutils.timer.desc");    
+        registry.addDescription(new ItemStack(ContentHandler.blockAntiSlime), "jei.darkutils.antislime.desc");
+        
+        for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
+            registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta), "jei.darkutils.trap." + type.type + ".desc");
         
         for (BlockFilter.EnumType type : BlockFilter.EnumType.values())
             registry.addDescription(new ItemStack(ContentHandler.blockFilter, 1, type.meta), "jei.darkutils.filter." + type.type + ".desc");
-            
-        registry.addDescription(new ItemStack(ContentHandler.blockTimer), "jei.darkutils.timer.desc");
-        
-        registry.addDescription(new ItemStack(ContentHandler.blockAntiSlime), "jei.darkutils.antislime.desc");
-        
+                   
         for (int meta = 0; meta < ItemMaterial.varients.length; meta++)
             registry.addDescription(new ItemStack(ContentHandler.itemMaterial, 1, meta), "jei.darkutils.material." + ItemMaterial.varients[meta] + ".desc");
             
         for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
             registry.addDescription(new ItemStack(ContentHandler.itemPotion, 1, meta), "jei.darkutils.potion." + ItemMysteriousPotion.varients[meta] + ".desc");
-            
-        registry.addDescription(new ItemStack(ContentHandler.itemFortuneRing), "jei.darkutils.ring.fortune.desc");
-        
+                  
         for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
             registry.addDescription(new ItemStack(ContentHandler.itemFortuneRing, 1, meta), "jei.darkutils.ring." + ItemRingEnchanted.varients[meta] + ".desc");
         
