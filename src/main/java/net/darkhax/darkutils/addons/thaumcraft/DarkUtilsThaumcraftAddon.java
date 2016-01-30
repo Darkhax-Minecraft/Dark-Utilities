@@ -48,7 +48,7 @@ public class DarkUtilsThaumcraftAddon {
         // Blocks
         
         // Items
-        deathSword = new ItemSourcedSword(ThaumcraftMaterials.TOOLMAT_THAUMIUM, DamageSourceThaumcraft.dissolve, EnumChatFormatting.DARK_PURPLE, 0.30f).setUnlocalizedName("swordDeath");
+        deathSword = new ItemSourcedSword(ThaumcraftMaterials.TOOLMAT_THAUMIUM, DamageSourceThaumcraft.dissolve, EnumChatFormatting.DARK_PURPLE, 0.30f).setUnlocalizedName("darkutils.swordDeath");
         GameRegistry.registerItem(deathSword, "sword_death");
         
         // Recipes
