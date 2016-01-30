@@ -11,6 +11,7 @@ import net.darkhax.darkutils.items.ItemBlockBasic;
 import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
+import net.darkhax.darkutils.items.ItemRingFortune;
 import net.darkhax.darkutils.libs.PotionReferences;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
@@ -37,6 +38,7 @@ public class ContentHandler {
     
     public static Item itemMaterial;
     public static Item itemPotion;
+    public static Item itemFortuneRing;
     
     public static void initBlocks () {
         
@@ -72,6 +74,9 @@ public class ContentHandler {
         
         itemPotion = new ItemMysteriousPotion();
         GameRegistry.registerItem(itemPotion, "mystery_potion");
+        
+        itemFortuneRing = new ItemRingFortune();
+        GameRegistry.registerItem(itemFortuneRing, "ring_fortune");
     }
     
     public static void initRecipes () {

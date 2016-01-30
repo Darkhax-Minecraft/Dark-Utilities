@@ -47,6 +47,8 @@ public class ProxyClient extends ProxyCommon {
             
         for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemPotion, meta, new ModelResourceLocation("bottle_drinkable", "inventory"));
+            
+        ModelLoader.setCustomModelResourceLocation(ContentHandler.itemFortuneRing, 0, new ModelResourceLocation("darkutils:ring_fortune", "inventory"));
     }
     
     @Override

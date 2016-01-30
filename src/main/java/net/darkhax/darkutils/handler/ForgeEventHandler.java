@@ -1,21 +1,41 @@
 package net.darkhax.darkutils.handler;
 
+import net.darkhax.bookshelf.event.LootingEvent;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.bookshelf.lib.util.MathsUtils;
+import net.darkhax.darkutils.addons.baubles.DarkUtilsBaublesAddon;
 import net.darkhax.darkutils.items.ItemSourcedSword;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ForgeEventHandler {
+    
+    @SubscribeEvent
+    public void onLooting (LootingEvent event) {
+        
+        if (event.entityLiving instanceof EntityPlayer) {
+            
+            EntityPlayer player = (EntityPlayer) event.entityLiving;
+            
+            if (player.inventory.hasItem(ContentHandler.itemFortuneRing) || (Loader.isModLoaded("Baubles") && DarkUtilsBaublesAddon.isPlayerWearingRing(player, ContentHandler.itemFortuneRing))) {
+                
+                event.lootingModifier++;
+                event.setResult(Result.ALLOW);
+            }
+        }
+    }
     
     @SubscribeEvent
     public void onLivingHurt (LivingHurtEvent event) {
