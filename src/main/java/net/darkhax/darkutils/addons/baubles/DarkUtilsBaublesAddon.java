@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 
 public class DarkUtilsBaublesAddon {
     
-    public static boolean isPlayerWearingAmulet (EntityPlayer player, Item item) {
+    public static boolean isPlayerWearingAmulet (EntityPlayer player, ItemStack item) {
         
         return isPlayerWearingBauble(player, item, 0);
     }
@@ -21,7 +21,7 @@ public class DarkUtilsBaublesAddon {
      * @param item: The Item being looked for.
      * @return bollean: True if the player is wearing the specified item in either ring slot.
      */
-    public static boolean isPlayerWearingRing (EntityPlayer player, Item item) {
+    public static boolean isPlayerWearingRing (EntityPlayer player, ItemStack item) {
         
         return isPlayerWearingBauble(player, item, 1) || isPlayerWearingBauble(player, item, 1);
     }
@@ -33,7 +33,7 @@ public class DarkUtilsBaublesAddon {
      * @param item: The Item being looked for.
      * @return boolean: True if the player is wearing the specified bauble.
      */
-    public static boolean isPlayerWearingBelt (EntityPlayer player, Item item) {
+    public static boolean isPlayerWearingBelt (EntityPlayer player, ItemStack item) {
         
         return isPlayerWearingBauble(player, item, 3);
     }
@@ -46,7 +46,7 @@ public class DarkUtilsBaublesAddon {
      * @param type: The type being looked for. 0 = Amulet, 1 = Ring 1, 2 = Ring 2, 3 = Belt.
      * @return boolean: True if the player is wearing the specified bauble.
      */
-    public static boolean isPlayerWearingBauble (EntityPlayer player, Item item, int type) {
+    public static boolean isPlayerWearingBauble (EntityPlayer player, ItemStack item, int type) {
         
         IInventory inv = BaublesApi.getBaubles(player);
         
@@ -54,7 +54,7 @@ public class DarkUtilsBaublesAddon {
             
             ItemStack stack = inv.getStackInSlot(type);
             
-            return (ItemStackUtils.isValidStack(stack) && stack.getItem() == item);
+            return (ItemStackUtils.isValidStack(stack) && ItemStackUtils.areStacksSimilar(stack, item));
         }
         
         return false;
