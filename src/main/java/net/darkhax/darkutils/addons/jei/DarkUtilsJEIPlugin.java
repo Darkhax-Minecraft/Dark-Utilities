@@ -6,6 +6,7 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.IRecipeRegistry;
 import mezz.jei.api.JEIPlugin;
+import net.darkhax.darkutils.addons.baubles.DarkUtilsBaublesAddon;
 import net.darkhax.darkutils.addons.thaumcraft.DarkUtilsThaumcraftAddon;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
@@ -47,6 +48,9 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
             
         if (Loader.isModLoaded("Thaumcraft"))
             DarkUtilsThaumcraftAddon.jeiRegisterHook(registry);
+            
+        if (Loader.isModLoaded("Baubles"))
+            DarkUtilsBaublesAddon.jeiRegisterHook(registry);
     }
     
     @Override

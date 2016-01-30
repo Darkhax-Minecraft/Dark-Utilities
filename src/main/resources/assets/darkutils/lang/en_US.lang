@@ -114,4 +114,4 @@ jei.darkutils.deathSword.desc=This sword contains the essence of death itself. W
 jei.darkutils.potion.cure.thaumcraft.desc=While not a perfect cure, it is possible for this potion to reverse the effect of taint on living mobs. When applied to a tainted mob, it will revert to it's non tainted form. Some aspects of the mob such as profession or coat color will likely be lost.
 
 #Baubles
-jei.darkutils.ring.enchanted.desc=This item will work while in the Baubles inventory.
+jei.darkutils.baubles.valid.desc=This item will work while in the Baubles inventory.

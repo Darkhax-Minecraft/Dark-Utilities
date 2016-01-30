@@ -1,7 +1,9 @@
 package net.darkhax.darkutils.addons.baubles;
 
 import baubles.api.BaublesApi;
+import mezz.jei.api.IModRegistry;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.darkutils.handler.ContentHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -25,7 +27,7 @@ public class DarkUtilsBaublesAddon {
      * 
      * @param player: The Player to check.
      * @param item: The Item being looked for.
-     * @return bolean: True if the player is wearing the specified item in either ring slot.
+     * @return boolean: True if the player is wearing the specified item in either ring slot.
      */
     public static boolean isPlayerWearingRing (EntityPlayer player, ItemStack item) {
         
@@ -64,5 +66,15 @@ public class DarkUtilsBaublesAddon {
         }
         
         return false;
+    }
+    
+    /**
+     * A special hook that handles Baubles input for the JEI registry.
+     * 
+     * @param registry: The JEI registry.
+     */
+    public static void jeiRegisterHook (IModRegistry register) {
+        
+        register.addDescription(new ItemStack(ContentHandler.itemFortuneRing), "jei.darkutils.baubles.valid.desc");
     }
 }
