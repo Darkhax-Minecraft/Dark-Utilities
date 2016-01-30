@@ -92,7 +92,13 @@ jei.darkutils.material.cream.desc=A cream that contains the essence of death its
 jei.darkutils.potion.cure.desc=A mysterious white potion. When consumed by a player, it will grant the saturation buff for a few seconds. It also has the ability to cure villager zombies.
 jei.darkutils.potion.zombie.desc=A mysterious green potion. When consumed by a player, it will grant the hunger debuff for a few seconds. It also has the ability to infect villagers, turning them into a zombie.
 jei.darkutils.antislime.desc=The Anti Slime Block prevents slimes from spawning in the same chunk as it. If the slime has a custom name, it will not be harmed. 
-jei.darkutils.ring.fortune.desc=While in the players inventory, the Ring of Fortune adds an additional level of looting to the player. Using multiple Ring of Fortune will not increase the intensity of this effect. This item will work while in the Baubles inventory.
+jei.darkutils.ring.knockback.desc=While in the players inventory, the player will gain an additional level of the Knockback enchantment. Using multiple of the same ring will not increase the intensity of the effect. 
+jei.darkutils.ring.fire.desc=While in the players inventory, the player will gain an additional level of the Fire Aspect enchantment. Using mutlple of the same ring will not increase the intensity of the effect. 
+jei.darkutils.ring.fortune.desc=While in the players inventory, the player will gain an additional level of the Fortune enchantment. Using multiple of the same ring will not increase the intensity of the effect. 
+jei.darkutils.ring.loot.desc=While in the players inventory, the player will gain an additional level of the Looting enchantment. Using multiple of the same ring will not increase the intensity of the effect. 
+jei.darkutils.ring.lure.desc=While in the players inventory, the player will gain an additional level of the Lure enchantment. Using multiple of the same ring will not increase the intensity of the effect. 
+jei.darkutils.ring.luck.desc=While in the players inventory, the player will gain an additional level of the Luck of the Sea enchantment. Using multiple of the same ring will not increase the intensity of the effect.
+jei.darkutils.ring.efficiency.desc=While in the players inventory, the player will gain an additional level of the Efficiency enchantment. Using multuple of the same ring will not increase the intensity of the effect.
 
 #Thaumcraft
 item.darkutils.swordDeath.name=Sword of the Mortifer 
@@ -106,3 +112,6 @@ tc.research_page.darkutils.sword=Your research has revealed a unique interaction
 
 jei.darkutils.deathSword.desc=This sword contains the essence of death itself. When a mob is slain with it, there is a 40% chance that the remains will dissolve into crystalized essentia. This sword also has a 40% chance to do all of it's damage as dissolve damage.
 jei.darkutils.potion.cure.thaumcraft.desc=While not a perfect cure, it is possible for this potion to reverse the effect of taint on living mobs. When applied to a tainted mob, it will revert to it's non tainted form. Some aspects of the mob such as profession or coat color will likely be lost.
+
+#Baubles
+jei.darkutils.ring.enchanted.desc=This item will work while in the Baubles inventory.
