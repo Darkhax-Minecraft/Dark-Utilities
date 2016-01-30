@@ -65,6 +65,7 @@ public class DarkUtilsThaumcraftAddon {
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockGrate), new AspectList().add(Aspect.MECHANISM, 1).add(Aspect.MOTION, 3).add(Aspect.METAL, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemMaterial, 1, 0), new AspectList().add(Aspect.DEATH, 1).add(Aspect.UNDEAD, 1).add(Aspect.SOUL, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemMaterial, 1, 1), new AspectList().add(Aspect.ELDRITCH, 3).add(Aspect.DEATH, 1).add(Aspect.UNDEAD, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemMaterial, 1, 2), new AspectList().add(Aspect.WATER, 3).add(Aspect.DEATH, 1).add(Aspect.UNDEAD, 1));
         
         ThaumcraftApi.registerObjectTag(new ItemStack(deathSword), new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2));
         
@@ -88,10 +89,11 @@ public class DarkUtilsThaumcraftAddon {
     
     /**
      * A special hook that handles Thaumcraft input for the JEI registry.
+     * 
      * @param registry: The JEI registry.
      */
     public static void jeiRegisterHook (IModRegistry registry) {
-    
+        
         registry.addDescription(new ItemStack(deathSword), "jei.darkutils.deathSword.desc");
         registry.addDescription(new ItemStack(ContentHandler.itemPotion), "jei.darkutils.potion.cure.thaumcraft.desc");
     }
