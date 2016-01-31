@@ -68,6 +68,13 @@ public class DarkUtilsThaumcraftAddon {
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemMaterial, 1, 2), new AspectList().add(Aspect.WATER, 3).add(Aspect.DEATH, 1).add(Aspect.UNDEAD, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemPotion, 1, 0), new AspectList().add(Aspect.VOID, 1).add(Aspect.LIFE, 3).add(Aspect.WATER, 2));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemPotion, 1, 1), new AspectList().add(Aspect.VOID, 1).add(Aspect.DEATH, 3).add(Aspect.LIFE, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemFortuneRing, 1, 0), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 1).add(Aspect.MOTION, 3));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemFortuneRing, 1, 1), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 1).add(Aspect.FIRE, 3));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemFortuneRing, 1, 2), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 2).add(Aspect.CRYSTAL, 2));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemFortuneRing, 1, 3), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 2).add(Aspect.AVERSION, 2));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemFortuneRing, 1, 4), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 1).add(Aspect.WATER, 2).add(Aspect.ENERGY, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemFortuneRing, 1, 5), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 2).add(Aspect.WATER, 2));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemFortuneRing, 1, 6), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 1).add(Aspect.TOOL, 2).add(Aspect.MOTION, 1));
         
         ThaumcraftApi.registerObjectTag(new ItemStack(deathSword), new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2));
         
