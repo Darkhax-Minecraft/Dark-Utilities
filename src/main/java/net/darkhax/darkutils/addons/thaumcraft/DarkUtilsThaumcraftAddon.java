@@ -66,6 +66,8 @@ public class DarkUtilsThaumcraftAddon {
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemMaterial, 1, 0), new AspectList().add(Aspect.DEATH, 1).add(Aspect.UNDEAD, 1).add(Aspect.SOUL, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemMaterial, 1, 1), new AspectList().add(Aspect.ELDRITCH, 3).add(Aspect.DEATH, 1).add(Aspect.UNDEAD, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemMaterial, 1, 2), new AspectList().add(Aspect.WATER, 3).add(Aspect.DEATH, 1).add(Aspect.UNDEAD, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemPotion, 1, 0), new AspectList().add(Aspect.VOID, 1).add(Aspect.LIFE, 3).add(Aspect.WATER, 2));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemPotion, 1, 1), new AspectList().add(Aspect.VOID, 1).add(Aspect.DEATH, 3).add(Aspect.LIFE, 1));
         
         ThaumcraftApi.registerObjectTag(new ItemStack(deathSword), new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2));
         
