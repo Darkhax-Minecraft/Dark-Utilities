@@ -75,6 +75,6 @@ public class DarkUtilsBaublesAddon {
      */
     public static void jeiRegisterHook (IModRegistry register) {
         
-        register.addDescription(new ItemStack(ContentHandler.itemFortuneRing), "jei.darkutils.baubles.valid.desc");
+        register.addDescription(new ItemStack(ContentHandler.itemEnchantedRing), "jei.darkutils.baubles.valid.desc");
     }
 }

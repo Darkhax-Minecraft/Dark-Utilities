@@ -65,7 +65,7 @@ public class ForgeEventHandler {
             if (meta == -1)
                 return;
                 
-            final ItemStack stack = new ItemStack(ContentHandler.itemFortuneRing, 1, meta);
+            final ItemStack stack = new ItemStack(ContentHandler.itemEnchantedRing, 1, meta);
             if (meta != -1 && player.inventory.hasItemStack(stack) || (Loader.isModLoaded("Baubles") && DarkUtilsBaublesAddon.isPlayerWearingRing(player, stack))) {
                 
                 event.levels++;

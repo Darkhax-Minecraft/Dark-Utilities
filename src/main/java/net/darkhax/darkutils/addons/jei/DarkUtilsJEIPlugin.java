@@ -44,7 +44,7 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
             registry.addDescription(new ItemStack(ContentHandler.itemPotion, 1, meta), "jei.darkutils.potion." + ItemMysteriousPotion.varients[meta] + ".desc");
             
         for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
-            registry.addDescription(new ItemStack(ContentHandler.itemFortuneRing, 1, meta), "jei.darkutils.ring." + ItemRingEnchanted.varients[meta] + ".desc");
+            registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing, 1, meta), "jei.darkutils.ring." + ItemRingEnchanted.varients[meta] + ".desc");
             
         if (Loader.isModLoaded("Thaumcraft"))
             DarkUtilsThaumcraftAddon.jeiRegisterHook(registry);

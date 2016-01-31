@@ -38,7 +38,7 @@ public class ContentHandler {
     
     public static Item itemMaterial;
     public static Item itemPotion;
-    public static Item itemFortuneRing;
+    public static Item itemEnchantedRing;
     
     public static void initBlocks () {
         
@@ -75,8 +75,8 @@ public class ContentHandler {
         itemPotion = new ItemMysteriousPotion();
         GameRegistry.registerItem(itemPotion, "mystery_potion");
         
-        itemFortuneRing = new ItemRingEnchanted();
-        GameRegistry.registerItem(itemFortuneRing, "ring_fortune");
+        itemEnchantedRing = new ItemRingEnchanted();
+        GameRegistry.registerItem(itemEnchantedRing, "ring_enchanted");
     }
     
     public static void initRecipes () {
