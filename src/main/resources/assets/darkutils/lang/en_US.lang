@@ -113,7 +113,10 @@ tc.research_text.DARKUTILS_DEATH_SWORD=Has science gone too far?
 tc.research_page.darkutils.sword=Your research has revealed a unique interaction with Thaumium and Liquid Death. When infused together, the Thaumium takes on properties of the liquid death. When applied to a Thaumium blade, mobs slain with it will ocasionally be dissolved into essentia crystals. 
 tc.research_name.DARKUTILS_ENCHRINGS=Enchanted Rings
 tc.research_text.DARKUTILS_ENCHRINGS=Shoulda put a ring on it
-tc.research_page.enchrings=You have discovered a new way of infusing mundane rings. You can now infuse rings with the aspects of various enchantments. When worn, you will gain the effects of that enchantment.
+tc.research_page.darkutils.enchrings=You have discovered a new way of infusing mundane rings. You can now infuse rings with the aspects of various enchantments. When worn, you will gain the effects of that enchantment.
+tc.research_name.DARKUTILS_POTIONS=Mysterious Potions
+tc.research_text.DARKUTILS_POTIONS=It's only by becoming familiar with poisons that you can make the best antidotes.
+tc.research_page.darkutils.potion=You have discovered a new way of brewing potions with the raw essentia. Potiones brewed in this way seem to be extremely potent, and interact with mobs on a thaumic level. A potion brewed with the essence of Life can potentionally cure the zombie disease, or even the taint! A potion brewed with deat will allow you to intentionally infect others.
 
 jei.darkutils.deathSword.desc=This sword contains the essence of death itself. When a mob is slain with it, there is a 40% chance that the remains will dissolve into crystalized essentia. This sword also has a 40% chance to do all of it's damage as dissolve damage.
 jei.darkutils.potion.cure.thaumcraft.desc=While not a perfect cure, it is possible for this potion to reverse the effect of taint on living mobs. When applied to a tainted mob, it will revert to it's non tainted form. Some aspects of the mob such as profession or coat color will likely be lost.
