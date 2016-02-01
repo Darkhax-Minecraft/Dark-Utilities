@@ -53,8 +53,6 @@ public class DarkUtilsThaumcraftAddon {
         deathSword = new ItemSourcedSword(ThaumcraftMaterials.TOOLMAT_THAUMIUM, DamageSourceThaumcraft.dissolve, EnumChatFormatting.DARK_PURPLE, 0.40f).setUnlocalizedName("darkutils.swordDeath");
         GameRegistry.registerItem(deathSword, "sword_death");
         
-        // Recipes
-        
         // Aspect Tags
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockTrap, 1, 0), new AspectList().add(Aspect.EARTH, 3).add(Aspect.DEATH, 1).add(Aspect.TRAP, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockTrap, 1, 1), new AspectList().add(Aspect.EARTH, 4).add(Aspect.TRAP, 1));
@@ -77,6 +75,7 @@ public class DarkUtilsThaumcraftAddon {
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemEnchantedRing, 1, 4), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 1).add(Aspect.WATER, 2).add(Aspect.ENERGY, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemEnchantedRing, 1, 5), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 2).add(Aspect.WATER, 2));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemEnchantedRing, 1, 6), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 1).add(Aspect.TOOL, 2).add(Aspect.MOTION, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockDetector), new AspectList().add(Aspect.EARTH, 8).add(Aspect.ENERGY, 3).add(Aspect.MECHANISM, 3));
         
         ThaumcraftApi.registerObjectTag(new ItemStack(deathSword), new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2));
         
