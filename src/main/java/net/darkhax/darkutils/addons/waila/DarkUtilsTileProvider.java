@@ -9,6 +9,7 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
+import net.darkhax.darkutils.blocks.BlockUpdateDetector;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -70,6 +71,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         
         DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
         register.registerStackProvider(dataProvider, BlockTrapMovement.class);
+        register.registerStackProvider(dataProvider, BlockUpdateDetector.class);
         register.registerBodyProvider(dataProvider, BlockFilter.class);
         register.registerBodyProvider(dataProvider, BlockTimer.class);
         register.registerNBTProvider(dataProvider, BlockTimer.class);
