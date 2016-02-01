@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"powered=false": {
+			"model": "darkutils:bud_off"
+		},
+		"powered=true": {
+			"model": "darkutils:bud_on"
+		}
+	}
+}

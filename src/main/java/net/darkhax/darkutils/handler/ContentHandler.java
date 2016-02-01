@@ -7,6 +7,7 @@ import net.darkhax.darkutils.blocks.BlockGrate;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
+import net.darkhax.darkutils.blocks.BlockUpdateDetector;
 import net.darkhax.darkutils.items.ItemBlockBasic;
 import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
@@ -35,6 +36,7 @@ public class ContentHandler {
     public static Block blockFilter;
     public static Block blockTimer;
     public static Block blockAntiSlime;
+    public static Block blockDetector;
     
     public static Item itemMaterial;
     public static Item itemPotion;
@@ -65,6 +67,9 @@ public class ContentHandler {
         blockAntiSlime = new BlockAntiSlime();
         GameRegistry.registerBlock(blockAntiSlime, "anti_slime");
         GameRegistry.registerTileEntity(TileEntityAntiSlime.class, "anti_slime");
+        
+        blockDetector = new BlockUpdateDetector();
+        GameRegistry.registerBlock(blockDetector, "update_detector");
     }
     
     public static void initItems () {
@@ -97,6 +102,7 @@ public class ContentHandler {
         GameRegistry.addShapedRecipe(new ItemStack(blockTimer), new Object[] { "sts", "tct", "sts", 's', Blocks.stone, 't', Blocks.redstone_torch, 'c', Items.clock });
         
         GameRegistry.addShapedRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', Blocks.stone, 'w', Blocks.cobblestone_wall, 'c', new ItemStack(itemMaterial, 1, 2) });
+        GameRegistry.addShapedRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', Blocks.stone, 'p', Blocks.piston, 'r', Blocks.redstone_block });
         GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.skull, 1, 1));
         GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), Items.ender_pearl);
         GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), Items.slime_ball);
