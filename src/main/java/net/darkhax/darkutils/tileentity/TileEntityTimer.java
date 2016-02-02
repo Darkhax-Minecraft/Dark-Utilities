@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.tileentity;
 
+import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.bookshelf.tileentity.TileEntityBasic;
-import net.darkhax.darkutils.blocks.BlockTimer;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class TileEntityTimer extends TileEntityBasic {
@@ -31,7 +31,7 @@ public class TileEntityTimer extends TileEntityBasic {
         
         if (currentTime >= delayTime) {
             
-            worldObj.setBlockState(pos, worldObj.getBlockState(pos).withProperty(BlockTimer.POWERED, true), 1 | 2);
+            worldObj.setBlockState(pos, worldObj.getBlockState(pos).withProperty(BlockStates.POWERED, true), 1 | 2);
             worldObj.scheduleUpdate(pos, getBlockType(), getBlockType().tickRate(worldObj));
             currentTime = 0;
         }

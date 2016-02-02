@@ -2,12 +2,12 @@ package net.darkhax.darkutils.blocks;
 
 import java.util.Random;
 
+import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,12 +22,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTimer extends BlockContainer {
     
-    public static final PropertyBool POWERED = PropertyBool.create("powered");
-    
     public BlockTimer() {
         
         super(Material.rock);
-        this.setDefaultState(blockState.getBaseState().withProperty(POWERED, false));
+        this.setDefaultState(blockState.getBaseState().withProperty(BlockStates.POWERED, false));
         this.setUnlocalizedName("darkutils.timer");
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
         this.setHardness(1f);
@@ -57,19 +55,19 @@ public class BlockTimer extends BlockContainer {
     @Override
     public BlockState createBlockState () {
         
-        return new BlockState(this, POWERED);
+        return new BlockState(this, BlockStates.POWERED);
     }
     
     @Override
     public int getMetaFromState (IBlockState state) {
         
-        return state.getValue(POWERED) ? 1 : 0;
+        return state.getValue(BlockStates.POWERED) ? 1 : 0;
     }
     
     @Override
     public IBlockState getStateFromMeta (int meta) {
         
-        return getDefaultState().withProperty(POWERED, meta == 1);
+        return getDefaultState().withProperty(BlockStates.POWERED, meta == 1);
     }
     
     @Override
@@ -81,7 +79,7 @@ public class BlockTimer extends BlockContainer {
     @Override
     public int getWeakPower (IBlockAccess world, BlockPos pos, IBlockState state, EnumFacing side) {
         
-        return state.getValue(POWERED) ? 15 : 0;
+        return state.getValue(BlockStates.POWERED) ? 15 : 0;
     }
     
     @Override
@@ -93,8 +91,8 @@ public class BlockTimer extends BlockContainer {
     @Override
     public void updateTick (World world, BlockPos pos, IBlockState state, Random rand) {
         
-        if (state.getValue(POWERED))
-            world.setBlockState(pos, state.withProperty(POWERED, false), 1 | 2);
+        if (state.getValue(BlockStates.POWERED))
+            world.setBlockState(pos, state.withProperty(BlockStates.POWERED, false), 1 | 2);
     }
     
     @Override
