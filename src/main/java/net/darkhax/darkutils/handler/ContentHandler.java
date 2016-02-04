@@ -1,6 +1,7 @@
 package net.darkhax.darkutils.handler;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
+import net.darkhax.bookshelf.lib.util.Utilities;
 import net.darkhax.darkutils.blocks.BlockAntiSlime;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockFilter;
@@ -22,6 +23,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -118,5 +121,13 @@ public class ContentHandler {
         OreDictionary.registerOre("fenceGate", Blocks.spruce_fence_gate);
         
         BrewingRecipeRegistry.addRecipe(PotionReferences.AWKWARD, new ItemStack(itemMaterial, 1, 0), PotionReferences.WITHER_I_0_45);
+        
+        for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
+            for (String category : Utilities.vanillaLootChests)
+                ChestGenHooks.addItem(category, new WeightedRandomChestContent(new ItemStack(ContentHandler.itemEnchantedRing, 1, meta), 1, 1, 1));
+        
+        for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
+            for (String category : Utilities.vanillaLootChests)
+                ChestGenHooks.addItem(category, new WeightedRandomChestContent(new ItemStack(ContentHandler.itemPotion, 1, meta), 1, 1, 1));
     }
 }
