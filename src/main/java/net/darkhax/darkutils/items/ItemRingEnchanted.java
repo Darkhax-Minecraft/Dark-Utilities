@@ -27,6 +27,7 @@ public class ItemRingEnchanted extends Item implements IBauble {
         
         this.setUnlocalizedName("darkutils.ring");
         this.setCreativeTab(DarkUtils.tab);
+        this.setHasSubtypes(true);
     }
     
     @Override
