@@ -2,29 +2,34 @@ package net.darkhax.darkutils.items;
 
 import java.util.List;
 
-import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBlockCake extends ItemBlockBasic {
+public class ItemBlockCake extends ItemBlock {
     
-    public ItemBlockCake(Block block, String[] names) {
+    public final Block theBlock;
+    
+    public ItemBlockCake(Block block) {
         
-        super(block, names);
+        super(block);
+        this.theBlock = block;
+        this.setMaxDamage(0);
+        this.setHasSubtypes(true);
     }
     
     @Override
-    public String getUnlocalizedName (ItemStack stack) {
+    public int getMetadata (int damage) {
         
-        return super.getUnlocalizedName();
+        return damage;
     }
     
-    @Override
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-    
+        
+        tooltip.add("tooltip." + theBlock.getUnlocalizedName() + ".desc");
     }
 }

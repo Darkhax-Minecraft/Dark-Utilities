@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "bites=0": { "model": "darkutils:cake_eplus_uneaten" },
+        "bites=1": { "model": "darkutils:cake_eplus_slice1" },
+        "bites=2": { "model": "darkutils:cake_eplus_slice2" },
+        "bites=3": { "model": "darkutils:cake_eplus_slice3" },
+        "bites=4": { "model": "darkutils:cake_eplus_slice4" },
+        "bites=5": { "model": "darkutils:cake_eplus_slice5" },
+        "bites=6": { "model": "darkutils:cake_eplus_slice6" }
+    }
+}
