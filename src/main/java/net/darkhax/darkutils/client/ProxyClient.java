@@ -8,14 +8,19 @@ import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
 import net.darkhax.darkutils.items.ItemRingEnchanted;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ProxyClient extends ProxyCommon {
     
     @Override
     public void onPreInit () {
+        
+        MinecraftForge.EVENT_BUS.register(new ClientEventHandler());
         
         Item item;
         
@@ -54,6 +59,15 @@ public class ProxyClient extends ProxyCommon {
             
         for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemEnchantedRing, meta, new ModelResourceLocation("darkutils:ring_" + ItemRingEnchanted.varients[meta], "inventory"));
+            
+        ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyBlock, new StateMapperBase() {
+            
+            @Override
+            protected ModelResourceLocation getModelResourceLocation (IBlockState state) {
+                
+                return new ModelResourceLocation("darkutils:sneaky", "normal");
+            }
+        });
     }
     
     @Override

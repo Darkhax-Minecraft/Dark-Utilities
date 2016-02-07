@@ -3,13 +3,16 @@ package net.darkhax.darkutils.handler;
 import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.bookshelf.lib.util.Utilities;
 import net.darkhax.darkutils.blocks.BlockAntiSlime;
+import net.darkhax.darkutils.blocks.BlockCakeBase;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
+import net.darkhax.darkutils.blocks.BlockSneaky;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
 import net.darkhax.darkutils.blocks.BlockUpdateDetector;
+import net.darkhax.darkutils.items.ItemBlockCake;
 import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
@@ -17,6 +20,7 @@ import net.darkhax.darkutils.items.ItemRingEnchanted;
 import net.darkhax.darkutils.libs.PotionReferences;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
+import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -40,6 +44,8 @@ public class ContentHandler {
     public static Block blockTimer;
     public static Block blockAntiSlime;
     public static Block blockDetector;
+    public static Block blockCakeEPlus;
+    public static Block blockSneakyBlock;
     
     public static Item itemMaterial;
     public static Item itemPotion;
@@ -73,6 +79,13 @@ public class ContentHandler {
         
         blockDetector = new BlockUpdateDetector();
         GameRegistry.registerBlock(blockDetector, "update_detector");
+        
+        blockCakeEPlus = new BlockCakeBase("eplus");
+        GameRegistry.registerBlock(blockCakeEPlus, ItemBlockCake.class, "cake_eplus", new Object[] {});
+        
+        blockSneakyBlock = new BlockSneaky();
+        GameRegistry.registerBlock(blockSneakyBlock, "sneaky");
+        GameRegistry.registerTileEntity(TileEntitySneaky.class, "sneaky");
     }
     
     public static void initItems () {
@@ -125,7 +138,7 @@ public class ContentHandler {
         for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
             for (String category : Utilities.vanillaLootChests)
                 ChestGenHooks.addItem(category, new WeightedRandomChestContent(new ItemStack(ContentHandler.itemEnchantedRing, 1, meta), 1, 1, 1));
-        
+                
         for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
             for (String category : Utilities.vanillaLootChests)
                 ChestGenHooks.addItem(category, new WeightedRandomChestContent(new ItemStack(ContentHandler.itemPotion, 1, meta), 1, 1, 1));

@@ -7,9 +7,12 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.darkutils.blocks.BlockFilter;
+import net.darkhax.darkutils.blocks.BlockSneaky;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
 import net.darkhax.darkutils.blocks.BlockUpdateDetector;
+import net.darkhax.darkutils.tileentity.TileEntitySneaky;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,6 +27,16 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
+        
+        final Block block = Block.getBlockFromItem(data.getStack().getItem());
+        
+        if (block instanceof BlockSneaky && !data.getTileEntity().isInvalid()) {
+            
+            TileEntitySneaky tile = (TileEntitySneaky) data.getTileEntity();
+            
+            if (tile.heldState != null)
+                return new ItemStack(tile.heldState.getBlock(), 1, tile.heldState.getBlock().getMetaFromState(tile.heldState));
+        }
         
         return new ItemStack(data.getStack().getItem(), 1, 0);
     }
@@ -72,6 +85,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
         register.registerStackProvider(dataProvider, BlockTrapMovement.class);
         register.registerStackProvider(dataProvider, BlockUpdateDetector.class);
+        register.registerStackProvider(dataProvider, BlockSneaky.class);
         register.registerBodyProvider(dataProvider, BlockFilter.class);
         register.registerBodyProvider(dataProvider, BlockTimer.class);
         register.registerNBTProvider(dataProvider, BlockTimer.class);

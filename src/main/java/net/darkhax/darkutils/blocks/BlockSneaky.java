@@ -2,13 +2,17 @@ package net.darkhax.darkutils.blocks;
 
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -18,15 +22,42 @@ import net.minecraftforge.common.property.IUnlistedProperty;
 
 public class BlockSneaky extends BlockContainer {
     
-    protected BlockSneaky() {
+    public BlockSneaky() {
         
         super(Material.rock);
+    }
+    
+    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+        
+        TileEntitySneaky tile = ((TileEntitySneaky) worldIn.getTileEntity(pos));
+        ItemStack stack = playerIn.getHeldItem();
+        
+        if (!tile.isInvalid() && stack != null && stack.getItem() != null) {
+            
+            Block block = Block.getBlockFromItem(stack.getItem());
+            
+            if (block instanceof Block) {
+                
+                tile.heldState = Block.getBlockFromItem(playerIn.getHeldItem().getItem()).getStateFromMeta(playerIn.getHeldItem().getMetadata());
+                worldIn.markBlockForUpdate(pos);
+            }
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public int getRenderType () {
+        
+        return 3;
     }
     
     @Override
     public TileEntity createNewTileEntity (World world, int meta) {
         
-        return null;
+        return new TileEntitySneaky();
     }
     
     @Override
@@ -58,6 +89,18 @@ public class BlockSneaky extends BlockContainer {
         
         else
             return ((IExtendedBlockState) state);
+    }
+    
+    @Override
+    public boolean isOpaqueCube () {
+        
+        return false;
+    }
+    
+    @Override
+    public boolean isFullCube () {
+        
+        return false;
     }
     
     @Override
