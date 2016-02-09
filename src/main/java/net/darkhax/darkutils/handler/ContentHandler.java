@@ -46,6 +46,9 @@ public class ContentHandler {
     public static Block blockDetector;
     public static Block blockCakeEPlus;
     public static Block blockSneakyBlock;
+    public static Block blockSneakyLever;
+    public static Block blockSneakyRedstone;
+    public static Block blockSneakyGhost;
     
     public static Item itemMaterial;
     public static Item itemPotion;
