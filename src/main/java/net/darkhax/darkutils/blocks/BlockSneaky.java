@@ -27,6 +27,7 @@ public class BlockSneaky extends BlockContainer {
         super(Material.rock);
     }
     
+    @Override
     public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
         
         TileEntitySneaky tile = ((TileEntitySneaky) worldIn.getTileEntity(pos));
@@ -38,7 +39,7 @@ public class BlockSneaky extends BlockContainer {
             
             if (block instanceof Block) {
                 
-                tile.heldState = Block.getBlockFromItem(playerIn.getHeldItem().getItem()).getStateFromMeta(playerIn.getHeldItem().getMetadata());
+                tile.heldState = block.onBlockPlaced(worldIn, pos, side, hitX, hitY, hitZ, playerIn.getHeldItem().getMetadata(), playerIn);
                 worldIn.markBlockForUpdate(pos);
             }
             
