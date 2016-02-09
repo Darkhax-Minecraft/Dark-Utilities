@@ -1,6 +1,7 @@
 package net.darkhax.darkutils.blocks;
 
 import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -25,6 +26,11 @@ public class BlockSneaky extends BlockContainer {
     public BlockSneaky() {
         
         super(Material.rock);
+        this.setUnlocalizedName("darkutils.sneaky");
+        this.setCreativeTab(DarkUtils.tab);
+        this.setHardness(1.5F);
+        this.setResistance(10.0F);
+        this.setStepSound(soundTypePiston);
     }
     
     @Override
