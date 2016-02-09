@@ -8,6 +8,7 @@ import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
 import net.darkhax.darkutils.blocks.BlockSneaky;
+import net.darkhax.darkutils.blocks.BlockSneakyLever;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
@@ -23,6 +24,7 @@ import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -47,7 +49,6 @@ public class ContentHandler {
     public static Block blockCakeEPlus;
     public static Block blockSneakyBlock;
     public static Block blockSneakyLever;
-    public static Block blockSneakyRedstone;
     public static Block blockSneakyGhost;
     
     public static Item itemMaterial;
@@ -86,9 +87,12 @@ public class ContentHandler {
         blockCakeEPlus = new BlockCakeBase("eplus");
         GameRegistry.registerBlock(blockCakeEPlus, ItemBlockCake.class, "cake_eplus", new Object[] {});
         
-        blockSneakyBlock = new BlockSneaky();
+        blockSneakyBlock = new BlockSneaky(Material.rock);
         GameRegistry.registerBlock(blockSneakyBlock, "sneaky");
         GameRegistry.registerTileEntity(TileEntitySneaky.class, "sneaky");
+        
+        blockSneakyLever = new BlockSneakyLever();
+        GameRegistry.registerBlock(blockSneakyLever, "lever");
     }
     
     public static void initItems () {
