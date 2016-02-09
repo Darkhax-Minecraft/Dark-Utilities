@@ -23,9 +23,9 @@ import net.minecraftforge.common.property.IUnlistedProperty;
 
 public class BlockSneaky extends BlockContainer {
     
-    public BlockSneaky() {
+    public BlockSneaky(Material material) {
         
-        super(Material.rock);
+        super(material);
         this.setUnlocalizedName("darkutils.sneaky");
         this.setCreativeTab(DarkUtils.tab);
         this.setHardness(1.5F);
