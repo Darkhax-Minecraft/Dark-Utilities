@@ -81,7 +81,7 @@ public class DarkUtilsThaumcraftAddon {
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockSneakyLever), new AspectList().add(Aspect.EARTH, 2).add(Aspect.WATER, 1).add(Aspect.LIFE, 1).add(Aspect.MECHANISM, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockSneakyGhost), new AspectList().add(Aspect.EARTH, 2).add(Aspect.WATER, 1).add(Aspect.LIFE, 1).add(Aspect.CRAFT, 1).add(Aspect.BEAST, 2));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockSneakyTorch), new AspectList().add(Aspect.EARTH, 2).add(Aspect.WATER, 1).add(Aspect.LIFE, 1).add(Aspect.LIGHT, 1));
-        
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockCakeEPlus), new AspectList().add(Aspect.LIFE, 4).add(Aspect.DESIRE, 2).add(Aspect.PLANT, 2).add(Aspect.ENERGY, 4));
         ThaumcraftApi.registerObjectTag(new ItemStack(deathSword), new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2));
         
         DarkUtils.proxy.thaumcraftPreInit();
