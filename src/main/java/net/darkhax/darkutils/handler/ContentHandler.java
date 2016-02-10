@@ -9,6 +9,7 @@ import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
 import net.darkhax.darkutils.blocks.BlockSneaky;
 import net.darkhax.darkutils.blocks.BlockSneakyLever;
+import net.darkhax.darkutils.blocks.BlockSneakyTorch;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
@@ -50,6 +51,7 @@ public class ContentHandler {
     public static Block blockSneakyBlock;
     public static Block blockSneakyLever;
     public static Block blockSneakyGhost;
+    public static Block blockSneakyTorch;
     
     public static Item itemMaterial;
     public static Item itemPotion;
@@ -92,7 +94,10 @@ public class ContentHandler {
         GameRegistry.registerTileEntity(TileEntitySneaky.class, "sneaky");
         
         blockSneakyLever = new BlockSneakyLever();
-        GameRegistry.registerBlock(blockSneakyLever, "lever");
+        GameRegistry.registerBlock(blockSneakyLever, "sneaky_lever");
+        
+        blockSneakyTorch = new BlockSneakyTorch();
+        GameRegistry.registerBlock(blockSneakyTorch, "sneaky_torch");
     }
     
     public static void initItems () {

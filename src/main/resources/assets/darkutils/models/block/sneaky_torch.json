@@ -1,0 +1,6 @@
+{
+    "parent": "block/torch",
+    "textures": {
+        "torch": "darkutils:blocks/trap_base"
+    }
+}
