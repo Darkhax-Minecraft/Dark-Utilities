@@ -31,6 +31,10 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
         registry.addDescription(new ItemStack(ContentHandler.blockTimer), "jei.darkutils.timer.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockAntiSlime), "jei.darkutils.antislime.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockDetector), "jei.darkutils.detector.desc");
+        registry.addDescription(new ItemStack(ContentHandler.blockSneakyBlock), "jei.darkutils.sneaky.desc");
+        registry.addDescription(new ItemStack(ContentHandler.blockSneakyLever), "jei.darkutils.sneaky.lever.desc");
+        registry.addDescription(new ItemStack(ContentHandler.blockSneakyGhost), "jei.darkutils.sneaky.ghost.desc");
+        registry.addDescription(new ItemStack(ContentHandler.blockSneakyTorch), "jei.darkutils.sneaky.torch.desc");
         
         for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
             registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta), "jei.darkutils.trap." + type.type + ".desc");

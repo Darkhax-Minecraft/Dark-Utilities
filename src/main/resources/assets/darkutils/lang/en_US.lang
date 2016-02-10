@@ -105,6 +105,10 @@ jei.darkutils.ring.lure.desc=While in the players inventory, the player will gai
 jei.darkutils.ring.luck.desc=While in the players inventory, the player will gain an additional level of the Luck of the Sea enchantment. Using multiple of the same ring will not increase the intensity of the effect.
 jei.darkutils.ring.efficiency.desc=While in the players inventory, the player will gain an additional level of the Efficiency enchantment. Using multuple of the same ring will not increase the intensity of the effect.
 jei.darkutils.detector.desc=The Update Detector will give out a short redstone pulse every time a block update happens within one block of the detector. Block updates include things like placing/breaking blocks or plants growing. 
+jei.darkutils.sneaky.desc=The Sneaky Block is similar to ordinary cobblestone in many ways. The only exception is that you can right click on it with another block to change it's apearance to that of the held block. This can allow for fake decorative blocks which have a higher blast resistance. In some cases it can also be used to make decoritive blocks which are easier to move, such as obsidian or bedrock.
+jei.darkutils.sneaky.lever.desc=The Sneaky Lever is very similar to an ordinay lever. The only exception is that you can right click on it with another block to change it's apearance to that of the held block. This allows for hidden torches.
+jei.darkutils.sneaky.ghost.desc=The Sneaky False Block is very similar to ordinary cobblestone. The main diference is that mobs will be able to move (and fall) through these blocks as if they did not exist. You can also right click it with a block in your hand, to change the apearance of the block to match the held block.
+jei.darkutils.sneaky.torch.desc=The Sneaky Torch is very similar to an ordinary torch. The only exception is that you can right click on it with a block in hand, and it will take on the appearance of that block. 
 
 #Thaumcraft
 item.darkutils.swordDeath.name=Sword of the Mortifer 
