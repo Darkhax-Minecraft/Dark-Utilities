@@ -14,6 +14,7 @@ tile.darkutils.antislime.name=Anti-Slime Block
 tile.darkutils.bud.name=Block Update Detector
 tile.darkutils.sneaky.name=Sneaky Block
 tile.darkutils.sneaky.lever.name=Sneaky Lever
+tile.darkutils.sneaky.ghost.name=Sneaky False Block
 tile.darkutils.sneaky.torch.name=Sneaky Torch
 
 #Items

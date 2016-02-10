@@ -8,6 +8,7 @@ import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
 import net.darkhax.darkutils.blocks.BlockSneaky;
+import net.darkhax.darkutils.blocks.BlockSneakyGhost;
 import net.darkhax.darkutils.blocks.BlockSneakyLever;
 import net.darkhax.darkutils.blocks.BlockSneakyTorch;
 import net.darkhax.darkutils.blocks.BlockTimer;
@@ -95,6 +96,9 @@ public class ContentHandler {
         
         blockSneakyLever = new BlockSneakyLever();
         GameRegistry.registerBlock(blockSneakyLever, "sneaky_lever");
+        
+        blockSneakyGhost = new BlockSneakyGhost();
+        GameRegistry.registerBlock(blockSneakyGhost, "sneaky_ghost");
         
         blockSneakyTorch = new BlockSneakyTorch();
         GameRegistry.registerBlock(blockSneakyTorch, "sneaky_torch");

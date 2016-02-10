@@ -59,6 +59,9 @@ public class ProxyClient extends ProxyCommon {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_lever", "inventory"));
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_lever", "normal"));
         
+        item = Item.getItemFromBlock(ContentHandler.blockSneakyGhost);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_default", "inventory"));
+        
         item = Item.getItemFromBlock(ContentHandler.blockSneakyTorch);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_torch", "inventory"));
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_torch", "normal"));
@@ -75,6 +78,7 @@ public class ProxyClient extends ProxyCommon {
         StateMapperBase sneakyMap = new StateMapSneaky();
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyBlock, sneakyMap);
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyLever, sneakyMap);
+        ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyGhost, sneakyMap);
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyTorch, sneakyMap);
     }
     
