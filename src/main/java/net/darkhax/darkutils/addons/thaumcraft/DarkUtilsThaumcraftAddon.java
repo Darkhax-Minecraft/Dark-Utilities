@@ -77,6 +77,10 @@ public class DarkUtilsThaumcraftAddon {
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemEnchantedRing, 1, 5), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 2).add(Aspect.WATER, 2));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.itemEnchantedRing, 1, 6), new AspectList().add(Aspect.METAL, 1).add(Aspect.DESIRE, 1).add(Aspect.TOOL, 2).add(Aspect.MOTION, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockDetector), new AspectList().add(Aspect.EARTH, 8).add(Aspect.ENERGY, 3).add(Aspect.MECHANISM, 3));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockSneakyBlock), new AspectList().add(Aspect.EARTH, 2).add(Aspect.WATER, 1).add(Aspect.LIFE, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockSneakyLever), new AspectList().add(Aspect.EARTH, 2).add(Aspect.WATER, 1).add(Aspect.LIFE, 1).add(Aspect.MECHANISM, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockSneakyGhost), new AspectList().add(Aspect.EARTH, 2).add(Aspect.WATER, 1).add(Aspect.LIFE, 1).add(Aspect.CRAFT, 1).add(Aspect.BEAST, 2));
+        ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockSneakyTorch), new AspectList().add(Aspect.EARTH, 2).add(Aspect.WATER, 1).add(Aspect.LIFE, 1).add(Aspect.LIGHT, 1));
         
         ThaumcraftApi.registerObjectTag(new ItemStack(deathSword), new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2));
         
