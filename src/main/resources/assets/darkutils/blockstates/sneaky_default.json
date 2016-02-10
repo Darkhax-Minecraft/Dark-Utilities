@@ -1,7 +1,7 @@
 {
 	"variants": {
 		"normal": {
-			"model": "darkutils:sneaky_lever"
+			"model": "darkutils:sneaky_default"
 		}
 	}
 }

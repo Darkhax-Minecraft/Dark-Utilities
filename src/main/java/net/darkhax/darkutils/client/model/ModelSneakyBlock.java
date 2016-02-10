@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 
 import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.darkutils.blocks.BlockSneakyLever;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.BakedQuad;
@@ -29,8 +30,13 @@ public class ModelSneakyBlock implements ISmartBlockModel {
         
         if (heldState == null && layer == EnumWorldBlockLayer.SOLID) {
             
-            // TODO switch default models
-            ModelResourceLocation path = new ModelResourceLocation("darkutils:sneaky_default", "normal");
+            ModelResourceLocation path;
+            
+            if (state.getBlock() instanceof BlockSneakyLever)
+                path = new ModelResourceLocation("darkutils:sneaky_lever");
+            
+            else
+                path = new ModelResourceLocation("darkutils:sneaky_default");
             return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(path);
         }
         

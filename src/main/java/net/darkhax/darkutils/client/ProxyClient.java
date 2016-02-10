@@ -51,6 +51,14 @@ public class ProxyClient extends ProxyCommon {
         item = Item.getItemFromBlock(ContentHandler.blockDetector);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:detector", "inventory"));
         
+        item = Item.getItemFromBlock(ContentHandler.blockSneakyBlock);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_default", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_default", "normal"));
+        
+        item = Item.getItemFromBlock(ContentHandler.blockSneakyLever);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_lever", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_lever", "normal"));
+        
         for (int materialMeta = 0; materialMeta < ItemMaterial.varients.length; materialMeta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemMaterial, materialMeta, new ModelResourceLocation("darkutils:material_" + ItemMaterial.varients[materialMeta], "inventory"));
             

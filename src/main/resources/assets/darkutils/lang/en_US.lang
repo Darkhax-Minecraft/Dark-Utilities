@@ -12,6 +12,8 @@ tile.darkutils.filter.name=Mob Filter
 tile.darkutils.timer.name=Timer
 tile.darkutils.antislime.name=Anti-Slime Block
 tile.darkutils.bud.name=Block Update Detector
+tile.darkutils.sneaky.name=Sneaky Block
+tile.darkutils.sneaky.lever.name=Sneaky Lever
 
 #Items
 item.darkutils.material.wither.name=Wither Dust
