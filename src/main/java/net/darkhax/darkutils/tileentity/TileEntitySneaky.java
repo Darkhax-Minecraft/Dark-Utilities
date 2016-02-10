@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.tileentity;
 
+import net.darkhax.bookshelf.tileentity.TileEntityBasic;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
@@ -8,11 +9,11 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntitySneaky extends TileEntity {
+public class TileEntitySneaky extends TileEntityBasic {
     
     public IBlockState heldState;
     
-    private void readNBT (NBTTagCompound tag) {
+    public void readNBT (NBTTagCompound tag) {
         
         Block heldBlock = Block.getBlockFromName(tag.getString("HeldBlockId"));
         
@@ -20,42 +21,12 @@ public class TileEntitySneaky extends TileEntity {
             heldState = heldBlock.getStateFromMeta(tag.getInteger("HeldBlockMeta"));
     }
     
-    private void writeNBT (NBTTagCompound tag) {
+    public void writeNBT (NBTTagCompound tag) {
         
         if (heldState != null) {
             
             tag.setString("HeldBlockId", Block.blockRegistry.getNameForObject(heldState.getBlock()).toString());
             tag.setInteger("HeldBlockMeta", heldState.getBlock().getMetaFromState(heldState));
         }
-    }
-    
-    @Override
-    public void readFromNBT (NBTTagCompound dataTag) {
-        
-        super.readFromNBT(dataTag);
-        readNBT(dataTag);
-    }
-    
-    @Override
-    public void writeToNBT (NBTTagCompound dataTag) {
-        
-        super.writeToNBT(dataTag);
-        writeNBT(dataTag);
-    }
-    
-    @Override
-    public Packet getDescriptionPacket () {
-        
-        NBTTagCompound dataTag = new NBTTagCompound();
-        writeNBT(dataTag);
-        return new S35PacketUpdateTileEntity(pos, -1337, dataTag);
-    }
-    
-    @Override
-    public void onDataPacket (NetworkManager net, S35PacketUpdateTileEntity packet) {
-        
-        super.onDataPacket(net, packet);
-        worldObj.markBlockRangeForRenderUpdate(pos, pos);
-        readNBT(packet.getNbtCompound());
     }
 }
