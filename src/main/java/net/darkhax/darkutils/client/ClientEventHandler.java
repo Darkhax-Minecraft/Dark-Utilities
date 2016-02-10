@@ -10,7 +10,6 @@ public class ClientEventHandler {
     @SubscribeEvent
     public void onModelBake (ModelBakeEvent event) {
         
-        System.out.println("Baked Bitches");
         event.modelRegistry.putObject(new ModelResourceLocation("darkutils:sneaky", "normal"), new ModelSneakyBlock());
     }
 }
