@@ -98,6 +98,6 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void thaumcraftPreInit () {
         
-        ModelLoader.setCustomModelResourceLocation(DarkUtilsThaumcraftAddon.deathSword, 0, new ModelResourceLocation("darkutils:sword_death", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(DarkUtilsThaumcraftAddon.itemDisolveSword, 0, new ModelResourceLocation("darkutils:sword_death", "inventory"));
     }
 }
