@@ -77,23 +77,18 @@ public class GuiTimerAmount extends GuiScreen {
     @Override
     protected void keyTyped (char typedChar, int keyCode) throws IOException {
         
-        if (Utilities.isKeyCodeNumeric(keyCode) || keyCode == 14)
+        if (Utilities.isKeyCodeNumeric(keyCode) || keyCode == 14) {
+            
             this.delayTextField.textboxKeyTyped(typedChar, keyCode);
-            
-        this.doneBtn.enabled = this.delayTextField.getText().trim().length() > 0 && StringUtils.isNumeric(this.delayTextField.getText());
-        
-        if (keyCode != 28 && keyCode != 156) {
-            
-            if (keyCode == 1) {
-                
-                this.actionPerformed(this.cancelBtn);
-            }
+            this.doneBtn.enabled = this.delayTextField.getText().trim().length() > 0 && StringUtils.isNumeric(this.delayTextField.getText());
+            return;
         }
         
-        else {
+        if (keyCode == 1)
+            this.actionPerformed(this.cancelBtn);
             
+        else if (keyCode == 28)
             this.actionPerformed(this.doneBtn);
-        }
     }
     
     @Override
