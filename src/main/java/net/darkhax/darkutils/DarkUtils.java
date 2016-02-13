@@ -2,6 +2,7 @@ package net.darkhax.darkutils;
 
 import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.common.ProxyCommon;
+import net.darkhax.darkutils.common.network.packet.PacketSyncColor;
 import net.darkhax.darkutils.common.network.packet.PacketSyncTimer;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.handler.ContentHandler;
@@ -37,6 +38,7 @@ public class DarkUtils {
         
         network = NetworkRegistry.INSTANCE.newSimpleChannel("DarkUtils");
         network.registerMessage(PacketSyncTimer.PacketHandler.class, PacketSyncTimer.class, 0, Side.SERVER);
+        network.registerMessage(PacketSyncColor.PacketHandler.class, PacketSyncColor.class, 1, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         
         ContentHandler.initBlocks();

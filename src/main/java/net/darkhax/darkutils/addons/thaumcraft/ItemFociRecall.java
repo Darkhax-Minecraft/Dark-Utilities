@@ -4,15 +4,19 @@ import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.DarkUtils;
+import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.FocusUpgradeType;
@@ -38,17 +42,18 @@ public class ItemFociRecall extends ItemFocusBasic {
         if (teleportUser(player, focusStack))
             return true;
             
-        setFocusPosition(focusStack, player.getPosition(), player.dimension);
+        player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("chat.darkutils.warning.recall")));
         return false;
     }
     
     @Override
     public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player) {
         
-        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("posData"))
+        if ((stack.hasTagCompound() && stack.getTagCompound().hasKey("posData")) || !player.worldObj.isRemote)
             return stack;
             
-        setFocusPosition(stack, player.getPosition(), player.dimension);
+        BlockPos pos = player.getPosition();
+        player.openGui(DarkUtils.instance, GuiHandler.COLOR, world, pos.getX(), pos.getY(), pos.getZ());
         return stack;
     }
     
@@ -65,9 +70,26 @@ public class ItemFociRecall extends ItemFocusBasic {
     }
     
     @Override
-    public int getFocusColor (ItemStack focusstack) {
+    public int getFocusColor (ItemStack stack) {
         
-        return (focusstack.hasTagCompound() && focusstack.getTagCompound().hasKey("color")) ? focusstack.getTagCompound().getInteger("color") : 16777215;
+        ItemWand wand = (ItemWand) stack.getItem();
+        ItemStack focusStack = wand.getFocusStack(stack);
+        
+        return (focusStack.hasTagCompound() && focusStack.getTagCompound().hasKey("colorData")) ? focusStack.getTagCompound().getInteger("colorData") : 10511680;
+    }
+    
+    @Override
+    public String getSortingHelper (ItemStack focusStack) {
+        
+        final String color = (focusStack.hasTagCompound() && focusStack.getTagCompound().hasKey("colorData")) ? focusStack.getTagCompound().getInteger("colorData") + "" : "";
+        return "darkutils:recall" + "-" + focusStack.getDisplayName() + "-" + color;
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getColorFromItemStack (ItemStack stack, int renderPass) {
+        
+        return (stack.hasTagCompound() && stack.getTagCompound().hasKey("colorData")) ? stack.getTagCompound().getInteger("colorData") : 16777215;
     }
     
     @Override

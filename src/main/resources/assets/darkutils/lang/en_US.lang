@@ -114,6 +114,7 @@ jei.darkutils.sneaky.torch.desc=The Sneaky Torch is very similar to an ordinary 
 
 #Thaumcraft
 item.darkutils.swordDeath.name=Sword of the Mortifer 
+item.darkutils.foci.recall.name=Wand Focus: Recall
 
 tc.research_category.DARKUTILS=Dark Utilities
 tc.research_page.darkutils.1=After taking a closer look, you notice that several things seem to be surrounded with some form of message that has been engraved directly into the thaumic field itself! You have no idea how that might be possible, or who could have caused this, however that is probably for the best. Knowing that there are still mysteries to be explored fills you with determination. 
@@ -128,6 +129,11 @@ tc.research_page.darkutils.enchrings=You have discovered a new way of infusing m
 tc.research_name.DARKUTILS_POTIONS=Mysterious Potions
 tc.research_text.DARKUTILS_POTIONS=It's only by becoming familiar with poisons that you can make the best antidotes.
 tc.research_page.darkutils.potion=You have discovered a new way of brewing potions with the raw essentia. Potiones brewed in this way seem to be extremely potent, and interact with mobs on a thaumic level. A potion brewed with the essence of Life can potentionally cure the zombie disease, or even the taint! A potion brewed with deat will allow you to intentionally infect others.
+
+gui.darkutils.color.title=Location Settings
+gui.darkutils.color.item=Item Name
+
+chat.darkutils.warning.recall=You must bind this focus before use!
 
 tooltip.darkutils.focus.bound.desc=Bound
 tooltip.darkutils.focus.unbound.desc=Unbound
