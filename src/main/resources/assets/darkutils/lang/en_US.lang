@@ -140,6 +140,7 @@ tooltip.darkutils.focus.unbound.desc=Unbound
 
 jei.darkutils.deathSword.desc=This sword contains the essence of death itself. When a mob is slain with it, there is a 40% chance that the remains will dissolve into crystalized essentia. This sword also has a 40% chance to do all of it's damage as dissolve damage.
 jei.darkutils.potion.cure.thaumcraft.desc=While not a perfect cure, it is possible for this potion to reverse the effect of taint on living mobs. When applied to a tainted mob, it will revert to it's non tainted form. Some aspects of the mob such as profession or coat color will likely be lost.
+jei.darkutils.focus.recall.desc=This focus can be bound to a location by right clicking with it in your hand. Once bound, it may be used through a wand to warp the player back to that location. 
 
 #Baubles
 jei.darkutils.baubles.valid.desc=This item will work while in the Baubles inventory.

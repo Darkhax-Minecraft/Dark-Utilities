@@ -113,7 +113,7 @@ public class DarkUtilsThaumcraftAddon {
         new ResearchItem("DARKUTILS_DEATH_SWORD", "DARKUTILS", new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2), 0, 2, 1, new Object[] { new ItemStack(itemDisolveSword) }).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.darkutils.sword"), new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("DarkUtils:DeathSword")) }).setRound().setParents("DARKUTILS_LANDING").registerResearchItem();
         new ResearchItem("DARKUTILS_ENCHRINGS", "DARKUTILS", new AspectList().add(Aspect.METAL, 3).add(Aspect.DESIRE, 3).add(Aspect.ENERGY, 1).add(Aspect.AURA, 1), 2, 2, 2, new Object[] { new ItemStack(ContentHandler.itemEnchantedRing, 1, 0), new ItemStack(ContentHandler.itemEnchantedRing, 1, 1), new ItemStack(ContentHandler.itemEnchantedRing, 1, 2), new ItemStack(ContentHandler.itemEnchantedRing, 1, 3), new ItemStack(ContentHandler.itemEnchantedRing, 1, 4), new ItemStack(ContentHandler.itemEnchantedRing, 1, 5), new ItemStack(ContentHandler.itemEnchantedRing, 1, 6) }).setRound().setPages(new ResearchPage[] { new ResearchPage("tc.research_page.darkutils.enchrings"), new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("DarkUtils:RingKnockback")), new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("DarkUtils:RingFire")), new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("DarkUtils:RingFortune")), new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("DarkUtils:RingLoot")), new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("DarkUtils:RingLure")), new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("DarkUtils:RingLuck")), new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("DarkUtils:RingEfficiency")) }).setParents("DARKUTILS_LANDING").registerResearchItem();
         new ResearchItem("DARKUTILS_POTIONS", "DARKUTILS", new AspectList().add(Aspect.VOID, 1).add(Aspect.WATER, 3).add(Aspect.LIFE, 2).add(Aspect.DEATH, 2).add(Aspect.ENERGY, 3).add(Aspect.FLUX, 3), -2, 2, 2, new Object[] { new ItemStack(ContentHandler.itemPotion, 1, 0), new ItemStack(ContentHandler.itemPotion, 1, 1) }).setRound().setPages(new ResearchPage[] { new ResearchPage("tc.research_page.darkutils.potion"), new ResearchPage((CrucibleRecipe) ConfigResearch.recipes.get("DarkUtils:PotionCure")), new ResearchPage((CrucibleRecipe) ConfigResearch.recipes.get("DarkUtils:PotionDisease")) }).setParents("DARKUTILS_LANDING").registerResearchItem();
-        
+        new ResearchItem("DARKUTILS_RECALL", "DARKUTILS", new AspectList().add(Aspect.MOTION, 4).add(Aspect.ELDRITCH, 4), 0, -2, 3, (Object[]) ItemFociRecall.getDisplayStacks()).setRound().setPages(new ResearchPage[] { new ResearchPage("tc.research_page.darkutils.recall") }).setParents("DARKUTILS_LANDING").registerResearchItem();
         ScanningManager.addScannableThing(new ScanDarkUtils());
     }
     
@@ -126,6 +126,7 @@ public class DarkUtilsThaumcraftAddon {
         
         registry.addDescription(new ItemStack(itemDisolveSword), "jei.darkutils.deathSword.desc");
         registry.addDescription(new ItemStack(ContentHandler.itemPotion), "jei.darkutils.potion.cure.thaumcraft.desc");
+        registry.addDescription(new ItemStack(itemRecallFocus), "jei.darkutils.focus.recall.desc");
     }
     
     /**
