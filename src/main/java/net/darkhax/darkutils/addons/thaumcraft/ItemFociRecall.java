@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.addons.thaumcraft;
 
+import java.awt.Color;
 import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
@@ -163,5 +164,30 @@ public class ItemFociRecall extends ItemFocusBasic {
         }
         
         return false;
+    }
+    
+    /**
+     * Gets an array of display stacks that represent the colors from AWT Color.
+     * 
+     * @return ItemStack[]: The display stacks.
+     */
+    public static ItemStack[] getDisplayStacks () {
+        
+        return new ItemStack[] { withColor(Color.BLACK), withColor(Color.BLUE), withColor(Color.CYAN), withColor(Color.DARK_GRAY), withColor(Color.GRAY), withColor(Color.GREEN), withColor(Color.LIGHT_GRAY), withColor(Color.MAGENTA), withColor(Color.ORANGE), withColor(Color.PINK), withColor(Color.RED), withColor(Color.WHITE), withColor(Color.YELLOW) };
+    }
+    
+    /**
+     * Creates a new ItemStack with the specific color applied. Not intended for actual use,
+     * and should instead be used purely in rendering.
+     * 
+     * @param color: The color to render the stack with.
+     * @return ItemStack: The ItemStack that was created.
+     */
+    public static ItemStack withColor (Color color) {
+        
+        ItemStack stack = new ItemStack(DarkUtilsThaumcraftAddon.itemRecallFocus);
+        ItemStackUtils.prepareDataTag(stack);
+        stack.getTagCompound().setInteger("colorData", color.getRGB());
+        return stack;
     }
 }
