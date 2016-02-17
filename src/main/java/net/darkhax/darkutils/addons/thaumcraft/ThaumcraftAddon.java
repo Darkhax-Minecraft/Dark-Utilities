@@ -3,8 +3,10 @@ package net.darkhax.darkutils.addons.thaumcraft;
 import mezz.jei.api.IModRegistry;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.DarkUtils;
+import net.darkhax.darkutils.addons.ModAddon;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemSourcedSword;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.passive.EntityChicken;
@@ -20,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftMaterials;
@@ -42,12 +45,13 @@ import thaumcraft.common.entities.monster.tainted.EntityTaintRabbit;
 import thaumcraft.common.entities.monster.tainted.EntityTaintSheep;
 import thaumcraft.common.entities.monster.tainted.EntityTaintVillager;
 
-public class DarkUtilsThaumcraftAddon {
+public class ThaumcraftAddon implements ModAddon {
     
     public static Item itemDisolveSword;
     public static Item itemRecallFocus;
     
-    public static void preInit () {
+    @Override
+    public void onPreInit () {
         
         // Blocks
         
@@ -91,7 +95,8 @@ public class DarkUtilsThaumcraftAddon {
         DarkUtils.proxy.thaumcraftPreInit();
     }
     
-    public static void init () {
+    @Override
+    public void onInit () {
         
         ConfigResearch.recipes.put("DarkUtils:DeathSword", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_DEATH_SWwORD", new ItemStack(itemDisolveSword), 4, new AspectList().add(Aspect.DEATH, 8).add(Aspect.AVERSION, 8).add(Aspect.ENTROPY, 32), new ItemStack(ItemsTC.thaumiumSword), new Object[] { new ItemStack(ItemsTC.bucketDeath), new ItemStack(ContentHandler.itemMaterial, 1, 0), new ItemStack(ItemsTC.bucketDeath), new ItemStack(ContentHandler.itemMaterial, 1, 1), new ItemStack(ItemsTC.bucketDeath), new ItemStack(ContentHandler.itemMaterial, 1, 2) }));
         ConfigResearch.recipes.put("DarkUtils:RingKnockback", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_ENCHRINGS", new ItemStack(ContentHandler.itemEnchantedRing, 1, 0), 3, new AspectList().add(Aspect.METAL, 16).add(Aspect.DESIRE, 8).add(Aspect.MOTION, 6), new ItemStack(ItemsTC.baubles, 1, 1), new Object[] { new ItemStack(Blocks.stone), new ItemStack(Items.iron_ingot), new ItemStack(Blocks.stone), new ItemStack(Items.iron_ingot), new ItemStack(Blocks.stone), new ItemStack(Items.iron_ingot) }));
@@ -105,7 +110,8 @@ public class DarkUtilsThaumcraftAddon {
         ConfigResearch.recipes.put("DarkUtils:PotionDisease", ThaumcraftApi.addCrucibleRecipe("DARKUTILS_POTIONS", new ItemStack(ContentHandler.itemPotion, 1, 1), new ItemStack(Items.glass_bottle), new AspectList().add(Aspect.WATER, 8).add(Aspect.DEATH, 32).add(Aspect.ENERGY, 4)));
     }
     
-    public static void postInit () {
+    @Override
+    public void onPostInit () {
         
         ResearchCategories.registerCategory("DARKUTILS", "DARKUTILS_LANDING", new ResourceLocation("darkutils:textures/research/research_darkutils.png"), new ResourceLocation("darkutils:textures/research/gui_research_darkutils_background.png"), new ResourceLocation("darkutils:textures/research/gui_research_darkutils_background_overlay.png"));
         
@@ -117,12 +123,15 @@ public class DarkUtilsThaumcraftAddon {
         ScanningManager.addScannableThing(new ScanDarkUtils());
     }
     
-    /**
-     * A special hook that handles Thaumcraft input for the JEI registry.
-     * 
-     * @param registry: The JEI registry.
-     */
-    public static void jeiRegisterHook (IModRegistry registry) {
+    @Override
+    public void onClientPreInit () {
+        
+        ModelLoader.setCustomModelResourceLocation(ThaumcraftAddon.itemDisolveSword, 0, new ModelResourceLocation("darkutils:sword_death", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ThaumcraftAddon.itemRecallFocus, 0, new ModelResourceLocation("darkutils:focus_recall", "inventory"));
+    }
+    
+    @Override
+    public void onJEIReady (IModRegistry registry) {
         
         registry.addDescription(new ItemStack(itemDisolveSword), "jei.darkutils.deathSword.desc");
         registry.addDescription(new ItemStack(ContentHandler.itemPotion), "jei.darkutils.potion.cure.thaumcraft.desc");
@@ -173,6 +182,7 @@ public class DarkUtilsThaumcraftAddon {
             entity.setDead();
             return true;
         }
+        
         return false;
     }
 }

@@ -6,8 +6,7 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.IRecipeRegistry;
 import mezz.jei.api.JEIPlugin;
-import net.darkhax.darkutils.addons.baubles.DarkUtilsBaublesAddon;
-import net.darkhax.darkutils.addons.thaumcraft.DarkUtilsThaumcraftAddon;
+import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.handler.ContentHandler;
@@ -15,7 +14,6 @@ import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
 import net.darkhax.darkutils.items.ItemRingEnchanted;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
 
 @JEIPlugin
 public class DarkUtilsJEIPlugin implements IModPlugin {
@@ -51,11 +49,7 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
         for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
             registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing, 1, meta), "jei.darkutils.ring." + ItemRingEnchanted.varients[meta] + ".desc");
             
-        if (Loader.isModLoaded("Thaumcraft"))
-            DarkUtilsThaumcraftAddon.jeiRegisterHook(registry);
-            
-        if (Loader.isModLoaded("Baubles"))
-            DarkUtilsBaublesAddon.jeiRegisterHook(registry);
+        AddonHandler.onJEIReady(registry);
     }
     
     @Override

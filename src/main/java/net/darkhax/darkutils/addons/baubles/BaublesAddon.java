@@ -3,12 +3,39 @@ package net.darkhax.darkutils.addons.baubles;
 import baubles.api.BaublesApi;
 import mezz.jei.api.IModRegistry;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.darkutils.addons.ModAddon;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-public class DarkUtilsBaublesAddon {
+public class BaublesAddon implements ModAddon {
+    
+    @Override
+    public void onPreInit () {
+    
+    }
+    
+    @Override
+    public void onInit () {
+    
+    }
+    
+    @Override
+    public void onPostInit () {
+    
+    }
+    
+    @Override
+    public void onClientPreInit () {
+    
+    }
+    
+    @Override
+    public void onJEIReady (IModRegistry registry) {
+        
+        registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing), "jei.darkutils.baubles.valid.desc");
+    }
     
     /**
      * A simple check to see if the player is wearing a certain item in the amulet slot.
@@ -66,15 +93,5 @@ public class DarkUtilsBaublesAddon {
         }
         
         return false;
-    }
-    
-    /**
-     * A special hook that handles Baubles input for the JEI registry.
-     * 
-     * @param registry: The JEI registry.
-     */
-    public static void jeiRegisterHook (IModRegistry register) {
-        
-        register.addDescription(new ItemStack(ContentHandler.itemEnchantedRing), "jei.darkutils.baubles.valid.desc");
     }
 }

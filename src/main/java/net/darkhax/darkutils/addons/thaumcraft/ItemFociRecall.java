@@ -116,7 +116,7 @@ public class ItemFociRecall extends ItemFocusBasic {
      */
     public static ItemStack createFociFromPos (BlockPos pos, int dimension) {
         
-        ItemStack stack = new ItemStack(DarkUtilsThaumcraftAddon.itemRecallFocus);
+        ItemStack stack = new ItemStack(ThaumcraftAddon.itemRecallFocus);
         return setFocusPosition(stack, pos, dimension);
     }
     
@@ -185,7 +185,7 @@ public class ItemFociRecall extends ItemFocusBasic {
      */
     public static ItemStack withColor (Color color) {
         
-        ItemStack stack = new ItemStack(DarkUtilsThaumcraftAddon.itemRecallFocus);
+        ItemStack stack = new ItemStack(ThaumcraftAddon.itemRecallFocus);
         ItemStackUtils.prepareDataTag(stack);
         stack.getTagCompound().setInteger("colorData", color.getRGB());
         return stack;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.addons.thaumcraft.DarkUtilsThaumcraftAddon;
+import net.darkhax.darkutils.addons.thaumcraft.ThaumcraftAddon;
 import net.darkhax.darkutils.libs.Constants;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -55,7 +55,7 @@ public class ItemMysteriousPotion extends Item {
             }
             
             else if (Loader.isModLoaded("Thaumcraft"))
-                return DarkUtilsThaumcraftAddon.cureHook(stack, player, entity);
+                return ThaumcraftAddon.cureHook(stack, player, entity);
         }
         
         if (entity instanceof EntityVillager && stack.getMetadata() == 1) {

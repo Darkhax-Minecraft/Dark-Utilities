@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.client;
 
-import net.darkhax.darkutils.addons.thaumcraft.DarkUtilsThaumcraftAddon;
+import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.client.statemap.StateMapSneaky;
@@ -83,6 +83,8 @@ public class ProxyClient extends ProxyCommon {
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyLever, sneakyMap);
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyGhost, sneakyMap);
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyTorch, sneakyMap);
+        
+        AddonHandler.onClientPreInit();
     }
     
     @Override
@@ -93,12 +95,5 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void onPostInit () {
     
-    }
-    
-    @Override
-    public void thaumcraftPreInit () {
-        
-        ModelLoader.setCustomModelResourceLocation(DarkUtilsThaumcraftAddon.itemDisolveSword, 0, new ModelResourceLocation("darkutils:sword_death", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(DarkUtilsThaumcraftAddon.itemRecallFocus, 0, new ModelResourceLocation("darkutils:focus_recall", "inventory"));
     }
 }

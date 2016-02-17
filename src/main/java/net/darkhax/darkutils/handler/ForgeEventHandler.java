@@ -10,7 +10,7 @@ import net.darkhax.bookshelf.event.EnchantmentLevelEvent.LuckOfSeaEvent;
 import net.darkhax.bookshelf.event.EnchantmentLevelEvent.LureEvent;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.bookshelf.lib.util.MathsUtils;
-import net.darkhax.darkutils.addons.baubles.DarkUtilsBaublesAddon;
+import net.darkhax.darkutils.addons.baubles.BaublesAddon;
 import net.darkhax.darkutils.items.ItemSourcedSword;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
@@ -66,7 +66,7 @@ public class ForgeEventHandler {
                 return;
                 
             final ItemStack stack = new ItemStack(ContentHandler.itemEnchantedRing, 1, meta);
-            if (meta != -1 && player.inventory.hasItemStack(stack) || (Loader.isModLoaded("Baubles") && DarkUtilsBaublesAddon.isPlayerWearingRing(player, stack))) {
+            if (meta != -1 && player.inventory.hasItemStack(stack) || (Loader.isModLoaded("Baubles") && BaublesAddon.isPlayerWearingRing(player, stack))) {
                 
                 event.levels++;
                 event.setResult(Result.ALLOW);
