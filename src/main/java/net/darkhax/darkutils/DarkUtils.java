@@ -45,20 +45,21 @@ public class DarkUtils {
         ContentHandler.initItems();
         ContentHandler.initMisc();
         ContentHandler.initRecipes();
-        proxy.onPreInit();
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
-        AddonHandler.preInit();
+        AddonHandler.registerAddons();
+        AddonHandler.onPreInit();
+        proxy.onPreInit();
     }
     
     @EventHandler
     public void init (FMLInitializationEvent event) {
         
-        AddonHandler.init();
+        AddonHandler.onInit();
     }
     
     @EventHandler
     public void postInit (FMLPostInitializationEvent event) {
         
-        AddonHandler.postInit();
+        AddonHandler.onPostInit();
     }
 }
