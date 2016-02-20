@@ -58,7 +58,7 @@ public class BaublesAddon implements ModAddon {
      */
     public static boolean isPlayerWearingRing (EntityPlayer player, ItemStack item) {
         
-        return isPlayerWearingBauble(player, item, 1) || isPlayerWearingBauble(player, item, 1);
+        return isPlayerWearingBauble(player, item, 1) || isPlayerWearingBauble(player, item, 2);
     }
     
     /**
