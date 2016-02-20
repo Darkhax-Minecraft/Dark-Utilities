@@ -1,11 +1,7 @@
 package net.darkhax.darkutils.addons.jei;
 
-import mezz.jei.api.IItemRegistry;
-import mezz.jei.api.IJeiHelpers;
-import mezz.jei.api.IJeiRuntime;
-import mezz.jei.api.IModPlugin;
+import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IModRegistry;
-import mezz.jei.api.IRecipeRegistry;
 import mezz.jei.api.JEIPlugin;
 import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.blocks.BlockFilter;
@@ -17,9 +13,7 @@ import net.darkhax.darkutils.items.ItemRingEnchanted;
 import net.minecraft.item.ItemStack;
 
 @JEIPlugin
-public class DarkUtilsJEIPlugin implements IModPlugin {
-    
-    public static IJeiHelpers jeiHelper;
+public class DarkUtilsJEIPlugin extends BlankModPlugin {
     
     @Override
     public void register (IModRegistry registry) {
@@ -51,26 +45,5 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
             registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing, 1, meta), "jei.darkutils.ring." + ItemRingEnchanted.varients[meta] + ".desc");
             
         AddonHandler.onJEIReady(registry);
-    }
-    
-    @Override
-    public void onJeiHelpersAvailable (IJeiHelpers jeiHelpers) {
-        
-        jeiHelper = jeiHelpers;
-    }
-    
-    @Override
-    public void onItemRegistryAvailable (IItemRegistry itemRegistry) {
-    
-    }
-    
-    @Override
-    public void onRecipeRegistryAvailable (IRecipeRegistry recipeRegistry) {
-    
-    }
-
-    @Override
-    public void onRuntimeAvailable (IJeiRuntime jeiRuntime) {
-        
     }
 }
