@@ -19,7 +19,7 @@ archivesBaseName = "DarkUtilities"
 
 minecraft {
 
-    version = "1.8.9-11.15.0.1756"
+    version = "1.8.9-11.15.1.1756"
     runDir = "run"
     mappings = "stable_20"
 }
