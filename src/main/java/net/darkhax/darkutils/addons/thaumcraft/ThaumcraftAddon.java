@@ -98,7 +98,7 @@ public class ThaumcraftAddon implements ModAddon {
     @Override
     public void onInit () {
         
-        //Infusion
+        // Infusion
         ConfigResearch.recipes.put("DarkUtils:DeathSword", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_DEATH_SWwORD", new ItemStack(itemDisolveSword), 4, new AspectList().add(Aspect.DEATH, 8).add(Aspect.AVERSION, 8).add(Aspect.ENTROPY, 32), new ItemStack(ItemsTC.thaumiumSword), new Object[] { new ItemStack(ItemsTC.bucketDeath), new ItemStack(ContentHandler.itemMaterial, 1, 0), new ItemStack(ItemsTC.bucketDeath), new ItemStack(ContentHandler.itemMaterial, 1, 1), new ItemStack(ItemsTC.bucketDeath), new ItemStack(ContentHandler.itemMaterial, 1, 2) }));
         ConfigResearch.recipes.put("DarkUtils:RingKnockback", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_ENCHRINGS", new ItemStack(ContentHandler.itemEnchantedRing, 1, 0), 3, new AspectList().add(Aspect.METAL, 64).add(Aspect.DESIRE, 16).add(Aspect.MOTION, 32), new ItemStack(ItemsTC.baubles, 1, 1), new Object[] { new ItemStack(Blocks.stone), new ItemStack(Items.iron_ingot), new ItemStack(Blocks.stone), new ItemStack(Items.iron_ingot), new ItemStack(Blocks.stone), new ItemStack(Items.iron_ingot) }));
         ConfigResearch.recipes.put("DarkUtils:RingFire", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_ENCHRINGS", new ItemStack(ContentHandler.itemEnchantedRing, 1, 1), 3, new AspectList().add(Aspect.METAL, 64).add(Aspect.DESIRE, 16).add(Aspect.FIRE, 32), new ItemStack(ItemsTC.baubles, 1, 1), new Object[] { new ItemStack(ItemsTC.shard, 1, 1), new ItemStack(Items.iron_ingot), new ItemStack(ItemsTC.shard, 1, 1), new ItemStack(Items.iron_ingot), new ItemStack(ItemsTC.shard, 1, 1), new ItemStack(Items.iron_ingot) }));
@@ -107,9 +107,11 @@ public class ThaumcraftAddon implements ModAddon {
         ConfigResearch.recipes.put("DarkUtils:RingLure", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_ENCHRINGS", new ItemStack(ContentHandler.itemEnchantedRing, 1, 4), 3, new AspectList().add(Aspect.METAL, 64).add(Aspect.DESIRE, 16).add(Aspect.WATER, 32).add(Aspect.ENERGY, 16), new ItemStack(ItemsTC.baubles, 1, 1), new Object[] { new ItemStack(Items.fishing_rod), new ItemStack(Items.iron_ingot), new ItemStack(Items.fish), new ItemStack(Items.iron_ingot), new ItemStack(Items.fish), new ItemStack(Items.iron_ingot) }));
         ConfigResearch.recipes.put("DarkUtils:RingLuck", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_ENCHRINGS", new ItemStack(ContentHandler.itemEnchantedRing, 1, 5), 3, new AspectList().add(Aspect.METAL, 64).add(Aspect.DESIRE, 16).add(Aspect.WATER, 32), new ItemStack(ItemsTC.baubles, 1, 1), new Object[] { new ItemStack(Blocks.lapis_block), new ItemStack(Items.iron_ingot), new ItemStack(Items.prismarine_shard), new ItemStack(Items.iron_ingot), new ItemStack(Items.prismarine_shard), new ItemStack(Items.iron_ingot) }));
         ConfigResearch.recipes.put("DarkUtils:RingEfficiency", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_ENCHRINGS", new ItemStack(ContentHandler.itemEnchantedRing, 1, 6), 3, new AspectList().add(Aspect.METAL, 64).add(Aspect.DESIRE, 16).add(Aspect.TOOL, 32).add(Aspect.MOTION, 16), new ItemStack(ItemsTC.baubles, 1, 1), new Object[] { new ItemStack(Items.golden_pickaxe), new ItemStack(Items.iron_ingot), new ItemStack(Items.golden_pickaxe), new ItemStack(Items.iron_ingot), new ItemStack(Items.golden_pickaxe), new ItemStack(Items.iron_ingot) }));
-        //ConfigResearch.recipes.put("DarkUtils:Recall", ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_RECALL", new ItemStack(itemRecallFocus), 4,new AspectList().add, input, recipe));
+        // ConfigResearch.recipes.put("DarkUtils:Recall",
+        // ThaumcraftApi.addInfusionCraftingRecipe("DARKUTILS_RECALL", new
+        // ItemStack(itemRecallFocus), 4,new AspectList().add, input, recipe));
         
-        //Crucible
+        // Crucible
         ConfigResearch.recipes.put("DarkUtils:PotionCure", ThaumcraftApi.addCrucibleRecipe("DARKUTILS_POTIONS", new ItemStack(ContentHandler.itemPotion, 1, 0), new ItemStack(Items.glass_bottle), new AspectList().add(Aspect.WATER, 8).add(Aspect.LIFE, 32).add(Aspect.ENERGY, 4)));
         ConfigResearch.recipes.put("DarkUtils:PotionDisease", ThaumcraftApi.addCrucibleRecipe("DARKUTILS_POTIONS", new ItemStack(ContentHandler.itemPotion, 1, 1), new ItemStack(Items.glass_bottle), new AspectList().add(Aspect.WATER, 8).add(Aspect.DEATH, 32).add(Aspect.ENERGY, 4)));
     }
