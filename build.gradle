@@ -1,29 +1,47 @@
 buildscript {
+
     repositories {
+    
         jcenter()
+        
         maven {
+        
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        
+        maven {
+        
+            url "https://plugins.gradle.org/m2/"
+        }
     }
+    
     dependencies {
+    
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.7"
     }
 }
 
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: "maven"
 
-version = "1.0.0.0"
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: "com.matthewprenger.cursegradle"
+
 group = "net.darkhax.darkutils"
 archivesBaseName = "DarkUtilities"
+version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Constants.java"))
 
+//Defines the MC environement information.
 minecraft {
 
     version = "1.8.9-11.15.1.1756"
     runDir = "run"
     mappings = "stable_20"
+    useDepAts = true
 }
 
+//Defines basic patterns for pulling various dependencies.
 repositories {
 
     maven {
@@ -35,36 +53,183 @@ repositories {
 
         url "http://mobiusstrip.eu/maven"
     }
-}
 
-minecraft {
+    maven {
 
-    useDepAts = true
+        url = "http://maven.rubbix.net"
+    }
+
+    ivy {
+    
+        name "Thaumcraft"
+        artifactPattern "http://addons-origin.cursecdn.com/files/2279/928/[module]-[revision].[ext]"
+    }
+
+    ivy {
+    
+        name "Baubles"
+        artifactPattern "http://addons-origin.cursecdn.com/files/2273/274/[module]-[revision].[ext]"
+    }
+
+    ivy {
+    
+        name "Chisel"
+        artifactPattern "http://addons-origin.cursecdn.com/files/2275/705/[module]-[revision].[ext]"
+    }
+
 }
 
 dependencies {
 
     deobfCompile "mezz.jei:jei_1.8.9:2.28.1.162"
     deobfCompile "mcp.mobius.waila:Waila:1.6.0-B3_1.8.8"
-    compile files ('libs/Thaumcraft-1.8.9-5.1.6-deobf.jar')
-    compile files ('libs/chisel.jar')
-    compile files ('libs/Bookshelf-1.8.901.1.1.0.jar')
-    compile files ('Baubles-1.8.9-1.1.3.0-deobf.jar')
+    deobfCompile name: 'Thaumcraft', version: "1.8.9-5.1.6", ext: 'jar'
+    deobfCompile name:"Baubles", version:"1.8.9-1.1.3.0", ext: "jar"
+    deobfCompile name:"Chisel", version:"MC1.8.9-0.0.2.6", ext: "jar"
+    compile "net.darkhax.bookshelf:Bookshelf:1.8.9-1.1.1.191:deobf"
+}
 
-    processResources {
+//Handles basic resources such as mcmod.info
+processResources {
 
-        inputs.property "version", project.version
-        inputs.property "mcversion", project.minecraft.version
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
 
-        from(sourceSets.main.resources.srcDirs) {
+    from(sourceSets.main.resources.srcDirs) {
 
-            include 'mcmod.info'
-            expand 'version': project.version, 'mcversion': project.minecraft.version
+        include 'mcmod.info'
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+
+        exclude 'mcmod.info'
+    }
+}
+
+//Pulls the build version from a Java file.
+String getVersionFromJava(File file) {
+
+    String release = "0";
+    String update = "0";
+    String patch = "0";
+
+    String build = System.getenv("BUILD_NUMBER") ?: "0";
+    def outfile = "";
+    def ln = System.getProperty("line.separator")
+
+    String prefix = "public static final String VERSION = \"";
+    file.eachLine { String s ->
+
+        String v = s.trim();
+        
+        if (v.startsWith(prefix)) {
+        
+            v = v.substring(prefix.length(), v.length() - 2);
+            String[] pts = v.split("\\.");
+
+            release = pts[0];
+            update = pts[1];
+            patch = pts[2];
+            s = s.replaceAll(".0\";", ".${build}\";");
         }
+        
+        outfile += (s + ln);
+    }
 
-        from(sourceSets.main.resources.srcDirs) {
+    file.write(outfile);
 
-            exclude 'mcmod.info'
+    return "1.8.9-$release.$update.$patch.$build";
+}
+
+//Creates the source jar.
+task sourcesJar(type: Jar, dependsOn: classes) {
+
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+//Creates the JavaDoc jar.
+task javadocJar(type: Jar, dependsOn: javadoc) {
+
+    from javadoc.destinationDir
+    classifier = 'javadoc'
+}
+
+//Creates the deobfuscated jar.
+task deobfJar(type: Jar) {
+
+    from sourceSets.main.output
+    classifier = "deobf"
+}
+
+//Adds the deobf, source and javadoc jars to the build artifacts.
+artifacts {
+
+    archives deobfJar
+    archives sourcesJar
+    archives javadocJar
+}
+
+//Uploads the artifacts to the maven server.
+uploadArchives {
+
+    repositories {
+    
+        mavenDeployer {
+        
+            repository(url: "file:///var/www/html/maven")
         }
+    }
+}
+
+task setCurseForgeInfo() {
+
+    def proc = "git log --pretty=format:%s -1".execute();
+    proc.waitFor();
+    def message = "${proc.in.text}"
+
+    //Changes the type of release. Default is alpha release. #beta and #release can be added into the commit message to change it.
+    project.ext.releaseType = message.toLowerCase().contains("#release") ? "release" : message.toLowerCase().contains("#beta") ? "beta" : "alpha";
+    
+    //Sets the Changelog to direct the reader to the GitHub commit log.
+    proc = "git log --pretty=format:%H -1".execute();
+    proc.waitFor();
+    project.ext.changelog = "Hash: " + "${proc.in.text}" + "\nhttps://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master";
+}
+
+//Prevents incomplete JavaDocs from preventing a build on Java 8.
+if (JavaVersion.current().isJava8Compatible()) {
+
+    allprojects {
+    
+        tasks.withType(Javadoc) {
+        
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
+//Provides the basic CurseForge upload details
+curseforge {
+
+    //Sets the API from the system environment, if available.
+    apiKey = System.getenv("curseForgeApiKey") ? System.getenv("curseForgeApiKey") : "0";
+
+    project {
+        
+        //Sets the Project ID from the system environment, if available.
+        id = System.getenv("projectId") ? System.getenv("projectId") : "0";
+
+        releaseType = project.releaseType;
+        changelog = project.changelog;
+        
+        addGameVersion "1.8.9"
+        
+        //Adds main jar, deobf jar, source jar, and javadoc jar to the upload.
+        mainArtifact(jar)
+        addArtifact(deobfJar)
+        addArtifact(sourcesJar)
+        addArtifact(javadocJar)
     }
 }
