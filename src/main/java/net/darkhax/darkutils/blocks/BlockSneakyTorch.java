@@ -1,7 +1,5 @@
 package net.darkhax.darkutils.blocks;
 
-import net.minecraft.block.material.Material;
-
 public class BlockSneakyTorch extends BlockSneaky {
     
     public BlockSneakyTorch() {
