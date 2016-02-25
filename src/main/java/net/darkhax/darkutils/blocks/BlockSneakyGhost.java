@@ -10,9 +10,7 @@ public class BlockSneakyGhost extends BlockSneaky {
     
     public BlockSneakyGhost() {
         
-        super(Material.circuits);
         this.setUnlocalizedName("darkutils.sneaky.ghost");
-        this.setStepSound(soundTypeWood);
     }
     
     @Override

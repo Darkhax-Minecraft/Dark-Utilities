@@ -23,14 +23,13 @@ import net.minecraftforge.common.property.IUnlistedProperty;
 
 public class BlockSneaky extends BlockContainer {
     
-    public BlockSneaky(Material material) {
+    public BlockSneaky() {
         
-        super(material);
+        super(Material.rock);
         this.setUnlocalizedName("darkutils.sneaky");
         this.setCreativeTab(DarkUtils.tab);
         this.setHardness(1.5F);
         this.setResistance(10.0F);
-        this.setStepSound(soundTypePiston);
     }
     
     @Override

@@ -17,7 +17,6 @@ public class BlockSneakyLever extends BlockSneaky {
     
     public BlockSneakyLever() {
         
-        super(Material.circuits);
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
         this.setUnlocalizedName("darkutils.sneaky.lever");
     }
