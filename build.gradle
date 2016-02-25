@@ -118,7 +118,7 @@ String getVersionFromJava(File file) {
     def outfile = "";
     def ln = System.getProperty("line.separator")
 
-    String prefix = "public static final String VERSION = \"";
+    String prefix = "public static final String VERSION_NUMBER = \"";
     file.eachLine {
         String s - >
 
