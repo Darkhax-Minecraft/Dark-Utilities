@@ -114,14 +114,12 @@ public class BaublesAddon implements ModAddon {
             
             if (existing == null) {
                 
-                System.out.println("true: " + type);
                 inv.setInventorySlotContents(type, item.copy());
                 item.stackSize = 0;
                 return true;
             }
         }
         
-        System.out.println("false: " + type);
         return false;
     }
 }
