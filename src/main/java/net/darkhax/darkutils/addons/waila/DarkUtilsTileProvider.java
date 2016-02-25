@@ -88,6 +88,8 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         register.registerStackProvider(dataProvider, BlockSneaky.class);
         register.registerBodyProvider(dataProvider, BlockFilter.class);
         register.registerBodyProvider(dataProvider, BlockTimer.class);
+        
         register.registerNBTProvider(dataProvider, BlockTimer.class);
+        register.registerNBTProvider(dataProvider, BlockSneaky.class);
     }
 }
