@@ -31,7 +31,6 @@ public class ScanDarkUtils implements IScanThing {
             }
         }
         
-        System.out.println(object.getClass().getName());
         return false;
     }
     
