@@ -126,8 +126,8 @@ public class ContentHandler {
         final Object[] trapIngredients = new Object[] { Items.spider_eye, Items.fermented_spider_eye, Items.iron_sword, Blocks.soul_sand, Items.flint_and_steel, new ItemStack(itemMaterial, 1, 0) };
         final Object[] filterIngredients = new Object[] { Items.golden_pickaxe, Items.bone, Items.spider_eye, Items.rotten_flesh, Items.wheat, Items.water_bucket, Items.egg, Items.milk_bucket, Blocks.slime_block };
         
-        GameRegistry.addShapedRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', new ItemStack(itemMaterial, 1, 1), 'o', Blocks.obsidian, 't', Blocks.redstone_torch });
-        GameRegistry.addShapedRecipe(new ItemStack(blockTrapMovement), new Object[] { " s ", "bfb", 's', Items.slime_ball, 'b', Blocks.stone, 'f', Items.sugar });
+        GameRegistry.addShapedRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', new ItemStack(itemMaterial, 1, 1), 'o', Blocks.obsidian, 't', Blocks.redstone_torch, 'i', Items.iron_ingot});
+        GameRegistry.addShapedRecipe(new ItemStack(blockTrapMovement, 8), new Object[] { "isi", "bfb", 's', Items.slime_ball, 'b', Blocks.stone, 'f', Items.sugar });
         GameRegistry.addShapedRecipe(new ItemStack(blockTimer), new Object[] { "sts", "tct", "sts", 's', Blocks.stone, 't', Blocks.redstone_torch, 'c', Items.clock });
         GameRegistry.addShapedRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', Blocks.stone, 'w', Blocks.cobblestone_wall, 'c', new ItemStack(itemMaterial, 1, 2) });
         GameRegistry.addShapedRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', Blocks.stone, 'p', Blocks.piston, 'r', Blocks.redstone_block });
