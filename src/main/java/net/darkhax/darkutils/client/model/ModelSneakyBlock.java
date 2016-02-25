@@ -43,6 +43,7 @@ public class ModelSneakyBlock implements ISmartBlockModel {
                 
             else
                 path = new ModelResourceLocation("darkutils:sneaky_default");
+                
             return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(path);
         }
         

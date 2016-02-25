@@ -69,6 +69,9 @@ public class ProxyClient extends ProxyCommon {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_torch", "inventory"));
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_torch", "normal"));
         
+        item = Item.getItemFromBlock(ContentHandler.blockSneakyObsidian);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_default", "inventory"));
+        
         for (int materialMeta = 0; materialMeta < ItemMaterial.varients.length; materialMeta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemMaterial, materialMeta, new ModelResourceLocation("darkutils:material_" + ItemMaterial.varients[materialMeta], "inventory"));
             
@@ -83,6 +86,7 @@ public class ProxyClient extends ProxyCommon {
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyLever, sneakyMap);
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyGhost, sneakyMap);
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyTorch, sneakyMap);
+        ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyObsidian, sneakyMap);
         
         AddonHandler.onClientPreInit();
     }

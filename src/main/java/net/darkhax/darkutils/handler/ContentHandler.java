@@ -11,6 +11,7 @@ import net.darkhax.darkutils.blocks.BlockGrate;
 import net.darkhax.darkutils.blocks.BlockSneaky;
 import net.darkhax.darkutils.blocks.BlockSneakyGhost;
 import net.darkhax.darkutils.blocks.BlockSneakyLever;
+import net.darkhax.darkutils.blocks.BlockSneakyObsidian;
 import net.darkhax.darkutils.blocks.BlockSneakyTorch;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
@@ -27,7 +28,6 @@ import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -54,6 +54,7 @@ public class ContentHandler {
     public static Block blockSneakyLever;
     public static Block blockSneakyGhost;
     public static Block blockSneakyTorch;
+    public static Block blockSneakyObsidian;
     
     public static Item itemMaterial;
     public static Item itemPotion;
@@ -91,7 +92,7 @@ public class ContentHandler {
         blockCakeEPlus = new BlockCakeBase("eplus");
         GameRegistry.registerBlock(blockCakeEPlus, ItemBlockCake.class, "cake_eplus", new Object[] {});
         
-        blockSneakyBlock = new BlockSneaky(Material.rock);
+        blockSneakyBlock = new BlockSneaky();
         GameRegistry.registerBlock(blockSneakyBlock, "sneaky");
         GameRegistry.registerTileEntity(TileEntitySneaky.class, "sneaky");
         
@@ -103,6 +104,9 @@ public class ContentHandler {
         
         blockSneakyTorch = new BlockSneakyTorch();
         GameRegistry.registerBlock(blockSneakyTorch, "sneaky_torch");
+        
+        blockSneakyObsidian = new BlockSneakyObsidian();
+        GameRegistry.registerBlock(blockSneakyObsidian, "sneaky_obsidian");
     }
     
     public static void initItems () {
@@ -128,6 +132,7 @@ public class ContentHandler {
         GameRegistry.addShapedRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', Blocks.stone, 'w', Blocks.cobblestone_wall, 'c', new ItemStack(itemMaterial, 1, 2) });
         GameRegistry.addShapedRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', Blocks.stone, 'p', Blocks.piston, 'r', Blocks.redstone_block });
         GameRegistry.addShapedRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', Blocks.stone, 's', Items.slime_ball });
+        GameRegistry.addShapedRecipe(new ItemStack(blockSneakyObsidian, 9), new Object[] { "ooo", "oso", "ooo", 'o', Blocks.obsidian, 's', blockSneakyBlock });
         
         GameRegistry.addShapelessRecipe(new ItemStack(blockGrate), Blocks.iron_bars, Blocks.stone, Blocks.trapdoor);
         GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.skull, 1, 1));
