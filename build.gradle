@@ -114,7 +114,7 @@ String getVersionFromJava(File file) {
     String update = "0";
     String patch = "0";
 
-    String build = System.getenv("BUILD_NUMBER") ? : "0";
+    String build = System.getenv("BUILD_NUMBER") ? System.getenv("BUILD_NUMBER"): "0";
     def outfile = "";
     def ln = System.getProperty("line.separator")
 
