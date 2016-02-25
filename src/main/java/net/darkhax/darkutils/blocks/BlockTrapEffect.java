@@ -83,7 +83,7 @@ public class BlockTrapEffect extends BlockTrapBase {
                 living.attackEntityFrom(DamageSource.magic, 2.5f);
                 
             if (type == 3)
-                effect = new PotionEffect(Potion.moveSlowdown.id, 60);
+                effect = new PotionEffect(Potion.moveSlowdown.id, 60, 2);
                 
             if (type == 4)
                 living.setFire(1);
