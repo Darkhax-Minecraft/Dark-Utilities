@@ -94,4 +94,34 @@ public class BaublesAddon implements ModAddon {
         
         return false;
     }
+    
+    /**
+     * Attempts to equip a ItemStack in a bauble slot. An item can only be equipped into the
+     * slot if the slot is empty.
+     * 
+     * @param player The player to equipped the item onto.
+     * @param item The item to equip.
+     * @param type The bauble type or slot index. 0 = Amulet, 1 = Ring 1, 2 = Ring 2, 3 = Belt.
+     * @return boolean Whether or not the bauble was successfully equipped.
+     */
+    public static boolean equipBauble (EntityPlayer player, ItemStack item, int type) {
+        
+        IInventory inv = BaublesApi.getBaubles(player);
+        
+        if (inv != null) {
+            
+            ItemStack existing = inv.getStackInSlot(type);
+            
+            if (existing == null) {
+                
+                System.out.println("true: " + type);
+                inv.setInventorySlotContents(type, item.copy());
+                item.stackSize = 0;
+                return true;
+            }
+        }
+        
+        System.out.println("false: " + type);
+        return false;
+    }
 }
