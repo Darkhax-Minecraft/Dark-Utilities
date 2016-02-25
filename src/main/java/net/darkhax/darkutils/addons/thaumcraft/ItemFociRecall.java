@@ -110,9 +110,9 @@ public class ItemFociRecall extends ItemFocusBasic {
      * Creates an ItemStack containing a Recall focus that will teleport the user to the
      * specified position.
      * 
-     * @param pos: The XYZ position to teleport the player to.
-     * @param dimension: The ID of the dimension that this focus should work in.
-     * @return ItemStack: The newly created ItemStack.
+     * @param pos The XYZ position to teleport the player to.
+     * @param dimension The ID of the dimension that this focus should work in.
+     * @return ItemStack The newly created ItemStack.
      */
     public static ItemStack createFociFromPos (BlockPos pos, int dimension) {
         
@@ -123,10 +123,10 @@ public class ItemFociRecall extends ItemFocusBasic {
     /**
      * Writes a position and dimension to an ItemStack. Intended for use with the recall focus.
      * 
-     * @param stack: The ItemStack to set the position to.
-     * @param pos: The position to set.
-     * @param dimension: The dimension ID to set.
-     * @return ItemStack: The same stack instance passed to this method.
+     * @param stack The ItemStack to set the position to.
+     * @param pos The position to set.
+     * @param dimension The dimension ID to set.
+     * @return ItemStack The same stack instance passed to this method.
      */
     public static ItemStack setFocusPosition (ItemStack stack, BlockPos pos, int dimension) {
         
@@ -141,9 +141,9 @@ public class ItemFociRecall extends ItemFocusBasic {
      * work, the player must be in the same dimension as the location, and the ItemStack passed
      * must have the proper nbt data.
      * 
-     * @param entity: The entity to teleport.
-     * @param stack: The ItemStack containing the warp data.
-     * @return boolean: Whether or not the teleportation was successful.
+     * @param entity The entity to teleport.
+     * @param stack The ItemStack containing the warp data.
+     * @return boolean Whether or not the teleportation was successful.
      */
     public static boolean teleportUser (EntityLivingBase entity, ItemStack stack) {
         
@@ -169,7 +169,7 @@ public class ItemFociRecall extends ItemFocusBasic {
     /**
      * Gets an array of display stacks that represent the colors from AWT Color.
      * 
-     * @return ItemStack[]: The display stacks.
+     * @return ItemStack[] The display stacks.
      */
     public static ItemStack[] getDisplayStacks () {
         
@@ -180,8 +180,8 @@ public class ItemFociRecall extends ItemFocusBasic {
      * Creates a new ItemStack with the specific color applied. Not intended for actual use,
      * and should instead be used purely in rendering.
      * 
-     * @param color: The color to render the stack with.
-     * @return ItemStack: The ItemStack that was created.
+     * @param color The color to render the stack with.
+     * @return ItemStack The ItemStack that was created.
      */
     public static ItemStack withColor (Color color) {
         

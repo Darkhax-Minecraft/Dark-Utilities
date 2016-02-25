@@ -2,7 +2,6 @@ package net.darkhax.darkutils.addons.thaumcraft;
 
 import mezz.jei.api.IModRegistry;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
-import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.addons.ModAddon;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemSourcedSword;
@@ -91,8 +90,6 @@ public class ThaumcraftAddon implements ModAddon {
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockSneakyTorch), new AspectList().add(Aspect.EARTH, 2).add(Aspect.WATER, 1).add(Aspect.LIFE, 1).add(Aspect.LIGHT, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(ContentHandler.blockCakeEPlus), new AspectList().add(Aspect.LIFE, 4).add(Aspect.DESIRE, 2).add(Aspect.PLANT, 2).add(Aspect.ENERGY, 4));
         ThaumcraftApi.registerObjectTag(new ItemStack(itemDisolveSword), new AspectList().add(Aspect.AVERSION, 3).add(Aspect.DEATH, 2).add(Aspect.UNDEAD, 2));
-        
-        DarkUtils.proxy.thaumcraftPreInit();
     }
     
     @Override
@@ -147,10 +144,10 @@ public class ThaumcraftAddon implements ModAddon {
     /**
      * A special hook that handles Thaumcraft logic for the Mysterious Potion cure.
      * 
-     * @param stack: The potion stack.
-     * @param player: The player doing the curing.
-     * @param entity: The entity being cured.
-     * @return boolean: Whether or not something was cured.
+     * @param stack The potion stack.
+     * @param player The player doing the curing.
+     * @param entity The entity being cured.
+     * @return boolean Whether or not something was cured.
      */
     public static boolean cureHook (ItemStack stack, EntityPlayer player, EntityLivingBase entity) {
         

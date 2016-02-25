@@ -100,5 +100,4 @@ public class ModelSneakyBlock implements ISmartBlockModel {
         
         return ItemCameraTransforms.DEFAULT;
     }
-    
 }
