@@ -86,7 +86,7 @@ dependencies {
     deobfCompile name: 'Thaumcraft', version: "1.8.9-5.1.6", ext: 'jar'
     deobfCompile name: "Baubles", version: "1.8.9-1.1.3.0", ext: "jar"
     deobfCompile name: "Chisel", version: "MC1.8.9-0.0.2.6", ext: "jar"
-    compile "net.darkhax.bookshelf:Bookshelf:1.8.9-1.1.1.198:deobf"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf:1.8.9-1.1.1.198"
 }
 
 //Handles basic resources such as mcmod.info
