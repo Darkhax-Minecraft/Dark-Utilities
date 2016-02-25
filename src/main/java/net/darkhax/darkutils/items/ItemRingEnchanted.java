@@ -5,6 +5,7 @@ import java.util.List;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import net.darkhax.darkutils.DarkUtils;
+import net.darkhax.darkutils.addons.baubles.BaublesAddon;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,6 +14,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -52,6 +54,15 @@ public class ItemRingEnchanted extends Item implements IBauble {
             return super.getUnlocalizedName() + "." + varients[0];
             
         return super.getUnlocalizedName() + "." + varients[meta];
+    }
+    
+    @Override
+    public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player) {
+        
+        if (!world.isRemote && !BaublesAddon.equipBauble(player, stack, 1))
+            BaublesAddon.equipBauble(player, stack, 2);
+            
+        return stack;
     }
     
     @Override
