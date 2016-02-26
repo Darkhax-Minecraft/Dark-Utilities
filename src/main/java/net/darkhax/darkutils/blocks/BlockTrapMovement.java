@@ -18,12 +18,15 @@ public class BlockTrapMovement extends BlockTrapBase {
     
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     
-    public BlockTrapMovement() {
+    private double speed;
+    
+    public BlockTrapMovement(double speed) {
         
         super();
         this.setUnlocalizedName("darkutils.trap.movement");
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.slipperiness = 0.98F;
+        this.speed = speed;
     }
     
     @Override
@@ -38,7 +41,7 @@ public class BlockTrapMovement extends BlockTrapBase {
             centerDirectional(pos, entity, direction);
             
         if (entity != null)
-            EntityUtils.pushTowards(entity, state.getValue(FACING), 0.06);
+            EntityUtils.pushTowards(entity, state.getValue(FACING), this.speed);
     }
     
     @Override

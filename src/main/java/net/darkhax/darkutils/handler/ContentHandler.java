@@ -69,7 +69,7 @@ public class ContentHandler {
         GameRegistry.registerBlock(blockEnderTether, "ender_tether");
         GameRegistry.registerTileEntity(TileEntityEnderTether.class, "ender_tether");
         
-        blockTrapMovement = new BlockTrapMovement();
+        blockTrapMovement = new BlockTrapMovement(0.06d);
         GameRegistry.registerBlock(blockTrapMovement, "trap_move");
         
         blockGrate = new BlockGrate();
