@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=south": {
+            "model": "darkutils:trap_move_fast"
+        },
+        "facing=west": {
+            "model": "darkutils:trap_move_fast",
+            "y": 90
+        },
+        "facing=north": {
+            "model": "darkutils:trap_move_fast",
+            "y": 180
+        },
+        "facing=east": {
+            "model": "darkutils:trap_move_fast",
+            "y": 270
+        }
+    }
+}

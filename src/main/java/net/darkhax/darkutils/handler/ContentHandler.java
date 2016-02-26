@@ -44,6 +44,8 @@ public class ContentHandler {
     public static Block blockTrap;
     public static Block blockEnderTether;
     public static Block blockTrapMovement;
+    public static Block blockTrapMovementFast;
+    public static Block blockTrapMovementHyper;
     public static Block blockGrate;
     public static Block blockFilter;
     public static Block blockTimer;
@@ -71,6 +73,12 @@ public class ContentHandler {
         
         blockTrapMovement = new BlockTrapMovement(0.06d);
         GameRegistry.registerBlock(blockTrapMovement, "trap_move");
+        
+        blockTrapMovementFast = new BlockTrapMovement(0.3d);
+        GameRegistry.registerBlock(blockTrapMovementFast, "trap_move_fast");
+        
+        blockTrapMovementHyper = new BlockTrapMovement(1.5d);
+        GameRegistry.registerBlock(blockTrapMovementHyper, "trap_move_hyper");
         
         blockGrate = new BlockGrate();
         GameRegistry.registerBlock(blockGrate, "grate");

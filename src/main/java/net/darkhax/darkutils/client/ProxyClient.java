@@ -35,6 +35,12 @@ public class ProxyClient extends ProxyCommon {
         item = Item.getItemFromBlock(ContentHandler.blockTrapMovement);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:trap_move", "inventory"));
         
+        item = Item.getItemFromBlock(ContentHandler.blockTrapMovementFast);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:trap_move_fast", "inventory"));
+        
+        item = Item.getItemFromBlock(ContentHandler.blockTrapMovementHyper);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:trap_move_hyper", "inventory"));
+        
         item = Item.getItemFromBlock(ContentHandler.blockGrate);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:grate", "inventory"));
         
