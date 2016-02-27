@@ -20,6 +20,8 @@ public class DarkUtilsJEIPlugin extends BlankModPlugin {
         
         registry.addDescription(new ItemStack(ContentHandler.blockEnderTether), "jei.darkutils.endertether.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockTrapMovement), "jei.darkutils.trap.vector.desc");
+        registry.addDescription(new ItemStack(ContentHandler.blockTrapMovementFast), "jei.darkutils.trap.vector.fast.desc");
+        registry.addDescription(new ItemStack(ContentHandler.blockTrapMovementHyper), "jei.darkutils.trap.vector.hyper.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockGrate), "jei.darkutils.grate.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockTimer), "jei.darkutils.timer.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockAntiSlime), "jei.darkutils.antislime.desc");
