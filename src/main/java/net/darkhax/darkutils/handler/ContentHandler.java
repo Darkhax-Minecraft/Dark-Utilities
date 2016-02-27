@@ -1,7 +1,10 @@
 package net.darkhax.darkutils.handler;
 
+import java.util.Arrays;
+
 import net.darkhax.bookshelf.common.BookshelfRegistry;
 import net.darkhax.bookshelf.item.ItemBlockBasic;
+import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.bookshelf.lib.util.Utilities;
 import net.darkhax.darkutils.blocks.BlockAntiSlime;
 import net.darkhax.darkutils.blocks.BlockCakeBase;
@@ -134,7 +137,7 @@ public class ContentHandler {
         final Object[] trapIngredients = new Object[] { Items.spider_eye, Items.fermented_spider_eye, Items.iron_sword, Blocks.soul_sand, Items.flint_and_steel, new ItemStack(itemMaterial, 1, 0) };
         final Object[] filterIngredients = new Object[] { Items.golden_pickaxe, Items.bone, Items.spider_eye, Items.rotten_flesh, Items.wheat, Items.water_bucket, Items.egg, Items.milk_bucket, Blocks.slime_block };
         
-        GameRegistry.addShapedRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', new ItemStack(itemMaterial, 1, 1), 'o', Blocks.obsidian, 't', Blocks.redstone_torch, 'i', Items.iron_ingot});
+        GameRegistry.addShapedRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', new ItemStack(itemMaterial, 1, 1), 'o', Blocks.obsidian, 't', Blocks.redstone_torch, 'i', Items.iron_ingot });
         GameRegistry.addShapedRecipe(new ItemStack(blockTrapMovement, 8), new Object[] { "isi", "bfb", 's', Items.slime_ball, 'b', Blocks.stone, 'f', Items.sugar });
         GameRegistry.addShapedRecipe(new ItemStack(blockTimer), new Object[] { "sts", "tct", "sts", 's', Blocks.stone, 't', Blocks.redstone_torch, 'c', Items.clock });
         GameRegistry.addShapedRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', Blocks.stone, 'w', Blocks.cobblestone_wall, 'c', new ItemStack(itemMaterial, 1, 2) });
@@ -150,6 +153,10 @@ public class ContentHandler {
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyGhost), blockSneakyBlock, Blocks.wool);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.torch);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.redstone_torch);
+        
+        addConversionRecipes(new ItemStack(blockTrapMovement), new ItemStack(blockTrapMovementFast));
+        addConversionRecipes(new ItemStack(blockTrapMovementFast), new ItemStack(blockTrapMovementHyper));
+        addConversionRecipes(new ItemStack(blockTrapMovementHyper), new ItemStack(blockTrapMovement));
         
         BookshelfRegistry.addAnvilRecipe(new ItemStack(Items.cake, 1), new ItemStack(Items.enchanted_book), "eplus", 2, new ItemStack(blockCakeEPlus));
         
@@ -178,5 +185,22 @@ public class ContentHandler {
         for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
             for (String category : Utilities.vanillaLootChests)
                 ChestGenHooks.addItem(category, new WeightedRandomChestContent(new ItemStack(ContentHandler.itemPotion, 1, meta), 1, 1, 1));
+    }
+    
+    /**
+     * Adds a basic conversion recipe. A conversion recipe converts one item directly into
+     * another. Adds support for converting up to 9 items a time at a 1 to 1 ratio.
+     * 
+     * @param input: The input item.
+     * @param output: The output item.
+     */
+    private static void addConversionRecipes (ItemStack input, ItemStack output) {
+        
+        for (int amount = 1; amount < 10; amount++) {
+            
+            ItemStack[] inputs = new ItemStack[amount];
+            Arrays.fill(inputs, input);
+            GameRegistry.addShapelessRecipe(ItemStackUtils.copyStackWithSize(output, amount), (Object[]) inputs);
+        }
     }
 }
