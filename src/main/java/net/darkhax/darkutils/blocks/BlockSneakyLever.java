@@ -41,7 +41,7 @@ public class BlockSneakyLever extends BlockSneaky {
     @Override
     public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
         
-        if (playerIn.isSneaking() && playerIn.getHeldItem() != null && playerIn.getHeldItem().getItem() != null)
+        if (playerIn.getHeldItem() != null && playerIn.getHeldItem().getItem() != null)
             return super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
             
         if (worldIn.isRemote)
