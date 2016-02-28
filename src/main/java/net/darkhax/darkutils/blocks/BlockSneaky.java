@@ -33,9 +33,9 @@ public class BlockSneaky extends BlockContainer {
     }
     
     @Override
-    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
         
-        TileEntitySneaky tile = ((TileEntitySneaky) worldIn.getTileEntity(pos));
+        TileEntitySneaky tile = ((TileEntitySneaky) world.getTileEntity(pos));
         ItemStack stack = playerIn.getHeldItem();
         
         if (!tile.isInvalid() && stack != null && stack.getItem() != null) {
@@ -44,11 +44,15 @@ public class BlockSneaky extends BlockContainer {
             
             if (block instanceof Block) {
                 
-                tile.heldState = block.onBlockPlaced(worldIn, pos, side, hitX, hitY, hitZ, playerIn.getHeldItem().getMetadata(), playerIn);
-                worldIn.markBlockForUpdate(pos);
+                IBlockState heldState = block.onBlockPlaced(world, pos, side, hitX, hitY, hitZ, playerIn.getHeldItem().getMetadata(), playerIn);
+                
+                if (heldState != null && isValidBlock(heldState)) {
+                    
+                    tile.heldState = heldState;
+                    world.markBlockForUpdate(pos);
+                    return true;
+                }
             }
-            
-            return true;
         }
         
         return false;
@@ -113,5 +117,19 @@ public class BlockSneaky extends BlockContainer {
     public boolean canRenderInLayer (EnumWorldBlockLayer layer) {
         
         return true;
+    }
+    
+    /**
+     * A check to see if a block is valid for the sneaky block. For a block to be valid, it
+     * must be an opaque cube, or have a render type of 3. Tile entities are considered
+     * invalid.
+     * 
+     * @param state The current BlockState being tested.
+     * @return boolean Whether or not the block is valid for the sneaky block.
+     */
+    private static boolean isValidBlock (IBlockState state) {
+        
+        Block block = state.getBlock();
+        return (block.isOpaqueCube() || block.getRenderType() == 3) && !block.hasTileEntity(state);
     }
 }
