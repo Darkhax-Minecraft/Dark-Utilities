@@ -20,6 +20,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSneaky extends BlockContainer {
     
@@ -35,11 +37,12 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
         
-        TileEntitySneaky tile = ((TileEntitySneaky) world.getTileEntity(pos));
+        TileEntity tile = world.getTileEntity(pos);
         ItemStack stack = playerIn.getHeldItem();
         
-        if (!tile.isInvalid() && stack != null && stack.getItem() != null) {
+        if (!tile.isInvalid() && tile instanceof TileEntitySneaky && stack != null && stack.getItem() != null) {
             
+            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
             Block block = Block.getBlockFromItem(stack.getItem());
             
             if (block instanceof Block) {
@@ -48,7 +51,7 @@ public class BlockSneaky extends BlockContainer {
                 
                 if (heldState != null && isValidBlock(heldState)) {
                     
-                    tile.heldState = heldState;
+                    sneaky.heldState = heldState;
                     world.markBlockForUpdate(pos);
                     return true;
                 }
@@ -117,6 +120,24 @@ public class BlockSneaky extends BlockContainer {
     public boolean canRenderInLayer (EnumWorldBlockLayer layer) {
         
         return true;
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int colorMultiplier (IBlockAccess world, BlockPos pos, int pass) {
+        
+        TileEntity tile = world.getTileEntity(pos);
+        
+        if (tile instanceof TileEntitySneaky) {
+            
+            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            IBlockState state = sneaky.heldState;
+            
+            if (state != null)
+                return state.getBlock() instanceof BlockSneaky ? 0xFFFFFF : state.getBlock().colorMultiplier(world, pos, pass);
+        }
+        
+        return 0xFFFFFF;
     }
     
     /**
