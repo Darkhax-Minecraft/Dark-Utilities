@@ -151,6 +151,6 @@ public class BlockSneaky extends BlockContainer {
     private static boolean isValidBlock (IBlockState state) {
         
         Block block = state.getBlock();
-        return (block.isOpaqueCube() || block.getRenderType() == 3) && !block.hasTileEntity(state);
+        return (block.isOpaqueCube() || block.getRenderType() == 3) && !block.hasTileEntity(state) && block.getMaterial() != Material.air;
     }
 }
