@@ -87,6 +87,12 @@ public class ProxyClient extends ProxyCommon {
         for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemEnchantedRing, meta, new ModelResourceLocation("darkutils:ring_" + ItemRingEnchanted.varients[meta], "inventory"));
             
+        item = Item.getItemFromBlock(ContentHandler.blockFeeder);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:feeder_empty", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(item, 10, new ModelResourceLocation("darkutils:feeder_full", "inventory"));
+        for (int meta = 1; meta < 10; meta++)
+            ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation("darkutils:feeder_partial", "inventory"));
+        
         StateMapperBase sneakyMap = new StateMapSneaky();
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyBlock, sneakyMap);
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyLever, sneakyMap);
