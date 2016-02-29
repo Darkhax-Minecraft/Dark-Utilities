@@ -226,13 +226,6 @@ curseforge {
         changelog = project.changelog;
 
         addGameVersion "1.8.9"
-
-        //Adds the file relations to the upload.
-        requiredLibrary 'bookshelf'
-        optionalLibrary 'thaumcraft'
-        optionalLibrary 'waila'
-        optionalLibrary 'baubles'
-        optionalLibrary 'chisel'
         
         //Adds main jar, deobf jar, source jar, and javadoc jar to the upload.
         mainArtifact(jar) {
