@@ -22,6 +22,7 @@ import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
 import net.darkhax.darkutils.blocks.BlockUpdateDetector;
 import net.darkhax.darkutils.items.ItemBlockCake;
+import net.darkhax.darkutils.items.ItemBlockFeeder;
 import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
@@ -29,6 +30,7 @@ import net.darkhax.darkutils.items.ItemRingEnchanted;
 import net.darkhax.darkutils.libs.PotionReferences;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
+import net.darkhax.darkutils.tileentity.TileEntityFeeder;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
@@ -122,7 +124,8 @@ public class ContentHandler {
         GameRegistry.registerBlock(blockSneakyObsidian, "sneaky_obsidian");
         
         blockFeeder = new BlockFeeder();
-        GameRegistry.registerBlock(blockFeeder, "feeder");
+        GameRegistry.registerBlock(blockFeeder, ItemBlockFeeder.class, "feeder");
+        GameRegistry.registerTileEntity(TileEntityFeeder.class, "feeder");
     }
     
     public static void initItems () {
