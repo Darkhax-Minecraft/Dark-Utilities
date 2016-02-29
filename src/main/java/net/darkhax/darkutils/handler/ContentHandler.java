@@ -9,6 +9,7 @@ import net.darkhax.bookshelf.lib.util.Utilities;
 import net.darkhax.darkutils.blocks.BlockAntiSlime;
 import net.darkhax.darkutils.blocks.BlockCakeBase;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
+import net.darkhax.darkutils.blocks.BlockFeeder;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
 import net.darkhax.darkutils.blocks.BlockSneaky;
@@ -60,6 +61,7 @@ public class ContentHandler {
     public static Block blockSneakyGhost;
     public static Block blockSneakyTorch;
     public static Block blockSneakyObsidian;
+    public static Block blockFeeder;
     
     public static Item itemMaterial;
     public static Item itemPotion;
@@ -118,6 +120,9 @@ public class ContentHandler {
         
         blockSneakyObsidian = new BlockSneakyObsidian();
         GameRegistry.registerBlock(blockSneakyObsidian, "sneaky_obsidian");
+        
+        blockFeeder = new BlockFeeder();
+        GameRegistry.registerBlock(blockFeeder, "feeder");
     }
     
     public static void initItems () {

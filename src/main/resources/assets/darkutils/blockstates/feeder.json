@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "food=0": { "model": "darkutils:feeder_empty" },
+        "food=1": { "model": "darkutils:feeder_1" },
+        "food=2": { "model": "darkutils:feeder_2" },
+        "food=3": { "model": "darkutils:feeder_3" },
+        "food=4": { "model": "darkutils:feeder_4" },
+        "food=5": { "model": "darkutils:feeder_5" },
+        "food=6": { "model": "darkutils:feeder_6" },
+        "food=7": { "model": "darkutils:feeder_7" },
+        "food=8": { "model": "darkutils:feeder_8" },
+        "food=9": { "model": "darkutils:feeder_9" },
+        "food=10": { "model": "darkutils:feeder_full" }
+    }
+}
