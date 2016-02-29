@@ -10,20 +10,21 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.property.ExtendedBlockState;
+import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
 
 public class BlockSneakyLever extends BlockSneaky {
     
     public BlockSneakyLever() {
         
-        this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
+        this.setDefaultState(((IExtendedBlockState) blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null).withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
         this.setUnlocalizedName("darkutils.sneaky.lever");
     }
     
     @Override
     public BlockState createBlockState () {
         
-        return new ExtendedBlockState(this, new IProperty[] { BlockStates.POWERED }, new IUnlistedProperty[] { BlockStates.HELD_STATE });
+        return new ExtendedBlockState(this, new IProperty[] { BlockStates.POWERED }, new IUnlistedProperty[] { BlockStates.HELD_STATE, BlockStates.BLOCK_ACCESS, BlockStates.BLOCKPOS });
     }
     
     @Override

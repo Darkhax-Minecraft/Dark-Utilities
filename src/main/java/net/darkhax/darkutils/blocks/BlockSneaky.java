@@ -32,6 +32,7 @@ public class BlockSneaky extends BlockContainer {
         this.setCreativeTab(DarkUtils.tab);
         this.setHardness(1.5F);
         this.setResistance(10.0F);
+        this.setDefaultState(((IExtendedBlockState) blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
     }
     
     @Override
@@ -47,7 +48,7 @@ public class BlockSneaky extends BlockContainer {
             
             if (block instanceof Block) {
                 
-                IBlockState heldState = block.onBlockPlaced(world, pos, side, hitX, hitY, hitZ, playerIn.getHeldItem().getMetadata(), playerIn);
+                IBlockState heldState = Block.getBlockFromItem(stack.getItem()).getStateFromMeta(stack.getItemDamage());
                 
                 if (heldState != null && isValidBlock(heldState)) {
                     
@@ -76,7 +77,7 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public BlockState createBlockState () {
         
-        return new ExtendedBlockState(this, new IProperty[] {}, new IUnlistedProperty[] { BlockStates.HELD_STATE });
+        return new ExtendedBlockState(this, new IProperty[] {}, new IUnlistedProperty[] { BlockStates.HELD_STATE, BlockStates.BLOCK_ACCESS, BlockStates.BLOCKPOS });
     }
     
     @Override
@@ -94,6 +95,8 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public IBlockState getExtendedState (IBlockState state, IBlockAccess world, BlockPos pos) {
         
+        state = ((IExtendedBlockState) state).withProperty(BlockStates.BLOCK_ACCESS, world).withProperty(BlockStates.BLOCKPOS, pos);
+        
         if (world.getTileEntity(pos) instanceof TileEntitySneaky) {
             
             TileEntitySneaky tile = ((TileEntitySneaky) world.getTileEntity(pos));
@@ -101,7 +104,7 @@ public class BlockSneaky extends BlockContainer {
         }
         
         else
-            return ((IExtendedBlockState) state);
+            return state;
     }
     
     @Override
