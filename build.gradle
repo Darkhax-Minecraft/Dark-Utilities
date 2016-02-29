@@ -120,7 +120,7 @@ String getVersionFromJava(File file) {
 
     String prefix = "public static final String VERSION_NUMBER = \"";
     file.eachLine {
-        String s - >
+        String s ->
 
             String v = s.trim();
 
@@ -227,6 +227,13 @@ curseforge {
 
         addGameVersion "1.8.9"
 
+        //Adds the file relations to the upload.
+        requiredLibrary 'bookshelf'
+        optionalLibrary 'thaumcraft'
+        optionalLibrary 'waila'
+        optionalLibrary 'baubles'
+        optionalLibrary 'chisel'
+        
         //Adds main jar, deobf jar, source jar, and javadoc jar to the upload.
         mainArtifact(jar) {
           
@@ -240,7 +247,7 @@ curseforge {
                 optionalLibrary 'chisel'
             }
         }
-      
+        
         addArtifact(deobfJar)
         addArtifact(sourcesJar)
         addArtifact(javadocJar)
