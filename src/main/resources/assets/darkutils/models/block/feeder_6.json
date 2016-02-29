@@ -1,5 +1,6 @@
 {
 	"textures": {
+        "particle": "blocks/hardened_clay_stained_green",
 		"base": "blocks/hardened_clay_stained_green",
 		"food": "blocks/hay_block_top",
 		"glass": "darkutils:blocks/glass_tube"
