@@ -196,7 +196,7 @@ task setCurseForgeInfo() {
     //Sets the Changelog to direct the reader to the GitHub commit log.
     proc = "git log --pretty=format:%H -1".execute();
     proc.waitFor();
-    project.ext.changelog = "Hash: " + "${proc.in.text}" + "\nhttps://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master";
+    project.ext.changelog = "All changes can be found here: " + "https://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master/" + "${proc.in.text}";
 }
 
 //Prevents incomplete JavaDocs from preventing a build on Java 8.
