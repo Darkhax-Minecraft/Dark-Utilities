@@ -44,20 +44,19 @@ public class BlockFeeder extends BlockContainer {
             ItemStack heldStack = playerIn.getHeldItem();
             
             if (feeder.isItemValidForSlot(-1, heldStack)) {
-
-                feeder.setFood(feeder.getFood() +1);
+                
+                feeder.setFood(feeder.getFood() + 1);
                 heldStack.stackSize--;
                 
                 if (heldStack.stackSize == 0)
                     playerIn.setCurrentItemOrArmor(0, null);
-                
+                    
                 return true;
             }
         }
         
         return false;
     }
-    
     
     @Override
     public int damageDropped (IBlockState state) {
@@ -107,7 +106,7 @@ public class BlockFeeder extends BlockContainer {
         
         return EnumWorldBlockLayer.CUTOUT;
     }
-
+    
     @Override
     public TileEntity createNewTileEntity (World worldIn, int meta) {
         
