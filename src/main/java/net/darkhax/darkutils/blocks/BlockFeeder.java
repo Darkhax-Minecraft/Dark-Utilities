@@ -2,9 +2,7 @@ package net.darkhax.darkutils.blocks;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.blocks.BlockFilter.EnumType;
 import net.darkhax.darkutils.tileentity.TileEntityFeeder;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
