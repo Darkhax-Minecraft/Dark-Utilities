@@ -30,8 +30,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ForgeEventHandler {
     
-    public static String[] varients = new String[] { "knockback", "fire", "fortune", "loot", "lure", "luck", "efficiency" };
-    
     @SubscribeEvent
     public void onLooting (EnchantmentLevelEvent event) {
         
