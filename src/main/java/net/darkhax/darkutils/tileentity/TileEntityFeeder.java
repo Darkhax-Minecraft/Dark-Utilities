@@ -14,14 +14,9 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.MobSpawnerBaseLogic;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IChatComponent;
-import net.minecraft.util.ITickable;
 
 public class TileEntityFeeder extends TileEntityBasic implements IInventory {
-    
     
     public int addFood (ItemStack foodStack) {
         
@@ -61,10 +56,12 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
             
             for (EntityAnimal animal : animals) {
                 
-                if (animal.getGrowingAge() == 0 && animal.inLove <= 0) {
+                int food = getFood();
+                if (animal.getGrowingAge() == 0 && animal.inLove <= 0 && food != 0) {
                     
                     animal.inLove = 1200;
                     this.getWorld().setEntityState(animal, (byte) 18);
+                    setFood(food - 1);
                 }
             }
         }
