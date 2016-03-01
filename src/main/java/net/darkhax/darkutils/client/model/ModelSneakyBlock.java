@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.IBakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -153,7 +154,7 @@ public class ModelSneakyBlock implements ISmartBlockModel {
             if (state.getBlock() instanceof BlockSneaky)
                 state = ((TileEntitySneaky) access.getTileEntity(pos)).heldState;
                 
-            return state;
+            return state == null ? Blocks.air.getDefaultState() : state;
         }
         
         @Override
