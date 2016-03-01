@@ -5,6 +5,7 @@ import java.util.List;
 import net.darkhax.bookshelf.lib.util.EntityUtils;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.bookshelf.tileentity.TileEntityBasic;
+import net.darkhax.darkutils.blocks.BlockFeeder;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -21,18 +22,19 @@ import net.minecraft.util.ITickable;
 
 public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     
-    private int food = 0;
     
     public int addFood (ItemStack foodStack) {
         
-        if (this.food == getSizeInventory())
+        int food = getFood();
+        
+        if (food == getSizeInventory())
             return foodStack.stackSize;
             
-        setFood(this.food += foodStack.stackSize);
+        setFood(food += foodStack.stackSize);
         
-        if (this.food > getSizeInventory()) {
+        if (food > getSizeInventory()) {
             
-            int remaining = this.food - getSizeInventory();
+            int remaining = food - getSizeInventory();
             setFood(getSizeInventory());
             return remaining;
         }
@@ -42,20 +44,18 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     
     public int getFood () {
         
-        return this.food;
+        return this.getWorld().getBlockState(this.pos).getValue(BlockFeeder.FOOD).intValue();
     }
     
     public void setFood (int food) {
         
-        this.food = food;
-        this.worldObj.setBlockState(this.pos, getStateFromFood());
-        this.markDirty();
+        this.worldObj.setBlockState(this.pos, getStateFromFood(food), 3);
     }
     
     @Override
     public void onEntityUpdate () {
         
-        if (!this.worldObj.isRemote && this.food != 0) {
+        if (!this.worldObj.isRemote && getFood() != 0) {
             
             List<EntityAnimal> animals = EntityUtils.getEntitiesInArea(EntityAnimal.class, this.getWorld(), this.getPos(), 8);
             
@@ -70,21 +70,9 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
         }
     }
     
-    public IBlockState getStateFromFood () {
+    public IBlockState getStateFromFood (int food) {
         
         return ContentHandler.blockFeeder.getStateFromMeta(food);
-    }
-    
-    @Override
-    public void writeNBT (NBTTagCompound dataTag) {
-        
-        dataTag.setInteger("FoodAmount", this.food);
-    }
-    
-    @Override
-    public void readNBT (NBTTagCompound dataTag) {
-        
-        this.food = dataTag.getInteger("FoodAmount");
     }
     
     @Override
@@ -160,7 +148,7 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     @Override
     public boolean isItemValidForSlot (int index, ItemStack stack) {
         
-        if (this.food != 10 && ItemStackUtils.isValidStack(stack)) {
+        if (getFood() != 10 && ItemStackUtils.isValidStack(stack)) {
             
             Item item = stack.getItem();
             return (item == Items.carrot || item == Items.wheat_seeds || item == Items.wheat);
