@@ -150,8 +150,8 @@ public class ContentHandler {
         GameRegistry.addShapedRecipe(new ItemStack(blockTimer), new Object[] { "sts", "tct", "sts", 's', Blocks.stone, 't', Blocks.redstone_torch, 'c', Items.clock });
         GameRegistry.addShapedRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', Blocks.stone, 'w', Blocks.cobblestone_wall, 'c', new ItemStack(itemMaterial, 1, 2) });
         GameRegistry.addShapedRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', Blocks.stone, 'p', Blocks.piston, 'r', Blocks.redstone_block });
-        GameRegistry.addShapedRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', Blocks.stone, 's', Items.slime_ball });
-        GameRegistry.addShapedRecipe(new ItemStack(blockSneakyObsidian, 9), new Object[] { "ooo", "oso", "ooo", 'o', Blocks.obsidian, 's', blockSneakyBlock });
+        GameRegistry.addShapedRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', Blocks.stone, 's', Items.slime_ball });        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFeeder), new Object[] { "ccc", "geg", "ccc", 'c', new ItemStack(Blocks.stained_hardened_clay, 1, 5), 'g', "paneGlass", 'e', "gemEmerald"}));
         
         GameRegistry.addShapelessRecipe(new ItemStack(blockGrate), Blocks.iron_bars, Blocks.stone, Blocks.trapdoor);
         GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.skull, 1, 1));
@@ -161,7 +161,7 @@ public class ContentHandler {
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyGhost), blockSneakyBlock, Blocks.wool);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.torch);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.redstone_torch);
-        GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyObsidian, 9), blockSneakyBlock, Blocks.obsidian);
+        GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyObsidian), blockSneakyBlock, Blocks.obsidian);
         
         addConversionRecipes(new ItemStack(blockTrapMovement), new ItemStack(blockTrapMovementFast));
         addConversionRecipes(new ItemStack(blockTrapMovementFast), new ItemStack(blockTrapMovementHyper));
