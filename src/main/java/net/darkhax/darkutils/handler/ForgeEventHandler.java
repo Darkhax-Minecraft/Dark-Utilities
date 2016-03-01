@@ -15,6 +15,8 @@ import net.darkhax.darkutils.items.ItemSourcedSword;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -23,12 +25,20 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ForgeEventHandler {
+    
+    @SubscribeEvent
+    public void onLivingDrops (LivingDropsEvent event) {
+        
+        if (event.entity instanceof EntitySkeleton && ((EntitySkeleton) event.entity).getSkeletonType() == 1 && MathsUtils.tryPercentage(0.05 + (0.05d * event.lootingLevel)))
+            event.drops.add(new EntityItem(event.entity.worldObj, event.entity.posX, event.entity.posY, event.entity.posZ, new ItemStack(ContentHandler.itemMaterial, MathsUtils.nextIntInclusive(1, 3), 0)));
+    }
     
     @SubscribeEvent
     public void onLooting (EnchantmentLevelEvent event) {
