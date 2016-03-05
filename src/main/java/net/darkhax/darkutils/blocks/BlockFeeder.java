@@ -26,8 +26,9 @@ public class BlockFeeder extends BlockContainer {
     public BlockFeeder() {
         
         super(Material.glass);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FOOD, Integer.valueOf(0)));
         this.setUnlocalizedName("darkutils.feeder");
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FOOD, Integer.valueOf(0)));
+        this.setBlockBounds(0.375f, 0, 0.375f, 0.625f, 0.75f, 0.625f);
         this.setCreativeTab(DarkUtils.tab);
     }
     
