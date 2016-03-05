@@ -15,6 +15,11 @@ public class TileEntitySneaky extends TileEntityBasic {
      */
     public IBlockState heldState;
     
+    /**
+     * A String which holds the UUID of the player that placed the block.
+     */
+    public String playerID;
+    
     @Override
     public void readNBT (NBTTagCompound tag) {
         
@@ -22,6 +27,9 @@ public class TileEntitySneaky extends TileEntityBasic {
         
         if (heldBlock != null)
             heldState = heldBlock.getStateFromMeta(tag.getInteger("HeldBlockMeta"));
+            
+        if (tag.hasKey("PlayerID"))
+            this.playerID = tag.getString("PlayerID");
     }
     
     @Override
@@ -32,6 +40,9 @@ public class TileEntitySneaky extends TileEntityBasic {
             tag.setString("HeldBlockId", Block.blockRegistry.getNameForObject(heldState.getBlock()).toString());
             tag.setInteger("HeldBlockMeta", heldState.getBlock().getMetaFromState(heldState));
         }
+        
+        if (playerID != null && !playerID.isEmpty())
+            tag.setString("PlayerID", playerID);
     }
     
     @Override

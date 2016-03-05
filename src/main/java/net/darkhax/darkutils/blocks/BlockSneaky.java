@@ -9,6 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -60,6 +61,18 @@ public class BlockSneaky extends BlockContainer {
         }
         
         return false;
+    }
+    
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        
+        TileEntity tile = worldIn.getTileEntity(pos);
+        
+        if (!tile.isInvalid() && tile instanceof TileEntitySneaky && placer instanceof EntityPlayer) {
+            
+            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            sneaky.playerID = ((EntityPlayer) placer).getUniqueID().toString();
+        }
     }
     
     @Override
