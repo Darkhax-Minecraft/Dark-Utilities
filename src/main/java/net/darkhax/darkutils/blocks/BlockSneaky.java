@@ -64,7 +64,7 @@ public class BlockSneaky extends BlockContainer {
     }
     
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+    public void onBlockPlacedBy (World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         
         TileEntity tile = worldIn.getTileEntity(pos);
         
