@@ -154,3 +154,8 @@ jei.darkutils.focus.recall.desc=This focus can be bound to a location by right c
 
 #Baubles
 jei.darkutils.baubles.valid.desc=This item will work while in the Baubles inventory.
+
+#Waila
+option.darkutils.filter.type=Show Filter Type?
+option.darkutils.timer.time=Show Timer Time?
+option.darkutils.sneaky.owner=Show Sneaky for Owners?

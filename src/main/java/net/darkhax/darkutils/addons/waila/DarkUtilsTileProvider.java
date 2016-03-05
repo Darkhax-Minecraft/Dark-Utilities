@@ -34,7 +34,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
             
             TileEntitySneaky tile = (TileEntitySneaky) data.getTileEntity();
             
-            if (tile.playerID != null && !tile.playerID.isEmpty() && data.getPlayer().getUniqueID().toString().equals(tile.playerID))
+            if (cfg.getConfig(CONFIG_SNEAKY_OWNERS) && tile.playerID != null && !tile.playerID.isEmpty() && data.getPlayer().getUniqueID().toString().equals(tile.playerID))
                 return data.getStack();
                 
             if (tile.heldState != null)
@@ -53,10 +53,10 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
         
-        if (data.getBlock() instanceof BlockFilter && !(stack.getMetadata() > BlockFilter.EnumType.getTypes().length))
+        if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && !(stack.getMetadata() > BlockFilter.EnumType.getTypes().length))
             tip.add(StatCollector.translateToLocal("tooltip.darkutils.filter.type") + ": " + EnumChatFormatting.AQUA + StatCollector.translateToLocal("tooltip.darkutils.filter.type." + BlockFilter.EnumType.getTypes()[stack.getMetadata()]));
             
-        else if (data.getBlock() instanceof BlockTimer && data.getTileEntity() != null && !data.getTileEntity().isInvalid()) {
+        else if (data.getBlock() instanceof BlockTimer && cfg.getConfig(CONFIG_TIMER_TIME) && data.getTileEntity() != null && !data.getTileEntity().isInvalid()) {
             
             int delay = data.getNBTData().getInteger("TickRate");
             int currentTime = data.getNBTData().getInteger("CurrentTime");
@@ -94,5 +94,13 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         
         register.registerNBTProvider(dataProvider, BlockTimer.class);
         register.registerNBTProvider(dataProvider, BlockSneaky.class);
+        
+        register.addConfig("DarkUtils", CONFIG_FILTER_TYPE);
+        register.addConfig("DarkUtils", CONFIG_TIMER_TIME);
+        register.addConfig("DarkUtils", CONFIG_SNEAKY_OWNERS);
     }
+    
+    private static final String CONFIG_FILTER_TYPE = "darkutils.filter.type";
+    private static final String CONFIG_TIMER_TIME = "darkutils.timer.time";
+    private static final String CONFIG_SNEAKY_OWNERS = "darkutils.sneaky.owner";
 }
