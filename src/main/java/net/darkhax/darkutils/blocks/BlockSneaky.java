@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.blocks;
 
+import net.darkhax.bookshelf.client.RenderUtils;
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
@@ -9,15 +10,19 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
@@ -154,6 +159,57 @@ public class BlockSneaky extends BlockContainer {
         }
         
         return 0xFFFFFF;
+    }
+    
+    @Override
+    public boolean addLandingEffects (WorldServer world, BlockPos pos, IBlockState state, EntityLivingBase entity, int count) {
+        
+        TileEntity tile = world.getTileEntity(pos);
+        
+        if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
+            
+            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            
+            if (sneaky.heldState != null) {
+                
+                world.spawnParticle(EnumParticleTypes.BLOCK_DUST, entity.posX, entity.posY, entity.posZ, count, 0.0D, 0.0D, 0.0D, 0.15000000596046448D, new int[] {Block.getStateId(sneaky.heldState)});
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public boolean addHitEffects (World world, MovingObjectPosition hitPos, EffectRenderer renderer) {
+        
+        TileEntity tile = world.getTileEntity(hitPos.getBlockPos());
+        
+        if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
+            
+            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            
+            if (sneaky.heldState != null)
+                return RenderUtils.spawnDigParticles(renderer, sneaky.heldState, world, hitPos.getBlockPos(), hitPos.sideHit);
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public boolean addDestroyEffects (World world, BlockPos pos, EffectRenderer renderer) {
+        
+        TileEntity tile = world.getTileEntity(pos);
+        
+        if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
+            
+            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            
+            if (sneaky.heldState != null)
+                return RenderUtils.spawnBreakParticles(renderer, sneaky.heldState, world, pos);
+        }
+        
+        return false;
     }
     
     /**
