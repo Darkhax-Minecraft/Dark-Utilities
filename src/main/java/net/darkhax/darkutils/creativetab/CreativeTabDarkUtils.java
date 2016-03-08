@@ -9,11 +9,18 @@ public class CreativeTabDarkUtils extends CreativeTabCached {
     public CreativeTabDarkUtils() {
         
         super("darkutils");
+        this.setBackgroundImageName("darkutils.png");
     }
     
     @Override
     public Item getTabIconItem () {
         
         return Item.getItemFromBlock(ContentHandler.blockTrapMovement);
+    }
+    
+    @Override
+    public boolean hasSearchBar () {
+        
+        return true;
     }
 }
