@@ -14,27 +14,33 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IChatComponent;
 
 public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     
+    public String foodType;
+    
     public int addFood (ItemStack foodStack) {
         
-        int food = getFood();
-        
-        if (food == getSizeInventory())
-            return foodStack.stackSize;
+        if (isValidFood(foodStack)) {
             
-        setFood(food += foodStack.stackSize);
-        
-        if (food > getSizeInventory()) {
+            int food = getFood();
             
-            int remaining = food - getSizeInventory();
-            setFood(getSizeInventory());
-            return remaining;
+            if (food == getSizeInventory())
+                return foodStack.stackSize;
+                
+            setFood(food += foodStack.stackSize);
+            
+            if (food > getSizeInventory()) {
+                
+                int remaining = food - getSizeInventory();
+                setFood(getSizeInventory());
+                return remaining;
+            }
         }
         
-        return 0;
+        return foodStack.stackSize;
     }
     
     public int getFood () {
@@ -47,29 +53,59 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
         this.worldObj.setBlockState(this.pos, getStateFromFood(food), 3);
     }
     
+    public boolean isValidFood(ItemStack stack) {
+        
+        if (foodType == null || foodType.equals("null"))
+            foodType = ItemStackUtils.writeStackToString(stack);
+        
+        return ItemStackUtils.isValidStack(stack) && ItemStackUtils.writeStackToString(stack).equals(this.foodType);
+    }
+    
     @Override
     public void onEntityUpdate () {
         
-        if (!this.worldObj.isRemote && getFood() != 0) {
+        if (!this.worldObj.isRemote) {
             
-            List<EntityAnimal> animals = EntityUtils.getEntitiesInArea(EntityAnimal.class, this.getWorld(), this.getPos(), 8);
+            int food = getFood();
             
-            for (EntityAnimal animal : animals) {
+            if (food != 0) {
                 
-                int food = getFood();
-                if (animal.getGrowingAge() == 0 && animal.inLove <= 0 && food != 0) {
+                List<EntityAnimal> animals = EntityUtils.getEntitiesInArea(EntityAnimal.class, this.getWorld(), this.getPos(), 8);
+                
+                for (EntityAnimal animal : animals) {
                     
-                    animal.inLove = 1200;
-                    this.getWorld().setEntityState(animal, (byte) 18);
-                    setFood(food - 1);
+                    int currentFood = getFood();
+                    ItemStack foodStack = ItemStackUtils.createStackFromString(foodType);
+                    
+                    if (animal.getGrowingAge() == 0 && animal.inLove <= 0 && currentFood != 0 && animal.isBreedingItem(foodStack)) {
+                        
+                        animal.inLove = 1200;
+                        this.getWorld().setEntityState(animal, (byte) 18);
+                        setFood(currentFood - 1);
+                    }
                 }
             }
+            
+            else if (food == 0)
+                foodType = "null";
         }
     }
     
     public IBlockState getStateFromFood (int food) {
         
         return ContentHandler.blockFeeder.getStateFromMeta(food);
+    }
+    
+    @Override
+    public void writeNBT (NBTTagCompound dataTag) {
+        
+        dataTag.setString("FoodType", (this.foodType == null || this.foodType.isEmpty()) ? "null" : this.foodType);
+    }
+
+    @Override
+    public void readNBT (NBTTagCompound dataTag) {
+    
+        this.foodType = dataTag.getString("FoodType");
     }
     
     @Override
@@ -145,7 +181,7 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     @Override
     public boolean isItemValidForSlot (int index, ItemStack stack) {
         
-        if (getFood() != 10 && ItemStackUtils.isValidStack(stack)) {
+        if (getFood() != 10 && isValidFood(stack)) {
             
             Item item = stack.getItem();
             return (item == Items.carrot || item == Items.wheat_seeds || item == Items.wheat);

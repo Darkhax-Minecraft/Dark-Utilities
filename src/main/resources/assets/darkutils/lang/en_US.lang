@@ -118,7 +118,7 @@ jei.darkutils.sneaky.lever.desc=The Sneaky Lever is very similar to an ordinay l
 jei.darkutils.sneaky.ghost.desc=The Sneaky False Block is very similar to ordinary cobblestone. The main diference is that mobs will be able to move (and fall) through these blocks as if they did not exist. You can also right click it with a block in your hand, to change the apearance of the block to match the held block.
 jei.darkutils.sneaky.torch.desc=The Sneaky Torch is very similar to an ordinary torch. The only exception is that you can right click on it with a block in hand, and it will take on the appearance of that block. This allows for hidden torches.
 jei.darkutils.sneaky.obsidian.desc=The Sneaky Obsidian is very similar to the Obsidian Block. You can right click on it with an block in hand, and it will take on the appearance of that block. It is about 55% easier to mine than obsidian.
-jei.darkutils.feeder.desc=The Feeder block can hold animal food, and then automatically feed mobs with it. The feeder can accept seeds, wheat and carrots, and can feed any animal with it. The downside is that it can only hold 10 pieces of food at any time. It can be hooked up to a hopper or other item automation system.
+jei.darkutils.feeder.desc=The Feeder block can hold animal food, and then automatically feed mobs with it. The feeder can accept all vanilla breeding items. The downside is that it can only hold 10 pieces of food at any time. It can be hooked up to a hopper or other item automation system.
 
 #Thaumcraft
 item.darkutils.swordDeath.name=Sword of the Mortifer 
