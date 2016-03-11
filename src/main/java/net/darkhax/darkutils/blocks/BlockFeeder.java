@@ -53,7 +53,7 @@ public class BlockFeeder extends BlockContainer {
                     if (heldStack.stackSize == 0)
                         playerIn.setCurrentItemOrArmor(0, null);
                 }
-                    
+                
                 return true;
             }
         }

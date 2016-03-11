@@ -172,7 +172,7 @@ public class BlockSneaky extends BlockContainer {
             
             if (sneaky.heldState != null) {
                 
-                world.spawnParticle(EnumParticleTypes.BLOCK_DUST, entity.posX, entity.posY, entity.posZ, count, 0.0D, 0.0D, 0.0D, 0.15000000596046448D, new int[] {Block.getStateId(sneaky.heldState)});
+                world.spawnParticle(EnumParticleTypes.BLOCK_DUST, entity.posX, entity.posY, entity.posZ, count, 0.0D, 0.0D, 0.0D, 0.15000000596046448D, new int[] { Block.getStateId(sneaky.heldState) });
                 return true;
             }
         }
