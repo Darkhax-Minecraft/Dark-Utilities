@@ -45,10 +45,14 @@ public class BlockFeeder extends BlockContainer {
             if (feeder.isItemValidForSlot(-1, heldStack)) {
                 
                 feeder.setFood(feeder.getFood() + 1);
-                heldStack.stackSize--;
                 
-                if (heldStack.stackSize == 0)
-                    playerIn.setCurrentItemOrArmor(0, null);
+                if (!playerIn.capabilities.isCreativeMode) {
+                    
+                    heldStack.stackSize--;
+                    
+                    if (heldStack.stackSize == 0)
+                        playerIn.setCurrentItemOrArmor(0, null);
+                }
                     
                 return true;
             }
