@@ -64,7 +64,7 @@ public class BlockFeeder extends BlockContainer {
     @Override
     public int damageDropped (IBlockState state) {
         
-        return ((Integer) state.getValue(FOOD).intValue());
+        return 0;
     }
     
     @Override
