@@ -53,11 +53,11 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
         this.worldObj.setBlockState(this.pos, getStateFromFood(food), 3);
     }
     
-    public boolean isValidFood(ItemStack stack) {
+    public boolean isValidFood (ItemStack stack) {
         
         if (foodType == null || foodType.equals("null"))
             foodType = ItemStackUtils.writeStackToString(stack);
-        
+            
         return ItemStackUtils.isValidStack(stack) && ItemStackUtils.writeStackToString(stack).equals(this.foodType);
     }
     
@@ -101,10 +101,10 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
         
         dataTag.setString("FoodType", (this.foodType == null || this.foodType.isEmpty()) ? "null" : this.foodType);
     }
-
+    
     @Override
     public void readNBT (NBTTagCompound dataTag) {
-    
+        
         this.foodType = dataTag.getString("FoodType");
     }
     
@@ -184,7 +184,8 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
         if (getFood() != 10 && isValidFood(stack)) {
             
             Item item = stack.getItem();
-            return (item == Items.carrot || item == Items.wheat_seeds || item == Items.wheat);
+            return (item == Items.golden_apple || item == Items.golden_carrot || item == Items.wheat || item == Items.carrot || item == Items.wheat_seeds || item == Items.porkchop || item == Items.beef || item == Items.chicken || item == Items.rabbit || item == Items.mutton || item == Items.rotten_flesh || item == Items.cooked_porkchop || item == Items.cooked_beef || item == Items.cooked_chicken || item == Items.cooked_rabbit || item == Items.cooked_mutton || item == Items.fish);
+            
         }
         
         return false;
