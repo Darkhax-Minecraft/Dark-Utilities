@@ -76,10 +76,15 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         
         else if (data.getBlock() instanceof BlockFeeder && cfg.getConfig(CONFIG_FEEDER_INFO) && data.getTileEntity() instanceof TileEntityFeeder && !data.getTileEntity().isInvalid()) {
             
-            TileEntityFeeder feeder = (TileEntityFeeder) data.getTileEntity();
+            String foodType = data.getNBTData().getString("FoodType");
             
-            if (feeder.foodType != null && !feeder.foodType.equalsIgnoreCase("null"))
-                tip.add(StatCollector.translateToLocal("tooltip.darkutils.feeder.type") + ": " + ItemStackUtils.createStackFromString(feeder.foodType).getDisplayName());
+            if (foodType != null && !foodType.equalsIgnoreCase("null")) {
+                
+                ItemStack foodStack = ItemStackUtils.createStackFromString(foodType);
+                
+                if (ItemStackUtils.isValidStack(foodStack))
+                    tip.add(StatCollector.translateToLocal("tooltip.darkutils.feeder.type") + ": " + EnumChatFormatting.BLUE + foodStack.getDisplayName());
+            }
             
             tip.add(StatCollector.translateToLocal("tooltip.darkutils.feeder.amount") + ": " + data.getMetadata());
         }
