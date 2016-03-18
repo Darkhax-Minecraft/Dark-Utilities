@@ -154,12 +154,22 @@ public class BlockSneaky extends BlockContainer {
             TileEntitySneaky sneaky = (TileEntitySneaky) tile;
             IBlockState state = sneaky.heldState;
             
-            if (state != null)
-                return state.getBlock() instanceof BlockSneaky ? 0xFFFFFF : state.getBlock().colorMultiplier(world, pos, pass);
+            try {
+                
+                if (state != null)
+                    return state.getBlock() instanceof BlockSneaky ? 0xFFFFFF : state.getBlock().colorMultiplier(world, pos, pass);
+            }
+        
+            catch (IllegalArgumentException exception) {
+                
+                if (state != null)
+                    return state.getBlock() instanceof BlockSneaky ? 0xFFFFFF : state.getBlock().getRenderColor(state);
+            }
         }
         
         return 0xFFFFFF;
     }
+    
     
     @Override
     public boolean addLandingEffects (WorldServer world, BlockPos pos, IBlockState state, EntityLivingBase entity, int count) {
