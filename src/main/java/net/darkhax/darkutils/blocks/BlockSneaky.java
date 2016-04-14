@@ -8,44 +8,44 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSneaky extends BlockContainer {
     
     public BlockSneaky() {
         
-        super(Material.rock);
+        super(Material.ROCK);
         this.setUnlocalizedName("darkutils.sneaky");
-        this.setCreativeTab(DarkUtils.tab);
+        this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(1.5F);
         this.setResistance(10.0F);
         this.setDefaultState(((IExtendedBlockState) blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
     }
     
     @Override
-    public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack currentStack, EnumFacing side, float hitX, float hitY, float hitZ) {
         
         TileEntity tile = world.getTileEntity(pos);
-        ItemStack stack = playerIn.getHeldItem();
+        ItemStack stack = playerIn.getHeldItemMainhand();
         
         if (!tile.isInvalid() && tile instanceof TileEntitySneaky && stack != null && stack.getItem() != null) {
             
@@ -59,7 +59,7 @@ public class BlockSneaky extends BlockContainer {
                 if (heldState != null && isValidBlock(heldState)) {
                     
                     sneaky.heldState = heldState;
-                    world.markBlockForUpdate(pos);
+                    world.notifyBlockUpdate(pos, state, state, 8);
                     return true;
                 }
             }
@@ -81,9 +81,9 @@ public class BlockSneaky extends BlockContainer {
     }
     
     @Override
-    public int getRenderType () {
+    public EnumBlockRenderType getRenderType (IBlockState state) {
         
-        return 3;
+        return EnumBlockRenderType.MODEL;
     }
     
     @Override
@@ -93,7 +93,7 @@ public class BlockSneaky extends BlockContainer {
     }
     
     @Override
-    public BlockState createBlockState () {
+    public BlockStateContainer createBlockState () {
         
         return new ExtendedBlockState(this, new IProperty[] {}, new IUnlistedProperty[] { BlockStates.HELD_STATE, BlockStates.BLOCK_ACCESS, BlockStates.BLOCKPOS });
     }
@@ -126,53 +126,25 @@ public class BlockSneaky extends BlockContainer {
     }
     
     @Override
-    public boolean isOpaqueCube () {
+    public boolean isOpaqueCube (IBlockState state) {
         
         return false;
     }
     
     @Override
-    public boolean isFullCube () {
+    public boolean isFullCube (IBlockState state) {
         
         return false;
     }
     
     @Override
-    public boolean canRenderInLayer (EnumWorldBlockLayer layer) {
+    public boolean canRenderInLayer (IBlockState state, BlockRenderLayer layer) {
         
         return true;
     }
     
     @Override
-    @SideOnly(Side.CLIENT)
-    public int colorMultiplier (IBlockAccess world, BlockPos pos, int pass) {
-        
-        TileEntity tile = world.getTileEntity(pos);
-        
-        if (tile instanceof TileEntitySneaky) {
-            
-            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
-            IBlockState state = sneaky.heldState;
-            
-            try {
-                
-                if (state != null)
-                    return state.getBlock() instanceof BlockSneaky ? 0xFFFFFF : state.getBlock().colorMultiplier(world, pos, pass);
-            }
-        
-            catch (IllegalArgumentException exception) {
-                
-                if (state != null)
-                    return state.getBlock() instanceof BlockSneaky ? 0xFFFFFF : state.getBlock().getRenderColor(state);
-            }
-        }
-        
-        return 0xFFFFFF;
-    }
-    
-    
-    @Override
-    public boolean addLandingEffects (WorldServer world, BlockPos pos, IBlockState state, EntityLivingBase entity, int count) {
+    public boolean addLandingEffects (IBlockState state, WorldServer world, BlockPos pos, IBlockState iblockstate, EntityLivingBase entity, int count) {
         
         TileEntity tile = world.getTileEntity(pos);
         
@@ -191,7 +163,7 @@ public class BlockSneaky extends BlockContainer {
     }
     
     @Override
-    public boolean addHitEffects (World world, MovingObjectPosition hitPos, EffectRenderer renderer) {
+    public boolean addHitEffects (IBlockState state, World world, RayTraceResult hitPos, EffectRenderer renderer) {
         
         TileEntity tile = world.getTileEntity(hitPos.getBlockPos());
         
@@ -233,6 +205,6 @@ public class BlockSneaky extends BlockContainer {
     private static boolean isValidBlock (IBlockState state) {
         
         Block block = state.getBlock();
-        return (block.isOpaqueCube() || block.getRenderType() == 3) && !block.hasTileEntity(state) && block.getMaterial() != Material.air;
+        return (block.isOpaqueCube(state) || block.getRenderType(state) == EnumBlockRenderType.MODEL) && !block.hasTileEntity(state) && block.getMaterial(state) != Material.AIR;
     }
 }

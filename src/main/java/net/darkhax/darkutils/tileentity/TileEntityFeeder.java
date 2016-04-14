@@ -15,7 +15,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     
@@ -121,7 +121,7 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     }
     
     @Override
-    public IChatComponent getDisplayName () {
+    public ITextComponent getDisplayName () {
         
         return null;
     }
@@ -184,8 +184,7 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
         if (getFood() != 10 && isValidFood(stack)) {
             
             Item item = stack.getItem();
-            return (item == Items.golden_apple || item == Items.golden_carrot || item == Items.wheat || item == Items.carrot || item == Items.wheat_seeds || item == Items.porkchop || item == Items.beef || item == Items.chicken || item == Items.rabbit || item == Items.mutton || item == Items.rotten_flesh || item == Items.cooked_porkchop || item == Items.cooked_beef || item == Items.cooked_chicken || item == Items.cooked_rabbit || item == Items.cooked_mutton || item == Items.fish);
-            
+            return (item == Items.GOLDEN_APPLE || item == Items.GOLDEN_CARROT || item == Items.WHEAT || item == Items.CARROT || item == Items.WHEAT_SEEDS || item == Items.PORKCHOP || item == Items.BEEF || item == Items.CHICKEN || item == Items.RABBIT || item == Items.MUTTON || item == Items.ROTTEN_FLESH || item == Items.COOKED_PORKCHOP || item == Items.COOKED_BEEF || item == Items.COOKED_CHICKEN || item == Items.COOKED_RABBIT || item == Items.COOKED_MUTTON || item == Items.FISH);
         }
         
         return false;

@@ -2,11 +2,15 @@ package net.darkhax.darkutils.blocks;
 
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.BlockPos;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.property.ExtendedBlockState;
@@ -22,7 +26,7 @@ public class BlockSneakyLever extends BlockSneaky {
     }
     
     @Override
-    public BlockState createBlockState () {
+    public BlockStateContainer createBlockState () {
         
         return new ExtendedBlockState(this, new IProperty[] { BlockStates.POWERED }, new IUnlistedProperty[] { BlockStates.HELD_STATE, BlockStates.BLOCK_ACCESS, BlockStates.BLOCKPOS });
     }
@@ -40,10 +44,10 @@ public class BlockSneakyLever extends BlockSneaky {
     }
     
     @Override
-    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         
-        if (playerIn.getHeldItem() != null && playerIn.getHeldItem().getItem() != null)
-            return super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
+        if (heldItem != null && heldItem.getItem() != null)
+            return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
             
         if (worldIn.isRemote)
             return true;
@@ -52,7 +56,7 @@ public class BlockSneakyLever extends BlockSneaky {
             
             state = state.cycleProperty(BlockStates.POWERED);
             worldIn.setBlockState(pos, state, 1 | 2);
-            worldIn.playSoundEffect((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, "random.click", 0.3F, ((Boolean) state.getValue(BlockStates.POWERED)).booleanValue() ? 0.6F : 0.5F);
+            worldIn.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, (((Boolean) state.getValue(BlockStates.POWERED)).booleanValue() ? 0.6F : 0.5F));
             worldIn.notifyNeighborsOfStateChange(pos, this);
             return true;
         }
@@ -68,19 +72,22 @@ public class BlockSneakyLever extends BlockSneaky {
     }
     
     @Override
-    public int getWeakPower (IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side) {
+    public int getWeakPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
         
-        return ((Boolean) state.getValue(BlockStates.POWERED)).booleanValue() ? 15 : 0;
+        return ((Boolean) blockState.getValue(BlockStates.POWERED)).booleanValue() ? 15 : 0;
     }
     
     @Override
-    public int getStrongPower (IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side) {
+    public int getStrongPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
         
-        return !((Boolean) state.getValue(BlockStates.POWERED)).booleanValue() ? 0 : 15;
+        return !((Boolean) blockState.getValue(BlockStates.POWERED)).booleanValue() ? 15 : 0;
     }
     
-    @Override
-    public boolean canProvidePower () {
+    /**
+     * Can this block provide power. Only wire currently seems to have this change based on its
+     * state.
+     */
+    public boolean canProvidePower (IBlockState state) {
         
         return true;
     }

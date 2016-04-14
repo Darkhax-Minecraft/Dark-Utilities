@@ -1,34 +1,23 @@
 package net.darkhax.darkutils.handler;
 
-import net.darkhax.bookshelf.event.EnchantmentLevelEvent;
-import net.darkhax.bookshelf.event.EnchantmentLevelEvent.EfficiencyEvent;
-import net.darkhax.bookshelf.event.EnchantmentLevelEvent.FireAspectEvent;
-import net.darkhax.bookshelf.event.EnchantmentLevelEvent.FortuneEvent;
-import net.darkhax.bookshelf.event.EnchantmentLevelEvent.KnockbackEvent;
-import net.darkhax.bookshelf.event.EnchantmentLevelEvent.LootingEvent;
-import net.darkhax.bookshelf.event.EnchantmentLevelEvent.LuckOfSeaEvent;
-import net.darkhax.bookshelf.event.EnchantmentLevelEvent.LureEvent;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.bookshelf.lib.util.MathsUtils;
-import net.darkhax.darkutils.addons.baubles.BaublesAddon;
 import net.darkhax.darkutils.items.ItemSourcedSword;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ForgeEventHandler {
@@ -36,63 +25,23 @@ public class ForgeEventHandler {
     @SubscribeEvent
     public void onLivingDrops (LivingDropsEvent event) {
         
-        if (event.entity instanceof EntitySkeleton && ((EntitySkeleton) event.entity).getSkeletonType() == 1 && MathsUtils.tryPercentage(0.05 + (0.05d * event.lootingLevel)))
-            event.drops.add(new EntityItem(event.entity.worldObj, event.entity.posX, event.entity.posY, event.entity.posZ, new ItemStack(ContentHandler.itemMaterial, MathsUtils.nextIntInclusive(1, 3), 0)));
-    }
-    
-    @SubscribeEvent
-    public void onLooting (EnchantmentLevelEvent event) {
+        Entity entity = event.getEntity();
         
-        if (event.entityLiving instanceof EntityPlayer) {
-            
-            EntityPlayer player = (EntityPlayer) event.entityLiving;
-            
-            int meta = -1;
-            
-            if (event instanceof KnockbackEvent)
-                meta = 0;
-                
-            else if (event instanceof FireAspectEvent)
-                meta = 1;
-                
-            else if (event instanceof FortuneEvent)
-                meta = 2;
-                
-            else if (event instanceof LootingEvent)
-                meta = 3;
-                
-            else if (event instanceof LureEvent)
-                meta = 4;
-                
-            else if (event instanceof LuckOfSeaEvent)
-                meta = 5;
-                
-            else if (event instanceof EfficiencyEvent)
-                meta = 6;
-                
-            if (meta == -1)
-                return;
-                
-            final ItemStack stack = new ItemStack(ContentHandler.itemEnchantedRing, 1, meta);
-            if (meta != -1 && player.inventory.hasItemStack(stack) || (Loader.isModLoaded("Baubles") && BaublesAddon.isPlayerWearingRing(player, stack))) {
-                
-                event.levels++;
-                event.setResult(Result.ALLOW);
-            }
-        }
+        if (entity instanceof EntitySkeleton && ((EntitySkeleton) entity).getSkeletonType() == 1 && MathsUtils.tryPercentage(0.05 + (0.05d * event.getLootingLevel())))
+            event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ContentHandler.itemMaterial, MathsUtils.nextIntInclusive(1, 3), 0)));
     }
     
     @SubscribeEvent
     public void onLivingHurt (LivingHurtEvent event) {
         
-        if (event.source.getEntity() instanceof EntityLivingBase) {
+        if (event.getSource().getEntity() instanceof EntityLivingBase) {
             
-            EntityLivingBase attacker = (EntityLivingBase) event.source.getEntity();
+            EntityLivingBase attacker = (EntityLivingBase) event.getSource().getEntity();
             
-            if (ItemStackUtils.isValidStack(attacker.getHeldItem()) && attacker.getHeldItem().getItem() instanceof ItemSourcedSword) {
+            if (ItemStackUtils.isValidStack(attacker.getHeldItemMainhand()) && attacker.getHeldItemMainhand().getItem() instanceof ItemSourcedSword) {
                 
-                ItemSourcedSword sword = (ItemSourcedSword) attacker.getHeldItem().getItem();
-                event.entityLiving.attackEntityFrom(MathsUtils.tryPercentage(sword.effectChance) ? sword.source : DamageSource.generic, sword.attackDamage);
+                ItemSourcedSword sword = (ItemSourcedSword) attacker.getHeldItemMainhand().getItem();
+                event.getEntity().attackEntityFrom(MathsUtils.tryPercentage(sword.effectChance) ? sword.source : DamageSource.generic, sword.attackDamage);
                 event.setCanceled(true);
             }
         }
@@ -101,16 +50,16 @@ public class ForgeEventHandler {
     @SubscribeEvent
     public void onEnderTeleport (EnderTeleportEvent event) {
         
-        if (event.entityLiving instanceof EntityLivingBase && event.entityLiving.getEntityWorld() != null) {
+        if (event.getEntityLiving() instanceof EntityLivingBase && event.getEntityLiving().getEntityWorld() != null) {
             
-            for (TileEntity tile : event.entityLiving.getEntityWorld().loadedTileEntityList) {
+            for (TileEntity tile : event.getEntityLiving().getEntityWorld().loadedTileEntityList) {
                 
-                if (tile instanceof TileEntityEnderTether && ((TileEntityEnderTether) tile).isEntityCloseEnough(event.entityLiving)) {
+                if (tile instanceof TileEntityEnderTether && ((TileEntityEnderTether) tile).isEntityCloseEnough(event.getEntityLiving())) {
                     
                     BlockPos pos = tile.getPos();
-                    event.targetX = pos.getX();
-                    event.targetY = pos.getY();
-                    event.targetZ = pos.getZ();
+                    event.setTargetX(pos.getX());
+                    event.setTargetY(pos.getY());
+                    event.setTargetZ(pos.getZ());
                     break;
                 }
             }
@@ -120,13 +69,16 @@ public class ForgeEventHandler {
     @SubscribeEvent
     public void onEntitySpawn (EntityJoinWorldEvent event) {
         
-        if (event.entity instanceof EntityLivingBase && event.entity.getEntityWorld() != null) {
+        if (event.getEntity() instanceof EntitySlime && event.getEntity().getEntityWorld() != null) {
             
-            for (TileEntity tile : event.entity.getEntityWorld().loadedTileEntityList) {
+            java.util.Iterator<TileEntity> it = event.getEntity().getEntityWorld().loadedTileEntityList.iterator();
+            
+            while (it.hasNext()) {
                 
-                if (tile instanceof TileEntityAntiSlime && event.entity instanceof EntitySlime && !event.entity.hasCustomName() && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.entity)) {
+                TileEntity tile = it.next();
+                if (tile instanceof TileEntityAntiSlime && !event.getEntity().hasCustomName() && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.getEntity())) {
                     
-                    event.entity.setDead();
+                    event.getEntity().setDead();
                     event.setCanceled(true);
                     break;
                 }

@@ -5,7 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 
 public class TileEntitySneaky extends TileEntityBasic {
     
@@ -37,7 +37,7 @@ public class TileEntitySneaky extends TileEntityBasic {
         
         if (heldState != null) {
             
-            tag.setString("HeldBlockId", Block.blockRegistry.getNameForObject(heldState.getBlock()).toString());
+            tag.setString("HeldBlockId", heldState.getBlock().getRegistryName().toString());
             tag.setInteger("HeldBlockMeta", heldState.getBlock().getMetaFromState(heldState));
         }
         
@@ -46,7 +46,7 @@ public class TileEntitySneaky extends TileEntityBasic {
     }
     
     @Override
-    public void onDataPacket (NetworkManager net, S35PacketUpdateTileEntity packet) {
+    public void onDataPacket (NetworkManager net, SPacketUpdateTileEntity packet) {
         
         super.onDataPacket(net, packet);
         readNBT(packet.getNbtCompound());

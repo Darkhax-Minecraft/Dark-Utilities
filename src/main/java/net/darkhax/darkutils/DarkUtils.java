@@ -2,7 +2,6 @@ package net.darkhax.darkutils;
 
 import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.common.ProxyCommon;
-import net.darkhax.darkutils.common.network.packet.PacketSyncColor;
 import net.darkhax.darkutils.common.network.packet.PacketSyncTimer;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.handler.ContentHandler;
@@ -30,15 +29,13 @@ public class DarkUtils {
     @Mod.Instance(Constants.MOD_ID)
     public static DarkUtils instance;
     
-    public static SimpleNetworkWrapper network;
-    public static CreativeTabs tab = new CreativeTabDarkUtils();
+    public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("DarkUtils");
+    public static final CreativeTabs TAB = new CreativeTabDarkUtils();
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
-        network = NetworkRegistry.INSTANCE.newSimpleChannel("DarkUtils");
         network.registerMessage(PacketSyncTimer.PacketHandler.class, PacketSyncTimer.class, 0, Side.SERVER);
-        network.registerMessage(PacketSyncColor.PacketHandler.class, PacketSyncColor.class, 1, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         
         ContentHandler.initBlocks();
@@ -61,5 +58,11 @@ public class DarkUtils {
     public void postInit (FMLPostInitializationEvent event) {
         
         AddonHandler.onPostInit();
+    }
+    
+    public static void printDebugMessage (String message) {
+        
+        // TODO config to turn off.
+        Constants.LOGGER.info(message);
     }
 }

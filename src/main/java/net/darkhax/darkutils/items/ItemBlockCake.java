@@ -7,7 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -32,6 +32,6 @@ public class ItemBlockCake extends ItemBlock {
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
-        Utilities.wrapStringToList(StatCollector.translateToLocal("tooltip." + theBlock.getUnlocalizedName() + ".desc"), 35, false, tooltip);
+        Utilities.wrapStringToList(I18n.translateToLocal("tooltip." + theBlock.getUnlocalizedName() + ".desc"), 35, false, tooltip);
     }
 }

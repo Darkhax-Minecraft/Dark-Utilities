@@ -1,10 +1,10 @@
 package net.darkhax.darkutils.creativetab;
 
-import net.darkhax.bookshelf.creativetab.CreativeTabCached;
 import net.darkhax.darkutils.handler.ContentHandler;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class CreativeTabDarkUtils extends CreativeTabCached {
+public class CreativeTabDarkUtils extends CreativeTabs {
     
     public CreativeTabDarkUtils() {
         

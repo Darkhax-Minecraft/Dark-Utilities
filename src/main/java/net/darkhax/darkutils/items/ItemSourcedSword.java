@@ -2,41 +2,42 @@ package net.darkhax.darkutils.items;
 
 import java.util.List;
 
-import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.darkhax.darkutils.DarkUtils;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemSourcedSword extends ItemSword {
     
     public DamageSource source;
-    public EnumChatFormatting displayColor;
+    public ChatFormatting displayColor;
     public float effectChance;
     
     public ItemSourcedSword(ToolMaterial material, DamageSource source) {
         
-        this(material, source, EnumChatFormatting.WHITE, 1f);
+        this(material, source, ChatFormatting.WHITE, 1f);
     }
     
     public ItemSourcedSword(ToolMaterial material, DamageSource source, float effectChance) {
         
-        this(material, source, EnumChatFormatting.WHITE, effectChance);
+        this(material, source, ChatFormatting.WHITE, effectChance);
     }
     
-    public ItemSourcedSword(ToolMaterial material, DamageSource source, EnumChatFormatting displayColor, float effectChance) {
+    public ItemSourcedSword(ToolMaterial material, DamageSource source, ChatFormatting displayColor, float effectChance) {
         
         super(material);
-        this.setCreativeTab(DarkUtils.tab);
+        this.setCreativeTab(DarkUtils.TAB);
         this.source = source;
         this.displayColor = displayColor;
         this.effectChance = effectChance;
@@ -49,15 +50,20 @@ public class ItemSourcedSword extends ItemSword {
     }
     
     @Override
-    public Multimap<String, AttributeModifier> getItemAttributeModifiers () {
+    public Multimap<String, AttributeModifier> getItemAttributeModifiers (EntityEquipmentSlot slot) {
         
-        return HashMultimap.<String, AttributeModifier> create();
+        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
+        
+        if (slot == EntityEquipmentSlot.MAINHAND)
+            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.4000000953674316D, 0));
+            
+        return multimap;
     }
     
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
-        tooltip.add(this.displayColor + "+" + this.attackDamage + " " + StatCollector.translateToLocal("tooltip.darkutils.damagetype." + source.damageType));
+        tooltip.add(this.displayColor + "+" + this.attackDamage + " " + I18n.translateToLocal("tooltip.darkutils.damagetype." + source.damageType));
     }
 }

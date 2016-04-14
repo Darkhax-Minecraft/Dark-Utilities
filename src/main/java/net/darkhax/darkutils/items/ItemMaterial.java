@@ -15,7 +15,7 @@ public class ItemMaterial extends Item {
     
     public ItemMaterial() {
         
-        this.setCreativeTab(DarkUtils.tab);
+        this.setCreativeTab(DarkUtils.TAB);
         this.setUnlocalizedName("darkutils.material");
         this.setHasSubtypes(true);
     }

@@ -3,21 +3,20 @@ package net.darkhax.darkutils.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -46,21 +45,15 @@ public class BlockTrapEffect extends BlockTrapBase {
     }
     
     @Override
-    public MapColor getMapColor (IBlockState state) {
-        
-        return MapColor.obsidianColor;
-    }
-    
-    @Override
     public int getMetaFromState (IBlockState state) {
         
         return ((BlockTrapEffect.EnumType) state.getValue(VARIANT)).meta;
     }
     
     @Override
-    protected BlockState createBlockState () {
+    protected BlockStateContainer createBlockState () {
         
-        return new BlockState(this, new IProperty[] { VARIANT });
+        return new BlockStateContainer(this, new IProperty[] { VARIANT });
     }
     
     @Override
@@ -74,22 +67,22 @@ public class BlockTrapEffect extends BlockTrapBase {
             int type = getMetaFromState(state);
             
             if (type == 0)
-                effect = new PotionEffect(Potion.poison.id, 60);
+                effect = new PotionEffect(MobEffects.POISON, 60);
                 
             if (type == 1)
-                effect = new PotionEffect(Potion.weakness.id, 60);
+                effect = new PotionEffect(MobEffects.WEAKNESS, 60);
                 
             if (type == 2)
                 living.attackEntityFrom(DamageSource.magic, 2.5f);
                 
             if (type == 3)
-                effect = new PotionEffect(Potion.moveSlowdown.id, 60, 2);
+                effect = new PotionEffect(MobEffects.SLOWNESS, 60, 2);
                 
             if (type == 4)
                 living.setFire(1);
                 
             if (type == 5)
-                effect = new PotionEffect(Potion.wither.id, 60);
+                effect = new PotionEffect(MobEffects.WITHER, 60);
                 
             if (effect != null) {
                 

@@ -2,6 +2,8 @@ package net.darkhax.darkutils.items;
 
 import java.util.List;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import net.darkhax.darkutils.DarkUtils;
@@ -10,10 +12,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,12 +28,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemRingEnchanted extends Item implements IBauble {
     
     public static String[] varients = new String[] { "knockback", "fire", "fortune", "loot", "lure", "luck", "efficiency" };
-    public static Enchantment[] enchants = new Enchantment[] { Enchantment.knockback, Enchantment.fireAspect, Enchantment.fortune, Enchantment.looting, Enchantment.lure, Enchantment.luckOfTheSea, Enchantment.efficiency };
+    public static Enchantment[] enchants = new Enchantment[] { Enchantments.KNOCKBACK, Enchantments.FIRE_ASPECT, Enchantments.FORTUNE, Enchantments.LOOTING, Enchantments.LURE, Enchantments.LUCK_OF_THE_SEA, Enchantments.EFFICIENCY };
     
     public ItemRingEnchanted() {
         
         this.setUnlocalizedName("darkutils.ring");
-        this.setCreativeTab(DarkUtils.tab);
+        this.setCreativeTab(DarkUtils.TAB);
         this.setMaxStackSize(1);
         this.setHasSubtypes(true);
     }
@@ -57,12 +62,12 @@ public class ItemRingEnchanted extends Item implements IBauble {
     }
     
     @Override
-    public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player) {
+    public ActionResult<ItemStack> onItemRightClick (ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
         
         if (!world.isRemote && !BaublesAddon.equipBauble(player, stack, 1))
             BaublesAddon.equipBauble(player, stack, 2);
             
-        return stack;
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
     }
     
     @Override
@@ -80,7 +85,7 @@ public class ItemRingEnchanted extends Item implements IBauble {
         final int meta = stack.getMetadata();
         
         if (meta > -1 && meta < varients.length)
-            tooltip.add(EnumChatFormatting.GOLD + enchants[meta].getTranslatedName(1));
+            tooltip.add(ChatFormatting.GOLD + enchants[meta].getTranslatedName(1));
     }
     
     @Override

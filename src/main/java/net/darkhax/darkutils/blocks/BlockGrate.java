@@ -6,22 +6,25 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockGrate extends Block {
     
+    public static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0.01d, 0.87d, 0.01d, 0.99d, 0.99d, 0.99d);
+    
     public BlockGrate() {
         
-        super(Material.rock);
+        super(Material.ROCK);
         this.setUnlocalizedName("darkutils.grate");
-        this.setCreativeTab(DarkUtils.tab);
+        this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(3.0F);
         this.setResistance(5f);
-        this.setBlockBounds(0.01f, 0.87f, 0.01f, 0.99f, 0.99f, 0.99f);
     }
     
     @Override
@@ -32,21 +35,27 @@ public class BlockGrate extends Block {
     }
     
     @Override
-    public boolean isFullCube () {
+    public boolean isFullCube (IBlockState state) {
         
         return false;
     }
     
     @Override
-    public boolean isOpaqueCube () {
+    public boolean isOpaqueCube (IBlockState state) {
         
         return false;
     }
     
     @Override
     @SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer () {
+    public BlockRenderLayer getBlockLayer () {
         
-        return EnumWorldBlockLayer.CUTOUT;
+        return BlockRenderLayer.CUTOUT;
+    }
+    
+    @Override
+    public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
+        
+        return BOUNDS;
     }
 }

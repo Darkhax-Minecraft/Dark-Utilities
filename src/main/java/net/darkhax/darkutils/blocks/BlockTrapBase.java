@@ -2,23 +2,24 @@ package net.darkhax.darkutils.blocks;
 
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockTrapBase extends Block {
     
+    public static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0d, 0d, 0.0625d, 1d, 0.0125d, 1d);
+    
     public BlockTrapBase() {
         
-        super(Material.rock);
-        this.setCreativeTab(DarkUtils.tab);
+        super(Material.ROCK);
+        this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(3.0F);
         this.setResistance(10f);
         this.setHarvestLevel("pickaxe", 1);
-        this.setBlockBounds(0F, 0F, 0.0625F, 1F, 0.0125F, 1F);
     }
     
     private boolean checkForDrop (World world, BlockPos pos, IBlockState state) {
@@ -52,19 +53,13 @@ public class BlockTrapBase extends Block {
     }
     
     @Override
-    public MapColor getMapColor (IBlockState state) {
-        
-        return MapColor.obsidianColor;
-    }
-    
-    @Override
-    public boolean isFullCube () {
+    public boolean isFullCube (IBlockState state) {
         
         return false;
     }
     
     @Override
-    public boolean isOpaqueCube () {
+    public boolean isOpaqueCube (IBlockState state) {
         
         return false;
     }

@@ -4,20 +4,21 @@ import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.addons.thaumcraft.ThaumcraftAddon;
 import net.darkhax.darkutils.libs.Constants;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,7 +28,7 @@ public class ItemMysteriousPotion extends Item {
     
     public ItemMysteriousPotion() {
         
-        this.setCreativeTab(DarkUtils.tab);
+        this.setCreativeTab(DarkUtils.TAB);
         this.setUnlocalizedName("darkutils.potion");
         this.setMaxStackSize(1);
         this.setHasSubtypes(true);
@@ -35,16 +36,16 @@ public class ItemMysteriousPotion extends Item {
     }
     
     @Override
-    public boolean itemInteractionForEntity (ItemStack stack, EntityPlayer player, EntityLivingBase entity) {
+    public boolean itemInteractionForEntity (ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
         
         if (stack.getMetadata() == 0) {
             
-            if (entity instanceof EntityZombie) {
+            if (target instanceof EntityZombie) {
                 
                 if (player.worldObj.isRemote)
                     return true;
                     
-                EntityZombie zombie = (EntityZombie) entity;
+                EntityZombie zombie = (EntityZombie) target;
                 
                 if (zombie.isVillager()) {
                     
@@ -54,21 +55,21 @@ public class ItemMysteriousPotion extends Item {
                 }
             }
             
-            else if (Loader.isModLoaded("Thaumcraft"))
-                return ThaumcraftAddon.cureHook(stack, player, entity);
+            // else if (Loader.isModLoaded("Thaumcraft"))
+            // return ThaumcraftAddon.cureHook(stack, player, entity);
         }
         
-        if (entity instanceof EntityVillager && stack.getMetadata() == 1) {
+        if (target instanceof EntityVillager && stack.getMetadata() == 1) {
             
             if (player.worldObj.isRemote)
                 return true;
                 
             ItemStackUtils.decreaseStackSize(stack, 1);
             
-            EntityVillager villager = (EntityVillager) entity;
+            EntityVillager villager = (EntityVillager) target;
             EntityZombie zombie = new EntityZombie(player.worldObj);
-            zombie.copyLocationAndAnglesFrom(entity);
-            zombie.setVillager(true);
+            zombie.copyLocationAndAnglesFrom(target);
+            zombie.setVillagerType(villager.getProfession());
             zombie.setNoAI(villager.isAIDisabled());
             
             if (villager.isChild())
@@ -90,9 +91,9 @@ public class ItemMysteriousPotion extends Item {
     }
     
     @Override
-    public ItemStack onItemUseFinish (ItemStack stack, World world, EntityPlayer player) {
+    public ItemStack onItemUseFinish (ItemStack stack, World world, EntityLivingBase user) {
         
-        if (!player.capabilities.isCreativeMode)
+        if (user instanceof EntityPlayer && !((EntityPlayer) user).capabilities.isCreativeMode)
             ItemStackUtils.decreaseStackSize(stack, 1);
             
         if (!world.isRemote) {
@@ -100,10 +101,10 @@ public class ItemMysteriousPotion extends Item {
             int meta = stack.getMetadata();
             
             if (meta == 0)
-                player.addPotionEffect(new PotionEffect(Potion.saturation.id, 400, 0));
+                user.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 400, 0));
                 
             if (meta == 1)
-                player.addPotionEffect(new PotionEffect(Potion.hunger.id, 400, 0));
+                user.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 400, 0));
         }
         
         return stack;
@@ -122,10 +123,10 @@ public class ItemMysteriousPotion extends Item {
     }
     
     @Override
-    public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player) {
+    public ActionResult<ItemStack> onItemRightClick (ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         
-        player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
-        return stack;
+        playerIn.setActiveHand(hand);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
     }
     
     @SideOnly(Side.CLIENT)

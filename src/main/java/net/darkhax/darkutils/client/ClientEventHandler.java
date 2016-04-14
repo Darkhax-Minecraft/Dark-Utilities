@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.client;
 
 import net.darkhax.darkutils.client.model.ModelSneakyBlock;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -10,6 +10,6 @@ public class ClientEventHandler {
     @SubscribeEvent
     public void onModelBake (ModelBakeEvent event) {
         
-        event.modelRegistry.putObject(new ModelResourceLocation("darkutils:sneaky", "normal"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky", "normal"), new ModelSneakyBlock());
     }
 }

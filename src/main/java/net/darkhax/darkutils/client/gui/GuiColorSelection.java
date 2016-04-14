@@ -1,21 +1,18 @@
 package net.darkhax.darkutils.client.gui;
 
-import java.awt.Color;
 import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 
-import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.common.network.packet.PacketSyncColor;
+import com.mojang.realmsclient.gui.ChatFormatting;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.client.config.GuiSlider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -81,18 +78,18 @@ public class GuiColorSelection extends GuiScreen {
         
         Keyboard.enableRepeatEvents(true);
         this.buttonList.clear();
-        this.buttonList.add(this.buttonConfirm = new GuiButton(0, this.width / 2 - 64, this.height / 4 + 150 + 12, 50, 20, I18n.format("gui.done", new Object[0])));
-        this.buttonList.add(this.buttonCancel = new GuiButton(1, this.width / 2 + 16, this.height / 4 + 150 + 12, 50, 20, I18n.format("gui.cancel", new Object[0])));
+        this.buttonList.add(this.buttonConfirm = new GuiButton(0, this.width / 2 - 64, this.height / 4 + 150 + 12, 50, 20, I18n.translateToLocal("gui.done")));
+        this.buttonList.add(this.buttonCancel = new GuiButton(1, this.width / 2 + 16, this.height / 4 + 150 + 12, 50, 20, I18n.translateToLocal("gui.cancel")));
         
         int x = ((this.width - this.backgroundWidth) / 2) - (140 / 2) + backgroundWidth / 2;
-        this.buttonList.add(this.sliderRed = new GuiSlider(2, x, this.height / 4 + 75, 140, 20, EnumChatFormatting.RED + "Red: ", "", 0, 255, 255, false, true));
-        this.buttonList.add(this.sliderGreen = new GuiSlider(3, x, this.height / 4 + 105, 140, 20, EnumChatFormatting.GREEN + "Green: ", "", 0, 255, 255, false, true));
-        this.buttonList.add(this.sliderBlue = new GuiSlider(4, x, this.height / 4 + 135, 140, 20, EnumChatFormatting.BLUE + "Blue: ", "", 0, 255, 255, false, true));
+        this.buttonList.add(this.sliderRed = new GuiSlider(2, x, this.height / 4 + 75, 140, 20, ChatFormatting.RED + "Red: ", "", 0, 255, 255, false, true));
+        this.buttonList.add(this.sliderGreen = new GuiSlider(3, x, this.height / 4 + 105, 140, 20, ChatFormatting.GREEN + "Green: ", "", 0, 255, 255, false, true));
+        this.buttonList.add(this.sliderBlue = new GuiSlider(4, x, this.height / 4 + 135, 140, 20, ChatFormatting.BLUE + "Blue: ", "", 0, 255, 255, false, true));
         
         this.itemName = new GuiTextField(5, this.fontRendererObj, x, this.height / 4 + 45, 140, 20);
         this.itemName.setMaxStringLength(128);
         this.itemName.setFocused(true);
-        this.itemName.setText(StatCollector.translateToLocal("item.darkutils.foci.recall.name"));
+        this.itemName.setText(I18n.translateToLocal("item.darkutils.foci.recall.name"));
     }
     
     @Override
@@ -103,10 +100,11 @@ public class GuiColorSelection extends GuiScreen {
             
         else if (button.id == 0) {
             
-            DarkUtils.network.sendToServer(new PacketSyncColor(this.position, this.dimension, new Color(sliderRed.getValueInt(), sliderGreen.getValueInt(), sliderBlue.getValueInt()).getRGB(), itemName.getText()));
+            // DarkUtils.network.sendToServer(new PacketSyncColor(this.position,
+            // this.dimension, new Color(sliderRed.getValueInt(), sliderGreen.getValueInt(),
+            // sliderBlue.getValueInt()).getRGB(), itemName.getText()));
             this.mc.displayGuiScreen((GuiScreen) null);
         }
-        
     }
     
     @Override
@@ -121,7 +119,7 @@ public class GuiColorSelection extends GuiScreen {
         this.drawTexturedModalRect(i, j, 0, 0, backgroundWidth, backgroundHeight);
         
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("gui.darkutils.color.title"), this.width / 2, this.height / 2 - 95, 0xffffff);
+        this.drawCenteredString(this.fontRendererObj, I18n.translateToLocal("gui.darkutils.color.title"), this.width / 2, this.height / 2 - 95, 0xffffff);
         this.drawCenteredString(this.fontRendererObj, String.format("X:%d Y:%d Z:%d", position.getX(), position.getY(), position.getZ()), this.width / 2, this.height / 2 - 70, 0xffffff);
         this.itemName.drawTextBox();
         

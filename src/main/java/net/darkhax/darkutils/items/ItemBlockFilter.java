@@ -2,12 +2,13 @@ package net.darkhax.darkutils.items;
 
 import java.util.List;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+
 import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -29,6 +30,6 @@ public class ItemBlockFilter extends ItemBlockBasic {
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
         if (!(stack.getMetadata() > names.length))
-            tooltip.add(StatCollector.translateToLocal("tooltip.darkutils.filter.type") + ": " + EnumChatFormatting.AQUA + StatCollector.translateToLocal("tooltip.darkutils.filter.type." + names[stack.getMetadata()]));
+            tooltip.add(I18n.translateToLocal("tooltip.darkutils.filter.type") + ": " + ChatFormatting.AQUA + I18n.translateToLocal("tooltip.darkutils.filter.type." + names[stack.getMetadata()]));
     }
 }

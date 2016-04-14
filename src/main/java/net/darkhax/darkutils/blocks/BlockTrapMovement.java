@@ -4,14 +4,14 @@ import net.darkhax.bookshelf.lib.util.EntityUtils;
 import net.darkhax.bookshelf.lib.util.MathsUtils;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class BlockTrapMovement extends BlockTrapBase {
@@ -51,9 +51,9 @@ public class BlockTrapMovement extends BlockTrapBase {
     }
     
     @Override
-    protected BlockState createBlockState () {
+    protected BlockStateContainer createBlockState () {
         
-        return new BlockState(this, new IProperty[] { FACING });
+        return new BlockStateContainer(this, new IProperty[] { FACING });
     }
     
     @Override
@@ -70,7 +70,7 @@ public class BlockTrapMovement extends BlockTrapBase {
     
     private void centerDirectional (BlockPos block, Entity entity, EnumFacing facing) {
         
-        Vec3 entPos = entity.getPositionVector();
+        Vec3d entPos = entity.getPositionVector();
         
         if (facing == EnumFacing.EAST || facing == EnumFacing.WEST)
             entity.setPositionAndUpdate(entPos.xCoord, entPos.yCoord, block.getZ() + 0.5);
@@ -79,7 +79,7 @@ public class BlockTrapMovement extends BlockTrapBase {
             entity.setPositionAndUpdate(block.getX() + 0.5, entPos.yCoord, entPos.zCoord);
     }
     
-    private boolean requireCentering (BlockPos block, Vec3 entPos, EnumFacing facing) {
+    private boolean requireCentering (BlockPos block, Vec3d entPos, EnumFacing facing) {
         
         if (facing == EnumFacing.EAST || facing == EnumFacing.WEST)
             return !MathsUtils.isInRange(block.getZ() + 0.35, block.getZ() + 0.65, entPos.zCoord);

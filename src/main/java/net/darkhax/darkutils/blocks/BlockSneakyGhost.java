@@ -1,8 +1,8 @@
 package net.darkhax.darkutils.blocks;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockSneakyGhost extends BlockSneaky {
@@ -13,7 +13,7 @@ public class BlockSneakyGhost extends BlockSneaky {
     }
     
     @Override
-    public AxisAlignedBB getCollisionBoundingBox (World worldIn, BlockPos pos, IBlockState state) {
+    public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, World worldIn, BlockPos pos) {
         
         return null;
     }

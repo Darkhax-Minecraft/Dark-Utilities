@@ -6,12 +6,12 @@ import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -21,16 +21,16 @@ public class BlockUpdateDetector extends Block {
     
     public BlockUpdateDetector() {
         
-        super(Material.circuits);
+        super(Material.CIRCUITS);
         this.setDefaultState(blockState.getBaseState().withProperty(BlockStates.POWERED, false));
         this.setUnlocalizedName("darkutils.bud");
-        this.setCreativeTab(DarkUtils.tab);
+        this.setCreativeTab(DarkUtils.TAB);
     }
     
     @Override
     public void onNeighborBlockChange (World world, BlockPos pos, IBlockState state, Block neighbor) {
         
-        if (world.isRemote || neighbor.canProvidePower() || neighbor == Blocks.piston_extension || neighbor == Blocks.piston_head || state.getValue(BlockStates.POWERED))
+        if (world.isRemote || neighbor.canProvidePower(state) || neighbor == Blocks.PISTON_EXTENSION || neighbor == Blocks.PISTON_HEAD || state.getValue(BlockStates.POWERED))
             return;
             
         world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockStates.POWERED, true), 1 | 2);
@@ -38,9 +38,9 @@ public class BlockUpdateDetector extends Block {
     }
     
     @Override
-    public BlockState createBlockState () {
+    public BlockStateContainer createBlockState () {
         
-        return new BlockState(this, BlockStates.POWERED);
+        return new BlockStateContainer(this, BlockStates.POWERED);
     }
     
     @Override
@@ -56,13 +56,13 @@ public class BlockUpdateDetector extends Block {
     }
     
     @Override
-    public boolean canProvidePower () {
+    public boolean canProvidePower (IBlockState state) {
         
         return true;
     }
     
     @Override
-    public int getWeakPower (IBlockAccess world, BlockPos pos, IBlockState state, EnumFacing side) {
+    public int getWeakPower (IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
         
         return state.getValue(BlockStates.POWERED) ? 15 : 0;
     }
@@ -81,21 +81,21 @@ public class BlockUpdateDetector extends Block {
     }
     
     @Override
-    public boolean isOpaqueCube () {
+    public boolean isOpaqueCube (IBlockState state) {
         
         return false;
     }
     
     @Override
-    public boolean isFullCube () {
+    public boolean isFullCube (IBlockState state) {
         
         return false;
     }
     
     @Override
     @SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer () {
+    public BlockRenderLayer getBlockLayer () {
         
-        return EnumWorldBlockLayer.CUTOUT;
+        return BlockRenderLayer.CUTOUT;
     }
 }

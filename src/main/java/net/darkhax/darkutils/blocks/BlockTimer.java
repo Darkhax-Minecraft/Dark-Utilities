@@ -8,13 +8,16 @@ import net.darkhax.darkutils.handler.GuiHandler;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,18 +25,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTimer extends BlockContainer {
     
+    public static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0.0d, 0.0d, 0.0d, 1.0d, 0.125d, 1.0d);
+    
     public BlockTimer() {
         
-        super(Material.rock);
+        super(Material.ROCK);
         this.setDefaultState(blockState.getBaseState().withProperty(BlockStates.POWERED, false));
         this.setUnlocalizedName("darkutils.timer");
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
         this.setHardness(1f);
-        this.setCreativeTab(DarkUtils.tab);
+        this.setCreativeTab(DarkUtils.TAB);
     }
     
     @Override
-    public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         
         TileEntityTimer timer = (TileEntityTimer) world.getTileEntity(pos);
         
@@ -47,15 +51,21 @@ public class BlockTimer extends BlockContainer {
     }
     
     @Override
+    public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
+        
+        return BOUNDS;
+    }
+    
+    @Override
     public TileEntity createNewTileEntity (World world, int meta) {
         
         return new TileEntityTimer();
     }
     
     @Override
-    public BlockState createBlockState () {
+    public BlockStateContainer createBlockState () {
         
-        return new BlockState(this, BlockStates.POWERED);
+        return new BlockStateContainer(this, BlockStates.POWERED);
     }
     
     @Override
@@ -71,13 +81,13 @@ public class BlockTimer extends BlockContainer {
     }
     
     @Override
-    public boolean canProvidePower () {
+    public boolean canProvidePower (IBlockState state) {
         
         return true;
     }
     
     @Override
-    public int getWeakPower (IBlockAccess world, BlockPos pos, IBlockState state, EnumFacing side) {
+    public int getWeakPower (IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
         
         return state.getValue(BlockStates.POWERED) ? 15 : 0;
     }
@@ -96,27 +106,21 @@ public class BlockTimer extends BlockContainer {
     }
     
     @Override
-    public int getRenderType () {
-        
-        return 3;
-    }
-    
-    @Override
-    public boolean isOpaqueCube () {
+    public boolean isOpaqueCube (IBlockState state) {
         
         return false;
     }
     
     @Override
-    public boolean isFullCube () {
+    public boolean isFullCube (IBlockState state) {
         
         return false;
     }
     
     @Override
     @SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer () {
+    public BlockRenderLayer getBlockLayer () {
         
-        return EnumWorldBlockLayer.CUTOUT;
+        return BlockRenderLayer.CUTOUT;
     }
 }
