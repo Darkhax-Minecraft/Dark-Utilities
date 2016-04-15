@@ -9,7 +9,7 @@ public class Constants {
     
     public static final String MOD_ID = "DarkUtils";
     public static final String MOD_NAME = "Dark Utilities";
-    public static final String VERSION_NUMBER = "1.0.0.0";
+    public static final String VERSION_NUMBER = "1.1.0.0";
     public static final String MCVERSION = "[1.9,1.9.2]";
     public static final String CLIENT_PROXY_CLASS = "net.darkhax.darkutils.client.ProxyClient";
     public static final String SERVER_PROXY_CLASS = "net.darkhax.darkutils.common.ProxyCommon";
