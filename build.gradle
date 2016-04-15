@@ -59,16 +59,11 @@ repositories {
         url = "http://maven.rubbix.net"
     }
 
-    ivy {
-
-        name "Thaumcraft"
-        artifactPattern "http://addons-origin.cursecdn.com/files/2279/928/[module]-[revision].[ext]"
-    }
-
+    
     ivy {
 
         name "Baubles"
-        artifactPattern "http://addons-origin.cursecdn.com/files/2273/274/[module]-[revision].[ext]"
+        artifactPattern "http://addons-origin.cursecdn.com/files/2293/585/[module]-[revision].[ext]"
     }
 }
 
@@ -76,7 +71,6 @@ dependencies {
 
     deobfCompile "mezz.jei:jei_1.9:3.2.10.185"
     deobfCompile "mcp.mobius.waila:Waila:1.7.0-B2_1.9"
-    //deobfCompile name: 'Thaumcraft', version: "1.8.9-5.1.6", ext: 'jar'
     deobfCompile name: "Baubles", version: "1.9-1.2.0.1", ext: "jar"
     deobfCompile "net.darkhax.bookshelf:Bookshelf:1.9-1.2.0.219"
 }
@@ -217,7 +211,7 @@ curseforge {
         releaseType = project.releaseType;
         changelog = project.changelog;
 
-        addGameVersion "1.8.9"
+        addGameVersion "1.9"
         
         //Adds main jar, deobf jar, source jar, and javadoc jar to the upload.
         mainArtifact(jar) {
