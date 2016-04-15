@@ -52,6 +52,7 @@ public class DarkUtils {
     public void init (FMLInitializationEvent event) {
         
         AddonHandler.onInit();
+        proxy.onInit();
     }
     
     @EventHandler
