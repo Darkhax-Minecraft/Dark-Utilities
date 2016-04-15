@@ -1,8 +1,26 @@
 {
+	"parent": "block/block",
 	"textures": {
 		"particle": "blocks/iron_bars",
 		"frame": "blocks/stone",
 		"grate": "blocks/iron_bars"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 1, 2],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"translation": [0, 1, 0],
+			"scale": [0.40, 0.40, 0.40]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 225, 0],
+			"translation": [0, 3.8, 0],
+			"scale": [0.40, 0.40, 0.40]
+		}
 	},
 	"elements": [{
 		"name": "frameNorth",
@@ -146,10 +164,6 @@
 				"uv": [0.0, 0.0, 14.0, 0.0]
 			},
 			"up": {
-				"texture": "#grate",
-				"uv": [1.0, 1.0, 15.0, 15.0]
-			},
-			"down": {
 				"texture": "#grate",
 				"uv": [1.0, 1.0, 15.0, 15.0]
 			}

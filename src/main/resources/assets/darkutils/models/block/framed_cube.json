@@ -1,4 +1,5 @@
 {
+    "parent": "block/block",
 	"elements": [{
 		"name": "innerCube",
 		"from": [0.20000000298023224, 1.0, 0.20000000298023224],
