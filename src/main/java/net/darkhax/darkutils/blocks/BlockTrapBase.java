@@ -7,6 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockTrapBase extends Block {
@@ -33,6 +34,12 @@ public class BlockTrapBase extends Block {
         
         else
             return true;
+    }
+    
+    @Override
+    public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
+        
+        return BOUNDS;
     }
     
     private boolean canBlockStay (World world, BlockPos pos) {
