@@ -3,12 +3,14 @@ package net.darkhax.darkutils.client;
 import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
+import net.darkhax.darkutils.client.renderer.PotionColorHandler;
 import net.darkhax.darkutils.client.statemap.StateMapSneaky;
 import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
 import net.darkhax.darkutils.items.ItemRingEnchanted;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
@@ -106,6 +108,7 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void onInit () {
     
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new PotionColorHandler(), ContentHandler.itemPotion);
     }
     
     @Override
