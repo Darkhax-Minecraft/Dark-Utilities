@@ -30,7 +30,8 @@ public class BlockUpdateDetector extends Block {
     @Override
     public void onNeighborBlockChange (World world, BlockPos pos, IBlockState state, Block neighbor) {
         
-        if (world.isRemote || neighbor.canProvidePower(state) || neighbor == Blocks.PISTON_EXTENSION || neighbor == Blocks.PISTON_HEAD || state.getValue(BlockStates.POWERED))
+        
+        if (world.isRemote)
             return;
             
         world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockStates.POWERED, true), 1 | 2);
