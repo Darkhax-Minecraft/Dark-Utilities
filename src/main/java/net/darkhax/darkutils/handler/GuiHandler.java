@@ -25,7 +25,7 @@ public class GuiHandler implements IGuiHandler {
         
         if (id == TIMER) {
             
-            TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
+            final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
             
             if (tile instanceof TileEntityTimer)
                 return new GuiTimerAmount((TileEntityTimer) tile);

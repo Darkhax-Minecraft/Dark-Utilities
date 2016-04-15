@@ -35,7 +35,7 @@ public class BlockTrapEffect extends BlockTrapBase {
     @Override
     public int damageDropped (IBlockState state) {
         
-        return ((BlockTrapEffect.EnumType) state.getValue(VARIANT)).meta;
+        return state.getValue(VARIANT).meta;
     }
     
     @Override
@@ -47,7 +47,7 @@ public class BlockTrapEffect extends BlockTrapBase {
     @Override
     public int getMetaFromState (IBlockState state) {
         
-        return ((BlockTrapEffect.EnumType) state.getValue(VARIANT)).meta;
+        return state.getValue(VARIANT).meta;
     }
     
     @Override
@@ -61,10 +61,10 @@ public class BlockTrapEffect extends BlockTrapBase {
         
         if (entity instanceof EntityLivingBase) {
             
-            EntityLivingBase living = (EntityLivingBase) entity;
+            final EntityLivingBase living = (EntityLivingBase) entity;
             PotionEffect effect = null;
             
-            int type = getMetaFromState(state);
+            final int type = this.getMetaFromState(state);
             
             if (type == 0)
                 effect = new PotionEffect(MobEffects.POISON, 60);
@@ -96,7 +96,7 @@ public class BlockTrapEffect extends BlockTrapBase {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks (Item itemIn, CreativeTabs tab, List<ItemStack> list) {
         
-        for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
+        for (final BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
             list.add(new ItemStack(itemIn, 1, type.meta));
     }
     
@@ -134,7 +134,7 @@ public class BlockTrapEffect extends BlockTrapBase {
         
         public static EnumType fromMeta (int meta) {
             
-            for (EnumType type : EnumType.values())
+            for (final EnumType type : EnumType.values())
                 if (type.meta == meta)
                     return type;
                     
@@ -146,9 +146,9 @@ public class BlockTrapEffect extends BlockTrapBase {
             if (nameList != null)
                 return nameList;
                 
-            List<String> names = new ArrayList<String>();
+            final List<String> names = new ArrayList<String>();
             
-            for (EnumType type : EnumType.values())
+            for (final EnumType type : EnumType.values())
                 names.add(type.type);
                 
             nameList = names.toArray(new String[names.size()]);

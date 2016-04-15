@@ -34,22 +34,22 @@ public class ModelSneakyBlock implements IBakedModel {
     @Override
     public List<BakedQuad> getQuads (IBlockState state, EnumFacing side, long rand) {
         
-        Minecraft mc = Minecraft.getMinecraft();
-        BlockRenderLayer layer = MinecraftForgeClient.getRenderLayer();
+        final Minecraft mc = Minecraft.getMinecraft();
+        final BlockRenderLayer layer = MinecraftForgeClient.getRenderLayer();
         
         if (!(state.getBlock() instanceof BlockSneaky))
             return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getMissingModel().getQuads(state, side, rand);
             
-        IBlockState heldState = ((IExtendedBlockState) state).getValue(BlockStates.HELD_STATE);
-        IBlockAccess heldWorld = ((IExtendedBlockState) state).getValue(BlockStates.BLOCK_ACCESS);
-        BlockPos heldPos = ((IExtendedBlockState) state).getValue(BlockStates.BLOCKPOS);
+        final IBlockState heldState = ((IExtendedBlockState) state).getValue(BlockStates.HELD_STATE);
+        final IBlockAccess heldWorld = ((IExtendedBlockState) state).getValue(BlockStates.BLOCK_ACCESS);
+        final BlockPos heldPos = ((IExtendedBlockState) state).getValue(BlockStates.BLOCKPOS);
         
         if (heldWorld == null || heldPos == null)
             return ImmutableList.of();
             
         if (heldState == null && layer == BlockRenderLayer.SOLID) {
             
-            Block block = state.getBlock();
+            final Block block = state.getBlock();
             
             if (block instanceof BlockSneakyLever)
                 return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_lever")).getQuads(state, side, rand);
@@ -63,10 +63,10 @@ public class ModelSneakyBlock implements IBakedModel {
         
         else if (heldState != null && heldState.getBlock().canRenderInLayer(layer)) {
             
-            IBlockState actualState = heldState.getBlock().getActualState(heldState, new SneakyBlockAccess(heldWorld), heldPos);
-            IBakedModel model = mc.getBlockRendererDispatcher().getBlockModelShapes().getModelForState(actualState);
+            final IBlockState actualState = heldState.getBlock().getActualState(heldState, new SneakyBlockAccess(heldWorld), heldPos);
+            final IBakedModel model = mc.getBlockRendererDispatcher().getBlockModelShapes().getModelForState(actualState);
             
-            IBlockState extended = heldState.getBlock().getExtendedState(actualState, new SneakyBlockAccess(heldWorld), heldPos);
+            final IBlockState extended = heldState.getBlock().getExtendedState(actualState, new SneakyBlockAccess(heldWorld), heldPos);
             return model.getQuads(extended, side, rand);
         }
         
@@ -129,7 +129,7 @@ public class ModelSneakyBlock implements IBakedModel {
         @Override
         public TileEntity getTileEntity (BlockPos pos) {
             
-            return access.getTileEntity(pos);
+            return this.access.getTileEntity(pos);
         }
         
         @Override
@@ -141,10 +141,10 @@ public class ModelSneakyBlock implements IBakedModel {
         @Override
         public IBlockState getBlockState (BlockPos pos) {
             
-            IBlockState state = access.getBlockState(pos);
+            IBlockState state = this.access.getBlockState(pos);
             
             if (state.getBlock() instanceof BlockSneaky)
-                state = ((TileEntitySneaky) access.getTileEntity(pos)).heldState;
+                state = ((TileEntitySneaky) this.access.getTileEntity(pos)).heldState;
                 
             return state == null ? Blocks.AIR.getDefaultState() : state;
         }
@@ -152,37 +152,37 @@ public class ModelSneakyBlock implements IBakedModel {
         @Override
         public boolean isAirBlock (BlockPos pos) {
             
-            return access.isAirBlock(pos);
+            return this.access.isAirBlock(pos);
         }
         
         @Override
         public BiomeGenBase getBiomeGenForCoords (BlockPos pos) {
             
-            return access.getBiomeGenForCoords(pos);
+            return this.access.getBiomeGenForCoords(pos);
         }
         
         @Override
         public boolean extendedLevelsInChunkCache () {
             
-            return access.extendedLevelsInChunkCache();
+            return this.access.extendedLevelsInChunkCache();
         }
         
         @Override
         public int getStrongPower (BlockPos pos, EnumFacing direction) {
             
-            return access.getStrongPower(pos, direction);
+            return this.access.getStrongPower(pos, direction);
         }
         
         @Override
         public WorldType getWorldType () {
             
-            return access.getWorldType();
+            return this.access.getWorldType();
         }
         
         @Override
         public boolean isSideSolid (BlockPos pos, EnumFacing side, boolean _default) {
             
-            return access.isSideSolid(pos, side, _default);
+            return this.access.isSideSolid(pos, side, _default);
         }
     }
 }

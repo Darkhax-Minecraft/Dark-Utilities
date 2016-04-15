@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiTimerAmount extends GuiScreen {
     
-    private TileEntityTimer timer;
+    private final TileEntityTimer timer;
     
     private GuiTextField delayTextField;
     private GuiButton doneBtn;
@@ -46,7 +46,7 @@ public class GuiTimerAmount extends GuiScreen {
         this.delayTextField = new GuiTextField(2, this.fontRendererObj, this.width / 2 - 150, 50, 300, 20);
         this.delayTextField.setMaxStringLength(5);
         this.delayTextField.setFocused(true);
-        this.delayTextField.setText("" + timer.getDelayTime());
+        this.delayTextField.setText("" + this.timer.getDelayTime());
         this.doneBtn.enabled = this.delayTextField.getText().trim().length() > 0 && StringUtils.isNumeric(this.delayTextField.getText());
     }
     
@@ -59,19 +59,14 @@ public class GuiTimerAmount extends GuiScreen {
     @Override
     protected void actionPerformed (GuiButton button) throws IOException {
         
-        if (button.enabled) {
-            
-            if (button.id == 1) {
-                
+        if (button.enabled)
+            if (button.id == 1)
                 this.mc.displayGuiScreen((GuiScreen) null);
-            }
-            
             else if (button.id == 0 && StringUtils.isNumeric(this.delayTextField.getText())) {
                 
-                DarkUtils.network.sendToServer(new PacketSyncTimer(timer.getPos(), Integer.parseInt(delayTextField.getText())));
+                DarkUtils.network.sendToServer(new PacketSyncTimer(this.timer.getPos(), Integer.parseInt(this.delayTextField.getText())));
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
-        }
     }
     
     @Override
@@ -106,7 +101,7 @@ public class GuiTimerAmount extends GuiScreen {
         this.drawString(this.fontRendererObj, I18n.format("gui.darkutils.timer.delay", new Object[0]), this.width / 2 - 150, 37, 10526880);
         this.delayTextField.drawTextBox();
         
-        int i = 75;
+        final int i = 75;
         int j = 0;
         this.drawString(this.fontRendererObj, I18n.format("gui.darkutils.timer.desc.1", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRendererObj.FONT_HEIGHT, 10526880);
         this.drawString(this.fontRendererObj, I18n.format("gui.darkutils.timer.desc.2", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRendererObj.FONT_HEIGHT, 10526880);

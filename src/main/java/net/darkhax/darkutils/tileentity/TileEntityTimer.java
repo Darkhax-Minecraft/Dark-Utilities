@@ -15,34 +15,34 @@ public class TileEntityTimer extends TileEntityBasic {
     @Override
     public void writeNBT (NBTTagCompound dataTag) {
         
-        dataTag.setInteger("CurrentTime", currentTime);
-        dataTag.setInteger("TickRate", delayTime);
+        dataTag.setInteger("CurrentTime", this.currentTime);
+        dataTag.setInteger("TickRate", this.delayTime);
     }
     
     @Override
     public void readNBT (NBTTagCompound dataTag) {
         
-        currentTime = dataTag.getInteger("CurrentTime");
-        delayTime = dataTag.getInteger("TickRate");
+        this.currentTime = dataTag.getInteger("CurrentTime");
+        this.delayTime = dataTag.getInteger("TickRate");
     }
     
     @Override
     public void onEntityUpdate () {
         
-        if (currentTime >= delayTime) {
+        if (this.currentTime >= this.delayTime) {
             
-            worldObj.setBlockState(pos, worldObj.getBlockState(pos).withProperty(BlockStates.POWERED, true), 1 | 2);
-            worldObj.scheduleUpdate(pos, getBlockType(), getBlockType().tickRate(worldObj));
-            currentTime = 0;
+            this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockStates.POWERED, true), 1 | 2);
+            this.worldObj.scheduleUpdate(this.pos, this.getBlockType(), this.getBlockType().tickRate(this.worldObj));
+            this.currentTime = 0;
         }
         
         else
-            currentTime++;
+            this.currentTime++;
     }
     
     public int getCurrentTime () {
         
-        return currentTime;
+        return this.currentTime;
     }
     
     public void setCurrentTime (int currentTime) {
@@ -52,7 +52,7 @@ public class TileEntityTimer extends TileEntityBasic {
     
     public int getDelayTime () {
         
-        return delayTime;
+        return this.delayTime;
     }
     
     public void setDelayTime (int tickRate) {
@@ -69,13 +69,13 @@ public class TileEntityTimer extends TileEntityBasic {
     
     public void addTime (int time) {
         
-        final int newTime = delayTime + time;
-        setDelayTime((newTime < MAXDELAY) ? newTime : MAXDELAY);
+        final int newTime = this.delayTime + time;
+        this.setDelayTime(newTime < MAXDELAY ? newTime : MAXDELAY);
     }
     
     public void removeTime (int time) {
         
-        final int newTime = delayTime - time;
-        setDelayTime((newTime > MINDELAY) ? newTime : MINDELAY);
+        final int newTime = this.delayTime - time;
+        this.setDelayTime(newTime > MINDELAY ? newTime : MINDELAY);
     }
 }

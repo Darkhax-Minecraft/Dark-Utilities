@@ -28,17 +28,17 @@ public class PacketSyncTimer implements IMessage {
     @Override
     public void fromBytes (ByteBuf buf) {
         
-        pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
-        delayTime = buf.readInt();
+        this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
+        this.delayTime = buf.readInt();
     }
     
     @Override
     public void toBytes (ByteBuf buf) {
         
-        buf.writeInt(pos.getX());
-        buf.writeInt(pos.getY());
-        buf.writeInt(pos.getZ());
-        buf.writeInt(delayTime);
+        buf.writeInt(this.pos.getX());
+        buf.writeInt(this.pos.getY());
+        buf.writeInt(this.pos.getZ());
+        buf.writeInt(this.delayTime);
     }
     
     public static class PacketHandler implements IMessageHandler<PacketSyncTimer, IMessage> {
@@ -46,8 +46,8 @@ public class PacketSyncTimer implements IMessage {
         @Override
         public IMessage onMessage (PacketSyncTimer packet, MessageContext ctx) {
             
-            EntityPlayer player = (ctx.side == Side.CLIENT) ? PlayerUtils.getClientPlayer() : ctx.getServerHandler().playerEntity;
-            TileEntityTimer tile = (TileEntityTimer) player.worldObj.getTileEntity(packet.pos);
+            final EntityPlayer player = ctx.side == Side.CLIENT ? PlayerUtils.getClientPlayer() : ctx.getServerHandler().playerEntity;
+            final TileEntityTimer tile = (TileEntityTimer) player.worldObj.getTileEntity(packet.pos);
             
             if (!tile.isInvalid())
                 tile.setDelayTime(packet.delayTime);

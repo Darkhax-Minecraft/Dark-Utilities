@@ -165,10 +165,10 @@ public class ContentHandler {
         
         BookshelfRegistry.addAnvilRecipe(new ItemStack(Items.CAKE, 1), new ItemStack(Items.ENCHANTED_BOOK), "eplus", 2, new ItemStack(blockCakeEPlus));
         
-        for (BlockFilter.EnumType type : BlockFilter.EnumType.values())
+        for (final BlockFilter.EnumType type : BlockFilter.EnumType.values())
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, type.meta), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGate", 's', Blocks.STONE, 'i', filterIngredients[type.meta] }));
             
-        for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
+        for (final BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
             GameRegistry.addShapedRecipe(new ItemStack(blockTrap, 1, type.meta), new Object[] { "sis", 's', Blocks.STONE, 'i', trapIngredients[type.meta] });
     }
     
@@ -194,7 +194,7 @@ public class ContentHandler {
         
         for (int amount = 1; amount < 10; amount++) {
             
-            ItemStack[] inputs = new ItemStack[amount];
+            final ItemStack[] inputs = new ItemStack[amount];
             Arrays.fill(inputs, input);
             GameRegistry.addShapelessRecipe(ItemStackUtils.copyStackWithSize(output, amount), (Object[]) inputs);
         }

@@ -52,7 +52,7 @@ public class ItemSourcedSword extends ItemSword {
     @Override
     public Multimap<String, AttributeModifier> getItemAttributeModifiers (EntityEquipmentSlot slot) {
         
-        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
+        final Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
         
         if (slot == EntityEquipmentSlot.MAINHAND)
             multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.4000000953674316D, 0));
@@ -64,6 +64,6 @@ public class ItemSourcedSword extends ItemSword {
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
-        tooltip.add(this.displayColor + "+" + this.attackDamage + " " + I18n.translateToLocal("tooltip.darkutils.damagetype." + source.damageType));
+        tooltip.add(this.displayColor + "+" + this.attackDamage + " " + I18n.translateToLocal("tooltip.darkutils.damagetype." + this.source.damageType));
     }
 }

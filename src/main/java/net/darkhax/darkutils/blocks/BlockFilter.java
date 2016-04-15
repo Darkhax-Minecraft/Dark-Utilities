@@ -52,7 +52,7 @@ public class BlockFilter extends Block {
     @Override
     public int damageDropped (IBlockState state) {
         
-        return ((EnumType) state.getValue(VARIANT)).meta;
+        return state.getValue(VARIANT).meta;
     }
     
     @Override
@@ -64,7 +64,7 @@ public class BlockFilter extends Block {
     @Override
     public int getMetaFromState (IBlockState state) {
         
-        return ((EnumType) state.getValue(VARIANT)).meta;
+        return state.getValue(VARIANT).meta;
     }
     
     @Override
@@ -88,15 +88,15 @@ public class BlockFilter extends Block {
     @Override
     public void addCollisionBoxToList (IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity collidingEntity) {
         
-        int meta = state.getValue(VARIANT).meta;
+        final int meta = state.getValue(VARIANT).meta;
         
         if (collidingEntity instanceof EntityLivingBase) {
             
-            EntityLivingBase living = (EntityLivingBase) collidingEntity;
+            final EntityLivingBase living = (EntityLivingBase) collidingEntity;
             
-            if ((meta == 0 && living instanceof EntityPlayer) || (meta == 1 && living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) || (meta == 2 && living.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD) || (meta == 3 && living instanceof IMob) || (meta == 4 && living instanceof EntityAnimal) || (meta == 5 && (living instanceof EntityWaterMob || living instanceof EntityGuardian)) || (meta == 6 && living.isChild()) || (meta == 7 && living instanceof EntityTameable) || (meta == 8 && living instanceof EntitySlime)) {
+            if (meta == 0 && living instanceof EntityPlayer || meta == 1 && living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD || meta == 2 && living.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD || meta == 3 && living instanceof IMob || meta == 4 && living instanceof EntityAnimal || meta == 5 && (living instanceof EntityWaterMob || living instanceof EntityGuardian) || meta == 6 && living.isChild() || meta == 7 && living instanceof EntityTameable || meta == 8 && living instanceof EntitySlime) {
                 
-                snagMob(living, pos);
+                this.snagMob(living, pos);
                 return;
             }
         }
@@ -108,7 +108,7 @@ public class BlockFilter extends Block {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks (Item item, CreativeTabs tab, List<ItemStack> list) {
         
-        for (EnumType type : EnumType.values())
+        for (final EnumType type : EnumType.values())
             list.add(new ItemStack(item, 1, type.meta));
     }
     
@@ -162,7 +162,7 @@ public class BlockFilter extends Block {
         
         public static EnumType fromMeta (int meta) {
             
-            for (EnumType type : EnumType.values())
+            for (final EnumType type : EnumType.values())
                 if (type.meta == meta)
                     return type;
                     
@@ -174,9 +174,9 @@ public class BlockFilter extends Block {
             if (nameList != null)
                 return nameList;
                 
-            List<String> names = new ArrayList<String>();
+            final List<String> names = new ArrayList<String>();
             
-            for (EnumType type : EnumType.values())
+            for (final EnumType type : EnumType.values())
                 names.add(type.type);
                 
             nameList = names.toArray(new String[names.size()]);

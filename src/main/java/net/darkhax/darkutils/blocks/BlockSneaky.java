@@ -38,23 +38,23 @@ public class BlockSneaky extends BlockContainer {
         this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(1.5F);
         this.setResistance(10.0F);
-        this.setDefaultState(((IExtendedBlockState) blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
+        this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
     }
     
     @Override
     public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack currentStack, EnumFacing side, float hitX, float hitY, float hitZ) {
         
-        TileEntity tile = world.getTileEntity(pos);
-        ItemStack stack = playerIn.getHeldItemMainhand();
+        final TileEntity tile = world.getTileEntity(pos);
+        final ItemStack stack = playerIn.getHeldItemMainhand();
         
         if (!tile.isInvalid() && tile instanceof TileEntitySneaky && stack != null && stack.getItem() != null) {
             
-            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
-            Block block = Block.getBlockFromItem(stack.getItem());
+            final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            final Block block = Block.getBlockFromItem(stack.getItem());
             
             if (block instanceof Block) {
                 
-                IBlockState heldState = Block.getBlockFromItem(stack.getItem()).getStateFromMeta(stack.getItemDamage());
+                final IBlockState heldState = Block.getBlockFromItem(stack.getItem()).getStateFromMeta(stack.getItemDamage());
                 
                 if (heldState != null && isValidBlock(heldState)) {
                     
@@ -71,11 +71,11 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public void onBlockPlacedBy (World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         
-        TileEntity tile = worldIn.getTileEntity(pos);
+        final TileEntity tile = worldIn.getTileEntity(pos);
         
         if (!tile.isInvalid() && tile instanceof TileEntitySneaky && placer instanceof EntityPlayer) {
             
-            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
             sneaky.playerID = ((EntityPlayer) placer).getUniqueID().toString();
         }
     }
@@ -107,7 +107,7 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public IBlockState getStateFromMeta (int meta) {
         
-        return getDefaultState();
+        return this.getDefaultState();
     }
     
     @Override
@@ -117,7 +117,7 @@ public class BlockSneaky extends BlockContainer {
         
         if (world.getTileEntity(pos) instanceof TileEntitySneaky) {
             
-            TileEntitySneaky tile = ((TileEntitySneaky) world.getTileEntity(pos));
+            final TileEntitySneaky tile = (TileEntitySneaky) world.getTileEntity(pos);
             return ((IExtendedBlockState) state).withProperty(BlockStates.HELD_STATE, tile.heldState);
         }
         
@@ -146,11 +146,11 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public boolean addLandingEffects (IBlockState state, WorldServer world, BlockPos pos, IBlockState iblockstate, EntityLivingBase entity, int count) {
         
-        TileEntity tile = world.getTileEntity(pos);
+        final TileEntity tile = world.getTileEntity(pos);
         
         if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
             
-            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
             
             if (sneaky.heldState != null) {
                 
@@ -165,11 +165,11 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public boolean addHitEffects (IBlockState state, World world, RayTraceResult hitPos, EffectRenderer renderer) {
         
-        TileEntity tile = world.getTileEntity(hitPos.getBlockPos());
+        final TileEntity tile = world.getTileEntity(hitPos.getBlockPos());
         
         if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
             
-            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
             
             if (sneaky.heldState != null)
                 return RenderUtils.spawnDigParticles(renderer, sneaky.heldState, world, hitPos.getBlockPos(), hitPos.sideHit);
@@ -181,11 +181,11 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public boolean addDestroyEffects (World world, BlockPos pos, EffectRenderer renderer) {
         
-        TileEntity tile = world.getTileEntity(pos);
+        final TileEntity tile = world.getTileEntity(pos);
         
         if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
             
-            TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+            final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
             
             if (sneaky.heldState != null)
                 return RenderUtils.spawnBreakParticles(renderer, sneaky.heldState, world, pos);
@@ -204,7 +204,7 @@ public class BlockSneaky extends BlockContainer {
      */
     private static boolean isValidBlock (IBlockState state) {
         
-        Block block = state.getBlock();
+        final Block block = state.getBlock();
         return (block.isOpaqueCube(state) || block.getRenderType(state) == EnumBlockRenderType.MODEL) && !block.hasTileEntity(state) && block.getMaterial(state) != Material.AIR;
     }
 }

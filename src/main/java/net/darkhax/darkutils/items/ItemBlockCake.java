@@ -29,9 +29,10 @@ public class ItemBlockCake extends ItemBlock {
         return damage;
     }
     
+    @Override
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
-        Utilities.wrapStringToList(I18n.translateToLocal("tooltip." + theBlock.getUnlocalizedName() + ".desc"), 35, false, tooltip);
+        Utilities.wrapStringToList(I18n.translateToLocal("tooltip." + this.theBlock.getUnlocalizedName() + ".desc"), 35, false, tooltip);
     }
 }

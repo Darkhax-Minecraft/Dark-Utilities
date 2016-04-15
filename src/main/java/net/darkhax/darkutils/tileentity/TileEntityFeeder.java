@@ -23,19 +23,19 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     
     public int addFood (ItemStack foodStack) {
         
-        if (isValidFood(foodStack)) {
+        if (this.isValidFood(foodStack)) {
             
-            int food = getFood();
+            int food = this.getFood();
             
-            if (food == getSizeInventory())
+            if (food == this.getSizeInventory())
                 return foodStack.stackSize;
                 
-            setFood(food += foodStack.stackSize);
+            this.setFood(food += foodStack.stackSize);
             
-            if (food > getSizeInventory()) {
+            if (food > this.getSizeInventory()) {
                 
-                int remaining = food - getSizeInventory();
-                setFood(getSizeInventory());
+                final int remaining = food - this.getSizeInventory();
+                this.setFood(this.getSizeInventory());
                 return remaining;
             }
         }
@@ -50,13 +50,13 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     
     public void setFood (int food) {
         
-        this.worldObj.setBlockState(this.pos, getStateFromFood(food), 3);
+        this.worldObj.setBlockState(this.pos, this.getStateFromFood(food), 3);
     }
     
     public boolean isValidFood (ItemStack stack) {
         
-        if (foodType == null || foodType.equals("null"))
-            foodType = ItemStackUtils.writeStackToString(stack);
+        if (this.foodType == null || this.foodType.equals("null"))
+            this.foodType = ItemStackUtils.writeStackToString(stack);
             
         return ItemStackUtils.isValidStack(stack) && ItemStackUtils.writeStackToString(stack).equals(this.foodType);
     }
@@ -66,28 +66,28 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
         
         if (!this.worldObj.isRemote) {
             
-            int food = getFood();
+            final int food = this.getFood();
             
             if (food != 0) {
                 
-                List<EntityAnimal> animals = EntityUtils.getEntitiesInArea(EntityAnimal.class, this.getWorld(), this.getPos(), 8);
+                final List<EntityAnimal> animals = EntityUtils.getEntitiesInArea(EntityAnimal.class, this.getWorld(), this.getPos(), 8);
                 
-                for (EntityAnimal animal : animals) {
+                for (final EntityAnimal animal : animals) {
                     
-                    int currentFood = getFood();
-                    ItemStack foodStack = ItemStackUtils.createStackFromString(foodType);
+                    final int currentFood = this.getFood();
+                    final ItemStack foodStack = ItemStackUtils.createStackFromString(this.foodType);
                     
                     if (animal.getGrowingAge() == 0 && animal.inLove <= 0 && currentFood != 0 && animal.isBreedingItem(foodStack)) {
                         
                         animal.inLove = 1200;
                         this.getWorld().setEntityState(animal, (byte) 18);
-                        setFood(currentFood - 1);
+                        this.setFood(currentFood - 1);
                     }
                 }
             }
             
             else if (food == 0)
-                foodType = "null";
+                this.foodType = "null";
         }
     }
     
@@ -99,7 +99,7 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     @Override
     public void writeNBT (NBTTagCompound dataTag) {
         
-        dataTag.setString("FoodType", (this.foodType == null || this.foodType.isEmpty()) ? "null" : this.foodType);
+        dataTag.setString("FoodType", this.foodType == null || this.foodType.isEmpty() ? "null" : this.foodType);
     }
     
     @Override
@@ -153,7 +153,7 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     @Override
     public void setInventorySlotContents (int index, ItemStack stack) {
         
-        stack.stackSize = addFood(stack);
+        stack.stackSize = this.addFood(stack);
     }
     
     @Override
@@ -181,10 +181,10 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     @Override
     public boolean isItemValidForSlot (int index, ItemStack stack) {
         
-        if (getFood() != 10 && isValidFood(stack)) {
+        if (this.getFood() != 10 && this.isValidFood(stack)) {
             
-            Item item = stack.getItem();
-            return (item == Items.GOLDEN_APPLE || item == Items.GOLDEN_CARROT || item == Items.WHEAT || item == Items.CARROT || item == Items.WHEAT_SEEDS || item == Items.PORKCHOP || item == Items.BEEF || item == Items.CHICKEN || item == Items.RABBIT || item == Items.MUTTON || item == Items.ROTTEN_FLESH || item == Items.COOKED_PORKCHOP || item == Items.COOKED_BEEF || item == Items.COOKED_CHICKEN || item == Items.COOKED_RABBIT || item == Items.COOKED_MUTTON || item == Items.FISH);
+            final Item item = stack.getItem();
+            return item == Items.GOLDEN_APPLE || item == Items.GOLDEN_CARROT || item == Items.WHEAT || item == Items.CARROT || item == Items.WHEAT_SEEDS || item == Items.PORKCHOP || item == Items.BEEF || item == Items.CHICKEN || item == Items.RABBIT || item == Items.MUTTON || item == Items.ROTTEN_FLESH || item == Items.COOKED_PORKCHOP || item == Items.COOKED_BEEF || item == Items.COOKED_CHICKEN || item == Items.COOKED_RABBIT || item == Items.COOKED_MUTTON || item == Items.FISH;
         }
         
         return false;
@@ -210,6 +210,6 @@ public class TileEntityFeeder extends TileEntityBasic implements IInventory {
     @Override
     public void clear () {
         
-        setFood(0);
+        this.setFood(0);
     }
 }

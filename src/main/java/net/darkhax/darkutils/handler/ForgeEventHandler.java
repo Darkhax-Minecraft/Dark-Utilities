@@ -25,9 +25,9 @@ public class ForgeEventHandler {
     @SubscribeEvent
     public void onLivingDrops (LivingDropsEvent event) {
         
-        Entity entity = event.getEntity();
+        final Entity entity = event.getEntity();
         
-        if (entity instanceof EntitySkeleton && ((EntitySkeleton) entity).getSkeletonType() == 1 && MathsUtils.tryPercentage(0.05 + (0.05d * event.getLootingLevel())))
+        if (entity instanceof EntitySkeleton && ((EntitySkeleton) entity).getSkeletonType() == 1 && MathsUtils.tryPercentage(0.05 + 0.05d * event.getLootingLevel()))
             event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ContentHandler.itemMaterial, MathsUtils.nextIntInclusive(1, 3), 0)));
     }
     
@@ -36,11 +36,11 @@ public class ForgeEventHandler {
         
         if (event.getSource().getEntity() instanceof EntityLivingBase) {
             
-            EntityLivingBase attacker = (EntityLivingBase) event.getSource().getEntity();
+            final EntityLivingBase attacker = (EntityLivingBase) event.getSource().getEntity();
             
             if (ItemStackUtils.isValidStack(attacker.getHeldItemMainhand()) && attacker.getHeldItemMainhand().getItem() instanceof ItemSourcedSword) {
                 
-                ItemSourcedSword sword = (ItemSourcedSword) attacker.getHeldItemMainhand().getItem();
+                final ItemSourcedSword sword = (ItemSourcedSword) attacker.getHeldItemMainhand().getItem();
                 event.getEntity().attackEntityFrom(MathsUtils.tryPercentage(sword.effectChance) ? sword.source : DamageSource.generic, sword.attackDamage);
                 event.setCanceled(true);
             }
@@ -50,20 +50,16 @@ public class ForgeEventHandler {
     @SubscribeEvent
     public void onEnderTeleport (EnderTeleportEvent event) {
         
-        if (event.getEntityLiving() instanceof EntityLivingBase && event.getEntityLiving().getEntityWorld() != null) {
-            
-            for (TileEntity tile : event.getEntityLiving().getEntityWorld().loadedTileEntityList) {
-                
+        if (event.getEntityLiving() instanceof EntityLivingBase && event.getEntityLiving().getEntityWorld() != null)
+            for (final TileEntity tile : event.getEntityLiving().getEntityWorld().loadedTileEntityList)
                 if (tile instanceof TileEntityEnderTether && ((TileEntityEnderTether) tile).isEntityCloseEnough(event.getEntityLiving())) {
                     
-                    BlockPos pos = tile.getPos();
+                    final BlockPos pos = tile.getPos();
                     event.setTargetX(pos.getX());
                     event.setTargetY(pos.getY());
                     event.setTargetZ(pos.getZ());
                     break;
                 }
-            }
-        }
     }
     
     @SubscribeEvent
@@ -71,11 +67,11 @@ public class ForgeEventHandler {
         
         if (event.getEntity() instanceof EntitySlime && event.getEntity().getEntityWorld() != null) {
             
-            java.util.Iterator<TileEntity> it = event.getEntity().getEntityWorld().loadedTileEntityList.iterator();
+            final java.util.Iterator<TileEntity> it = event.getEntity().getEntityWorld().loadedTileEntityList.iterator();
             
             while (it.hasNext()) {
                 
-                TileEntity tile = it.next();
+                final TileEntity tile = it.next();
                 if (tile instanceof TileEntityAntiSlime && !event.getEntity().hasCustomName() && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.getEntity())) {
                     
                     event.getEntity().setDead();

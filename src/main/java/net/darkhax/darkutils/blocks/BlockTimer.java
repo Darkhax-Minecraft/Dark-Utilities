@@ -31,7 +31,7 @@ public class BlockTimer extends BlockContainer {
     public BlockTimer() {
         
         super(Material.ROCK);
-        this.setDefaultState(blockState.getBaseState().withProperty(BlockStates.POWERED, false));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, false));
         this.setUnlocalizedName("darkutils.timer");
         this.setHardness(1f);
         this.setCreativeTab(DarkUtils.TAB);
@@ -40,7 +40,7 @@ public class BlockTimer extends BlockContainer {
     @Override
     public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         
-        TileEntityTimer timer = (TileEntityTimer) world.getTileEntity(pos);
+        final TileEntityTimer timer = (TileEntityTimer) world.getTileEntity(pos);
         
         if (!timer.isInvalid()) {
             
@@ -78,7 +78,7 @@ public class BlockTimer extends BlockContainer {
     @Override
     public IBlockState getStateFromMeta (int meta) {
         
-        return getDefaultState().withProperty(BlockStates.POWERED, meta == 1);
+        return this.getDefaultState().withProperty(BlockStates.POWERED, meta == 1);
     }
     
     @Override

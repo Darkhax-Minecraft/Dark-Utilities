@@ -25,6 +25,6 @@ public class ItemBlockFeeder extends ItemBlock {
     @Override
     public String getUnlocalizedName (ItemStack stack) {
         
-        return super.getUnlocalizedName() + "." + ((stack.getMetadata() == 0) ? "empty" : (stack.getMetadata() == 10) ? "full" : "partial");
+        return super.getUnlocalizedName() + "." + (stack.getMetadata() == 0 ? "empty" : stack.getMetadata() == 10 ? "full" : "partial");
     }
 }

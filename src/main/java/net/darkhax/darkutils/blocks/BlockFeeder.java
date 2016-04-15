@@ -39,12 +39,12 @@ public class BlockFeeder extends BlockContainer {
     @Override
     public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         
-        TileEntity tile = world.getTileEntity(pos);
+        final TileEntity tile = world.getTileEntity(pos);
         
         if (tile instanceof TileEntityFeeder && ItemStackUtils.isValidStack(playerIn.getHeldItemMainhand())) {
             
-            TileEntityFeeder feeder = (TileEntityFeeder) tile;
-            ItemStack heldStack = playerIn.getHeldItemMainhand();
+            final TileEntityFeeder feeder = (TileEntityFeeder) tile;
+            final ItemStack heldStack = playerIn.getHeldItemMainhand();
             
             if (feeder.isItemValidForSlot(-1, heldStack)) {
                 
@@ -74,13 +74,13 @@ public class BlockFeeder extends BlockContainer {
     @Override
     public IBlockState getStateFromMeta (int meta) {
         
-        return this.getDefaultState().withProperty(FOOD, Integer.valueOf((meta > 10) ? 10 : (meta < 0) ? 0 : meta));
+        return this.getDefaultState().withProperty(FOOD, Integer.valueOf(meta > 10 ? 10 : meta < 0 ? 0 : meta));
     }
     
     @Override
     public int getMetaFromState (IBlockState state) {
         
-        return ((Integer) state.getValue(FOOD)).intValue();
+        return state.getValue(FOOD).intValue();
     }
     
     @Override

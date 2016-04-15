@@ -33,10 +33,10 @@ public class DarkUtilsJEIPlugin extends BlankModPlugin {
         registry.addDescription(new ItemStack(ContentHandler.blockSneakyObsidian), "jei.darkutils.sneaky.obsidian.desc");
         registry.addDescription(new ItemStack(ContentHandler.blockFeeder), "jei.darkutils.feeder.desc");
         
-        for (BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
+        for (final BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
             registry.addDescription(new ItemStack(ContentHandler.blockTrap, 1, type.meta), "jei.darkutils.trap." + type.type + ".desc");
             
-        for (BlockFilter.EnumType type : BlockFilter.EnumType.values())
+        for (final BlockFilter.EnumType type : BlockFilter.EnumType.values())
             registry.addDescription(new ItemStack(ContentHandler.blockFilter, 1, type.meta), "jei.darkutils.filter." + type.type + ".desc");
             
         for (int meta = 0; meta < ItemMaterial.varients.length; meta++)

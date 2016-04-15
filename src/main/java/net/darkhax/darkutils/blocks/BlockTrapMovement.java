@@ -18,7 +18,7 @@ public class BlockTrapMovement extends BlockTrapBase {
     
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     
-    private double speed;
+    private final double speed;
     
     public BlockTrapMovement(double speed) {
         
@@ -35,10 +35,10 @@ public class BlockTrapMovement extends BlockTrapBase {
         if (!(entity instanceof EntityLivingBase || entity instanceof EntityItem) || entity.isSneaking())
             return;
             
-        EnumFacing direction = state.getValue(FACING);
+        final EnumFacing direction = state.getValue(FACING);
         
-        if (requireCentering(pos, entity.getPositionVector(), direction))
-            centerDirectional(pos, entity, direction);
+        if (this.requireCentering(pos, entity.getPositionVector(), direction))
+            this.centerDirectional(pos, entity, direction);
             
         if (entity != null)
             EntityUtils.pushTowards(entity, state.getValue(FACING), this.speed);
@@ -65,12 +65,12 @@ public class BlockTrapMovement extends BlockTrapBase {
     @Override
     public int getMetaFromState (IBlockState state) {
         
-        return ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();
+        return state.getValue(FACING).getHorizontalIndex();
     }
     
     private void centerDirectional (BlockPos block, Entity entity, EnumFacing facing) {
         
-        Vec3d entPos = entity.getPositionVector();
+        final Vec3d entPos = entity.getPositionVector();
         
         if (facing == EnumFacing.EAST || facing == EnumFacing.WEST)
             entity.setPositionAndUpdate(entPos.xCoord, entPos.yCoord, block.getZ() + 0.5);

@@ -35,7 +35,7 @@ public class AddonHandler {
      */
     public static void onPreInit () {
         
-        for (ModAddon addon : addonRegistry)
+        for (final ModAddon addon : addonRegistry)
             addon.onPreInit();
     }
     
@@ -44,7 +44,7 @@ public class AddonHandler {
      */
     public static void onInit () {
         
-        for (ModAddon addon : addonRegistry)
+        for (final ModAddon addon : addonRegistry)
             addon.onInit();
     }
     
@@ -53,7 +53,7 @@ public class AddonHandler {
      */
     public static void onPostInit () {
         
-        for (ModAddon addon : addonRegistry)
+        for (final ModAddon addon : addonRegistry)
             addon.onPostInit();
     }
     
@@ -63,7 +63,7 @@ public class AddonHandler {
     @SideOnly(Side.CLIENT)
     public static void onClientPreInit () {
         
-        for (ModAddon addon : addonRegistry)
+        for (final ModAddon addon : addonRegistry)
             addon.onClientPreInit();
     }
     
@@ -75,7 +75,7 @@ public class AddonHandler {
     @Optional.Method(modid = "JEI")
     public static void onJEIReady (IModRegistry registry) {
         
-        for (ModAddon addon : addonRegistry)
+        for (final ModAddon addon : addonRegistry)
             addon.onJEIReady(registry);
     }
 }

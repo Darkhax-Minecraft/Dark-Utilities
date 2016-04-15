@@ -28,7 +28,7 @@ public class ProxyClient extends ProxyCommon {
         
         item = Item.getItemFromBlock(ContentHandler.blockTrap);
         
-        for (BlockTrapEffect.EnumType varient : BlockTrapEffect.EnumType.values())
+        for (final BlockTrapEffect.EnumType varient : BlockTrapEffect.EnumType.values())
             ModelLoader.setCustomModelResourceLocation(item, varient.meta, new ModelResourceLocation("darkutils:trap_" + varient.type, "inventory"));
             
         item = Item.getItemFromBlock(ContentHandler.blockEnderTether);
@@ -47,7 +47,7 @@ public class ProxyClient extends ProxyCommon {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:grate", "inventory"));
         
         item = Item.getItemFromBlock(ContentHandler.blockFilter);
-        for (BlockFilter.EnumType varient : BlockFilter.EnumType.values())
+        for (final BlockFilter.EnumType varient : BlockFilter.EnumType.values())
             ModelLoader.setCustomModelResourceLocation(item, varient.meta, new ModelResourceLocation("darkutils:filter_" + varient.type, "inventory"));
             
         item = Item.getItemFromBlock(ContentHandler.blockTimer);
@@ -95,7 +95,7 @@ public class ProxyClient extends ProxyCommon {
         for (int meta = 1; meta < 10; meta++)
             ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation("darkutils:feeder_partial", "inventory"));
             
-        StateMapperBase sneakyMap = new StateMapSneaky();
+        final StateMapperBase sneakyMap = new StateMapSneaky();
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyBlock, sneakyMap);
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyLever, sneakyMap);
         ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyGhost, sneakyMap);
@@ -107,7 +107,7 @@ public class ProxyClient extends ProxyCommon {
     
     @Override
     public void onInit () {
-    
+        
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new PotionColorHandler(), ContentHandler.itemPotion);
     }
     

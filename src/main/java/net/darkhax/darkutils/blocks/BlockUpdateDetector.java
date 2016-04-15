@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -22,14 +21,13 @@ public class BlockUpdateDetector extends Block {
     public BlockUpdateDetector() {
         
         super(Material.CIRCUITS);
-        this.setDefaultState(blockState.getBaseState().withProperty(BlockStates.POWERED, false));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, false));
         this.setUnlocalizedName("darkutils.bud");
         this.setCreativeTab(DarkUtils.TAB);
     }
     
     @Override
     public void onNeighborBlockChange (World world, BlockPos pos, IBlockState state, Block neighbor) {
-        
         
         if (world.isRemote)
             return;
@@ -53,7 +51,7 @@ public class BlockUpdateDetector extends Block {
     @Override
     public IBlockState getStateFromMeta (int meta) {
         
-        return getDefaultState().withProperty(BlockStates.POWERED, meta == 1);
+        return this.getDefaultState().withProperty(BlockStates.POWERED, meta == 1);
     }
     
     @Override

@@ -84,13 +84,13 @@ public class BaublesAddon implements ModAddon {
      */
     public static boolean isPlayerWearingBauble (EntityPlayer player, ItemStack item, int type) {
         
-        IInventory inv = BaublesApi.getBaubles(player);
+        final IInventory inv = BaublesApi.getBaubles(player);
         
         if (inv != null) {
             
-            ItemStack stack = inv.getStackInSlot(type);
+            final ItemStack stack = inv.getStackInSlot(type);
             
-            return (ItemStackUtils.isValidStack(stack) && ItemStackUtils.areStacksSimilar(stack, item));
+            return ItemStackUtils.isValidStack(stack) && ItemStackUtils.areStacksSimilar(stack, item);
         }
         
         return false;
@@ -107,11 +107,11 @@ public class BaublesAddon implements ModAddon {
      */
     public static boolean equipBauble (EntityPlayer player, ItemStack item, int type) {
         
-        IInventory inv = BaublesApi.getBaubles(player);
+        final IInventory inv = BaublesApi.getBaubles(player);
         
         if (inv != null) {
             
-            ItemStack existing = inv.getStackInSlot(type);
+            final ItemStack existing = inv.getStackInSlot(type);
             
             if (existing == null) {
                 

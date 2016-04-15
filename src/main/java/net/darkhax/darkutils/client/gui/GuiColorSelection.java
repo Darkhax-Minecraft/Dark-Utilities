@@ -28,11 +28,11 @@ public class GuiColorSelection extends GuiScreen {
     private GuiSlider sliderRed;
     private GuiSlider sliderGreen;
     private GuiSlider sliderBlue;
-    private BlockPos position;
-    private int dimension;
+    private final BlockPos position;
+    private final int dimension;
     
-    private int backgroundWidth;
-    private int backgroundHeight;
+    private final int backgroundWidth;
+    private final int backgroundHeight;
     
     public GuiColorSelection(BlockPos pos, int dimension) {
         
@@ -81,7 +81,7 @@ public class GuiColorSelection extends GuiScreen {
         this.buttonList.add(this.buttonConfirm = new GuiButton(0, this.width / 2 - 64, this.height / 4 + 150 + 12, 50, 20, I18n.translateToLocal("gui.done")));
         this.buttonList.add(this.buttonCancel = new GuiButton(1, this.width / 2 + 16, this.height / 4 + 150 + 12, 50, 20, I18n.translateToLocal("gui.cancel")));
         
-        int x = ((this.width - this.backgroundWidth) / 2) - (140 / 2) + backgroundWidth / 2;
+        final int x = (this.width - this.backgroundWidth) / 2 - 140 / 2 + this.backgroundWidth / 2;
         this.buttonList.add(this.sliderRed = new GuiSlider(2, x, this.height / 4 + 75, 140, 20, ChatFormatting.RED + "Red: ", "", 0, 255, 255, false, true));
         this.buttonList.add(this.sliderGreen = new GuiSlider(3, x, this.height / 4 + 105, 140, 20, ChatFormatting.GREEN + "Green: ", "", 0, 255, 255, false, true));
         this.buttonList.add(this.sliderBlue = new GuiSlider(4, x, this.height / 4 + 135, 140, 20, ChatFormatting.BLUE + "Blue: ", "", 0, 255, 255, false, true));
@@ -98,13 +98,11 @@ public class GuiColorSelection extends GuiScreen {
         if (button.id == 1)
             this.mc.displayGuiScreen((GuiScreen) null);
             
-        else if (button.id == 0) {
-            
+        else if (button.id == 0)
             // DarkUtils.network.sendToServer(new PacketSyncColor(this.position,
             // this.dimension, new Color(sliderRed.getValueInt(), sliderGreen.getValueInt(),
             // sliderBlue.getValueInt()).getRGB(), itemName.getText()));
             this.mc.displayGuiScreen((GuiScreen) null);
-        }
     }
     
     @Override
@@ -112,15 +110,15 @@ public class GuiColorSelection extends GuiScreen {
         
         this.drawDefaultBackground();
         
-        color3I(sliderRed.getValueInt(), sliderGreen.getValueInt(), sliderBlue.getValueInt());
+        this.color3I(this.sliderRed.getValueInt(), this.sliderGreen.getValueInt(), this.sliderBlue.getValueInt());
         this.mc.getTextureManager().bindTexture(background);
-        int i = (this.width - this.backgroundWidth) / 2;
-        int j = (this.height - this.backgroundHeight) / 2;
-        this.drawTexturedModalRect(i, j, 0, 0, backgroundWidth, backgroundHeight);
+        final int i = (this.width - this.backgroundWidth) / 2;
+        final int j = (this.height - this.backgroundHeight) / 2;
+        this.drawTexturedModalRect(i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
         
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.drawCenteredString(this.fontRendererObj, I18n.translateToLocal("gui.darkutils.color.title"), this.width / 2, this.height / 2 - 95, 0xffffff);
-        this.drawCenteredString(this.fontRendererObj, String.format("X:%d Y:%d Z:%d", position.getX(), position.getY(), position.getZ()), this.width / 2, this.height / 2 - 70, 0xffffff);
+        this.drawCenteredString(this.fontRendererObj, String.format("X:%d Y:%d Z:%d", this.position.getX(), this.position.getY(), this.position.getZ()), this.width / 2, this.height / 2 - 70, 0xffffff);
         this.itemName.drawTextBox();
         
         super.drawScreen(mouseX, mouseY, partialTicks);
@@ -128,6 +126,6 @@ public class GuiColorSelection extends GuiScreen {
     
     private void color3I (int red, int green, int blue) {
         
-        GlStateManager.color((float) ((float) red / 255f), (float) ((float) green / 255f), (float) ((float) blue / 255f), 1.0F);
+        GlStateManager.color(red / 255f, green / 255f, blue / 255f, 1.0F);
     }
 }

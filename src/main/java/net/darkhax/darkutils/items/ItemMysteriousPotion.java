@@ -38,14 +38,13 @@ public class ItemMysteriousPotion extends Item {
     @Override
     public boolean itemInteractionForEntity (ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
         
-        if (stack.getMetadata() == 0) {
-            
+        if (stack.getMetadata() == 0)
             if (target instanceof EntityZombie) {
                 
                 if (player.worldObj.isRemote)
                     return true;
                     
-                EntityZombie zombie = (EntityZombie) target;
+                final EntityZombie zombie = (EntityZombie) target;
                 
                 if (zombie.isVillager()) {
                     
@@ -55,10 +54,6 @@ public class ItemMysteriousPotion extends Item {
                 }
             }
             
-            // else if (Loader.isModLoaded("Thaumcraft"))
-            // return ThaumcraftAddon.cureHook(stack, player, entity);
-        }
-        
         if (target instanceof EntityVillager && stack.getMetadata() == 1) {
             
             if (player.worldObj.isRemote)
@@ -66,8 +61,8 @@ public class ItemMysteriousPotion extends Item {
                 
             ItemStackUtils.decreaseStackSize(stack, 1);
             
-            EntityVillager villager = (EntityVillager) target;
-            EntityZombie zombie = new EntityZombie(player.worldObj);
+            final EntityVillager villager = (EntityVillager) target;
+            final EntityZombie zombie = new EntityZombie(player.worldObj);
             zombie.copyLocationAndAnglesFrom(target);
             zombie.setVillagerType(villager.getProfession());
             zombie.setNoAI(villager.isAIDisabled());
@@ -98,7 +93,7 @@ public class ItemMysteriousPotion extends Item {
             
         if (!world.isRemote) {
             
-            int meta = stack.getMetadata();
+            final int meta = stack.getMetadata();
             
             if (meta == 0)
                 user.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 400, 0));
@@ -132,7 +127,7 @@ public class ItemMysteriousPotion extends Item {
     @SideOnly(Side.CLIENT)
     public int getColorFromItemStack (ItemStack stack, int renderPass) {
         
-        return renderPass > 0 ? 16777215 : (stack.getMetadata() == 0) ? 16710911 : 7371335;
+        return renderPass > 0 ? 16777215 : stack.getMetadata() == 0 ? 16710911 : 7371335;
     }
     
     @Override

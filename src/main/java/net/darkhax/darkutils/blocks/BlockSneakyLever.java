@@ -21,7 +21,7 @@ public class BlockSneakyLever extends BlockSneaky {
     
     public BlockSneakyLever() {
         
-        this.setDefaultState(((IExtendedBlockState) blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null).withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
+        this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null).withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
         this.setUnlocalizedName("darkutils.sneaky.lever");
     }
     
@@ -40,7 +40,7 @@ public class BlockSneakyLever extends BlockSneaky {
     @Override
     public IBlockState getStateFromMeta (int meta) {
         
-        return getDefaultState().withProperty(BlockStates.POWERED, (meta == 0) ? false : true);
+        return this.getDefaultState().withProperty(BlockStates.POWERED, meta == 0 ? false : true);
     }
     
     @Override
@@ -56,7 +56,7 @@ public class BlockSneakyLever extends BlockSneaky {
             
             state = state.cycleProperty(BlockStates.POWERED);
             worldIn.setBlockState(pos, state, 1 | 2);
-            worldIn.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, (((Boolean) state.getValue(BlockStates.POWERED)).booleanValue() ? 0.6F : 0.5F));
+            worldIn.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, state.getValue(BlockStates.POWERED).booleanValue() ? 0.6F : 0.5F);
             worldIn.notifyNeighborsOfStateChange(pos, this);
             return true;
         }
@@ -65,7 +65,7 @@ public class BlockSneakyLever extends BlockSneaky {
     @Override
     public void breakBlock (World worldIn, BlockPos pos, IBlockState state) {
         
-        if (((Boolean) state.getValue(BlockStates.POWERED)).booleanValue())
+        if (state.getValue(BlockStates.POWERED).booleanValue())
             worldIn.notifyNeighborsOfStateChange(pos, this);
             
         super.breakBlock(worldIn, pos, state);
@@ -74,19 +74,20 @@ public class BlockSneakyLever extends BlockSneaky {
     @Override
     public int getWeakPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
         
-        return ((Boolean) blockState.getValue(BlockStates.POWERED)).booleanValue() ? 15 : 0;
+        return blockState.getValue(BlockStates.POWERED).booleanValue() ? 15 : 0;
     }
     
     @Override
     public int getStrongPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
         
-        return !((Boolean) blockState.getValue(BlockStates.POWERED)).booleanValue() ? 15 : 0;
+        return !blockState.getValue(BlockStates.POWERED).booleanValue() ? 15 : 0;
     }
     
     /**
      * Can this block provide power. Only wire currently seems to have this change based on its
      * state.
      */
+    @Override
     public boolean canProvidePower (IBlockState state) {
         
         return true;

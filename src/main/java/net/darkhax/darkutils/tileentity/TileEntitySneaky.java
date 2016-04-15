@@ -23,10 +23,10 @@ public class TileEntitySneaky extends TileEntityBasic {
     @Override
     public void readNBT (NBTTagCompound tag) {
         
-        Block heldBlock = Block.getBlockFromName(tag.getString("HeldBlockId"));
+        final Block heldBlock = Block.getBlockFromName(tag.getString("HeldBlockId"));
         
         if (heldBlock != null)
-            heldState = heldBlock.getStateFromMeta(tag.getInteger("HeldBlockMeta"));
+            this.heldState = heldBlock.getStateFromMeta(tag.getInteger("HeldBlockMeta"));
             
         if (tag.hasKey("PlayerID"))
             this.playerID = tag.getString("PlayerID");
@@ -35,21 +35,21 @@ public class TileEntitySneaky extends TileEntityBasic {
     @Override
     public void writeNBT (NBTTagCompound tag) {
         
-        if (heldState != null) {
+        if (this.heldState != null) {
             
-            tag.setString("HeldBlockId", heldState.getBlock().getRegistryName().toString());
-            tag.setInteger("HeldBlockMeta", heldState.getBlock().getMetaFromState(heldState));
+            tag.setString("HeldBlockId", this.heldState.getBlock().getRegistryName().toString());
+            tag.setInteger("HeldBlockMeta", this.heldState.getBlock().getMetaFromState(this.heldState));
         }
         
-        if (playerID != null && !playerID.isEmpty())
-            tag.setString("PlayerID", playerID);
+        if (this.playerID != null && !this.playerID.isEmpty())
+            tag.setString("PlayerID", this.playerID);
     }
     
     @Override
     public void onDataPacket (NetworkManager net, SPacketUpdateTileEntity packet) {
         
         super.onDataPacket(net, packet);
-        readNBT(packet.getNbtCompound());
-        worldObj.markBlockRangeForRenderUpdate(pos, pos);
+        this.readNBT(packet.getNbtCompound());
+        this.worldObj.markBlockRangeForRenderUpdate(this.pos, this.pos);
     }
 }

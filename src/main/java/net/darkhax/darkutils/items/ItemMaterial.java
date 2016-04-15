@@ -29,9 +29,9 @@ public class ItemMaterial extends Item {
     @Override
     public String getUnlocalizedName (ItemStack stack) {
         
-        int meta = stack.getMetadata();
+        final int meta = stack.getMetadata();
         
-        if (!((meta >= 0) && (meta < varients.length)))
+        if (!(meta >= 0 && meta < varients.length))
             return super.getUnlocalizedName() + "." + varients[0];
             
         return super.getUnlocalizedName() + "." + varients[meta];

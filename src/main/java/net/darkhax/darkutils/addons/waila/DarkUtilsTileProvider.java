@@ -42,7 +42,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         
         if (block instanceof BlockSneaky && !data.getTileEntity().isInvalid()) {
             
-            TileEntitySneaky tile = (TileEntitySneaky) data.getTileEntity();
+            final TileEntitySneaky tile = (TileEntitySneaky) data.getTileEntity();
             
             if (cfg.getConfig(CONFIG_SNEAKY_OWNERS) && tile.playerID != null && !tile.playerID.isEmpty() && data.getPlayer().getUniqueID().toString().equals(tile.playerID))
                 return data.getStack();
@@ -68,20 +68,20 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
             
         else if (data.getBlock() instanceof BlockTimer && cfg.getConfig(CONFIG_TIMER_TIME) && data.getTileEntity() instanceof TileEntityTimer && !data.getTileEntity().isInvalid()) {
             
-            int delay = data.getNBTData().getInteger("TickRate");
-            int currentTime = data.getNBTData().getInteger("CurrentTime");
+            final int delay = data.getNBTData().getInteger("TickRate");
+            final int currentTime = data.getNBTData().getInteger("CurrentTime");
             
             tip.add(I18n.translateToLocal("gui.darkutils.timer.delay") + ": " + delay);
-            tip.add(I18n.translateToLocal("gui.darkutils.timer.remaining") + ": " + StringUtils.ticksToElapsedTime((delay - currentTime)));
+            tip.add(I18n.translateToLocal("gui.darkutils.timer.remaining") + ": " + StringUtils.ticksToElapsedTime(delay - currentTime));
         }
         
         else if (data.getBlock() instanceof BlockFeeder && cfg.getConfig(CONFIG_FEEDER_INFO) && data.getTileEntity() instanceof TileEntityFeeder && !data.getTileEntity().isInvalid()) {
             
-            String foodType = data.getNBTData().getString("FoodType");
+            final String foodType = data.getNBTData().getString("FoodType");
             
             if (foodType != null && !foodType.equalsIgnoreCase("null")) {
                 
-                ItemStack foodStack = ItemStackUtils.createStackFromString(foodType);
+                final ItemStack foodStack = ItemStackUtils.createStackFromString(foodType);
                 
                 if (ItemStackUtils.isValidStack(foodStack))
                     tip.add(I18n.translateToLocal("tooltip.darkutils.feeder.type") + ": " + ChatFormatting.BLUE + foodStack.getDisplayName());
@@ -110,7 +110,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     
     public static void registerAddon (IWailaRegistrar register) {
         
-        DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
+        final DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
         register.registerStackProvider(dataProvider, BlockTrapMovement.class);
         register.registerStackProvider(dataProvider, BlockUpdateDetector.class);
         register.registerStackProvider(dataProvider, BlockSneaky.class);
