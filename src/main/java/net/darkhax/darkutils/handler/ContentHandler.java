@@ -5,7 +5,6 @@ import java.util.Arrays;
 import net.darkhax.bookshelf.common.BookshelfRegistry;
 import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
-import net.darkhax.bookshelf.lib.util.Utilities;
 import net.darkhax.darkutils.blocks.BlockAntiSlime;
 import net.darkhax.darkutils.blocks.BlockCakeBase;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
@@ -27,7 +26,6 @@ import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
 import net.darkhax.darkutils.items.ItemRingEnchanted;
-import net.darkhax.darkutils.libs.PotionReferences;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.darkhax.darkutils.tileentity.TileEntityFeeder;
@@ -39,8 +37,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -184,8 +180,6 @@ public class ContentHandler {
         OreDictionary.registerOre("fenceGate", Blocks.DARK_OAK_FENCE_GATE);
         OreDictionary.registerOre("fenceGate", Blocks.JUNGLE_FENCE_GATE);
         OreDictionary.registerOre("fenceGate", Blocks.SPRUCE_FENCE_GATE);
-        
-        BrewingRecipeRegistry.addRecipe(PotionReferences.AWKWARD, new ItemStack(itemMaterial, 1, 0), PotionReferences.WITHER_I_0_45);
         
     }
     
