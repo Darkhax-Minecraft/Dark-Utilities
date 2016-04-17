@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTrapBase extends Block {
     
-    public static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0d, 0d, 0.0625d, 1d, 0.0125d, 1d);
+    public static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0625D, 1.0D);
     
     public BlockTrapBase() {
         
