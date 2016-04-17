@@ -180,7 +180,6 @@ public class ContentHandler {
         OreDictionary.registerOre("fenceGate", Blocks.DARK_OAK_FENCE_GATE);
         OreDictionary.registerOre("fenceGate", Blocks.JUNGLE_FENCE_GATE);
         OreDictionary.registerOre("fenceGate", Blocks.SPRUCE_FENCE_GATE);
-        
     }
     
     /**
