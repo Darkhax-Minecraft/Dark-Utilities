@@ -9,6 +9,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTrapBase extends Block {
     
@@ -21,6 +23,7 @@ public class BlockTrapBase extends Block {
         this.setHardness(3.0F);
         this.setResistance(10f);
         this.setHarvestLevel("pickaxe", 1);
+        this.setLightOpacity(0);
     }
     
     private boolean checkForDrop (World world, BlockPos pos, IBlockState state) {
@@ -68,6 +71,19 @@ public class BlockTrapBase extends Block {
     @Override
     public boolean isOpaqueCube (IBlockState state) {
         
-        return false;
+        return true;
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+        
+        return side == EnumFacing.UP ? true : blockAccess.getBlockState(pos.offset(side)).getBlock() == this ? true : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+    }
+    
+    @Override
+    public boolean doesSideBlockRendering (IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+        
+        return face == EnumFacing.DOWN;
     }
 }
