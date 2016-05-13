@@ -9,7 +9,6 @@ import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
-import net.darkhax.darkutils.items.ItemRingEnchanted;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
@@ -86,8 +85,8 @@ public class ProxyClient extends ProxyCommon {
         for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemPotion, meta, new ModelResourceLocation("bottle_drinkable", "inventory"));
             
-        for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
-            ModelLoader.setCustomModelResourceLocation(ContentHandler.itemEnchantedRing, meta, new ModelResourceLocation("darkutils:ring_" + ItemRingEnchanted.varients[meta], "inventory"));
+        //for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
+        //    ModelLoader.setCustomModelResourceLocation(ContentHandler.itemEnchantedRing, meta, new ModelResourceLocation("darkutils:ring_" + ItemRingEnchanted.varients[meta], "inventory"));
             
         item = Item.getItemFromBlock(ContentHandler.blockFeeder);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:feeder_empty", "inventory"));

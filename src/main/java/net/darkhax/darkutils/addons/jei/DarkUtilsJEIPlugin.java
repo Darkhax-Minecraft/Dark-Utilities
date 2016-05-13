@@ -9,7 +9,6 @@ import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
-import net.darkhax.darkutils.items.ItemRingEnchanted;
 import net.minecraft.item.ItemStack;
 
 @JEIPlugin
@@ -45,8 +44,8 @@ public class DarkUtilsJEIPlugin extends BlankModPlugin {
         for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
             registry.addDescription(new ItemStack(ContentHandler.itemPotion, 1, meta), "jei.darkutils.potion." + ItemMysteriousPotion.varients[meta] + ".desc");
             
-        for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
-            registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing, 1, meta), "jei.darkutils.ring." + ItemRingEnchanted.varients[meta] + ".desc");
+        //for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
+        //    registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing, 1, meta), "jei.darkutils.ring." + ItemRingEnchanted.varients[meta] + ".desc");
             
         AddonHandler.onJEIReady(registry);
     }

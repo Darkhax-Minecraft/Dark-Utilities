@@ -4,11 +4,9 @@ import baubles.api.BaublesApi;
 import mezz.jei.api.IModRegistry;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.addons.ModAddon;
-import net.darkhax.darkutils.handler.ContentHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class BaublesAddon implements ModAddon {
     
@@ -35,7 +33,7 @@ public class BaublesAddon implements ModAddon {
     @Override
     public void onJEIReady (IModRegistry registry) {
         
-        registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing, 1, OreDictionary.WILDCARD_VALUE), "jei.darkutils.baubles.valid.desc");
+        //registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing, 1, OreDictionary.WILDCARD_VALUE), "jei.darkutils.baubles.valid.desc");
     }
     
     /**

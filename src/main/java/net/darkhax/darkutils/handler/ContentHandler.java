@@ -62,7 +62,7 @@ public class ContentHandler {
     
     public static Item itemMaterial;
     public static Item itemPotion;
-    public static Item itemEnchantedRing;
+    //public static Item itemEnchantedRing;
     
     public static void initBlocks () {
         
