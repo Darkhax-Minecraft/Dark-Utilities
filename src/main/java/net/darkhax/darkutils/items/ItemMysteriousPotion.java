@@ -78,7 +78,6 @@ public class ItemMysteriousPotion extends Item {
             
             villager.setDead();
             player.worldObj.spawnEntityInWorld(zombie);
-            player.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1016, zombie.getPosition(), 0);
             return true;
         }
         
