@@ -33,7 +33,8 @@ public class BaublesAddon implements ModAddon {
     @Override
     public void onJEIReady (IModRegistry registry) {
         
-        //registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing, 1, OreDictionary.WILDCARD_VALUE), "jei.darkutils.baubles.valid.desc");
+        // registry.addDescription(new ItemStack(ContentHandler.itemEnchantedRing, 1,
+        // OreDictionary.WILDCARD_VALUE), "jei.darkutils.baubles.valid.desc");
     }
     
     /**

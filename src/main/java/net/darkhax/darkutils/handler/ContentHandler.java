@@ -62,7 +62,7 @@ public class ContentHandler {
     
     public static Item itemMaterial;
     public static Item itemPotion;
-    //public static Item itemEnchantedRing;
+    // public static Item itemEnchantedRing;
     
     public static void initBlocks () {
         
@@ -131,8 +131,8 @@ public class ContentHandler {
         itemPotion = new ItemMysteriousPotion();
         registerItem(itemPotion, "mystery_potion");
         
-        //itemEnchantedRing = new ItemRingEnchanted();
-        //registerItem(itemEnchantedRing, "ring_enchanted");
+        // itemEnchantedRing = new ItemRingEnchanted();
+        // registerItem(itemEnchantedRing, "ring_enchanted");
     }
     
     public static void initRecipes () {
