@@ -38,11 +38,11 @@ public class BlockEnderTether extends BlockTorch implements ITileEntityProvider 
     }
     
     @Override
-    public boolean onBlockEventReceived (World worldIn, BlockPos pos, IBlockState state, int eventID, int eventParam) {
+    public boolean eventReceived (IBlockState state, World worldIn, BlockPos pos, int id, int param) {
         
-        super.onBlockEventReceived(worldIn, pos, state, eventID, eventParam);
+        super.eventReceived(state, worldIn, pos, id, param);
         final TileEntity tileentity = worldIn.getTileEntity(pos);
-        return tileentity == null ? false : tileentity.receiveClientEvent(eventID, eventParam);
+        return tileentity == null ? false : tileentity.receiveClientEvent(id, param);
     }
     
     @Override

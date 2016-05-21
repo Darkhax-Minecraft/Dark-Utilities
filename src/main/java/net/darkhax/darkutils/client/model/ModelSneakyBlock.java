@@ -25,7 +25,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.WorldType;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.property.IExtendedBlockState;
 
@@ -61,7 +61,7 @@ public class ModelSneakyBlock implements IBakedModel {
                 return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_default")).getQuads(state, side, rand);
         }
         
-        else if (heldState != null && heldState.getBlock().canRenderInLayer(layer)) {
+        else if (heldState != null && heldState.getBlock().canRenderInLayer(heldState, layer)) {
             
             final IBlockState actualState = heldState.getBlock().getActualState(heldState, new SneakyBlockAccess(heldWorld), heldPos);
             final IBakedModel model = mc.getBlockRendererDispatcher().getBlockModelShapes().getModelForState(actualState);
@@ -156,7 +156,7 @@ public class ModelSneakyBlock implements IBakedModel {
         }
         
         @Override
-        public BiomeGenBase getBiomeGenForCoords (BlockPos pos) {
+        public Biome getBiomeGenForCoords (BlockPos pos) {
             
             return this.access.getBiomeGenForCoords(pos);
         }

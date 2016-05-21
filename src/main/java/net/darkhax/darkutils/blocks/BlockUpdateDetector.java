@@ -27,13 +27,13 @@ public class BlockUpdateDetector extends Block {
     }
     
     @Override
-    public void onNeighborBlockChange (World world, BlockPos pos, IBlockState state, Block neighbor) {
+    public void neighborChanged (IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
         
-        if (world.isRemote)
+        if (worldIn.isRemote)
             return;
             
-        world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockStates.POWERED, true), 1 | 2);
-        world.scheduleUpdate(pos, this, 5);
+        worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(BlockStates.POWERED, true), 1 | 2);
+        worldIn.scheduleUpdate(pos, this, 5);
     }
     
     @Override

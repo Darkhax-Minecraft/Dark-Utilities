@@ -10,7 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.particle.EffectRenderer;
+import net.minecraft.client.particle.ParticleManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -163,7 +163,7 @@ public class BlockSneaky extends BlockContainer {
     }
     
     @Override
-    public boolean addHitEffects (IBlockState state, World world, RayTraceResult hitPos, EffectRenderer renderer) {
+    public boolean addHitEffects (IBlockState state, World world, RayTraceResult hitPos, ParticleManager renderer) {
         
         final TileEntity tile = world.getTileEntity(hitPos.getBlockPos());
         
@@ -179,7 +179,7 @@ public class BlockSneaky extends BlockContainer {
     }
     
     @Override
-    public boolean addDestroyEffects (World world, BlockPos pos, EffectRenderer renderer) {
+    public boolean addDestroyEffects (World world, BlockPos pos, ParticleManager renderer) {
         
         final TileEntity tile = world.getTileEntity(pos);
         

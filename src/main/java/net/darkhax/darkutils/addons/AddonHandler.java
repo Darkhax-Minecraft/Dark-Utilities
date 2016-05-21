@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mezz.jei.api.IModRegistry;
-import net.darkhax.darkutils.addons.baubles.BaublesAddon;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
@@ -25,9 +24,6 @@ public class AddonHandler {
         
         if (Loader.isModLoaded("Waila"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.darkutils.addons.waila.DarkUtilsTileProvider.registerAddon");
-            
-        if (Loader.isModLoaded("Baubles"))
-            addonRegistry.add(new BaublesAddon());
     }
     
     /**
