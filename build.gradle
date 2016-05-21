@@ -35,10 +35,10 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Cons
 //Defines the MC environment information.
 minecraft {
 
-    useDepAts = true
-    version = "1.9-12.16.0.1863-1.9"
+    version = "1.9.4-12.17.0.1909-1.9.4"
     runDir = "run"
-    mappings = 'snapshot_20160412'
+    mappings = "snapshot_20160518"
+    useDepAts = true
 }
 
 //Defines basic patterns for pulling various dependencies.
@@ -58,21 +58,13 @@ repositories {
 
         url = "http://maven.rubbix.net"
     }
-
-    
-    ivy {
-
-        name "Baubles"
-        artifactPattern "http://addons-origin.cursecdn.com/files/2293/585/[module]-[revision].[ext]"
-    }
 }
 
 dependencies {
 
-    deobfCompile "mezz.jei:jei_1.9:3.2.10.185"
-    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B2_1.9"
-    deobfCompile name: "Baubles", version: "1.9-1.2.0.1", ext: "jar"
-    deobfCompile "net.darkhax.bookshelf:Bookshelf:1.9-1.2.0.219"
+    deobfCompile "mezz.jei:jei_1.9.4:3.4.0.204"
+    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf:1.9.4-1.2.0.250"
 }
 
 //Handles basic resources such as mcmod.info
@@ -126,7 +118,7 @@ String getVersionFromJava(File file) {
 
     file.write(outfile);
 
-    return "1.9-$release.$update.$patch.$build";
+    return "1.9.4-$release.$update.$patch.$build";
 }
 
 //Creates the source jar.
@@ -172,17 +164,8 @@ uploadArchives {
 
 task setCurseForgeInfo() {
 
-    def proc = "git log --pretty=format:%s -1".execute();
-    proc.waitFor();
-    def message = "${proc.in.text}"
-
-    //Changes the type of release. Default is alpha release. #beta and #release can be added into the commit message to change it.
-    project.ext.releaseType = message.toLowerCase().contains("#release") ? "release" : message.toLowerCase().contains("#beta") ? "beta" : "alpha";
-
-    //Sets the Changelog to direct the reader to the GitHub commit log.
-    proc = "git log --pretty=format:%H -1".execute();
-    proc.waitFor();
-    project.ext.changelog = "All changes can be found here: " + "https://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master/" + "${proc.in.text}";
+    project.ext.releaseType = "alpha";
+    project.ext.changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master/";
 }
 
 //Prevents incomplete JavaDocs from preventing a build on Java 8.
@@ -211,7 +194,7 @@ curseforge {
         releaseType = project.releaseType;
         changelog = project.changelog;
 
-        addGameVersion "1.9"
+        addGameVersion "1.9.4"
         
         //Adds main jar, deobf jar, source jar, and javadoc jar to the upload.
         mainArtifact(jar) {
@@ -222,7 +205,7 @@ curseforge {
                 requiredLibrary 'bookshelf'
                 //optionalLibrary 'thaumcraft'
                 optionalLibrary 'waila'
-                optionalLibrary 'baubles'
+                //optionalLibrary 'baubles'
             }
         }
         
