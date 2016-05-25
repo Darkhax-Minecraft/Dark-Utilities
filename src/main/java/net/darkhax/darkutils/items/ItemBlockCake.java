@@ -2,7 +2,7 @@ package net.darkhax.darkutils.items;
 
 import java.util.List;
 
-import net.darkhax.bookshelf.lib.util.Utilities;
+import net.darkhax.bookshelf.lib.util.TextUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -33,6 +33,6 @@ public class ItemBlockCake extends ItemBlock {
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
-        Utilities.wrapStringToList(I18n.translateToLocal("tooltip." + this.theBlock.getUnlocalizedName() + ".desc"), 35, false, tooltip);
+        TextUtils.wrapStringToList(I18n.translateToLocal("tooltip." + this.theBlock.getUnlocalizedName() + ".desc"), 35, false, tooltip);
     }
 }

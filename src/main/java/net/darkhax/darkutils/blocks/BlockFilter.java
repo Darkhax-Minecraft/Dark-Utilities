@@ -3,8 +3,8 @@ package net.darkhax.darkutils.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.darkhax.bookshelf.lib.util.BlockUtils;
 import net.darkhax.bookshelf.lib.util.EntityUtils;
-import net.darkhax.bookshelf.lib.util.Utilities;
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -121,7 +121,7 @@ public class BlockFilter extends Block {
     
     private void snagMob (EntityLivingBase living, BlockPos pos) {
         
-        if (Utilities.isFluid(living.getEntityWorld().getBlockState(pos.offset(EnumFacing.UP)).getBlock()))
+        if (BlockUtils.isFluid(living.getEntityWorld().getBlockState(pos.offset(EnumFacing.UP)).getBlock()))
             EntityUtils.pushTowards(living, pos.offset(EnumFacing.DOWN), 0.6f);
     }
     

@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.input.Keyboard;
 
-import net.darkhax.bookshelf.lib.util.Utilities;
+import net.darkhax.bookshelf.lib.util.NumericUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.common.network.packet.PacketSyncTimer;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
@@ -72,7 +72,7 @@ public class GuiTimerAmount extends GuiScreen {
     @Override
     protected void keyTyped (char typedChar, int keyCode) throws IOException {
         
-        if (Utilities.isKeyCodeNumeric(keyCode) || keyCode == 14) {
+        if (NumericUtils.isKeyCodeNumeric(keyCode) || keyCode == 14) {
             
             this.delayTextField.textboxKeyTyped(typedChar, keyCode);
             this.doneBtn.enabled = this.delayTextField.getText().trim().length() > 0 && StringUtils.isNumeric(this.delayTextField.getText());

@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.blocks;
 
-import net.darkhax.bookshelf.client.RenderUtils;
 import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.lib.util.RenderUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.minecraft.block.Block;
