@@ -12,7 +12,7 @@ public class Constants {
     public static final String VERSION_NUMBER = "1.1.0.0";
     public static final String CLIENT_PROXY_CLASS = "net.darkhax.darkutils.client.ProxyClient";
     public static final String SERVER_PROXY_CLASS = "net.darkhax.darkutils.common.ProxyCommon";
-    public static final String DEPENDENCIES = "required-after:bookshelf@[1.1.2.207,];after:Waila;after:Thaumcraft;after:JEI@[2.28.5.172,];";
+    public static final String DEPENDENCIES = "required-after:bookshelf@[1.2.1.251,];after:Waila;after:Thaumcraft;after:JEI@[3.4.0.204,];";
     public static final Random RANDOM = new Random();
     public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 }
