@@ -3,32 +3,37 @@ package net.darkhax.darkutils.handler;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.bookshelf.lib.util.MathsUtils;
 import net.darkhax.darkutils.items.ItemSourcedSword;
+import net.darkhax.darkutils.libs.Constants;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.storage.loot.LootEntryItem;
+import net.minecraft.world.storage.loot.LootPool;
+import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraft.world.storage.loot.conditions.LootCondition;
+import net.minecraft.world.storage.loot.functions.LootFunction;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ForgeEventHandler {
     
     @SubscribeEvent
-    public void onLivingDrops (LivingDropsEvent event) {
+    public void onLootTableLoad (LootTableLoadEvent event) {
         
-        final Entity entity = event.getEntity();
-        
-        if (entity instanceof EntitySkeleton && ((EntitySkeleton) entity).getSkeletonType() == 1 && MathsUtils.tryPercentage(0.05 + 0.05d * event.getLootingLevel()))
-            event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ContentHandler.itemMaterial, MathsUtils.nextIntInclusive(1, 3), 0)));
+        if (event.getName().equals(LootTableList.ENTITIES_WITHER_SKELETON)) {
+            
+            final LootPool pool1 = event.getTable().getPool("pool1");
+            
+            if (pool1 != null)
+                pool1.addEntry(new LootEntryItem(ContentHandler.itemMaterial, 1, 0, new LootFunction[0], new LootCondition[0], Constants.MOD_ID + ":wither_dust"));
+        }
     }
     
     @SubscribeEvent

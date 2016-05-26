@@ -38,11 +38,12 @@ public class DarkUtils {
         network.registerMessage(PacketSyncTimer.PacketHandler.class, PacketSyncTimer.class, 0, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         
+        MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
+        
         ContentHandler.initBlocks();
         ContentHandler.initItems();
         ContentHandler.initMisc();
         ContentHandler.initRecipes();
-        MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
         proxy.onPreInit();
     }
     
