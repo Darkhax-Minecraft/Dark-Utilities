@@ -123,12 +123,6 @@ public class ItemMysteriousPotion extends Item {
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
     }
     
-    @SideOnly(Side.CLIENT)
-    public int getColorFromItemStack (ItemStack stack, int renderPass) {
-        
-        return renderPass > 0 ? 16777215 : stack.getMetadata() == 0 ? 16710911 : 7371335;
-    }
-    
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems (Item item, CreativeTabs tab, List<ItemStack> subItems) {
