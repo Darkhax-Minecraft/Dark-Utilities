@@ -1,6 +1,0 @@
-{
-	"parent": "darkutils:item/default",
-	"textures": {
-		"layer0": "darkutils:items/ring_knockback"
-	}
-}

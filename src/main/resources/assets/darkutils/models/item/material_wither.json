@@ -1,5 +1,5 @@
 {
-	"parent": "darkutils:item/default",
+	"parent": "item/handheld",
 	"textures": {
 		"layer0": "darkutils:items/material_wither"
 	}
