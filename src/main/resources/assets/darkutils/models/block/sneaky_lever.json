@@ -1,5 +1,5 @@
 {
-	"parent": "minecraft:block/lever_off",
+	"parent": "block/lever_off",
 	"textures": {
 		"particle": "darkutils:blocks/trap_base",
 		"base": "darkutils:blocks/trap_base",
