@@ -5,9 +5,10 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 
 import net.darkhax.bookshelf.lib.BlockStates;
-import net.darkhax.darkutils.blocks.BlockSneaky;
-import net.darkhax.darkutils.blocks.BlockSneakyLever;
-import net.darkhax.darkutils.blocks.BlockSneakyTorch;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneaky;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneakyLever;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneakyPressurePlate;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneakyTorch;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -57,6 +58,8 @@ public class ModelSneakyBlock implements IBakedModel {
             else if (block instanceof BlockSneakyTorch)
                 return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_torch")).getQuads(state, side, rand);
                 
+            else if (block instanceof BlockSneakyPressurePlate)
+                return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_plate")).getQuads(state, side, rand);
             else
                 return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_default")).getQuads(state, side, rand);
         }

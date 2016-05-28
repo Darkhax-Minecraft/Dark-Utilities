@@ -11,15 +11,16 @@ import net.darkhax.darkutils.blocks.BlockEnderTether;
 import net.darkhax.darkutils.blocks.BlockFeeder;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
-import net.darkhax.darkutils.blocks.BlockSneaky;
-import net.darkhax.darkutils.blocks.BlockSneakyGhost;
-import net.darkhax.darkutils.blocks.BlockSneakyLever;
-import net.darkhax.darkutils.blocks.BlockSneakyObsidian;
-import net.darkhax.darkutils.blocks.BlockSneakyTorch;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.blocks.BlockTrapMovement;
 import net.darkhax.darkutils.blocks.BlockUpdateDetector;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneaky;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneakyGhost;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneakyLever;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneakyObsidian;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneakyPressurePlate;
+import net.darkhax.darkutils.blocks.sneaky.BlockSneakyTorch;
 import net.darkhax.darkutils.items.ItemBlockCake;
 import net.darkhax.darkutils.items.ItemBlockFeeder;
 import net.darkhax.darkutils.items.ItemBlockFilter;
@@ -58,6 +59,7 @@ public class ContentHandler {
     public static Block blockSneakyGhost;
     public static Block blockSneakyTorch;
     public static Block blockSneakyObsidian;
+    public static Block blockSneakyPlate;
     public static Block blockFeeder;
     
     public static Item itemMaterial;
@@ -117,6 +119,9 @@ public class ContentHandler {
         
         blockSneakyObsidian = new BlockSneakyObsidian();
         registerBlock(blockSneakyObsidian, "sneaky_obsidian");
+        
+        blockSneakyPlate = new BlockSneakyPressurePlate();
+        registerBlock(blockSneakyPlate, "sneaky_plate");
         
         blockFeeder = new BlockFeeder();
         registerBlock(blockFeeder, new ItemBlockFeeder(blockFeeder), "feeder");
