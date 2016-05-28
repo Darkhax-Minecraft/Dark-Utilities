@@ -79,82 +79,24 @@ gui.darkutils.timer.desc.4=The minimum is 10 and the maximum is 12000.
 itemGroup.darkutils=Dark Utilities
 
 #JEI
-jei.darkutils.trap.poison.desc=The poison trap is a tile that can be placed on any solid block. When a mob steps on this tile they will recieve 3 seconds of poison. Keep in mind that many hostile mobs such as skeletons, zombies and spiders can not be effected by poison. The attack timer for poison is reset every time it is re-applied to a mob, so mobs will not be damaged until they step off the plate. The poison effect created by this effect can not be cured. 
-jei.darkutils.trap.weakness.desc=The Weakness trap is a tile that can be placed on any solid block. When a mob steps on this tile, they will recieve 3 seconds of the weakness debuff. This debuff can not be cured. 
-jei.darkutils.trap.harming.desc=The Damage trap is a tile that can be placed on any solid block. When a mob steps on this tile, they will recieve 1.25 hearts hearts of magic damage.
-jei.darkutils.trap.slowness.desc=The Slowness trap is a tile that can be placed on any solid block. When a mob steps on this tile, they will recieve a slowness debuff for 3 seconds. This debuff can not be cured. 
-jei.darkutils.trap.fire.desc=The Flame trap is a tile that can be placed on any solid block. When a mob steps on this tile, they will recieve one point of fire damage. 
-jei.darkutils.trap.wither.desc=The Wither trap is a tile that can be placed on any solid block. When a mob steps on this tile, they will recieve 3 seconds of the wither effect. Every time the effect is applied to a mob, the damage counter will be reset. Because of this, the mob will not be damaged until they step off of the trap. This effect is not curable. 
-jei.darkutils.endertether.desc=The Ender Tether is a block that can be placed similarly to a torch. When a form of ender teleportation occurs within 32 blocks of the tether, the teleportation will be redirected to the tether block. Some examples of ender teleportation include Endermen teleporting and ender pearls. The tether must be placed on a block, and if that block were to be removed the tether will break. Keep that in mind when working with Endermen. 
-jei.darkutils.trap.vector.desc=The Vector Plate will cause an entity to move in the direction depicted on the plate.
-jei.darkutils.trap.vector.fast.desc=The Vector Plate will cause an entity to move in the direction depicted on the plate. Is 5 times faster than the normal vector plate.
-jei.darkutils.trap.vector.hyper.desc=The Vector Plate will cause an entity to move in the direction depicted on the plate. Is 5 times faster than the fast vector plate.
-jei.darkutils.grate.desc=The Item Grate is a special block which allows only items to move through it. Items which touch the grate will be centered on the grate and fall through.
-jei.darkutils.filter.player.desc=The Player Filter will let players move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
-jei.darkutils.filter.undead.desc=The Undead Filter will let undead mobs such as Skeletons and Zombies move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
-jei.darkutils.filter.arthropod.desc=The Arthropod Filter will let Arthropods such as Spiders and Silverfish move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
-jei.darkutils.filter.monster.desc=The Hostile Filter will let hostile mobs such as Zombies and Skeletons move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
-jei.darkutils.filter.animal.desc=The Peaceful Filter will let peaceful mobs such as Sheep and Pigs move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
-jei.darkutils.filter.water.desc=The Water Filter will let water mobs such as Squid move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid. 
-jei.darkutils.filter.baby.desc=The Baby Filter will let child mobs like Baby Sheep and Baby Zombies move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
-jei.darkutils.filter.pet.desc=The Pet Filter will let tameable mobs like Ocelots and Wolves move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid. 
-jei.darkutils.filter.slime.desc=The Slime filter will let Slimes move through it as if it did not exist. Other mobs will collide with it like a normal block. The filter will also pull mobs down into it if it is placed under a liquid.
-jei.darkutils.timer.desc=The Timer is a basic redstone circuit which will generate a redstone pulse on a regular cycle. The duration between pulses can be adjusted through a GUI.
-jei.darkutils.material.wither.desc=A powder that contains the essence of death itself. This dust can be obtained as an uncommon wither skeleton drop, or by deconstructing a wither skull. 
-jei.darkutils.material.unstable.desc=An Ender Pearl that has become corrupted by Wither Dust. The Pearl seems to have lost all teleportation capabilities. The pearl also seems to disrupt the teleportation capabilities of nearby objects.
-jei.darkutils.material.cream.desc=A cream that contains the essence of death itself. It has little use outside of crafting.
-jei.darkutils.potion.cure.desc=A mysterious white potion. When consumed by a player, it will grant the saturation buff for a few seconds. It also has the ability to cure villager zombies.
-jei.darkutils.potion.zombie.desc=A mysterious green potion. When consumed by a player, it will grant the hunger debuff for a few seconds. It also has the ability to infect villagers, turning them into a zombie.
-jei.darkutils.antislime.desc=The Anti Slime Block prevents slimes from spawning in the same chunk as it. If the slime has a custom name, it will not be harmed. 
-jei.darkutils.ring.knockback.desc=While in the players inventory, the player will gain an additional level of the Knockback enchantment. Using multiple of the same ring will not increase the intensity of the effect. 
-jei.darkutils.ring.fire.desc=While in the players inventory, the player will gain an additional level of the Fire Aspect enchantment. Using mutlple of the same ring will not increase the intensity of the effect. 
-jei.darkutils.ring.fortune.desc=While in the players inventory, the player will gain an additional level of the Fortune enchantment. Using multiple of the same ring will not increase the intensity of the effect. 
-jei.darkutils.ring.loot.desc=While in the players inventory, the player will gain an additional level of the Looting enchantment. Using multiple of the same ring will not increase the intensity of the effect. 
-jei.darkutils.ring.lure.desc=While in the players inventory, the player will gain an additional level of the Lure enchantment. Using multiple of the same ring will not increase the intensity of the effect. 
-jei.darkutils.ring.luck.desc=While in the players inventory, the player will gain an additional level of the Luck of the Sea enchantment. Using multiple of the same ring will not increase the intensity of the effect.
-jei.darkutils.ring.efficiency.desc=While in the players inventory, the player will gain an additional level of the Efficiency enchantment. Using multuple of the same ring will not increase the intensity of the effect.
-jei.darkutils.detector.desc=The Update Detector will give out a short redstone pulse every time a block update happens within one block of the detector. Block updates include things like placing/breaking blocks or plants growing. 
-jei.darkutils.sneaky.desc=The Sneaky Block is similar to ordinary cobblestone in many ways. The only exception is that you can right click on it with another block to change it's apearance to that of the held block. This can allow for fake decorative blocks which have a higher blast resistance. In some cases it can also be used to make decoritive blocks which are easier to move, such as obsidian or bedrock.
-jei.darkutils.sneaky.lever.desc=The Sneaky Lever is very similar to an ordinay lever. The only exception is that you can right click on with another block to change it's apearance to that of the held block. This allows for hidden levers.
-jei.darkutils.sneaky.ghost.desc=The Sneaky False Block is very similar to ordinary cobblestone. The main diference is that mobs will be able to move (and fall) through these blocks as if they did not exist. You can also right click it with a block in your hand, to change the apearance of the block to match the held block.
-jei.darkutils.sneaky.torch.desc=The Sneaky Torch is very similar to an ordinary torch. The only exception is that you can right click on it with a block in hand, and it will take on the appearance of that block. This allows for hidden torches.
-jei.darkutils.sneaky.obsidian.desc=The Sneaky Obsidian is very similar to the Obsidian Block. You can right click on it with an block in hand, and it will take on the appearance of that block. It is about 55% easier to mine than obsidian.
-jei.darkutils.feeder.desc=The Feeder block can hold animal food, and then automatically feed mobs with it. The feeder can accept all vanilla breeding items. The downside is that it can only hold 10 pieces of food at any time. It can be hooked up to a hopper or other item automation system.
-
-#Thaumcraft
-item.darkutils.swordDeath.name=Sword of the Mortifer 
-item.darkutils.foci.recall.name=Wand Focus: Recall
-
-tc.research_category.DARKUTILS=Dark Utilities
-tc.research_page.darkutils.1=After taking a closer look, you notice that several things seem to be surrounded with some form of message that has been engraved directly into the thaumic field itself! You have no idea how that might be possible, or who could have caused this, however that is probably for the best. Knowing that there are still mysteries to be explored fills you with determination. 
-tc.research_name.DARKUTILS_LANDING=Dark Utilities
-tc.research_text.DARKUTILS_LANDING=What do we have here?
-tc.research_name.DARKUTILS_DEATH_SWORD=Crystalized Death!
-tc.research_text.DARKUTILS_DEATH_SWORD=Has science gone too far?
-tc.research_page.darkutils.sword=Your research has revealed a unique interaction with Thaumium and Liquid Death. When infused together, the Thaumium takes on properties of the liquid death. When applied to a Thaumium blade, mobs slain with it will ocasionally be dissolved into essentia crystals. 
-tc.research_name.DARKUTILS_ENCHRINGS=Enchanted Rings
-tc.research_text.DARKUTILS_ENCHRINGS=Shoulda put a ring on it
-tc.research_page.darkutils.enchrings=You have discovered a new way of infusing mundane rings. You can now infuse rings with the aspects of various enchantments. When worn, you will gain the effects of that enchantment.
-tc.research_name.DARKUTILS_POTIONS=Mysterious Potions
-tc.research_text.DARKUTILS_POTIONS=An odd brew.
-tc.research_page.darkutils.potion=You have discovered a new way of brewing potions with the raw essentia. Potiones brewed in this way seem to be extremely potent, and interact with mobs on a thaumic level. A potion brewed with the essence of Life can potentionally cure the zombie disease, or even the taint! A potion brewed with deat will allow you to intentionally infect others.
-tc.research_name.DARKUTILS_RECALL=Wand Focus: Recall
-tc.research_text.DARKUTILS_RECALL=Have I been here before?
-tc.research_page.darkutils.recall=You have discovered a new form of transporation. Once the focus has been bound to the thaumic field, you can channel great amounts of vis through the focus to return to the place it was bound. You have a feeling this will not work across extreme distances, or through other dimensions.
-gui.darkutils.color.title=Location Settings
-gui.darkutils.color.item=Item Name
-
-chat.darkutils.warning.recall=You must bind this focus before use!
-
-tooltip.darkutils.focus.bound.desc=Bound
-tooltip.darkutils.focus.unbound.desc=Unbound
-
-jei.darkutils.deathSword.desc=This sword contains the essence of death itself. When a mob is slain with it, there is a 40% chance that the remains will dissolve into crystalized essentia. This sword also has a 40% chance to do all of it's damage as dissolve damage.
-jei.darkutils.potion.cure.thaumcraft.desc=While not a perfect cure, it is possible for this potion to reverse the effect of taint on living mobs. When applied to a tainted mob, it will revert to it's non tainted form. Some aspects of the mob such as profession or coat color will likely be lost.
-jei.darkutils.focus.recall.desc=This focus can be bound to a location by right clicking with it in your hand. Once bound, it may be used through a wand to warp the player back to that location. 
-
-#Baubles
-jei.darkutils.baubles.valid.desc=This item will work while in the Baubles inventory.
+jei.tile.darkutils.trap=These traps will apply an effect to a mob when they stand on it. For example the Slowness trap will give a Slowness effect.
+jei.tile.darkutils.endertether=Prevents enderman within a certain distance from teleporting away. Any teleportation attempt will warp them to the tether. Also prevents other forms of ender teleportation.
+jei.tile.darkutils.trap.movement=These traps will push mobs in the direction the arrow is pointing. Players can get away if they crouch. Green is slowest, yellow is medium and red is fastest.
+jei.tile.darkutils.grate=Allows items to move through it but prevents other entities.
+jei.tile.darkutils.filter=Allows a certain type of mob to move through it. For example, the baby filter only allows baby mobs to move through it.
+jei.tile.darkutils.timer=A basic redstone timer. Causes a short redstone pulse every few ticks. The time can be adjusted through a GUI.
+jei.tile.darkutils.antislime=Prevents slimes from spawning near the block. 
+jei.tile.darkutils.bud=Emits a short redstone pulse every time it is updated through a block update.
+jei.tile.darkutils.sneaky=Similar to stone, however you can click on it with another block and it will steal the model of the block. The held block is not consumed.
+jei.tile.darkutils.sneaky.lever=Similar to a normal lever, however you can click on it with another block and it will steal the model of the block. The held block is not consumed.
+jei.tile.darkutils.sneaky.ghost=Does not have a collision box, allowing entities to move through it. You can click on it with another block and it will steal the model of the block. The held block is not consumed.
+jei.tile.darkutils.sneaky.torch=Similar to a normal torch, however you can click on it with another block and it will steal the model of the block. The held block is not consumed.
+jei.tile.darkutils.sneaky.obsidian=Similar to Obsidian, however you can click on it with another block and it will steal the model of the block. The held block is not consumed.
+jei.tile.darkutils.sneaky.plate=Similar to a Wooden Pressure Plate, however you can click on it with another block and it will steal the model of the block. The held block is not consumed.
+jei.tile.darkutils.feeder=Up to 10 pieces of food can be stored in the feeder. If a nearby mob likes the stored food, it can eat it from the feeder. Can be used for auto breeding. Can only hold one type of food and only 10 pieces of food, but can be filled using hoppers.
+jei.tile.darkutils.material=A material that is used in several crafting recipes.
+jei.tile.darkutils.potion=A potion that has a mysterious effect. No spoilers on this one :)
+jei.tile.darkutils.eplus=A cake to celebrate Enchanting Plus. Can be crafted by renaming cake to eplus in an anvil. Shhhh it's a secret.
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type

@@ -1,6 +1,8 @@
 package net.darkhax.darkutils.handler;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import net.darkhax.bookshelf.common.BookshelfRegistry;
 import net.darkhax.bookshelf.item.ItemBlockBasic;
@@ -42,6 +44,16 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class ContentHandler {
+    
+    /**
+     * A list of all items from DarkUtils.
+     */
+    public static final List<Item> ITEMS = new ArrayList<Item>();
+    
+    /**
+     * A list of all blocks from DarkUtils.
+     */
+    public static final List<Block> BLOCKS = new ArrayList<Block>();
     
     public static Block blockTrap;
     public static Block blockEnderTether;
@@ -215,6 +227,7 @@ public class ContentHandler {
         block.setRegistryName(ID);
         GameRegistry.register(block);
         GameRegistry.register(new ItemBlock(block), block.getRegistryName());
+        BLOCKS.add(block);
     }
     
     /**
@@ -228,6 +241,7 @@ public class ContentHandler {
         block.setRegistryName(ID);
         GameRegistry.register(block);
         GameRegistry.register(item, block.getRegistryName());
+        BLOCKS.add(block);
     }
     
     /**
@@ -242,5 +256,6 @@ public class ContentHandler {
             item.setRegistryName(ID);
             
         GameRegistry.register(item);
+        ITEMS.add(item);
     }
 }
