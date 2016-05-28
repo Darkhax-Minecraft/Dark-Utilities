@@ -162,6 +162,7 @@ public class ContentHandler {
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.TORCH);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.REDSTONE_TORCH);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyObsidian), blockSneakyBlock, Blocks.OBSIDIAN);
+        GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyPlate), blockSneakyBlock, Blocks.WOODEN_PRESSURE_PLATE);
         
         addConversionRecipes(new ItemStack(blockTrapMovement), new ItemStack(blockTrapMovementFast, 1, 0));
         addConversionRecipes(new ItemStack(blockTrapMovementFast), new ItemStack(blockTrapMovementHyper, 1, 0));
