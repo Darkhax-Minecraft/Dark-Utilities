@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -29,7 +30,7 @@ public class BlockUpdateDetector extends Block {
     @Override
     public void neighborChanged (IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
         
-        if (worldIn.isRemote)
+        if (worldIn.isRemote || blockIn.canProvidePower(state) || blockIn == Blocks.PISTON_EXTENSION || blockIn == Blocks.PISTON_HEAD || state.getValue(BlockStates.POWERED))
             return;
             
         worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(BlockStates.POWERED, true), 1 | 2);
