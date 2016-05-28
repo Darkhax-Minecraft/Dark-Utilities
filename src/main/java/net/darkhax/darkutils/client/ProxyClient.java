@@ -77,12 +77,12 @@ public class ProxyClient extends ProxyCommon {
         for (int meta = 1; meta < 10; meta++)
             ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation("darkutils:feeder_partial", "inventory"));
             
-        registerSneakyModel(ContentHandler.blockSneakyBlock, "sneaky_default", false);
-        registerSneakyModel(ContentHandler.blockSneakyLever, "sneaky_lever", false);
-        registerSneakyModel(ContentHandler.blockSneakyGhost, "sneaky_default", true);
-        registerSneakyModel(ContentHandler.blockSneakyTorch, "sneaky_torch", false);
-        registerSneakyModel(ContentHandler.blockSneakyObsidian, "sneaky_default", true);
-        registerSneakyModel(ContentHandler.blockSneakyPlate, "sneaky_plate", false);
+        this.registerSneakyModel(ContentHandler.blockSneakyBlock, "sneaky_default", false);
+        this.registerSneakyModel(ContentHandler.blockSneakyLever, "sneaky_lever", false);
+        this.registerSneakyModel(ContentHandler.blockSneakyGhost, "sneaky_default", true);
+        this.registerSneakyModel(ContentHandler.blockSneakyTorch, "sneaky_torch", false);
+        this.registerSneakyModel(ContentHandler.blockSneakyObsidian, "sneaky_default", true);
+        this.registerSneakyModel(ContentHandler.blockSneakyPlate, "sneaky_plate", false);
         
         AddonHandler.onClientPreInit();
     }

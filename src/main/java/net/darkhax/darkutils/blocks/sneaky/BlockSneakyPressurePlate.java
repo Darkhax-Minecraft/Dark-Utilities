@@ -68,12 +68,10 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
         
         if (!worldIn.isRemote) {
             
-            int power = this.getRedstoneStrength(state);
+            final int power = this.getRedstoneStrength(state);
             
-            if (power > 0) {
-                
+            if (power > 0)
                 this.updateState(worldIn, pos, state, power);
-            }
         }
     }
     
@@ -81,11 +79,10 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
     public void onEntityCollidedWithBlock (World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
         
         if (!worldIn.isRemote) {
-            int power = this.getRedstoneStrength(state);
+            final int power = this.getRedstoneStrength(state);
             
-            if (power == 0) {
+            if (power == 0)
                 this.updateState(worldIn, pos, state, power);
-            }
         }
     }
     
@@ -94,9 +91,8 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
      */
     protected void updateState (World worldIn, BlockPos pos, IBlockState state, int oldPower) {
         
-        int power = this.computeRedstoneStrength(worldIn, pos);
-        boolean turnOff = oldPower > 0;
-        boolean turnOn = power > 0;
+        final int power = this.computeRedstoneStrength(worldIn, pos);
+        final boolean turnOn = power > 0;
         
         if (oldPower != power) {
             
@@ -106,20 +102,16 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
             worldIn.markBlockRangeForRenderUpdate(pos, pos);
         }
         
-        if (turnOn) {
-            
+        if (turnOn)
             worldIn.scheduleUpdate(new BlockPos(pos), this, this.tickRate(worldIn));
-        }
     }
     
     @Override
     public void breakBlock (World worldIn, BlockPos pos, IBlockState state) {
         
-        if (this.getRedstoneStrength(state) > 0) {
-            
+        if (this.getRedstoneStrength(state) > 0)
             this.updateNeighbors(worldIn, pos);
-        }
-        
+            
         super.breakBlock(worldIn, pos, state);
     }
     
@@ -149,7 +141,7 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
     
     protected int getRedstoneStrength (IBlockState state) {
         
-        return ((Boolean) state.getValue(BlockStates.POWERED)).booleanValue() ? 15 : 0;
+        return state.getValue(BlockStates.POWERED).booleanValue() ? 15 : 0;
     }
     
     protected IBlockState setRedstoneStrength (IBlockState state, int strength) {
@@ -159,17 +151,14 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
     
     protected int computeRedstoneStrength (World worldIn, BlockPos pos) {
         
-        AxisAlignedBB axisalignedbb = BOUNDS.offset(pos.up());
-        List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity((Entity) null, axisalignedbb);
+        final AxisAlignedBB axisalignedbb = BOUNDS.offset(pos.up());
+        final List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity((Entity) null, axisalignedbb);
         
-        if (!list.isEmpty()) {
-            for (Entity entity : list) {
-                if (!entity.doesEntityNotTriggerPressurePlate()) {
+        if (!list.isEmpty())
+            for (final Entity entity : list)
+                if (!entity.doesEntityNotTriggerPressurePlate())
                     return 15;
-                }
-            }
-        }
-        
+                    
         return 0;
     }
 }
