@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.blocks;
+package net.darkhax.darkutils.blocks.sneaky;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.AxisAlignedBB;

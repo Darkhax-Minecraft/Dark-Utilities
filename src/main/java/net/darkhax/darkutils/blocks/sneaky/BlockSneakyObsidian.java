@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.blocks;
+package net.darkhax.darkutils.blocks.sneaky;
 
 public class BlockSneakyObsidian extends BlockSneaky {
     

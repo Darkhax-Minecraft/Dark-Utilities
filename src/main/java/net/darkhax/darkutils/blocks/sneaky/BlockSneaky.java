@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.blocks;
+package net.darkhax.darkutils.blocks.sneaky;
 
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.bookshelf.lib.util.RenderUtils;
@@ -47,7 +47,7 @@ public class BlockSneaky extends BlockContainer {
         final TileEntity tile = world.getTileEntity(pos);
         final ItemStack stack = playerIn.getHeldItemMainhand();
         
-        if (!tile.isInvalid() && tile instanceof TileEntitySneaky && stack != null && stack.getItem() != null) {
+        if (tile instanceof TileEntitySneaky && !tile.isInvalid() && stack != null && stack.getItem() != null) {
             
             final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
             final Block block = Block.getBlockFromItem(stack.getItem());
@@ -60,6 +60,7 @@ public class BlockSneaky extends BlockContainer {
                     
                     sneaky.heldState = heldState;
                     world.notifyBlockUpdate(pos, state, state, 8);
+                    
                     return true;
                 }
             }

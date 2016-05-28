@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.blocks;
+package net.darkhax.darkutils.blocks.sneaky;
 
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.minecraft.block.properties.IProperty;
@@ -83,10 +83,6 @@ public class BlockSneakyLever extends BlockSneaky {
         return !blockState.getValue(BlockStates.POWERED).booleanValue() ? 15 : 0;
     }
     
-    /**
-     * Can this block provide power. Only wire currently seems to have this change based on its
-     * state.
-     */
     @Override
     public boolean canProvidePower (IBlockState state) {
         
