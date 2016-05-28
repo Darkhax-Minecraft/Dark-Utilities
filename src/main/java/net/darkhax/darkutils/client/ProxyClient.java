@@ -9,6 +9,7 @@ import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
@@ -17,6 +18,8 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ProxyClient extends ProxyCommon {
+    
+    private static final StateMapperBase SNEAKY_MAP = new StateMapSneaky();
     
     @Override
     public void onPreInit () {
@@ -61,47 +64,25 @@ public class ProxyClient extends ProxyCommon {
         item = Item.getItemFromBlock(ContentHandler.blockCakeEPlus);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:cake_eplus", "inventory"));
         
-        item = Item.getItemFromBlock(ContentHandler.blockSneakyBlock);
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_default", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_default", "normal"));
-        
-        item = Item.getItemFromBlock(ContentHandler.blockSneakyLever);
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_lever", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_lever", "normal"));
-        
-        item = Item.getItemFromBlock(ContentHandler.blockSneakyGhost);
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_default", "inventory"));
-        
-        item = Item.getItemFromBlock(ContentHandler.blockSneakyTorch);
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_torch", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_torch", "normal"));
-        
-        item = Item.getItemFromBlock(ContentHandler.blockSneakyObsidian);
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:sneaky_default", "inventory"));
-        
         for (int materialMeta = 0; materialMeta < ItemMaterial.varients.length; materialMeta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemMaterial, materialMeta, new ModelResourceLocation("darkutils:material_" + ItemMaterial.varients[materialMeta], "inventory"));
             
         for (int meta = 0; meta < ItemMysteriousPotion.varients.length; meta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemPotion, meta, new ModelResourceLocation("bottle_drinkable", "inventory"));
             
-        // for (int meta = 0; meta < ItemRingEnchanted.varients.length; meta++)
-        // ModelLoader.setCustomModelResourceLocation(ContentHandler.itemEnchantedRing, meta,
-        // new ModelResourceLocation("darkutils:ring_" + ItemRingEnchanted.varients[meta],
-        // "inventory"));
-        
         item = Item.getItemFromBlock(ContentHandler.blockFeeder);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:feeder_empty", "inventory"));
         ModelLoader.setCustomModelResourceLocation(item, 10, new ModelResourceLocation("darkutils:feeder_full", "inventory"));
+        
         for (int meta = 1; meta < 10; meta++)
             ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation("darkutils:feeder_partial", "inventory"));
             
-        final StateMapperBase sneakyMap = new StateMapSneaky();
-        ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyBlock, sneakyMap);
-        ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyLever, sneakyMap);
-        ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyGhost, sneakyMap);
-        ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyTorch, sneakyMap);
-        ModelLoader.setCustomStateMapper(ContentHandler.blockSneakyObsidian, sneakyMap);
+        registerSneakyModel(ContentHandler.blockSneakyBlock, "sneaky_default", false);
+        registerSneakyModel(ContentHandler.blockSneakyLever, "sneaky_lever", false);
+        registerSneakyModel(ContentHandler.blockSneakyGhost, "sneaky_default", true);
+        registerSneakyModel(ContentHandler.blockSneakyTorch, "sneaky_torch", false);
+        registerSneakyModel(ContentHandler.blockSneakyObsidian, "sneaky_default", true);
+        registerSneakyModel(ContentHandler.blockSneakyPlate, "sneaky_plate", false);
         
         AddonHandler.onClientPreInit();
     }
@@ -115,5 +96,16 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void onPostInit () {
     
+    }
+    
+    private void registerSneakyModel (Block block, String name, boolean useDefault) {
+        
+        final Item item = Item.getItemFromBlock(block);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:" + name, "inventory"));
+        
+        if (!useDefault)
+            ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:" + name, "normal"));
+            
+        ModelLoader.setCustomStateMapper(block, SNEAKY_MAP);
     }
 }
