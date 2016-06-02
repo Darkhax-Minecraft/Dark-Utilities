@@ -15,7 +15,7 @@ import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
-import net.darkhax.darkutils.blocks.BlockTrapMovement;
+import net.darkhax.darkutils.blocks.BlockVectorPlate;
 import net.darkhax.darkutils.blocks.BlockUpdateDetector;
 import net.darkhax.darkutils.blocks.sneaky.BlockSneaky;
 import net.darkhax.darkutils.blocks.sneaky.BlockSneakyGhost;
@@ -87,13 +87,13 @@ public class ContentHandler {
         registerBlock(blockEnderTether, "ender_tether");
         GameRegistry.registerTileEntity(TileEntityEnderTether.class, "ender_tether");
         
-        blockTrapMovement = new BlockTrapMovement(0.06d);
+        blockTrapMovement = new BlockVectorPlate(0.06d);
         registerBlock(blockTrapMovement, "trap_move");
         
-        blockTrapMovementFast = new BlockTrapMovement(0.3d);
+        blockTrapMovementFast = new BlockVectorPlate(0.3d);
         registerBlock(blockTrapMovementFast, "trap_move_fast");
         
-        blockTrapMovementHyper = new BlockTrapMovement(1.5d);
+        blockTrapMovementHyper = new BlockVectorPlate(1.5d);
         registerBlock(blockTrapMovementHyper, "trap_move_hyper");
         
         blockGrate = new BlockGrate();

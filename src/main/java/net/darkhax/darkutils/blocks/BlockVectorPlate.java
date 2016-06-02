@@ -14,13 +14,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class BlockTrapMovement extends BlockTrapBase {
+public class BlockVectorPlate extends BlockTrapBase {
     
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     
     private final double speed;
     
-    public BlockTrapMovement(double speed) {
+    public BlockVectorPlate(double speed) {
         
         super();
         this.setUnlocalizedName("darkutils.trap.movement");

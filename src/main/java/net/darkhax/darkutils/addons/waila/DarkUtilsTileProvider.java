@@ -12,7 +12,7 @@ import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.blocks.BlockFeeder;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTimer;
-import net.darkhax.darkutils.blocks.BlockTrapMovement;
+import net.darkhax.darkutils.blocks.BlockVectorPlate;
 import net.darkhax.darkutils.blocks.BlockUpdateDetector;
 import net.darkhax.darkutils.blocks.sneaky.BlockSneaky;
 import net.darkhax.darkutils.tileentity.TileEntityFeeder;
@@ -111,7 +111,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     public static void registerAddon (IWailaRegistrar register) {
         
         DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
-        register.registerStackProvider(dataProvider, BlockTrapMovement.class);
+        register.registerStackProvider(dataProvider, BlockVectorPlate.class);
         register.registerStackProvider(dataProvider, BlockUpdateDetector.class);
         register.registerStackProvider(dataProvider, BlockSneaky.class);
         register.registerBodyProvider(dataProvider, BlockFilter.class);
