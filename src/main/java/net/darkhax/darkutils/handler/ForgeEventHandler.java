@@ -1,15 +1,11 @@
 package net.darkhax.darkutils.handler;
 
-import net.darkhax.bookshelf.lib.util.ItemStackUtils;
-import net.darkhax.bookshelf.lib.util.MathsUtils;
-import net.darkhax.darkutils.items.ItemSourcedSword;
 import net.darkhax.darkutils.libs.Constants;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootPool;
@@ -22,7 +18,6 @@ import net.minecraft.world.storage.loot.functions.SetDamage;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ForgeEventHandler {
@@ -46,22 +41,6 @@ public class ForgeEventHandler {
             
             if (main != null)
                 main.addEntry(new LootEntryItem(ContentHandler.itemPotion, 5, 0, new LootFunction[] { new SetDamage(new LootCondition[0], new RandomValueRange(0, 1)) }, new LootCondition[0], Constants.MOD_ID + ":mysterious_potion"));
-        }
-    }
-    
-    @SubscribeEvent
-    public void onLivingHurt (LivingHurtEvent event) {
-        
-        if (event.getSource().getEntity() instanceof EntityLivingBase) {
-            
-            final EntityLivingBase attacker = (EntityLivingBase) event.getSource().getEntity();
-            
-            if (ItemStackUtils.isValidStack(attacker.getHeldItemMainhand()) && attacker.getHeldItemMainhand().getItem() instanceof ItemSourcedSword) {
-                
-                final ItemSourcedSword sword = (ItemSourcedSword) attacker.getHeldItemMainhand().getItem();
-                event.getEntity().attackEntityFrom(MathsUtils.tryPercentage(sword.effectChance) ? sword.source : DamageSource.generic, sword.attackDamage);
-                event.setCanceled(true);
-            }
         }
     }
     
