@@ -21,7 +21,7 @@ public class AddonHandler {
      * Registers the standard handlers with the registry.
      */
     public static void registerAddons () {
-        
+    
     }
     
     /**
@@ -40,7 +40,7 @@ public class AddonHandler {
         
         if (Loader.isModLoaded("Waila"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.darkutils.addons.waila.DarkUtilsTileProvider.registerAddon");
-        
+            
         for (final ModAddon addon : addonRegistry)
             addon.onInit();
     }
