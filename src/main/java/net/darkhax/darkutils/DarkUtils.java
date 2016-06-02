@@ -45,17 +45,22 @@ public class DarkUtils {
         ContentHandler.initMisc();
         ContentHandler.initRecipes();
         proxy.onPreInit();
+        
+        AddonHandler.registerAddons();
+        AddonHandler.onPreInit();
     }
     
     @EventHandler
     public void init (FMLInitializationEvent event) {
         
         proxy.onInit();
+        AddonHandler.onInit();
     }
     
     @EventHandler
     public void postInit (FMLPostInitializationEvent event) {
         
+        proxy.onPostInit();
         AddonHandler.onPostInit();
     }
     

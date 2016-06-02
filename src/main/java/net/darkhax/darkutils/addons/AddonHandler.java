@@ -22,8 +22,6 @@ public class AddonHandler {
      */
     public static void registerAddons () {
         
-        if (Loader.isModLoaded("Waila"))
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.darkutils.addons.waila.DarkUtilsTileProvider.registerAddon");
     }
     
     /**
@@ -39,6 +37,9 @@ public class AddonHandler {
      * Triggers the onInit method in all registered addons.
      */
     public static void onInit () {
+        
+        if (Loader.isModLoaded("Waila"))
+            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.darkutils.addons.waila.DarkUtilsTileProvider.registerAddon");
         
         for (final ModAddon addon : addonRegistry)
             addon.onInit();

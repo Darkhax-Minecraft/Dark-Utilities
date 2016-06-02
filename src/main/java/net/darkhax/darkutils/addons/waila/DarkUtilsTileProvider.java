@@ -110,7 +110,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     
     public static void registerAddon (IWailaRegistrar register) {
         
-        final DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
+        DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
         register.registerStackProvider(dataProvider, BlockTrapMovement.class);
         register.registerStackProvider(dataProvider, BlockUpdateDetector.class);
         register.registerStackProvider(dataProvider, BlockSneaky.class);
