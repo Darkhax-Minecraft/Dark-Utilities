@@ -20,7 +20,7 @@ public class BlockFakeTNT extends BlockTNT {
         this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(0.0F);
         this.setSoundType(SoundType.PLANT);
-        this.setUnlocalizedName("tnt");
+        this.setUnlocalizedName("darkutils.tnt");
     }
     
     @Override
