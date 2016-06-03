@@ -36,6 +36,9 @@ item.darkutils.ring.lure.name=Angler Ring
 item.darkutils.ring.luck.name=Ring of the Sea
 item.darkutils.ring.efficiency.name=Prospector Ring
 
+#Entity
+entity.DarkUtils.FakeTNT.name=Block of TNT
+
 #Tooltips
 tooltip.darkutils.filter.type=Type
 tooltip.darkutils.filter.type.player=Player

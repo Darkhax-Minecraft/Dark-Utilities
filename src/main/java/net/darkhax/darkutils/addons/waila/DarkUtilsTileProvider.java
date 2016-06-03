@@ -9,6 +9,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.darkutils.blocks.BlockFakeTNT;
 import net.darkhax.darkutils.blocks.BlockFeeder;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTimer;
@@ -20,6 +21,7 @@ import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -51,6 +53,9 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
                 return new ItemStack(tile.heldState.getBlock(), 1, tile.heldState.getBlock().getMetaFromState(tile.heldState));
         }
         
+        else if (data.getBlock() instanceof BlockFakeTNT)
+            return new ItemStack(Blocks.TNT, 1, 0);
+            
         return new ItemStack(data.getStack().getItem(), 1, 0);
     }
     
@@ -111,9 +116,12 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     public static void registerAddon (IWailaRegistrar register) {
         
         final DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
+        
         register.registerStackProvider(dataProvider, BlockVectorPlate.class);
         register.registerStackProvider(dataProvider, BlockUpdateDetector.class);
         register.registerStackProvider(dataProvider, BlockSneaky.class);
+        register.registerStackProvider(dataProvider, BlockFakeTNT.class);
+        
         register.registerBodyProvider(dataProvider, BlockFilter.class);
         register.registerBodyProvider(dataProvider, BlockTimer.class);
         register.registerBodyProvider(dataProvider, BlockFeeder.class);

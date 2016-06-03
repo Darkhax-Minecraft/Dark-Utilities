@@ -66,6 +66,9 @@ public class ProxyClient extends ProxyCommon {
         item = Item.getItemFromBlock(ContentHandler.blockCakeEPlus);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:cake_eplus", "inventory"));
         
+        item = Item.getItemFromBlock(ContentHandler.blockFakeTNT);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:fake_tnt", "inventory"));
+        
         for (int materialMeta = 0; materialMeta < ItemMaterial.varients.length; materialMeta++)
             ModelLoader.setCustomModelResourceLocation(ContentHandler.itemMaterial, materialMeta, new ModelResourceLocation("darkutils:material_" + ItemMaterial.varients[materialMeta], "inventory"));
             
