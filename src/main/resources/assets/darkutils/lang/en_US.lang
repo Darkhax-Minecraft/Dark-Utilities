@@ -103,6 +103,9 @@ jei.tile.darkutils.potion=A potion that has a mysterious effect. No spoilers on 
 jei.tile.darkutils.eplus=A cake to celebrate Enchanting Plus. Can be crafted by renaming cake to eplus in an anvil. Shhhh it's a secret.
 jei.tile.darkutils.tnt=A significantly weaker version of normal TNT. It is not strong enough to break blocks, making it perfect for harmless pranks.
 
+jei.item.darkutils.material=A special ingredient used in various crafting recipes.
+jei.item.darkutils.potion=A suspicious potion that probably has unique properties. Who knows what will happen if you (or something else) were to drink it...
+
 #Waila
 tooltip.darkutils.feeder.type=Food Type
 tooltip.darkutils.feeder.amount=Amount
