@@ -167,6 +167,8 @@ public class ContentHandler {
         GameRegistry.addShapedRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', Blocks.STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', new ItemStack(itemMaterial, 1, 2) });
         GameRegistry.addShapedRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', Blocks.STONE, 'p', Blocks.PISTON, 'r', Blocks.REDSTONE_BLOCK });
         GameRegistry.addShapedRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', Blocks.STONE, 's', Items.SLIME_BALL });
+        GameRegistry.addShapedRecipe(new ItemStack(blockFakeTNT), new Object[] {"gwg", "wgw", "gwg", 'g', Items.GUNPOWDER, 'w', new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE)});
+        
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFeeder), new Object[] { "ccc", "geg", "ccc", 'c', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 5), 'g', "paneGlass", 'e', "gemEmerald" }));
         
         GameRegistry.addShapelessRecipe(new ItemStack(blockGrate), Blocks.IRON_BARS, Blocks.STONE, Blocks.TRAPDOOR);
