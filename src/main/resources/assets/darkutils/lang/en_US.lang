@@ -22,6 +22,7 @@ tile.darkutils.eplus.name=Enchanted Plus Cake
 tile.darkutils.feeder.empty.name=Feeder
 tile.darkutils.feeder.partial.name=Feeder
 tile.darkutils.feeder.full.name=Full Feeder
+tile.darkutils.tnt=TNT
 
 #Items
 item.darkutils.material.wither.name=Wither Dust
@@ -100,6 +101,7 @@ jei.tile.darkutils.feeder=Up to 10 pieces of food can be stored in the feeder. I
 jei.tile.darkutils.material=A material that is used in several crafting recipes.
 jei.tile.darkutils.potion=A potion that has a mysterious effect. No spoilers on this one :)
 jei.tile.darkutils.eplus=A cake to celebrate Enchanting Plus. Can be crafted by renaming cake to eplus in an anvil. Shhhh it's a secret.
+jei.tile.darkutils.tnt=A significantly weaker version of normal TNT. It is not strong enough to break blocks, making it perfect for harmless pranks.
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type
