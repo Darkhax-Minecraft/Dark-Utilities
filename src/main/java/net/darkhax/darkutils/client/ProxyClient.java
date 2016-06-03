@@ -1,11 +1,12 @@
 package net.darkhax.darkutils.client;
 
-import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.client.renderer.PotionColorHandler;
+import net.darkhax.darkutils.client.renderer.RenderFactoryFactory;
 import net.darkhax.darkutils.client.statemap.StateMapSneaky;
 import net.darkhax.darkutils.common.ProxyCommon;
+import net.darkhax.darkutils.entity.EntityFakeTNT;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
@@ -16,6 +17,7 @@ import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ProxyClient extends ProxyCommon {
     
@@ -84,7 +86,8 @@ public class ProxyClient extends ProxyCommon {
         this.registerSneakyModel(ContentHandler.blockSneakyObsidian, "sneaky_default", true);
         this.registerSneakyModel(ContentHandler.blockSneakyPlate, "sneaky_plate", false);
         
-        AddonHandler.onClientPreInit();
+        // Entity renders
+        RenderingRegistry.registerEntityRenderingHandler(EntityFakeTNT.class, new RenderFactoryFactory.RenderFactoryTNT());
     }
     
     @Override

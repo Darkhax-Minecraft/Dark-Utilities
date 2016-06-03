@@ -7,9 +7,11 @@ import java.util.List;
 import net.darkhax.bookshelf.common.BookshelfRegistry;
 import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.blocks.BlockAntiSlime;
 import net.darkhax.darkutils.blocks.BlockCakeBase;
 import net.darkhax.darkutils.blocks.BlockEnderTether;
+import net.darkhax.darkutils.blocks.BlockFakeTNT;
 import net.darkhax.darkutils.blocks.BlockFeeder;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
@@ -23,6 +25,7 @@ import net.darkhax.darkutils.blocks.sneaky.BlockSneakyLever;
 import net.darkhax.darkutils.blocks.sneaky.BlockSneakyObsidian;
 import net.darkhax.darkutils.blocks.sneaky.BlockSneakyPressurePlate;
 import net.darkhax.darkutils.blocks.sneaky.BlockSneakyTorch;
+import net.darkhax.darkutils.entity.EntityFakeTNT;
 import net.darkhax.darkutils.items.ItemBlockCake;
 import net.darkhax.darkutils.items.ItemBlockFeeder;
 import net.darkhax.darkutils.items.ItemBlockFilter;
@@ -39,6 +42,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -73,6 +77,7 @@ public class ContentHandler {
     public static Block blockSneakyObsidian;
     public static Block blockSneakyPlate;
     public static Block blockFeeder;
+    public static Block blockFakeTNT;
     
     public static Item itemMaterial;
     public static Item itemPotion;
@@ -137,6 +142,9 @@ public class ContentHandler {
         blockFeeder = new BlockFeeder();
         registerBlock(blockFeeder, new ItemBlockFeeder(blockFeeder), "feeder");
         GameRegistry.registerTileEntity(TileEntityFeeder.class, "feeder");
+        
+        blockFakeTNT = new BlockFakeTNT();
+        registerBlock(blockFakeTNT, "fake_tnt");
     }
     
     public static void initItems () {
@@ -183,6 +191,11 @@ public class ContentHandler {
             
         for (final BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
             GameRegistry.addShapedRecipe(new ItemStack(blockTrap, 1, type.meta), new Object[] { "sis", 's', Blocks.STONE, 'i', trapIngredients[type.meta] });
+    }
+    
+    public static void initEntities () {
+        
+        EntityRegistry.registerModEntity(EntityFakeTNT.class, "FakeTNT", 0, DarkUtils.instance, 32, 20, true);
     }
     
     public static void initMisc () {

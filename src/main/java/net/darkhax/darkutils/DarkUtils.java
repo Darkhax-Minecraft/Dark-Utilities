@@ -42,6 +42,7 @@ public class DarkUtils {
         
         ContentHandler.initBlocks();
         ContentHandler.initItems();
+        ContentHandler.initEntities();
         ContentHandler.initMisc();
         ContentHandler.initRecipes();
         proxy.onPreInit();
