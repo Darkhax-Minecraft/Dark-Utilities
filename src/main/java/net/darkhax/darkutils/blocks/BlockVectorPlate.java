@@ -30,13 +30,18 @@ public class BlockVectorPlate extends BlockTrapBase {
         
         final EnumFacing direction = state.getValue(FACING).getOpposite();
         
-        if (entity.canBePushed() && !entity.isSneaking()) {
+        if (!entity.isSneaking()) {
             
             entity.motionX += this.speed * direction.getFrontOffsetX();
             entity.motionZ += this.speed * direction.getFrontOffsetZ();
             
-            if (entity instanceof EntityItem)
-                ((EntityItem) entity).setAgeToCreativeDespawnTime();
+            if (entity instanceof EntityItem) {
+                
+                final EntityItem item = (EntityItem) entity;
+                item.setAgeToCreativeDespawnTime();
+                
+                // TODO
+            }
         }
     }
     
