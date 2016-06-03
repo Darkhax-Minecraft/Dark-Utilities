@@ -22,7 +22,7 @@ tile.darkutils.eplus.name=Enchanted Plus Cake
 tile.darkutils.feeder.empty.name=Feeder
 tile.darkutils.feeder.partial.name=Feeder
 tile.darkutils.feeder.full.name=Full Feeder
-tile.darkutils.tnt=TNT
+tile.darkutils.tnt.name=TNT
 
 #Items
 item.darkutils.material.wither.name=Wither Dust
