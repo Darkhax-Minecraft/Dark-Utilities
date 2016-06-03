@@ -40,7 +40,8 @@ public class BlockVectorPlate extends BlockTrapBase {
                 final EntityItem item = (EntityItem) entity;
                 item.setAgeToCreativeDespawnTime();
                 
-                // TODO
+                if (item.delayBeforeCanPickup < 5)
+                    item.setPickupDelay(20);
             }
         }
     }
