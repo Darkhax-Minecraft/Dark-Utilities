@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.client.renderer;
+package net.darkhax.darkutils.client.renderer.color;
 
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.ItemStack;

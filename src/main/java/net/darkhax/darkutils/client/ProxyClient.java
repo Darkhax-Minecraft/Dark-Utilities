@@ -2,14 +2,16 @@ package net.darkhax.darkutils.client;
 
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
-import net.darkhax.darkutils.client.renderer.PotionColorHandler;
 import net.darkhax.darkutils.client.renderer.RenderFactoryFactory;
+import net.darkhax.darkutils.client.renderer.color.PotionColorHandler;
+import net.darkhax.darkutils.client.renderer.tile.RenderShulkerPearl;
 import net.darkhax.darkutils.client.statemap.StateMapSneaky;
 import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.entity.EntityFakeTNT;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
+import net.darkhax.darkutils.tileentity.TileEntityShulkerPearl;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -17,6 +19,7 @@ import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ProxyClient extends ProxyCommon {
@@ -91,6 +94,9 @@ public class ProxyClient extends ProxyCommon {
         
         // Entity renders
         RenderingRegistry.registerEntityRenderingHandler(EntityFakeTNT.class, new RenderFactoryFactory.RenderFactoryTNT());
+        
+        // Tile Entity Renders
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShulkerPearl.class, new RenderShulkerPearl());
     }
     
     @Override
