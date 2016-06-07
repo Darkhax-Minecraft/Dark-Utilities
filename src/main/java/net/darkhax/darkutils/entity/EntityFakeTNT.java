@@ -2,6 +2,7 @@ package net.darkhax.darkutils.entity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
+import net.minecraft.item.Item;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
@@ -9,6 +10,7 @@ public class EntityFakeTNT extends EntityTNTPrimed {
     
     public EntityFakeTNT(World worldIn) {
         
+        Item.ToolMaterial
         super(worldIn);
     }
     
