@@ -15,6 +15,7 @@ import net.darkhax.darkutils.blocks.BlockFakeTNT;
 import net.darkhax.darkutils.blocks.BlockFeeder;
 import net.darkhax.darkutils.blocks.BlockFilter;
 import net.darkhax.darkutils.blocks.BlockGrate;
+import net.darkhax.darkutils.blocks.BlockShulkerPearl;
 import net.darkhax.darkutils.blocks.BlockTimer;
 import net.darkhax.darkutils.blocks.BlockTrapEffect;
 import net.darkhax.darkutils.blocks.BlockUpdateDetector;
@@ -34,6 +35,7 @@ import net.darkhax.darkutils.items.ItemMysteriousPotion;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.darkhax.darkutils.tileentity.TileEntityFeeder;
+import net.darkhax.darkutils.tileentity.TileEntityShulkerPearl;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
@@ -78,6 +80,7 @@ public class ContentHandler {
     public static Block blockSneakyPlate;
     public static Block blockFeeder;
     public static Block blockFakeTNT;
+    public static Block blockShulkerPearl;
     
     public static Item itemMaterial;
     public static Item itemPotion;
@@ -145,6 +148,10 @@ public class ContentHandler {
         
         blockFakeTNT = new BlockFakeTNT();
         registerBlock(blockFakeTNT, "fake_tnt");
+        
+        blockShulkerPearl = new BlockShulkerPearl();
+        registerBlock(blockShulkerPearl, "shulker_pearl");
+        GameRegistry.registerTileEntity(TileEntityShulkerPearl.class, "shulker_pearl");
     }
     
     public static void initItems () {
