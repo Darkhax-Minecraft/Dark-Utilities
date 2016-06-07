@@ -10,7 +10,6 @@ public class EntityFakeTNT extends EntityTNTPrimed {
     
     public EntityFakeTNT(World worldIn) {
         
-        Item.ToolMaterial
         super(worldIn);
     }
     
