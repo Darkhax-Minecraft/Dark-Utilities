@@ -12,19 +12,19 @@ public interface ModAddon {
      * recipes, events and misc content from the main mod has been loaded, but before the
      * models or client code has been initialized.
      */
-    public void onPreInit ();
+    void onPreInit ();
     
     /**
      * Called during the init stage of loading. This is done after everything else from the
      * main mod has loaded. Currently add-ons are the only thing to make use of this stage.
      */
-    public void onInit ();
+    void onInit ();
     
     /**
      * Called during the postInit stage of loading. This is done after everything else from the
      * main mod has loaded. Currently add-ons are the only thing to make use of this stage.
      */
-    public void onPostInit ();
+    void onPostInit ();
     
     /**
      * Called during the preInit stage of loading. This version of the preInit method is only
@@ -33,7 +33,7 @@ public interface ModAddon {
      * stage.
      */
     @SideOnly(Side.CLIENT)
-    public void onClientPreInit ();
+    void onClientPreInit ();
     
     /**
      * Called when the JEI mod is ready to accept input from other mods. This method will be
@@ -43,5 +43,5 @@ public interface ModAddon {
      * @param registry Access to the JEI registry.
      */
     @Optional.Method(modid = "JEI")
-    public void onJEIReady (IModRegistry registry);
+    void onJEIReady (IModRegistry registry);
 }
