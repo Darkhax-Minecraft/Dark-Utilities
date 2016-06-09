@@ -4,6 +4,7 @@ import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.common.network.packet.PacketSyncTimer;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
+import net.darkhax.darkutils.handler.ConfigurationHandler;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.handler.ForgeEventHandler;
 import net.darkhax.darkutils.handler.GuiHandler;
@@ -23,19 +24,23 @@ import net.minecraftforge.fml.relauncher.Side;
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, dependencies = Constants.DEPENDENCIES)
 public class DarkUtils {
     
+    public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("DarkUtils");
+    public static final CreativeTabs TAB = new CreativeTabDarkUtils();
+    
     @SidedProxy(clientSide = Constants.CLIENT_PROXY_CLASS, serverSide = Constants.SERVER_PROXY_CLASS)
     public static ProxyCommon proxy;
     
     @Mod.Instance(Constants.MOD_ID)
     public static DarkUtils instance;
     
-    public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("DarkUtils");
-    public static final CreativeTabs TAB = new CreativeTabDarkUtils();
+    public static ConfigurationHandler cfg;
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
-        network.registerMessage(PacketSyncTimer.PacketHandler.class, PacketSyncTimer.class, 0, Side.SERVER);
+        cfg = new ConfigurationHandler(event.getSuggestedConfigurationFile());
+        
+        NETWORK.registerMessage(PacketSyncTimer.PacketHandler.class, PacketSyncTimer.class, 0, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
@@ -45,6 +50,7 @@ public class DarkUtils {
         ContentHandler.initEntities();
         ContentHandler.initMisc();
         ContentHandler.initRecipes();
+        
         proxy.onPreInit();
         
         AddonHandler.registerAddons();

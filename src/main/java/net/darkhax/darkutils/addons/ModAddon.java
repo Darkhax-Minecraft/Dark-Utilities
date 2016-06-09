@@ -20,5 +20,4 @@ public interface ModAddon {
      * main mod has loaded. Currently add-ons are the only thing to make use of this stage.
      */
     void onPostInit ();
-    
 }

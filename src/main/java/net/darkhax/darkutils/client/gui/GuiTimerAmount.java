@@ -64,7 +64,7 @@ public class GuiTimerAmount extends GuiScreen {
                 this.mc.displayGuiScreen((GuiScreen) null);
             else if (button.id == 0 && StringUtils.isNumeric(this.delayTextField.getText())) {
                 
-                DarkUtils.network.sendToServer(new PacketSyncTimer(this.timer.getPos(), Integer.parseInt(this.delayTextField.getText())));
+                DarkUtils.NETWORK.sendToServer(new PacketSyncTimer(this.timer.getPos(), Integer.parseInt(this.delayTextField.getText())));
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
     }

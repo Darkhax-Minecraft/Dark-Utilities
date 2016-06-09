@@ -1,5 +1,7 @@
 package net.darkhax.darkutils.handler;
 
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +9,6 @@ import java.util.List;
 import net.darkhax.bookshelf.common.BookshelfRegistry;
 import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.*;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.blocks.BlockAntiSlime;
 import net.darkhax.darkutils.blocks.BlockCakeBase;
