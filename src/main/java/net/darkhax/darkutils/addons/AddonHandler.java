@@ -3,12 +3,8 @@ package net.darkhax.darkutils.addons;
 import java.util.ArrayList;
 import java.util.List;
 
-import mezz.jei.api.IModRegistry;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class AddonHandler {
     
@@ -52,27 +48,5 @@ public class AddonHandler {
         
         for (final ModAddon addon : addonRegistry)
             addon.onPostInit();
-    }
-    
-    /**
-     * Triggers the client side preInit method in all registered addons.
-     */
-    @SideOnly(Side.CLIENT)
-    public static void onClientPreInit () {
-        
-        for (final ModAddon addon : addonRegistry)
-            addon.onClientPreInit();
-    }
-    
-    /**
-     * Triggers the onJEIReady method in all registered addons.
-     * 
-     * @param registry Access to the JEI registry.
-     */
-    @Optional.Method(modid = "JEI")
-    public static void onJEIReady (IModRegistry registry) {
-        
-        for (final ModAddon addon : addonRegistry)
-            addon.onJEIReady(registry);
     }
 }

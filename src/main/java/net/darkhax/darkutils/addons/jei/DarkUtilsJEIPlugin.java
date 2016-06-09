@@ -3,7 +3,6 @@ package net.darkhax.darkutils.addons.jei;
 import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
-import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -21,7 +20,5 @@ public class DarkUtilsJEIPlugin extends BlankModPlugin {
             
         for (final Item item : ContentHandler.ITEMS)
             registry.addDescription(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), "jei." + item.getUnlocalizedName());
-            
-        AddonHandler.onJEIReady(registry);
     }
 }
