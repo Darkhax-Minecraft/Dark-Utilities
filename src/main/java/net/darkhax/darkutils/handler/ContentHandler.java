@@ -198,10 +198,10 @@ public class ContentHandler {
         BookshelfRegistry.addAnvilRecipe(new ItemStack(Items.CAKE, 1), new ItemStack(Items.ENCHANTED_BOOK), "eplus", 2, new ItemStack(blockCakeEPlus));
         
         for (final BlockFilter.EnumType type : BlockFilter.EnumType.values())
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, type.meta), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', Blocks.STONE, 'i', filterIngredients[type.meta] }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, type.meta), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', filterIngredients[type.meta] }));
             
         for (final BlockTrapEffect.EnumType type : BlockTrapEffect.EnumType.values())
-            GameRegistry.addShapedRecipe(new ItemStack(blockTrap, 1, type.meta), new Object[] { "sis", 's', Blocks.STONE, 'i', trapIngredients[type.meta] });
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, type.meta), new Object[] { "sis", 's', STONE, 'i', trapIngredients[type.meta] }));
     }
     
     public static void initEntities () {
@@ -217,6 +217,13 @@ public class ContentHandler {
         OreDictionary.registerOre("fenceGateWood", Blocks.DARK_OAK_FENCE_GATE);
         OreDictionary.registerOre("fenceGateWood", Blocks.JUNGLE_FENCE_GATE);
         OreDictionary.registerOre("fenceGateWood", Blocks.SPRUCE_FENCE_GATE);
+        
+        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 1));
+        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 2));
+        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 3));
+        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 4));
+        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 5));
+        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 6));
     }
     
     /**
