@@ -4,10 +4,10 @@ import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.TextUtils;
 import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -33,6 +33,6 @@ public class ItemBlockCake extends ItemBlock {
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
-        TextUtils.wrapStringToList(I18n.translateToLocal("tooltip." + this.theBlock.getUnlocalizedName() + ".desc"), 35, false, tooltip);
+        TextUtils.wrapStringToList(I18n.format("tooltip." + this.theBlock.getUnlocalizedName() + ".desc"), 35, false, tooltip);
     }
 }

@@ -1,6 +1,5 @@
 package net.darkhax.darkutils.handler;
 
-import net.darkhax.darkutils.client.gui.GuiColorSelection;
 import net.darkhax.darkutils.client.gui.GuiTimerAmount;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +11,6 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 public class GuiHandler implements IGuiHandler {
     
     public static final int TIMER = 0;
-    public static final int COLOR = 1;
     
     @Override
     public Object getServerGuiElement (int id, EntityPlayer player, World world, int x, int y, int z) {
@@ -30,9 +28,6 @@ public class GuiHandler implements IGuiHandler {
             if (tile instanceof TileEntityTimer)
                 return new GuiTimerAmount((TileEntityTimer) tile);
         }
-        
-        else if (id == COLOR)
-            return new GuiColorSelection(new BlockPos(x, y, z), player.dimension);
             
         return null;
     }

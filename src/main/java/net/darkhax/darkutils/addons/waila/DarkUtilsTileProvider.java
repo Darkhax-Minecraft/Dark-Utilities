@@ -20,6 +20,7 @@ import net.darkhax.darkutils.tileentity.TileEntityFeeder;
 import net.darkhax.darkutils.tileentity.TileEntitySneaky;
 import net.darkhax.darkutils.tileentity.TileEntityTimer;
 import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -27,7 +28,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StringUtils;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 public class DarkUtilsTileProvider implements IWailaDataProvider {
@@ -69,15 +69,15 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
         
         if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && !(stack.getMetadata() > BlockFilter.EnumType.getTypes().length))
-            tip.add(I18n.translateToLocal("tooltip.darkutils.filter.type") + ": " + ChatFormatting.AQUA + I18n.translateToLocal("tooltip.darkutils.filter.type." + BlockFilter.EnumType.getTypes()[stack.getMetadata()]));
+            tip.add(I18n.format("tooltip.darkutils.filter.type") + ": " + ChatFormatting.AQUA + I18n.format("tooltip.darkutils.filter.type." + BlockFilter.EnumType.getTypes()[stack.getMetadata()]));
             
         else if (data.getBlock() instanceof BlockTimer && cfg.getConfig(CONFIG_TIMER_TIME) && data.getTileEntity() instanceof TileEntityTimer && !data.getTileEntity().isInvalid()) {
             
             final int delay = data.getNBTData().getInteger("TickRate");
             final int currentTime = data.getNBTData().getInteger("CurrentTime");
             
-            tip.add(I18n.translateToLocal("gui.darkutils.timer.delay") + ": " + delay);
-            tip.add(I18n.translateToLocal("gui.darkutils.timer.remaining") + ": " + StringUtils.ticksToElapsedTime(delay - currentTime));
+            tip.add(I18n.format("gui.darkutils.timer.delay") + ": " + delay);
+            tip.add(I18n.format("gui.darkutils.timer.remaining") + ": " + StringUtils.ticksToElapsedTime(delay - currentTime));
         }
         
         else if (data.getBlock() instanceof BlockFeeder && cfg.getConfig(CONFIG_FEEDER_INFO) && data.getTileEntity() instanceof TileEntityFeeder && !data.getTileEntity().isInvalid()) {
@@ -89,10 +89,10 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
                 final ItemStack foodStack = ItemStackUtils.createStackFromString(foodType);
                 
                 if (ItemStackUtils.isValidStack(foodStack))
-                    tip.add(I18n.translateToLocal("tooltip.darkutils.feeder.type") + ": " + ChatFormatting.BLUE + foodStack.getDisplayName());
+                    tip.add(I18n.format("tooltip.darkutils.feeder.type") + ": " + ChatFormatting.BLUE + foodStack.getDisplayName());
             }
             
-            tip.add(I18n.translateToLocal("tooltip.darkutils.feeder.amount") + ": " + data.getMetadata());
+            tip.add(I18n.format("tooltip.darkutils.feeder.amount") + ": " + data.getMetadata());
         }
         
         return tip;
