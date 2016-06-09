@@ -1,6 +1,18 @@
 package net.darkhax.darkutils.handler;
 
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.*;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.BLOCK_REDSTONE;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.BLOCK_SLIME;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.BONE;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.CROP_WHEAT;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.EGG;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.ENDERPEARL;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.GEM_EMERALD;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.GUNPOWDER;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.INGOT_IRON;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.OBSIDIAN;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.PANE_GLASS;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.SLIMEBALL;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.STONE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -212,19 +224,25 @@ public class ContentHandler {
     
     public static void initMisc () {
         
-        OreDictionary.registerOre("fenceGateWood", Blocks.OAK_FENCE_GATE);
-        OreDictionary.registerOre("fenceGateWood", Blocks.ACACIA_FENCE_GATE);
-        OreDictionary.registerOre("fenceGateWood", Blocks.BIRCH_FENCE_GATE);
-        OreDictionary.registerOre("fenceGateWood", Blocks.DARK_OAK_FENCE_GATE);
-        OreDictionary.registerOre("fenceGateWood", Blocks.JUNGLE_FENCE_GATE);
-        OreDictionary.registerOre("fenceGateWood", Blocks.SPRUCE_FENCE_GATE);
+        if (DarkUtils.cfg.oredictVanillaFenceGate) {
+            
+            OreDictionary.registerOre("fenceGateWood", Blocks.OAK_FENCE_GATE);
+            OreDictionary.registerOre("fenceGateWood", Blocks.ACACIA_FENCE_GATE);
+            OreDictionary.registerOre("fenceGateWood", Blocks.BIRCH_FENCE_GATE);
+            OreDictionary.registerOre("fenceGateWood", Blocks.DARK_OAK_FENCE_GATE);
+            OreDictionary.registerOre("fenceGateWood", Blocks.JUNGLE_FENCE_GATE);
+            OreDictionary.registerOre("fenceGateWood", Blocks.SPRUCE_FENCE_GATE);
+        }
         
-        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 1));
-        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 2));
-        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 3));
-        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 4));
-        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 5));
-        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 6));
+        if (DarkUtils.cfg.oredictVanillaStone) {
+            
+            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 1));
+            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 2));
+            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 3));
+            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 4));
+            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 5));
+            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 6));
+        }
     }
     
     /**
