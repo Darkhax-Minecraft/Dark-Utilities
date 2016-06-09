@@ -7,6 +7,7 @@ import java.util.List;
 import net.darkhax.bookshelf.common.BookshelfRegistry;
 import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import static net.darkhax.bookshelf.lib.util.OreDictUtils.*;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.blocks.BlockAntiSlime;
 import net.darkhax.darkutils.blocks.BlockCakeBase;
@@ -48,6 +49,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class ContentHandler {
     
@@ -166,27 +168,27 @@ public class ContentHandler {
     public static void initRecipes () {
         
         final Object[] trapIngredients = new Object[] { Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, Items.IRON_SWORD, Blocks.SOUL_SAND, Items.FLINT_AND_STEEL, new ItemStack(itemMaterial, 1, 0) };
-        final Object[] filterIngredients = new Object[] { Items.GOLDEN_PICKAXE, Items.BONE, Items.SPIDER_EYE, Items.ROTTEN_FLESH, Items.WHEAT, Items.WATER_BUCKET, Items.EGG, Items.MILK_BUCKET, Blocks.SLIME_BLOCK };
+        final Object[] filterIngredients = new Object[] { Items.GOLDEN_PICKAXE, BONE, Items.SPIDER_EYE, Items.ROTTEN_FLESH, CROP_WHEAT, Items.WATER_BUCKET, EGG, Items.MILK_BUCKET, BLOCK_SLIME };
         
-        GameRegistry.addShapedRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', new ItemStack(itemMaterial, 1, 1), 'o', Blocks.OBSIDIAN, 't', Blocks.REDSTONE_TORCH, 'i', Items.IRON_INGOT });
-        GameRegistry.addShapedRecipe(new ItemStack(blockTrapMovement, 8), new Object[] { "isi", "bfb", 's', Items.SLIME_BALL, 'b', Blocks.STONE, 'f', Items.SUGAR });
-        GameRegistry.addShapedRecipe(new ItemStack(blockTimer), new Object[] { "sts", "tct", "sts", 's', Blocks.STONE, 't', Blocks.REDSTONE_TORCH, 'c', Items.CLOCK });
-        GameRegistry.addShapedRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', Blocks.STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', new ItemStack(itemMaterial, 1, 2) });
-        GameRegistry.addShapedRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', Blocks.STONE, 'p', Blocks.PISTON, 'r', Blocks.REDSTONE_BLOCK });
-        GameRegistry.addShapedRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', Blocks.STONE, 's', Items.SLIME_BALL });
-        GameRegistry.addShapedRecipe(new ItemStack(blockFakeTNT), new Object[] { "gwg", "wgw", "gwg", 'g', Items.GUNPOWDER, 'w', new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE) });
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', new ItemStack(itemMaterial, 1, 1), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH, 'i', INGOT_IRON }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrapMovement, 8), new Object[] { "isi", "bfb", 's', SLIMEBALL, 'b', STONE, 'f', Items.SUGAR }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTimer), new Object[] { "sts", "tct", "sts", 's', STONE, 't', Blocks.REDSTONE_TORCH, 'c', Items.CLOCK }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', new ItemStack(itemMaterial, 1, 2) }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', STONE, 'p', Blocks.PISTON, 'r', BLOCK_REDSTONE }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', STONE, 's', SLIMEBALL }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFakeTNT), new Object[] { "gwg", "wgw", "gwg", 'g', GUNPOWDER, 'w', new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE) }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFeeder), new Object[] { "ccc", "geg", "ccc", 'c', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 5), 'g', PANE_GLASS, 'e', GEM_EMERALD }));
         
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFeeder), new Object[] { "ccc", "geg", "ccc", 'c', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 5), 'g', "paneGlass", 'e', "gemEmerald" }));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(blockGrate), Blocks.IRON_BARS, STONE, Blocks.TRAPDOOR));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), ENDERPEARL));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), SLIMEBALL));
         
-        GameRegistry.addShapelessRecipe(new ItemStack(blockGrate), Blocks.IRON_BARS, Blocks.STONE, Blocks.TRAPDOOR);
         GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.SKULL, 1, 1));
-        GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), Items.ENDER_PEARL);
-        GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), Items.SLIME_BALL);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyGhost), blockSneakyBlock, Blocks.WOOL);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.TORCH);
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.REDSTONE_TORCH);
-        GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyObsidian), blockSneakyBlock, Blocks.OBSIDIAN);
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(blockSneakyObsidian), blockSneakyBlock, OBSIDIAN));
         GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyPlate), blockSneakyBlock, Blocks.WOODEN_PRESSURE_PLATE);
         
         addConversionRecipes(new ItemStack(blockTrapMovement), new ItemStack(blockTrapMovementFast, 1, 0));
