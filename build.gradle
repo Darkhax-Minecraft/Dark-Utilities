@@ -35,9 +35,9 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Cons
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.9.4-12.17.0.1909-1.9.4"
+    version = "1.9.4-12.17.0.1963"
     runDir = "run"
-    mappings = "snapshot_20160518"
+    mappings = "snapshot_20160608"
     useDepAts = true
 }
 
@@ -162,12 +162,6 @@ uploadArchives {
     }
 }
 
-task setCurseForgeInfo() {
-
-    project.ext.releaseType = "alpha";
-    project.ext.changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master/";
-}
-
 //Prevents incomplete JavaDocs from preventing a build on Java 8.
 if (JavaVersion.current().isJava8Compatible()) {
 
@@ -190,9 +184,9 @@ curseforge {
 
         //Sets the Project ID from the system environment, if available.
         id = System.getenv("projectId") ? System.getenv("projectId") : "0";
-
-        releaseType = project.releaseType;
-        changelog = project.changelog;
+        
+        releaseType = "alpha";
+        changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master/";
 
         addGameVersion "1.9.4"
         
