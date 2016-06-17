@@ -4,13 +4,14 @@ import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.common.network.packet.PacketSyncTimer;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
+import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.features.FeatureManager;
+import net.darkhax.darkutils.features.misc.FeatureOreDict;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
 import net.darkhax.darkutils.handler.ContentHandler;
-import net.darkhax.darkutils.handler.ForgeEventHandler;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.darkhax.darkutils.libs.Constants;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -33,22 +34,27 @@ public class DarkUtils {
     @Mod.Instance(Constants.MOD_ID)
     public static DarkUtils instance;
     
-    public static ConfigurationHandler cfg;
-    
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
-        
-        cfg = new ConfigurationHandler(event.getSuggestedConfigurationFile());
         
         NETWORK.registerMessage(PacketSyncTimer.PacketHandler.class, PacketSyncTimer.class, 0, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         
-        MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
+        ConfigurationHandler.initConfig(event.getSuggestedConfigurationFile());
         
+        FeatureManager.registerFeature(new FeatureOreDict(), "Vanilla Ore Dictionary", "Adds several vanilla items and blocks to Forge's Ore Dictionary");
+        
+        ConfigurationHandler.syncConfigData();
+        
+        for (Feature feature : FeatureManager.FEATURES)
+            feature.onPreInit();
+            
+        for (Feature feature : FeatureManager.FEATURES)
+            feature.setupRecipes();
+            
         ContentHandler.initBlocks();
         ContentHandler.initItems();
         ContentHandler.initEntities();
-        ContentHandler.initMisc();
         ContentHandler.initRecipes();
         
         proxy.onPreInit();
@@ -60,6 +66,9 @@ public class DarkUtils {
     @EventHandler
     public void init (FMLInitializationEvent event) {
         
+        for (Feature feature : FeatureManager.FEATURES)
+            feature.onInit();
+            
         proxy.onInit();
         AddonHandler.onInit();
     }
@@ -67,6 +76,9 @@ public class DarkUtils {
     @EventHandler
     public void postInit (FMLPostInitializationEvent event) {
         
+        for (Feature feature : FeatureManager.FEATURES)
+            feature.onPostInit();
+            
         proxy.onPostInit();
         AddonHandler.onPostInit();
     }

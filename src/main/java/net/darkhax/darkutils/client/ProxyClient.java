@@ -8,6 +8,8 @@ import net.darkhax.darkutils.client.renderer.tile.RenderShulkerPearl;
 import net.darkhax.darkutils.client.statemap.StateMapSneaky;
 import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.entity.EntityFakeTNT;
+import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.features.FeatureManager;
 import net.darkhax.darkutils.handler.ContentHandler;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.tileentity.TileEntityShulkerPearl;
@@ -67,17 +69,25 @@ public class ProxyClient extends ProxyCommon {
         
         // Tile Entity Renders
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShulkerPearl.class, new RenderShulkerPearl());
+        
+        for (Feature feature : FeatureManager.FEATURES)
+            feature.onClientPreInit();
     }
     
     @Override
     public void onInit () {
         
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new PotionColorHandler(), ContentHandler.itemPotion);
+        
+        for (Feature feature : FeatureManager.FEATURES)
+            feature.onClientInit();
     }
     
     @Override
     public void onPostInit () {
-    
+        
+        for (Feature feature : FeatureManager.FEATURES)
+            feature.onClientPostInit();
     }
     
     /**

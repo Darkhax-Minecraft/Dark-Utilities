@@ -227,29 +227,6 @@ public class ContentHandler {
         EntityRegistry.registerModEntity(EntityFakeTNT.class, "FakeTNT", 0, DarkUtils.instance, 32, 20, true);
     }
     
-    public static void initMisc () {
-        
-        if (DarkUtils.cfg.oredictVanillaFenceGate) {
-            
-            OreDictionary.registerOre("fenceGateWood", Blocks.OAK_FENCE_GATE);
-            OreDictionary.registerOre("fenceGateWood", Blocks.ACACIA_FENCE_GATE);
-            OreDictionary.registerOre("fenceGateWood", Blocks.BIRCH_FENCE_GATE);
-            OreDictionary.registerOre("fenceGateWood", Blocks.DARK_OAK_FENCE_GATE);
-            OreDictionary.registerOre("fenceGateWood", Blocks.JUNGLE_FENCE_GATE);
-            OreDictionary.registerOre("fenceGateWood", Blocks.SPRUCE_FENCE_GATE);
-        }
-        
-        if (DarkUtils.cfg.oredictVanillaStone) {
-            
-            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 1));
-            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 2));
-            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 3));
-            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 4));
-            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 5));
-            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 6));
-        }
-    }
-    
     /**
      * Adds a basic conversion recipe. A conversion recipe converts one item directly into
      * another. Adds support for converting up to 9 items a time at a 1 to 1 ratio.

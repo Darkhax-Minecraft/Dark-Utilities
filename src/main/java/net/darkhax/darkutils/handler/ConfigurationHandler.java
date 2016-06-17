@@ -2,42 +2,44 @@ package net.darkhax.darkutils.handler;
 
 import java.io.File;
 
-import net.darkhax.bookshelf.lib.Constants;
-import net.minecraftforge.common.MinecraftForge;
+import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.features.FeatureManager;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ConfigurationHandler {
     
-    private static final String CATEGORY_MISC = "miscellaneous";
-    
     private static Configuration config;
     
-    public boolean oredictVanillaFenceGate;
-    public boolean oredictVanillaStone;
+    public static boolean oredictVanillaFenceGate;
+    public static boolean oredictVanillaStone;
     
-    public ConfigurationHandler(File file) {
+    public static Configuration initConfig (File file) {
         
         config = new Configuration(file);
-        MinecraftForge.EVENT_BUS.register(this);
-        this.syncConfigData();
+        return config;
     }
     
-    @SubscribeEvent
-    public void onConfigChange (OnConfigChangedEvent event) {
+    public static void syncConfigData () {
         
-        if (event.getModID().equals(Constants.MOD_ID))
-            this.syncConfigData();
-    }
-    
-    private void syncConfigData () {
+        config.setCategoryComment("features", "Allows features to be completely disabled");
         
-        // Misc
-        this.oredictVanillaFenceGate = config.getBoolean("oredictVanillaFenceGate", CATEGORY_MISC, true, "Should DarkUtils register the vanilla fence gates with the ore dictionar? Disabling this may break some recipes in DarkUtils.");
-        this.oredictVanillaStone = config.getBoolean("oredictVanillaStone", CATEGORY_MISC, true, "Should DarkUtils register the vanilla stone types with the ore dictionary? Disabling this may break some recipes in DarkUtils.");
-        
+        for (Feature feature : FeatureManager.FEATURES)
+            feature.setupConfiguration(config);
+            
         if (config.hasChanged())
             config.save();
+    }
+    
+    /**
+     * Checks if a feature is enabled.
+     * 
+     * @param feature The feature to check for.
+     * @param name The name of the feature
+     * @param description The description for the feature.
+     * @return Whether or not the feature was enabled.
+     */
+    public static boolean isFeatureEnabled (Feature feature, String name, String description) {
+        
+        return config.getBoolean(name, "features", feature.enabledByDefault(), description);
     }
 }

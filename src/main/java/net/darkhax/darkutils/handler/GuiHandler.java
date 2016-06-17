@@ -28,7 +28,7 @@ public class GuiHandler implements IGuiHandler {
             if (tile instanceof TileEntityTimer)
                 return new GuiTimerAmount((TileEntityTimer) tile);
         }
-            
+        
         return null;
     }
 }
