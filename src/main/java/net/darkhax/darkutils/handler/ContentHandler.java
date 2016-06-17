@@ -42,10 +42,10 @@ import net.darkhax.darkutils.blocks.sneaky.BlockSneakyPressurePlate;
 import net.darkhax.darkutils.blocks.sneaky.BlockSneakyTorch;
 import net.darkhax.darkutils.entity.EntityFakeTNT;
 import net.darkhax.darkutils.items.ItemBlockCake;
-import net.darkhax.darkutils.items.ItemBlockFeeder;
 import net.darkhax.darkutils.items.ItemBlockFilter;
 import net.darkhax.darkutils.items.ItemMaterial;
 import net.darkhax.darkutils.items.ItemMysteriousPotion;
+import net.darkhax.darkutils.items.ItemPortalCharm;
 import net.darkhax.darkutils.tileentity.TileEntityAntiSlime;
 import net.darkhax.darkutils.tileentity.TileEntityEnderTether;
 import net.darkhax.darkutils.tileentity.TileEntityFeeder;
@@ -99,6 +99,8 @@ public class ContentHandler {
     
     public static Item itemMaterial;
     public static Item itemPotion;
+    public static Item itemCharmVoid;
+    public static Item itemCharmPortal;
     
     public static void initBlocks () {
         
@@ -158,7 +160,7 @@ public class ContentHandler {
         registerBlock(blockSneakyPlate, "sneaky_plate");
         
         blockFeeder = new BlockFeeder();
-        registerBlock(blockFeeder, new ItemBlockFeeder(blockFeeder), "feeder");
+        registerBlock(blockFeeder, "feeder");
         GameRegistry.registerTileEntity(TileEntityFeeder.class, "feeder");
         
         blockFakeTNT = new BlockFakeTNT();
@@ -176,6 +178,9 @@ public class ContentHandler {
         
         itemPotion = new ItemMysteriousPotion();
         registerItem(itemPotion, "mystery_potion");
+        
+        itemCharmPortal = new ItemPortalCharm();
+        registerItem(itemCharmPortal, "charm_portal");
     }
     
     public static void initRecipes () {
