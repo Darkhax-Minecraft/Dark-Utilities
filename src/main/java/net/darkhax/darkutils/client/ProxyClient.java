@@ -34,24 +34,25 @@ public class ProxyClient extends ProxyCommon {
         MinecraftForge.EVENT_BUS.register(new ClientEventHandler());
         
         // Block Models
-        registerBlockInvModel(ContentHandler.blockTrap, BlockTrapEffect.EnumType.getTypes());
-        registerBlockInvModel(ContentHandler.blockEnderTether, 0);
-        registerBlockInvModel(ContentHandler.blockTrapMovement, 0);
-        registerBlockInvModel(ContentHandler.blockTrapMovementFast, 0);
-        registerBlockInvModel(ContentHandler.blockTrapMovementHyper, 0);
-        registerBlockInvModel(ContentHandler.blockGrate, 0);
-        registerBlockInvModel(ContentHandler.blockFilter, BlockFilter.EnumType.getTypes());
-        registerBlockInvModel(ContentHandler.blockTimer, 0);
-        registerBlockInvModel(ContentHandler.blockAntiSlime, 0);
-        registerBlockInvModel(ContentHandler.blockDetector, 0);
-        registerBlockInvModel(ContentHandler.blockCakeEPlus, 0);
-        registerBlockInvModel(ContentHandler.blockFakeTNT, 0);
+        registerBlockInvModel(ContentHandler.blockTrap, "trap", BlockTrapEffect.EnumType.getTypes());
+        registerBlockInvModel(ContentHandler.blockEnderTether);
+        registerBlockInvModel(ContentHandler.blockTrapMovement);
+        registerBlockInvModel(ContentHandler.blockTrapMovementFast);
+        registerBlockInvModel(ContentHandler.blockTrapMovementHyper);
+        registerBlockInvModel(ContentHandler.blockGrate);
+        registerBlockInvModel(ContentHandler.blockFilter, "filter", BlockFilter.EnumType.getTypes());
+        registerBlockInvModel(ContentHandler.blockTimer);
+        registerBlockInvModel(ContentHandler.blockAntiSlime);
+        registerBlockInvModel(ContentHandler.blockDetector);
+        registerBlockInvModel(ContentHandler.blockCakeEPlus);
+        registerBlockInvModel(ContentHandler.blockFeeder);
+        registerBlockInvModel(ContentHandler.blockFakeTNT);
         
         // Item Models
-        registerItemInvModel(ContentHandler.itemMaterial, ItemMaterial.varients);
+        registerItemInvModel(ContentHandler.itemMaterial, "material", ItemMaterial.varients);
         registerItemInvModel(ContentHandler.itemPotion, 0, "bottle_drinkable");
         registerItemInvModel(ContentHandler.itemPotion, 1, "bottle_drinkable");
-        registerItemInvModel(ContentHandler.itemCharmPortal, 0);
+        registerItemInvModel(ContentHandler.itemCharmPortal);
         
         // Sneaky Block Models
         this.registerSneakyModel(ContentHandler.blockSneakyBlock, "sneaky_default", false);
@@ -91,6 +92,28 @@ public class ProxyClient extends ProxyCommon {
     }
     
     /**
+     * Registers inventory models for a block that uses meta data.
+     * 
+     * @param block The block to register models for.
+     * @param prefix A prefix for the model names.
+     * @param variants The names of the models to use in order of meta data.
+     */
+    private void registerBlockInvModel (Block block, String prefix, String[] variants) {
+        
+        registerItemInvModel(Item.getItemFromBlock(block), prefix, variants);
+    }
+    
+    /**
+     * Registers inventory models for a block.
+     * 
+     * @param block The block to register models for.
+     */
+    private void registerBlockInvModel (Block block) {
+        
+        registerItemInvModel(Item.getItemFromBlock(block), 0);
+    }
+    
+    /**
      * Registers inventory models for a block.
      * 
      * @param block The block to register models for.
@@ -117,12 +140,35 @@ public class ProxyClient extends ProxyCommon {
      * Registers inventory models for an item that uses meta data.
      * 
      * @param item The item to register a model for.
+     * @param prefix A prefix to use on the variant names.
+     * @param variants The names of the models to use, in order of meta data.
+     */
+    private void registerItemInvModel (Item item, String prefix, String[] variants) {
+        
+        for (int meta = 0; meta < variants.length; meta++)
+            ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + prefix + "_" + variants[meta], "inventory"));
+    }
+    
+    /**
+     * Registers inventory models for an item that uses meta data.
+     * 
+     * @param item The item to register a model for.
      * @param variants The names of the models to use, in order of meta data.
      */
     private void registerItemInvModel (Item item, String[] variants) {
         
         for (int meta = 0; meta < variants.length; meta++)
             ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + variants[meta], "inventory"));
+    }
+    
+    /**
+     * Registers inventory models for an item.
+     * 
+     * @param item The item to registers a model for.
+     */
+    private void registerItemInvModel (Item item) {
+        
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
     }
     
     /**
