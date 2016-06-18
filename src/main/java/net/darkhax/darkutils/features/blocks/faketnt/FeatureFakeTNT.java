@@ -3,7 +3,6 @@ package net.darkhax.darkutils.features.blocks.faketnt;
 import static net.darkhax.bookshelf.lib.util.OreDictUtils.GUNPOWDER;
 
 import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.entity.EntityFakeTNT;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;

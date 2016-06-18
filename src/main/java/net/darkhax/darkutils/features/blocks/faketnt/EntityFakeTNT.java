@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.entity;
+package net.darkhax.darkutils.features.blocks.faketnt;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;

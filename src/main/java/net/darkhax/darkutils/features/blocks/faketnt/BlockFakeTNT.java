@@ -1,7 +1,6 @@
 package net.darkhax.darkutils.features.blocks.faketnt;
 
 import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.entity.EntityFakeTNT;
 import net.minecraft.block.BlockTNT;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;

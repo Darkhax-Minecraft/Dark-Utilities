@@ -1,6 +1,5 @@
 package net.darkhax.darkutils.features.blocks.faketnt;
 
-import net.darkhax.darkutils.entity.EntityFakeTNT;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderTNTPrimed;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
