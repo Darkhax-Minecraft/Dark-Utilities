@@ -9,16 +9,17 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
-import net.darkhax.darkutils.blocks.BlockFakeTNT;
-import net.darkhax.darkutils.blocks.BlockFeeder;
-import net.darkhax.darkutils.blocks.BlockFilter;
-import net.darkhax.darkutils.blocks.BlockTimer;
-import net.darkhax.darkutils.blocks.BlockUpdateDetector;
-import net.darkhax.darkutils.blocks.BlockVectorPlate;
-import net.darkhax.darkutils.blocks.sneaky.BlockSneaky;
-import net.darkhax.darkutils.tileentity.TileEntityFeeder;
-import net.darkhax.darkutils.tileentity.TileEntitySneaky;
-import net.darkhax.darkutils.tileentity.TileEntityTimer;
+import net.darkhax.darkutils.features.blocks.faketnt.BlockFakeTNT;
+import net.darkhax.darkutils.features.blocks.feeder.BlockFeeder;
+import net.darkhax.darkutils.features.blocks.feeder.TileEntityFeeder;
+import net.darkhax.darkutils.features.blocks.filter.BlockFilter;
+import net.darkhax.darkutils.features.blocks.filter.FilterType;
+import net.darkhax.darkutils.features.blocks.sneaky.BlockSneaky;
+import net.darkhax.darkutils.features.blocks.sneaky.TileEntitySneaky;
+import net.darkhax.darkutils.features.blocks.timer.BlockTimer;
+import net.darkhax.darkutils.features.blocks.timer.TileEntityTimer;
+import net.darkhax.darkutils.features.blocks.updatedetector.BlockUpdateDetector;
+import net.darkhax.darkutils.features.blocks.vector.BlockVectorPlate;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -68,8 +69,8 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
         
-        if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && !(stack.getMetadata() > BlockFilter.EnumType.getTypes().length))
-            tip.add(I18n.format("tooltip.darkutils.filter.type") + ": " + ChatFormatting.AQUA + I18n.format("tooltip.darkutils.filter.type." + BlockFilter.EnumType.getTypes()[stack.getMetadata()]));
+        if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && !(stack.getMetadata() > FilterType.getTypes().length))
+            tip.add(I18n.format("tooltip.darkutils.filter.type") + ": " + ChatFormatting.AQUA + I18n.format("tooltip.darkutils.filter.type." + FilterType.getTypes()[stack.getMetadata()]));
             
         else if (data.getBlock() instanceof BlockTimer && cfg.getConfig(CONFIG_TIMER_TIME) && data.getTileEntity() instanceof TileEntityTimer && !data.getTileEntity().isInvalid()) {
             

@@ -21,7 +21,7 @@ public class ConfigurationHandler {
     
     public static void syncConfigData () {
         
-        config.setCategoryComment("features", "Allows features to be completely disabled");
+        config.setCategoryComment("_features", "Allows features to be completely disabled");
         
         for (Feature feature : FeatureManager.FEATURES)
             feature.setupConfiguration(config);
@@ -40,6 +40,6 @@ public class ConfigurationHandler {
      */
     public static boolean isFeatureEnabled (Feature feature, String name, String description) {
         
-        return config.getBoolean(name, "features", feature.enabledByDefault(), description);
+        return config.getBoolean(name, "_features", feature.enabledByDefault(), description);
     }
 }
