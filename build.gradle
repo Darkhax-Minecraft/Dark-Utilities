@@ -35,7 +35,7 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Cons
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.9.4-12.17.0.1963"
+    version = "1.9.4-12.17.0.1965"
     runDir = "run"
     mappings = "snapshot_20160608"
     useDepAts = true
@@ -64,7 +64,7 @@ dependencies {
 
     deobfCompile "mezz.jei:jei_1.9.4:3.4.0.204"
     deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
-    deobfCompile "net.darkhax.bookshelf:Bookshelf:1.9.4-1.2.2.261"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf:1.9.4-1.2.2.275"
 }
 
 //Handles basic resources such as mcmod.info
