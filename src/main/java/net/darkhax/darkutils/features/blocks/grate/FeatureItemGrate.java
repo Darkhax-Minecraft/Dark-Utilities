@@ -9,6 +9,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class FeatureItemGrate extends Feature {
@@ -37,6 +39,7 @@ public class FeatureItemGrate extends Feature {
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
         
         ModUtils.registerBlockInvModel(blockGrate);

@@ -19,6 +19,8 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class FeatureMaterial extends Feature {
@@ -61,6 +63,7 @@ public class FeatureMaterial extends Feature {
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
         
         ModUtils.registerItemInvModel(itemMaterial, "material", ItemMaterial.varients);

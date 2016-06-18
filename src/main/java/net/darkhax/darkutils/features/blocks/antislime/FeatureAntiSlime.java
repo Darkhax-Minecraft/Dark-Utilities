@@ -15,6 +15,8 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FeatureAntiSlime extends Feature {
@@ -44,6 +46,7 @@ public class FeatureAntiSlime extends Feature {
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
         
         ModUtils.registerBlockInvModel(blockAntiSlime);

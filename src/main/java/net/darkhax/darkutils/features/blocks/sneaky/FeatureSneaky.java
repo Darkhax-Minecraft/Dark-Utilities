@@ -28,7 +28,7 @@ public class FeatureSneaky extends Feature {
      * A state map instance for the sneaky block model.
      */
     @SideOnly(Side.CLIENT)
-    private static final StateMapperBase SNEAKY_MAP = new StateMapSneaky();
+    private static StateMapperBase sneakyStateMap;
     
     public static Block blockSneakyBlock;
     public static Block blockSneakyLever;
@@ -106,8 +106,10 @@ public class FeatureSneaky extends Feature {
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
         
+        sneakyStateMap = new StateMapSneaky();
         this.registerSneakyModel(blockSneakyBlock, "sneaky_default", false);
         this.registerSneakyModel(blockSneakyLever, "sneaky_lever", false);
         this.registerSneakyModel(blockSneakyGhost, "sneaky_default", true);
@@ -145,6 +147,6 @@ public class FeatureSneaky extends Feature {
         if (!useDefault)
             ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:" + name, "normal"));
             
-        ModelLoader.setCustomStateMapper(block, SNEAKY_MAP);
+        ModelLoader.setCustomStateMapper(block, sneakyStateMap);
     }
 }

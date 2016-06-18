@@ -12,6 +12,8 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
@@ -42,6 +44,7 @@ public class FeatureFakeTNT extends Feature {
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
         
         ModUtils.registerBlockInvModel(blockFakeTNT);

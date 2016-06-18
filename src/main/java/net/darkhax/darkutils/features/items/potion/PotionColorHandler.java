@@ -1,8 +1,11 @@
-package net.darkhax.darkutils.client.renderer.color;
+package net.darkhax.darkutils.features.items.potion;
 
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class PotionColorHandler implements IItemColor {
     
     @Override

@@ -16,6 +16,8 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FeatureEnderTether extends Feature {
@@ -45,12 +47,12 @@ public class FeatureEnderTether extends Feature {
     @Override
     public void setupRecipes () {
         
-        // TODO materials
         if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH, 'i', INGOT_IRON }));
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
         
         ModUtils.registerBlockInvModel(blockEnderTether);

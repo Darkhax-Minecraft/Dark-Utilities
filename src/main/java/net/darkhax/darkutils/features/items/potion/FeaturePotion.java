@@ -1,6 +1,5 @@
 package net.darkhax.darkutils.features.items.potion;
 
-import net.darkhax.darkutils.client.renderer.color.PotionColorHandler;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.Constants;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -17,6 +16,8 @@ import net.minecraft.world.storage.loot.functions.SetDamage;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class FeaturePotion extends Feature {
     
@@ -46,6 +47,7 @@ public class FeaturePotion extends Feature {
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
         
         ModUtils.registerItemInvModel(itemPotion, 0, "bottle_drinkable");
@@ -53,6 +55,7 @@ public class FeaturePotion extends Feature {
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientInit () {
         
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new PotionColorHandler(), itemPotion);

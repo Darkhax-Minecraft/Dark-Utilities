@@ -11,6 +11,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class FeatureDisabled extends Feature {
     
@@ -24,6 +26,7 @@ public class FeatureDisabled extends Feature {
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
         
         ModelLoader.setCustomModelResourceLocation(itemDisabled, 0, new ModelResourceLocation("barrier", "inventory"));
