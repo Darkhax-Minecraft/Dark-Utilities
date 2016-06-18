@@ -64,7 +64,7 @@ dependencies {
 
     deobfCompile "mezz.jei:jei_1.9.4:3.4.0.204"
     deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
-    deobfCompile "net.darkhax.bookshelf:Bookshelf:1.9.4-1.2.2.275"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf:1.9.4-1.2.3.275"
 }
 
 //Handles basic resources such as mcmod.info
