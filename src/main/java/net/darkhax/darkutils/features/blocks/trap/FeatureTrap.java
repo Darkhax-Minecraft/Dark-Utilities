@@ -62,7 +62,7 @@ public class FeatureTrap extends Feature {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 4), new Object[] { "sis", 's', STONE, 'i', Items.FLINT_AND_STEEL }));
             
         if (craftWither)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 5), new Object[] { "sis", 's', STONE, 'i', FeatureMaterial.itemMaterial }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 5), new Object[] { "sis", 's', STONE, 'i', ModUtils.validateCrafting(FeatureMaterial.itemMaterial) }));
     }
     
     @Override

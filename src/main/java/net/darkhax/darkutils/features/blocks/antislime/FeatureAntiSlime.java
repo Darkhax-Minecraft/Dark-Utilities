@@ -40,7 +40,7 @@ public class FeatureAntiSlime extends Feature {
     public void setupRecipes () {
         
         if (craftable)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', new ItemStack(FeatureMaterial.itemMaterial, 1, 2) }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
     }
     
     @Override

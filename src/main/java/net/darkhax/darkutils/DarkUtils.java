@@ -19,6 +19,7 @@ import net.darkhax.darkutils.features.blocks.updatedetector.FeatureUpdateDetecto
 import net.darkhax.darkutils.features.blocks.vector.FeatureVectorPlate;
 import net.darkhax.darkutils.features.items.material.FeatureMaterial;
 import net.darkhax.darkutils.features.items.potion.FeaturePotion;
+import net.darkhax.darkutils.features.misc.FeatureDisabled;
 import net.darkhax.darkutils.features.misc.FeatureOreDict;
 import net.darkhax.darkutils.features.misc.FeatureSheepArmor;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
@@ -69,6 +70,7 @@ public class DarkUtils {
         
         ConfigurationHandler.initConfig(event.getSuggestedConfigurationFile());
         
+        FeatureManager.FEATURES.add(new FeatureDisabled());
         FeatureManager.registerFeature(new FeatureOreDict(), "Vanilla Ore Dictionary", "Adds several vanilla items and blocks to Forge's Ore Dictionary");
         FeatureManager.registerFeature(new FeatureSheepArmor(), "Sheep Armor", "Gives sheep armor when they have wool");
         

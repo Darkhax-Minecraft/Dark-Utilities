@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.darkutils.features.misc.FeatureDisabled;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -26,12 +27,6 @@ public class ModUtils {
      * A list of all blocks from DarkUtils.
      */
     public static final List<Block> BLOCKS = new ArrayList<Block>();
-    
-    public static void printDebugMessage (String message) {
-        
-        // TODO config to turn off.
-        Constants.LOGGER.info(message);
-    }
     
     /**
      * Adds a basic conversion recipe. A conversion recipe converts one item directly into
@@ -93,7 +88,14 @@ public class ModUtils {
         ITEMS.add(item);
     }
     
-    // Split
+    public static Object validateCrafting (Object object) {
+        
+        if (object instanceof ItemStack)
+            return ItemStackUtils.isValidStack((ItemStack) object) ? object : FeatureDisabled.itemDisabled;
+            
+        return (object != null) ? object : FeatureDisabled.itemDisabled;
+    }
+    
     /**
      * Registers inventory models for a block that uses meta data.
      * 

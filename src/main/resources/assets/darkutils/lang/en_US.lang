@@ -25,6 +25,7 @@ tile.darkutils.feeder.full.name=Full Feeder
 tile.darkutils.tnt.name=TNT
 
 #Items
+item.darkutils.disabled.name=Disabled Item
 item.darkutils.material.wither.name=Wither Dust
 item.darkutils.material.unstable.name=Unstable Ender Pearl
 item.darkutils.material.cream.name=Dwindle Cream
@@ -51,24 +52,7 @@ tooltip.darkutils.filter.type.water=Water
 tooltip.darkutils.filter.type.baby=Baby
 tooltip.darkutils.filter.type.pet=Pet
 tooltip.darkutils.filter.type.slime=Slime
-tooltip.darkutils.damagetype.inFire=Fire Damage
-tooltip.darkutils.damagetype.lightningBolt=Lightning Damage
-tooltip.darkutils.damagetype.onFire=Fire Damage
-tooltip.darkutils.damagetype.lava=Lava Damage
-tooltip.darkutils.damagetype.inWall=Suffocation Damage
-tooltip.darkutils.damagetype.drown=Drowning Damage
-tooltip.darkutils.damagetype.starve=Starving Damage
-tooltip.darkutils.damagetype.cactus=Poke Damage
-tooltip.darkutils.damagetype.fall=Fall Damage
-tooltip.darkutils.damagetype.outOfWorld=Void Damage
-tooltip.darkutils.damagetype.generic=General Damage
-tooltip.darkutils.damagetype.magic=Magic Damage
-tooltip.darkutils.damagetype.wither=Wither Damage
-tooltip.darkutils.damagetype.anvil=Anvil Damage
-tooltip.darkutils.damagetype.fallingBlock=Block Damage
-tooltip.darkutils.damagetype.taint=Taint Damage
-tooltip.darkutils.damagetype.dissolve=Dissolve Damage
-tooltip.tile.darkutils.eplus.desc=In celebration of Enchanting Plus hitting over 2 million downloads!
+tooltip.darkutils.disabled=You are seeing this because the required crafting ingredient has been disabled or removed!
 
 #Gui
 gui.darkutils.timer.title=Timer Settings
