@@ -3,7 +3,6 @@ package net.darkhax.darkutils.features.misc;
 import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.TextUtils.ChatFormat;
-import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
@@ -34,7 +33,6 @@ public class FeatureDisabled extends Feature {
         
         public ItemDisabled() {
             
-            this.setCreativeTab(DarkUtils.TAB);
             this.setUnlocalizedName("darkutils.disabled");
             this.setRegistryName("disabled");
         }
