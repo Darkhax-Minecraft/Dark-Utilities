@@ -20,6 +20,7 @@ import net.darkhax.darkutils.features.blocks.vector.FeatureVectorPlate;
 import net.darkhax.darkutils.features.items.material.FeatureMaterial;
 import net.darkhax.darkutils.features.items.portalcharm.FeaturePortalCharm;
 import net.darkhax.darkutils.features.items.potion.FeaturePotion;
+import net.darkhax.darkutils.features.items.sleepcharm.FeatureSleepCharm;
 import net.darkhax.darkutils.features.misc.FeatureDisabled;
 import net.darkhax.darkutils.features.misc.FeatureOreDict;
 import net.darkhax.darkutils.features.misc.FeatureSheepArmor;
@@ -90,6 +91,7 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureMaterial(), "Crafting Materials", "Material items used throughout DarkUtils");
         FeatureManager.registerFeature(new FeaturePotion(), "Mysterious Potion", "Strange potions with abnormal effects");
         FeatureManager.registerFeature(new FeaturePortalCharm(), "Portal Charm", "A charm to make traveling through portals faster");
+        FeatureManager.registerFeature(new FeatureSleepCharm(), "Sleep Charm", "A charm to make sleeping faster");
         
         ConfigurationHandler.syncConfigData();
         

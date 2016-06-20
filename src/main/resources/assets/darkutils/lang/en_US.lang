@@ -31,6 +31,7 @@ item.darkutils.material.unstable.name=Unstable Ender Pearl
 item.darkutils.material.cream.name=Dwindle Cream
 item.darkutils.potion.name=Mysterious Potion
 item.darkutils.portalcharm.name=Portal Charm
+item.darkutils.sleepcharm.name=Sleep Charm
 
 #Entity
 entity.DarkUtils.FakeTNT.name=Block of TNT
@@ -82,6 +83,7 @@ jei.tile.darkutils.tnt=A significantly weaker version of normal TNT. It is not s
 jei.item.darkutils.material=A special ingredient used in various crafting recipes.
 jei.item.darkutils.potion=A suspicious potion that probably has unique properties. Who knows what will happen if you (or something else) were to drink it...
 jei.item.darkutils.portalcharm=Allows for instantaneous travel through portals while in the inventory.
+jei.item.darkutils.sleepcharm=Makes sleeping easier while in the inventory.
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type
