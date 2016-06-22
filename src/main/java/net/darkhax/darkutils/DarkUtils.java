@@ -18,6 +18,7 @@ import net.darkhax.darkutils.features.blocks.trap.FeatureTrap;
 import net.darkhax.darkutils.features.blocks.updatedetector.FeatureUpdateDetector;
 import net.darkhax.darkutils.features.blocks.vector.FeatureVectorPlate;
 import net.darkhax.darkutils.features.items.material.FeatureMaterial;
+import net.darkhax.darkutils.features.items.portalcharm.FeaturePortalCharm;
 import net.darkhax.darkutils.features.items.potion.FeaturePotion;
 import net.darkhax.darkutils.features.misc.FeatureDisabled;
 import net.darkhax.darkutils.features.misc.FeatureOreDict;
@@ -88,6 +89,7 @@ public class DarkUtils {
         
         FeatureManager.registerFeature(new FeatureMaterial(), "Crafting Materials", "Material items used throughout DarkUtils");
         FeatureManager.registerFeature(new FeaturePotion(), "Mysterious Potion", "Strange potions with abnormal effects");
+        FeatureManager.registerFeature(new FeaturePortalCharm(), "Portal Charm", "A charm to make traveling through portals faster");
         
         ConfigurationHandler.syncConfigData();
         
