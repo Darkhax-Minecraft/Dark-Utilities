@@ -64,7 +64,7 @@ public class ItemMysteriousPotion extends Item {
             final EntityVillager villager = (EntityVillager) target;
             final EntityZombie zombie = new EntityZombie(player.worldObj);
             zombie.copyLocationAndAnglesFrom(target);
-            zombie.setVillagerType(villager.getProfession());
+            zombie.setVillagerType(villager.getProfessionForge());
             zombie.setNoAI(villager.isAIDisabled());
             
             if (villager.isChild())

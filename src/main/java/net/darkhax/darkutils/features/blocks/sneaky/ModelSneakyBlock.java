@@ -157,18 +157,6 @@ public class ModelSneakyBlock implements IBakedModel {
         }
         
         @Override
-        public Biome getBiome (BlockPos pos) {
-            
-            return this.access.getBiome(pos);
-        }
-        
-        @Override
-        public boolean extendedLevelsInChunkCache () {
-            
-            return this.access.extendedLevelsInChunkCache();
-        }
-        
-        @Override
         public int getStrongPower (BlockPos pos, EnumFacing direction) {
             
             return this.access.getStrongPower(pos, direction);
@@ -185,5 +173,11 @@ public class ModelSneakyBlock implements IBakedModel {
             
             return this.access.isSideSolid(pos, side, _default);
         }
+
+		@Override
+		public Biome getBiomeGenForCoords(BlockPos pos) {
+
+			return this.access.getBiomeGenForCoords(pos);
+		}
     }
 }
