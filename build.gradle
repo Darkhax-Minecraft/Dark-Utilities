@@ -118,7 +118,7 @@ String getVersionFromJava(File file) {
 
     file.write(outfile);
 
-    return "1.9.4-$release.$update.$patch.$build";
+    return "1.10.2-$release.$update.$patch.$build";
 }
 
 //Creates the source jar.
@@ -188,7 +188,7 @@ curseforge {
         releaseType = "alpha";
         changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master/";
 
-        addGameVersion "1.9.4"
+        addGameVersion "1.10.2"
         
         //Adds main jar, deobf jar, source jar, and javadoc jar to the upload.
         mainArtifact(jar) {
