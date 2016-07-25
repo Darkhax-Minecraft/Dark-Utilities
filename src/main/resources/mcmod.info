@@ -1,6 +1,6 @@
 [  
    {  
-      "modid":"DarkUtils",
+      "modid":"darkutils",
       "name":"Dark Utilities",
       "description":"A mod that adds a bunch of new utilities to the game.",
       "version":"${version}",

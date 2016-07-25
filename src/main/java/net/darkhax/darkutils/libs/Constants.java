@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Constants {
     
-    public static final String MOD_ID = "DarkUtils";
+    public static final String MOD_ID = "darkutils";
     public static final String MOD_NAME = "Dark Utilities";
     public static final String VERSION_NUMBER = "1.1.3.0";
     public static final String CLIENT_PROXY_CLASS = "net.darkhax.darkutils.client.ProxyClient";
