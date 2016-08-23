@@ -1,7 +1,6 @@
 package net.darkhax.darkutils.features.blocks.timer;
 
 import net.darkhax.bookshelf.lib.BlockStates;
-import net.darkhax.bookshelf.tileentity.TileEntityBasic;
 import net.darkhax.bookshelf.tileentity.TileEntityBasicTickable;
 import net.minecraft.nbt.NBTTagCompound;
 

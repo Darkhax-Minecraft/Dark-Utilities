@@ -173,11 +173,11 @@ public class ModelSneakyBlock implements IBakedModel {
             
             return this.access.isSideSolid(pos, side, _default);
         }
-
-		@Override
-		public Biome getBiome(BlockPos pos) {
-			
-			return this.access.getBiome(pos);
-		}
+        
+        @Override
+        public Biome getBiome (BlockPos pos) {
+            
+            return this.access.getBiome(pos);
+        }
     }
 }
