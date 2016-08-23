@@ -2,9 +2,10 @@ package net.darkhax.darkutils.features.blocks.timer;
 
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.bookshelf.tileentity.TileEntityBasic;
+import net.darkhax.bookshelf.tileentity.TileEntityBasicTickable;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class TileEntityTimer extends TileEntityBasic {
+public class TileEntityTimer extends TileEntityBasicTickable {
     
     private static final int MAXDELAY = 12000;
     private static final int MINDELAY = 10;

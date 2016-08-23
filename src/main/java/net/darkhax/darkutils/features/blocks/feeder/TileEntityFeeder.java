@@ -5,6 +5,7 @@ import java.util.List;
 import net.darkhax.bookshelf.lib.util.EntityUtils;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.bookshelf.tileentity.TileEntityBasic;
+import net.darkhax.bookshelf.tileentity.TileEntityBasicTickable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityFeeder extends TileEntityBasic implements IInventory {
+public class TileEntityFeeder extends TileEntityBasicTickable implements IInventory {
     
     public String foodType;
     
