@@ -2,7 +2,6 @@ package net.darkhax.darkutils;
 
 import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.common.ProxyCommon;
-import net.darkhax.darkutils.common.network.packet.PacketSyncTimer;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.FeatureManager;
@@ -23,6 +22,7 @@ import net.darkhax.darkutils.features.shulkerpearl.FeatureShulkerPearlItem;
 import net.darkhax.darkutils.features.sleepcharm.FeatureSleepCharm;
 import net.darkhax.darkutils.features.sneaky.FeatureSneaky;
 import net.darkhax.darkutils.features.timer.FeatureTimer;
+import net.darkhax.darkutils.features.timer.PacketSyncTimer;
 import net.darkhax.darkutils.features.trap.FeatureTrap;
 import net.darkhax.darkutils.features.updatedetector.FeatureUpdateDetector;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
@@ -97,10 +97,10 @@ public class DarkUtils {
         
         ConfigurationHandler.syncConfigData();
         
-        for (Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES)
             feature.onPreInit();
             
-        for (Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES)
             feature.setupRecipes();
             
         proxy.onPreInit();
@@ -112,7 +112,7 @@ public class DarkUtils {
     @EventHandler
     public void init (FMLInitializationEvent event) {
         
-        for (Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES)
             feature.onInit();
             
         proxy.onInit();
@@ -122,7 +122,7 @@ public class DarkUtils {
     @EventHandler
     public void postInit (FMLPostInitializationEvent event) {
         
-        for (Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES)
             feature.onPostInit();
             
         proxy.onPostInit();

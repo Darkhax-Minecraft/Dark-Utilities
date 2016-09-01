@@ -1,8 +1,7 @@
-package net.darkhax.darkutils.common.network.packet;
+package net.darkhax.darkutils.features.timer;
 
 import io.netty.buffer.ByteBuf;
 import net.darkhax.bookshelf.lib.util.PlayerUtils;
-import net.darkhax.darkutils.features.timer.TileEntityTimer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
