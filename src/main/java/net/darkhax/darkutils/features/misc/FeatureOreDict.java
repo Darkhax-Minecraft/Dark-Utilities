@@ -22,7 +22,7 @@ public class FeatureOreDict extends Feature {
     @Override
     public void onPreInit () {
         
-        if (addFenceGates) {
+        if (this.addFenceGates) {
             
             OreDictionary.registerOre("fenceGateWood", Blocks.OAK_FENCE_GATE);
             OreDictionary.registerOre("fenceGateWood", Blocks.ACACIA_FENCE_GATE);
@@ -32,7 +32,7 @@ public class FeatureOreDict extends Feature {
             OreDictionary.registerOre("fenceGateWood", Blocks.SPRUCE_FENCE_GATE);
         }
         
-        if (addStoneTypes) {
+        if (this.addStoneTypes) {
             
             OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 1));
             OreDictionary.registerOre("stone", new ItemStack(Blocks.STONE, 1, 2));

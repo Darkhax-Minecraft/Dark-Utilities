@@ -101,7 +101,7 @@ public class ModUtils {
         if (object instanceof ItemStack)
             return ItemStackUtils.isValidStack((ItemStack) object) ? object : FeatureDisabled.itemDisabled;
             
-        return (object != null) ? object : FeatureDisabled.itemDisabled;
+        return object != null ? object : FeatureDisabled.itemDisabled;
     }
     
     /**

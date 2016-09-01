@@ -78,7 +78,7 @@ public class ShulkerDataHandler {
         @Override
         public int getCooldown () {
             
-            return cooldown;
+            return this.cooldown;
         }
         
         @Override
@@ -127,19 +127,19 @@ public class ShulkerDataHandler {
         @Override
         public <T> T getCapability (Capability<T> capability, EnumFacing facing) {
             
-            return hasCapability(capability, facing) ? CUSTOM_DATA.<T> cast(instance) : null;
+            return this.hasCapability(capability, facing) ? CUSTOM_DATA.<T> cast(this.instance) : null;
         }
         
         @Override
         public NBTTagCompound serializeNBT () {
             
-            return (NBTTagCompound) CUSTOM_DATA.getStorage().writeNBT(CUSTOM_DATA, instance, null);
+            return (NBTTagCompound) CUSTOM_DATA.getStorage().writeNBT(CUSTOM_DATA, this.instance, null);
         }
         
         @Override
         public void deserializeNBT (NBTTagCompound nbt) {
             
-            CUSTOM_DATA.getStorage().readNBT(CUSTOM_DATA, instance, null, nbt);
+            CUSTOM_DATA.getStorage().readNBT(CUSTOM_DATA, this.instance, null, nbt);
         }
     }
 }

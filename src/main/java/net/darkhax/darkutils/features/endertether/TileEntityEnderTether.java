@@ -16,6 +16,6 @@ public class TileEntityEnderTether extends TileEntity {
      */
     public boolean isEntityCloseEnough (EntityLivingBase entity) {
         
-        return (entity instanceof EntityPlayer && !FeatureEnderTether.affectPlayers) ? false : EntityUtils.getDistaceFromPos(entity, this.getPos()) <= FeatureEnderTether.tetherRange;
+        return entity instanceof EntityPlayer && !FeatureEnderTether.affectPlayers ? false : EntityUtils.getDistaceFromPos(entity, this.getPos()) <= FeatureEnderTether.tetherRange;
     }
 }

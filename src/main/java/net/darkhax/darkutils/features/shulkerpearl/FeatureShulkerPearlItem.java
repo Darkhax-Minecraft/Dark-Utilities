@@ -31,22 +31,22 @@ public class FeatureShulkerPearlItem extends Feature {
         
         itemShulkerPearl = ModUtils.registerItem(new ItemShulkerPearl(), "shulker_pearl");
         
-        if (harvestablePearls)
+        if (this.harvestablePearls)
             ShulkerDataHandler.init();
     }
     
     @Override
     public void setupConfiguration (Configuration config) {
         
-        harvestablePearls = config.getBoolean("Harvest Pearls", this.configName, true, "Should pearls be harvestable from shulkers?");
-        craftEndRods = config.getBoolean("Craft End Rods", this.configName, true, "Can end rods be crafted?");
-        maxCooldown = config.getInt("Shulker Cooldown", this.configName, 6000, 0, Integer.MAX_VALUE, "The pearl harvest cooldown tile, in ticks");
+        this.harvestablePearls = config.getBoolean("Harvest Pearls", this.configName, true, "Should pearls be harvestable from shulkers?");
+        this.craftEndRods = config.getBoolean("Craft End Rods", this.configName, true, "Can end rods be crafted?");
+        this.maxCooldown = config.getInt("Shulker Cooldown", this.configName, 6000, 0, Integer.MAX_VALUE, "The pearl harvest cooldown tile, in ticks");
     }
     
     @Override
     public void setupRecipes () {
         
-        if (craftEndRods)
+        if (this.craftEndRods)
             GameRegistry.addShapelessRecipe(new ItemStack(Blocks.END_ROD), Items.CHORUS_FRUIT, itemShulkerPearl);
     }
     
@@ -66,14 +66,14 @@ public class FeatureShulkerPearlItem extends Feature {
     @SubscribeEvent
     public void onEntityInteract (EntityInteract event) {
         
-        if (event.getSide().equals(Side.SERVER) && harvestablePearls && event.getTarget() instanceof EntityShulker) {
+        if (event.getSide().equals(Side.SERVER) && this.harvestablePearls && event.getTarget() instanceof EntityShulker) {
             
-            ICustomData data = ShulkerDataHandler.getData(event.getTarget());
+            final ICustomData data = ShulkerDataHandler.getData(event.getTarget());
             
             if (data != null && data.getCooldown() <= 0) {
                 
                 event.getTarget().entityDropItem(new ItemStack(itemShulkerPearl), 0.5f);
-                data.setCooldown(maxCooldown);
+                data.setCooldown(this.maxCooldown);
             }
         }
     }
@@ -81,7 +81,7 @@ public class FeatureShulkerPearlItem extends Feature {
     @SubscribeEvent
     public void onEntityUpdate (LivingUpdateEvent event) {
         
-        if (harvestablePearls && event.getEntity() instanceof EntityShulker) {
+        if (this.harvestablePearls && event.getEntity() instanceof EntityShulker) {
             
             final ICustomData data = ShulkerDataHandler.getData(event.getEntity());
             final int current = data.getCooldown();

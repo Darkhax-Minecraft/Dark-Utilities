@@ -37,33 +37,33 @@ public class FeatureTrap extends Feature {
     @Override
     public void setupConfiguration (Configuration config) {
         
-        craftPoison = config.getBoolean("craftPoison", this.configName, true, "Should the poison trap be craftable?");
-        craftWeakness = config.getBoolean("craftWeakness", this.configName, true, "Should the weakness trap be craftable?");
-        craftHarming = config.getBoolean("craftHarming", this.configName, true, "Should the harming trap be craftable?");
-        craftSlowness = config.getBoolean("craftSlowness", this.configName, true, "Should the slowness trap be craftable?");
-        craftFire = config.getBoolean("craftFire", this.configName, true, "Should the fire trap be craftable?");
-        craftWither = config.getBoolean("craftWither", this.configName, true, "Should the wither trap be craftable?");
+        this.craftPoison = config.getBoolean("craftPoison", this.configName, true, "Should the poison trap be craftable?");
+        this.craftWeakness = config.getBoolean("craftWeakness", this.configName, true, "Should the weakness trap be craftable?");
+        this.craftHarming = config.getBoolean("craftHarming", this.configName, true, "Should the harming trap be craftable?");
+        this.craftSlowness = config.getBoolean("craftSlowness", this.configName, true, "Should the slowness trap be craftable?");
+        this.craftFire = config.getBoolean("craftFire", this.configName, true, "Should the fire trap be craftable?");
+        this.craftWither = config.getBoolean("craftWither", this.configName, true, "Should the wither trap be craftable?");
     }
     
     @Override
     public void setupRecipes () {
         
-        if (craftPoison)
+        if (this.craftPoison)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 0), new Object[] { "sis", 's', STONE, 'i', Items.SPIDER_EYE }));
             
-        if (craftWeakness)
+        if (this.craftWeakness)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 1), new Object[] { "sis", 's', STONE, 'i', Items.FERMENTED_SPIDER_EYE }));
             
-        if (craftHarming)
+        if (this.craftHarming)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 2), new Object[] { "sis", 's', STONE, 'i', Items.IRON_SWORD }));
             
-        if (craftSlowness)
+        if (this.craftSlowness)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 3), new Object[] { "sis", 's', STONE, 'i', Blocks.SOUL_SAND }));
             
-        if (craftFire)
+        if (this.craftFire)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 4), new Object[] { "sis", 's', STONE, 'i', Items.FLINT_AND_STEEL }));
             
-        if (craftWither)
+        if (this.craftWither)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 5), new Object[] { "sis", 's', STONE, 'i', ModUtils.validateCrafting(FeatureMaterial.itemMaterial) }));
     }
     
