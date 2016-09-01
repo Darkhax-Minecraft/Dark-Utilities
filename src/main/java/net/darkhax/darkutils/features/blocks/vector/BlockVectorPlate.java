@@ -1,6 +1,5 @@
 package net.darkhax.darkutils.features.blocks.vector;
 
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -28,12 +27,10 @@ public class BlockVectorPlate extends Block {
     public BlockVectorPlate(double speed) {
         
         super(Material.ROCK);
-        this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(3.0F);
         this.setResistance(10f);
         this.setHarvestLevel("pickaxe", 1);
         this.setLightOpacity(0);
-        this.setUnlocalizedName("darkutils.trap.movement");
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.speed = speed;
     }

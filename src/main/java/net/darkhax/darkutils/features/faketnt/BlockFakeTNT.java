@@ -1,6 +1,5 @@
 package net.darkhax.darkutils.features.faketnt;
 
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.BlockTNT;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
@@ -16,10 +15,8 @@ public class BlockFakeTNT extends BlockTNT {
     public BlockFakeTNT() {
         
         super();
-        this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(0.0F);
         this.setSoundType(SoundType.PLANT);
-        this.setUnlocalizedName("darkutils.tnt");
     }
     
     @Override

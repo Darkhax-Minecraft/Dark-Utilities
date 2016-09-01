@@ -11,7 +11,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class FeatureOfuda extends Feature {
     
-    
     public static Item itemOfuda;
     
     @Override
@@ -23,12 +22,12 @@ public class FeatureOfuda extends Feature {
     
     @Override
     public void setupConfiguration (Configuration config) {
-        
+    
     }
     
     @Override
     public void setupRecipes () {
-        
+    
     }
     
     @Override
@@ -39,8 +38,8 @@ public class FeatureOfuda extends Feature {
     }
     
     @SubscribeEvent
-    public void attatchCapabilities(AttachCapabilitiesEvent.Entity event) {
-        
+    public void attatchCapabilities (AttachCapabilitiesEvent.Entity event) {
+    
     }
     
     @Override

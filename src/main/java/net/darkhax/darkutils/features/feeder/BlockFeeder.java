@@ -1,7 +1,6 @@
 package net.darkhax.darkutils.features.feeder;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -30,9 +29,7 @@ public class BlockFeeder extends BlockContainer {
     public BlockFeeder() {
         
         super(Material.GLASS);
-        this.setUnlocalizedName("darkutils.feeder");
         this.setDefaultState(this.blockState.getBaseState().withProperty(FOOD, Integer.valueOf(0)));
-        this.setCreativeTab(DarkUtils.TAB);
     }
     
     @Override

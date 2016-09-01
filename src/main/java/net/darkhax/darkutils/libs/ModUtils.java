@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.misc.FeatureDisabled;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -54,6 +55,8 @@ public class ModUtils {
     public static void registerBlock (Block block, String ID) {
         
         block.setRegistryName(ID);
+        block.setCreativeTab(DarkUtils.TAB);
+        block.setUnlocalizedName("darkutils." + ID.toLowerCase().replace("_", "."));
         GameRegistry.register(block);
         GameRegistry.register(new ItemBlock(block), block.getRegistryName());
         BLOCKS.add(block);
@@ -68,6 +71,8 @@ public class ModUtils {
     public static void registerBlock (Block block, ItemBlock item, String ID) {
         
         block.setRegistryName(ID);
+        block.setCreativeTab(DarkUtils.TAB);
+        block.setUnlocalizedName("darkutils." + ID.toLowerCase().replace("_", "."));
         GameRegistry.register(block);
         GameRegistry.register(item, block.getRegistryName());
         BLOCKS.add(block);
@@ -84,6 +89,8 @@ public class ModUtils {
         if (item.getRegistryName() == null)
             item.setRegistryName(ID);
             
+        item.setCreativeTab(DarkUtils.TAB);
+        item.setUnlocalizedName("darkutils." + ID.toLowerCase().replace("_", "."));
         GameRegistry.register(item);
         ITEMS.add(item);
         return item;

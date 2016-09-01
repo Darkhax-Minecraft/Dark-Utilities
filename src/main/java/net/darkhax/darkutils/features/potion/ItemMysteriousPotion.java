@@ -3,7 +3,6 @@ package net.darkhax.darkutils.features.potion;
 import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
-import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.libs.Constants;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,8 +27,6 @@ public class ItemMysteriousPotion extends Item {
     
     public ItemMysteriousPotion() {
         
-        this.setCreativeTab(DarkUtils.TAB);
-        this.setUnlocalizedName("darkutils.potion");
         this.setMaxStackSize(1);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);

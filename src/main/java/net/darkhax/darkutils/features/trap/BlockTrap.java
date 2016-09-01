@@ -3,7 +3,6 @@ package net.darkhax.darkutils.features.trap;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -35,8 +34,6 @@ public class BlockTrap extends Block {
         
         super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, TrapType.POISON));
-        this.setUnlocalizedName("darkutils.trap");
-        this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(3.0F);
         this.setResistance(10f);
         this.setHarvestLevel("pickaxe", 1);

@@ -1,6 +1,5 @@
 package net.darkhax.darkutils.features.grate;
 
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -21,8 +20,6 @@ public class BlockGrate extends Block {
     public BlockGrate() {
         
         super(Material.ROCK);
-        this.setUnlocalizedName("darkutils.grate");
-        this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(3.0F);
         this.setResistance(5f);
     }

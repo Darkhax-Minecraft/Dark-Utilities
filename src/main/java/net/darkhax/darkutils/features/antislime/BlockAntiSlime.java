@@ -1,6 +1,5 @@
 package net.darkhax.darkutils.features.antislime;
 
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -16,11 +15,9 @@ public class BlockAntiSlime extends BlockContainer {
     public BlockAntiSlime() {
         
         super(Material.ROCK);
-        this.setUnlocalizedName("darkutils.antislime");
         this.setHardness(3.0F);
         this.setResistance(10f);
         this.setHarvestLevel("pickaxe", 1);
-        this.setCreativeTab(DarkUtils.TAB);
     }
     
     @Override

@@ -64,7 +64,7 @@ public class FeatureShulkerPearlItem extends Feature {
     }
     
     @SubscribeEvent
-    public void onEntityInteract(EntityInteract event) {
+    public void onEntityInteract (EntityInteract event) {
         
         if (event.getSide().equals(Side.SERVER) && harvestablePearls && event.getTarget() instanceof EntityShulker) {
             
@@ -79,7 +79,7 @@ public class FeatureShulkerPearlItem extends Feature {
     }
     
     @SubscribeEvent
-    public void onEntityUpdate(LivingUpdateEvent event) {
+    public void onEntityUpdate (LivingUpdateEvent event) {
         
         if (harvestablePearls && event.getEntity() instanceof EntityShulker) {
             

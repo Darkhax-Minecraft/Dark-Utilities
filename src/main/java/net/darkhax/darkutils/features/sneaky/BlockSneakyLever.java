@@ -22,7 +22,6 @@ public class BlockSneakyLever extends BlockSneaky {
     public BlockSneakyLever() {
         
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null).withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
-        this.setUnlocalizedName("darkutils.sneaky.lever");
     }
     
     @Override

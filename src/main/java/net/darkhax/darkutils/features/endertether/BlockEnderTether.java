@@ -2,7 +2,6 @@ package net.darkhax.darkutils.features.endertether;
 
 import java.util.Random;
 
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
@@ -18,9 +17,7 @@ public class BlockEnderTether extends BlockTorch implements ITileEntityProvider 
     public BlockEnderTether() {
         
         this.isBlockContainer = true;
-        this.setCreativeTab(DarkUtils.TAB);
         this.setResistance(2000f);
-        this.setUnlocalizedName("darkutils.endertether");
     }
     
     @Override

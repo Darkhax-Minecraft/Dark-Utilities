@@ -31,9 +31,7 @@ public class BlockTimer extends BlockContainer {
         
         super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, false));
-        this.setUnlocalizedName("darkutils.timer");
         this.setHardness(1f);
-        this.setCreativeTab(DarkUtils.TAB);
     }
     
     @Override

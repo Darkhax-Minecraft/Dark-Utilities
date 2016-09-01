@@ -2,7 +2,6 @@ package net.darkhax.darkutils.features.material;
 
 import java.util.List;
 
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,12 +10,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMaterial extends Item {
     
-    public static String[] varients = new String[] { "wither", "unstable", "cream"};
+    public static String[] varients = new String[] { "wither", "unstable", "cream" };
     
     public ItemMaterial() {
         
-        this.setCreativeTab(DarkUtils.TAB);
-        this.setUnlocalizedName("darkutils.material");
         this.setHasSubtypes(true);
     }
     

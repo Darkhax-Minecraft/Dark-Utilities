@@ -2,7 +2,6 @@ package net.darkhax.darkutils.features.ofuda;
 
 import java.util.List;
 
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,17 +13,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemOfuda extends Item {
     
-    public static String[] varients = new String[] { "bind", "silence", "smite", "ward", "denounce", "confine"};
+    public static String[] varients = new String[] { "bind", "silence", "smite", "ward", "denounce", "confine" };
     
     public ItemOfuda() {
         
-        this.setCreativeTab(DarkUtils.TAB);
-        this.setUnlocalizedName("darkutils.ofuda");
         this.setHasSubtypes(true);
     }
     
     @Override
-    public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
+    public boolean itemInteractionForEntity (ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
         
         return false;
     }

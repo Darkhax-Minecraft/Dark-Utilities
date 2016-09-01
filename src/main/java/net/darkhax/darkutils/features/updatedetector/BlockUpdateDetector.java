@@ -3,7 +3,6 @@ package net.darkhax.darkutils.features.updatedetector;
 import java.util.Random;
 
 import net.darkhax.bookshelf.lib.BlockStates;
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -23,8 +22,6 @@ public class BlockUpdateDetector extends Block {
         
         super(Material.CIRCUITS);
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, false));
-        this.setUnlocalizedName("darkutils.bud");
-        this.setCreativeTab(DarkUtils.TAB);
     }
     
     @Override

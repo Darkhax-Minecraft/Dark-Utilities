@@ -4,7 +4,6 @@ import java.util.List;
 
 import net.darkhax.bookshelf.lib.util.BlockUtils;
 import net.darkhax.bookshelf.lib.util.EntityUtils;
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -40,8 +39,6 @@ public class BlockFilter extends Block {
         
         super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, FilterType.PLAYER));
-        this.setUnlocalizedName("darkutils.filter");
-        this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(3.0F);
         this.setResistance(10f);
         this.setHarvestLevel("pickaxe", 1);

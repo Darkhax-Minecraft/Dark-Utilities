@@ -2,7 +2,6 @@ package net.darkhax.darkutils.features.sneaky;
 
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.bookshelf.lib.util.RenderUtils;
-import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -33,8 +32,6 @@ public class BlockSneaky extends BlockContainer {
     public BlockSneaky() {
         
         super(Material.ROCK);
-        this.setUnlocalizedName("darkutils.sneaky");
-        this.setCreativeTab(DarkUtils.TAB);
         this.setHardness(1.5F);
         this.setResistance(10.0F);
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));

@@ -24,7 +24,6 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
     public BlockSneakyPressurePlate() {
         
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null).withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
-        this.setUnlocalizedName("darkutils.sneaky.plate");
         this.setTickRandomly(true);
     }
     
