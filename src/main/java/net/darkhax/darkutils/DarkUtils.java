@@ -16,6 +16,7 @@ import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.features.misc.FeatureDisabled;
 import net.darkhax.darkutils.features.misc.FeatureOreDict;
 import net.darkhax.darkutils.features.misc.FeatureSheepArmor;
+import net.darkhax.darkutils.features.nullcharm.FeatureNullCharm;
 import net.darkhax.darkutils.features.portalcharm.FeaturePortalCharm;
 import net.darkhax.darkutils.features.potion.FeaturePotion;
 import net.darkhax.darkutils.features.shulkerpearl.FeatureShulkerPearlItem;
@@ -94,6 +95,7 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeaturePortalCharm(), "Portal Charm", "A charm to make traveling through portals faster");
         FeatureManager.registerFeature(new FeatureSleepCharm(), "Sleep Charm", "A charm to make sleeping faster");
         FeatureManager.registerFeature(new FeatureShulkerPearlItem(), "Shlker Pearls", "Adds shulker pearls and related content");
+        FeatureManager.registerFeature(new FeatureNullCharm(), "Null Charm", "A charm to clean up useless items.");
         
         ConfigurationHandler.syncConfigData();
         
