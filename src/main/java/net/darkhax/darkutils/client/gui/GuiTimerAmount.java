@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 import net.darkhax.bookshelf.lib.util.NumericUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.common.network.packet.PacketSyncTimer;
-import net.darkhax.darkutils.features.blocks.timer.TileEntityTimer;
+import net.darkhax.darkutils.features.timer.TileEntityTimer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;

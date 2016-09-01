@@ -32,6 +32,7 @@ item.darkutils.material.cream.name=Dwindle Cream
 item.darkutils.potion.name=Mysterious Potion
 item.darkutils.portalcharm.name=Portal Charm
 item.darkutils.sleepcharm.name=Sleep Charm
+item.darkutils.shulkerpearl.name=Shulker Pearl
 
 #Entity
 entity.DarkUtils.FakeTNT.name=Block of TNT

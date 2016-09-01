@@ -79,13 +79,14 @@ public class ModUtils {
      * @param item The item to register.
      * @param ID The ID to register the item with.
      */
-    public static void registerItem (Item item, String ID) {
+    public static Item registerItem (Item item, String ID) {
         
         if (item.getRegistryName() == null)
             item.setRegistryName(ID);
             
         GameRegistry.register(item);
         ITEMS.add(item);
+        return item;
     }
     
     public static Object validateCrafting (Object object) {

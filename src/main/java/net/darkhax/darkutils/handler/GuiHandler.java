@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.handler;
 
 import net.darkhax.darkutils.client.gui.GuiTimerAmount;
-import net.darkhax.darkutils.features.blocks.timer.TileEntityTimer;
+import net.darkhax.darkutils.features.timer.TileEntityTimer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
