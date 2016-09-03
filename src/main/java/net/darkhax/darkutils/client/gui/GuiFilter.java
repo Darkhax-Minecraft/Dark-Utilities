@@ -1,28 +1,26 @@
 package net.darkhax.darkutils.client.gui;
 
-import net.minecraft.client.Minecraft;
+import net.darkhax.bookshelf.inventory.InventoryItem;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ContainerHopper;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiBasicInventory extends GuiContainer {
+public class GuiFilter extends GuiContainer {
     
     private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/hopper.png");
     private final IInventory playerInventory;
     private final IInventory inventory;
     
-    public GuiBasicInventory(InventoryPlayer playerInv, IInventory inventory) {
+    public GuiFilter(InventoryPlayer playerInv, InventoryItem inventory) {
         
-        super(new ContainerHopper(playerInv, inventory, Minecraft.getMinecraft().thePlayer));
+        super(new ContainerFilter(playerInv, inventory));
         this.playerInventory = playerInv;
         this.inventory = inventory;
-        this.allowUserInput = false;
         this.ySize = 133;
     }
     
