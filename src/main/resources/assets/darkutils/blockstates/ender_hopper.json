@@ -1,0 +1,31 @@
+{
+	"variants": {
+		"facing=down": {
+			"model": "darkutils:ender_hopper",
+			"x": 180,
+			"y": 180
+		},
+		"facing=up": {
+			"model": "darkutils:ender_hopper"
+		},
+		"facing=east": {
+			"model": "darkutils:ender_hopper",
+			"x": 90,
+			"y": 90
+		},
+		"facing=west": {
+			"model": "darkutils:ender_hopper",
+			"x": 90,
+			"y": 270
+		},
+		"facing=south": {
+			"model": "darkutils:ender_hopper",
+			"x": 90,
+			"y": 180
+		},
+		"facing=north": {
+			"model": "darkutils:ender_hopper",
+			"x": 90
+		}
+	}
+}

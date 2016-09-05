@@ -27,6 +27,7 @@ tile.darkutils.pearl.block.default.name=Pearl Block
 tile.darkutils.pearl.block.brick.name=Pearl Brick
 tile.darkutils.pearl.block.carved.name=Carved Pearl Block
 tile.darkutils.pearl.block.chiseled.name=Chiseled Pearl Block
+tile.darkutils.ender.hopper.name=Ender Hopper
 
 #Items
 item.darkutils.disabled.name=Disabled Item
@@ -92,6 +93,7 @@ jei.tile.darkutils.sneaky.plate=Similar to a Wooden Pressure Plate, however you 
 jei.tile.darkutils.feeder=Up to 10 pieces of food can be stored in the feeder. If a nearby mob likes the stored food, it can eat it from the feeder. Can be used for auto breeding. Can only hold one type of food and only 10 pieces of food, but can be filled using hoppers.
 jei.tile.darkutils.fake.tnt=A significantly weaker version of normal TNT. It is not strong enough to break blocks, making it perfect for harmless pranks.
 jei.tile.darkutils.pearl.block=A decorative block crafted with pearls. Gives off a bright light. 
+jei.tile.darkutils.ender.hopper=Teleports nearby items into the container it is attatched to. Sneak + Right click on the hopper should display the reach of the hopper, unless disabled.
 
 jei.item.darkutils.material=A special ingredient used in various crafting recipes.
 jei.item.darkutils.mystery.potion=A suspicious potion that probably has unique properties. Who knows what will happen if you (or something else) were to drink it...
