@@ -11,6 +11,7 @@ import net.darkhax.darkutils.features.endertether.FeatureEnderTether;
 import net.darkhax.darkutils.features.faketnt.FeatureFakeTNT;
 import net.darkhax.darkutils.features.feeder.FeatureFeeder;
 import net.darkhax.darkutils.features.filter.FeatureFilter;
+import net.darkhax.darkutils.features.focussash.FeatureFocusSash;
 import net.darkhax.darkutils.features.grate.FeatureItemGrate;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.features.misc.FeatureDisabled;
@@ -96,6 +97,7 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureSleepCharm(), "Sleep Charm", "A charm to make sleeping faster");
         FeatureManager.registerFeature(new FeatureShulkerPearlItem(), "Shlker Pearls", "Adds shulker pearls and related content");
         FeatureManager.registerFeature(new FeatureNullCharm(), "Null Charm", "A charm to clean up useless items.");
+        FeatureManager.registerFeature(new FeatureFocusSash(), "Focus Sash", "Prevents 1-hit K.Os while in the inventory.");
         
         ConfigurationHandler.syncConfigData();
         

@@ -34,6 +34,7 @@ item.darkutils.charm.portal.name=Portal Charm
 item.darkutils.charm.sleep.name=Sleep Charm
 item.darkutils.shulker.pearl.name=Shulker Pearl
 item.darkutils.charm.null.name=Null Charm
+item.darkutils.focus.sash.name=Focus Sash
 
 #Entity
 entity.DarkUtils.FakeTNT.name=Block of TNT
@@ -64,6 +65,9 @@ gui.darkutils.timer.desc.4=The minimum is 10 and the maximum is 12000.
 itemGroup.darkutils=Dark Utilities
 container.darkutils.charm.null=Null Charm
 
+#Chat
+chat.darkutils.focussash=%sYou were saved by the focus sash!
+
 #JEI
 jei.tile.darkutils.trap.tile=These traps will apply an effect to a mob when they stand on it. For example the Slowness trap will give a Slowness effect.
 jei.tile.darkutils.ender.tether=Prevents enderman within a certain distance from teleporting away. Any teleportation attempt will warp them to the tether. Also prevents other forms of ender teleportation.
@@ -90,6 +94,7 @@ jei.item.darkutils.charm.portal=Allows for instantaneous travel through portals 
 jei.item.darkutils.charm.sleep=Makes sleeping easier while in the inventory.
 jei.item.darkutils.charm.null=While in the inventory, certain items will be destroyed when picked up. The list of items destroyed can be configured by right clicking with the item in hand.
 jei.item.darkutils.shulker.pearl=A shiny pearl harvested by right clicking on a Shulker. Mostly used for decoration.
+jei.item.darkutils.focus.sash=Prevents 1-hit K.Os while in the inventory.
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type
