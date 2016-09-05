@@ -63,13 +63,12 @@ public class FeatureNullCharm extends Feature {
         
         final List<ItemStack> charms = PlayerUtils.getStacksFromPlayer(event.getEntityPlayer(), itemNullCharm, 0);
         
-        for (ItemStack charm : charms) {
+        for (final ItemStack charm : charms)
             if (ItemNullCharm.isBlackListed(event.getItem().getEntityItem(), charm)) {
                 
                 event.getItem().setDead();
                 event.setCanceled(true);
                 return;
             }
-        }
     }
 }

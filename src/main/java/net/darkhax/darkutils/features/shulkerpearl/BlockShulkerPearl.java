@@ -24,7 +24,6 @@ public class BlockShulkerPearl extends Block {
     
     public BlockShulkerPearl() {
         
-        
         super(Material.ROCK, MapColor.QUARTZ);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.DEFAULT));
         this.setHardness(0.45F);
@@ -32,7 +31,6 @@ public class BlockShulkerPearl extends Block {
         this.setSoundType(SoundType.GLASS);
         this.setLightLevel(1.0F);
     }
-    
     
     @Override
     @SideOnly(Side.CLIENT)
