@@ -1,0 +1,16 @@
+{
+	"variants": {
+		"variant=default": {
+			"model": "darkutils:pearl_default"
+		},
+		"variant=brick": {
+			"model": "darkutils:pearl_brick"
+		},
+		"variant=carved": {
+			"model": "darkutils:pearl_carved"
+		},
+		"variant=chiseled": {
+			"model": "darkutils:pearl_chiseled"
+		}
+	}
+}

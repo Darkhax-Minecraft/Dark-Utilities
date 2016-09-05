@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.features.shulkerpearl;
 
+import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.shulkerpearl.ShulkerDataHandler.ICustomData;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -16,6 +17,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class FeatureShulkerPearlItem extends Feature {
     
@@ -24,12 +27,17 @@ public class FeatureShulkerPearlItem extends Feature {
     
     private boolean harvestablePearls = true;
     private boolean craftEndRods = true;
+    private boolean craftBlocks = true;
     private int maxCooldown = 6000;
     
     @Override
     public void onPreInit () {
         
         itemShulkerPearl = ModUtils.registerItem(new ItemShulkerPearl(), "shulker_pearl");
+        blockShulkerPearl = new BlockShulkerPearl();
+        ModUtils.registerBlock(blockShulkerPearl, new ItemBlockBasic(blockShulkerPearl, BlockShulkerPearl.types, false), "pearl_block");
+        OreDictionary.registerOre("blockPearl", new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
+        OreDictionary.registerOre("gemPearl", itemShulkerPearl);
         
         if (this.harvestablePearls)
             ShulkerDataHandler.init();
@@ -41,13 +49,23 @@ public class FeatureShulkerPearlItem extends Feature {
         this.harvestablePearls = config.getBoolean("Harvest Pearls", this.configName, true, "Should pearls be harvestable from shulkers?");
         this.craftEndRods = config.getBoolean("Craft End Rods", this.configName, true, "Can end rods be crafted?");
         this.maxCooldown = config.getInt("Shulker Cooldown", this.configName, 6000, 0, Integer.MAX_VALUE, "The pearl harvest cooldown tile, in ticks");
+        this.craftBlocks = config.getBoolean("Craft Blocks", this.configName, true, "Can pearl blocks be crafted?");
     }
     
     @Override
     public void setupRecipes () {
         
         if (this.craftEndRods)
-            GameRegistry.addShapelessRecipe(new ItemStack(Blocks.END_ROD), Items.CHORUS_FRUIT, itemShulkerPearl);
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.END_ROD), Items.CHORUS_FRUIT, "gemPearl"));
+        
+        if (this.craftBlocks) {
+            
+            GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 0), "xx ", "xx ", 'x', itemShulkerPearl);
+            GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 0));
+            GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 1));
+            GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 2));
+            GameRegistry.addShapelessRecipe(new ItemStack(itemShulkerPearl, 4), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
+        }
     }
     
     @Override
@@ -55,6 +73,7 @@ public class FeatureShulkerPearlItem extends Feature {
     public void onClientPreInit () {
         
         ModUtils.registerItemInvModel(itemShulkerPearl);
+        ModUtils.registerItemInvModel(Item.getItemFromBlock(blockShulkerPearl), "pearl", BlockShulkerPearl.types);
     }
     
     @Override
