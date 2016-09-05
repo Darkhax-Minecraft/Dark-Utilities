@@ -52,7 +52,7 @@ public class ModUtils {
      * @param block The block to register.
      * @param ID The ID to register the block with.
      */
-    public static void registerBlock (Block block, String ID) {
+    public static Block registerBlock (Block block, String ID) {
         
         block.setRegistryName(ID);
         block.setCreativeTab(DarkUtils.TAB);
@@ -60,6 +60,7 @@ public class ModUtils {
         GameRegistry.register(block);
         GameRegistry.register(new ItemBlock(block), block.getRegistryName());
         BLOCKS.add(block);
+        return block;
     }
     
     /**
@@ -68,7 +69,7 @@ public class ModUtils {
      * @param block The block to register.
      * @param ID The ID to register the block with.
      */
-    public static void registerBlock (Block block, ItemBlock item, String ID) {
+    public static Block registerBlock (Block block, ItemBlock item, String ID) {
         
         block.setRegistryName(ID);
         block.setCreativeTab(DarkUtils.TAB);
@@ -76,6 +77,7 @@ public class ModUtils {
         GameRegistry.register(block);
         GameRegistry.register(item, block.getRegistryName());
         BLOCKS.add(block);
+        return block;
     }
     
     /**

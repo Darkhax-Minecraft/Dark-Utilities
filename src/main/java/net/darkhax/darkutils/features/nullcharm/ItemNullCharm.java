@@ -29,18 +29,18 @@ public class ItemNullCharm extends Item {
     
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+    public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
         for (ItemStack blacklisted : InventoryItem.getContents(stack))
             tooltip.add(blacklisted.getDisplayName());
     }
     
-    public static boolean isBlackListed(ItemStack stack, ItemStack charmStack) {
+    public static boolean isBlackListed (ItemStack stack, ItemStack charmStack) {
         
         for (ItemStack blacklisted : InventoryItem.getContents(charmStack))
             if (ItemStackUtils.areStacksEqual(stack, blacklisted, true))
                 return true;
-        
+                
         return false;
     }
 }
