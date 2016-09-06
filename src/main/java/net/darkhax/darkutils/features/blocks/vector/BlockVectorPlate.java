@@ -142,4 +142,10 @@ public class BlockVectorPlate extends Block {
         
         return state.getValue(FACING).getHorizontalIndex();
     }
+    
+    @Override
+    public boolean canSpawnInBlock () {
+        
+        return true;
+    }
 }
