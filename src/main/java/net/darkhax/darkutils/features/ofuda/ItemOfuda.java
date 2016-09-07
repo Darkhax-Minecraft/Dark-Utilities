@@ -2,11 +2,13 @@ package net.darkhax.darkutils.features.ofuda;
 
 import java.util.List;
 
+import net.darkhax.darkutils.features.ofuda.OfudaDataHandler.ICustomData;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,6 +24,15 @@ public class ItemOfuda extends Item {
     
     @Override
     public boolean itemInteractionForEntity (ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
+        
+        if (!(target instanceof EntityPlayer)) {
+            
+            final ICustomData data = target.getCapability(OfudaDataHandler.CUSTOM_DATA, EnumFacing.DOWN);
+            
+            if (data != null)
+                if (!data.isBound())
+                    data.setBound(true);
+        }
         
         return false;
     }
