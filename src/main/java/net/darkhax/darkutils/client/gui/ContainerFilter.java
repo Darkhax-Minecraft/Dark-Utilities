@@ -13,7 +13,7 @@ public class ContainerFilter extends Container {
     
     public ContainerFilter(InventoryPlayer playerInv, InventoryItem inventory) {
         
-        for (int invIndex = 0; invIndex < inventory.getSizeInventory(); ++invIndex)
+        for (int invIndex = 0; invIndex < 5; invIndex++)
             this.addSlotToContainer(new SlotFake(inventory, invIndex, 44 + invIndex * 18, 20));
             
         for (int playerInvX = 0; playerInvX < 3; ++playerInvX)
