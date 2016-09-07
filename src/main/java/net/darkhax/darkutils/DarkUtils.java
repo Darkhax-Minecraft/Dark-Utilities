@@ -6,7 +6,6 @@ import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.FeatureManager;
 import net.darkhax.darkutils.features.antislime.FeatureAntiSlime;
-import net.darkhax.darkutils.features.blocks.vector.FeatureVectorPlate;
 import net.darkhax.darkutils.features.enderhopper.FeatureEnderHopper;
 import net.darkhax.darkutils.features.endertether.FeatureEnderTether;
 import net.darkhax.darkutils.features.faketnt.FeatureFakeTNT;
@@ -28,6 +27,7 @@ import net.darkhax.darkutils.features.timer.FeatureTimer;
 import net.darkhax.darkutils.features.timer.PacketSyncTimer;
 import net.darkhax.darkutils.features.trap.FeatureTrap;
 import net.darkhax.darkutils.features.updatedetector.FeatureUpdateDetector;
+import net.darkhax.darkutils.features.vector.FeatureVectorPlate;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.darkhax.darkutils.libs.Constants;
@@ -100,6 +100,8 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureNullCharm(), "Null Charm", "A charm to clean up useless items.");
         FeatureManager.registerFeature(new FeatureFocusSash(), "Focus Sash", "Prevents 1-hit K.Os while in the inventory.");
         FeatureManager.registerFeature(new FeatureEnderHopper(), "Ender Hopper", "A hopper which can pick up blocks within range.");
+        // FeatureManager.registerFeature(new FeatureOfuda(), "Ofuda", "Items with various mob
+        // effects");
         
         ConfigurationHandler.syncConfigData();
         

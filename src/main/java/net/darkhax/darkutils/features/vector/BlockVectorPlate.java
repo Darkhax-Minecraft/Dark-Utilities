@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.features.blocks.vector;
+package net.darkhax.darkutils.features.vector;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
