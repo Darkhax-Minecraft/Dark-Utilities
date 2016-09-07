@@ -15,7 +15,6 @@ public class RendererEnderHopper extends TileEntitySpecialRenderer<TileEntityEnd
             
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        GlStateManager.disableLighting();
         GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
         GlStateManager.glLineWidth(25.0F);
         GlStateManager.disableTexture2D();
@@ -25,7 +24,6 @@ public class RendererEnderHopper extends TileEntitySpecialRenderer<TileEntityEnd
         RenderGlobal.drawSelectionBoundingBox(te.area, 1f, 0f, 1f, 0.5f);
         
         GlStateManager.depthMask(true);
-        GlStateManager.enableLighting();
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
