@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.features.enderhopper;
 
+import mezz.jei.gui.ingredients.ItemStackRenderer;
 import net.darkhax.bookshelf.lib.util.OreDictUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
@@ -25,6 +26,7 @@ public class FeatureEnderHopper extends Feature {
     @Override
     public void onPreInit () {
         
+        final ItemStackRenderer r;
         blockEnderHopper = new BlockEnderHopper();
         ModUtils.registerBlock(blockEnderHopper, "ender_hopper");
         GameRegistry.registerTileEntity(TileEntityEnderHopper.class, "ender_hopper");

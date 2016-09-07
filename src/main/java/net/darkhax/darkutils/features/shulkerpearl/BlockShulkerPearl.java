@@ -2,8 +2,6 @@ package net.darkhax.darkutils.features.shulkerpearl;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -18,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -64,7 +61,7 @@ public class BlockShulkerPearl extends Block {
     }
     
     @Override
-    public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
+    public boolean isBeaconBase (IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
         
         return true;
     }
