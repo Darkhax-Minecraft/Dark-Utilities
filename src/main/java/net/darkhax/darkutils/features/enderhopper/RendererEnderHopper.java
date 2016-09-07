@@ -21,7 +21,8 @@ public class RendererEnderHopper extends TileEntitySpecialRenderer<TileEntityEnd
         GlStateManager.depthMask(false);
         
         RenderUtils.translateAgainstPlayer(te.getPos(), false);
-        RenderGlobal.drawSelectionBoundingBox(te.area, 1f, 0f, 1f, 0.5f);
+        // drawSelectionBoundingBox
+        RenderGlobal.func_189697_a(te.area, 1f, 0f, 1f, 0.5f);
         
         GlStateManager.depthMask(true);
         GlStateManager.enableTexture2D();
