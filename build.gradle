@@ -28,6 +28,9 @@ apply plugin: "maven"
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.matthewprenger.cursegradle"
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 group = "net.darkhax.darkutils"
 archivesBaseName = "DarkUtilities"
 version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Constants.java"))
