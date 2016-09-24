@@ -1,6 +1,7 @@
 package net.darkhax.darkutils.features.sneaky;
 
 import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.lib.util.ParticleUtils;
 import net.darkhax.bookshelf.lib.util.RenderUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -169,7 +170,7 @@ public class BlockSneaky extends BlockContainer {
             final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
             
             if (sneaky.heldState != null)
-                return RenderUtils.spawnDigParticles(renderer, sneaky.heldState, world, hitPos.getBlockPos(), hitPos.sideHit);
+                return ParticleUtils.spawnDigParticles(renderer, sneaky.heldState, world, hitPos.getBlockPos(), hitPos.sideHit);
         }
         
         return false;
@@ -185,7 +186,7 @@ public class BlockSneaky extends BlockContainer {
             final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
             
             if (sneaky.heldState != null)
-                return RenderUtils.spawnBreakParticles(renderer, sneaky.heldState, world, pos);
+                return ParticleUtils.spawnBreakParticles(renderer, sneaky.heldState, world, pos);
         }
         
         return false;
