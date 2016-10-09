@@ -25,7 +25,7 @@ public class ConfigurationHandler {
         
         for (final Feature feature : FeatureManager.FEATURES)
             feature.setupConfiguration(config);
-            
+        
         if (config.hasChanged())
             config.save();
     }

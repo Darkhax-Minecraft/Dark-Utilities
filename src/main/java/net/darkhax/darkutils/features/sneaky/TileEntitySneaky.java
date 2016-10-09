@@ -27,7 +27,7 @@ public class TileEntitySneaky extends TileEntityBasic {
         
         if (heldBlock != null)
             this.heldState = heldBlock.getStateFromMeta(tag.getInteger("HeldBlockMeta"));
-            
+        
         if (tag.hasKey("PlayerID"))
             this.playerID = tag.getString("PlayerID");
     }

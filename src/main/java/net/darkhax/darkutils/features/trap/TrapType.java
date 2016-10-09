@@ -42,7 +42,7 @@ public enum TrapType implements IStringSerializable {
         for (final TrapType type : TrapType.values())
             if (type.meta == meta)
                 return type;
-                
+            
         return POISON;
     }
     
@@ -50,12 +50,12 @@ public enum TrapType implements IStringSerializable {
         
         if (nameList != null)
             return nameList;
-            
-        final List<String> names = new ArrayList<String>();
+        
+        final List<String> names = new ArrayList<>();
         
         for (final TrapType type : TrapType.values())
             names.add(type.type);
-            
+        
         nameList = names.toArray(new String[names.size()]);
         return nameList;
     }

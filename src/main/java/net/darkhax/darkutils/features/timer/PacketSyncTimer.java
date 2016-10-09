@@ -15,7 +15,7 @@ public class PacketSyncTimer implements IMessage {
     public int delayTime;
     
     public PacketSyncTimer() {
-    
+        
     }
     
     public PacketSyncTimer(BlockPos pos, int delayTime) {
@@ -50,7 +50,7 @@ public class PacketSyncTimer implements IMessage {
             
             if (!tile.isInvalid())
                 tile.setDelayTime(packet.delayTime);
-                
+            
             return null;
         }
     }

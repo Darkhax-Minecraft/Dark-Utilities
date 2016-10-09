@@ -45,7 +45,7 @@ public enum FilterType implements IStringSerializable {
         for (final FilterType type : FilterType.values())
             if (type.meta == meta)
                 return type;
-                
+            
         return PLAYER;
     }
     
@@ -53,12 +53,12 @@ public enum FilterType implements IStringSerializable {
         
         if (nameList != null)
             return nameList;
-            
-        final List<String> names = new ArrayList<String>();
+        
+        final List<String> names = new ArrayList<>();
         
         for (final FilterType type : FilterType.values())
             names.add(type.type);
-            
+        
         nameList = names.toArray(new String[names.size()]);
         return nameList;
     }

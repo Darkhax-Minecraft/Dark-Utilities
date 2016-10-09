@@ -57,28 +57,28 @@ public class FeatureFilter extends Feature {
         
         if (craftPlayer)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 0), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', Items.GOLDEN_PICKAXE }));
-            
+        
         if (craftUndead)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 1), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', BONE }));
-            
+        
         if (craftArthropod)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 2), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', Items.SPIDER_EYE }));
-            
+        
         if (craftMonster)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 3), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', Items.ROTTEN_FLESH }));
-            
+        
         if (craftAnimal)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 4), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', CROP_WHEAT }));
-            
+        
         if (craftWater)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 5), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', Items.WATER_BUCKET }));
-            
+        
         if (craftBaby)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 6), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', EGG }));
-            
+        
         if (craftPet)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 7), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', Items.MILK_BUCKET }));
-            
+        
         if (craftSlime)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 8), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', BLOCK_SLIME }));
     }

@@ -12,7 +12,7 @@ public class RendererEnderHopper extends TileEntitySpecialRenderer<TileEntityEnd
         
         if (!te.showBorder)
             return;
-            
+        
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
         GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);

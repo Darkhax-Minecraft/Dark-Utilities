@@ -8,7 +8,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class FeatureManager {
     
-    public static final List<Feature> FEATURES = new ArrayList<Feature>();
+    public static final List<Feature> FEATURES = new ArrayList<>();
     
     /**
      * Registers a new feature with the feature manager. This will automatically create an

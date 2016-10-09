@@ -2,7 +2,6 @@ package net.darkhax.darkutils.features.sneaky;
 
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.bookshelf.lib.util.ParticleUtils;
-import net.darkhax.bookshelf.lib.util.RenderUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

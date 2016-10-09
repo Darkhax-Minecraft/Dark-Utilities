@@ -79,7 +79,7 @@ public class GuiTimerAmount extends GuiScreen {
         
         if (keyCode == 1)
             this.actionPerformed(this.cancelBtn);
-            
+        
         else if (keyCode == 28)
             this.actionPerformed(this.doneBtn);
     }

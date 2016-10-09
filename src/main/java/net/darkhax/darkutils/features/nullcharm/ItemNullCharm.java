@@ -23,8 +23,8 @@ public class ItemNullCharm extends Item {
         
         if (!world.isRemote)
             player.openGui(DarkUtils.instance, GuiHandler.FILTER, world, 0, 0, 0);
-            
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStack);
+        
+        return new ActionResult<>(EnumActionResult.PASS, itemStack);
     }
     
     @Override
@@ -40,7 +40,7 @@ public class ItemNullCharm extends Item {
         for (final ItemStack blacklisted : InventoryItem.getContents(charmStack))
             if (ItemStackUtils.areStacksEqual(stack, blacklisted, true))
                 return true;
-                
+            
         return false;
     }
 }

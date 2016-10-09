@@ -30,7 +30,7 @@ public class ItemMaterial extends Item {
         
         if (!(meta >= 0 && meta < varients.length))
             return super.getUnlocalizedName() + "." + varients[0];
-            
+        
         return super.getUnlocalizedName() + "." + varients[meta];
     }
     

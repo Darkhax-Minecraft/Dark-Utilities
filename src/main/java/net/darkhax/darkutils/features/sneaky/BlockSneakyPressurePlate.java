@@ -59,7 +59,7 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
     
     @Override
     public void randomTick (World worldIn, BlockPos pos, IBlockState state, Random random) {
-    
+        
     }
     
     @Override
@@ -110,7 +110,7 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
         
         if (this.getRedstoneStrength(state) > 0)
             this.updateNeighbors(worldIn, pos);
-            
+        
         super.breakBlock(worldIn, pos, state);
     }
     
@@ -157,7 +157,7 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
             for (final Entity entity : list)
                 if (!entity.doesEntityNotTriggerPressurePlate())
                     return 15;
-                    
+                
         return 0;
     }
 }

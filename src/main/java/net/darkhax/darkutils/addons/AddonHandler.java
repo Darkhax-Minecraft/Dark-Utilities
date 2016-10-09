@@ -11,13 +11,13 @@ public class AddonHandler {
     /**
      * A registry for holding all mod addons between DarkUtils and other mods.
      */
-    public static List<ModAddon> addonRegistry = new ArrayList<ModAddon>();
+    public static List<ModAddon> addonRegistry = new ArrayList<>();
     
     /**
      * Registers the standard handlers with the registry.
      */
     public static void registerAddons () {
-    
+        
     }
     
     /**
@@ -36,7 +36,7 @@ public class AddonHandler {
         
         if (Loader.isModLoaded("Waila"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.darkutils.addons.waila.DarkUtilsTileProvider.registerAddon");
-            
+        
         for (final ModAddon addon : addonRegistry)
             addon.onInit();
     }

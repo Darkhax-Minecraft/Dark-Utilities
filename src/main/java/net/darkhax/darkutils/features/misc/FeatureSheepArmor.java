@@ -42,7 +42,7 @@ public class FeatureSheepArmor extends Feature {
             
             if (!isSheared && !hasModifier)
                 instance.applyModifier(sheepArmor);
-                
+            
             else if (isSheared && hasModifier)
                 instance.removeModifier(sheepArmor);
         }

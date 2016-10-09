@@ -17,7 +17,7 @@ public class DarkUtilsJEIPlugin extends BlankModPlugin {
         
         for (final Block block : ModUtils.BLOCKS)
             registry.addDescription(new ItemStack(block, 1, OreDictionary.WILDCARD_VALUE), "jei." + block.getUnlocalizedName());
-            
+        
         for (final Item item : ModUtils.ITEMS)
             registry.addDescription(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), "jei." + item.getUnlocalizedName());
     }

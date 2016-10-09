@@ -22,12 +22,12 @@ public class ModUtils {
     /**
      * A list of all items from DarkUtils.
      */
-    public static final List<Item> ITEMS = new ArrayList<Item>();
+    public static final List<Item> ITEMS = new ArrayList<>();
     
     /**
      * A list of all blocks from DarkUtils.
      */
-    public static final List<Block> BLOCKS = new ArrayList<Block>();
+    public static final List<Block> BLOCKS = new ArrayList<>();
     
     /**
      * Adds a basic conversion recipe. A conversion recipe converts one item directly into
@@ -90,7 +90,7 @@ public class ModUtils {
         
         if (item.getRegistryName() == null)
             item.setRegistryName(ID);
-            
+        
         item.setCreativeTab(DarkUtils.TAB);
         item.setUnlocalizedName("darkutils." + ID.toLowerCase().replace("_", "."));
         GameRegistry.register(item);
@@ -102,7 +102,7 @@ public class ModUtils {
         
         if (object instanceof ItemStack)
             return ItemStackUtils.isValidStack((ItemStack) object) ? object : FeatureDisabled.itemDisabled;
-            
+        
         return object != null ? object : FeatureDisabled.itemDisabled;
     }
     

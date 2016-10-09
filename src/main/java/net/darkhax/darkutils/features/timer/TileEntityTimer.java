@@ -59,10 +59,10 @@ public class TileEntityTimer extends TileEntityBasicTickable {
         
         if (tickRate < 10)
             this.delayTime = 10;
-            
+        
         else if (tickRate > 12000)
             this.delayTime = 12000;
-            
+        
         else
             this.delayTime = tickRate;
     }

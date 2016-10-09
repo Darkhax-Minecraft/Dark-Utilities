@@ -27,12 +27,12 @@ public class FeatureOfuda extends Feature {
     
     @Override
     public void setupConfiguration (Configuration config) {
-    
+        
     }
     
     @Override
     public void setupRecipes () {
-    
+        
     }
     
     @Override

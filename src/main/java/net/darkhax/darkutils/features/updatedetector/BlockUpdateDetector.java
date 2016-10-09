@@ -29,7 +29,7 @@ public class BlockUpdateDetector extends Block {
         
         if (worldIn.isRemote || blockIn.canProvidePower(state) || blockIn == Blocks.PISTON_EXTENSION || blockIn == Blocks.PISTON_HEAD || state.getValue(BlockStates.POWERED))
             return;
-            
+        
         worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(BlockStates.POWERED, true), 1 | 2);
         worldIn.scheduleUpdate(pos, this, 5);
     }

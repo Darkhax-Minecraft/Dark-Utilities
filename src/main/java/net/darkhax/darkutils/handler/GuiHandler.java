@@ -21,7 +21,7 @@ public class GuiHandler implements IGuiHandler {
         
         if (id == FILTER)
             return new ContainerFilter(player.inventory, new InventoryItem(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
-            
+        
         return null;
     }
     
@@ -38,7 +38,7 @@ public class GuiHandler implements IGuiHandler {
         
         else if (id == FILTER)
             return new GuiFilter(player.inventory, new InventoryItem(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
-            
+        
         return null;
     }
 }

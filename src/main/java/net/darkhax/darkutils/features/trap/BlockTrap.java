@@ -130,22 +130,22 @@ public class BlockTrap extends Block {
             
             if (type == 0)
                 effect = new PotionEffect(MobEffects.POISON, 60);
-                
+            
             if (type == 1)
                 effect = new PotionEffect(MobEffects.WEAKNESS, 60);
-                
+            
             if (type == 2)
                 living.attackEntityFrom(DamageSource.magic, 2.5f);
-                
+            
             if (type == 3)
                 effect = new PotionEffect(MobEffects.SLOWNESS, 60, 2);
-                
+            
             if (type == 4)
                 living.setFire(1);
-                
+            
             if (type == 5)
                 effect = new PotionEffect(MobEffects.WITHER, 60);
-                
+            
             if (effect != null) {
                 
                 effect.setCurativeItems(new ArrayList<ItemStack>());

@@ -56,10 +56,10 @@ public class FeatureMaterial extends Feature {
         
         if (craftDustFromSkull)
             GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.SKULL, 1, 1));
-            
+        
         if (craftDwindleCream)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), SLIMEBALL));
-            
+        
         if (craftUnstableEnderPearl)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), ENDERPEARL));
     }

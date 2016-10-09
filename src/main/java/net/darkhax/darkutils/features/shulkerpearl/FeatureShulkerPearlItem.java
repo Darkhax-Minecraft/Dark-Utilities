@@ -57,7 +57,7 @@ public class FeatureShulkerPearlItem extends Feature {
         
         if (this.craftEndRods)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.END_ROD), Items.CHORUS_FRUIT, "gemPearl"));
-            
+        
         if (this.craftBlocks) {
             
             GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 0), "xx ", "xx ", 'x', itemShulkerPearl);

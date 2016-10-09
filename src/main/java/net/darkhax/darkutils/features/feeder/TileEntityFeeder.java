@@ -27,7 +27,7 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
             
             if (food == this.getSizeInventory())
                 return foodStack.stackSize;
-                
+            
             this.setFood(food += foodStack.stackSize);
             
             if (food > this.getSizeInventory()) {
@@ -55,7 +55,7 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
         
         if (this.foodType == null || this.foodType.equals("null"))
             this.foodType = ItemStackUtils.writeStackToString(stack);
-            
+        
         return ItemStackUtils.isValidStack(stack) && ItemStackUtils.writeStackToString(stack).equals(this.foodType);
     }
     
@@ -168,12 +168,12 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
     
     @Override
     public void openInventory (EntityPlayer player) {
-    
+        
     }
     
     @Override
     public void closeInventory (EntityPlayer player) {
-    
+        
     }
     
     @Override
@@ -196,7 +196,7 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
     
     @Override
     public void setField (int id, int value) {
-    
+        
     }
     
     @Override

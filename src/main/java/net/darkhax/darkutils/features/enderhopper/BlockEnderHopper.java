@@ -70,22 +70,22 @@ public class BlockEnderHopper extends BlockTileEntity {
         
         if (direction == EnumFacing.DOWN)
             return BOUNDS_DOWN;
-            
+        
         else if (direction == EnumFacing.UP)
             return BOUNDS_UP;
-            
+        
         else if (direction == EnumFacing.NORTH)
             return BOUNDS_NORTH;
-            
+        
         else if (direction == EnumFacing.SOUTH)
             return BOUNDS_SOUTH;
-            
+        
         else if (direction == EnumFacing.WEST)
             return BOUNDS_WEST;
-            
+        
         else if (direction == EnumFacing.EAST)
             return BOUNDS_EAST;
-            
+        
         return BOUNDS_UP;
     }
     

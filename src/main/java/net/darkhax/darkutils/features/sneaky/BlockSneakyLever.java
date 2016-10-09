@@ -47,10 +47,10 @@ public class BlockSneakyLever extends BlockSneaky {
         
         if (heldItem != null && heldItem.getItem() != null)
             return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
-            
+        
         if (worldIn.isRemote)
             return true;
-            
+        
         else {
             
             state = state.cycleProperty(BlockStates.POWERED);
@@ -66,7 +66,7 @@ public class BlockSneakyLever extends BlockSneaky {
         
         if (state.getValue(BlockStates.POWERED).booleanValue())
             worldIn.notifyNeighborsOfStateChange(pos, this);
-            
+        
         super.breakBlock(worldIn, pos, state);
     }
     

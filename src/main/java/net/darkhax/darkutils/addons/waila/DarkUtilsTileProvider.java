@@ -49,14 +49,14 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
             
             if (cfg.getConfig(CONFIG_SNEAKY_OWNERS) && tile.playerID != null && !tile.playerID.isEmpty() && data.getPlayer().getUniqueID().toString().equals(tile.playerID))
                 return data.getStack();
-                
+            
             if (tile.heldState != null)
                 return new ItemStack(tile.heldState.getBlock(), 1, tile.heldState.getBlock().getMetaFromState(tile.heldState));
         }
         
         else if (data.getBlock() instanceof BlockFakeTNT)
             return new ItemStack(Blocks.TNT, 1, 0);
-            
+        
         return new ItemStack(data.getStack().getItem(), 1, 0);
     }
     
@@ -71,7 +71,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         
         if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && !(stack.getMetadata() > FilterType.getTypes().length))
             tip.add(I18n.format("tooltip.darkutils.filter.type") + ": " + ChatFormatting.AQUA + I18n.format("tooltip.darkutils.filter.type." + FilterType.getTypes()[stack.getMetadata()]));
-            
+        
         else if (data.getBlock() instanceof BlockTimer && cfg.getConfig(CONFIG_TIMER_TIME) && data.getTileEntity() instanceof TileEntityTimer && !data.getTileEntity().isInvalid()) {
             
             final int delay = data.getNBTData().getInteger("TickRate");
@@ -110,7 +110,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
         
         if (te != null && !te.isInvalid())
             te.writeToNBT(tag);
-            
+        
         return tag;
     }
     

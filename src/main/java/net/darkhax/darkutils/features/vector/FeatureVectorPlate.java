@@ -64,13 +64,13 @@ public class FeatureVectorPlate extends Feature {
         
         if (craftVectorPlate)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockVectorPlate, craftAmount), new Object[] { "isi", "bfb", 's', SLIMEBALL, 'b', STONE, 'f', Items.SUGAR }));
-            
+        
         if (convertNormalFast)
             ModUtils.addConversionRecipes(new ItemStack(blockVectorPlate), new ItemStack(blockFastVectorPlate, 1, 0));
-            
+        
         if (convertFastHyper)
             ModUtils.addConversionRecipes(new ItemStack(blockFastVectorPlate), new ItemStack(blockHyperVectorPlate, 1, 0));
-            
+        
         if (convertHyperNormal)
             ModUtils.addConversionRecipes(new ItemStack(blockHyperVectorPlate), new ItemStack(blockVectorPlate, 1, 0));
     }

@@ -107,10 +107,10 @@ public class DarkUtils {
         
         for (final Feature feature : FeatureManager.FEATURES)
             feature.onPreInit();
-            
+        
         for (final Feature feature : FeatureManager.FEATURES)
             feature.setupRecipes();
-            
+        
         proxy.onPreInit();
         
         AddonHandler.registerAddons();
@@ -122,7 +122,7 @@ public class DarkUtils {
         
         for (final Feature feature : FeatureManager.FEATURES)
             feature.onInit();
-            
+        
         proxy.onInit();
         AddonHandler.onInit();
     }
@@ -132,7 +132,7 @@ public class DarkUtils {
         
         for (final Feature feature : FeatureManager.FEATURES)
             feature.onPostInit();
-            
+        
         proxy.onPostInit();
         AddonHandler.onPostInit();
     }

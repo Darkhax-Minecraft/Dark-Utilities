@@ -87,10 +87,10 @@ public class FeatureSneaky extends Feature {
             
             if (craftSneakyLever)
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);
-                
+            
             if (craftSneakyGhost)
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyGhost), blockSneakyBlock, Blocks.WOOL);
-                
+            
             if (craftSneakyTorch) {
                 
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.TORCH);
@@ -99,7 +99,7 @@ public class FeatureSneaky extends Feature {
             
             if (craftSneakyObsidian)
                 GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(blockSneakyObsidian), blockSneakyBlock, OBSIDIAN));
-                
+            
             if (craftSneakyPlate)
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyPlate), blockSneakyBlock, Blocks.WOODEN_PRESSURE_PLATE);
         }
@@ -146,7 +146,7 @@ public class FeatureSneaky extends Feature {
         
         if (!useDefault)
             ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:" + name, "normal"));
-            
+        
         ModelLoader.setCustomStateMapper(block, sneakyStateMap);
     }
 }

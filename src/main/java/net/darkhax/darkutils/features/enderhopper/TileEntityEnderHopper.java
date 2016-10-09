@@ -28,7 +28,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
         
         if (this.isInvalid() || !this.getWorld().isBlockLoaded(this.getPos()))
             return;
-            
+        
         try {
             
             final EnumFacing direction = this.getDirection();
@@ -52,7 +52,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
                             
                             if (result == null)
                                 item.setDead();
-                                
+                            
                             else
                                 item.setEntityItemStack(result);
                         }
@@ -63,7 +63,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
                 
                 if (this.cooldown <= 0)
                     this.cooldown = 100;
-                    
+                
                 else
                     this.cooldown--;
             }

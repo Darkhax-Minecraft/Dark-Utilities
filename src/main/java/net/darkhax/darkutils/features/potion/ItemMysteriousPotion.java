@@ -40,7 +40,7 @@ public class ItemMysteriousPotion extends Item {
                 
                 if (player.worldObj.isRemote)
                     return true;
-                    
+                
                 final EntityZombie zombie = (EntityZombie) target;
                 
                 if (zombie.isVillager()) {
@@ -50,12 +50,12 @@ public class ItemMysteriousPotion extends Item {
                     return true;
                 }
             }
-            
+        
         if (target instanceof EntityVillager && stack.getMetadata() == 1) {
             
             if (player.worldObj.isRemote)
                 return true;
-                
+            
             ItemStackUtils.decreaseStackSize(stack, 1);
             
             final EntityVillager villager = (EntityVillager) target;
@@ -66,7 +66,7 @@ public class ItemMysteriousPotion extends Item {
             
             if (villager.isChild())
                 zombie.setChild(true);
-                
+            
             if (villager.hasCustomName()) {
                 
                 zombie.setCustomNameTag(villager.getCustomNameTag());
@@ -86,14 +86,14 @@ public class ItemMysteriousPotion extends Item {
         
         if (user instanceof EntityPlayer && !((EntityPlayer) user).capabilities.isCreativeMode)
             ItemStackUtils.decreaseStackSize(stack, 1);
-            
+        
         if (!world.isRemote) {
             
             final int meta = stack.getMetadata();
             
             if (meta == 0)
                 user.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 400, 0));
-                
+            
             if (meta == 1)
                 user.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 400, 0));
         }
@@ -117,7 +117,7 @@ public class ItemMysteriousPotion extends Item {
     public ActionResult<ItemStack> onItemRightClick (ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         
         playerIn.setActiveHand(hand);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
     
     @Override

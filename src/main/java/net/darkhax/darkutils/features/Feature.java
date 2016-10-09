@@ -21,28 +21,28 @@ public class Feature {
      * {@link #setupConfiguration(Configuration)} but before {@link #onClientPreInit()}.
      */
     public void onPreInit () {
-    
+        
     }
     
     /**
      * Called when the mod enters the init phase of loading.
      */
     public void onInit () {
-    
+        
     }
     
     /**
      * Called when the mod enters the postInit phase of loading.
      */
     public void onPostInit () {
-    
+        
     }
     
     /**
      * Called after all features have finished their preInit phase. Used for recipes.
      */
     public void setupRecipes () {
-    
+        
     }
     
     /**
@@ -53,7 +53,7 @@ public class Feature {
      * @param config The configuration object to pull data from.
      */
     public void setupConfiguration (Configuration config) {
-    
+        
     }
     
     /**
@@ -82,7 +82,7 @@ public class Feature {
      */
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-    
+        
     }
     
     /**
@@ -90,7 +90,7 @@ public class Feature {
      */
     @SideOnly(Side.CLIENT)
     public void onClientInit () {
-    
+        
     }
     
     /**
@@ -98,6 +98,6 @@ public class Feature {
      */
     @SideOnly(Side.CLIENT)
     public void onClientPostInit () {
-    
+        
     }
 }

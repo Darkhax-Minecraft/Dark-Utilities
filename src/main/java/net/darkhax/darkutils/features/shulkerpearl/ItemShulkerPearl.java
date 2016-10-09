@@ -5,6 +5,6 @@ import net.minecraft.item.Item;
 public class ItemShulkerPearl extends Item {
     
     public ItemShulkerPearl() {
-    
+        
     }
 }

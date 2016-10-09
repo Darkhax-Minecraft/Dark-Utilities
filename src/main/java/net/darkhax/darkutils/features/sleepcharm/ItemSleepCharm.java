@@ -5,6 +5,6 @@ import net.minecraft.item.Item;
 public class ItemSleepCharm extends Item {
     
     public ItemSleepCharm() {
-    
+        
     }
 }
