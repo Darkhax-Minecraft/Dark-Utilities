@@ -14,8 +14,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockVectorPlate extends Block {
     
@@ -72,6 +70,12 @@ public class BlockVectorPlate extends Block {
     }
     
     @Override
+    public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, World worldIn, BlockPos pos) {
+        
+        return NULL_AABB;
+    }
+    
+    @Override
     public boolean isFullCube (IBlockState state) {
         
         return false;
@@ -80,20 +84,7 @@ public class BlockVectorPlate extends Block {
     @Override
     public boolean isOpaqueCube (IBlockState state) {
         
-        return true;
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        
-        return side == EnumFacing.UP ? true : blockAccess.getBlockState(pos.offset(side)).getBlock() == this ? true : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
-    }
-    
-    @Override
-    public boolean doesSideBlockRendering (IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-        
-        return face == EnumFacing.DOWN;
+        return false;
     }
     
     @Override
@@ -112,7 +103,7 @@ public class BlockVectorPlate extends Block {
                 
                 if (FeatureVectorPlate.preventItemDespawn)
                     item.setAgeToCreativeDespawnTime();
-                    
+                
                 if (FeatureVectorPlate.preventItemPickup && item.delayBeforeCanPickup < 5)
                     item.setPickupDelay(20);
             }
