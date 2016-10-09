@@ -77,24 +77,6 @@ public class BlockTrap extends Block {
     }
     
     @Override
-    public boolean isFullCube (IBlockState state) {
-        
-        return false;
-    }
-    
-    @Override
-    public boolean isOpaqueCube (IBlockState state) {
-        
-        return true;
-    }
-    
-    @Override
-    public boolean doesSideBlockRendering (IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-        
-        return face == EnumFacing.DOWN;
-    }
-    
-    @Override
     public int damageDropped (IBlockState state) {
         
         return state.getValue(VARIANT).meta;
@@ -116,6 +98,24 @@ public class BlockTrap extends Block {
     protected BlockStateContainer createBlockState () {
         
         return new BlockStateContainer(this, new IProperty[] { VARIANT });
+    }
+    
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, World worldIn, BlockPos pos) {
+        
+        return NULL_AABB;
+    }
+    
+    @Override
+    public boolean isFullCube (IBlockState state) {
+        
+        return false;
+    }
+    
+    @Override
+    public boolean isOpaqueCube (IBlockState state) {
+        
+        return false;
     }
     
     @Override
@@ -160,12 +160,5 @@ public class BlockTrap extends Block {
         
         for (final TrapType type : TrapType.values())
             list.add(new ItemStack(itemIn, 1, type.meta));
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        
-        return side == EnumFacing.UP ? true : blockAccess.getBlockState(pos.offset(side)).getBlock() == this ? true : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
     }
 }
