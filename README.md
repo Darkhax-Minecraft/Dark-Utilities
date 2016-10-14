@@ -1,4 +1,4 @@
-# Dark-Utilities
+# Dark-Utilities [![](http://cf.way2muchnoise.eu/242195.svg)](https://minecraft.curseforge.com/projects/dark-utilities) [![](http://cf.way2muchnoise.eu/versions/242195.svg)](https://minecraft.curseforge.com/projects/dark-utilities)
 A special utility mod for Minecraft. Adds a bunch of new content, and has addon support for many other mods!
 
 ##Source Code
