@@ -1,0 +1,7 @@
+{
+	"parent": "bookshelf:block/basic_chest",
+	"textures": {
+		"texture": "darkutils:entity/chest/jungle_single",
+		"particle": "darkutils:entity/chest/jungle_single"
+	}
+}

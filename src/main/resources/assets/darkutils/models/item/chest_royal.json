@@ -1,0 +1,7 @@
+{
+	"parent": "bookshelf:block/basic_chest",
+	"textures": {
+		"texture": "darkutils:entity/chest/royal_single",
+		"particle": "darkutils:entity/chest/royal_single"
+	}
+}
