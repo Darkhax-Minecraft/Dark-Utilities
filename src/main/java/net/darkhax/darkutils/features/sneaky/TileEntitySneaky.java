@@ -35,7 +35,7 @@ public class TileEntitySneaky extends TileEntityBasic {
     @Override
     public void writeNBT (NBTTagCompound tag) {
         
-        if (this.heldState != null) {
+        if (this.heldState != null && heldState.getBlock() != null && this.heldState.getBlock().getRegistryName() != null) {
             
             tag.setString("HeldBlockId", this.heldState.getBlock().getRegistryName().toString());
             tag.setInteger("HeldBlockMeta", this.heldState.getBlock().getMetaFromState(this.heldState));
