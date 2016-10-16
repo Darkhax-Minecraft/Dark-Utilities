@@ -28,6 +28,14 @@ tile.darkutils.pearl.block.brick.name=Pearl Brick
 tile.darkutils.pearl.block.carved.name=Carved Pearl Block
 tile.darkutils.pearl.block.chiseled.name=Chiseled Pearl Block
 tile.darkutils.ender.hopper.name=Ender Hopper
+tile.darkutils.chest.prismarine.name=Prismarine Chest
+tile.darkutils.chest.sandstone.name=Sandstone Chest
+tile.darkutils.chest.royal.name=Royal Chest
+tile.darkutils.chest.nether.name=Nether Chest
+tile.darkutils.chest.glass.name=Glass Chest
+tile.darkutils.chest.magic.name=Mystic Chest
+tile.darkutils.chest.glacial.name=Glacial Chest
+tile.darkutils.chest.jungle.name=Jungle Chest
 
 #Items
 item.darkutils.disabled.name=Disabled Item
@@ -40,6 +48,13 @@ item.darkutils.charm.sleep.name=Sleep Charm
 item.darkutils.shulker.pearl.name=Shulker Pearl
 item.darkutils.charm.null.name=Null Charm
 item.darkutils.focus.sash.name=Focus Sash
+item.darkutils.ring.pyro.name=Pyromancer's Ring
+item.darkutils.ring.engineer.name=Engineer's Ring
+item.darkutils.ring.depth.name=Ring of the Deep
+item.darkutils.ring.titan.name=Titan Ring
+item.darkutils.ring.protect.name=Ring of Protection
+item.darkutils.ring.angler.name=Angler's Ring
+item.darkutils.ring.frost.name=Frosted Ring
 
 #Entity
 entity.DarkUtils.FakeTNT.name=Block of TNT
@@ -94,7 +109,14 @@ jei.tile.darkutils.feeder=Up to 10 pieces of food can be stored in the feeder. I
 jei.tile.darkutils.fake.tnt=A significantly weaker version of normal TNT. It is not strong enough to break blocks, making it perfect for harmless pranks.
 jei.tile.darkutils.pearl.block=A decorative block crafted with pearls. Gives off a bright light. 
 jei.tile.darkutils.ender.hopper=Teleports nearby items into the container it is attatched to. Sneak + Right click on the hopper should display the reach of the hopper, unless disabled.
-
+jei.tile.darkutils.chest.prismarine=A decorative chest alternative. Behaves like a standard vanilla chest, including size.
+jei.tile.darkutils.chest.sandstone=A decorative chest alternative. Behaves like a standard vanilla chest, including size.
+jei.tile.darkutils.chest.royal=A decorative chest alternative. Behaves like a standard vanilla chest, including size.
+jei.tile.darkutils.chest.nether=A decorative chest alternative. Behaves like a standard vanilla chest, including size.
+jei.tile.darkutils.chest.glass=A decorative chest alternative. Behaves like a standard vanilla chest, including size.
+jei.tile.darkutils.chest.magic=A decorative chest alternative. Behaves like a standard vanilla chest, including size.
+jei.tile.darkutils.chest.glacial=A decorative chest alternative. Behaves like a standard vanilla chest, including size.
+jei.tile.darkutils.chest.jungle=A decorative chest alternative. Behaves like a standard vanilla chest, including size.
 jei.item.darkutils.material=A special ingredient used in various crafting recipes.
 jei.item.darkutils.mystery.potion=A suspicious potion that probably has unique properties. Who knows what will happen if you (or something else) were to drink it...
 jei.item.darkutils.charm.portal=Allows for instantaneous travel through portals while in the inventory.

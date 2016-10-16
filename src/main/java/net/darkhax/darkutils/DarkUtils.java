@@ -6,6 +6,8 @@ import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.FeatureManager;
 import net.darkhax.darkutils.features.antislime.FeatureAntiSlime;
+import net.darkhax.darkutils.features.chests.FeatureChests;
+import net.darkhax.darkutils.features.enchrings.FeatureEnchantedRing;
 import net.darkhax.darkutils.features.enderhopper.FeatureEnderHopper;
 import net.darkhax.darkutils.features.endertether.FeatureEnderTether;
 import net.darkhax.darkutils.features.faketnt.FeatureFakeTNT;
@@ -100,8 +102,8 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureNullCharm(), "Null Charm", "A charm to clean up useless items.");
         FeatureManager.registerFeature(new FeatureFocusSash(), "Focus Sash", "Prevents 1-hit K.Os while in the inventory.");
         FeatureManager.registerFeature(new FeatureEnderHopper(), "Ender Hopper", "A hopper which can pick up blocks within range.");
-        // FeatureManager.registerFeature(new FeatureOfuda(), "Ofuda", "Items with various mob
-        // effects");
+        FeatureManager.registerFeature(new FeatureChests(), "Fancy Chests", "Adds decorative chests!");
+        FeatureManager.registerFeature(new FeatureEnchantedRing(), "Enchanted Rings", "Adds rings which can increase enchantment levels");
         
         ConfigurationHandler.syncConfigData();
         
