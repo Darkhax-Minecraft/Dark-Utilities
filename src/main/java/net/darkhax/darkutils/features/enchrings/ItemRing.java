@@ -6,6 +6,7 @@ import baubles.api.BaubleType;
 import net.darkhax.bookshelf.lib.modutils.baubles.ItemBauble;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
@@ -21,6 +22,7 @@ public class ItemRing extends ItemBauble {
     public ItemRing() {
         
         this.hasSubtypes = true;
+        this.maxStackSize = 1;
     }
     
     @Override
@@ -77,5 +79,12 @@ public class ItemRing extends ItemBauble {
     public BaubleType getBaubleType (ItemStack itemstack) {
         
         return BaubleType.RING;
+    }
+    
+    @Optional.Method(modid = "Baubles")
+    @Override
+    public boolean canEquip (ItemStack itemstack, EntityLivingBase player) {
+        
+        return FeatureEnchantedRing.allowBaubles;
     }
 }

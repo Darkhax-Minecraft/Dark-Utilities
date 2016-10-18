@@ -124,6 +124,8 @@ jei.item.darkutils.charm.sleep=Makes sleeping easier while in the inventory.
 jei.item.darkutils.charm.null=While in the inventory, certain items will be destroyed when picked up. The list of items destroyed can be configured by right clicking with the item in hand.
 jei.item.darkutils.shulker.pearl=A shiny pearl harvested by right clicking on a Shulker. Mostly used for decoration.
 jei.item.darkutils.focus.sash=Prevents 1-hit K.Os while in the inventory.
+jei.item.darkutils.ring=A ring with the power to increase a player's enchantment level while in the offhand slot, or a bauble ring slot. This effect stacks with existing enchantments, however they are not required. For example, if you have a sword with Fire Aspect II, the ring will raise it to Fire Aspect III.
+
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type
