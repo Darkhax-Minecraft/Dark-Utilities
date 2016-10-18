@@ -129,7 +129,7 @@ public class BlockTrap extends Block {
             final int type = this.getMetaFromState(state);
             
             if (type == 0)
-                effect = new PotionEffect(MobEffects.POISON, 60);
+                effect = new PotionEffect(MobEffects.POISON, 100);
             
             if (type == 1)
                 effect = new PotionEffect(MobEffects.WEAKNESS, 60);
