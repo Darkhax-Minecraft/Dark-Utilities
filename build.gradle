@@ -19,7 +19,7 @@ buildscript {
     dependencies {
 
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
-        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.7"
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.8"
     }
 }
 
@@ -61,6 +61,11 @@ repositories {
 
         url = "http://maven.epoxide.xyz"
     }
+    
+    maven {
+    
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
@@ -68,6 +73,7 @@ dependencies {
     deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
     deobfCompile "mezz.jei:jei_1.10.2:3.7.8.234"
     compile "net.darkhax.bookshelf:Bookshelf:1.10.2-1.4.2.330"
+    deobfCompile 'com.github.Azanor:Baubles:3f3fdadf09'
 }
 
 //Handles basic resources such as mcmod.info
@@ -200,9 +206,8 @@ curseforge {
 
                 //Adds the file relations to the upload.
                 requiredLibrary 'bookshelf'
-                //optionalLibrary 'thaumcraft'
                 optionalLibrary 'waila'
-                //optionalLibrary 'baubles'
+                optionalLibrary 'baubles'
             }
         }
         
