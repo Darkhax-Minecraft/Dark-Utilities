@@ -1,6 +1,7 @@
 package net.darkhax.darkutils.features.shulkerpearl;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
+import net.darkhax.bookshelf.lib.util.OreDictUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.shulkerpearl.ShulkerDataHandler.ICustomData;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class FeatureShulkerPearlItem extends Feature {
@@ -60,11 +62,11 @@ public class FeatureShulkerPearlItem extends Feature {
         
         if (this.craftBlocks) {
             
-            GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 0), "xx ", "xx ", 'x', itemShulkerPearl);
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockShulkerPearl, 32, 0), "xxx", "xsx", "xxx", 'x', itemShulkerPearl, 's', OreDictUtils.ENDSTONE));
             GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 0));
             GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 1));
             GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 2));
-            GameRegistry.addShapelessRecipe(new ItemStack(itemShulkerPearl, 4), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
+            GameRegistry.addShapelessRecipe(new ItemStack(itemShulkerPearl), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
         }
     }
     
