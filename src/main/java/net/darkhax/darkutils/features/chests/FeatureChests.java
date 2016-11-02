@@ -54,14 +54,14 @@ public class FeatureChests extends Feature {
     @Override
     public void onPreInit () {
         
-        glacial = this.createChest(new BlockBasicChest(Constants.MOD_ID, "glacial", TYPE_GLACIAL), "chest_glacial");
-        glass = this.createChest(new BlockBasicChest(Constants.MOD_ID, "glass", TYPE_GLASS), "chest_glass");
-        jungle = this.createChest(new BlockBasicChest(Constants.MOD_ID, "jungle", TYPE_JUNGLE), "chest_jungle");
-        magic = this.createChest(new BlockBasicChest(Constants.MOD_ID, "magic", TYPE_MAGIC), "chest_magic");
-        nether = this.createChest(new BlockBasicChest(Constants.MOD_ID, "nether", TYPE_NETHER), "chest_nether");
-        royal = this.createChest(new BlockBasicChest(Constants.MOD_ID, "royal", TYPE_ROYAL), "chest_royal");
-        sandstone = this.createChest(new BlockBasicChest(Constants.MOD_ID, "sandstone", TYPE_SANDSTONE), "chest_sandstone");
-        prismarine = this.createChest(new BlockBasicChest(Constants.MOD_ID, "prismarine", TYPE_PRISMARINE), "chest_prismarine");
+        glacial = this.createChest(new BlockBasicChest(Constants.MOD_ID, "glacial", TYPE_GLACIAL).setHardness(2.5F), "chest_glacial");
+        glass = this.createChest(new BlockBasicChest(Constants.MOD_ID, "glass", TYPE_GLASS).setHardness(2.5F), "chest_glass");
+        jungle = this.createChest(new BlockBasicChest(Constants.MOD_ID, "jungle", TYPE_JUNGLE).setHardness(2.5F), "chest_jungle");
+        magic = this.createChest(new BlockBasicChest(Constants.MOD_ID, "magic", TYPE_MAGIC).setHardness(2.5F), "chest_magic");
+        nether = this.createChest(new BlockBasicChest(Constants.MOD_ID, "nether", TYPE_NETHER).setHardness(2.5F), "chest_nether");
+        royal = this.createChest(new BlockBasicChest(Constants.MOD_ID, "royal", TYPE_ROYAL).setHardness(2.5F), "chest_royal");
+        sandstone = this.createChest(new BlockBasicChest(Constants.MOD_ID, "sandstone", TYPE_SANDSTONE).setHardness(2.5F), "chest_sandstone");
+        prismarine = this.createChest(new BlockBasicChest(Constants.MOD_ID, "prismarine", TYPE_PRISMARINE).setHardness(2.5F), "chest_prismarine");
     }
     
     @Override
