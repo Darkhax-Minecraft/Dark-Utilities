@@ -66,32 +66,31 @@ public class FeatureEnchantedRing extends Feature {
         
         if (allowBaubles && Loader.isModLoaded("Baubles") && event.getEntity() instanceof EntityPlayer) {
             
-            levels += this.handleRing(BaublesUtils.getFirstRing((EntityPlayer) event.getEntity()), event.getEnchantment());
-            levels += this.handleRing(BaublesUtils.getSecondRing((EntityPlayer) event.getEntity()), event.getEnchantment());
+            levels += this.handleRing(BaublesUtils.getBauble((EntityPlayer) event.getEntity(), BaublesUtils.RING_1), event.getEnchantment());
+            levels += this.handleRing(BaublesUtils.getBauble((EntityPlayer) event.getEntity(), BaublesUtils.RING_2), event.getEnchantment());
         }
         
         if (levels > 0) {
             
             event.setCanceled(true);
-            event.levels += (allowStacking ? levels : 1);
+            event.levels += allowStacking ? levels : 1;
         }
     }
     
     @SubscribeEvent
-    public void onLootTableLoad(LootTableLoadEvent event) {
+    public void onLootTableLoad (LootTableLoadEvent event) {
         
         if (allowDungeonLoot && event.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE)) {
             
-            LootPool main = event.getTable().getPool("main");
+            final LootPool main = event.getTable().getPool("main");
             
-            if (main != null) {
-                
-                main.addEntry(new LootEntryItem(itemRing, weight, 0, new LootFunction[] {new SetDamage(new LootCondition[0], new RandomValueRange(0, ItemRing.varients.length - 1))}, new LootCondition[0], "darkutils:nether_rings"));
-            }
+            if (main != null)
+                main.addEntry(new LootEntryItem(itemRing, weight, 0, new LootFunction[] { new SetDamage(new LootCondition[0], new RandomValueRange(0, ItemRing.varients.length - 1)) }, new LootCondition[0], "darkutils:nether_rings"));
         }
     }
+    
     private int handleRing (ItemStack stack, Enchantment enchant) {
-            
-        return (stack != null && stack.getItem() instanceof ItemRing && enchant == ItemRing.getEnchantmentFromMeta(stack.getMetadata())) ? 1 : 0;
+        
+        return stack != null && stack.getItem() instanceof ItemRing && enchant == ItemRing.getEnchantmentFromMeta(stack.getMetadata()) ? 1 : 0;
     }
 }
