@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -74,12 +75,14 @@ public class ItemRing extends ItemBauble {
     }
     
     @Override
+    @Optional.Method(modid = "Baubles")
     public BaubleType getBaubleType (ItemStack itemstack) {
         
         return BaubleType.RING;
     }
     
     @Override
+    @Optional.Method(modid = "Baubles")
     public boolean canEquip (ItemStack itemstack, EntityLivingBase player) {
         
         return FeatureEnchantedRing.allowBaubles;

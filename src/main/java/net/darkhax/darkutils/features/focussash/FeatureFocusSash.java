@@ -27,8 +27,7 @@ public class FeatureFocusSash extends Feature {
     @Override
     public void onPreInit () {
         
-        itemFocusSash = new ItemFocusSash();
-        ModUtils.registerItem(itemFocusSash, "focus_sash");
+        itemFocusSash = ModUtils.registerItem(new ItemFocusSash(), "focus_sash");
     }
     
     @Override

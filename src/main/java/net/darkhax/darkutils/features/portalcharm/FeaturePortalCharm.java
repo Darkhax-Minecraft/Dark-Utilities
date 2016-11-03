@@ -26,8 +26,7 @@ public class FeaturePortalCharm extends Feature {
     @Override
     public void onPreInit () {
         
-        itemPortalCharm = new ItemPortalCharm();
-        ModUtils.registerItem(itemPortalCharm, "charm_portal");
+        itemPortalCharm = ModUtils.registerItem(new ItemPortalCharm(), "charm_portal");
     }
     
     @Override

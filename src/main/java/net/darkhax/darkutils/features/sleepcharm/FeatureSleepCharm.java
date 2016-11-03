@@ -26,8 +26,7 @@ public class FeatureSleepCharm extends Feature {
     @Override
     public void onPreInit () {
         
-        itemSleepCharm = new ItemSleepCharm();
-        ModUtils.registerItem(itemSleepCharm, "charm_sleep");
+        itemSleepCharm = ModUtils.registerItem(new ItemSleepCharm(), "charm_sleep");
     }
     
     @Override
