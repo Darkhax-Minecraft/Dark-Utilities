@@ -47,8 +47,7 @@ public class FeatureFilter extends Feature {
         
         for (final FilterType type : FilterType.values()) {
             
-            if (craftableNormal.get(type))
-                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 1, 8), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', type.crafting }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 4, type.meta), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', type.crafting }));
             
             if (craftableInverted.get(type)) {
                 
