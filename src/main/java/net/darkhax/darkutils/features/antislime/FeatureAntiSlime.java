@@ -70,6 +70,9 @@ public class FeatureAntiSlime extends Feature {
                 final TileEntity tile = it.next();
                 if (tile instanceof TileEntityAntiSlime && !event.getEntity().hasCustomName() && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.getEntity())) {
                     
+                    if (tile.getWorld().isBlockPowered(tile.getPos()))
+                        continue;
+                    
                     event.getEntity().setDead();
                     event.setCanceled(true);
                     break;
