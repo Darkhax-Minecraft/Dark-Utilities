@@ -13,14 +13,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.monster.EntityGuardian;
-import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityTameable;
-import net.minecraft.entity.passive.EntityWaterMob;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -89,7 +81,7 @@ public class BlockFilter extends Block {
             
             final EntityLivingBase living = (EntityLivingBase) collidingEntity;
             
-            if (meta == 0 && living instanceof EntityPlayer || meta == 1 && living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD || meta == 2 && living.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD || meta == 3 && living instanceof IMob || meta == 4 && living instanceof EntityAnimal || meta == 5 && (living instanceof EntityWaterMob || living instanceof EntityGuardian) || meta == 6 && living.isChild() || meta == 7 && living instanceof EntityTameable || meta == 8 && living instanceof EntitySlime) {
+            if (FilterType.isValidTarget((EntityLivingBase) collidingEntity, meta)) {
                 
                 this.snagMob(living, pos);
                 return;

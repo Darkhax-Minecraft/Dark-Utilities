@@ -1,0 +1,37 @@
+{
+	"variants": {
+		"variant=player": {
+			"model": "darkutils:filter_inverted_player"
+		},
+		"variant=undead": {
+			"model": "darkutils:filter_inverted_undead"
+		},
+		"variant=arthropod": {
+			"model": "darkutils:filter_inverted_arthropod"
+		},
+		"variant=monster": {
+			"model": "darkutils:filter_inverted_monster"
+		},
+		"variant=animal": {
+			"model": "darkutils:filter_inverted_animal"
+		},
+		"variant=water": {
+			"model": "darkutils:filter_inverted_water"
+		},
+		"variant=baby": {
+			"model": "darkutils:filter_inverted_baby"
+		},
+		"variant=pet": {
+			"model": "darkutils:filter_inverted_pet"
+		},
+		"variant=slime": {
+			"model": "darkutils:filter_inverted_slime"
+		},
+		"variant=fireres": {
+			"model": "darkutils:filter_inverted_fireres"
+		},
+		"variant=boss": {
+			"model": "darkutils:filter_inverted_boss"
+		}
+	}
+}
