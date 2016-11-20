@@ -65,11 +65,12 @@ tooltip.darkutils.filter.type.player=Player
 tooltip.darkutils.filter.type.undead=Undead
 tooltip.darkutils.filter.type.arthropod=Arthropod
 tooltip.darkutils.filter.type.monster=Hostile
-tooltip.darkutils.filter.type.animal=Peaceful
+tooltip.darkutils.filter.type.animal=Animal
 tooltip.darkutils.filter.type.water=Water
 tooltip.darkutils.filter.type.baby=Baby
 tooltip.darkutils.filter.type.pet=Pet
 tooltip.darkutils.filter.type.slime=Slime
+tooltip.darkutils.filter.type.peaceful=Peaceful
 tooltip.darkutils.disabled=This represents a crafting ingredient that has been disabled or removed!
 
 #Gui
