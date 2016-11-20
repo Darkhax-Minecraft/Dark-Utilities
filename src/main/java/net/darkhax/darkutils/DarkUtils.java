@@ -5,6 +5,7 @@ import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.FeatureManager;
+import net.darkhax.darkutils.features.agressioncharm.FeatureAgressionCharm;
 import net.darkhax.darkutils.features.antislime.FeatureAntiSlime;
 import net.darkhax.darkutils.features.chests.FeatureChests;
 import net.darkhax.darkutils.features.enchrings.FeatureEnchantedRing;
@@ -106,6 +107,7 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureChests(), "Fancy Chests", "Adds decorative chests!");
         FeatureManager.registerFeature(new FeatureEnchantedRing(), "Enchanted Rings", "Adds rings which can increase enchantment levels");
         FeatureManager.registerFeature(new FeatureGluttonyCharm(), "Gluttony Charm", "A charm that allows the player to consume food instantaneously.");
+        FeatureManager.registerFeature(new FeatureAgressionCharm(), "Agression Charm", "A charm which will spread agression to nearby mobs.");
         
         ConfigurationHandler.syncConfigData();
         

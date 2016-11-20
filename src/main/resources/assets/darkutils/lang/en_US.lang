@@ -37,6 +37,7 @@ tile.darkutils.chest.glass.name=Glass Chest
 tile.darkutils.chest.magic.name=Mystic Chest
 tile.darkutils.chest.glacial.name=Glacial Chest
 tile.darkutils.chest.jungle.name=Jungle Chest
+tile.darkutils.sneaky.bedrock.name=Sneaky Bedrock
 
 #Items
 item.darkutils.disabled.name=Disabled Item
@@ -57,6 +58,7 @@ item.darkutils.ring.protect.name=Ring of Protection
 item.darkutils.ring.angler.name=Angler's Ring
 item.darkutils.ring.frost.name=Frosted Ring
 item.darkutils.charm.gluttony.name=Gluttony Charm
+item.darkutils.charm.agression.name=Agression Charm
 
 #Entity
 entity.DarkUtils.FakeTNT.name=Block of TNT
@@ -131,6 +133,8 @@ jei.item.darkutils.focus.sash=Prevents 1-hit K.Os while in the inventory.
 jei.item.darkutils.ring=A ring with the power to increase a player's enchantment level while in the offhand slot, or a bauble ring slot. This effect stacks with existing enchantments, however they are not required. For example, if you have a sword with Fire Aspect II, the ring will raise it to Fire Aspect III.
 jei.tile.darkutils.filter.inverted=Prevents a certain type of mob from moving through it. For example, the baby filter allows anything but baby mobs to move through it.
 jei.item.darkutils.charm.gluttony=Allows the player to eat food at insanely fast speeds. If you're not careful you may eat more than you intend to!
+jei.tile.darkutils.sneaky.bedrock=Similar to bedrock, however if you are in creative mode you can change it to look like any other block by right clicking with another block in hand.
+jei.item.darkutils.charm.agression=Increases the agression range of the player. Normally only the mob being hit will agro to you, but this will make all mobs of a similar type agro.
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type
