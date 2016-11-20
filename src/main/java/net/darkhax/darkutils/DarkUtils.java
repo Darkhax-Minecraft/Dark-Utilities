@@ -14,6 +14,7 @@ import net.darkhax.darkutils.features.faketnt.FeatureFakeTNT;
 import net.darkhax.darkutils.features.feeder.FeatureFeeder;
 import net.darkhax.darkutils.features.filter.FeatureFilter;
 import net.darkhax.darkutils.features.focussash.FeatureFocusSash;
+import net.darkhax.darkutils.features.gluttonycharm.FeatureGluttonyCharm;
 import net.darkhax.darkutils.features.grate.FeatureItemGrate;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.features.misc.FeatureDisabled;
@@ -104,6 +105,7 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureEnderHopper(), "Ender Hopper", "A hopper which can pick up blocks within range.");
         FeatureManager.registerFeature(new FeatureChests(), "Fancy Chests", "Adds decorative chests!");
         FeatureManager.registerFeature(new FeatureEnchantedRing(), "Enchanted Rings", "Adds rings which can increase enchantment levels");
+        FeatureManager.registerFeature(new FeatureGluttonyCharm(), "Gluttony Charm", "A charm that allows the player to consume food instantaneously.");
         
         ConfigurationHandler.syncConfigData();
         

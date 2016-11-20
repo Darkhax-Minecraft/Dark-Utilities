@@ -11,6 +11,7 @@ tile.darkutils.trap.move.fast.name=Fast Vector Plate
 tile.darkutils.trap.move.hyper.name=Extreme Vector Plate
 tile.darkutils.grate.name=Item Grate
 tile.darkutils.filter.name=Mob Filter
+tile.darkutils.filter.inverted.name=Inverted Mob Filter
 tile.darkutils.timer.name=Timer
 tile.darkutils.anti.slime.name=Anti-Slime Block
 tile.darkutils.update.detector.name=Block Update Detector
@@ -55,6 +56,7 @@ item.darkutils.ring.titan.name=Titan Ring
 item.darkutils.ring.protect.name=Ring of Protection
 item.darkutils.ring.angler.name=Angler's Ring
 item.darkutils.ring.frost.name=Frosted Ring
+item.darkutils.charm.gluttony.name=Gluttony Charm
 
 #Entity
 entity.DarkUtils.FakeTNT.name=Block of TNT
@@ -70,7 +72,8 @@ tooltip.darkutils.filter.type.water=Water
 tooltip.darkutils.filter.type.baby=Baby
 tooltip.darkutils.filter.type.pet=Pet
 tooltip.darkutils.filter.type.slime=Slime
-tooltip.darkutils.filter.type.peaceful=Peaceful
+tooltip.darkutils.filter.type.fireres=Fire Resistant
+tooltip.darkutils.filter.type.boss=Boss
 tooltip.darkutils.disabled=This represents a crafting ingredient that has been disabled or removed!
 
 #Gui
@@ -126,7 +129,8 @@ jei.item.darkutils.charm.null=While in the inventory, certain items will be dest
 jei.item.darkutils.shulker.pearl=A shiny pearl harvested by right clicking on a Shulker. Mostly used for decoration.
 jei.item.darkutils.focus.sash=Prevents 1-hit K.Os while in the inventory.
 jei.item.darkutils.ring=A ring with the power to increase a player's enchantment level while in the offhand slot, or a bauble ring slot. This effect stacks with existing enchantments, however they are not required. For example, if you have a sword with Fire Aspect II, the ring will raise it to Fire Aspect III.
-
+jei.tile.darkutils.filter.inverted=Prevents a certain type of mob from moving through it. For example, the baby filter allows anything but baby mobs to move through it.
+jei.item.darkutils.charm.gluttony=Allows the player to eat food at insanely fast speeds. If you're not careful you may eat more than you intend to!
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type
