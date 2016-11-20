@@ -1,3 +1,6 @@
 {
-    "parent": "darkutils:block/sneaky_torch"
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "darkutils:items/sneaky_torch"
+    }
 }
