@@ -36,6 +36,7 @@ public class FeatureSneaky extends Feature {
     public static Block blockSneakyTorch;
     public static Block blockSneakyObsidian;
     public static Block blockSneakyPlate;
+    public static Block blockSneakyBedrock;
     
     public static boolean craftSneakyBlock;
     public static boolean craftSneakyLever;
@@ -60,11 +61,14 @@ public class FeatureSneaky extends Feature {
         blockSneakyTorch = new BlockSneakyTorch();
         ModUtils.registerBlock(blockSneakyTorch, "sneaky_torch");
         
-        blockSneakyObsidian = new BlockSneakyObsidian();
+        blockSneakyObsidian = new BlockSneaky().setHardness(20f).setResistance(2000f);
         ModUtils.registerBlock(blockSneakyObsidian, "sneaky_obsidian");
         
         blockSneakyPlate = new BlockSneakyPressurePlate();
         ModUtils.registerBlock(blockSneakyPlate, "sneaky_plate");
+        
+        blockSneakyBedrock = new BlockSneakyBedrock();
+        ModUtils.registerBlock(blockSneakyBedrock, "sneaky_bedrock");
     }
     
     @Override
@@ -116,6 +120,7 @@ public class FeatureSneaky extends Feature {
         this.registerSneakyModel(blockSneakyTorch, "sneaky_torch", false);
         this.registerSneakyModel(blockSneakyObsidian, "sneaky_default", true);
         this.registerSneakyModel(blockSneakyPlate, "sneaky_plate", false);
+        this.registerSneakyModel(blockSneakyBedrock, "sneaky_default", true);
     }
     
     @Override
