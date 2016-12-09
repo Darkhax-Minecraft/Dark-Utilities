@@ -13,11 +13,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
@@ -36,7 +33,7 @@ public class BlockSneaky extends BlockContainer {
         this.setResistance(10.0F);
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
     }
-    
+
     @Override
     public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack currentStack, EnumFacing side, float hitX, float hitY, float hitZ) {
         
@@ -136,7 +133,7 @@ public class BlockSneaky extends BlockContainer {
     
     @Override
     public boolean canRenderInLayer (IBlockState state, BlockRenderLayer layer) {
-        
+
         return true;
     }
     
@@ -190,7 +187,23 @@ public class BlockSneaky extends BlockContainer {
         
         return false;
     }
-    
+
+    @Override
+    public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
+
+        final TileEntity tile = source.getTileEntity(pos);
+
+        if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
+
+            final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+
+            if (sneaky.heldState != null)
+                return sneaky.heldState.getBoundingBox(source, pos);
+        }
+
+        return super.getBoundingBox(state, source, pos);
+    }
+
     /**
      * A check to see if a block is valid for the sneaky block. For a block to be valid, it
      * must be an opaque cube, or have a render type of 3. Tile entities are considered
