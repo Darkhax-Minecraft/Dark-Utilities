@@ -29,10 +29,10 @@ public class SneakyColorHandler implements IBlockColor {
                     return Minecraft.getMinecraft().getBlockColors().colorMultiplier(sneaky.heldState, world, pos, tintIndex);
             }
 
-            return -1;
+            return 16777215;
         } else {
 
-            return -1;
+            return 16777215;
         }
     }
 }
