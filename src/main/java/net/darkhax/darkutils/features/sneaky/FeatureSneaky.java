@@ -7,6 +7,7 @@ import static net.darkhax.bookshelf.lib.util.OreDictUtils.STONE;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.init.Blocks;
@@ -122,7 +123,14 @@ public class FeatureSneaky extends Feature {
         this.registerSneakyModel(blockSneakyPlate, "sneaky_plate", false);
         this.registerSneakyModel(blockSneakyBedrock, "sneaky_default", true);
     }
-    
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void onClientInit () {
+
+        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new SneakyColorHandler(), blockSneakyBlock, blockSneakyLever, blockSneakyGhost, blockSneakyTorch, blockSneakyObsidian, blockSneakyPlate, blockSneakyBedrock);
+    }
+
     @Override
     public boolean usesEvents () {
         
