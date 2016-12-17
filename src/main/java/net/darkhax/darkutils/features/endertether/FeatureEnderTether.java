@@ -8,14 +8,11 @@ import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -79,18 +76,6 @@ public class FeatureEnderTether extends Feature {
                     event.setTargetY(pos.getY());
                     event.setTargetZ(pos.getZ() + 0.5f);
                     break;
-                }
-    }
-    
-    @SubscribeEvent
-    public void onEnderSpawn (EntityJoinWorldEvent event) {
-        
-        if (event.getEntity().getEntityWorld() != null && !event.getEntity().getEntityWorld().isRemote && (event.getEntity() instanceof EntityEnderman || event.getEntity() instanceof EntityEndermite))
-            for (final TileEntity tile : event.getEntity().getEntityWorld().loadedTileEntityList)
-                if (tile instanceof TileEntityEnderTether && ((TileEntityEnderTether) tile).isEntityCloseEnough((EntityLivingBase) event.getEntity())) {
-                    
-                    final BlockPos pos = tile.getPos();
-                    event.getEntity().setPositionAndUpdate(pos.getX() + 0.5f, pos.getY(), pos.getZ() + 0.5f);
                 }
     }
 }
