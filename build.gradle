@@ -1,25 +1,21 @@
+import groovy.json.*
+
 buildscript {
-
     repositories {
-
         jcenter()
-
         maven {
-
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
 
         maven {
-
             url "https://plugins.gradle.org/m2/"
         }
     }
 
     dependencies {
-
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
-        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.8"
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.7"
     }
 }
 
@@ -33,14 +29,20 @@ targetCompatibility = 1.8
 
 group = "net.darkhax.darkutils"
 archivesBaseName = "DarkUtilities"
+
+URL info = new URL("http://epoxide.xyz/gradle/1.10.2.json")
+URLConnection urlConnection = info.openConnection()
+urlConnection.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
+
+def json = new JsonSlurper().parse(urlConnection.inputStream)
+
 version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Constants.java"))
 
 //Defines the MC environment information.
 minecraft {
-
-    version = "1.10.2-12.18.2.2097"
+    version = json.forge_version
     runDir = "run"
-    mappings = "snapshot_20160518"
+    mappings = json.mapping
     useDepAts = true
 }
 
@@ -78,75 +80,68 @@ dependencies {
 
 //Handles basic resources such as mcmod.info
 processResources {
-
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
     from(sourceSets.main.resources.srcDirs) {
-
         include 'mcmod.info'
         expand 'version': project.version, 'mcversion': project.minecraft.version
     }
 
     from(sourceSets.main.resources.srcDirs) {
-
         exclude 'mcmod.info'
     }
 }
 
 //Pulls the build version from a Java file.
 String getVersionFromJava(File file) {
+    String release = "0"
+    String update = "0"
+    String patch = "0"
 
-    String release = "0";
-    String update = "0";
-    String patch = "0";
-
-    String build = System.getenv("BUILD_NUMBER") ? System.getenv("BUILD_NUMBER") : "0";
-    def outfile = "";
+    String build = System.getenv("BUILD_NUMBER") ?: "0"
+    def outfile = ""
     def ln = System.getProperty("line.separator")
 
-    String prefix = "public static final String VERSION_NUMBER = \"";
+    String prefix = "public static final String VERSION_NUMBER = \""
     file.eachLine {
         String s ->
 
-            String v = s.trim();
+            String v = s.trim()
 
-        if (v.startsWith(prefix)) {
+            if (v.startsWith(prefix)) {
 
-            v = v.substring(prefix.length(), v.length() - 2);
-            String[] pts = v.split("\\.");
+                v = v.substring(prefix.length(), v.length() - 2)
+                String[] pts = v.split("\\.")
 
-            release = pts[0];
-            update = pts[1];
-            patch = pts[2];
-            s = s.replaceAll(".0\";", ".${build}\";");
-        }
+                release = pts[0];
+                update = pts[1];
+                patch = pts[2];
+                s = s.replaceAll(".[0-9]+\";", ".${build}\";");
+            }
 
-        outfile += (s + ln);
+            outfile += (s + ln)
     }
 
-    file.write(outfile);
+    file.write(outfile)
 
-    return "1.10.2-$release.$update.$patch.$build";
+    return "1.10.2-$release.$update.$patch.$build"
 }
 
 //Creates the source jar.
 task sourcesJar(type: Jar, dependsOn: classes) {
-
     from sourceSets.main.allSource
     classifier = 'sources'
 }
 
 //Creates the JavaDoc jar.
 task javadocJar(type: Jar, dependsOn: javadoc) {
-
     from javadoc.destinationDir
     classifier = 'javadoc'
 }
 
 //Creates the deobfuscated jar.
 task deobfJar(type: Jar) {
-
     from sourceSets.main.output
     classifier = "deobf"
 }
@@ -161,11 +156,8 @@ artifacts {
 
 //Uploads the artifacts to the maven server.
 uploadArchives {
-
     repositories {
-
         mavenDeployer {
-
             repository(url: "file:///var/www/html/maven")
         }
     }
@@ -173,35 +165,52 @@ uploadArchives {
 
 //Prevents incomplete JavaDocs from preventing a build on Java 8.
 if (JavaVersion.current().isJava8Compatible()) {
-
     allprojects {
-
         tasks.withType(Javadoc) {
-
             options.addStringOption('Xdoclint:none', '-quiet')
         }
     }
 }
 
+String getChangelog() {
+    def buildUrl = System.getenv().BUILD_URL
+
+    if (buildUrl != null) {
+
+        def url = new URL("$buildUrl/api/xml?depth=20").openConnection()
+        String data = url.getInputStream().text
+
+        def changelog = ""
+        def xml = new XmlSlurper().parseText(data)
+
+        xml.changeSet.item.each { change ->
+            changelog += "- $change.msg" + '\n'
+        }
+
+        allprojects {
+            project.ext.changelog = "Changelog: \n" + changelog
+        }
+    }
+}
 //Provides the basic CurseForge upload details
 curseforge {
 
     //Sets the API from the system environment, if available.
-    apiKey = System.getenv("curseForgeApiKey") ? System.getenv("curseForgeApiKey") : "0";
+    apiKey = System.getenv("curseForgeApiKey") ?: "0"
 
     project {
 
         //Sets the Project ID from the system environment, if available.
-        id = System.getenv("projectId") ? System.getenv("projectId") : "0";
-        
-        releaseType = "alpha";
-        changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master/";
+        id = System.getenv("projectId") ?: "0"
 
-        addGameVersion "1.10.2"
-        
+        releaseType = "alpha";
+        changelog = getChangelog()
+
+        addGameVersion json.mc_version
+
         //Adds main jar, deobf jar, source jar, and javadoc jar to the upload.
         mainArtifact(jar) {
-          
+
             relations {
 
                 //Adds the file relations to the upload.
@@ -210,7 +219,7 @@ curseforge {
                 optionalLibrary 'baubles'
             }
         }
-        
+
         addArtifact(deobfJar)
         addArtifact(sourcesJar)
         addArtifact(javadocJar)
