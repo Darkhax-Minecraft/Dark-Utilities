@@ -175,9 +175,9 @@ public class ModelSneakyBlock implements IBakedModel {
         }
         
         @Override
-        public Biome getBiomeGenForCoords (BlockPos pos) {
+        public Biome getBiome (BlockPos pos) {
             
-            return this.access.getBiomeGenForCoords(pos);
+            return this.access.getBiome(pos);
         }
     }
 }
