@@ -123,14 +123,14 @@ public class FeatureSneaky extends Feature {
         this.registerSneakyModel(blockSneakyPlate, "sneaky_plate", false);
         this.registerSneakyModel(blockSneakyBedrock, "sneaky_default", true);
     }
-
+    
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientInit () {
-
-        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new SneakyColorHandler(), blockSneakyBlock, blockSneakyLever, blockSneakyGhost, blockSneakyTorch, blockSneakyObsidian, blockSneakyPlate, blockSneakyBedrock);
+        
+        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColorSneaky(), blockSneakyBlock, blockSneakyLever, blockSneakyGhost, blockSneakyTorch, blockSneakyObsidian, blockSneakyPlate, blockSneakyBedrock);
     }
-
+    
     @Override
     public boolean usesEvents () {
         
