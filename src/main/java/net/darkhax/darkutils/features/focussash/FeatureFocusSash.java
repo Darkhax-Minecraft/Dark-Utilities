@@ -1,7 +1,5 @@
 package net.darkhax.darkutils.features.focussash;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-
 import net.darkhax.bookshelf.lib.util.PlayerUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -12,6 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -64,7 +63,9 @@ public class FeatureFocusSash extends Feature {
         if (entity instanceof EntityPlayer && PlayerUtils.playerHasItem((EntityPlayer) entity, itemFocusSash, 0) && entity.getHealth() >= entity.getMaxHealth() && event.getAmount() >= entity.getHealth()) {
             
             event.setAmount(entity.getHealth() - 1f);
-            ((EntityPlayer) entity).addChatComponentMessage(new TextComponentTranslation("chat.darkutils.focussash", ChatFormatting.GREEN));
+            
+            if (entity.worldObj.isRemote)
+                ((EntityPlayer) entity).addChatComponentMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
         }
     }
 }

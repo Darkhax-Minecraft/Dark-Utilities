@@ -2,8 +2,6 @@ package net.darkhax.darkutils.addons.waila;
 
 import java.util.List;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -29,6 +27,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StringUtils;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class DarkUtilsTileProvider implements IWailaDataProvider {
@@ -70,7 +69,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
         
         if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && !(stack.getMetadata() > FilterType.getTypes().length))
-            tip.add(I18n.format("tooltip.darkutils.filter.type") + ": " + ChatFormatting.AQUA + I18n.format("tooltip.darkutils.filter.type." + FilterType.getTypes()[stack.getMetadata()]));
+            tip.add(I18n.format("tooltip.darkutils.filter.type") + ": " + TextFormatting.AQUA + I18n.format("tooltip.darkutils.filter.type." + FilterType.getTypes()[stack.getMetadata()]));
         
         else if (data.getBlock() instanceof BlockTimer && cfg.getConfig(CONFIG_TIMER_TIME) && data.getTileEntity() instanceof TileEntityTimer && !data.getTileEntity().isInvalid()) {
             
@@ -90,7 +89,7 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
                 final ItemStack foodStack = ItemStackUtils.createStackFromString(foodType);
                 
                 if (ItemStackUtils.isValidStack(foodStack))
-                    tip.add(I18n.format("tooltip.darkutils.feeder.type") + ": " + ChatFormatting.BLUE + foodStack.getDisplayName());
+                    tip.add(I18n.format("tooltip.darkutils.feeder.type") + ": " + TextFormatting.BLUE + foodStack.getDisplayName());
             }
             
             tip.add(I18n.format("tooltip.darkutils.feeder.amount") + ": " + data.getMetadata());
