@@ -38,9 +38,9 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Cons
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.10.2-12.18.2.2097"
+    version = "1.10.2-12.18.2.2166"
     runDir = "run"
-    mappings = "snapshot_20160518"
+    mappings = "snapshot_20161111"
     useDepAts = true
 }
 
