@@ -1,0 +1,55 @@
+{
+	"variants": {
+		"color=black": {
+			"model": "darkutils:slime_dyed_black"
+		},
+		"color=red": {
+			"model": "darkutils:slime_dyed_red"
+		},
+		"color=green": {
+			"model": "darkutils:slime_dyed_green"
+		},
+		"color=brown": {
+			"model": "darkutils:slime_dyed_brown"
+		},
+		"color=blue": {
+			"model": "darkutils:slime_dyed_blue"
+		},
+		"color=purple": {
+			"model": "darkutils:slime_dyed_purple"
+		},
+		"color=cyan": {
+			"model": "darkutils:slime_dyed_cyan"
+		},
+		"color=silver": {
+			"model": "darkutils:slime_dyed_silver"
+		},
+
+		"color=gray": {
+			"model": "darkutils:slime_dyed_gray"
+		},
+
+		"color=pink": {
+			"model": "darkutils:slime_dyed_pink"
+		},
+		"color=lime": {
+			"model": "darkutils:slime_dyed_lime"
+		},
+
+		"color=yellow": {
+			"model": "darkutils:slime_dyed_yellow"
+		},
+		"color=light_blue": {
+			"model": "darkutils:slime_dyed_light_blue"
+		},
+		"color=magenta": {
+			"model": "darkutils:slime_dyed_magenta"
+		},
+		"color=orange": {
+			"model": "darkutils:slime_dyed_orange"
+		},
+		"color=white": {
+			"model": "darkutils:slime_dyed_white"
+		}
+	}
+}

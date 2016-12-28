@@ -38,6 +38,22 @@ tile.darkutils.chest.magic.name=Mystic Chest
 tile.darkutils.chest.glacial.name=Glacial Chest
 tile.darkutils.chest.jungle.name=Jungle Chest
 tile.darkutils.sneaky.bedrock.name=Sneaky Bedrock
+tile.darkutils.slime.dyed.black.name=Black Slime Block
+tile.darkutils.slime.dyed.red.name=Red Slime Block
+tile.darkutils.slime.dyed.green.name=Green Slime Block
+tile.darkutils.slime.dyed.brown.name=Brown Slime Block
+tile.darkutils.slime.dyed.blue.name=Blue Slime Block
+tile.darkutils.slime.dyed.purple.name=Purple Slime Block
+tile.darkutils.slime.dyed.cyan.name=Cyan Slime Block
+tile.darkutils.slime.dyed.silver.name=Light Gray Slime Block
+tile.darkutils.slime.dyed.gray.name=Gray Slime Block
+tile.darkutils.slime.dyed.pink.name=Pink Slime Block
+tile.darkutils.slime.dyed.lime.name=Lime Slime Block
+tile.darkutils.slime.dyed.yellow.name=Yellow Slime Block
+tile.darkutils.slime.dyed.light.blue.name=Light Blue Slime Block
+tile.darkutils.slime.dyed.magenta.name=Magenta Slime Block
+tile.darkutils.slime.dyed.orange.name=Orange Slime Block
+tile.darkutils.slime.dyed.white.name=White Slime Block
 
 #Items
 item.darkutils.disabled.name=Disabled Item
@@ -135,6 +151,7 @@ jei.tile.darkutils.filter.inverted=Prevents a certain type of mob from moving th
 jei.item.darkutils.charm.gluttony=Allows the player to eat food at insanely fast speeds. If you're not careful you may eat more than you intend to!
 jei.tile.darkutils.sneaky.bedrock=Similar to bedrock, however if you are in creative mode you can change it to look like any other block by right clicking with another block in hand.
 jei.item.darkutils.charm.agression=Increases the agression range of the player. Normally only the mob being hit will agro to you, but this will make all mobs of a similar type agro.
+jei.tile.darkutils.slime.dyed=A dyed variation of the vanilla slime block. Unfortunately these do not work with pistons. #BlameMojang
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type

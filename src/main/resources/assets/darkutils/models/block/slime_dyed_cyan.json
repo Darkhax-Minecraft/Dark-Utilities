@@ -1,0 +1,6 @@
+{
+    "parent": "darkutils:block/slime_block",
+    "textures": {
+        "texture": "darkutils:blocks/slime_dyed_cyan"
+    }
+}

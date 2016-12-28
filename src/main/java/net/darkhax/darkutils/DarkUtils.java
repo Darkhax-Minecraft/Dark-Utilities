@@ -8,6 +8,7 @@ import net.darkhax.darkutils.features.FeatureManager;
 import net.darkhax.darkutils.features.agressioncharm.FeatureAgressionCharm;
 import net.darkhax.darkutils.features.antislime.FeatureAntiSlime;
 import net.darkhax.darkutils.features.chests.FeatureChests;
+import net.darkhax.darkutils.features.dyeslime.FeatureDyeSlime;
 import net.darkhax.darkutils.features.enchrings.FeatureEnchantedRing;
 import net.darkhax.darkutils.features.enderhopper.FeatureEnderHopper;
 import net.darkhax.darkutils.features.endertether.FeatureEnderTether;
@@ -44,6 +45,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, dependencies = Constants.DEPENDENCIES, acceptedMinecraftVersions = "[1.9.4,1.10.2]")
@@ -108,6 +110,7 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureEnchantedRing(), "Enchanted Rings", "Adds rings which can increase enchantment levels");
         FeatureManager.registerFeature(new FeatureGluttonyCharm(), "Gluttony Charm", "A charm that allows the player to consume food instantaneously.");
         FeatureManager.registerFeature(new FeatureAgressionCharm(), "Agression Charm", "A charm which will spread agression to nearby mobs.");
+        FeatureManager.registerFeature(new FeatureDyeSlime(), "Dyed Slime Blocks", "Colorful slime blocks!");
         
         ConfigurationHandler.syncConfigData();
         
