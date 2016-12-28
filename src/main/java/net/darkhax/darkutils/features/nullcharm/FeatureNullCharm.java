@@ -19,53 +19,54 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FeatureNullCharm extends Feature {
-    
+
     public static Item itemNullCharm;
+
     private static boolean craftable;
-    
+
     @Override
     public void onPreInit () {
-        
+
         itemNullCharm = ModUtils.registerItem(new ItemNullCharm(), "charm_null");
     }
-    
+
     @Override
     public boolean usesEvents () {
-        
+
         return true;
     }
-    
+
     @Override
     public void setupConfiguration (Configuration config) {
-        
+
         craftable = config.getBoolean("Craftable", this.configName, true, "Should the null charm be craftable?");
     }
-    
+
     @Override
     public void setupRecipes () {
-        
+
         if (craftable) {
-            
+
             GameRegistry.addRecipe(new ShapedOreRecipe(itemNullCharm, new Object[] { "xyz", 'x', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'y', OreDictUtils.OBSIDIAN, 'z', Items.ENDER_PEARL }));
             GameRegistry.addRecipe(new ShapedOreRecipe(itemNullCharm, new Object[] { " x ", " y ", " z ", 'x', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'y', OreDictUtils.OBSIDIAN, 'z', Items.ENDER_PEARL }));
         }
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-        
+
         ModUtils.registerItemInvModel(itemNullCharm);
     }
-    
+
     @SubscribeEvent
     public void onItemPickedUp (EntityItemPickupEvent event) {
-        
+
         final List<ItemStack> charms = PlayerUtils.getStacksFromPlayer(event.getEntityPlayer(), itemNullCharm, 0);
-        
+
         for (final ItemStack charm : charms)
             if (ItemNullCharm.isBlackListed(event.getItem().getEntityItem(), charm)) {
-                
+
                 event.getItem().setDead();
                 event.setCanceled(true);
                 return;

@@ -17,45 +17,46 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FeatureGluttonyCharm extends Feature {
-    
+
     public static Item itemGluttonyCharm;
+
     private static boolean craftable;
-    
+
     @Override
     public void onPreInit () {
-        
+
         itemGluttonyCharm = ModUtils.registerItem(new ItemGluttonyCharm(), "charm_gluttony");
     }
-    
+
     @Override
     public boolean usesEvents () {
-        
+
         return true;
     }
-    
+
     @Override
     public void setupConfiguration (Configuration config) {
-        
+
         craftable = config.getBoolean("Craftable", this.configName, true, "Should the gluttony charm be craftable?");
     }
-    
+
     @Override
     public void setupRecipes () {
-        
+
         if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(itemGluttonyCharm, new Object[] { " s ", "waw", " w ", 's', OreDictUtils.STRING, 'w', OreDictUtils.CROP_WHEAT, 'a', Items.GOLDEN_APPLE }));
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-        
+
         ModUtils.registerItemInvModel(itemGluttonyCharm);
     }
-    
+
     @SubscribeEvent
     public void onItemUse (LivingEntityUseItemEvent.Tick event) {
-        
+
         if (event.getEntityLiving() instanceof EntityPlayer && PlayerUtils.playerHasItem((EntityPlayer) event.getEntityLiving(), itemGluttonyCharm, 0) && event.getItem() != null && event.getItem().getItem() instanceof ItemFood)
             event.setDuration(0);
     }

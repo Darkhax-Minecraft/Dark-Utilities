@@ -15,35 +15,36 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FeatureTimer extends Feature {
-    
+
     public static Block blockTimer;
+
     private static boolean craftable = true;
-    
+
     @Override
     public void onPreInit () {
-        
+
         blockTimer = new BlockTimer();
         ModUtils.registerBlock(blockTimer, "timer");
         GameRegistry.registerTileEntity(TileEntityTimer.class, "timer");
     }
-    
+
     @Override
     public void setupConfiguration (Configuration config) {
-        
+
         craftable = config.getBoolean("Craftable", this.configName, true, "Should the timer be craftable?");
     }
-    
+
     @Override
     public void setupRecipes () {
-        
+
         if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTimer), new Object[] { "sts", "tct", "sts", 's', STONE, 't', Blocks.REDSTONE_TORCH, 'c', Items.CLOCK }));
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-        
+
         ModUtils.registerBlockInvModel(blockTimer);
     }
 }

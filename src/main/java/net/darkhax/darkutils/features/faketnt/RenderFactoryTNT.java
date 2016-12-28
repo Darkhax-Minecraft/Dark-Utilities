@@ -8,10 +8,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderFactoryTNT implements IRenderFactory<EntityFakeTNT> {
-    
+
     @Override
     public RenderTNTPrimed createRenderFor (RenderManager manager) {
-        
+
         return new RenderTNTPrimed(manager);
     }
 }

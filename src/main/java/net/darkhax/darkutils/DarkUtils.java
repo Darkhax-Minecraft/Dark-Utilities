@@ -45,47 +45,46 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, dependencies = Constants.DEPENDENCIES, acceptedMinecraftVersions = "[1.9.4,1.10.2]")
 public class DarkUtils {
-    
+
     /**
      * A network wrapper for DarkUtils packets.
      */
     public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("DarkUtils");
-    
+
     /**
      * The creative tab used for all content added by this mod.
      */
     public static final CreativeTabs TAB = new CreativeTabDarkUtils();
-    
+
     /**
      * Reference to the proxy system. This will be the client proxy on the client side, and
      * common proxy on the server side.
      */
     @SidedProxy(clientSide = Constants.CLIENT_PROXY_CLASS, serverSide = Constants.SERVER_PROXY_CLASS)
     public static ProxyCommon proxy;
-    
+
     /**
      * Reference to the mod instance. Useful for mod specific things, such as entities.
      */
     @Mod.Instance(Constants.MOD_ID)
     public static DarkUtils instance;
-    
+
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
-        
+
         NETWORK.registerMessage(PacketSyncTimer.PacketHandler.class, PacketSyncTimer.class, 0, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
-        
+
         ConfigurationHandler.initConfig(event.getSuggestedConfigurationFile());
-        
+
         FeatureManager.FEATURES.add(new FeatureDisabled());
         FeatureManager.registerFeature(new FeatureOreDict(), "Vanilla Ore Dictionary", "Adds several vanilla items and blocks to Forge's Ore Dictionary");
         FeatureManager.registerFeature(new FeatureSheepArmor(), "Sheep Armor", "Gives sheep armor when they have wool");
-        
+
         FeatureManager.registerFeature(new FeatureVectorPlate(), "Vector Plate", "A block that pushes entities around");
         FeatureManager.registerFeature(new FeatureTrap(), "Trap Blocks", "Trap blocks that have certain effects when stepped on");
         FeatureManager.registerFeature(new FeatureEnderTether(), "Ender Tether", "A block to redirect ender teleportation");
@@ -97,7 +96,7 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureSneaky(), "Sneaky Blocks", "Blocks that can hide as other blocks");
         FeatureManager.registerFeature(new FeatureFeeder(), "Animal Feeder", "A block for auto breeding");
         FeatureManager.registerFeature(new FeatureFakeTNT(), "Fake TNT", "A safe TNT alternative");
-        
+
         FeatureManager.registerFeature(new FeatureMaterial(), "Crafting Materials", "Material items used throughout DarkUtils");
         FeatureManager.registerFeature(new FeaturePotion(), "Mysterious Potion", "Strange potions with abnormal effects");
         FeatureManager.registerFeature(new FeaturePortalCharm(), "Portal Charm", "A charm to make traveling through portals faster");
@@ -111,37 +110,37 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureGluttonyCharm(), "Gluttony Charm", "A charm that allows the player to consume food instantaneously.");
         FeatureManager.registerFeature(new FeatureAgressionCharm(), "Agression Charm", "A charm which will spread agression to nearby mobs.");
         FeatureManager.registerFeature(new FeatureDyeSlime(), "Dyed Slime Blocks", "Colorful slime blocks!");
-        
+
         ConfigurationHandler.syncConfigData();
-        
+
         for (final Feature feature : FeatureManager.FEATURES)
             feature.onPreInit();
-        
+
         for (final Feature feature : FeatureManager.FEATURES)
             feature.setupRecipes();
-        
+
         proxy.onPreInit();
-        
+
         AddonHandler.registerAddons();
         AddonHandler.onPreInit();
     }
-    
+
     @EventHandler
     public void init (FMLInitializationEvent event) {
-        
+
         for (final Feature feature : FeatureManager.FEATURES)
             feature.onInit();
-        
+
         proxy.onInit();
         AddonHandler.onInit();
     }
-    
+
     @EventHandler
     public void postInit (FMLPostInitializationEvent event) {
-        
+
         for (final Feature feature : FeatureManager.FEATURES)
             feature.onPostInit();
-        
+
         proxy.onPostInit();
         AddonHandler.onPostInit();
     }

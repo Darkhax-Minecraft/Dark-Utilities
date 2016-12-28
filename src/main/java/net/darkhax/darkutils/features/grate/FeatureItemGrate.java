@@ -14,34 +14,35 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class FeatureItemGrate extends Feature {
-    
+
     public static Block blockGrate;
+
     private static boolean craftable;
-    
+
     @Override
     public void onPreInit () {
-        
+
         blockGrate = new BlockGrate();
         ModUtils.registerBlock(blockGrate, "grate");
     }
-    
+
     @Override
     public void setupConfiguration (Configuration config) {
-        
+
         craftable = config.getBoolean("Craftable", this.configName, true, "Should the Item Grate be craftable?");
     }
-    
+
     @Override
     public void setupRecipes () {
-        
+
         if (craftable)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(blockGrate), Blocks.IRON_BARS, STONE, Blocks.TRAPDOOR));
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-        
+
         ModUtils.registerBlockInvModel(blockGrate);
     }
 }

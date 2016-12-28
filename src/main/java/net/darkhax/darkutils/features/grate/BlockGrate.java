@@ -14,45 +14,45 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockGrate extends Block {
-    
+
     public static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0.01d, 0.87d, 0.01d, 0.99d, 0.99d, 0.99d);
-    
+
     public BlockGrate() {
-        
+
         super(Material.ROCK);
         this.setHardness(3.0F);
         this.setResistance(5f);
     }
-    
+
     @Override
     public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
-        
+
         if (entity instanceof EntityItem)
             entity.setPositionAndUpdate(pos.getX() + 0.5f, pos.getY() - 0.2f, pos.getZ() + 0.5f);
     }
-    
+
     @Override
     public boolean isFullCube (IBlockState state) {
-        
+
         return false;
     }
-    
+
     @Override
     public boolean isOpaqueCube (IBlockState state) {
-        
+
         return false;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer () {
-        
+
         return BlockRenderLayer.CUTOUT;
     }
-    
+
     @Override
     public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
-        
+
         return BOUNDS;
     }
 }

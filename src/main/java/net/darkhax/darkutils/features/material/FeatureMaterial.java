@@ -24,68 +24,72 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class FeatureMaterial extends Feature {
-    
+
     public static Item itemMaterial;
-    
+
     private static boolean craftDustFromSkull = true;
+
     private static boolean craftDwindleCream = true;
+
     private static boolean craftUnstableEnderPearl = true;
+
     private static boolean skeletonDropDust = true;
+
     private static int dustDropWeight = 1;
-    
+
     @Override
     public void onPreInit () {
-        
+
         itemMaterial = new ItemMaterial();
         ModUtils.registerItem(itemMaterial, "material");
     }
-    
+
     @Override
     public void setupConfiguration (Configuration config) {
-        
+
         craftDustFromSkull = config.getBoolean("Craft Wither Dust", this.configName, true, "Should the Wither Dust be craftable from Wither Skulls?");
         craftDwindleCream = config.getBoolean("Craft Dwindle Cream", this.configName, true, "Should Dwingle Cream be craftable?");
         craftUnstableEnderPearl = config.getBoolean("Craft Unstable Enderpealr", this.configName, true, "Should Unstable Enderpearls be craftable?");
         skeletonDropDust = config.getBoolean("WSkeleton Drop Dust", this.configName, true, "Should wither skeletons drop wither dust?");
-        
+
         dustDropWeight = config.getInt("Dust Drop Weight", this.configName, 1, 0, 256, "The weighting for Wither Skeletons dropping Wither Dust");
     }
-    
+
     @Override
     public void setupRecipes () {
-        
+
         if (craftDustFromSkull)
             GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.SKULL, 1, 1));
-        
+
         if (craftDwindleCream)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), SLIMEBALL));
-        
+
         if (craftUnstableEnderPearl)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), ENDERPEARL));
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-        
+
         ModUtils.registerItemInvModel(itemMaterial, "material", ItemMaterial.varients);
     }
-    
+
     @Override
     public boolean usesEvents () {
-        
+
         return true;
     }
-    
+
     @SubscribeEvent
     public void onLootTableLoad (LootTableLoadEvent event) {
-        
+
         final LootTable table = event.getTable();
-        
+
         if (skeletonDropDust && event.getName().equals(LootTableList.ENTITIES_WITHER_SKELETON)) {
-            
+
             final LootPool pool1 = table.getPool("pool1");
-            
+
             if (pool1 != null)
                 pool1.addEntry(new LootEntryItem(itemMaterial, dustDropWeight, 0, new LootFunction[0], new LootCondition[0], Constants.MOD_ID + ":wither_dust"));
         }
