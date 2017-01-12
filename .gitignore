@@ -2,6 +2,10 @@
 *.iml
 *.ipr
 *.iws
+*.classpath
+*.project
+*.prefs
+*.launch
 /output
 
 #ForgeGradle
@@ -9,3 +13,5 @@
 /.gradle
 /eclipse/assets
 /libs
+/bin/
+/run/
