@@ -11,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.ParticleManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
@@ -18,6 +19,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
@@ -191,6 +193,36 @@ public class BlockSneaky extends BlockContainer {
         return false;
     }
 
+    @Override
+    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+
+    	final TileEntity tile = blockAccess.getTileEntity(pos);
+    	
+    	if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
+    		
+    		final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+    		
+    		if (sneaky.heldState != null) {
+    			
+    			if (sneaky.heldState.getBlock() == Blocks.GLASS || sneaky.heldState.getBlock() == Blocks.GLASS_PANE) {
+    				
+    				IBlockState connected = blockAccess.getBlockState(pos.offset(side));
+    				
+    				if (connected == sneaky.heldState)
+    					return false;
+    				
+    				else if (connected.getBlock() instanceof BlockSneaky) {
+    					
+    					return ((TileEntitySneaky) blockAccess.getTileEntity(pos.offset(side))).heldState != sneaky.heldState;
+    				}
+    			}
+    			return sneaky.heldState.shouldSideBeRendered(blockAccess, pos, side);
+    		}
+    	}
+    	
+    	return super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+    }
+    
     /**
      * A check to see if a block is valid for the sneaky block. For a block to be valid, it
      * must be an opaque cube, or have a render type of 3. Tile entities are considered
