@@ -56,6 +56,8 @@ public class FeatureSneaky extends Feature {
     public static boolean craftSneakyObsidian;
 
     public static boolean craftSneakyPlate;
+    
+    public static boolean opacity;
 
     @Override
     public void onPreInit () {
@@ -92,6 +94,7 @@ public class FeatureSneaky extends Feature {
         craftSneakyTorch = config.getBoolean("Craft Sneaky Torch", this.configName, true, "Should the sneaky torch be craftable?");
         craftSneakyObsidian = config.getBoolean("Craft Sneaky Obsidian", this.configName, true, "Should the sneaky obsidian be craftable?");
         craftSneakyPlate = config.getBoolean("Craft Sneaky Pressure Plate", this.configName, true, "Should the sneaky pressure plate be craftable?");
+        opacity = config.getBoolean("Opacity", this.configName, true, "When true, all sneaky blocks will let no light through. When disabled, all light will be let through.");
     }
 
     @Override
