@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 public class BlockSneakyBedrock extends BlockSneaky {
 
-    public BlockSneakyBedrock() {
+    public BlockSneakyBedrock () {
 
         this.setBlockUnbreakable();
         this.setResistance(6000000f);

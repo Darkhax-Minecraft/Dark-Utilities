@@ -27,7 +27,7 @@ public class BlockFeeder extends BlockContainer {
 
     public static final PropertyInteger FOOD = PropertyInteger.create("food", 0, 10);
 
-    public BlockFeeder() {
+    public BlockFeeder () {
 
         super(Material.GLASS);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FOOD, Integer.valueOf(0)));

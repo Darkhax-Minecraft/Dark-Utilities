@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 
 public class CreativeTabDarkUtils extends CreativeTabs {
 
-    public CreativeTabDarkUtils() {
+    public CreativeTabDarkUtils () {
 
         super("darkutils");
         this.setBackgroundImageName("darkutils.png");

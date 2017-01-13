@@ -27,7 +27,7 @@ public class BlockInvertedFilter extends Block {
 
     public static final PropertyEnum<FilterType> VARIANT = PropertyEnum.<FilterType> create("variant", FilterType.class);
 
-    public BlockInvertedFilter() {
+    public BlockInvertedFilter () {
 
         super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, FilterType.PLAYER));

@@ -39,7 +39,7 @@ public enum FilterType implements IStringSerializable {
 
     public final Object crafting;
 
-    private FilterType(int meta, String name, Object crafting) {
+    private FilterType (int meta, String name, Object crafting) {
 
         this.meta = meta;
         this.type = name;

@@ -25,7 +25,7 @@ public class BlockShulkerPearl extends Block {
 
     public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.<EnumType> create("variant", EnumType.class);
 
-    public BlockShulkerPearl() {
+    public BlockShulkerPearl () {
 
         super(Material.ROCK, MapColor.QUARTZ);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.DEFAULT));
@@ -80,7 +80,7 @@ public class BlockShulkerPearl extends Block {
 
         private final String name;
 
-        private EnumType(int meta, String name) {
+        private EnumType (int meta, String name) {
 
             this.meta = meta;
             this.name = name;

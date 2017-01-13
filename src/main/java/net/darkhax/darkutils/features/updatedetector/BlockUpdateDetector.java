@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockUpdateDetector extends Block {
 
-    public BlockUpdateDetector() {
+    public BlockUpdateDetector () {
 
         super(Material.CIRCUITS);
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, false));

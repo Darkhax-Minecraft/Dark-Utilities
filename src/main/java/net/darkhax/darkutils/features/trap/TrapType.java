@@ -20,7 +20,7 @@ public enum TrapType implements IStringSerializable {
 
     public final String type;
 
-    private TrapType(int meta, String name) {
+    private TrapType (int meta, String name) {
 
         this.meta = meta;
         this.type = name;

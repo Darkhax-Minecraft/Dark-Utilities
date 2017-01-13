@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.Optional;
 
 public class ItemSleepCharm extends ItemBauble {
 
-    public ItemSleepCharm() {
+    public ItemSleepCharm () {
 
         this.setMaxStackSize(1);
     }

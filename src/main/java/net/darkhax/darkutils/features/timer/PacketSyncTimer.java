@@ -15,11 +15,11 @@ public class PacketSyncTimer implements IMessage {
 
     public int delayTime;
 
-    public PacketSyncTimer() {
+    public PacketSyncTimer () {
 
     }
 
-    public PacketSyncTimer(BlockPos pos, int delayTime) {
+    public PacketSyncTimer (BlockPos pos, int delayTime) {
 
         this.pos = pos;
         this.delayTime = delayTime;

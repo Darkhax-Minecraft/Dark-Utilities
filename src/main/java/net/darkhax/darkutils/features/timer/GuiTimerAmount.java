@@ -25,7 +25,7 @@ public class GuiTimerAmount extends GuiScreen {
 
     private GuiButton cancelBtn;
 
-    public GuiTimerAmount(TileEntityTimer timer) {
+    public GuiTimerAmount (TileEntityTimer timer) {
 
         this.timer = timer;
     }

@@ -12,7 +12,7 @@ public class ItemMaterial extends Item {
 
     public static String[] varients = new String[] { "wither", "unstable", "cream" };
 
-    public ItemMaterial() {
+    public ItemMaterial () {
 
         this.setHasSubtypes(true);
     }

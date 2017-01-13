@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.Optional;
 
 public class ItemAgressionCharm extends ItemBauble {
 
-    public ItemAgressionCharm() {
+    public ItemAgressionCharm () {
 
         this.setMaxStackSize(1);
     }

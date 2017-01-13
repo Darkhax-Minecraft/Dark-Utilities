@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockAntiSlime extends BlockContainer {
 
-    public BlockAntiSlime() {
+    public BlockAntiSlime () {
 
         super(Material.ROCK);
         this.setHardness(3.0F);

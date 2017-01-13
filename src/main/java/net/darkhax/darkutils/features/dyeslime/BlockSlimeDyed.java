@@ -19,7 +19,7 @@ public class BlockSlimeDyed extends BlockSlime {
 
     public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.<EnumDyeColor> create("color", EnumDyeColor.class);
 
-    public BlockSlimeDyed() {
+    public BlockSlimeDyed () {
 
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));
         this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);

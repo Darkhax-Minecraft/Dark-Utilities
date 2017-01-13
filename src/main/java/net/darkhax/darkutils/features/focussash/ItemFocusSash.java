@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.Optional;
 
 public class ItemFocusSash extends ItemBauble {
 
-    public ItemFocusSash() {
+    public ItemFocusSash () {
 
         this.setMaxStackSize(1);
     }

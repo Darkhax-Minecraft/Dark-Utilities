@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBlockFilter extends ItemBlockBasic {
 
-    public ItemBlockFilter(Block block, String[] names) {
+    public ItemBlockFilter (Block block, String[] names) {
 
         super(block, names);
     }

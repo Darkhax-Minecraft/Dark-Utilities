@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 
 public class BlockSneakyGhost extends BlockSneaky {
 
-    public BlockSneakyGhost() {
+    public BlockSneakyGhost () {
 
     }
 

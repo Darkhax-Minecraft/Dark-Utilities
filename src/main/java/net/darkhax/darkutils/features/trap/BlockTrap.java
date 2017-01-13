@@ -31,7 +31,7 @@ public class BlockTrap extends Block {
 
     public static final PropertyEnum<TrapType> VARIANT = PropertyEnum.<TrapType> create("variant", TrapType.class);
 
-    public BlockTrap() {
+    public BlockTrap () {
 
         super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, TrapType.POISON));

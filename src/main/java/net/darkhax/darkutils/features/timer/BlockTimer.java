@@ -27,7 +27,7 @@ public class BlockTimer extends BlockContainer {
 
     public static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0.0d, 0.0d, 0.0d, 1.0d, 0.125d, 1.0d);
 
-    public BlockTimer() {
+    public BlockTimer () {
 
         super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, false));

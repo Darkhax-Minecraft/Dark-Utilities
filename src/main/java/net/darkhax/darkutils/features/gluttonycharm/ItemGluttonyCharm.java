@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.Optional;
 
 public class ItemGluttonyCharm extends ItemBauble {
 
-    public ItemGluttonyCharm() {
+    public ItemGluttonyCharm () {
 
         this.setMaxStackSize(1);
     }

@@ -34,7 +34,7 @@ public class FeatureDisabled extends Feature {
 
     private class ItemDisabled extends Item {
 
-        public ItemDisabled() {
+        public ItemDisabled () {
 
             this.setUnlocalizedName("darkutils.disabled");
             this.setRegistryName("disabled");

@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemNullCharm extends ItemBauble {
 
-    public ItemNullCharm() {
+    public ItemNullCharm () {
 
         this.setMaxStackSize(1);
     }

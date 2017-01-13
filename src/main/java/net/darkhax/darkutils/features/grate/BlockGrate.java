@@ -17,7 +17,7 @@ public class BlockGrate extends Block {
 
     public static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0.01d, 0.87d, 0.01d, 0.99d, 0.99d, 0.99d);
 
-    public BlockGrate() {
+    public BlockGrate () {
 
         super(Material.ROCK);
         this.setHardness(3.0F);

@@ -21,7 +21,7 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
 
     protected static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1D, 0.99D, 1D);
 
-    public BlockSneakyPressurePlate() {
+    public BlockSneakyPressurePlate () {
 
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null).withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
         this.setTickRandomly(true);

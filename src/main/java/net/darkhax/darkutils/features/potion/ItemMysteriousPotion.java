@@ -25,7 +25,7 @@ public class ItemMysteriousPotion extends Item {
 
     public static String[] varients = new String[] { "cure", "zombie" };
 
-    public ItemMysteriousPotion() {
+    public ItemMysteriousPotion () {
 
         this.setMaxStackSize(1);
         this.setHasSubtypes(true);

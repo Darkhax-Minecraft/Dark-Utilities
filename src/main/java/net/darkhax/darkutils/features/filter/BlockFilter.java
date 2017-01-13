@@ -27,7 +27,7 @@ public class BlockFilter extends Block {
 
     public static final PropertyEnum<FilterType> VARIANT = PropertyEnum.<FilterType> create("variant", FilterType.class);
 
-    public BlockFilter() {
+    public BlockFilter () {
 
         super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, FilterType.PLAYER));

@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerFilter extends Container {
 
-    public ContainerFilter(InventoryPlayer playerInv, InventoryItem inventory) {
+    public ContainerFilter (InventoryPlayer playerInv, InventoryItem inventory) {
 
         for (int invIndex = 0; invIndex < 5; invIndex++)
             this.addSlotToContainer(new SlotFake(inventory, invIndex, 44 + invIndex * 18, 20));

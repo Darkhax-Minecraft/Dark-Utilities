@@ -33,7 +33,7 @@ public class BlockEnderHopper extends BlockTileEntity {
 
     public static final AxisAlignedBB BOUNDS_EAST = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0625D, 1D, 1.0D);
 
-    protected BlockEnderHopper() {
+    protected BlockEnderHopper () {
 
         super(Material.ROCK);
         this.setHardness(1.5f);

@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public class BlockFakeTNT extends BlockTNT {
 
-    public BlockFakeTNT() {
+    public BlockFakeTNT () {
 
         super();
         this.setHardness(0.0F);

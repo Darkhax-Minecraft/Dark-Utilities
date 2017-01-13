@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.Optional;
 
 public class ItemPortalCharm extends ItemBauble {
 
-    public ItemPortalCharm() {
+    public ItemPortalCharm () {
 
         this.maxStackSize = 1;
     }

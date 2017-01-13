@@ -56,7 +56,7 @@ public class FeatureSneaky extends Feature {
     public static boolean craftSneakyObsidian;
 
     public static boolean craftSneakyPlate;
-    
+
     public static boolean opacity;
 
     @Override

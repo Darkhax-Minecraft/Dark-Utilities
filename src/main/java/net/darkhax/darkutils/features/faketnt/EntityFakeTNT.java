@@ -7,12 +7,12 @@ import net.minecraft.world.World;
 
 public class EntityFakeTNT extends EntityTNTPrimed {
 
-    public EntityFakeTNT(World worldIn) {
+    public EntityFakeTNT (World worldIn) {
 
         super(worldIn);
     }
 
-    public EntityFakeTNT(World worldIn, double x, double y, double z, EntityLivingBase igniter) {
+    public EntityFakeTNT (World worldIn, double x, double y, double z, EntityLivingBase igniter) {
 
         super(worldIn, x, y, z, igniter);
     }

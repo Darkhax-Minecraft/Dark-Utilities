@@ -122,7 +122,7 @@ public class ModelSneakyBlock implements IBakedModel {
          *
          * @param access The base block state to use for the SneakyBlockState.
          */
-        private SneakyBlockAccess(IBlockAccess access) {
+        private SneakyBlockAccess (IBlockAccess access) {
 
             this.access = access;
         }

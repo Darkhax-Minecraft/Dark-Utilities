@@ -19,7 +19,7 @@ public class ItemRing extends ItemBauble {
 
     public static String[] varients = new String[] { "pyro", "engineer", "depth", "titan", "protect", "angler", "frost" };
 
-    public ItemRing() {
+    public ItemRing () {
 
         this.hasSubtypes = true;
         this.maxStackSize = 1;

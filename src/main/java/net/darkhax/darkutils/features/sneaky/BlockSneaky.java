@@ -19,7 +19,6 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
@@ -31,13 +30,13 @@ import net.minecraftforge.common.property.IUnlistedProperty;
 
 public class BlockSneaky extends BlockContainer {
 
-    public BlockSneaky() {
+    public BlockSneaky () {
 
         super(Material.ROCK);
         this.setHardness(1.5F);
         this.setResistance(10.0F);
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
-        
+
         if (FeatureSneaky.opacity)
             this.setLightOpacity(255);
     }
@@ -197,35 +196,33 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
-    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+    public boolean shouldSideBeRendered (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
-    	final TileEntity tile = blockAccess.getTileEntity(pos);
-    	
-    	if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
-    		
-    		final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
-    		
-    		if (sneaky.heldState != null) {
-    			
-    			if (sneaky.heldState.getBlock() == Blocks.GLASS || sneaky.heldState.getBlock() == Blocks.GLASS_PANE) {
-    				
-    				IBlockState connected = blockAccess.getBlockState(pos.offset(side));
-    				
-    				if (connected == sneaky.heldState)
-    					return false;
-    				
-    				else if (connected.getBlock() instanceof BlockSneaky) {
-    					
-    					return ((TileEntitySneaky) blockAccess.getTileEntity(pos.offset(side))).heldState != sneaky.heldState;
-    				}
-    			}
-    			return sneaky.heldState.shouldSideBeRendered(blockAccess, pos, side);
-    		}
-    	}
-    	
-    	return super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+        final TileEntity tile = blockAccess.getTileEntity(pos);
+
+        if (tile instanceof TileEntitySneaky && !tile.isInvalid()) {
+
+            final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
+
+            if (sneaky.heldState != null) {
+
+                if (sneaky.heldState.getBlock() == Blocks.GLASS || sneaky.heldState.getBlock() == Blocks.GLASS_PANE) {
+
+                    final IBlockState connected = blockAccess.getBlockState(pos.offset(side));
+
+                    if (connected == sneaky.heldState)
+                        return false;
+
+                    else if (connected.getBlock() instanceof BlockSneaky)
+                        return ((TileEntitySneaky) blockAccess.getTileEntity(pos.offset(side))).heldState != sneaky.heldState;
+                }
+                return sneaky.heldState.shouldSideBeRendered(blockAccess, pos, side);
+            }
+        }
+
+        return super.shouldSideBeRendered(blockState, blockAccess, pos, side);
     }
-    
+
     /**
      * A check to see if a block is valid for the sneaky block. For a block to be valid, it
      * must be an opaque cube, or have a render type of 3. Tile entities are considered

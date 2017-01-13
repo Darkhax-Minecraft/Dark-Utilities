@@ -18,7 +18,7 @@ public class GuiFilter extends GuiContainer {
 
     private final IInventory inventory;
 
-    public GuiFilter(InventoryPlayer playerInv, InventoryItem inventory) {
+    public GuiFilter (InventoryPlayer playerInv, InventoryItem inventory) {
 
         super(new ContainerFilter(playerInv, inventory));
         this.playerInventory = playerInv;

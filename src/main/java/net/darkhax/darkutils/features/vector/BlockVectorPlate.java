@@ -23,7 +23,7 @@ public class BlockVectorPlate extends Block {
 
     private final double speed;
 
-    public BlockVectorPlate(double speed) {
+    public BlockVectorPlate (double speed) {
 
         super(Material.ROCK);
         this.setHardness(3.0F);

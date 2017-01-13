@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockEnderTether extends BlockTorch implements ITileEntityProvider {
 
-    public BlockEnderTether() {
+    public BlockEnderTether () {
 
         this.isBlockContainer = true;
         this.setResistance(2000f);
