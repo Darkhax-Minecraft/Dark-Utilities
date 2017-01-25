@@ -18,41 +18,41 @@ import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
 
 public class BlockSneakyLever extends BlockSneaky {
-    
-    public BlockSneakyLever() {
-        
+
+    public BlockSneakyLever () {
+
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null).withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
     }
-    
+
     @Override
     public BlockStateContainer createBlockState () {
-        
+
         return new ExtendedBlockState(this, new IProperty[] { BlockStates.POWERED }, new IUnlistedProperty[] { BlockStates.HELD_STATE, BlockStates.BLOCK_ACCESS, BlockStates.BLOCKPOS });
     }
-    
+
     @Override
     public int getMetaFromState (IBlockState state) {
-        
+
         return state.getValue(BlockStates.POWERED).booleanValue() ? 1 : 0;
     }
-    
+
     @Override
     public IBlockState getStateFromMeta (int meta) {
-        
+
         return this.getDefaultState().withProperty(BlockStates.POWERED, meta == 0 ? false : true);
     }
-    
+
     @Override
     public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-        
+
         if (heldItem != null && heldItem.getItem() != null)
             return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
-        
+
         if (worldIn.isRemote)
             return true;
-        
+
         else {
-            
+
             state = state.cycleProperty(BlockStates.POWERED);
             worldIn.setBlockState(pos, state, 1 | 2);
             worldIn.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, state.getValue(BlockStates.POWERED).booleanValue() ? 0.6F : 0.5F);
@@ -60,31 +60,31 @@ public class BlockSneakyLever extends BlockSneaky {
             return true;
         }
     }
-    
+
     @Override
     public void breakBlock (World worldIn, BlockPos pos, IBlockState state) {
-        
+
         if (state.getValue(BlockStates.POWERED).booleanValue())
             worldIn.notifyNeighborsOfStateChange(pos, this);
-        
+
         super.breakBlock(worldIn, pos, state);
     }
-    
+
     @Override
     public int getWeakPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        
+
         return blockState.getValue(BlockStates.POWERED).booleanValue() ? 15 : 0;
     }
-    
+
     @Override
     public int getStrongPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        
+
         return !blockState.getValue(BlockStates.POWERED).booleanValue() ? 15 : 0;
     }
-    
+
     @Override
     public boolean canProvidePower (IBlockState state) {
-        
+
         return true;
     }
 }

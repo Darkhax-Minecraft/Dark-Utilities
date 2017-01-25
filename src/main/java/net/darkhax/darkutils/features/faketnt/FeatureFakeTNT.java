@@ -18,35 +18,36 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FeatureFakeTNT extends Feature {
-    
+
     public static Block blockFakeTNT;
+
     private static boolean craftable;
-    
+
     @Override
     public void onPreInit () {
-        
+
         blockFakeTNT = new BlockFakeTNT();
         ModUtils.registerBlock(blockFakeTNT, "fake_tnt");
         EntityRegistry.registerModEntity(EntityFakeTNT.class, "FakeTNT", 0, DarkUtils.instance, 32, 20, true);
     }
-    
+
     @Override
     public void setupConfiguration (Configuration config) {
-        
+
         craftable = config.getBoolean("Craftable", this.configName, true, "Should fake TNT be craftable?");
     }
-    
+
     @Override
     public void setupRecipes () {
-        
+
         if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFakeTNT), new Object[] { "gwg", "wgw", "gwg", 'g', GUNPOWDER, 'w', new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE) }));
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-        
+
         ModUtils.registerBlockInvModel(blockFakeTNT);
         RenderingRegistry.registerEntityRenderingHandler(EntityFakeTNT.class, new RenderFactoryTNT());
     }

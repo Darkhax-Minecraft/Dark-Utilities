@@ -15,35 +15,36 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FeatureFeeder extends Feature {
-    
+
     public static Block blockFeeder;
+
     public static boolean craftable;
-    
+
     @Override
     public void onPreInit () {
-        
+
         blockFeeder = new BlockFeeder();
         ModUtils.registerBlock(blockFeeder, "feeder");
         GameRegistry.registerTileEntity(TileEntityFeeder.class, "feeder");
     }
-    
+
     @Override
     public void setupConfiguration (Configuration config) {
-        
+
         craftable = config.getBoolean("Craftable", this.configName, true, "Should the feeder be craftable?");
     }
-    
+
     @Override
     public void setupRecipes () {
-        
+
         if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFeeder), new Object[] { "ccc", "geg", "ccc", 'c', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 5), 'g', PANE_GLASS, 'e', GEM_EMERALD }));
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-        
+
         ModUtils.registerBlockInvModel(blockFeeder);
     }
 }

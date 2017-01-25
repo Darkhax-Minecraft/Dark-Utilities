@@ -8,10 +8,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class StateMapChest extends StateMapperBase {
-    
+
     @Override
     protected ModelResourceLocation getModelResourceLocation (IBlockState state) {
-        
+
         return new ModelResourceLocation("minecraft:stone", "normal");
     }
 }

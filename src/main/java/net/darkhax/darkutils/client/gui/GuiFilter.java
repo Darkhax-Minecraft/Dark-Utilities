@@ -11,29 +11,31 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiFilter extends GuiContainer {
-    
+
     private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/hopper.png");
+
     private final IInventory playerInventory;
+
     private final IInventory inventory;
-    
-    public GuiFilter(InventoryPlayer playerInv, InventoryItem inventory) {
-        
+
+    public GuiFilter (InventoryPlayer playerInv, InventoryItem inventory) {
+
         super(new ContainerFilter(playerInv, inventory));
         this.playerInventory = playerInv;
         this.inventory = inventory;
         this.ySize = 133;
     }
-    
+
     @Override
     public void drawGuiContainerForegroundLayer (int mouseX, int mouseY) {
-        
+
         this.fontRendererObj.drawString(this.inventory.getDisplayName().getUnformattedText(), 8, 6, 4210752);
         this.fontRendererObj.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
     }
-    
+
     @Override
     public void drawGuiContainerBackgroundLayer (float partialTicks, int mouseX, int mouseY) {
-        
+
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(TEXTURE);
         final int i = (this.width - this.xSize) / 2;

@@ -16,45 +16,45 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemRing extends ItemBauble {
-    
+
     public static String[] varients = new String[] { "pyro", "engineer", "depth", "titan", "protect", "angler", "frost" };
-    
-    public ItemRing() {
-        
+
+    public ItemRing () {
+
         this.hasSubtypes = true;
         this.maxStackSize = 1;
     }
-    
+
     @Override
     public String getUnlocalizedName (ItemStack stack) {
-        
+
         final int meta = stack.getMetadata();
-        
+
         if (!(meta >= 0 && meta < varients.length))
             return super.getUnlocalizedName() + "." + varients[0];
-        
+
         return super.getUnlocalizedName() + "." + varients[meta];
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems (Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
-        
+
         for (int meta = 0; meta < varients.length; meta++)
             subItems.add(new ItemStack(this, 1, meta));
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        
+
         tooltip.add(getEnchantmentFromMeta(stack.getMetadata()).getTranslatedName(1));
     }
-    
+
     public static Enchantment getEnchantmentFromMeta (int meta) {
-        
+
         switch (meta) {
-            
+
             case 0:
                 return Enchantments.FIRE_ASPECT;
             case 1:
@@ -73,18 +73,18 @@ public class ItemRing extends ItemBauble {
                 return Enchantments.FIRE_ASPECT;
         }
     }
-    
+
     @Override
     @Optional.Method(modid = "Baubles")
     public BaubleType getBaubleType (ItemStack itemstack) {
-        
+
         return BaubleType.RING;
     }
-    
+
     @Override
     @Optional.Method(modid = "Baubles")
     public boolean canEquip (ItemStack itemstack, EntityLivingBase player) {
-        
+
         return FeatureEnchantedRing.allowBaubles;
     }
 }

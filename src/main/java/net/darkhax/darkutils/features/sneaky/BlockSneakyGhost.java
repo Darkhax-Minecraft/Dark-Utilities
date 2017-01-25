@@ -6,14 +6,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockSneakyGhost extends BlockSneaky {
-    
-    public BlockSneakyGhost() {
-        
+
+    public BlockSneakyGhost () {
+
     }
-    
+
     @Override
     public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, World worldIn, BlockPos pos) {
-        
+
         return null;
     }
 }

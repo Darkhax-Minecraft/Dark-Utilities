@@ -21,60 +21,62 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FeatureEnderTether extends Feature {
-    
+
     public static Block blockEnderTether;
-    
+
     private static boolean craftable = true;
+
     protected static boolean affectPlayers = true;
+
     protected static double tetherRange = 32D;
-    
+
     @Override
     public void onPreInit () {
-        
+
         blockEnderTether = new BlockEnderTether();
         ModUtils.registerBlock(blockEnderTether, "ender_tether");
         GameRegistry.registerTileEntity(TileEntityEnderTether.class, "ender_tether");
     }
-    
+
     @Override
     public void setupConfiguration (Configuration config) {
-        
+
         craftable = config.getBoolean("Craftable", this.configName, true, "Should the Ender Tether be craftable?");
         tetherRange = config.getFloat("Tether Range", this.configName, 32f, 0.0f, 512f, "The range of the effect given by the tether. Distance is measured in blocks.");
         affectPlayers = config.getBoolean("Affect Players", this.configName, true, "Should the Ender Tether catch players using ender teleportation?");
     }
-    
+
     @Override
     public void setupRecipes () {
-        
+
         if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH, 'i', INGOT_IRON }));
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-        
+
         ModUtils.registerBlockInvModel(blockEnderTether);
     }
-    
+
     @Override
     public boolean usesEvents () {
-        
+
         return true;
     }
-    
+
     @SubscribeEvent
     public void onEnderTeleport (EnderTeleportEvent event) {
-        
-        if (event.getEntityLiving() instanceof EntityLivingBase && event.getEntityLiving().getEntityWorld() != null)
+
+        if (event.getEntityLiving() instanceof EntityLivingBase && event.getEntityLiving().getEntityWorld() != null && !event.getEntityLiving().getEntityWorld().isRemote)
             for (final TileEntity tile : event.getEntityLiving().getEntityWorld().loadedTileEntityList)
                 if (tile instanceof TileEntityEnderTether && ((TileEntityEnderTether) tile).isEntityCloseEnough(event.getEntityLiving())) {
-                    
+
                     final BlockPos pos = tile.getPos();
-                    event.setTargetX(pos.getX());
+                    event.setTargetX(pos.getX() + 0.5f);
                     event.setTargetY(pos.getY());
-                    event.setTargetZ(pos.getZ());
+                    event.setTargetZ(pos.getZ() + 0.5f);
                     break;
                 }
     }

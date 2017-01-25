@@ -6,16 +6,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 
 public class ItemSleepCharm extends ItemBauble {
-    
-    public ItemSleepCharm() {
-        
+
+    public ItemSleepCharm () {
+
         this.setMaxStackSize(1);
     }
-    
+
     @Override
     @Optional.Method(modid = "Baubles")
     public BaubleType getBaubleType (ItemStack itemstack) {
-        
+
         return BaubleType.CHARM;
     }
 }

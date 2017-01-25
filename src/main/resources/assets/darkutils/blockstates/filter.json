@@ -26,6 +26,12 @@
 		},
 		"variant=slime": {
 			"model": "darkutils:filter_slime"
+		},
+		"variant=fireres": {
+			"model": "darkutils:filter_fireres"
+		},
+		"variant=boss": {
+			"model": "darkutils:filter_boss"
 		}
 	}
 }
