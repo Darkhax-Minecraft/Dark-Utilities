@@ -3,6 +3,7 @@ package net.darkhax.darkutils.features.dyeslime;
 import java.util.List;
 
 import net.minecraft.block.BlockSlime;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -23,6 +24,7 @@ public class BlockSlimeDyed extends BlockSlime {
 
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));
         this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        this.setSoundType(SoundType.SLIME);
     }
 
     @Override
