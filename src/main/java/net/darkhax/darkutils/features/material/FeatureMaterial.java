@@ -49,7 +49,7 @@ public class FeatureMaterial extends Feature {
 
         craftDustFromSkull = config.getBoolean("Craft Wither Dust", this.configName, true, "Should the Wither Dust be craftable from Wither Skulls?");
         craftDwindleCream = config.getBoolean("Craft Dwindle Cream", this.configName, true, "Should Dwingle Cream be craftable?");
-        craftUnstableEnderPearl = config.getBoolean("Craft Unstable Enderpealr", this.configName, true, "Should Unstable Enderpearls be craftable?");
+        craftUnstableEnderPearl = config.getBoolean("Craft Unstable Enderpearl", this.configName, true, "Should Unstable Enderpearls be craftable?");
         skeletonDropDust = config.getBoolean("WSkeleton Drop Dust", this.configName, true, "Should wither skeletons drop wither dust?");
 
         dustDropWeight = config.getInt("Dust Drop Weight", this.configName, 1, 0, 256, "The weighting for Wither Skeletons dropping Wither Dust");
