@@ -1,6 +1,7 @@
 package net.darkhax.darkutils.features.sneaky;
 
 import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.lib.Constants;
 import net.darkhax.bookshelf.lib.util.ParticleUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -216,7 +217,16 @@ public class BlockSneaky extends BlockContainer {
                     else if (connected.getBlock() instanceof BlockSneaky)
                         return ((TileEntitySneaky) blockAccess.getTileEntity(pos.offset(side))).heldState != sneaky.heldState;
                 }
-                return sneaky.heldState.shouldSideBeRendered(blockAccess, pos, side);
+                
+                try {
+                    
+                    return sneaky.heldState.shouldSideBeRendered(blockAccess, pos, side);
+                }
+                
+                catch (Exception e) {
+                    
+                    Constants.LOG.warn("Issue with shouldSideBeRendered!", e);
+                }
             }
         }
 
