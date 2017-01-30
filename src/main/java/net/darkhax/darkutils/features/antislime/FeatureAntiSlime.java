@@ -2,6 +2,9 @@ package net.darkhax.darkutils.features.antislime;
 
 import static net.darkhax.bookshelf.lib.util.OreDictUtils.STONE;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -60,25 +63,22 @@ public class FeatureAntiSlime extends Feature {
     }
 
     @SubscribeEvent
-    public void onEntitySpawn (EntityJoinWorldEvent event) {
+    public void checkSpawn (EntityJoinWorldEvent event) {
 
-        if (event.getEntity() instanceof EntitySlime && event.getEntity().getEntityWorld() != null) {
+        if (event.getEntity() instanceof EntitySlime && !event.getEntity().hasCustomName()) {
 
-            final java.util.Iterator<TileEntity> it = event.getEntity().getEntityWorld().loadedTileEntityList.iterator();
+            final List<TileEntity> tiles = new ArrayList<>(event.getWorld().loadedTileEntityList);
 
-            while (it.hasNext()) {
+            for (final TileEntity tile : tiles)
+                if (tile instanceof TileEntityAntiSlime && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.getEntity())) {
 
-                final TileEntity tile = it.next();
-                if (tile instanceof TileEntityAntiSlime && !event.getEntity().hasCustomName() && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.getEntity())) {
-
-                    if (tile.getWorld().isBlockPowered(tile.getPos()))
+                    if (event.getWorld().isBlockPowered(tile.getPos()))
                         continue;
 
-                    event.getEntity().setDead();
                     event.setCanceled(true);
+                    event.getEntity().setDead();
                     break;
                 }
-            }
         }
     }
 }
