@@ -34,6 +34,7 @@ public class BlockFilter extends Block {
         this.setHardness(3.0F);
         this.setResistance(10f);
         this.setHarvestLevel("pickaxe", 1);
+        this.setLightOpacity(255);
     }
 
     @Override
