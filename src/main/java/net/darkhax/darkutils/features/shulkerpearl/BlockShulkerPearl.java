@@ -11,6 +11,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
@@ -65,6 +66,12 @@ public class BlockShulkerPearl extends Block {
     public boolean isBeaconBase (IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
 
         return true;
+    }
+    
+    @Override
+    public int damageDropped(IBlockState state) {
+        
+        return this.getMetaFromState(state);
     }
 
     public static enum EnumType implements IStringSerializable {
