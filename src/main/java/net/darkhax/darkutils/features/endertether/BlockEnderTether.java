@@ -45,7 +45,8 @@ public class BlockEnderTether extends BlockTorch implements ITileEntityProvider 
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick (IBlockState state, World world, BlockPos pos, Random rand) {
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++) {
             world.spawnParticle(EnumParticleTypes.PORTAL, pos.getX() + 1D - rand.nextDouble(), pos.getY() + 0.8f - rand.nextDouble(), pos.getZ() + 1D - rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2D, (rand.nextDouble() - 0.5D) * 2D, (rand.nextDouble() - 0.5D) * 2D, new int[0]);
+        }
     }
 }

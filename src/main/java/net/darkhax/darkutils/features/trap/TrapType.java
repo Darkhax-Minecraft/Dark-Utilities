@@ -54,8 +54,9 @@ public enum TrapType implements IStringSerializable {
 
         final List<String> names = new ArrayList<>();
 
-        for (final TrapType type : TrapType.values())
+        for (final TrapType type : TrapType.values()) {
             names.add(type.type);
+        }
 
         nameList = names.toArray(new String[names.size()]);
         return nameList;

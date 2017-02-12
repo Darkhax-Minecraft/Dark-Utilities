@@ -38,8 +38,9 @@ public class BlockSneaky extends BlockContainer {
         this.setResistance(10.0F);
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
 
-        if (FeatureSneaky.opacity)
+        if (FeatureSneaky.opacity) {
             this.setLightOpacity(255);
+        }
     }
 
     @Override
@@ -217,14 +218,14 @@ public class BlockSneaky extends BlockContainer {
                     else if (connected.getBlock() instanceof BlockSneaky)
                         return ((TileEntitySneaky) blockAccess.getTileEntity(pos.offset(side))).heldState != sneaky.heldState;
                 }
-                
+
                 try {
-                    
+
                     return sneaky.heldState.shouldSideBeRendered(blockAccess, pos, side);
                 }
-                
-                catch (Exception e) {
-                    
+
+                catch (final Exception e) {
+
                     Constants.LOG.warn("Issue with shouldSideBeRendered!", e);
                 }
             }

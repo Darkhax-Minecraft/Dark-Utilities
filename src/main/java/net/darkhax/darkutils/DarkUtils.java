@@ -113,11 +113,13 @@ public class DarkUtils {
 
         ConfigurationHandler.syncConfigData();
 
-        for (final Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES) {
             feature.onPreInit();
+        }
 
-        for (final Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES) {
             feature.setupRecipes();
+        }
 
         proxy.onPreInit();
 
@@ -128,8 +130,9 @@ public class DarkUtils {
     @EventHandler
     public void init (FMLInitializationEvent event) {
 
-        for (final Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES) {
             feature.onInit();
+        }
 
         proxy.onInit();
         AddonHandler.onInit();
@@ -138,8 +141,9 @@ public class DarkUtils {
     @EventHandler
     public void postInit (FMLPostInitializationEvent event) {
 
-        for (final Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES) {
             feature.onPostInit();
+        }
 
         proxy.onPostInit();
         AddonHandler.onPostInit();

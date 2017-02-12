@@ -11,7 +11,6 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
@@ -40,8 +39,9 @@ public class BlockShulkerPearl extends Block {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks (Item item, CreativeTabs tab, List<ItemStack> list) {
 
-        for (int meta = 0; meta < 4; meta++)
+        for (int meta = 0; meta < 4; meta++) {
             list.add(new ItemStack(item, 1, meta));
+        }
     }
 
     @Override
@@ -67,10 +67,10 @@ public class BlockShulkerPearl extends Block {
 
         return true;
     }
-    
+
     @Override
-    public int damageDropped(IBlockState state) {
-        
+    public int damageDropped (IBlockState state) {
+
         return this.getMetaFromState(state);
     }
 
@@ -106,8 +106,9 @@ public class BlockShulkerPearl extends Block {
 
         public static EnumType byMetadata (int meta) {
 
-            if (meta < 0 || meta >= META_LOOKUP.length)
+            if (meta < 0 || meta >= META_LOOKUP.length) {
                 meta = 0;
+            }
 
             return META_LOOKUP[meta];
         }
@@ -120,8 +121,9 @@ public class BlockShulkerPearl extends Block {
 
         static {
 
-            for (final EnumType type : values())
+            for (final EnumType type : values()) {
                 META_LOOKUP[type.getMetadata()] = type;
+            }
         }
     }
 }

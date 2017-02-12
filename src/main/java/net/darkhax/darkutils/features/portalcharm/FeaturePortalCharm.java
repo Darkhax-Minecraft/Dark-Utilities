@@ -45,8 +45,9 @@ public class FeaturePortalCharm extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable)
+        if (craftable) {
             GameRegistry.addRecipe(new ShapedOreRecipe(itemPortalCharm, new Object[] { " s ", "oco", " o ", 's', STRING, 'o', OBSIDIAN, 'c', Items.END_CRYSTAL }));
+        }
     }
 
     @Override
@@ -65,8 +66,9 @@ public class FeaturePortalCharm extends Feature {
 
             final EntityPlayer player = (EntityPlayer) entity;
 
-            if (PlayerUtils.playerHasItem((EntityPlayer) entity, itemPortalCharm, -1))
+            if (PlayerUtils.playerHasItem((EntityPlayer) entity, itemPortalCharm, -1)) {
                 player.portalCounter = 100;
+            }
         }
     }
 }

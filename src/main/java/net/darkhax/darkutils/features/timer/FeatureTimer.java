@@ -37,8 +37,9 @@ public class FeatureTimer extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable)
+        if (craftable) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTimer), new Object[] { "sts", "tct", "sts", 's', STONE, 't', Blocks.REDSTONE_TORCH, 'c', Items.CLOCK }));
+        }
     }
 
     @Override

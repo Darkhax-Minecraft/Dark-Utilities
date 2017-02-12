@@ -49,8 +49,9 @@ public class FeatureEnderTether extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable)
+        if (craftable) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH, 'i', INGOT_IRON }));
+        }
     }
 
     @Override
@@ -69,7 +70,7 @@ public class FeatureEnderTether extends Feature {
     @SubscribeEvent
     public void onEnderTeleport (EnderTeleportEvent event) {
 
-        if (event.getEntityLiving() instanceof EntityLivingBase && event.getEntityLiving().getEntityWorld() != null && !event.getEntityLiving().getEntityWorld().isRemote)
+        if (event.getEntityLiving() instanceof EntityLivingBase && event.getEntityLiving().getEntityWorld() != null && !event.getEntityLiving().getEntityWorld().isRemote) {
             for (final TileEntity tile : event.getEntityLiving().getEntityWorld().loadedTileEntityList)
                 if (tile instanceof TileEntityEnderTether && ((TileEntityEnderTether) tile).isEntityCloseEnough(event.getEntityLiving())) {
 
@@ -79,5 +80,6 @@ public class FeatureEnderTether extends Feature {
                     event.setTargetZ(pos.getZ() + 0.5f);
                     break;
                 }
+        }
     }
 }

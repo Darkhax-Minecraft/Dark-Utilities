@@ -45,8 +45,9 @@ public class FeatureShulkerPearlItem extends Feature {
         OreDictionary.registerOre("blockPearl", new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("gemPearl", itemShulkerPearl);
 
-        if (this.harvestablePearls)
+        if (this.harvestablePearls) {
             ShulkerDataHandler.init();
+        }
     }
 
     @Override
@@ -61,8 +62,9 @@ public class FeatureShulkerPearlItem extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (this.craftEndRods)
+        if (this.craftEndRods) {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.END_ROD), Items.CHORUS_FRUIT, "gemPearl"));
+        }
 
         if (this.craftBlocks) {
 
@@ -111,8 +113,9 @@ public class FeatureShulkerPearlItem extends Feature {
             final ICustomData data = ShulkerDataHandler.getData(event.getEntity());
             final int current = data.getCooldown();
 
-            if (data != null && current > 0)
+            if (data != null && current > 0) {
                 data.setCooldown(current - 1);
+            }
         }
     }
 }

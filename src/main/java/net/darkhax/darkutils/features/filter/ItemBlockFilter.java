@@ -28,7 +28,8 @@ public class ItemBlockFilter extends ItemBlockBasic {
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 
-        if (!(stack.getMetadata() > this.names.length))
+        if (!(stack.getMetadata() > this.names.length)) {
             tooltip.add(I18n.format("tooltip.darkutils.filter.type") + ": " + TextFormatting.AQUA + I18n.format("tooltip.darkutils.filter.type." + this.names[stack.getMetadata()]));
+        }
     }
 }

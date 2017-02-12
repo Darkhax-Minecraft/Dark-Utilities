@@ -64,8 +64,9 @@ public class ItemMysteriousPotion extends Item {
             zombie.setVillagerType(villager.getProfessionForge());
             zombie.setNoAI(villager.isAIDisabled());
 
-            if (villager.isChild())
+            if (villager.isChild()) {
                 zombie.setChild(true);
+            }
 
             if (villager.hasCustomName()) {
 
@@ -84,18 +85,21 @@ public class ItemMysteriousPotion extends Item {
     @Override
     public ItemStack onItemUseFinish (ItemStack stack, World world, EntityLivingBase user) {
 
-        if (user instanceof EntityPlayer && !((EntityPlayer) user).capabilities.isCreativeMode)
+        if (user instanceof EntityPlayer && !((EntityPlayer) user).capabilities.isCreativeMode) {
             ItemStackUtils.decreaseStackSize(stack, 1);
+        }
 
         if (!world.isRemote) {
 
             final int meta = stack.getMetadata();
 
-            if (meta == 0)
+            if (meta == 0) {
                 user.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 400, 0));
+            }
 
-            if (meta == 1)
+            if (meta == 1) {
                 user.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 400, 0));
+            }
         }
 
         return stack;
@@ -124,7 +128,8 @@ public class ItemMysteriousPotion extends Item {
     @SideOnly(Side.CLIENT)
     public void getSubItems (Item item, CreativeTabs tab, List<ItemStack> subItems) {
 
-        for (int meta = 0; meta < varients.length; meta++)
+        for (int meta = 0; meta < varients.length; meta++) {
             subItems.add(new ItemStack(this, 1, meta));
+        }
     }
 }

@@ -43,8 +43,9 @@ public class FeatureAgressionCharm extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable)
+        if (craftable) {
             GameRegistry.addRecipe(new ShapedOreRecipe(itemAgressionCharm, new Object[] { "sgs", "gfg", "sgs", 's', Items.GOLDEN_SWORD, 'g', OreDictUtils.NUGGET_GOLD, 'f', Items.ROTTEN_FLESH }));
+        }
     }
 
     @Override
@@ -61,9 +62,11 @@ public class FeatureAgressionCharm extends Feature {
 
             final EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
 
-            if (PlayerUtils.playerHasItem(player, itemAgressionCharm, 0))
-                for (final EntityLivingBase entity : player.getEntityWorld().getEntitiesWithinAABB(event.getEntityLiving().getClass(), player.getEntityBoundingBox().expand(32, 32, 32)))
+            if (PlayerUtils.playerHasItem(player, itemAgressionCharm, 0)) {
+                for (final EntityLivingBase entity : player.getEntityWorld().getEntitiesWithinAABB(event.getEntityLiving().getClass(), player.getEntityBoundingBox().expand(32, 32, 32))) {
                     entity.setRevengeTarget(player);
+                }
+            }
         }
     }
 }

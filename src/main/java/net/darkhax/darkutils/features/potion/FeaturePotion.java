@@ -73,8 +73,9 @@ public class FeaturePotion extends Feature {
 
                 final LootPool main = table.getPool("main");
 
-                if (main != null)
+                if (main != null) {
                     main.addEntry(new LootEntryItem(itemPotion, weight, 0, new LootFunction[] { new SetDamage(new LootCondition[0], new RandomValueRange(0, 1)) }, new LootCondition[0], Constants.MOD_ID + ":mysterious_potion"));
+                }
             }
         }
     }

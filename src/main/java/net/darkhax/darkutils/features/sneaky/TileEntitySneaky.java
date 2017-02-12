@@ -25,11 +25,13 @@ public class TileEntitySneaky extends TileEntityBasic {
 
         final Block heldBlock = Block.getBlockFromName(tag.getString("HeldBlockId"));
 
-        if (heldBlock != null)
+        if (heldBlock != null) {
             this.heldState = heldBlock.getStateFromMeta(tag.getInteger("HeldBlockMeta"));
+        }
 
-        if (tag.hasKey("PlayerID"))
+        if (tag.hasKey("PlayerID")) {
             this.playerID = tag.getString("PlayerID");
+        }
     }
 
     @Override
@@ -41,8 +43,9 @@ public class TileEntitySneaky extends TileEntityBasic {
             tag.setInteger("HeldBlockMeta", this.heldState.getBlock().getMetaFromState(this.heldState));
         }
 
-        if (this.playerID != null && !this.playerID.isEmpty())
+        if (this.playerID != null && !this.playerID.isEmpty()) {
             tag.setString("PlayerID", this.playerID);
+        }
     }
 
     @Override

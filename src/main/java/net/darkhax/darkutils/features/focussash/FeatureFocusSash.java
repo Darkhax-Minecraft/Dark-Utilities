@@ -45,8 +45,9 @@ public class FeatureFocusSash extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable)
+        if (craftable) {
             GameRegistry.addShapedRecipe(new ItemStack(itemFocusSash), new Object[] { " p ", "ycr", " o ", 'p', Items.BLAZE_POWDER, 'y', new ItemStack(Blocks.WOOL, 1, 4), 'c', Items.MAGMA_CREAM, 'r', new ItemStack(Blocks.WOOL, 1, 14), 'o', new ItemStack(Blocks.WOOL, 1, 1) });
+        }
     }
 
     @Override
@@ -65,8 +66,9 @@ public class FeatureFocusSash extends Feature {
 
             event.setAmount(entity.getHealth() - 1f);
 
-            if (entity.worldObj.isRemote)
+            if (entity.worldObj.isRemote) {
                 ((EntityPlayer) entity).addChatComponentMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
+            }
         }
     }
 }

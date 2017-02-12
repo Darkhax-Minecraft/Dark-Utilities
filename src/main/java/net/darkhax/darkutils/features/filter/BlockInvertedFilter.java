@@ -96,8 +96,9 @@ public class BlockInvertedFilter extends Block {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks (Item item, CreativeTabs tab, List<ItemStack> list) {
 
-        for (final FilterType type : FilterType.values())
+        for (final FilterType type : FilterType.values()) {
             list.add(new ItemStack(item, 1, type.meta));
+        }
     }
 
     @Override
@@ -109,7 +110,8 @@ public class BlockInvertedFilter extends Block {
 
     private void snagMob (EntityLivingBase living, BlockPos pos) {
 
-        if (BlockUtils.isFluid(living.getEntityWorld().getBlockState(pos.offset(EnumFacing.UP)).getBlock()))
+        if (BlockUtils.isFluid(living.getEntityWorld().getBlockState(pos.offset(EnumFacing.UP)).getBlock())) {
             EntityUtils.pushTowards(living, pos.offset(EnumFacing.DOWN), 0.6f);
+        }
     }
 }
