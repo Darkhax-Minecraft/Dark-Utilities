@@ -29,6 +29,8 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class FeatureMaterial extends Feature {
 
     public static Item itemMaterial;
+    
+    public static Block blockWitherDust;
 
     private static boolean craftDustFromSkull = true;
 
@@ -40,9 +42,9 @@ public class FeatureMaterial extends Feature {
 
     private static int dustDropWeight = 1;
 
-    public static Block blockWitherDust;
-
-    private boolean craftBlocks = true;
+    private static boolean craftBlocks = true;
+    
+    private static boolean craftDarkSugar = true;
 
     @Override
     public void onPreInit () {
@@ -62,10 +64,9 @@ public class FeatureMaterial extends Feature {
         craftDwindleCream = config.getBoolean("Craft Dwindle Cream", this.configName, true, "Should Dwingle Cream be craftable?");
         craftUnstableEnderPearl = config.getBoolean("Craft Unstable Enderpearl", this.configName, true, "Should Unstable Enderpearls be craftable?");
         skeletonDropDust = config.getBoolean("WSkeleton Drop Dust", this.configName, true, "Should wither skeletons drop wither dust?");
-
         dustDropWeight = config.getInt("Dust Drop Weight", this.configName, 1, 0, 256, "The weighting for Wither Skeletons dropping Wither Dust");
-
-        this.craftBlocks = config.getBoolean("Craft Blocks", this.configName, true, "Can wither dust blocks be crafted?");
+        craftBlocks = config.getBoolean("Craft Blocks", this.configName, true, "Can wither dust blocks be crafted?");
+        craftDarkSugar = config.getBoolean("Craft Dark Sugar", this.configName, true, "Should dark sugar be craftable?");
     }
 
     @Override
@@ -83,7 +84,11 @@ public class FeatureMaterial extends Feature {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), ENDERPEARL));
         }
 
-        if (this.craftBlocks) {
+        if (craftDarkSugar) {
+            GameRegistry.addShapedRecipe(new ItemStack(itemMaterial, 8, 3), "xxx", "xyx", "xxx", 'x', Items.SUGAR, 'y', itemMaterial);
+        }
+        
+        if (craftBlocks) {
 
             GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 1, 0), "xx ", "xx ", 'x', FeatureMaterial.itemMaterial);
             GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 4, 0), new ItemStack(blockWitherDust, 3, OreDictionary.WILDCARD_VALUE));
