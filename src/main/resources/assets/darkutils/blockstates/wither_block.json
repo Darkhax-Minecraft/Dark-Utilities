@@ -1,0 +1,22 @@
+{
+	"variants": {
+		"variant=default": {
+			"model": "darkutils:wither_default"
+		},
+		"variant=bricked": {
+			"model": "darkutils:wither_bricked"
+		},
+		"variant=carved": {
+			"model": "darkutils:wither_carved"
+		},
+		"variant=chiseled": {
+			"model": "darkutils:wither_chiseled"
+		},
+        "variant=magma": {
+			"model": "darkutils:wither_magma"
+		},
+        "variant=tiled": {
+			"model": "darkutils:wither_tiled"
+		}
+	}
+}

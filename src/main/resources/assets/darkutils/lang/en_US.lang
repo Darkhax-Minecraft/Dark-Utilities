@@ -54,6 +54,13 @@ tile.darkutils.slime.dyed.light.blue.name=Light Blue Slime Block
 tile.darkutils.slime.dyed.magenta.name=Magenta Slime Block
 tile.darkutils.slime.dyed.orange.name=Orange Slime Block
 tile.darkutils.slime.dyed.white.name=White Slime Block
+tile.darkutils.wither.block.name=Wither Block
+tile.darkutils.wither.block.default.name=Wither Dust Block
+tile.darkutils.wither.block.bricked.name=Wither Dust Bricks
+tile.darkutils.wither.block.carved.name=Carved Wither Dust Block
+tile.darkutils.wither.block.chiseled.name=Chiseled Wither Dust Block
+tile.darkutils.wither.block.magma.name=Corrupted Wither Dust Block
+tile.darkutils.wither.block.tiled.name=Checkered Wither Dust Block
 
 #Items
 item.darkutils.disabled.name=Disabled Item
@@ -152,6 +159,7 @@ jei.item.darkutils.charm.gluttony=Allows the player to eat food at insanely fast
 jei.tile.darkutils.sneaky.bedrock=Similar to bedrock, however if you are in creative mode you can change it to look like any other block by right clicking with another block in hand.
 jei.item.darkutils.charm.agression=Increases the agression range of the player. Normally only the mob being hit will agro to you, but this will make all mobs of a similar type agro.
 jei.tile.darkutils.slime.dyed=A dyed variation of the vanilla slime block. Unfortunately these do not work with pistons. #BlameMojang
+jei.tile.darkutils.wither.block=A compact block of Wither Dust. Will not be blown up by withers! Also decorative!
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type

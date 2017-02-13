@@ -3,9 +3,11 @@ package net.darkhax.darkutils.features.material;
 import static net.darkhax.bookshelf.lib.util.OreDictUtils.ENDERPEARL;
 import static net.darkhax.bookshelf.lib.util.OreDictUtils.SLIMEBALL;
 
+import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.Constants;
 import net.darkhax.darkutils.libs.ModUtils;
+import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,6 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class FeatureMaterial extends Feature {
@@ -37,11 +40,19 @@ public class FeatureMaterial extends Feature {
 
     private static int dustDropWeight = 1;
 
+    public static Block blockWitherDust;
+
+    private boolean craftBlocks = true;
+
     @Override
     public void onPreInit () {
 
         itemMaterial = new ItemMaterial();
         ModUtils.registerItem(itemMaterial, "material");
+
+        blockWitherDust = new BlockWitherDust();
+        ModUtils.registerBlock(blockWitherDust, new ItemBlockBasic(blockWitherDust, BlockWitherDust.types, false), "wither_block");
+        OreDictionary.registerOre("blockWither", new ItemStack(blockWitherDust, 1, OreDictionary.WILDCARD_VALUE));
     }
 
     @Override
@@ -53,19 +64,36 @@ public class FeatureMaterial extends Feature {
         skeletonDropDust = config.getBoolean("WSkeleton Drop Dust", this.configName, true, "Should wither skeletons drop wither dust?");
 
         dustDropWeight = config.getInt("Dust Drop Weight", this.configName, 1, 0, 256, "The weighting for Wither Skeletons dropping Wither Dust");
+
+        this.craftBlocks = config.getBoolean("Craft Blocks", this.configName, true, "Can wither dust blocks be crafted?");
     }
 
     @Override
     public void setupRecipes () {
 
-        if (craftDustFromSkull)
+        if (craftDustFromSkull) {
             GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.SKULL, 1, 1));
+        }
 
-        if (craftDwindleCream)
+        if (craftDwindleCream) {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), SLIMEBALL));
+        }
 
-        if (craftUnstableEnderPearl)
+        if (craftUnstableEnderPearl) {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), ENDERPEARL));
+        }
+
+        if (this.craftBlocks) {
+
+            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 1, 0), "xx ", "xx ", 'x', FeatureMaterial.itemMaterial);
+            GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 4, 0), new ItemStack(blockWitherDust, 3, OreDictionary.WILDCARD_VALUE));
+            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 0));
+            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 1));
+            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 2));
+            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 4), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 3));
+            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 5), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 4));
+            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 0), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 5));
+        }
     }
 
     @Override
@@ -73,6 +101,7 @@ public class FeatureMaterial extends Feature {
     public void onClientPreInit () {
 
         ModUtils.registerItemInvModel(itemMaterial, "material", ItemMaterial.varients);
+        ModUtils.registerItemInvModel(Item.getItemFromBlock(blockWitherDust), "wither", BlockWitherDust.types);
     }
 
     @Override
@@ -90,8 +119,9 @@ public class FeatureMaterial extends Feature {
 
             final LootPool pool1 = table.getPool("pool1");
 
-            if (pool1 != null)
+            if (pool1 != null) {
                 pool1.addEntry(new LootEntryItem(itemMaterial, dustDropWeight, 0, new LootFunction[0], new LootCondition[0], Constants.MOD_ID + ":wither_dust"));
+            }
         }
     }
 }
