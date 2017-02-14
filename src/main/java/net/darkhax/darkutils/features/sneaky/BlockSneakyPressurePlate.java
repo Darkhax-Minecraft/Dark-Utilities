@@ -162,7 +162,7 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
                 if (!entity.doesEntityNotTriggerPressurePlate())
                     return 15;
         }
-        
+
         return 0;
     }
 }
