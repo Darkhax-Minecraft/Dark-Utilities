@@ -5,6 +5,7 @@ import static net.darkhax.bookshelf.lib.util.OreDictUtils.SLIMEBALL;
 import static net.darkhax.bookshelf.lib.util.OreDictUtils.STONE;
 
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -102,7 +103,7 @@ public class FeatureSneaky extends Feature {
 
         if (craftSneakyBlock) {
 
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', STONE, 's', SLIMEBALL }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', STONE, 's', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
 
             if (craftSneakyLever) {
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);
