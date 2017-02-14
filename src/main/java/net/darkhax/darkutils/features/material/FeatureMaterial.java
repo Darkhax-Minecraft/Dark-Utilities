@@ -4,10 +4,12 @@ import static net.darkhax.bookshelf.lib.util.OreDictUtils.ENDERPEARL;
 import static net.darkhax.bookshelf.lib.util.OreDictUtils.SLIMEBALL;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
+import net.darkhax.bookshelf.lib.util.OreDictUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.Constants;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,12 +26,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class FeatureMaterial extends Feature {
 
     public static Item itemMaterial;
-    
+
     public static Block blockWitherDust;
 
     private static boolean craftDustFromSkull = true;
@@ -43,8 +46,10 @@ public class FeatureMaterial extends Feature {
     private static int dustDropWeight = 1;
 
     private static boolean craftBlocks = true;
-    
+
     private static boolean craftDarkSugar = true;
+
+    private static boolean craftSoulSand = true;
 
     @Override
     public void onPreInit () {
@@ -67,6 +72,7 @@ public class FeatureMaterial extends Feature {
         dustDropWeight = config.getInt("Dust Drop Weight", this.configName, 1, 0, 256, "The weighting for Wither Skeletons dropping Wither Dust");
         craftBlocks = config.getBoolean("Craft Blocks", this.configName, true, "Can wither dust blocks be crafted?");
         craftDarkSugar = config.getBoolean("Craft Dark Sugar", this.configName, true, "Should dark sugar be craftable?");
+        craftSoulSand = config.getBoolean("Craft Soul Sand", this.configName, true, "Should soul sand be craftable with wither dust?");
     }
 
     @Override
@@ -87,7 +93,11 @@ public class FeatureMaterial extends Feature {
         if (craftDarkSugar) {
             GameRegistry.addShapedRecipe(new ItemStack(itemMaterial, 8, 3), "xxx", "xyx", "xxx", 'x', Items.SUGAR, 'y', itemMaterial);
         }
-        
+
+        if (craftSoulSand) {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.SOUL_SAND, 5, 0), "xyx", "yxy", "xyx", 'x', OreDictUtils.SAND, 'y', itemMaterial));
+        }
+
         if (craftBlocks) {
 
             GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 1, 0), "xx ", "xx ", 'x', FeatureMaterial.itemMaterial);
