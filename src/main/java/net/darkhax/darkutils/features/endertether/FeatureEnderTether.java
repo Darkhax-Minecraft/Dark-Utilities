@@ -70,7 +70,7 @@ public class FeatureEnderTether extends Feature {
     @SubscribeEvent
     public void onEnderTeleport (EnderTeleportEvent event) {
 
-        if (event.getEntityLiving() instanceof EntityLivingBase && event.getEntityLiving().getEntityWorld() != null && !event.getEntityLiving().getEntityWorld().isRemote) {
+        if (event.getEntityLiving() instanceof EntityLivingBase && !event.getEntityLiving().isDead && event.getEntityLiving().getEntityWorld() != null && !event.getEntityLiving().getEntityWorld().isRemote) {
             for (final TileEntity tile : event.getEntityLiving().getEntityWorld().loadedTileEntityList)
                 if (tile instanceof TileEntityEnderTether && ((TileEntityEnderTether) tile).isEntityCloseEnough(event.getEntityLiving())) {
 
