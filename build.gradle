@@ -38,9 +38,9 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Cons
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.10.2-12.18.2.2166"
+    version = "${version_forge}"
     runDir = "run"
-    mappings = "snapshot_20161111"
+    mappings = "${version_mcp}"
     useDepAts = true
 }
 
@@ -54,14 +54,14 @@ repositories {
 
     maven {
 
-        url "http://mobiusstrip.eu/maven"
-    }
-
-    maven {
-
-        url = "http://maven.epoxide.xyz"
+        url "http://maven.epoxide.org"
     }
     
+    maven {
+        
+        url "http://tehnut.info/maven"
+    }
+
     maven {
     
         url "https://jitpack.io"
@@ -70,10 +70,10 @@ repositories {
 
 dependencies {
 
-    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
-    deobfCompile "mezz.jei:jei_1.10.2:3.7.8.234"
-    compile "net.darkhax.bookshelf:Bookshelf:1.10.2-1.4.3.338"
-    deobfCompile 'com.github.Azanor:Baubles:3199790'
+    deobfCompile "mcp.mobius.waila:Hwyla:${version_hwyla}"
+    deobfCompile "mezz.jei:jei_1.10.2:${version_jei}"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf:${version_bookshelf}"
+    deobfCompile "com.github.Azanor:Baubles:${version_baubles}"
 }
 
 //Handles basic resources such as mcmod.info

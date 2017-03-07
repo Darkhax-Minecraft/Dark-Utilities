@@ -38,7 +38,7 @@ public class ItemMysteriousPotion extends Item {
         if (stack.getMetadata() == 0)
             if (target instanceof EntityZombie) {
 
-                if (player.worldObj.isRemote)
+                if (player.world.isRemote)
                     return true;
 
                 final EntityZombie zombie = (EntityZombie) target;
@@ -53,13 +53,13 @@ public class ItemMysteriousPotion extends Item {
 
         if (target instanceof EntityVillager && stack.getMetadata() == 1) {
 
-            if (player.worldObj.isRemote)
+            if (player.world.isRemote)
                 return true;
 
             ItemStackUtils.decreaseStackSize(stack, 1);
 
             final EntityVillager villager = (EntityVillager) target;
-            final EntityZombie zombie = new EntityZombie(player.worldObj);
+            final EntityZombie zombie = new EntityZombie(player.world);
             zombie.copyLocationAndAnglesFrom(target);
             zombie.setVillagerType(villager.getProfessionForge());
             zombie.setNoAI(villager.isAIDisabled());
@@ -75,7 +75,7 @@ public class ItemMysteriousPotion extends Item {
             }
 
             villager.setDead();
-            player.worldObj.spawnEntityInWorld(zombie);
+            player.world.spawnEntity(zombie);
             return true;
         }
 

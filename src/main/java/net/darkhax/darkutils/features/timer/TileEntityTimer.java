@@ -31,13 +31,13 @@ public class TileEntityTimer extends TileEntityBasicTickable {
     @Override
     public void onEntityUpdate () {
 
-        if (this.worldObj.isBlockPowered(this.pos))
+        if (this.world.isBlockPowered(this.pos))
             return;
 
         if (this.currentTime >= this.delayTime) {
 
-            this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockStates.POWERED, true), 1 | 2);
-            this.worldObj.scheduleUpdate(this.pos, this.getBlockType(), this.getBlockType().tickRate(this.worldObj));
+            this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(BlockStates.POWERED, true), 1 | 2);
+            this.world.scheduleUpdate(this.pos, this.getBlockType(), this.getBlockType().tickRate(this.world));
             this.currentTime = 0;
         }
         else {

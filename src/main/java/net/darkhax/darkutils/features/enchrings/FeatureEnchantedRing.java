@@ -76,7 +76,7 @@ public class FeatureEnchantedRing extends Feature {
         if (levels > 0) {
 
             event.setCanceled(true);
-            event.levels += allowStacking ? levels : 1;
+            event.setLevels(event.getLevels() + (allowStacking ? levels : 1));
         }
     }
 

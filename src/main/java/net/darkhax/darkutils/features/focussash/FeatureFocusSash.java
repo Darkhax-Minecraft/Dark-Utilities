@@ -66,8 +66,8 @@ public class FeatureFocusSash extends Feature {
 
             event.setAmount(entity.getHealth() - 1f);
 
-            if (entity.worldObj.isRemote) {
-                ((EntityPlayer) entity).addChatComponentMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
+            if (entity.world.isRemote) {
+                ((EntityPlayer) entity).sendMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
             }
         }
     }

@@ -1,7 +1,6 @@
 package net.darkhax.darkutils.features.sneaky;
 
 import static net.darkhax.bookshelf.lib.util.OreDictUtils.OBSIDIAN;
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.SLIMEBALL;
 import static net.darkhax.bookshelf.lib.util.OreDictUtils.STONE;
 
 import net.darkhax.darkutils.features.Feature;

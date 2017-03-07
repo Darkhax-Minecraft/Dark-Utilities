@@ -52,6 +52,6 @@ public class TileEntitySneaky extends TileEntityBasic {
     public void onDataPacket (NetworkManager net, SPacketUpdateTileEntity packet) {
 
         super.onDataPacket(net, packet);
-        this.worldObj.markBlockRangeForRenderUpdate(this.pos, this.pos);
+        this.world.markBlockRangeForRenderUpdate(this.pos, this.pos);
     }
 }

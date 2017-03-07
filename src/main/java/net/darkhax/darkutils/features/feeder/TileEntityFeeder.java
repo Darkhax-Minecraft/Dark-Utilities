@@ -48,7 +48,7 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
 
     public void setFood (int food) {
 
-        this.worldObj.setBlockState(this.pos, this.getStateFromFood(food), 3);
+        this.world.setBlockState(this.pos, this.getStateFromFood(food), 3);
     }
 
     public boolean isValidFood (ItemStack stack) {
@@ -63,7 +63,7 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
     @Override
     public void onEntityUpdate () {
 
-        if (!this.worldObj.isRemote) {
+        if (!this.world.isRemote) {
 
             final int food = this.getFood();
 
@@ -163,12 +163,6 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
     }
 
     @Override
-    public boolean isUseableByPlayer (EntityPlayer player) {
-
-        return false;
-    }
-
-    @Override
     public void openInventory (EntityPlayer player) {
 
     }
@@ -211,5 +205,11 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
     public void clear () {
 
         this.setFood(0);
+    }
+
+    @Override
+    public boolean isUsableByPlayer (EntityPlayer player) {
+
+        return false;
     }
 }

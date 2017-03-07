@@ -47,7 +47,7 @@ public class PacketSyncTimer implements IMessage {
         public IMessage onMessage (PacketSyncTimer packet, MessageContext ctx) {
 
             final EntityPlayer player = ctx.side == Side.CLIENT ? PlayerUtils.getClientPlayer() : ctx.getServerHandler().playerEntity;
-            final TileEntityTimer tile = (TileEntityTimer) player.worldObj.getTileEntity(packet.pos);
+            final TileEntityTimer tile = (TileEntityTimer) player.world.getTileEntity(packet.pos);
 
             if (!tile.isInvalid()) {
                 tile.setDelayTime(packet.delayTime);
