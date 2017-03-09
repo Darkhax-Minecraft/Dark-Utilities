@@ -75,7 +75,8 @@ dependencies {
     deobfCompile "mcp.mobius.waila:Hwyla:${version_hwyla}"
     deobfCompile "mezz.jei:jei_1.10.2:${version_jei}"
     deobfCompile "net.darkhax.bookshelf:Bookshelf:${version_bookshelf}"
-    deobfCompile "com.github.Azanor:Baubles:${version_baubles}"
+    //deobfCompile "com.github.Azanor:Baubles:${version_baubles}"
+    deobfCompile "com.github.Darkhax-Forked:Baubles:${version_darkhax_baubles}"
 }
 
 //Handles basic resources such as mcmod.info
