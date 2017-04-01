@@ -20,7 +20,7 @@ public class BlockUpdateDetector extends Block {
 
     public BlockUpdateDetector () {
 
-        super(Material.CIRCUITS);
+        super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, false));
         this.setHardness(1f);
     }
