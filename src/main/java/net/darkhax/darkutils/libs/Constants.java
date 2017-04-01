@@ -17,7 +17,7 @@ public class Constants {
 
     public static final String SERVER_PROXY_CLASS = "net.darkhax.darkutils.common.ProxyCommon";
 
-    public static final String DEPENDENCIES = "required-after:bookshelf@[1.4.2.334,);after:Waila;after:JEI;";
+    public static final String DEPENDENCIES = "required-after:bookshelf@[1.4.4.347,);after:Waila;after:JEI;";
 
     public static final Random RANDOM = new Random();
 
