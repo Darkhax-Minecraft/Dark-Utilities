@@ -62,7 +62,7 @@ public class ModelSneakyBlock implements IBakedModel {
                 return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_default")).getQuads(state, side, rand);
         }
 
-        else if (heldState != null && heldState.getBlock().canRenderInLayer(heldState, layer)) {
+        else if (layer != null && heldState != null && heldState.getBlock().canRenderInLayer(heldState, layer)) {
 
             final IBlockState actualState = heldState.getBlock().getActualState(heldState, new SneakyBlockAccess(heldWorld), heldPos);
             final IBakedModel model = mc.getBlockRendererDispatcher().getBlockModelShapes().getModelForState(actualState);
