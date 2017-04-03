@@ -11,13 +11,13 @@ public class Constants {
 
     public static final String MOD_NAME = "Dark Utilities";
 
-    public static final String VERSION_NUMBER = "1.1.7.0";
+    public static final String VERSION_NUMBER = "1.2.0.0";
 
     public static final String CLIENT_PROXY_CLASS = "net.darkhax.darkutils.client.ProxyClient";
 
     public static final String SERVER_PROXY_CLASS = "net.darkhax.darkutils.common.ProxyCommon";
 
-    public static final String DEPENDENCIES = "required-after:bookshelf@[1.4.4.347,);after:Waila;after:JEI;";
+    public static final String DEPENDENCIES = "required-after:bookshelf@[1.5.0.353,);after:Waila;after:JEI;";
 
     public static final Random RANDOM = new Random();
 
