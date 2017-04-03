@@ -1,7 +1,5 @@
 package net.darkhax.darkutils.features.shulkerpearl;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -14,6 +12,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
@@ -37,7 +36,7 @@ public class BlockShulkerPearl extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks (Item item, CreativeTabs tab, List<ItemStack> list) {
+    public void getSubBlocks (Item item, CreativeTabs tab, NonNullList<ItemStack> list) {
 
         for (int meta = 0; meta < 4; meta++) {
             list.add(new ItemStack(item, 1, meta));

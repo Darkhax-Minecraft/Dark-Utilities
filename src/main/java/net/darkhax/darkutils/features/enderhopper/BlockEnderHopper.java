@@ -1,7 +1,5 @@
 package net.darkhax.darkutils.features.enderhopper;
 
-import javax.annotation.Nullable;
-
 import net.darkhax.bookshelf.block.BlockTileEntity;
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.minecraft.block.material.Material;
@@ -10,7 +8,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -44,8 +41,8 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
-    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        
         if (worldIn.getTileEntity(pos) instanceof TileEntityEnderHopper && playerIn.isSneaking()) {
 
             final TileEntityEnderHopper hopper = (TileEntityEnderHopper) worldIn.getTileEntity(pos);
@@ -53,6 +50,7 @@ public class BlockEnderHopper extends BlockTileEntity {
             hopper.markDirty();
             return true;
         }
+        
         return false;
     }
 
@@ -95,8 +93,8 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, World worldIn, BlockPos pos) {
-
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos){
+        
         return NULL_AABB;
     }
 

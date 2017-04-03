@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -38,7 +39,7 @@ public class ItemRing extends ItemBauble {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems (Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
+    public void getSubItems (Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
 
         for (int meta = 0; meta < varients.length; meta++) {
             subItems.add(new ItemStack(this, 1, meta));

@@ -1,7 +1,6 @@
 package net.darkhax.darkutils.features.trap;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -18,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -72,7 +72,7 @@ public class BlockTrap extends Block {
     }
 
     @Override
-    public void neighborChanged (IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 
         this.checkForDrop(worldIn, pos, state);
     }
@@ -102,7 +102,7 @@ public class BlockTrap extends Block {
     }
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, World worldIn, BlockPos pos) {
+    public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 
         return NULL_AABB;
     }
@@ -138,7 +138,7 @@ public class BlockTrap extends Block {
             }
 
             if (type == 2) {
-                living.attackEntityFrom(DamageSource.magic, 2.5f);
+                living.attackEntityFrom(DamageSource.MAGIC, 2.5f);
             }
 
             if (type == 3) {
@@ -163,7 +163,7 @@ public class BlockTrap extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks (Item itemIn, CreativeTabs tab, List<ItemStack> list) {
+    public void getSubBlocks (Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list) {
 
         for (final TrapType type : TrapType.values()) {
             list.add(new ItemStack(itemIn, 1, type.meta));

@@ -102,7 +102,7 @@ public class ModUtils {
     public static Object validateCrafting (Object object) {
 
         if (object instanceof ItemStack)
-            return ItemStackUtils.isValidStack((ItemStack) object) ? object : FeatureDisabled.itemDisabled;
+            return !((ItemStack) object).isEmpty() ? object : FeatureDisabled.itemDisabled;
 
         return object != null ? object : FeatureDisabled.itemDisabled;
     }

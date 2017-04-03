@@ -43,7 +43,7 @@ public class GuiTimerAmount extends GuiScreen {
         this.buttonList.clear();
         this.buttonList.add(this.doneBtn = new GuiButton(0, this.width / 2 - 4 - 150, this.height / 4 + 120 + 12, 150, 20, I18n.format("gui.done", new Object[0])));
         this.buttonList.add(this.cancelBtn = new GuiButton(1, this.width / 2 + 4, this.height / 4 + 120 + 12, 150, 20, I18n.format("gui.cancel", new Object[0])));
-        this.delayTextField = new GuiTextField(2, this.fontRendererObj, this.width / 2 - 150, 50, 300, 20);
+        this.delayTextField = new GuiTextField(2, this.fontRenderer, this.width / 2 - 150, 50, 300, 20);
         this.delayTextField.setMaxStringLength(5);
         this.delayTextField.setFocused(true);
         this.delayTextField.setText("" + this.timer.getDelayTime());
@@ -99,16 +99,16 @@ public class GuiTimerAmount extends GuiScreen {
     public void drawScreen (int mouseX, int mouseY, float partialTicks) {
 
         this.drawDefaultBackground();
-        this.drawCenteredString(this.fontRendererObj, I18n.format("gui.darkutils.timer.title", new Object[0]), this.width / 2, 20, 16777215);
-        this.drawString(this.fontRendererObj, I18n.format("gui.darkutils.timer.delay", new Object[0]), this.width / 2 - 150, 37, 10526880);
+        this.drawCenteredString(this.fontRenderer, I18n.format("gui.darkutils.timer.title", new Object[0]), this.width / 2, 20, 16777215);
+        this.drawString(this.fontRenderer, I18n.format("gui.darkutils.timer.delay", new Object[0]), this.width / 2 - 150, 37, 10526880);
         this.delayTextField.drawTextBox();
 
         final int i = 75;
         int j = 0;
-        this.drawString(this.fontRendererObj, I18n.format("gui.darkutils.timer.desc.1", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRendererObj.FONT_HEIGHT, 10526880);
-        this.drawString(this.fontRendererObj, I18n.format("gui.darkutils.timer.desc.2", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRendererObj.FONT_HEIGHT, 10526880);
-        this.drawString(this.fontRendererObj, I18n.format("gui.darkutils.timer.desc.3", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRendererObj.FONT_HEIGHT, 10526880);
-        this.drawString(this.fontRendererObj, I18n.format("gui.darkutils.timer.desc.4", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRendererObj.FONT_HEIGHT, 10526880);
+        this.drawString(this.fontRenderer, I18n.format("gui.darkutils.timer.desc.1", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRenderer.FONT_HEIGHT, 10526880);
+        this.drawString(this.fontRenderer, I18n.format("gui.darkutils.timer.desc.2", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRenderer.FONT_HEIGHT, 10526880);
+        this.drawString(this.fontRenderer, I18n.format("gui.darkutils.timer.desc.3", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRenderer.FONT_HEIGHT, 10526880);
+        this.drawString(this.fontRenderer, I18n.format("gui.darkutils.timer.desc.4", new Object[0]), this.width / 2 - 150, i + j++ * this.fontRenderer.FONT_HEIGHT, 10526880);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

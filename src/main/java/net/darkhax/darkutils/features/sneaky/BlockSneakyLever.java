@@ -43,10 +43,12 @@ public class BlockSneakyLever extends BlockSneaky {
     }
 
     @Override
-    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
-        if (heldItem != null && heldItem.getItem() != null)
-            return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+        final ItemStack heldItem = playerIn.getHeldItemMainhand();
+        
+        if (!heldItem.isEmpty())
+            return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 
         if (worldIn.isRemote)
             return true;
@@ -56,7 +58,7 @@ public class BlockSneakyLever extends BlockSneaky {
             state = state.cycleProperty(BlockStates.POWERED);
             worldIn.setBlockState(pos, state, 1 | 2);
             worldIn.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, state.getValue(BlockStates.POWERED).booleanValue() ? 0.6F : 0.5F);
-            worldIn.notifyNeighborsOfStateChange(pos, this);
+            worldIn.notifyNeighborsOfStateChange(pos, this, false);
             return true;
         }
     }
@@ -65,7 +67,7 @@ public class BlockSneakyLever extends BlockSneaky {
     public void breakBlock (World worldIn, BlockPos pos, IBlockState state) {
 
         if (state.getValue(BlockStates.POWERED).booleanValue()) {
-            worldIn.notifyNeighborsOfStateChange(pos, this);
+            worldIn.notifyNeighborsOfStateChange(pos, this, false);
         }
 
         super.breakBlock(worldIn, pos, state);

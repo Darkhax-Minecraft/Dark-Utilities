@@ -46,7 +46,7 @@ public class PacketSyncTimer implements IMessage {
         @Override
         public IMessage onMessage (PacketSyncTimer packet, MessageContext ctx) {
 
-            final EntityPlayer player = ctx.side == Side.CLIENT ? PlayerUtils.getClientPlayer() : ctx.getServerHandler().playerEntity;
+            final EntityPlayer player = ctx.side == Side.CLIENT ? PlayerUtils.getClientPlayer() : ctx.getServerHandler().player;
             final TileEntityTimer tile = (TileEntityTimer) player.world.getTileEntity(packet.pos);
 
             if (!tile.isInvalid()) {

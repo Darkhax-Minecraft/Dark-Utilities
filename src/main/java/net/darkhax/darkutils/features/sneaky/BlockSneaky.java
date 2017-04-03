@@ -44,7 +44,7 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack currentStack, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
         final TileEntity tile = world.getTileEntity(pos);
         final ItemStack stack = playerIn.getHeldItemMainhand();

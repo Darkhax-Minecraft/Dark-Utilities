@@ -2,6 +2,8 @@ package net.darkhax.darkutils.features.filter;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.darkhax.bookshelf.lib.util.BlockUtils;
 import net.darkhax.bookshelf.lib.util.EntityUtils;
 import net.minecraft.block.Block;
@@ -17,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -74,7 +77,7 @@ public class BlockFilter extends Block {
     }
 
     @Override
-    public void addCollisionBoxToList (IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity collidingEntity) {
+    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity collidingEntity, boolean p_185477_7_) {
 
         final int meta = state.getValue(VARIANT).meta;
 
@@ -89,12 +92,12 @@ public class BlockFilter extends Block {
             }
         }
 
-        super.addCollisionBoxToList(state, worldIn, pos, entityBox, collidingBoxes, collidingEntity);
+        super.addCollisionBoxToList(state, worldIn, pos, entityBox, collidingBoxes, collidingEntity, p_185477_7_);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks (Item item, CreativeTabs tab, List<ItemStack> list) {
+    public void getSubBlocks (Item item, CreativeTabs tab, NonNullList<ItemStack> list) {
 
         for (final FilterType type : FilterType.values()) {
             list.add(new ItemStack(item, 1, type.meta));

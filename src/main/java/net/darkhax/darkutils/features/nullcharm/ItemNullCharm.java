@@ -11,7 +11,6 @@ import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
@@ -26,13 +25,13 @@ public class ItemNullCharm extends ItemBauble {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick (ItemStack itemStack, World world, EntityPlayer player, EnumHand hand) {
-
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand handIn) {
+        
         if (!world.isRemote) {
             player.openGui(DarkUtils.instance, GuiHandler.FILTER, world, 0, 0, 0);
         }
 
-        return new ActionResult<>(EnumActionResult.PASS, itemStack);
+        return super.onItemRightClick(world, player, handIn);
     }
 
     @Override

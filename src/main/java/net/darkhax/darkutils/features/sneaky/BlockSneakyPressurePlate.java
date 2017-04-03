@@ -120,8 +120,8 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
 
     protected void updateNeighbors (World worldIn, BlockPos pos) {
 
-        worldIn.notifyNeighborsOfStateChange(pos, this);
-        worldIn.notifyNeighborsOfStateChange(pos.down(), this);
+        worldIn.notifyNeighborsOfStateChange(pos, this, false);
+        worldIn.notifyNeighborsOfStateChange(pos.down(), this, false);
     }
 
     @Override

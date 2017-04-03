@@ -2,7 +2,6 @@ package net.darkhax.darkutils.features.sneaky;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -17,10 +16,10 @@ public class BlockSneakyBedrock extends BlockSneaky {
     }
 
     @Override
-    public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack currentStack, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 
         if (playerIn.capabilities.isCreativeMode)
-            return super.onBlockActivated(world, pos, state, playerIn, hand, currentStack, side, hitX, hitY, hitZ);
+            return super.onBlockActivated(world, pos, state, playerIn, hand, side, hitX, hitY, hitZ);
 
         return false;
     }

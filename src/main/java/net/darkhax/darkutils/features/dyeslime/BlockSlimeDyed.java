@@ -1,7 +1,5 @@
 package net.darkhax.darkutils.features.dyeslime;
 
-import java.util.List;
-
 import net.minecraft.block.BlockSlime;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -13,6 +11,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -35,7 +34,7 @@ public class BlockSlimeDyed extends BlockSlime {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks (Item itemIn, CreativeTabs tab, List<ItemStack> list) {
+    public void getSubBlocks (Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list) {
 
         for (final EnumDyeColor enumdyecolor : EnumDyeColor.values()) {
             list.add(new ItemStack(itemIn, 1, enumdyecolor.getMetadata()));

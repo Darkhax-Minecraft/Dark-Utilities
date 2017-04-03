@@ -17,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -74,7 +75,7 @@ public class BlockInvertedFilter extends Block {
     }
 
     @Override
-    public void addCollisionBoxToList (IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity collidingEntity) {
+    public void addCollisionBoxToList (IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity collidingEntity, boolean no) {
 
         final int meta = state.getValue(VARIANT).meta;
 
@@ -89,12 +90,12 @@ public class BlockInvertedFilter extends Block {
             }
         }
 
-        super.addCollisionBoxToList(state, worldIn, pos, entityBox, collidingBoxes, collidingEntity);
+        super.addCollisionBoxToList(state, worldIn, pos, entityBox, collidingBoxes, collidingEntity, no);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks (Item item, CreativeTabs tab, List<ItemStack> list) {
+    public void getSubBlocks (Item item, CreativeTabs tab, NonNullList<ItemStack> list) {
 
         for (final FilterType type : FilterType.values()) {
             list.add(new ItemStack(item, 1, type.meta));

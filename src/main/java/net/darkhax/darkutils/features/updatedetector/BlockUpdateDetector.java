@@ -26,7 +26,7 @@ public class BlockUpdateDetector extends Block {
     }
 
     @Override
-    public void neighborChanged (IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 
         if (worldIn.isRemote || blockIn.canProvidePower(state) || blockIn == Blocks.PISTON_EXTENSION || blockIn == Blocks.PISTON_HEAD || state.getValue(BlockStates.POWERED))
             return;

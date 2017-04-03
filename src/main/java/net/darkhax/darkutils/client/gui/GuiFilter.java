@@ -29,8 +29,8 @@ public class GuiFilter extends GuiContainer {
     @Override
     public void drawGuiContainerForegroundLayer (int mouseX, int mouseY) {
 
-        this.fontRendererObj.drawString(this.inventory.getDisplayName().getUnformattedText(), 8, 6, 4210752);
-        this.fontRendererObj.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(this.inventory.getDisplayName().getUnformattedText(), 8, 6, 4210752);
+        this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
     }
 
     @Override

@@ -48,7 +48,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
                         final ItemStack foundStack = item.getEntityItem();
                         final ItemStack simulation = ItemHandlerHelper.insertItem(handler, foundStack.copy(), true);
 
-                        if ((simulation == null || foundStack.stackSize != simulation.stackSize) && !item.isDead) {
+                        if ((simulation == null || foundStack.getCount() != simulation.getCount()) && !item.isDead) {
 
                             final ItemStack result = ItemHandlerHelper.insertItem(handler, foundStack, false);
 

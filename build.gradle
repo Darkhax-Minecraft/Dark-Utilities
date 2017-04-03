@@ -41,8 +41,8 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Cons
 minecraft {
 
     version = "${version_forge}"
-    runDir = "run"
     mappings = "${version_mcp}"
+    runDir = "run"
     useDepAts = true
 }
 
@@ -73,10 +73,9 @@ repositories {
 dependencies {
 
     deobfCompile "mcp.mobius.waila:Hwyla:${version_hwyla}"
-    deobfCompile "mezz.jei:jei_1.10.2:${version_jei}"
+    deobfCompile "mezz.jei:jei_1.11.2:${version_jei}"
     deobfCompile "net.darkhax.bookshelf:Bookshelf:${version_bookshelf}"
-    //deobfCompile "com.github.Azanor:Baubles:${version_baubles}"
-    deobfCompile "com.github.Darkhax-Forked:Baubles:${version_darkhax_baubles}"
+    deobfCompile "com.github.Azanor:Baubles:${version_baubles}"
 }
 
 //Handles basic resources such as mcmod.info
@@ -130,7 +129,7 @@ String getVersionFromJava(File file) {
 
     file.write(outfile);
 
-    return "1.10.2-$release.$update.$patch.$build";
+    return "${version_minecraft}-$release.$update.$patch.$build";
 }
 
 //Creates the source jar.
@@ -200,7 +199,7 @@ curseforge {
         releaseType = "alpha";
         changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/Dark-Utilities/commits/master/";
 
-        addGameVersion "1.10.2"
+        addGameVersion "${version_minecraft}"
         
         //Adds main jar, deobf jar, source jar, and javadoc jar to the upload.
         mainArtifact(jar) {
@@ -210,6 +209,7 @@ curseforge {
                 //Adds the file relations to the upload.
                 requiredLibrary 'bookshelf'
                 optionalLibrary 'waila'
+                optionalLibrary 'hwyla'
                 optionalLibrary 'baubles'
             }
         }

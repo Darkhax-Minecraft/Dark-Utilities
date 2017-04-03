@@ -6,10 +6,7 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
-import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.features.faketnt.BlockFakeTNT;
-import net.darkhax.darkutils.features.feeder.BlockFeeder;
-import net.darkhax.darkutils.features.feeder.TileEntityFeeder;
 import net.darkhax.darkutils.features.filter.BlockFilter;
 import net.darkhax.darkutils.features.filter.FilterType;
 import net.darkhax.darkutils.features.sneaky.BlockSneaky;
@@ -83,22 +80,6 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
             tip.add(I18n.format("gui.darkutils.timer.remaining") + ": " + StringUtils.ticksToElapsedTime(delay - currentTime));
         }
 
-        else if (data.getBlock() instanceof BlockFeeder && cfg.getConfig(CONFIG_FEEDER_INFO) && data.getTileEntity() instanceof TileEntityFeeder && !data.getTileEntity().isInvalid()) {
-
-            final String foodType = data.getNBTData().getString("FoodType");
-
-            if (foodType != null && !foodType.equalsIgnoreCase("null")) {
-
-                final ItemStack foodStack = ItemStackUtils.createStackFromString(foodType);
-
-                if (ItemStackUtils.isValidStack(foodStack)) {
-                    tip.add(I18n.format("tooltip.darkutils.feeder.type") + ": " + TextFormatting.BLUE + foodStack.getDisplayName());
-                }
-            }
-
-            tip.add(I18n.format("tooltip.darkutils.feeder.amount") + ": " + data.getMetadata());
-        }
-
         return tip;
     }
 
@@ -129,11 +110,9 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
 
         register.registerBodyProvider(dataProvider, BlockFilter.class);
         register.registerBodyProvider(dataProvider, BlockTimer.class);
-        register.registerBodyProvider(dataProvider, BlockFeeder.class);
 
         register.registerNBTProvider(dataProvider, BlockTimer.class);
         register.registerNBTProvider(dataProvider, BlockSneaky.class);
-        register.registerNBTProvider(dataProvider, BlockFeeder.class);
 
         register.addConfig("DarkUtils", CONFIG_FILTER_TYPE);
         register.addConfig("DarkUtils", CONFIG_TIMER_TIME);

@@ -8,6 +8,7 @@ import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -28,7 +29,7 @@ public class FeatureFakeTNT extends Feature {
 
         blockFakeTNT = new BlockFakeTNT();
         ModUtils.registerBlock(blockFakeTNT, "fake_tnt");
-        EntityRegistry.registerModEntity(EntityFakeTNT.class, "FakeTNT", 0, DarkUtils.instance, 32, 20, true);
+        EntityRegistry.registerModEntity(new ResourceLocation("darkutils", "fake_tnt"), EntityFakeTNT.class, "FakeTNT", 0, DarkUtils.instance, 32, 20, true);
     }
 
     @Override

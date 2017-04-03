@@ -13,7 +13,6 @@ import net.darkhax.darkutils.features.enchrings.FeatureEnchantedRing;
 import net.darkhax.darkutils.features.enderhopper.FeatureEnderHopper;
 import net.darkhax.darkutils.features.endertether.FeatureEnderTether;
 import net.darkhax.darkutils.features.faketnt.FeatureFakeTNT;
-import net.darkhax.darkutils.features.feeder.FeatureFeeder;
 import net.darkhax.darkutils.features.filter.FeatureFilter;
 import net.darkhax.darkutils.features.focussash.FeatureFocusSash;
 import net.darkhax.darkutils.features.gluttonycharm.FeatureGluttonyCharm;
@@ -24,7 +23,6 @@ import net.darkhax.darkutils.features.misc.FeatureOreDict;
 import net.darkhax.darkutils.features.misc.FeatureSheepArmor;
 import net.darkhax.darkutils.features.nullcharm.FeatureNullCharm;
 import net.darkhax.darkutils.features.portalcharm.FeaturePortalCharm;
-import net.darkhax.darkutils.features.potion.FeaturePotion;
 import net.darkhax.darkutils.features.shulkerpearl.FeatureShulkerPearlItem;
 import net.darkhax.darkutils.features.sleepcharm.FeatureSleepCharm;
 import net.darkhax.darkutils.features.sneaky.FeatureSneaky;
@@ -47,7 +45,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, dependencies = Constants.DEPENDENCIES, acceptedMinecraftVersions = "[1.9.4,1.10.2]")
+@Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, dependencies = Constants.DEPENDENCIES)
 public class DarkUtils {
 
     /**
@@ -94,11 +92,9 @@ public class DarkUtils {
         FeatureManager.registerFeature(new FeatureAntiSlime(), "Anti Slime Block", "Undo slime chunks");
         FeatureManager.registerFeature(new FeatureUpdateDetector(), "Update Detector", "A block for detecting block updates");
         FeatureManager.registerFeature(new FeatureSneaky(), "Sneaky Blocks", "Blocks that can hide as other blocks");
-        FeatureManager.registerFeature(new FeatureFeeder(), "Animal Feeder", "A block for auto breeding");
         FeatureManager.registerFeature(new FeatureFakeTNT(), "Fake TNT", "A safe TNT alternative");
 
         FeatureManager.registerFeature(new FeatureMaterial(), "Crafting Materials", "Material items used throughout DarkUtils");
-        FeatureManager.registerFeature(new FeaturePotion(), "Mysterious Potion", "Strange potions with abnormal effects");
         FeatureManager.registerFeature(new FeaturePortalCharm(), "Portal Charm", "A charm to make traveling through portals faster");
         FeatureManager.registerFeature(new FeatureSleepCharm(), "Sleep Charm", "A charm to make sleeping faster");
         FeatureManager.registerFeature(new FeatureShulkerPearlItem(), "Shlker Pearls", "Adds shulker pearls and related content");
