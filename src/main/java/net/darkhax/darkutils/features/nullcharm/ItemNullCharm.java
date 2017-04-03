@@ -3,7 +3,7 @@ package net.darkhax.darkutils.features.nullcharm;
 import java.util.List;
 
 import baubles.api.BaubleType;
-import net.darkhax.bookshelf.inventory.InventoryItem;
+import net.darkhax.bookshelf.item.ItemInventory;
 import net.darkhax.bookshelf.lib.modutils.baubles.ItemBauble;
 import net.darkhax.bookshelf.lib.util.ItemStackUtils;
 import net.darkhax.darkutils.DarkUtils;
@@ -38,14 +38,14 @@ public class ItemNullCharm extends ItemBauble {
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 
-        for (final ItemStack blacklisted : InventoryItem.getContents(stack)) {
+        for (final ItemStack blacklisted : ItemInventory.getContents(stack)) {
             tooltip.add(blacklisted.getDisplayName());
         }
     }
 
     public static boolean isBlackListed (ItemStack stack, ItemStack charmStack) {
 
-        for (final ItemStack blacklisted : InventoryItem.getContents(charmStack))
+        for (final ItemStack blacklisted : ItemInventory.getContents(charmStack))
             if (ItemStackUtils.areStacksEqual(stack, blacklisted, true))
                 return true;
 

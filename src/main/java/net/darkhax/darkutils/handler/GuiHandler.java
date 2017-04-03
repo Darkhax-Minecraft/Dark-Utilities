@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.handler;
 
-import net.darkhax.bookshelf.inventory.InventoryItem;
+import net.darkhax.bookshelf.item.ItemInventory;
 import net.darkhax.darkutils.client.gui.ContainerFilter;
 import net.darkhax.darkutils.client.gui.GuiFilter;
 import net.darkhax.darkutils.features.timer.GuiTimerAmount;
@@ -21,7 +21,7 @@ public class GuiHandler implements IGuiHandler {
     public Object getServerGuiElement (int id, EntityPlayer player, World world, int x, int y, int z) {
 
         if (id == FILTER)
-            return new ContainerFilter(player.inventory, new InventoryItem(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
+            return new ContainerFilter(player.inventory, new ItemInventory(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
 
         return null;
     }
@@ -38,7 +38,7 @@ public class GuiHandler implements IGuiHandler {
         }
 
         else if (id == FILTER)
-            return new GuiFilter(player.inventory, new InventoryItem(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
+            return new GuiFilter(player.inventory, new ItemInventory(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
 
         return null;
     }

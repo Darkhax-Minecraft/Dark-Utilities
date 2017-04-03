@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.client.gui;
 
-import net.darkhax.bookshelf.inventory.InventoryItem;
+import net.darkhax.bookshelf.item.ItemInventory;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -18,7 +18,7 @@ public class GuiFilter extends GuiContainer {
 
     private final IInventory inventory;
 
-    public GuiFilter (InventoryPlayer playerInv, InventoryItem inventory) {
+    public GuiFilter (InventoryPlayer playerInv, ItemInventory inventory) {
 
         super(new ContainerFilter(playerInv, inventory));
         this.playerInventory = playerInv;

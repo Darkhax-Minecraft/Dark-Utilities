@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.client.gui;
 
-import net.darkhax.bookshelf.inventory.InventoryItem;
 import net.darkhax.bookshelf.inventory.SlotFake;
+import net.darkhax.bookshelf.item.ItemInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ClickType;
@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerFilter extends Container {
 
-    public ContainerFilter (InventoryPlayer playerInv, InventoryItem inventory) {
+    public ContainerFilter (InventoryPlayer playerInv, ItemInventory inventory) {
 
         for (int invIndex = 0; invIndex < 5; invIndex++) {
             this.addSlotToContainer(new SlotFake(inventory, invIndex, 44 + invIndex * 18, 20));
