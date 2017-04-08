@@ -1,17 +1,11 @@
 package net.darkhax.darkutils.features.timer;
 
-import io.netty.buffer.ByteBuf;
-import net.darkhax.bookshelf.util.PlayerUtils;
-import net.minecraft.entity.player.EntityPlayer;
+import net.darkhax.bookshelf.network.TileEntityMessage;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
 
-public class PacketSyncTimer implements IMessage {
+public class PacketSyncTimer extends TileEntityMessage<TileEntityTimer> {
 
-    public BlockPos pos;
+    private static final long serialVersionUID = -6538977095087681955L;
 
     public int delayTime;
 
@@ -21,39 +15,13 @@ public class PacketSyncTimer implements IMessage {
 
     public PacketSyncTimer (BlockPos pos, int delayTime) {
 
-        this.pos = pos;
+        super(pos);
         this.delayTime = delayTime;
     }
 
     @Override
-    public void fromBytes (ByteBuf buf) {
+    public void getAction () {
 
-        this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
-        this.delayTime = buf.readInt();
-    }
-
-    @Override
-    public void toBytes (ByteBuf buf) {
-
-        buf.writeInt(this.pos.getX());
-        buf.writeInt(this.pos.getY());
-        buf.writeInt(this.pos.getZ());
-        buf.writeInt(this.delayTime);
-    }
-
-    public static class PacketHandler implements IMessageHandler<PacketSyncTimer, IMessage> {
-
-        @Override
-        public IMessage onMessage (PacketSyncTimer packet, MessageContext ctx) {
-
-            final EntityPlayer player = ctx.side == Side.CLIENT ? PlayerUtils.getClientPlayer() : ctx.getServerHandler().player;
-            final TileEntityTimer tile = (TileEntityTimer) player.world.getTileEntity(packet.pos);
-
-            if (!tile.isInvalid()) {
-                tile.setDelayTime(packet.delayTime);
-            }
-
-            return null;
-        }
+        this.tile.setDelayTime(this.delayTime);
     }
 }

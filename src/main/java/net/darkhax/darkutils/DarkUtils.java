@@ -1,5 +1,6 @@
 package net.darkhax.darkutils;
 
+import net.darkhax.bookshelf.network.NetworkHandler;
 import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
@@ -18,7 +19,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, dependencies = Constants.DEPENDENCIES)
@@ -27,7 +27,7 @@ public class DarkUtils {
     /**
      * A network wrapper for DarkUtils packets.
      */
-    public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("DarkUtils");
+    public static final NetworkHandler NETWORK = new NetworkHandler(Constants.MOD_ID);
 
     /**
      * The creative tab used for all content added by this mod.
@@ -50,7 +50,7 @@ public class DarkUtils {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
 
-        NETWORK.registerMessage(PacketSyncTimer.PacketHandler.class, PacketSyncTimer.class, 0, Side.SERVER);
+        NETWORK.register(PacketSyncTimer.class, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
         ConfigurationHandler.initConfig(event.getSuggestedConfigurationFile());

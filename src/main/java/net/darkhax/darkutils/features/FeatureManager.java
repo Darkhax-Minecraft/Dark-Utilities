@@ -27,11 +27,11 @@ public class FeatureManager {
             final DUFeature annotation = feature.getValue();
 
             if (annotation == null) {
-                
+
                 Constants.LOG.warn("Annotation for " + feature.getKey().getClass().getCanonicalName() + " was null!");
                 continue;
             }
-            
+
             registerFeature(feature.getKey(), annotation.name(), annotation.description());
         }
     }
