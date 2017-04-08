@@ -1,8 +1,9 @@
 package net.darkhax.darkutils.features.faketnt;
 
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.GUNPOWDER;
+import static net.darkhax.bookshelf.util.OreDictUtils.GUNPOWDER;
 
 import net.darkhax.darkutils.DarkUtils;
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+@DUFeature(name = "Fake TNT", description = "A safe TNT alternative")
 public class FeatureFakeTNT extends Feature {
 
     public static Block blockFakeTNT;

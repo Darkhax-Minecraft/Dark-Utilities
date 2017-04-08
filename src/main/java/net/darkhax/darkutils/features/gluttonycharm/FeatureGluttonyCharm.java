@@ -1,7 +1,8 @@
 package net.darkhax.darkutils.features.gluttonycharm;
 
-import net.darkhax.bookshelf.lib.util.OreDictUtils;
-import net.darkhax.bookshelf.lib.util.PlayerUtils;
+import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.bookshelf.util.PlayerUtils;
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+@DUFeature(name = "Gluttony Charm", description = "A charm that allows the player to consume food instantaneously.")
 public class FeatureGluttonyCharm extends Feature {
 
     public static Item itemGluttonyCharm;

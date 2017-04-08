@@ -3,7 +3,7 @@ package net.darkhax.darkutils.features.filter;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.darkhax.bookshelf.lib.util.OreDictUtils;
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityGuardian;

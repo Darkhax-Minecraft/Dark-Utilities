@@ -3,7 +3,7 @@ package net.darkhax.darkutils.features.enchrings;
 import java.util.List;
 
 import baubles.api.BaubleType;
-import net.darkhax.bookshelf.lib.modutils.baubles.ItemBauble;
+import net.darkhax.bookshelf.utils.baubles.ItemBauble;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;

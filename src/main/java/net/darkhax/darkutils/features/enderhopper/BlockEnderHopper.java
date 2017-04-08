@@ -41,8 +41,8 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        
+    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+
         if (worldIn.getTileEntity(pos) instanceof TileEntityEnderHopper && playerIn.isSneaking()) {
 
             final TileEntityEnderHopper hopper = (TileEntityEnderHopper) worldIn.getTileEntity(pos);
@@ -50,7 +50,7 @@ public class BlockEnderHopper extends BlockTileEntity {
             hopper.markDirty();
             return true;
         }
-        
+
         return false;
     }
 
@@ -93,8 +93,8 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos){
-        
+    public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+
         return NULL_AABB;
     }
 

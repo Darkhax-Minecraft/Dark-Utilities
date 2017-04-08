@@ -1,8 +1,9 @@
 package net.darkhax.darkutils.features.vector;
 
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.SLIMEBALL;
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.STONE;
+import static net.darkhax.bookshelf.util.OreDictUtils.SLIMEBALL;
+import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+@DUFeature(name = "Vector Plate", description = "A block that pushes entities around")
 public class FeatureVectorPlate extends Feature {
 
     public static Block blockVectorPlate;

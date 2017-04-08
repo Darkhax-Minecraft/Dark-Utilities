@@ -1,7 +1,8 @@
 package net.darkhax.darkutils.features.dyeslime;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
-import net.darkhax.bookshelf.lib.util.OreDictUtils;
+import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+@DUFeature(name = "Dyed Slime Blocks", description = "Colorful slime blocks!")
 public class FeatureDyeSlime extends Feature {
 
     private static String[] COLORS = { "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black" };

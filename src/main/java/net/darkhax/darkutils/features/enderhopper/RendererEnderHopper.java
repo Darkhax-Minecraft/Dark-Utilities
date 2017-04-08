@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.features.enderhopper;
 
-import net.darkhax.bookshelf.lib.util.RenderUtils;
+import net.darkhax.bookshelf.util.RenderUtils;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;

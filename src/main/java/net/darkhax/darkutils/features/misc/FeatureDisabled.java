@@ -2,7 +2,8 @@ package net.darkhax.darkutils.features.misc;
 
 import java.util.List;
 
-import net.darkhax.bookshelf.lib.util.TextUtils.ChatFormat;
+import com.mojang.realmsclient.gui.ChatFormatting;
+
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
@@ -43,7 +44,7 @@ public class FeatureDisabled extends Feature {
         @Override
         public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 
-            tooltip.add(ChatFormat.RED + I18n.format("tooltip.darkutils.disabled"));
+            tooltip.add(ChatFormatting.RED + I18n.format("tooltip.darkutils.disabled"));
         }
     }
 }

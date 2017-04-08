@@ -1,8 +1,9 @@
 package net.darkhax.darkutils.features.sneaky;
 
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.OBSIDIAN;
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.STONE;
+import static net.darkhax.bookshelf.util.OreDictUtils.OBSIDIAN;
+import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+@DUFeature(name = "Sneaky Blocks", description = "Blocks that can hide as other blocks")
 public class FeatureSneaky extends Feature {
 
     /**

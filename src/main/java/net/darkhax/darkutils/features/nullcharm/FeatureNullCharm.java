@@ -2,8 +2,9 @@ package net.darkhax.darkutils.features.nullcharm;
 
 import java.util.List;
 
-import net.darkhax.bookshelf.lib.util.OreDictUtils;
-import net.darkhax.bookshelf.lib.util.PlayerUtils;
+import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.bookshelf.util.PlayerUtils;
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+@DUFeature(name = "Null Charm", description = "A charm to clean up useless items")
 public class FeatureNullCharm extends Feature {
 
     public static Item itemNullCharm;

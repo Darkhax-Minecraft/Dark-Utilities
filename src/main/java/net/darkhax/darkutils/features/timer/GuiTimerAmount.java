@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.input.Keyboard;
 
-import net.darkhax.bookshelf.lib.util.NumericUtils;
+import net.darkhax.bookshelf.util.NumericUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;

@@ -1,10 +1,11 @@
 package net.darkhax.darkutils.features.antislime;
 
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.STONE;
+import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -22,6 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+@DUFeature(name = "Anti Slime Block", description = "Undo slime chunks")
 public class FeatureAntiSlime extends Feature {
 
     public static Block blockAntiSlime;

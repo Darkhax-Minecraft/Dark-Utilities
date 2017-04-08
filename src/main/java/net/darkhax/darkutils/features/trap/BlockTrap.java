@@ -72,7 +72,7 @@ public class BlockTrap extends Block {
     }
 
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+    public void neighborChanged (IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 
         this.checkForDrop(worldIn, pos, state);
     }

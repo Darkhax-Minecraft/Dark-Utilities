@@ -2,8 +2,8 @@ package net.darkhax.darkutils.features.filter;
 
 import java.util.List;
 
-import net.darkhax.bookshelf.lib.util.BlockUtils;
-import net.darkhax.bookshelf.lib.util.EntityUtils;
+import net.darkhax.bookshelf.util.BlockUtils;
+import net.darkhax.bookshelf.util.EntityUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;

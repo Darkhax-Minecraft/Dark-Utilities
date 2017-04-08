@@ -24,7 +24,7 @@ public class ConfigurationHandler {
 
         config.setCategoryComment("_features", "Allows features to be completely disabled");
 
-        for (final Feature feature : FeatureManager.FEATURES) {
+        for (final Feature feature : FeatureManager.getFeatures()) {
             feature.setupConfiguration(config);
         }
 

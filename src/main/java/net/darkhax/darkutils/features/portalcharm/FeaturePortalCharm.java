@@ -1,9 +1,10 @@
 package net.darkhax.darkutils.features.portalcharm;
 
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.OBSIDIAN;
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.STRING;
+import static net.darkhax.bookshelf.util.OreDictUtils.OBSIDIAN;
+import static net.darkhax.bookshelf.util.OreDictUtils.STRING;
 
-import net.darkhax.bookshelf.lib.util.PlayerUtils;
+import net.darkhax.bookshelf.util.PlayerUtils;
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.entity.Entity;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+@DUFeature(name = "Portal Charm", description = "A charm to make traveling through portals faster")
 public class FeaturePortalCharm extends Feature {
 
     public static Item itemPortalCharm;

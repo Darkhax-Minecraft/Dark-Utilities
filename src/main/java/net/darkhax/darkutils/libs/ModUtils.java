@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.bookshelf.util.ItemStackUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.misc.FeatureDisabled;
 import net.minecraft.block.Block;

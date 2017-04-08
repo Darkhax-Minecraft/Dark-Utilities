@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.features.endertether;
 
-import net.darkhax.bookshelf.lib.util.EntityUtils;
+import net.darkhax.bookshelf.util.EntityUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;

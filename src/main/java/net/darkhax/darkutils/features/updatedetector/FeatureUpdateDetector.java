@@ -1,8 +1,9 @@
 package net.darkhax.darkutils.features.updatedetector;
 
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.BLOCK_REDSTONE;
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.STONE;
+import static net.darkhax.bookshelf.util.OreDictUtils.BLOCK_REDSTONE;
+import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+@DUFeature(name = "Update Detector", description = "A block for detecting block updates")
 public class FeatureUpdateDetector extends Feature {
 
     public static Block blockDetector;

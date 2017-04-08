@@ -9,7 +9,7 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void onPreInit () {
 
-        for (final Feature feature : FeatureManager.FEATURES) {
+        for (final Feature feature : FeatureManager.getFeatures()) {
             feature.onClientPreInit();
         }
     }
@@ -17,7 +17,7 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void onInit () {
 
-        for (final Feature feature : FeatureManager.FEATURES) {
+        for (final Feature feature : FeatureManager.getFeatures()) {
             feature.onClientInit();
         }
     }
@@ -25,7 +25,7 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void onPostInit () {
 
-        for (final Feature feature : FeatureManager.FEATURES) {
+        for (final Feature feature : FeatureManager.getFeatures()) {
             feature.onClientPostInit();
         }
     }

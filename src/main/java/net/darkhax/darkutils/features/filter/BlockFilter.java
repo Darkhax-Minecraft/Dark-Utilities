@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import net.darkhax.bookshelf.lib.util.BlockUtils;
-import net.darkhax.bookshelf.lib.util.EntityUtils;
+import net.darkhax.bookshelf.util.BlockUtils;
+import net.darkhax.bookshelf.util.EntityUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -77,7 +77,7 @@ public class BlockFilter extends Block {
     }
 
     @Override
-    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity collidingEntity, boolean p_185477_7_) {
+    public void addCollisionBoxToList (IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity collidingEntity, boolean p_185477_7_) {
 
         final int meta = state.getValue(VARIANT).meta;
 

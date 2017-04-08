@@ -1,7 +1,8 @@
 package net.darkhax.darkutils.features.chests;
 
 import net.darkhax.bookshelf.block.BlockBasicChest;
-import net.darkhax.bookshelf.lib.util.OreDictUtils;
+import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.Constants;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -19,6 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;;
 
+@DUFeature(name = "Fancy Chests", description = "Adds decorative chests!")
 public class FeatureChests extends Feature {
 
     @SideOnly(Side.CLIENT)

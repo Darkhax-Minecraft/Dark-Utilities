@@ -1,6 +1,7 @@
 package net.darkhax.darkutils.features.focussash;
 
-import net.darkhax.bookshelf.lib.util.PlayerUtils;
+import net.darkhax.bookshelf.util.PlayerUtils;
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@DUFeature(name = "Focus Sash", description = "Prevents 1-hit K.Os while in the inventory")
 public class FeatureFocusSash extends Feature {
 
     public static Item itemFocusSash;

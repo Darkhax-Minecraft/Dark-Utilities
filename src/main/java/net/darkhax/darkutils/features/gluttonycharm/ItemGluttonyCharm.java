@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.features.gluttonycharm;
 
 import baubles.api.BaubleType;
-import net.darkhax.bookshelf.lib.modutils.baubles.ItemBauble;
+import net.darkhax.bookshelf.utils.baubles.ItemBauble;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 
@@ -13,7 +13,7 @@ public class ItemGluttonyCharm extends ItemBauble {
     }
 
     @Override
-    @Optional.Method(modid = "Baubles")
+    @Optional.Method(modid = "baubles")
     public BaubleType getBaubleType (ItemStack itemstack) {
 
         return BaubleType.CHARM;

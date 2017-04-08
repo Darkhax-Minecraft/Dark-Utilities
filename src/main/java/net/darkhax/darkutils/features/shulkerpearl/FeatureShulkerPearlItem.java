@@ -1,7 +1,8 @@
 package net.darkhax.darkutils.features.shulkerpearl;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
-import net.darkhax.bookshelf.lib.util.OreDictUtils;
+import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.shulkerpearl.ShulkerDataHandler.ICustomData;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -22,6 +23,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+@DUFeature(name = "Shulker Pearls", description = "Adds shulker pearls and related content")
 public class FeatureShulkerPearlItem extends Feature {
 
     public static Item itemShulkerPearl;

@@ -2,7 +2,7 @@ package net.darkhax.darkutils.features.sneaky;
 
 import net.darkhax.bookshelf.lib.BlockStates;
 import net.darkhax.bookshelf.lib.Constants;
-import net.darkhax.bookshelf.lib.util.ParticleUtils;
+import net.darkhax.bookshelf.util.ParticleUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -44,7 +44,7 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
         final TileEntity tile = world.getTileEntity(pos);
         final ItemStack stack = playerIn.getHeldItemMainhand();

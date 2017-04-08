@@ -4,8 +4,8 @@ import java.util.List;
 
 import baubles.api.BaubleType;
 import net.darkhax.bookshelf.item.ItemInventory;
-import net.darkhax.bookshelf.lib.modutils.baubles.ItemBauble;
-import net.darkhax.bookshelf.lib.util.ItemStackUtils;
+import net.darkhax.bookshelf.util.ItemStackUtils;
+import net.darkhax.bookshelf.utils.baubles.ItemBauble;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,8 +25,8 @@ public class ItemNullCharm extends ItemBauble {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand handIn) {
-        
+    public ActionResult<ItemStack> onItemRightClick (World world, EntityPlayer player, EnumHand handIn) {
+
         if (!world.isRemote) {
             player.openGui(DarkUtils.instance, GuiHandler.FILTER, world, 0, 0, 0);
         }

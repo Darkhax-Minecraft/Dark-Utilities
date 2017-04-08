@@ -1,8 +1,9 @@
 package net.darkhax.darkutils.features.endertether;
 
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.INGOT_IRON;
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.OBSIDIAN;
+import static net.darkhax.bookshelf.util.OreDictUtils.INGOT_IRON;
+import static net.darkhax.bookshelf.util.OreDictUtils.OBSIDIAN;
 
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -20,6 +21,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+@DUFeature(name = "Ender Tether", description = "A block to redirect ender teleportation")
 public class FeatureEnderTether extends Feature {
 
     public static Block blockEnderTether;

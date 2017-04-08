@@ -1,10 +1,11 @@
 package net.darkhax.darkutils.features.material;
 
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.ENDERPEARL;
-import static net.darkhax.bookshelf.lib.util.OreDictUtils.SLIMEBALL;
+import static net.darkhax.bookshelf.util.OreDictUtils.ENDERPEARL;
+import static net.darkhax.bookshelf.util.OreDictUtils.SLIMEBALL;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
-import net.darkhax.bookshelf.lib.util.OreDictUtils;
+import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.Constants;
 import net.darkhax.darkutils.libs.ModUtils;
@@ -29,6 +30,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+@DUFeature(name = "Crafting Materials", description = "Material items used throughout DarkUtils")
 public class FeatureMaterial extends Feature {
 
     public static Item itemMaterial;
