@@ -39,7 +39,9 @@ public class ItemNullCharm extends ItemBauble {
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 
         for (final ItemStack blacklisted : ItemInventory.getContents(stack)) {
-            tooltip.add(blacklisted.getDisplayName());
+            if (!blacklisted.isEmpty()) {
+                tooltip.add(blacklisted.getDisplayName());
+            }
         }
     }
 
