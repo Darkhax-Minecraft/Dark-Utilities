@@ -3,13 +3,13 @@ package net.darkhax.darkutils.features.sleepcharm;
 import static net.darkhax.bookshelf.util.OreDictUtils.LEATHER;
 import static net.darkhax.bookshelf.util.OreDictUtils.STICK_WOOD;
 
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.bookshelf.util.PlayerUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -48,7 +48,7 @@ public class FeatureSleepCharm extends Feature {
     public void setupRecipes () {
 
         if (craftable) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(itemSleepCharm, new Object[] { "lsl", "sbs", "lsl", 's', STICK_WOOD, 'l', LEATHER, 'b', Items.BED }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(itemSleepCharm, new Object[] { "lsl", "sbs", "lsl", 's', STICK_WOOD, 'l', LEATHER, 'b', OreDictUtils.BED }));
         }
     }
 
