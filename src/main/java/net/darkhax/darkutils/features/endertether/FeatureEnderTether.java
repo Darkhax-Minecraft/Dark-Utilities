@@ -15,6 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -30,7 +31,7 @@ public class FeatureEnderTether extends Feature {
 
     protected static boolean affectPlayers = true;
 
-    protected static double tetherRange = 32D;
+    public static double tetherRange = 32D;
 
     @Override
     public void onPreInit () {
@@ -61,6 +62,7 @@ public class FeatureEnderTether extends Feature {
     public void onClientPreInit () {
 
         ModUtils.registerBlockInvModel(blockEnderTether);
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnderTether.class, new RendererEnderTether());
     }
 
     @Override

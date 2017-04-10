@@ -1,11 +1,16 @@
 package net.darkhax.darkutils.features.endertether;
 
-import net.darkhax.bookshelf.util.EntityUtils;
+import net.darkhax.bookshelf.tileentity.TileEntityBasic;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.AxisAlignedBB;
 
-public class TileEntityEnderTether extends TileEntity {
+public class TileEntityEnderTether extends TileEntityBasic {
+
+    public boolean showBorder = false;
+
+    public AxisAlignedBB area = new AxisAlignedBB(this.pos.add(-FeatureEnderTether.tetherRange, -FeatureEnderTether.tetherRange, -FeatureEnderTether.tetherRange), this.pos.add(FeatureEnderTether.tetherRange + 1, FeatureEnderTether.tetherRange + 1, FeatureEnderTether.tetherRange + 1));
 
     /**
      * Checks if an entity is close enough to the tether for it to be warped while teleporting.
@@ -16,6 +21,18 @@ public class TileEntityEnderTether extends TileEntity {
      */
     public boolean isEntityCloseEnough (EntityLivingBase entity) {
 
-        return entity instanceof EntityPlayer && !FeatureEnderTether.affectPlayers ? false : EntityUtils.getDistaceFromPos(entity, this.getPos()) <= FeatureEnderTether.tetherRange;
+        return entity instanceof EntityPlayer && FeatureEnderTether.affectPlayers ? true : this.area.intersectsWith(entity.getCollisionBoundingBox());
+    }
+
+    @Override
+    public void writeNBT (NBTTagCompound dataTag) {
+
+        dataTag.setBoolean("showBorder", this.showBorder);
+    }
+
+    @Override
+    public void readNBT (NBTTagCompound dataTag) {
+
+        this.showBorder = dataTag.getBoolean("showBorder");
     }
 }
