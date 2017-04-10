@@ -53,7 +53,7 @@ public class ItemNullCharm extends ItemBauble {
     }
 
     @Override
-    @Optional.Method(modid = "Baubles")
+    @Optional.Method(modid = "baubles")
     public BaubleType getBaubleType (ItemStack itemstack) {
 
         return BaubleType.CHARM;

@@ -77,14 +77,14 @@ public class ItemRing extends ItemBauble {
     }
 
     @Override
-    @Optional.Method(modid = "Baubles")
+    @Optional.Method(modid = "baubles")
     public BaubleType getBaubleType (ItemStack itemstack) {
 
         return BaubleType.RING;
     }
 
     @Override
-    @Optional.Method(modid = "Baubles")
+    @Optional.Method(modid = "baubles")
     public boolean canEquip (ItemStack itemstack, EntityLivingBase player) {
 
         return FeatureEnchantedRing.allowBaubles;
