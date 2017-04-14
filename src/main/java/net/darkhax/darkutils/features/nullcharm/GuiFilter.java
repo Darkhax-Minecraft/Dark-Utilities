@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.client.gui;
+package net.darkhax.darkutils.features.nullcharm;
 
 import net.darkhax.bookshelf.item.ItemInventory;
 import net.minecraft.client.gui.inventory.GuiContainer;
