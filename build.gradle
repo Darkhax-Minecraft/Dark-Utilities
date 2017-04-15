@@ -262,7 +262,7 @@ modsIO {
     
         artifact = jar.archivePath
         modid = "${id_modsio}"
-        minecraft = "${version_minecraft"
+        minecraft = "${version_minecraft}"
         changelog = getGitChangelog()
         current = true
     }
