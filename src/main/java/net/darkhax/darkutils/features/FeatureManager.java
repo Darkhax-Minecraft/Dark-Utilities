@@ -28,9 +28,8 @@ public class FeatureManager {
             feature.configName = name.toLowerCase().replace(' ', '_');
             FEATURES.add(feature);
 
-            if (feature.usesEvents()) {
+            if (feature.usesEvents())
                 MinecraftForge.EVENT_BUS.register(feature);
-            }
         }
     }
 }

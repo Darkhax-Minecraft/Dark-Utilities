@@ -129,29 +129,23 @@ public class BlockTrap extends Block {
 
             final int type = this.getMetaFromState(state);
 
-            if (type == 0) {
+            if (type == 0)
                 effect = new PotionEffect(MobEffects.POISON, 100);
-            }
 
-            if (type == 1) {
+            if (type == 1)
                 effect = new PotionEffect(MobEffects.WEAKNESS, 60);
-            }
 
-            if (type == 2) {
+            if (type == 2)
                 living.attackEntityFrom(DamageSource.magic, 2.5f);
-            }
 
-            if (type == 3) {
+            if (type == 3)
                 effect = new PotionEffect(MobEffects.SLOWNESS, 60, 2);
-            }
 
-            if (type == 4) {
+            if (type == 4)
                 living.setFire(1);
-            }
 
-            if (type == 5) {
+            if (type == 5)
                 effect = new PotionEffect(MobEffects.WITHER, 60);
-            }
 
             if (effect != null) {
 
@@ -165,8 +159,7 @@ public class BlockTrap extends Block {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks (Item itemIn, CreativeTabs tab, List<ItemStack> list) {
 
-        for (final TrapType type : TrapType.values()) {
+        for (final TrapType type : TrapType.values())
             list.add(new ItemStack(itemIn, 1, type.meta));
-        }
     }
 }

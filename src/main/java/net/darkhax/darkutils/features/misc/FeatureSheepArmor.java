@@ -40,12 +40,10 @@ public class FeatureSheepArmor extends Feature {
             final boolean hasModifier = instance.hasModifier(sheepArmor);
             final boolean isSheared = ((EntitySheep) entity).getSheared();
 
-            if (!isSheared && !hasModifier) {
+            if (!isSheared && !hasModifier)
                 instance.applyModifier(sheepArmor);
-            }
-            else if (isSheared && hasModifier) {
+            else if (isSheared && hasModifier)
                 instance.removeModifier(sheepArmor);
-            }
         }
     }
 }

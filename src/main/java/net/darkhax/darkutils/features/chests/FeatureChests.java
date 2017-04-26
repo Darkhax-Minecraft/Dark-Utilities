@@ -101,37 +101,29 @@ public class FeatureChests extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftGlacial) {
+        if (craftGlacial)
             GameRegistry.addRecipe(new ShapedOreRecipe(glacial, new Object[] { "xyx", "ycy", "xyx", 'x', Blocks.SNOW, 'y', Blocks.ICE, 'c', OreDictUtils.CHEST }));
-        }
 
-        if (craftGlass) {
+        if (craftGlass)
             GameRegistry.addRecipe(new ShapedOreRecipe(glass, new Object[] { "xyx", "ycy", "xyx", 'x', OreDictUtils.BLOCK_GLASS, 'y', OreDictUtils.PANE_GLASS, 'c', OreDictUtils.CHEST }));
-        }
 
-        if (craftJungle) {
+        if (craftJungle)
             GameRegistry.addRecipe(new ShapedOreRecipe(jungle, new Object[] { "xyx", "ycy", "xyx", 'x', OreDictUtils.TREE_LEAVES, 'y', OreDictUtils.TREE_SAPLING, 'c', OreDictUtils.CHEST }));
-        }
 
-        if (craftMagic) {
+        if (craftMagic)
             GameRegistry.addRecipe(new ShapedOreRecipe(magic, new Object[] { "xyx", "ycy", "xyx", 'x', OreDictUtils.INGOT_GOLD, 'y', new ItemStack(Blocks.WOOL, 1, 11), 'c', OreDictUtils.CHEST }));
-        }
 
-        if (craftNether) {
+        if (craftNether)
             GameRegistry.addRecipe(new ShapedOreRecipe(nether, new Object[] { "xqx", "ycy", "xyx", 'x', OreDictUtils.NETHERRACK, 'q', OreDictUtils.GEM_QUARTZ, 'y', OreDictUtils.INGOT_BRICK_NETHER, 'c', OreDictUtils.CHEST }));
-        }
 
-        if (craftRoyal) {
+        if (craftRoyal)
             GameRegistry.addRecipe(new ShapedOreRecipe(royal, new Object[] { "xyx", "ycy", "xyx", 'x', OreDictUtils.INGOT_GOLD, 'y', new ItemStack(Blocks.WOOL, 1, 14), 'c', OreDictUtils.CHEST }));
-        }
 
-        if (craftSandstone) {
+        if (craftSandstone)
             GameRegistry.addRecipe(new ShapedOreRecipe(sandstone, new Object[] { "xxx", "xcx", "xxx", 'x', OreDictUtils.SANDSTONE, 'c', OreDictUtils.CHEST }));
-        }
 
-        if (craftPrismarine) {
+        if (craftPrismarine)
             GameRegistry.addRecipe(new ShapedOreRecipe(prismarine, new Object[] { "xyx", "ycy", "xyx", 'x', OreDictUtils.GEM_PRISMARINE, 'y', OreDictUtils.DUST_PRISMARINE, 'c', OreDictUtils.CHEST }));
-        }
     }
 
     @Override

@@ -44,9 +44,8 @@ public class BlockWitherDust extends Block {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks (Item item, CreativeTabs tab, List<ItemStack> list) {
 
-        for (int meta = 0; meta < types.length; meta++) {
+        for (int meta = 0; meta < types.length; meta++)
             list.add(new ItemStack(item, 1, meta));
-        }
     }
 
     @Override
@@ -140,9 +139,8 @@ public class BlockWitherDust extends Block {
 
         public static EnumType byMetadata (int meta) {
 
-            if (meta < 0 || meta >= META_LOOKUP.length) {
+            if (meta < 0 || meta >= META_LOOKUP.length)
                 meta = 0;
-            }
 
             return META_LOOKUP[meta];
         }
@@ -155,9 +153,8 @@ public class BlockWitherDust extends Block {
 
         static {
 
-            for (final EnumType type : values()) {
+            for (final EnumType type : values())
                 META_LOOKUP[type.getMetadata()] = type;
-            }
         }
     }
 }

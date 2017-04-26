@@ -15,12 +15,10 @@ public class DarkUtilsJEIPlugin extends BlankModPlugin {
     @Override
     public void register (IModRegistry registry) {
 
-        for (final Block block : ModUtils.BLOCKS) {
+        for (final Block block : ModUtils.BLOCKS)
             registry.addDescription(new ItemStack(block, 1, OreDictionary.WILDCARD_VALUE), "jei." + block.getUnlocalizedName());
-        }
 
-        for (final Item item : ModUtils.ITEMS) {
+        for (final Item item : ModUtils.ITEMS)
             registry.addDescription(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), "jei." + item.getUnlocalizedName());
-        }
     }
 }

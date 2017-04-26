@@ -40,9 +40,8 @@ public class FeatureFakeTNT extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable) {
+        if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFakeTNT), new Object[] { "gwg", "wgw", "gwg", 'g', GUNPOWDER, 'w', new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE) }));
-        }
     }
 
     @Override

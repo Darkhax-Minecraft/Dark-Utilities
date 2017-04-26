@@ -38,9 +38,8 @@ public class BlockSneaky extends BlockContainer {
         this.setResistance(10.0F);
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
 
-        if (FeatureSneaky.opacity) {
+        if (FeatureSneaky.opacity)
             this.setLightOpacity(255);
-        }
     }
 
     @Override

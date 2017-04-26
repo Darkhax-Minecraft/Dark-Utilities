@@ -28,9 +28,8 @@ public class ItemNullCharm extends ItemBauble {
     @Override
     public ActionResult<ItemStack> onItemRightClick (ItemStack itemStack, World world, EntityPlayer player, EnumHand hand) {
 
-        if (!world.isRemote) {
+        if (!world.isRemote)
             player.openGui(DarkUtils.instance, GuiHandler.FILTER, world, 0, 0, 0);
-        }
 
         return new ActionResult<>(EnumActionResult.PASS, itemStack);
     }
@@ -39,12 +38,9 @@ public class ItemNullCharm extends ItemBauble {
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 
-        for (final ItemStack blacklisted : InventoryItem.getContents(stack)) {
-        	
-        	if (ItemStackUtils.isValidStack(blacklisted)) {
-        		tooltip.add(blacklisted.getDisplayName());
-        	}
-        }
+        for (final ItemStack blacklisted : InventoryItem.getContents(stack))
+            if (ItemStackUtils.isValidStack(blacklisted))
+                tooltip.add(blacklisted.getDisplayName());
     }
 
     public static boolean isBlackListed (ItemStack stack, ItemStack charmStack) {

@@ -78,25 +78,20 @@ public class FeatureMaterial extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftDustFromSkull) {
+        if (craftDustFromSkull)
             GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.SKULL, 1, 1));
-        }
 
-        if (craftDwindleCream) {
+        if (craftDwindleCream)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), SLIMEBALL));
-        }
 
-        if (craftUnstableEnderPearl) {
+        if (craftUnstableEnderPearl)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), ENDERPEARL));
-        }
 
-        if (craftDarkSugar) {
+        if (craftDarkSugar)
             GameRegistry.addShapedRecipe(new ItemStack(itemMaterial, 8, 3), "xxx", "xyx", "xxx", 'x', Items.SUGAR, 'y', itemMaterial);
-        }
 
-        if (craftSoulSand) {
+        if (craftSoulSand)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.SOUL_SAND, 5, 0), "xyx", "yxy", "xyx", 'x', OreDictUtils.SAND, 'y', itemMaterial));
-        }
 
         if (craftBlocks) {
 
@@ -134,9 +129,8 @@ public class FeatureMaterial extends Feature {
 
             final LootPool pool1 = table.getPool("pool1");
 
-            if (pool1 != null) {
+            if (pool1 != null)
                 pool1.addEntry(new LootEntryItem(itemMaterial, dustDropWeight, 0, new LootFunction[0], new LootCondition[0], Constants.MOD_ID + ":wither_dust"));
-            }
         }
     }
 }

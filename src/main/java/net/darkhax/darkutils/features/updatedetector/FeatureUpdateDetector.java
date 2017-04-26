@@ -36,9 +36,8 @@ public class FeatureUpdateDetector extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable) {
+        if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', STONE, 'p', Blocks.PISTON, 'r', BLOCK_REDSTONE }));
-        }
     }
 
     @Override

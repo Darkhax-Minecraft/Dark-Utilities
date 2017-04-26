@@ -51,9 +51,8 @@ public class BlockFeeder extends BlockContainer {
 
                     heldStack.stackSize--;
 
-                    if (heldStack.stackSize == 0) {
+                    if (heldStack.stackSize == 0)
                         playerIn.setHeldItem(EnumHand.MAIN_HAND, null);
-                    }
                 }
 
                 return true;

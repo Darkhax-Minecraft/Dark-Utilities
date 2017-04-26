@@ -43,9 +43,8 @@ public class FeatureGluttonyCharm extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable) {
+        if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(itemGluttonyCharm, new Object[] { " s ", "waw", " w ", 's', OreDictUtils.STRING, 'w', OreDictUtils.CROP_WHEAT, 'a', Items.GOLDEN_APPLE }));
-        }
     }
 
     @Override
@@ -58,8 +57,7 @@ public class FeatureGluttonyCharm extends Feature {
     @SubscribeEvent
     public void onItemUse (LivingEntityUseItemEvent.Tick event) {
 
-        if (event.getEntityLiving() instanceof EntityPlayer && PlayerUtils.playerHasItem((EntityPlayer) event.getEntityLiving(), itemGluttonyCharm, 0) && event.getItem() != null && event.getItem().getItem() instanceof ItemFood) {
+        if (event.getEntityLiving() instanceof EntityPlayer && PlayerUtils.playerHasItem((EntityPlayer) event.getEntityLiving(), itemGluttonyCharm, 0) && event.getItem() != null && event.getItem().getItem() instanceof ItemFood)
             event.setDuration(0);
-        }
     }
 }

@@ -25,9 +25,8 @@ public class AddonHandler {
      */
     public static void onPreInit () {
 
-        for (final ModAddon addon : addonRegistry) {
+        for (final ModAddon addon : addonRegistry)
             addon.onPreInit();
-        }
     }
 
     /**
@@ -35,13 +34,11 @@ public class AddonHandler {
      */
     public static void onInit () {
 
-        if (Loader.isModLoaded("Waila")) {
+        if (Loader.isModLoaded("Waila"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.darkutils.addons.waila.DarkUtilsTileProvider.registerAddon");
-        }
 
-        for (final ModAddon addon : addonRegistry) {
+        for (final ModAddon addon : addonRegistry)
             addon.onInit();
-        }
     }
 
     /**
@@ -49,8 +46,7 @@ public class AddonHandler {
      */
     public static void onPostInit () {
 
-        for (final ModAddon addon : addonRegistry) {
+        for (final ModAddon addon : addonRegistry)
             addon.onPostInit();
-        }
     }
 }

@@ -56,8 +56,7 @@ public class FeatureEnderHopper extends Feature {
 
         ModUtils.registerBlockInvModel(blockEnderHopper);
 
-        if (allowBoundsRendering) {
+        if (allowBoundsRendering)
             ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnderHopper.class, new RendererEnderHopper());
-        }
     }
 }

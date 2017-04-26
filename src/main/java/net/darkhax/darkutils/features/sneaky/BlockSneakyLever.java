@@ -64,9 +64,8 @@ public class BlockSneakyLever extends BlockSneaky {
     @Override
     public void breakBlock (World worldIn, BlockPos pos, IBlockState state) {
 
-        if (state.getValue(BlockStates.POWERED).booleanValue()) {
+        if (state.getValue(BlockStates.POWERED).booleanValue())
             worldIn.notifyNeighborsOfStateChange(pos, this);
-        }
 
         super.breakBlock(worldIn, pos, state);
     }

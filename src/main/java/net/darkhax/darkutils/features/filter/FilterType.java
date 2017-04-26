@@ -74,9 +74,8 @@ public enum FilterType implements IStringSerializable {
 
         final List<String> names = new ArrayList<>();
 
-        for (final FilterType type : FilterType.values()) {
+        for (final FilterType type : FilterType.values())
             names.add(type.type);
-        }
 
         nameList = names.toArray(new String[names.size()]);
         return nameList;

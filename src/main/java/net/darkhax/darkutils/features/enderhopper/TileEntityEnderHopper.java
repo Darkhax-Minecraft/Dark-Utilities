@@ -52,24 +52,20 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
 
                             final ItemStack result = ItemHandlerHelper.insertItem(handler, foundStack, false);
 
-                            if (result == null) {
+                            if (result == null)
                                 item.setDead();
-                            }
-                            else {
+                            else
                                 item.setEntityItemStack(result);
-                            }
                         }
                     }
 
                     this.getWorld().spawnParticle(EnumParticleTypes.PORTAL, item.posX, item.posY, item.posZ, -0.5d + Constants.RANDOM.nextDouble(), -0.5d + Constants.RANDOM.nextDouble(), -0.5d + Constants.RANDOM.nextDouble(), new int[0]);
                 }
 
-                if (this.cooldown <= 0) {
+                if (this.cooldown <= 0)
                     this.cooldown = 100;
-                }
-                else {
+                else
                     this.cooldown--;
-                }
             }
         }
 

@@ -99,9 +99,8 @@ public class BlockTimer extends BlockContainer {
     @Override
     public void updateTick (World world, BlockPos pos, IBlockState state, Random rand) {
 
-        if (state.getValue(BlockStates.POWERED)) {
+        if (state.getValue(BlockStates.POWERED))
             world.setBlockState(pos, state.withProperty(BlockStates.POWERED, false), 1 | 2);
-        }
     }
 
     @Override

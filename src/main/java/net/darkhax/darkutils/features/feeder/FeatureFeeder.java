@@ -37,9 +37,8 @@ public class FeatureFeeder extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable) {
+        if (craftable)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFeeder), new Object[] { "ccc", "geg", "ccc", 'c', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 5), 'g', PANE_GLASS, 'e', GEM_EMERALD }));
-        }
     }
 
     @Override

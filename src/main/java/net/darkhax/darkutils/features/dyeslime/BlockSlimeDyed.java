@@ -37,9 +37,8 @@ public class BlockSlimeDyed extends BlockSlime {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks (Item itemIn, CreativeTabs tab, List<ItemStack> list) {
 
-        for (final EnumDyeColor enumdyecolor : EnumDyeColor.values()) {
+        for (final EnumDyeColor enumdyecolor : EnumDyeColor.values())
             list.add(new ItemStack(itemIn, 1, enumdyecolor.getMetadata()));
-        }
     }
 
     @Override

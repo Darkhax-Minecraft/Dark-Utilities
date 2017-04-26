@@ -8,7 +8,6 @@ import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -45,9 +44,8 @@ public class FeatureSleepCharm extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable) {
-        	GameRegistry.addRecipe(new ShapedOreRecipe(itemSleepCharm, new Object[] { "lsl", "sbs", "lsl", 's', STICK_WOOD, 'l', LEATHER, 'b', "bed" }));
-        }
+        if (craftable)
+            GameRegistry.addRecipe(new ShapedOreRecipe(itemSleepCharm, new Object[] { "lsl", "sbs", "lsl", 's', STICK_WOOD, 'l', LEATHER, 'b', "bed" }));
     }
 
     @Override
@@ -66,9 +64,8 @@ public class FeatureSleepCharm extends Feature {
 
             final EntityPlayer player = (EntityPlayer) entity;
 
-            if (player.isPlayerSleeping() && PlayerUtils.playerHasItem((EntityPlayer) entity, itemSleepCharm, -1)) {
+            if (player.isPlayerSleeping() && PlayerUtils.playerHasItem((EntityPlayer) entity, itemSleepCharm, -1))
                 player.sleepTimer = 100;
-            }
         }
     }
 }

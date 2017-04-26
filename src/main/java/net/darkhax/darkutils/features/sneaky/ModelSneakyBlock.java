@@ -144,9 +144,8 @@ public class ModelSneakyBlock implements IBakedModel {
 
             IBlockState state = this.access.getBlockState(pos);
 
-            if (state.getBlock() instanceof BlockSneaky) {
+            if (state.getBlock() instanceof BlockSneaky)
                 state = ((TileEntitySneaky) this.access.getTileEntity(pos)).heldState;
-            }
 
             return state == null ? Blocks.AIR.getDefaultState() : state;
         }
