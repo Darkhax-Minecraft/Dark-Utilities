@@ -35,7 +35,7 @@ targetCompatibility = 1.8
 
 group = "net.darkhax.darkutils"
 archivesBaseName = "DarkUtilities"
-version = getVersionFromJava(file("src/main/java/net/darkhax/darkutils/libs/Constants.java"))
+version = '1.1.8.finalrc1'
 
 //Defines the MC environment information.
 minecraft {
