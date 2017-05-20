@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.client.gui;
+package net.darkhax.darkutils.features.timer;
 
 import net.darkhax.bookshelf.inventory.InventoryItem;
 import net.darkhax.bookshelf.inventory.SlotFake;
