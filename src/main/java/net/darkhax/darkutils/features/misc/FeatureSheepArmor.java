@@ -2,7 +2,7 @@ package net.darkhax.darkutils.features.misc;
 
 import java.util.UUID;
 
-import net.darkhax.bookshelf.lib.ModifierOperation;
+import net.darkhax.bookshelf.data.AttributeOperation;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,12 +17,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @DUFeature(name = "Sheep Armor", description = "Gives sheep armor when they have wool")
 public class FeatureSheepArmor extends Feature {
 
-    public static AttributeModifier sheepArmor = new AttributeModifier(UUID.fromString("6e915cea-3f18-485d-a818-373fe4f75f7f"), "sheep_armor", 1.0d, ModifierOperation.ADDITIVE.ordinal());
+    public static AttributeModifier sheepArmor = new AttributeModifier(UUID.fromString("6e915cea-3f18-485d-a818-373fe4f75f7f"), "sheep_armor", 1.0d, AttributeOperation.ADDITIVE.ordinal());
 
     @Override
     public void setupConfiguration (Configuration config) {
 
-        sheepArmor = new AttributeModifier(UUID.fromString("6e915cea-3f18-485d-a818-373fe4f75f7f"), "sheep_armor", config.getFloat("Armor Points", this.configName, 1f, 0f, 512f, "How many armor points should sheep have while they have wool?"), ModifierOperation.ADDITIVE.ordinal());
+        sheepArmor = new AttributeModifier(UUID.fromString("6e915cea-3f18-485d-a818-373fe4f75f7f"), "sheep_armor", config.getFloat("Armor Points", this.configName, 1f, 0f, 512f, "How many armor points should sheep have while they have wool?"), AttributeOperation.ADDITIVE.ordinal());
     }
 
     @Override

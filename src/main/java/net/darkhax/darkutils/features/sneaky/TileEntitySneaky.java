@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.features.sneaky;
 
-import net.darkhax.bookshelf.tileentity.TileEntityBasic;
+import net.darkhax.bookshelf.block.tileentity.TileEntityBasic;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;

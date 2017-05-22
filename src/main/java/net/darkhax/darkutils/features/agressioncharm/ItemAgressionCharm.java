@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.features.agressioncharm;
 
 import baubles.api.BaubleType;
-import net.darkhax.bookshelf.utils.baubles.ItemBauble;
+import net.darkhax.bookshelf.util.baubles.ItemBauble;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 

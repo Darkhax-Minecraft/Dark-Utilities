@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.features.enderhopper;
 
 import net.darkhax.bookshelf.block.BlockTileEntity;
-import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.data.Blockstates;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -37,7 +37,7 @@ public class BlockEnderHopper extends BlockTileEntity {
         this.setResistance(9000f);
         this.setLightLevel(0.25f);
         this.setHarvestLevel("pickaxe", 1);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.FACING, EnumFacing.UP));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(Blockstates.FACING, EnumFacing.UP));
     }
 
     @Override
@@ -57,7 +57,7 @@ public class BlockEnderHopper extends BlockTileEntity {
     @Override
     public IBlockState getStateForPlacement (World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 
-        return this.blockState.getBaseState().withProperty(BlockStates.FACING, facing);
+        return this.blockState.getBaseState().withProperty(Blockstates.FACING, facing);
     }
 
     @Override
@@ -69,25 +69,26 @@ public class BlockEnderHopper extends BlockTileEntity {
     @Override
     public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
 
-        final EnumFacing direction = state.getValue(BlockStates.FACING);
+        final EnumFacing direction = state.getValue(Blockstates.FACING);
 
-        if (direction == EnumFacing.DOWN)
+        if (direction == EnumFacing.DOWN) {
             return BOUNDS_DOWN;
-
-        else if (direction == EnumFacing.UP)
+        }
+        else if (direction == EnumFacing.UP) {
             return BOUNDS_UP;
-
-        else if (direction == EnumFacing.NORTH)
+        }
+        else if (direction == EnumFacing.NORTH) {
             return BOUNDS_NORTH;
-
-        else if (direction == EnumFacing.SOUTH)
+        }
+        else if (direction == EnumFacing.SOUTH) {
             return BOUNDS_SOUTH;
-
-        else if (direction == EnumFacing.WEST)
+        }
+        else if (direction == EnumFacing.WEST) {
             return BOUNDS_WEST;
-
-        else if (direction == EnumFacing.EAST)
+        }
+        else if (direction == EnumFacing.EAST) {
             return BOUNDS_EAST;
+        }
 
         return BOUNDS_UP;
     }
@@ -119,18 +120,18 @@ public class BlockEnderHopper extends BlockTileEntity {
     @Override
     public IBlockState getStateFromMeta (int meta) {
 
-        return this.getDefaultState().withProperty(BlockStates.FACING, EnumFacing.getFront(meta));
+        return this.getDefaultState().withProperty(Blockstates.FACING, EnumFacing.getFront(meta));
     }
 
     @Override
     public int getMetaFromState (IBlockState state) {
 
-        return state.getValue(BlockStates.FACING).getIndex();
+        return state.getValue(Blockstates.FACING).getIndex();
     }
 
     @Override
     protected BlockStateContainer createBlockState () {
 
-        return new BlockStateContainer(this, new IProperty[] { BlockStates.FACING });
+        return new BlockStateContainer(this, new IProperty[] { Blockstates.FACING });
     }
 }

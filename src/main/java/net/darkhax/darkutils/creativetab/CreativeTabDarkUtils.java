@@ -17,11 +17,12 @@ public class CreativeTabDarkUtils extends CreativeTabs {
     @Override
     public ItemStack getTabIconItem () {
 
-        if (ModUtils.BLOCKS.size() > 0)
+        if (ModUtils.BLOCKS.size() > 0) {
             return new ItemStack(Item.getItemFromBlock(ModUtils.BLOCKS.get(0)));
-
-        else if (ModUtils.ITEMS.size() > 0)
+        }
+        else if (ModUtils.ITEMS.size() > 0) {
             return new ItemStack(ModUtils.ITEMS.get(0));
+        }
 
         return new ItemStack(Items.DRAGON_BREATH);
     }

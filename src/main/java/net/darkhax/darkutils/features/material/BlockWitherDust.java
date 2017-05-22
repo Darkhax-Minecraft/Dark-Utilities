@@ -99,8 +99,9 @@ public class BlockWitherDust extends Block {
     @SideOnly(Side.CLIENT)
     public int getPackedLightmapCoords (IBlockState state, IBlockAccess source, BlockPos pos) {
 
-        if (this.getMetaFromState(state) == 4)
+        if (this.getMetaFromState(state) == 4) {
             return 15728880;
+        }
 
         return super.getPackedLightmapCoords(state, source, pos);
     }

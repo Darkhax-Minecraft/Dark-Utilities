@@ -2,9 +2,9 @@ package net.darkhax.darkutils.features.enderhopper;
 
 import java.util.List;
 
-import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.block.tileentity.TileEntityBasic;
+import net.darkhax.bookshelf.data.Blockstates;
 import net.darkhax.bookshelf.lib.Constants;
-import net.darkhax.bookshelf.tileentity.TileEntityBasic;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,8 +28,9 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
     @Override
     public void update () {
 
-        if (this.isInvalid() || !this.getWorld().isBlockLoaded(this.getPos()))
+        if (this.isInvalid() || !this.getWorld().isBlockLoaded(this.getPos())) {
             return;
+        }
 
         try {
 
@@ -82,7 +83,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
 
     private EnumFacing getDirection () {
 
-        return this.getWorld().getBlockState(this.getPos()).getValue(BlockStates.FACING);
+        return this.getWorld().getBlockState(this.getPos()).getValue(Blockstates.FACING);
     }
 
     @Override

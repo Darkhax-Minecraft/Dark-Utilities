@@ -20,8 +20,9 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Object getServerGuiElement (int id, EntityPlayer player, World world, int x, int y, int z) {
 
-        if (id == FILTER)
+        if (id == FILTER) {
             return new ContainerFilter(player.inventory, new ItemInventory(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
+        }
 
         return null;
     }
@@ -33,12 +34,14 @@ public class GuiHandler implements IGuiHandler {
 
             final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
 
-            if (tile instanceof TileEntityTimer)
+            if (tile instanceof TileEntityTimer) {
                 return new GuiTimerAmount((TileEntityTimer) tile);
+            }
         }
 
-        else if (id == FILTER)
+        else if (id == FILTER) {
             return new GuiFilter(player.inventory, new ItemInventory(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
+        }
 
         return null;
     }

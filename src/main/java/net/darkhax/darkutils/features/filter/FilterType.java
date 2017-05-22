@@ -60,17 +60,20 @@ public enum FilterType implements IStringSerializable {
 
     public static FilterType fromMeta (int meta) {
 
-        for (final FilterType type : FilterType.values())
-            if (type.meta == meta)
+        for (final FilterType type : FilterType.values()) {
+            if (type.meta == meta) {
                 return type;
-
+            }
+        }
+        
         return PLAYER;
     }
 
     public static String[] getTypes () {
 
-        if (nameList != null)
+        if (nameList != null) {
             return nameList;
+        }
 
         final List<String> names = new ArrayList<>();
 

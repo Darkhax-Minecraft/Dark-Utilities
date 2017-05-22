@@ -25,13 +25,15 @@ public class BlockColorSneaky implements IBlockColor {
 
                 final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
 
-                if (sneaky.heldState != null)
+                if (sneaky.heldState != null) {
                     return Minecraft.getMinecraft().getBlockColors().colorMultiplier(sneaky.heldState, world, pos, tintIndex);
+                }
             }
 
             return 16777215;
         }
-        else
+        else {
             return 16777215;
+        }
     }
 }

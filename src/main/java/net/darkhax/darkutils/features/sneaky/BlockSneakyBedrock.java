@@ -18,8 +18,9 @@ public class BlockSneakyBedrock extends BlockSneaky {
     @Override
     public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 
-        if (playerIn.capabilities.isCreativeMode)
+        if (playerIn.capabilities.isCreativeMode) {
             return super.onBlockActivated(world, pos, state, playerIn, hand, side, hitX, hitY, hitZ);
+        }
 
         return false;
     }

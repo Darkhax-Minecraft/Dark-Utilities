@@ -72,7 +72,7 @@ public class FeatureAntiSlime extends Feature {
 
             final List<TileEntity> tiles = new ArrayList<>(event.getWorld().loadedTileEntityList);
 
-            for (final TileEntity tile : tiles)
+            for (final TileEntity tile : tiles) {
                 if (tile instanceof TileEntityAntiSlime && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.getEntity())) {
 
                     if (event.getWorld().isBlockPowered(tile.getPos())) {
@@ -83,6 +83,7 @@ public class FeatureAntiSlime extends Feature {
                     event.getEntity().setDead();
                     break;
                 }
+            }
         }
     }
 }

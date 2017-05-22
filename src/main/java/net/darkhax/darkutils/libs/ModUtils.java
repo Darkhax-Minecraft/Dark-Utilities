@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.darkhax.bookshelf.util.ItemStackUtils;
+import net.darkhax.bookshelf.util.StackUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.misc.FeatureDisabled;
 import net.minecraft.block.Block;
@@ -42,7 +42,7 @@ public class ModUtils {
 
             final ItemStack[] inputs = new ItemStack[amount];
             Arrays.fill(inputs, input);
-            GameRegistry.addShapelessRecipe(ItemStackUtils.copyStackWithSize(output, amount), (Object[]) inputs);
+            GameRegistry.addShapelessRecipe(StackUtils.copyStackWithSize(output, amount), (Object[]) inputs);
         }
     }
 
@@ -101,8 +101,9 @@ public class ModUtils {
 
     public static Object validateCrafting (Object object) {
 
-        if (object instanceof ItemStack)
+        if (object instanceof ItemStack) {
             return !((ItemStack) object).isEmpty() ? object : FeatureDisabled.itemDisabled;
+        }
 
         return object != null ? object : FeatureDisabled.itemDisabled;
     }

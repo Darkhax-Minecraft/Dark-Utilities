@@ -2,7 +2,7 @@ package net.darkhax.darkutils.features.updatedetector;
 
 import java.util.Random;
 
-import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.data.Blockstates;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -21,36 +21,37 @@ public class BlockUpdateDetector extends Block {
     public BlockUpdateDetector () {
 
         super(Material.ROCK);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, false));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(Blockstates.POWERED, false));
         this.setHardness(1f);
     }
 
     @Override
     public void neighborChanged (IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 
-        if (worldIn.isRemote || blockIn.canProvidePower(state) || blockIn == Blocks.PISTON_EXTENSION || blockIn == Blocks.PISTON_HEAD || state.getValue(BlockStates.POWERED))
+        if (worldIn.isRemote || blockIn.canProvidePower(state) || blockIn == Blocks.PISTON_EXTENSION || blockIn == Blocks.PISTON_HEAD || state.getValue(Blockstates.POWERED)) {
             return;
+        }
 
-        worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(BlockStates.POWERED, true), 1 | 2);
+        worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(Blockstates.POWERED, true), 1 | 2);
         worldIn.scheduleUpdate(pos, this, 5);
     }
 
     @Override
     public BlockStateContainer createBlockState () {
 
-        return new BlockStateContainer(this, BlockStates.POWERED);
+        return new BlockStateContainer(this, Blockstates.POWERED);
     }
 
     @Override
     public int getMetaFromState (IBlockState state) {
 
-        return state.getValue(BlockStates.POWERED) ? 1 : 0;
+        return state.getValue(Blockstates.POWERED) ? 1 : 0;
     }
 
     @Override
     public IBlockState getStateFromMeta (int meta) {
 
-        return this.getDefaultState().withProperty(BlockStates.POWERED, meta == 1);
+        return this.getDefaultState().withProperty(Blockstates.POWERED, meta == 1);
     }
 
     @Override
@@ -62,7 +63,7 @@ public class BlockUpdateDetector extends Block {
     @Override
     public int getWeakPower (IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
-        return state.getValue(BlockStates.POWERED) ? 15 : 0;
+        return state.getValue(Blockstates.POWERED) ? 15 : 0;
     }
 
     @Override
@@ -74,8 +75,8 @@ public class BlockUpdateDetector extends Block {
     @Override
     public void updateTick (World world, BlockPos pos, IBlockState state, Random rand) {
 
-        if (state.getValue(BlockStates.POWERED)) {
-            world.setBlockState(pos, state.withProperty(BlockStates.POWERED, false), 1 | 2);
+        if (state.getValue(Blockstates.POWERED)) {
+            world.setBlockState(pos, state.withProperty(Blockstates.POWERED, false), 1 | 2);
         }
     }
 

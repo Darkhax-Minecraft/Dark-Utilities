@@ -75,7 +75,7 @@ public class FeatureEnderTether extends Feature {
     public void onEnderTeleport (EnderTeleportEvent event) {
 
         if (event.getEntityLiving() instanceof EntityLivingBase && !event.getEntityLiving().isDead && event.getEntityLiving().getEntityWorld() != null && !event.getEntityLiving().getEntityWorld().isRemote) {
-            for (final TileEntity tile : event.getEntityLiving().getEntityWorld().loadedTileEntityList)
+            for (final TileEntity tile : event.getEntityLiving().getEntityWorld().loadedTileEntityList) {
                 if (tile instanceof TileEntityEnderTether && ((TileEntityEnderTether) tile).isEntityCloseEnough(event.getEntityLiving())) {
 
                     final BlockPos pos = tile.getPos();
@@ -84,6 +84,7 @@ public class FeatureEnderTether extends Feature {
                     event.setTargetZ(pos.getZ() + 0.5f);
                     break;
                 }
+            }
         }
     }
 }

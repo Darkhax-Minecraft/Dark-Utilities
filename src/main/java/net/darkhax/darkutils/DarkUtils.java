@@ -6,7 +6,6 @@ import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.FeatureManager;
-import net.darkhax.darkutils.features.misc.FeatureOreDict;
 import net.darkhax.darkutils.features.timer.PacketSyncTimer;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
 import net.darkhax.darkutils.handler.GuiHandler;
@@ -54,8 +53,6 @@ public class DarkUtils {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
         ConfigurationHandler.initConfig(event.getSuggestedConfigurationFile());
-
-        FeatureManager.registerFeature(new FeatureOreDict(), "Vanilla Ore Dictionary", "Adds several vanilla items and blocks to Forge's Ore Dictionary");
 
         FeatureManager.init(event.getAsmData());
 

@@ -3,7 +3,7 @@ package net.darkhax.darkutils.features.sneaky;
 import java.util.List;
 import java.util.Random;
 
-import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.data.Blockstates;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -23,26 +23,26 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
 
     public BlockSneakyPressurePlate () {
 
-        this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null).withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
+        this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(Blockstates.HELD_STATE, null).withProperty(Blockstates.BLOCK_ACCESS, null).withProperty(Blockstates.BLOCKPOS, null).withProperty(Blockstates.POWERED, Boolean.valueOf(false)));
         this.setTickRandomly(true);
     }
 
     @Override
     public BlockStateContainer createBlockState () {
 
-        return new ExtendedBlockState(this, new IProperty[] { BlockStates.POWERED }, new IUnlistedProperty[] { BlockStates.HELD_STATE, BlockStates.BLOCK_ACCESS, BlockStates.BLOCKPOS });
+        return new ExtendedBlockState(this, new IProperty[] { Blockstates.POWERED }, new IUnlistedProperty[] { Blockstates.HELD_STATE, Blockstates.BLOCK_ACCESS, Blockstates.BLOCKPOS });
     }
 
     @Override
     public int getMetaFromState (IBlockState state) {
 
-        return state.getValue(BlockStates.POWERED).booleanValue() ? 1 : 0;
+        return state.getValue(Blockstates.POWERED).booleanValue() ? 1 : 0;
     }
 
     @Override
     public IBlockState getStateFromMeta (int meta) {
 
-        return this.getDefaultState().withProperty(BlockStates.POWERED, meta == 0 ? false : true);
+        return this.getDefaultState().withProperty(Blockstates.POWERED, meta == 0 ? false : true);
     }
 
     @Override
@@ -144,12 +144,12 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
 
     protected int getRedstoneStrength (IBlockState state) {
 
-        return state.getValue(BlockStates.POWERED).booleanValue() ? 15 : 0;
+        return state.getValue(Blockstates.POWERED).booleanValue() ? 15 : 0;
     }
 
     protected IBlockState setRedstoneStrength (IBlockState state, int strength) {
 
-        return state.withProperty(BlockStates.POWERED, Boolean.valueOf(strength > 0));
+        return state.withProperty(Blockstates.POWERED, Boolean.valueOf(strength > 0));
     }
 
     protected int computeRedstoneStrength (World worldIn, BlockPos pos) {
@@ -158,9 +158,11 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
         final List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity((Entity) null, axisalignedbb);
 
         if (!list.isEmpty()) {
-            for (final Entity entity : list)
-                if (!entity.doesEntityNotTriggerPressurePlate())
+            for (final Entity entity : list) {
+                if (!entity.doesEntityNotTriggerPressurePlate()) {
                     return 15;
+                }
+            }
         }
 
         return 0;

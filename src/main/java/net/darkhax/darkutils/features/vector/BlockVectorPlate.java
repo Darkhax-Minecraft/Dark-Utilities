@@ -42,9 +42,9 @@ public class BlockVectorPlate extends Block {
             world.setBlockToAir(pos);
             return false;
         }
-
-        else
+        else {
             return true;
+        }
     }
 
     @Override

@@ -73,8 +73,9 @@ public class ContainerFilter extends Container {
     @Override
     public ItemStack slotClick (int slot, int dragType, ClickType clickTypeIn, EntityPlayer player) {
 
-        if (slot >= 0 && this.getSlot(slot) != null && this.getSlot(slot).getStack() == player.getHeldItemMainhand())
+        if (slot >= 0 && this.getSlot(slot) != null && this.getSlot(slot).getStack() == player.getHeldItemMainhand()) {
             return null;
+        }
 
         return super.slotClick(slot, dragType, clickTypeIn, player);
     }

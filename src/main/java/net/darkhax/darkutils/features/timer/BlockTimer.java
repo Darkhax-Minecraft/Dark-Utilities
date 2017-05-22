@@ -2,7 +2,7 @@ package net.darkhax.darkutils.features.timer;
 
 import java.util.Random;
 
-import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.data.Blockstates;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.block.BlockContainer;
@@ -29,7 +29,7 @@ public class BlockTimer extends BlockContainer {
     public BlockTimer () {
 
         super(Material.ROCK);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStates.POWERED, false));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(Blockstates.POWERED, false));
         this.setHardness(1f);
     }
 
@@ -62,19 +62,19 @@ public class BlockTimer extends BlockContainer {
     @Override
     public BlockStateContainer createBlockState () {
 
-        return new BlockStateContainer(this, BlockStates.POWERED);
+        return new BlockStateContainer(this, Blockstates.POWERED);
     }
 
     @Override
     public int getMetaFromState (IBlockState state) {
 
-        return state.getValue(BlockStates.POWERED) ? 1 : 0;
+        return state.getValue(Blockstates.POWERED) ? 1 : 0;
     }
 
     @Override
     public IBlockState getStateFromMeta (int meta) {
 
-        return this.getDefaultState().withProperty(BlockStates.POWERED, meta == 1);
+        return this.getDefaultState().withProperty(Blockstates.POWERED, meta == 1);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class BlockTimer extends BlockContainer {
     @Override
     public int getWeakPower (IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
-        return state.getValue(BlockStates.POWERED) ? 15 : 0;
+        return state.getValue(Blockstates.POWERED) ? 15 : 0;
     }
 
     @Override
@@ -98,8 +98,8 @@ public class BlockTimer extends BlockContainer {
     @Override
     public void updateTick (World world, BlockPos pos, IBlockState state, Random rand) {
 
-        if (state.getValue(BlockStates.POWERED)) {
-            world.setBlockState(pos, state.withProperty(BlockStates.POWERED, false), 1 | 2);
+        if (state.getValue(Blockstates.POWERED)) {
+            world.setBlockState(pos, state.withProperty(Blockstates.POWERED, false), 1 | 2);
         }
     }
 

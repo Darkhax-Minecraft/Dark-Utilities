@@ -46,15 +46,18 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
 
             final TileEntitySneaky tile = (TileEntitySneaky) data.getTileEntity();
 
-            if (cfg.getConfig(CONFIG_SNEAKY_OWNERS) && tile.playerID != null && !tile.playerID.isEmpty() && data.getPlayer().getUniqueID().toString().equals(tile.playerID))
+            if (cfg.getConfig(CONFIG_SNEAKY_OWNERS) && tile.playerID != null && !tile.playerID.isEmpty() && data.getPlayer().getUniqueID().toString().equals(tile.playerID)) {
                 return data.getStack();
+            }
 
-            if (tile.heldState != null)
+            if (tile.heldState != null) {
                 return new ItemStack(tile.heldState.getBlock(), 1, tile.heldState.getBlock().getMetaFromState(tile.heldState));
+            }
         }
 
-        else if (data.getBlock() instanceof BlockFakeTNT)
+        else if (data.getBlock() instanceof BlockFakeTNT) {
             return new ItemStack(Blocks.TNT, 1, 0);
+        }
 
         return new ItemStack(data.getStack().getItem(), 1, 0);
     }

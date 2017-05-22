@@ -3,7 +3,7 @@ package net.darkhax.darkutils.features.enchrings;
 import java.util.List;
 
 import baubles.api.BaubleType;
-import net.darkhax.bookshelf.utils.baubles.ItemBauble;
+import net.darkhax.bookshelf.util.baubles.ItemBauble;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,8 +31,9 @@ public class ItemRing extends ItemBauble {
 
         final int meta = stack.getMetadata();
 
-        if (!(meta >= 0 && meta < varients.length))
+        if (!(meta >= 0 && meta < varients.length)) {
             return super.getUnlocalizedName() + "." + varients[0];
+        }
 
         return super.getUnlocalizedName() + "." + varients[meta];
     }

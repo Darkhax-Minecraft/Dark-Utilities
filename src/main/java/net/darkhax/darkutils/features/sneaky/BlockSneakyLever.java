@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.features.sneaky;
 
-import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.data.Blockstates;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -21,25 +21,25 @@ public class BlockSneakyLever extends BlockSneaky {
 
     public BlockSneakyLever () {
 
-        this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null).withProperty(BlockStates.POWERED, Boolean.valueOf(false)));
+        this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(Blockstates.HELD_STATE, null).withProperty(Blockstates.BLOCK_ACCESS, null).withProperty(Blockstates.BLOCKPOS, null).withProperty(Blockstates.POWERED, Boolean.valueOf(false)));
     }
 
     @Override
     public BlockStateContainer createBlockState () {
 
-        return new ExtendedBlockState(this, new IProperty[] { BlockStates.POWERED }, new IUnlistedProperty[] { BlockStates.HELD_STATE, BlockStates.BLOCK_ACCESS, BlockStates.BLOCKPOS });
+        return new ExtendedBlockState(this, new IProperty[] { Blockstates.POWERED }, new IUnlistedProperty[] { Blockstates.HELD_STATE, Blockstates.BLOCK_ACCESS, Blockstates.BLOCKPOS });
     }
 
     @Override
     public int getMetaFromState (IBlockState state) {
 
-        return state.getValue(BlockStates.POWERED).booleanValue() ? 1 : 0;
+        return state.getValue(Blockstates.POWERED).booleanValue() ? 1 : 0;
     }
 
     @Override
     public IBlockState getStateFromMeta (int meta) {
 
-        return this.getDefaultState().withProperty(BlockStates.POWERED, meta == 0 ? false : true);
+        return this.getDefaultState().withProperty(Blockstates.POWERED, meta == 0 ? false : true);
     }
 
     @Override
@@ -47,17 +47,18 @@ public class BlockSneakyLever extends BlockSneaky {
 
         final ItemStack heldItem = playerIn.getHeldItemMainhand();
 
-        if (!heldItem.isEmpty())
+        if (!heldItem.isEmpty()) {
             return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+        }
 
-        if (worldIn.isRemote)
+        if (worldIn.isRemote) {
             return true;
-
+        }
         else {
 
-            state = state.cycleProperty(BlockStates.POWERED);
+            state = state.cycleProperty(Blockstates.POWERED);
             worldIn.setBlockState(pos, state, 1 | 2);
-            worldIn.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, state.getValue(BlockStates.POWERED).booleanValue() ? 0.6F : 0.5F);
+            worldIn.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, state.getValue(Blockstates.POWERED).booleanValue() ? 0.6F : 0.5F);
             worldIn.notifyNeighborsOfStateChange(pos, this, false);
             return true;
         }
@@ -66,7 +67,7 @@ public class BlockSneakyLever extends BlockSneaky {
     @Override
     public void breakBlock (World worldIn, BlockPos pos, IBlockState state) {
 
-        if (state.getValue(BlockStates.POWERED).booleanValue()) {
+        if (state.getValue(Blockstates.POWERED).booleanValue()) {
             worldIn.notifyNeighborsOfStateChange(pos, this, false);
         }
 
@@ -76,13 +77,13 @@ public class BlockSneakyLever extends BlockSneaky {
     @Override
     public int getWeakPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
-        return blockState.getValue(BlockStates.POWERED).booleanValue() ? 15 : 0;
+        return blockState.getValue(Blockstates.POWERED).booleanValue() ? 15 : 0;
     }
 
     @Override
     public int getStrongPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
-        return !blockState.getValue(BlockStates.POWERED).booleanValue() ? 15 : 0;
+        return !blockState.getValue(Blockstates.POWERED).booleanValue() ? 15 : 0;
     }
 
     @Override

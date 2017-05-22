@@ -4,8 +4,8 @@ import java.util.List;
 
 import baubles.api.BaubleType;
 import net.darkhax.bookshelf.item.ItemInventory;
-import net.darkhax.bookshelf.util.ItemStackUtils;
-import net.darkhax.bookshelf.utils.baubles.ItemBauble;
+import net.darkhax.bookshelf.util.StackUtils;
+import net.darkhax.bookshelf.util.baubles.ItemBauble;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,10 +47,12 @@ public class ItemNullCharm extends ItemBauble {
 
     public static boolean isBlackListed (ItemStack stack, ItemStack charmStack) {
 
-        for (final ItemStack blacklisted : ItemInventory.getContents(charmStack))
-            if (ItemStackUtils.areStacksEqual(stack, blacklisted, true))
+        for (final ItemStack blacklisted : ItemInventory.getContents(charmStack)) {
+            if (StackUtils.areStacksEqual(stack, blacklisted, true)) {
                 return true;
-
+            }
+        }
+        
         return false;
     }
 

@@ -26,6 +26,12 @@ public class FeatureVectorPlate extends Feature {
 
     public static Block blockHyperVectorPlate;
 
+    public static Block blockUndergroundVectorPlate;
+
+    public static Block blockUndergroundFastVectorPlate;
+
+    public static Block blockUndergroundHyperVectorPlate;
+
     private static boolean craftVectorPlate = true;
 
     protected static boolean preventItemDespawn = true;
@@ -49,6 +55,15 @@ public class FeatureVectorPlate extends Feature {
 
         blockHyperVectorPlate = new BlockVectorPlate(hyperSpeed);
         ModUtils.registerBlock(blockHyperVectorPlate, "trap_move_hyper");
+
+        blockUndergroundVectorPlate = new BlockUndergroundVectorPlate(normalSpeed);
+        ModUtils.registerBlock(blockUndergroundVectorPlate, "trap_underground_move");
+
+        blockUndergroundFastVectorPlate = new BlockUndergroundVectorPlate(fastSpeed);
+        ModUtils.registerBlock(blockUndergroundFastVectorPlate, "trap_underground_move_fast");
+
+        blockUndergroundHyperVectorPlate = new BlockUndergroundVectorPlate(hyperSpeed);
+        ModUtils.registerBlock(blockUndergroundHyperVectorPlate, "trap_underground_move_hyper");
     }
 
     @Override
@@ -80,5 +95,9 @@ public class FeatureVectorPlate extends Feature {
         ModUtils.registerBlockInvModel(blockVectorPlate);
         ModUtils.registerBlockInvModel(blockFastVectorPlate);
         ModUtils.registerBlockInvModel(blockHyperVectorPlate);
+
+        ModUtils.registerBlockInvModel(blockUndergroundVectorPlate);
+        ModUtils.registerBlockInvModel(blockUndergroundFastVectorPlate);
+        ModUtils.registerBlockInvModel(blockUndergroundHyperVectorPlate);
     }
 }

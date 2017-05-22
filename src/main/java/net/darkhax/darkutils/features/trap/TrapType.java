@@ -40,17 +40,20 @@ public enum TrapType implements IStringSerializable {
 
     public static TrapType fromMeta (int meta) {
 
-        for (final TrapType type : TrapType.values())
-            if (type.meta == meta)
+        for (final TrapType type : TrapType.values()) {
+            if (type.meta == meta) {
                 return type;
-
+            }
+        }
+        
         return POISON;
     }
 
     public static String[] getTypes () {
 
-        if (nameList != null)
+        if (nameList != null) {
             return nameList;
+        }
 
         final List<String> names = new ArrayList<>();
 

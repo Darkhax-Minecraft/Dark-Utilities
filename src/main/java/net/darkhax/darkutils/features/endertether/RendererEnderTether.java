@@ -10,8 +10,9 @@ public class RendererEnderTether extends TileEntitySpecialRenderer<TileEntityEnd
     @Override
     public void renderTileEntityAt (TileEntityEnderTether te, double x, double y, double z, float partialTicks, int destroyStage) {
 
-        if (!te.showBorder)
+        if (!te.showBorder) {
             return;
+        }
 
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();

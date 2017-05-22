@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.features.timer;
 
-import net.darkhax.bookshelf.lib.BlockStates;
-import net.darkhax.bookshelf.tileentity.TileEntityBasicTickable;
+import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
+import net.darkhax.bookshelf.data.Blockstates;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class TileEntityTimer extends TileEntityBasicTickable {
@@ -31,12 +31,13 @@ public class TileEntityTimer extends TileEntityBasicTickable {
     @Override
     public void onEntityUpdate () {
 
-        if (this.world.isBlockPowered(this.pos))
+        if (this.world.isBlockPowered(this.pos)) {
             return;
+        }
 
         if (this.currentTime >= this.delayTime) {
 
-            this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(BlockStates.POWERED, true), 1 | 2);
+            this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(Blockstates.POWERED, true), 1 | 2);
             this.world.scheduleUpdate(this.pos, this.getBlockType(), this.getBlockType().tickRate(this.world));
             this.currentTime = 0;
         }

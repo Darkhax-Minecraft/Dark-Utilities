@@ -59,7 +59,7 @@ public class GuiTimerAmount extends GuiScreen {
     @Override
     protected void actionPerformed (GuiButton button) throws IOException {
 
-        if (button.enabled)
+        if (button.enabled) {
             if (button.id == 1) {
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
@@ -70,6 +70,7 @@ public class GuiTimerAmount extends GuiScreen {
                 this.timer.setDelayTime(time);
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
+        }
     }
 
     @Override

@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.features.sneaky;
 
-import net.darkhax.bookshelf.lib.BlockStates;
+import net.darkhax.bookshelf.data.Blockstates;
 import net.darkhax.bookshelf.lib.Constants;
 import net.darkhax.bookshelf.util.ParticleUtils;
 import net.minecraft.block.Block;
@@ -36,7 +36,7 @@ public class BlockSneaky extends BlockContainer {
         super(Material.ROCK);
         this.setHardness(1.5F);
         this.setResistance(10.0F);
-        this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
+        this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(Blockstates.HELD_STATE, null).withProperty(Blockstates.BLOCK_ACCESS, null).withProperty(Blockstates.BLOCKPOS, null));
 
         if (FeatureSneaky.opacity) {
             this.setLightOpacity(255);
@@ -98,7 +98,7 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public BlockStateContainer createBlockState () {
 
-        return new ExtendedBlockState(this, new IProperty[] {}, new IUnlistedProperty[] { BlockStates.HELD_STATE, BlockStates.BLOCK_ACCESS, BlockStates.BLOCKPOS });
+        return new ExtendedBlockState(this, new IProperty[] {}, new IUnlistedProperty[] { Blockstates.HELD_STATE, Blockstates.BLOCK_ACCESS, Blockstates.BLOCKPOS });
     }
 
     @Override
@@ -116,16 +116,16 @@ public class BlockSneaky extends BlockContainer {
     @Override
     public IBlockState getExtendedState (IBlockState state, IBlockAccess world, BlockPos pos) {
 
-        state = ((IExtendedBlockState) state).withProperty(BlockStates.BLOCK_ACCESS, world).withProperty(BlockStates.BLOCKPOS, pos);
+        state = ((IExtendedBlockState) state).withProperty(Blockstates.BLOCK_ACCESS, world).withProperty(Blockstates.BLOCKPOS, pos);
 
         if (world.getTileEntity(pos) instanceof TileEntitySneaky) {
 
             final TileEntitySneaky tile = (TileEntitySneaky) world.getTileEntity(pos);
-            return ((IExtendedBlockState) state).withProperty(BlockStates.HELD_STATE, tile.heldState);
+            return ((IExtendedBlockState) state).withProperty(Blockstates.HELD_STATE, tile.heldState);
         }
-
-        else
+        else {
             return state;
+        }
     }
 
     @Override
@@ -174,8 +174,9 @@ public class BlockSneaky extends BlockContainer {
 
             final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
 
-            if (sneaky.heldState != null)
+            if (sneaky.heldState != null) {
                 return ParticleUtils.spawnDigParticles(renderer, sneaky.heldState, world, hitPos.getBlockPos(), hitPos.sideHit);
+            }
         }
 
         return false;
@@ -190,8 +191,9 @@ public class BlockSneaky extends BlockContainer {
 
             final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
 
-            if (sneaky.heldState != null)
+            if (sneaky.heldState != null) {
                 return ParticleUtils.spawnBreakParticles(renderer, sneaky.heldState, world, pos);
+            }
         }
 
         return false;
@@ -212,11 +214,12 @@ public class BlockSneaky extends BlockContainer {
 
                     final IBlockState connected = blockAccess.getBlockState(pos.offset(side));
 
-                    if (connected == sneaky.heldState)
+                    if (connected == sneaky.heldState) {
                         return false;
-
-                    else if (connected.getBlock() instanceof BlockSneaky)
+                    }
+                    else if (connected.getBlock() instanceof BlockSneaky) {
                         return ((TileEntitySneaky) blockAccess.getTileEntity(pos.offset(side))).heldState != sneaky.heldState;
+                    }
                 }
 
                 try {

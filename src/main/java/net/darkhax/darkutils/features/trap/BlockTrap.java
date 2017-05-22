@@ -49,9 +49,9 @@ public class BlockTrap extends Block {
             world.setBlockToAir(pos);
             return false;
         }
-
-        else
+        else {
             return true;
+        }
     }
 
     private boolean canBlockStay (World world, BlockPos pos) {
