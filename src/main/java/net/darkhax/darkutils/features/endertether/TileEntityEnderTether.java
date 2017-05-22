@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.features.endertether;
 
-import net.darkhax.bookshelf.tileentity.TileEntityBasic;
+import net.darkhax.bookshelf.block.tileentity.TileEntityBasic;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,7 +21,7 @@ public class TileEntityEnderTether extends TileEntityBasic {
      */
     public boolean isEntityCloseEnough (EntityLivingBase entity) {
 
-        return entity instanceof EntityPlayer && FeatureEnderTether.affectPlayers ? true : this.area.intersectsWith(entity.getCollisionBoundingBox());
+        return entity instanceof EntityPlayer && !FeatureEnderTether.affectPlayers ? false : this.area.intersectsWith(entity.getCollisionBoundingBox());
     }
 
     @Override
