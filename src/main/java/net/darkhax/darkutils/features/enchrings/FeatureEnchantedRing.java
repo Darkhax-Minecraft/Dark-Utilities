@@ -2,9 +2,9 @@ package net.darkhax.darkutils.features.enchrings;
 
 import net.darkhax.bookshelf.events.EnchantmentModifierEvent;
 import net.darkhax.bookshelf.util.baubles.BaubleUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -20,8 +20,6 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @DUFeature(name = "Enchanted Rings", description = "Adds rings which can increase enchantment levels")
 public class FeatureEnchantedRing extends Feature {
@@ -37,9 +35,9 @@ public class FeatureEnchantedRing extends Feature {
     private static int weight;
 
     @Override
-    public void onPreInit () {
+    public void onRegistry () {
 
-        itemRing = ModUtils.registerItem(new ItemRing(), "ring");
+        itemRing = DarkUtils.REGISTRY.registerItem(new ItemRing(), "ring");
     }
 
     @Override
@@ -49,13 +47,6 @@ public class FeatureEnchantedRing extends Feature {
         allowStacking = config.getBoolean("RingStacking", this.configName, true, "Should players be allowed to use multiple of the same rings? IE Baubles");
         allowBaubles = config.getBoolean("RingBaubles", this.configName, true, "Allow rings in the bauble slots?");
         weight = config.getInt("DungeonWeight", this.configName, 1, 1, 1000, "The weight of the rings in a loot chest");
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-
-        ModUtils.registerItemInvModel(itemRing, "ring", ItemRing.varients);
     }
 
     @Override

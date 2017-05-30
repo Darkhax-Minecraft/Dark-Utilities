@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 
 import net.darkhax.bookshelf.lib.Constants;
 import net.darkhax.bookshelf.util.AnnotationUtils;
-import net.darkhax.darkutils.features.misc.FeatureDisabled;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
@@ -20,7 +19,6 @@ public class FeatureManager {
     public static void init (ASMDataTable asmDataTable) {
 
         loaded = true;
-        features.add(new FeatureDisabled());
 
         for (final Entry<Feature, DUFeature> feature : AnnotationUtils.getAnnotations(asmDataTable, DUFeature.class, Feature.class).entrySet()) {
 

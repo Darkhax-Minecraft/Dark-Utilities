@@ -3,17 +3,16 @@ package net.darkhax.darkutils.features.vector;
 import static net.darkhax.bookshelf.util.OreDictUtils.SLIMEBALL;
 import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
+import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
@@ -45,25 +44,29 @@ public class FeatureVectorPlate extends Feature {
     private static double hyperSpeed = 1.5d;
 
     @Override
-    public void onPreInit () {
+    public void onRegistry () {
 
         blockVectorPlate = new BlockVectorPlate(normalSpeed);
-        ModUtils.registerBlock(blockVectorPlate, "trap_move");
+        DarkUtils.REGISTRY.registerBlock(blockVectorPlate, "trap_move");
 
         blockFastVectorPlate = new BlockVectorPlate(fastSpeed);
-        ModUtils.registerBlock(blockFastVectorPlate, "trap_move_fast");
+        DarkUtils.REGISTRY.registerBlock(blockFastVectorPlate, "trap_move_fast");
 
         blockHyperVectorPlate = new BlockVectorPlate(hyperSpeed);
-        ModUtils.registerBlock(blockHyperVectorPlate, "trap_move_hyper");
-
-        blockUndergroundVectorPlate = new BlockUndergroundVectorPlate(normalSpeed);
-        ModUtils.registerBlock(blockUndergroundVectorPlate, "trap_underground_move");
-
-        blockUndergroundFastVectorPlate = new BlockUndergroundVectorPlate(fastSpeed);
-        ModUtils.registerBlock(blockUndergroundFastVectorPlate, "trap_underground_move_fast");
-
-        blockUndergroundHyperVectorPlate = new BlockUndergroundVectorPlate(hyperSpeed);
-        ModUtils.registerBlock(blockUndergroundHyperVectorPlate, "trap_underground_move_hyper");
+        DarkUtils.REGISTRY.registerBlock(blockHyperVectorPlate, "trap_move_hyper");
+        /**
+         * blockUndergroundVectorPlate = new BlockUndergroundVectorPlate(normalSpeed);
+         * DarkUtils.REGISTRY.registerBlock(blockUndergroundVectorPlate,
+         * "trap_underground_move");
+         *
+         * blockUndergroundFastVectorPlate = new BlockUndergroundVectorPlate(fastSpeed);
+         * DarkUtils.REGISTRY.registerBlock(blockUndergroundFastVectorPlate,
+         * "trap_underground_move_fast");
+         *
+         * blockUndergroundHyperVectorPlate = new BlockUndergroundVectorPlate(hyperSpeed);
+         * DarkUtils.REGISTRY.registerBlock(blockUndergroundHyperVectorPlate,
+         * "trap_underground_move_hyper");
+         **/
     }
 
     @Override
@@ -83,21 +86,8 @@ public class FeatureVectorPlate extends Feature {
         if (craftVectorPlate) {
 
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockVectorPlate, 8), new Object[] { "isi", "bfb", 's', SLIMEBALL, 'b', STONE, 'f', Items.SUGAR }));
-            GameRegistry.addShapedRecipe(new ItemStack(blockFastVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockVectorPlate, 'y', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 3)));
-            GameRegistry.addShapedRecipe(new ItemStack(blockHyperVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockFastVectorPlate, 'y', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.blockWitherDust, 1, OreDictionary.WILDCARD_VALUE)));
+            GameRegistry.addShapedRecipe(new ItemStack(blockFastVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockVectorPlate, 'y', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 3)));
+            GameRegistry.addShapedRecipe(new ItemStack(blockHyperVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockFastVectorPlate, 'y', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.blockWitherDust, 1, OreDictionary.WILDCARD_VALUE)));
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-
-        ModUtils.registerBlockInvModel(blockVectorPlate);
-        ModUtils.registerBlockInvModel(blockFastVectorPlate);
-        ModUtils.registerBlockInvModel(blockHyperVectorPlate);
-
-        ModUtils.registerBlockInvModel(blockUndergroundVectorPlate);
-        ModUtils.registerBlockInvModel(blockUndergroundFastVectorPlate);
-        ModUtils.registerBlockInvModel(blockUndergroundHyperVectorPlate);
     }
 }

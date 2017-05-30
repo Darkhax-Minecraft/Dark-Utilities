@@ -2,10 +2,10 @@ package net.darkhax.darkutils.features.shulkerpearl;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.shulkerpearl.ShulkerDataHandler.ICustomData;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.init.Blocks;
@@ -18,7 +18,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
@@ -39,11 +38,15 @@ public class FeatureShulkerPearlItem extends Feature {
     private int maxCooldown = 6000;
 
     @Override
-    public void onPreInit () {
+    public void onRegistry () {
 
-        itemShulkerPearl = ModUtils.registerItem(new ItemShulkerPearl(), "shulker_pearl");
+        System.out.println("Registering PEARL");
+        itemShulkerPearl = DarkUtils.REGISTRY.registerItem(new ItemShulkerPearl(), "shulker_pearl");
+        if (itemShulkerPearl == null) {
+            System.out.println("pearl is null :(");
+        }
         blockShulkerPearl = new BlockShulkerPearl();
-        ModUtils.registerBlock(blockShulkerPearl, new ItemBlockBasic(blockShulkerPearl, BlockShulkerPearl.types, false), "pearl_block");
+        DarkUtils.REGISTRY.registerBlock(blockShulkerPearl, new ItemBlockBasic(blockShulkerPearl, BlockShulkerPearl.types, false), "pearl_block");
         OreDictionary.registerOre("blockPearl", new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("gemPearl", itemShulkerPearl);
 
@@ -68,6 +71,15 @@ public class FeatureShulkerPearlItem extends Feature {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.END_ROD), Items.CHORUS_FRUIT, "gemPearl"));
         }
 
+        if (itemShulkerPearl == null) {
+
+            System.out.println("PEARL IS NULL");
+        }
+
+        if (blockShulkerPearl == null) {
+
+            System.out.println("PEARL BLOCK IS NULL");
+        }
         if (this.craftBlocks) {
 
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockShulkerPearl, 32, 0), "xxx", "xsx", "xxx", 'x', itemShulkerPearl, 's', OreDictUtils.ENDSTONE));
@@ -76,14 +88,6 @@ public class FeatureShulkerPearlItem extends Feature {
             GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 2));
             GameRegistry.addShapelessRecipe(new ItemStack(itemShulkerPearl), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-
-        ModUtils.registerItemInvModel(itemShulkerPearl);
-        ModUtils.registerItemInvModel(Item.getItemFromBlock(blockShulkerPearl), "pearl", BlockShulkerPearl.types);
     }
 
     @Override

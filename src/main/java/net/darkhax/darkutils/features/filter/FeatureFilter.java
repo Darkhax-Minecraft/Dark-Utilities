@@ -4,15 +4,14 @@ import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
 import java.util.HashMap;
 
+import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Mob Filters", description = "Blocks for filtering mobs")
@@ -27,13 +26,12 @@ public class FeatureFilter extends Feature {
     private static HashMap<FilterType, Boolean> craftableInverted = new HashMap<>();
 
     @Override
-    public void onPreInit () {
+    public void onRegistry () {
 
         blockFilter = new BlockFilter();
-        ModUtils.registerBlock(blockFilter, new ItemBlockFilter(blockFilter, FilterType.getTypes()), "filter");
-
+        DarkUtils.REGISTRY.registerBlock(blockFilter, new ItemBlockFilter(blockFilter, FilterType.getTypes()), "filter");
         blockInvertedFilter = new BlockInvertedFilter();
-        ModUtils.registerBlock(blockInvertedFilter, new ItemBlockFilter(blockInvertedFilter, FilterType.getTypes()), "filter_inverted");
+        DarkUtils.REGISTRY.registerBlock(blockInvertedFilter, new ItemBlockFilter(blockInvertedFilter, FilterType.getTypes()), "filter_inverted");
     }
 
     @Override
@@ -55,17 +53,9 @@ public class FeatureFilter extends Feature {
 
             if (craftableInverted.get(type)) {
 
-                ModUtils.addConversionRecipes(new ItemStack(blockFilter, 1, type.meta), new ItemStack(blockInvertedFilter, 1, type.meta));
-                ModUtils.addConversionRecipes(new ItemStack(blockInvertedFilter, 1, type.meta), new ItemStack(blockFilter, 1, type.meta));
+                CraftingUtils.createConversionRecipes(new ItemStack(blockFilter, 1, type.meta), new ItemStack(blockInvertedFilter, 1, type.meta));
+                CraftingUtils.createConversionRecipes(new ItemStack(blockInvertedFilter, 1, type.meta), new ItemStack(blockFilter, 1, type.meta));
             }
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-
-        ModUtils.registerBlockInvModel(blockFilter, "filter", FilterType.getTypes());
-        ModUtils.registerBlockInvModel(blockInvertedFilter, "filter_inverted", FilterType.getTypes());
     }
 }

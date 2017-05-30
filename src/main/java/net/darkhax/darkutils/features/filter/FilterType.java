@@ -65,7 +65,7 @@ public enum FilterType implements IStringSerializable {
                 return type;
             }
         }
-        
+
         return PLAYER;
     }
 

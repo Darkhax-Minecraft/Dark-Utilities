@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.features.nullcharm;
+package net.darkhax.darkutils.features.agressioncharm;
 
 import java.util.List;
 
@@ -52,7 +52,7 @@ public class ItemNullCharm extends ItemBauble {
                 return true;
             }
         }
-        
+
         return false;
     }
 

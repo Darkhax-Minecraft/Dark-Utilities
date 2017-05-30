@@ -3,10 +3,11 @@ package net.darkhax.darkutils.features.endertether;
 import static net.darkhax.bookshelf.util.OreDictUtils.INGOT_IRON;
 import static net.darkhax.bookshelf.util.OreDictUtils.OBSIDIAN;
 
+import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
@@ -34,10 +35,14 @@ public class FeatureEnderTether extends Feature {
     public static double tetherRange = 32D;
 
     @Override
+    public void onRegistry () {
+
+        blockEnderTether = DarkUtils.REGISTRY.registerBlock(new BlockEnderTether(), "ender_tether");
+    }
+
+    @Override
     public void onPreInit () {
 
-        blockEnderTether = new BlockEnderTether();
-        ModUtils.registerBlock(blockEnderTether, "ender_tether");
         GameRegistry.registerTileEntity(TileEntityEnderTether.class, "ender_tether");
     }
 
@@ -53,15 +58,14 @@ public class FeatureEnderTether extends Feature {
     public void setupRecipes () {
 
         if (craftable) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH, 'i', INGOT_IRON }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderTether), new Object[] { " u ", "oto", 'u', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH, 'i', INGOT_IRON }));
         }
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
+    public void onClientRegistry () {
 
-        ModUtils.registerBlockInvModel(blockEnderTether);
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnderTether.class, new RendererEnderTether());
     }
 

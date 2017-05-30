@@ -3,16 +3,14 @@ package net.darkhax.darkutils.features.updatedetector;
 import static net.darkhax.bookshelf.util.OreDictUtils.BLOCK_REDSTONE;
 import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Update Detector", description = "A block for detecting block updates")
@@ -23,10 +21,9 @@ public class FeatureUpdateDetector extends Feature {
     private static boolean craftable = true;
 
     @Override
-    public void onPreInit () {
+    public void onRegistry () {
 
-        blockDetector = new BlockUpdateDetector();
-        ModUtils.registerBlock(blockDetector, "update_detector");
+        blockDetector = DarkUtils.REGISTRY.registerBlock(new BlockUpdateDetector(), "update_detector");
     }
 
     @Override
@@ -41,12 +38,5 @@ public class FeatureUpdateDetector extends Feature {
         if (craftable) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', STONE, 'p', Blocks.PISTON, 'r', BLOCK_REDSTONE }));
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-
-        ModUtils.registerBlockInvModel(blockDetector);
     }
 }

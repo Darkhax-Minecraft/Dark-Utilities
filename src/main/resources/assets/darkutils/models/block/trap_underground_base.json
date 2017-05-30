@@ -1,4 +1,5 @@
 {
+    "parent": "block/thin_block",
 	"elements": [{
 			"name": "north",
 			"from": [1.0, 0.0, 0.0],

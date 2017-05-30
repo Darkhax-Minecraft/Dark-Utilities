@@ -5,10 +5,10 @@ import static net.darkhax.bookshelf.util.OreDictUtils.SLIMEBALL;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.libs.Constants;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -24,8 +24,6 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
@@ -54,13 +52,11 @@ public class FeatureMaterial extends Feature {
     private static boolean craftSoulSand = true;
 
     @Override
-    public void onPreInit () {
+    public void onRegistry () {
 
-        itemMaterial = new ItemMaterial();
-        ModUtils.registerItem(itemMaterial, "material");
-
+        itemMaterial = DarkUtils.REGISTRY.registerItem(new ItemMaterial(), "material");
         blockWitherDust = new BlockWitherDust();
-        ModUtils.registerBlock(blockWitherDust, new ItemBlockBasic(blockWitherDust, BlockWitherDust.types, false), "wither_block");
+        DarkUtils.REGISTRY.registerBlock(blockWitherDust, new ItemBlockBasic(blockWitherDust, BlockWitherDust.types, false), "wither_block");
         OreDictionary.registerOre("blockWither", new ItemStack(blockWitherDust, 1, OreDictionary.WILDCARD_VALUE));
     }
 
@@ -111,14 +107,6 @@ public class FeatureMaterial extends Feature {
             GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 5), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 4));
             GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 0), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 5));
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-
-        ModUtils.registerItemInvModel(itemMaterial, "material", ItemMaterial.varients);
-        ModUtils.registerItemInvModel(Item.getItemFromBlock(blockWitherDust), "wither", BlockWitherDust.types);
     }
 
     @Override

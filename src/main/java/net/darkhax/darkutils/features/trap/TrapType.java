@@ -45,7 +45,7 @@ public enum TrapType implements IStringSerializable {
                 return type;
             }
         }
-        
+
         return POISON;
     }
 

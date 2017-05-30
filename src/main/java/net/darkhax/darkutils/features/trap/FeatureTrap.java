@@ -3,18 +3,17 @@ package net.darkhax.darkutils.features.trap;
 import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
+import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Trap Blocks", description = "Trap blocks that have certain effects when stepped on")
@@ -35,10 +34,10 @@ public class FeatureTrap extends Feature {
     public boolean craftWither = true;
 
     @Override
-    public void onPreInit () {
+    public void onRegistry () {
 
         blockTrap = new BlockTrap();
-        ModUtils.registerBlock(blockTrap, new ItemBlockBasic(blockTrap, TrapType.getTypes()), "trap_tile");
+        DarkUtils.REGISTRY.registerBlock(blockTrap, new ItemBlockBasic(blockTrap, TrapType.getTypes()), "trap_tile");
     }
 
     @Override
@@ -76,14 +75,7 @@ public class FeatureTrap extends Feature {
         }
 
         if (this.craftWither) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 5), new Object[] { "sis", 's', STONE, 'i', ModUtils.validateCrafting(FeatureMaterial.itemMaterial) }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 5), new Object[] { "sis", 's', STONE, 'i', CraftingUtils.validateCrafting(FeatureMaterial.itemMaterial) }));
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-
-        ModUtils.registerBlockInvModel(blockTrap, "trap", TrapType.getTypes());
     }
 }

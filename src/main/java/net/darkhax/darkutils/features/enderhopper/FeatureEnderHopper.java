@@ -1,10 +1,11 @@
 package net.darkhax.darkutils.features.enderhopper;
 
+import net.darkhax.bookshelf.util.CraftingUtils;
 import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -27,10 +28,14 @@ public class FeatureEnderHopper extends Feature {
     private static boolean craftable;
 
     @Override
+    public void onRegistry () {
+
+        blockEnderHopper = DarkUtils.REGISTRY.registerBlock(new BlockEnderHopper(), "ender_hopper");
+    }
+
+    @Override
     public void onPreInit () {
 
-        blockEnderHopper = new BlockEnderHopper();
-        ModUtils.registerBlock(blockEnderHopper, "ender_hopper");
         GameRegistry.registerTileEntity(TileEntityEnderHopper.class, "ender_hopper");
     }
 
@@ -47,16 +52,14 @@ public class FeatureEnderHopper extends Feature {
 
         if (craftable) {
 
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderHopper), new Object[] { " p ", "oho", 'p', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderHopper), new Object[] { " p ", "oho", 'p', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER }));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderHopper), new Object[] { " p ", "oho", 'p', OreDictUtils.ENDERPEARL, 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER }));
         }
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-
-        ModUtils.registerBlockInvModel(blockEnderHopper);
+    public void onClientRegistry () {
 
         if (allowBoundsRendering) {
             ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnderHopper.class, new RendererEnderHopper());

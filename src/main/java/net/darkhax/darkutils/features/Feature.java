@@ -17,8 +17,15 @@ public class Feature {
     protected String configName;
 
     /**
+     * Called when Bookshelf requests to enter the actual registry stage. Register stuff here!
+     */
+    public void onRegistry () {
+
+    }
+
+    /**
      * Called when the mod enters the preInit phase of loading. This is after
-     * {@link #setupConfiguration(Configuration)} but before {@link #onClientPreInit()}.
+     * {@link #setupConfiguration(Configuration)} but before {@link #onClientRegistry()}.
      */
     public void onPreInit () {
 
@@ -75,6 +82,14 @@ public class Feature {
     public boolean enabledByDefault () {
 
         return true;
+    }
+
+    /**
+     * Called while the mod is in the client side preInit phase.
+     */
+    @SideOnly(Side.CLIENT)
+    public void onClientRegistry () {
+
     }
 
     /**

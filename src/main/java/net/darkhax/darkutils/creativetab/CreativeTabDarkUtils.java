@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.creativetab;
 
-import net.darkhax.darkutils.libs.ModUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -17,11 +17,12 @@ public class CreativeTabDarkUtils extends CreativeTabs {
     @Override
     public ItemStack getTabIconItem () {
 
-        if (ModUtils.BLOCKS.size() > 0) {
-            return new ItemStack(Item.getItemFromBlock(ModUtils.BLOCKS.get(0)));
+        if (DarkUtils.REGISTRY.getBlocks().size() > 0) {
+            return new ItemStack(Item.getItemFromBlock(DarkUtils.REGISTRY.getBlocks().get(0)));
         }
-        else if (ModUtils.ITEMS.size() > 0) {
-            return new ItemStack(ModUtils.ITEMS.get(0));
+
+        else if (DarkUtils.REGISTRY.getItems().size() > 0) {
+            return new ItemStack(DarkUtils.REGISTRY.getItems().get(0));
         }
 
         return new ItemStack(Items.DRAGON_BREATH);

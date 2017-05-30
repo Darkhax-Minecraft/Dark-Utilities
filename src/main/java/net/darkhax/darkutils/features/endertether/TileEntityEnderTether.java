@@ -21,7 +21,7 @@ public class TileEntityEnderTether extends TileEntityBasic {
      */
     public boolean isEntityCloseEnough (EntityLivingBase entity) {
 
-        return (this.isInvalid() || this.area == null || entity == null || entity instanceof EntityPlayer && !FeatureEnderTether.affectPlayers) ? false : this.area.intersectsWith(entity.getCollisionBoundingBox());
+        return this.isInvalid() || this.area == null || entity == null || entity instanceof EntityPlayer && !FeatureEnderTether.affectPlayers ? false : this.area.intersectsWith(entity.getCollisionBoundingBox());
     }
 
     @Override

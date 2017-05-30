@@ -3,10 +3,11 @@ package net.darkhax.darkutils.features.sneaky;
 import static net.darkhax.bookshelf.util.OreDictUtils.OBSIDIAN;
 import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
+import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -62,29 +63,29 @@ public class FeatureSneaky extends Feature {
     public static boolean opacity;
 
     @Override
-    public void onPreInit () {
+    public void onRegistry () {
 
         blockSneakyBlock = new BlockSneaky();
-        ModUtils.registerBlock(blockSneakyBlock, "sneaky");
+        DarkUtils.REGISTRY.registerBlock(blockSneakyBlock, "sneaky");
         GameRegistry.registerTileEntity(TileEntitySneaky.class, "sneaky");
 
         blockSneakyLever = new BlockSneakyLever();
-        ModUtils.registerBlock(blockSneakyLever, "sneaky_lever");
+        DarkUtils.REGISTRY.registerBlock(blockSneakyLever, "sneaky_lever");
 
         blockSneakyGhost = new BlockSneakyGhost();
-        ModUtils.registerBlock(blockSneakyGhost, "sneaky_ghost");
+        DarkUtils.REGISTRY.registerBlock(blockSneakyGhost, "sneaky_ghost");
 
         blockSneakyTorch = new BlockSneakyTorch();
-        ModUtils.registerBlock(blockSneakyTorch, "sneaky_torch");
+        DarkUtils.REGISTRY.registerBlock(blockSneakyTorch, "sneaky_torch");
 
         blockSneakyObsidian = new BlockSneaky().setHardness(20f).setResistance(2000f);
-        ModUtils.registerBlock(blockSneakyObsidian, "sneaky_obsidian");
+        DarkUtils.REGISTRY.registerBlock(blockSneakyObsidian, "sneaky_obsidian");
 
         blockSneakyPlate = new BlockSneakyPressurePlate();
-        ModUtils.registerBlock(blockSneakyPlate, "sneaky_plate");
+        DarkUtils.REGISTRY.registerBlock(blockSneakyPlate, "sneaky_plate");
 
         blockSneakyBedrock = new BlockSneakyBedrock();
-        ModUtils.registerBlock(blockSneakyBedrock, "sneaky_bedrock");
+        DarkUtils.REGISTRY.registerBlock(blockSneakyBedrock, "sneaky_bedrock");
     }
 
     @Override
@@ -104,7 +105,7 @@ public class FeatureSneaky extends Feature {
 
         if (craftSneakyBlock) {
 
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', STONE, 's', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', STONE, 's', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
 
             if (craftSneakyLever) {
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);

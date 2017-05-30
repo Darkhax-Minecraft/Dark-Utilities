@@ -5,7 +5,6 @@ import static net.darkhax.bookshelf.util.OreDictUtils.GUNPOWDER;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -27,10 +26,14 @@ public class FeatureFakeTNT extends Feature {
     private static boolean craftable;
 
     @Override
+    public void onRegistry () {
+
+        blockFakeTNT = DarkUtils.REGISTRY.registerBlock(new BlockFakeTNT(), "fake_tnt");
+    }
+
+    @Override
     public void onPreInit () {
 
-        blockFakeTNT = new BlockFakeTNT();
-        ModUtils.registerBlock(blockFakeTNT, "fake_tnt");
         EntityRegistry.registerModEntity(new ResourceLocation("darkutils", "fake_tnt"), EntityFakeTNT.class, "FakeTNT", 0, DarkUtils.instance, 32, 20, true);
     }
 
@@ -50,9 +53,8 @@ public class FeatureFakeTNT extends Feature {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
+    public void onClientRegistry () {
 
-        ModUtils.registerBlockInvModel(blockFakeTNT);
         RenderingRegistry.registerEntityRenderingHandler(EntityFakeTNT.class, new RenderFactoryTNT());
     }
 }

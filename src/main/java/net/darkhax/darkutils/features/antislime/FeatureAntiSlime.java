@@ -5,10 +5,11 @@ import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.darkhax.darkutils.libs.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
@@ -19,8 +20,6 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Anti Slime Block", description = "Undo slime chunks")
@@ -31,10 +30,14 @@ public class FeatureAntiSlime extends Feature {
     public static boolean craftable;
 
     @Override
+    public void onRegistry () {
+
+        blockAntiSlime = DarkUtils.REGISTRY.registerBlock(new BlockAntiSlime(), "anti_slime");
+    }
+
+    @Override
     public void onPreInit () {
 
-        blockAntiSlime = new BlockAntiSlime();
-        ModUtils.registerBlock(blockAntiSlime, "anti_slime");
         GameRegistry.registerTileEntity(TileEntityAntiSlime.class, "anti_slime");
     }
 
@@ -48,15 +51,8 @@ public class FeatureAntiSlime extends Feature {
     public void setupRecipes () {
 
         if (craftable) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-
-        ModUtils.registerBlockInvModel(blockAntiSlime);
     }
 
     @Override

@@ -3,48 +3,26 @@ package net.darkhax.darkutils.features.enchrings;
 import java.util.List;
 
 import baubles.api.BaubleType;
-import net.darkhax.bookshelf.util.baubles.ItemBauble;
-import net.minecraft.creativetab.CreativeTabs;
+import baubles.api.IBauble;
+import net.darkhax.bookshelf.item.ItemSubType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemRing extends ItemBauble {
+@Optional.Interface(modid = "baubles", iface = "baubles.api.IBauble")
+public class ItemRing extends ItemSubType implements IBauble {
 
     public static String[] varients = new String[] { "pyro", "engineer", "depth", "titan", "protect", "angler", "frost" };
 
     public ItemRing () {
 
-        this.hasSubtypes = true;
+        super(varients);
         this.maxStackSize = 1;
-    }
-
-    @Override
-    public String getUnlocalizedName (ItemStack stack) {
-
-        final int meta = stack.getMetadata();
-
-        if (!(meta >= 0 && meta < varients.length)) {
-            return super.getUnlocalizedName() + "." + varients[0];
-        }
-
-        return super.getUnlocalizedName() + "." + varients[meta];
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void getSubItems (Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-
-        for (int meta = 0; meta < varients.length; meta++) {
-            subItems.add(new ItemStack(this, 1, meta));
-        }
     }
 
     @Override
