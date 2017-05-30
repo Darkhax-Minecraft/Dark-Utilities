@@ -73,23 +73,24 @@ public class BlockEnderHopper extends BlockTileEntity {
 
         final EnumFacing direction = state.getValue(BlockStates.FACING);
 
-        if (direction == EnumFacing.DOWN)
+        if (direction == EnumFacing.DOWN) {
             return BOUNDS_DOWN;
-
-        else if (direction == EnumFacing.UP)
+        }
+        else if (direction == EnumFacing.UP) {
             return BOUNDS_UP;
-
-        else if (direction == EnumFacing.NORTH)
+        }
+        else if (direction == EnumFacing.NORTH) {
             return BOUNDS_NORTH;
-
-        else if (direction == EnumFacing.SOUTH)
+        }
+        else if (direction == EnumFacing.SOUTH) {
             return BOUNDS_SOUTH;
-
-        else if (direction == EnumFacing.WEST)
+        }
+        else if (direction == EnumFacing.WEST) {
             return BOUNDS_WEST;
-
-        else if (direction == EnumFacing.EAST)
+        }
+        else if (direction == EnumFacing.EAST) {
             return BOUNDS_EAST;
+        }
 
         return BOUNDS_UP;
     }

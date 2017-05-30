@@ -38,8 +38,9 @@ public class BlockSneaky extends BlockContainer {
         this.setResistance(10.0F);
         this.setDefaultState(((IExtendedBlockState) this.blockState.getBaseState()).withProperty(BlockStates.HELD_STATE, null).withProperty(BlockStates.BLOCK_ACCESS, null).withProperty(BlockStates.BLOCKPOS, null));
 
-        if (FeatureSneaky.opacity)
+        if (FeatureSneaky.opacity) {
             this.setLightOpacity(255);
+        }
     }
 
     @Override
@@ -122,9 +123,9 @@ public class BlockSneaky extends BlockContainer {
             final TileEntitySneaky tile = (TileEntitySneaky) world.getTileEntity(pos);
             return ((IExtendedBlockState) state).withProperty(BlockStates.HELD_STATE, tile.heldState);
         }
-
-        else
+        else {
             return state;
+        }
     }
 
     @Override
@@ -173,8 +174,9 @@ public class BlockSneaky extends BlockContainer {
 
             final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
 
-            if (sneaky.heldState != null)
+            if (sneaky.heldState != null) {
                 return ParticleUtils.spawnDigParticles(renderer, sneaky.heldState, world, hitPos.getBlockPos(), hitPos.sideHit);
+            }
         }
 
         return false;
@@ -189,8 +191,9 @@ public class BlockSneaky extends BlockContainer {
 
             final TileEntitySneaky sneaky = (TileEntitySneaky) tile;
 
-            if (sneaky.heldState != null)
+            if (sneaky.heldState != null) {
                 return ParticleUtils.spawnBreakParticles(renderer, sneaky.heldState, world, pos);
+            }
         }
 
         return false;
@@ -211,11 +214,12 @@ public class BlockSneaky extends BlockContainer {
 
                     final IBlockState connected = blockAccess.getBlockState(pos.offset(side));
 
-                    if (connected == sneaky.heldState)
+                    if (connected == sneaky.heldState) {
                         return false;
-
-                    else if (connected.getBlock() instanceof BlockSneaky)
+                    }
+                    else if (connected.getBlock() instanceof BlockSneaky) {
                         return ((TileEntitySneaky) blockAccess.getTileEntity(pos.offset(side))).heldState != sneaky.heldState;
+                    }
                 }
 
                 try {

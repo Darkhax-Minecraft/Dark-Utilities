@@ -25,8 +25,9 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
 
             int food = this.getFood();
 
-            if (food == this.getSizeInventory())
+            if (food == this.getSizeInventory()) {
                 return foodStack.stackSize;
+            }
 
             this.setFood(food += foodStack.stackSize);
 
@@ -53,8 +54,9 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
 
     public boolean isValidFood (ItemStack stack) {
 
-        if (this.foodType == null || this.foodType.equals("null"))
+        if (this.foodType == null || this.foodType.equals("null")) {
             this.foodType = ItemStackUtils.writeStackToString(stack);
+        }
 
         return ItemStackUtils.isValidStack(stack) && ItemStackUtils.writeStackToString(stack).equals(this.foodType);
     }
@@ -84,8 +86,9 @@ public class TileEntityFeeder extends TileEntityBasicTickable implements IInvent
                 }
             }
 
-            else if (food == 0)
+            else if (food == 0) {
                 this.foodType = "null";
+            }
         }
     }
 

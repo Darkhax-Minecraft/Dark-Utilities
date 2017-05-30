@@ -35,8 +35,9 @@ public class FeatureItemGrate extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable)
+        if (craftable) {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(blockGrate), Blocks.IRON_BARS, STONE, Blocks.TRAPDOOR));
+        }
     }
 
     @Override

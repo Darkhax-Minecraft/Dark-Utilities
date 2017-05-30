@@ -40,8 +40,9 @@ public class EntityFakeTNT extends EntityTNTPrimed {
         if (this.getFuse() <= 0) {
             this.setDead();
 
-            if (!this.world.isRemote)
+            if (!this.world.isRemote) {
                 this.world.createExplosion(this, this.posX, this.posY + this.height / 16.0F, this.posZ, 0.0f, true);
+            }
         }
         else {
             this.handleWaterMovement();

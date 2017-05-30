@@ -87,8 +87,9 @@ public class FeatureEnchantedRing extends Feature {
 
             final LootPool main = event.getTable().getPool("main");
 
-            if (main != null)
+            if (main != null) {
                 main.addEntry(new LootEntryItem(itemRing, weight, 0, new LootFunction[] { new SetDamage(new LootCondition[0], new RandomValueRange(0, ItemRing.varients.length - 1)) }, new LootCondition[0], "darkutils:nether_rings"));
+            }
         }
     }
 

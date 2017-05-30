@@ -88,8 +88,9 @@ public class ModUtils {
      */
     public static Item registerItem (Item item, String ID) {
 
-        if (item.getRegistryName() == null)
+        if (item.getRegistryName() == null) {
             item.setRegistryName(ID);
+        }
 
         item.setCreativeTab(DarkUtils.TAB);
         item.setUnlocalizedName("darkutils." + ID.toLowerCase().replace("_", "."));
@@ -100,8 +101,9 @@ public class ModUtils {
 
     public static Object validateCrafting (Object object) {
 
-        if (object instanceof ItemStack)
+        if (object instanceof ItemStack) {
             return ItemStackUtils.isValidStack((ItemStack) object) ? object : FeatureDisabled.itemDisabled;
+        }
 
         return object != null ? object : FeatureDisabled.itemDisabled;
     }
@@ -177,8 +179,9 @@ public class ModUtils {
     @SideOnly(Side.CLIENT)
     public static void registerItemInvModel (Item item, String prefix, String[] variants) {
 
-        for (int meta = 0; meta < variants.length; meta++)
+        for (int meta = 0; meta < variants.length; meta++) {
             ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + prefix + "_" + variants[meta], "inventory"));
+        }
     }
 
     /**
@@ -190,8 +193,9 @@ public class ModUtils {
     @SideOnly(Side.CLIENT)
     public static void registerItemInvModel (Item item, String[] variants) {
 
-        for (int meta = 0; meta < variants.length; meta++)
+        for (int meta = 0; meta < variants.length; meta++) {
             ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + variants[meta], "inventory"));
+        }
     }
 
     /**

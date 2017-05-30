@@ -29,8 +29,9 @@ public class FeatureDyeSlime extends Feature {
         blockSlime = new BlockSlimeDyed();
         ModUtils.registerBlock(blockSlime, new ItemBlockBasic(blockSlime, COLORS, false), "slime_dyed");
 
-        for (final EnumDyeColor color : EnumDyeColor.values())
+        for (final EnumDyeColor color : EnumDyeColor.values()) {
             OreDictionary.registerOre(OreDictUtils.BLOCK_SLIME, new ItemStack(blockSlime, 1, color.getMetadata()));
+        }
     }
 
     @Override
@@ -42,9 +43,11 @@ public class FeatureDyeSlime extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (this.craftable)
-            for (final EnumDyeColor color : EnumDyeColor.values())
+        if (this.craftable) {
+            for (final EnumDyeColor color : EnumDyeColor.values()) {
                 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockSlime, 8, color.getMetadata()), new Object[] { "xxx", "xyx", "xxx", 'x', OreDictUtils.BLOCK_SLIME, 'y', new ItemStack(Items.DYE, 1, color.getDyeDamage()) }));
+            }
+        }
     }
 
     @Override

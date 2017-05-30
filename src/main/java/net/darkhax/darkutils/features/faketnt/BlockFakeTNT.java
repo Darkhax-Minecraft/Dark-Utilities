@@ -22,12 +22,13 @@ public class BlockFakeTNT extends BlockTNT {
     @Override
     public void explode (World worldIn, BlockPos pos, IBlockState state, EntityLivingBase igniter) {
 
-        if (!worldIn.isRemote)
+        if (!worldIn.isRemote) {
             if (state.getValue(EXPLODE).booleanValue()) {
 
                 final EntityFakeTNT entitytntprimed = new EntityFakeTNT(worldIn, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F, igniter);
                 worldIn.spawnEntity(entitytntprimed);
                 worldIn.playSound((EntityPlayer) null, entitytntprimed.posX, entitytntprimed.posY, entitytntprimed.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
+        }
     }
 }

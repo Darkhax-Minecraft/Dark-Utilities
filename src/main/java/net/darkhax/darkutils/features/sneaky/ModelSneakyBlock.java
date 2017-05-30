@@ -36,30 +36,34 @@ public class ModelSneakyBlock implements IBakedModel {
         final Minecraft mc = Minecraft.getMinecraft();
         final BlockRenderLayer layer = MinecraftForgeClient.getRenderLayer();
 
-        if (!(state.getBlock() instanceof BlockSneaky))
+        if (!(state.getBlock() instanceof BlockSneaky)) {
             return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getMissingModel().getQuads(state, side, rand);
+        }
 
         final IBlockState heldState = ((IExtendedBlockState) state).getValue(BlockStates.HELD_STATE);
         final IBlockAccess heldWorld = ((IExtendedBlockState) state).getValue(BlockStates.BLOCK_ACCESS);
         final BlockPos heldPos = ((IExtendedBlockState) state).getValue(BlockStates.BLOCKPOS);
 
-        if (heldWorld == null || heldPos == null)
+        if (heldWorld == null || heldPos == null) {
             return ImmutableList.of();
+        }
 
         if (heldState == null && layer == BlockRenderLayer.SOLID) {
 
             final Block block = state.getBlock();
 
-            if (block instanceof BlockSneakyLever)
+            if (block instanceof BlockSneakyLever) {
                 return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_lever")).getQuads(state, side, rand);
-
-            else if (block instanceof BlockSneakyTorch)
+            }
+            else if (block instanceof BlockSneakyTorch) {
                 return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_torch")).getQuads(state, side, rand);
-
-            else if (block instanceof BlockSneakyPressurePlate)
+            }
+            else if (block instanceof BlockSneakyPressurePlate) {
                 return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_plate")).getQuads(state, side, rand);
-            else
+            }
+            else {
                 return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_default")).getQuads(state, side, rand);
+            }
         }
 
         else if (layer != null && heldState != null && heldState.getBlock().canRenderInLayer(heldState, layer)) {
@@ -144,8 +148,9 @@ public class ModelSneakyBlock implements IBakedModel {
 
             IBlockState state = this.access.getBlockState(pos);
 
-            if (state.getBlock() instanceof BlockSneaky)
+            if (state.getBlock() instanceof BlockSneaky) {
                 state = ((TileEntitySneaky) this.access.getTileEntity(pos)).heldState;
+            }
 
             return state == null ? Blocks.AIR.getDefaultState() : state;
         }

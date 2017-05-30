@@ -10,8 +10,9 @@ public class RendererEnderHopper extends TileEntitySpecialRenderer<TileEntityEnd
     @Override
     public void renderTileEntityAt (TileEntityEnderHopper te, double x, double y, double z, float partialTicks, int destroyStage) {
 
-        if (!te.showBorder)
+        if (!te.showBorder) {
             return;
+        }
 
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();

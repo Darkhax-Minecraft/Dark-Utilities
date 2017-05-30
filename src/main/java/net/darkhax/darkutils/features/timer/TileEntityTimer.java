@@ -31,8 +31,9 @@ public class TileEntityTimer extends TileEntityBasicTickable {
     @Override
     public void onEntityUpdate () {
 
-        if (this.world.isBlockPowered(this.pos))
+        if (this.world.isBlockPowered(this.pos)) {
             return;
+        }
 
         if (this.currentTime >= this.delayTime) {
 
@@ -40,8 +41,9 @@ public class TileEntityTimer extends TileEntityBasicTickable {
             this.world.scheduleUpdate(this.pos, this.getBlockType(), this.getBlockType().tickRate(this.world));
             this.currentTime = 0;
         }
-        else
+        else {
             this.currentTime++;
+        }
     }
 
     public int getCurrentTime () {
@@ -61,12 +63,15 @@ public class TileEntityTimer extends TileEntityBasicTickable {
 
     public void setDelayTime (int tickRate) {
 
-        if (tickRate < 10)
+        if (tickRate < 10) {
             this.delayTime = 10;
-        else if (tickRate > 12000)
+        }
+        else if (tickRate > 12000) {
             this.delayTime = 12000;
-        else
+        }
+        else {
             this.delayTime = tickRate;
+        }
     }
 
     public void addTime (int time) {

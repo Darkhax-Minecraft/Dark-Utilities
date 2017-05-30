@@ -104,11 +104,13 @@ public class FeatureSneaky extends Feature {
 
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', STONE, 's', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
 
-            if (craftSneakyLever)
+            if (craftSneakyLever) {
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);
+            }
 
-            if (craftSneakyGhost)
+            if (craftSneakyGhost) {
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyGhost), blockSneakyBlock, Blocks.WOOL);
+            }
 
             if (craftSneakyTorch) {
 
@@ -116,11 +118,13 @@ public class FeatureSneaky extends Feature {
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.REDSTONE_TORCH);
             }
 
-            if (craftSneakyObsidian)
+            if (craftSneakyObsidian) {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(blockSneakyObsidian), blockSneakyBlock, OBSIDIAN));
+            }
 
-            if (craftSneakyPlate)
+            if (craftSneakyPlate) {
                 GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyPlate), blockSneakyBlock, Blocks.WOODEN_PRESSURE_PLATE);
+            }
         }
     }
 
@@ -171,8 +175,9 @@ public class FeatureSneaky extends Feature {
         final Item item = Item.getItemFromBlock(block);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:" + name, "inventory"));
 
-        if (!useDefault)
+        if (!useDefault) {
             ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:" + name, "normal"));
+        }
 
         ModelLoader.setCustomStateMapper(block, sneakyStateMap);
     }

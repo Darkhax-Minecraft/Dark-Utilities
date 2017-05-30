@@ -67,8 +67,9 @@ public class FeaturePortalCharm extends Feature {
 
             final EntityPlayer player = (EntityPlayer) entity;
 
-            if (PlayerUtils.playerHasItem((EntityPlayer) entity, itemPortalCharm, -1))
+            if (PlayerUtils.playerHasItem((EntityPlayer) entity, itemPortalCharm, -1)) {
                 player.portalCounter = 100;
+            }
         }
     }
 }

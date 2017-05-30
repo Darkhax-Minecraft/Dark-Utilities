@@ -45,8 +45,9 @@ public class FeatureAntiSlime extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable)
+        if (craftable) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', ModUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
+        }
     }
 
     @Override
@@ -69,16 +70,18 @@ public class FeatureAntiSlime extends Feature {
 
             final List<TileEntity> tiles = new ArrayList<>(event.getWorld().loadedTileEntityList);
 
-            for (final TileEntity tile : tiles)
+            for (final TileEntity tile : tiles) {
                 if (tile instanceof TileEntityAntiSlime && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.getEntity())) {
 
-                    if (event.getWorld().isBlockPowered(tile.getPos()))
+                    if (event.getWorld().isBlockPowered(tile.getPos())) {
                         continue;
+                    }
 
                     event.setCanceled(true);
                     event.getEntity().setDead();
                     break;
                 }
+            }
         }
     }
 }

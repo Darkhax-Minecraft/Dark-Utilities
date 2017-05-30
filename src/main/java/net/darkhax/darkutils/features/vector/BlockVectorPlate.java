@@ -42,9 +42,9 @@ public class BlockVectorPlate extends Block {
             world.setBlockToAir(pos);
             return false;
         }
-
-        else
+        else {
             return true;
+        }
     }
 
     @Override
@@ -102,11 +102,13 @@ public class BlockVectorPlate extends Block {
 
                 final EntityItem item = (EntityItem) entity;
 
-                if (FeatureVectorPlate.preventItemDespawn)
+                if (FeatureVectorPlate.preventItemDespawn) {
                     item.setAgeToCreativeDespawnTime();
+                }
 
-                if (FeatureVectorPlate.preventItemPickup && item.delayBeforeCanPickup < 5)
+                if (FeatureVectorPlate.preventItemPickup && item.delayBeforeCanPickup < 5) {
                     item.setPickupDelay(20);
+                }
             }
         }
     }

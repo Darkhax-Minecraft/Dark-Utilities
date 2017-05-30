@@ -44,8 +44,9 @@ public class FeatureSleepCharm extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (craftable)
+        if (craftable) {
             GameRegistry.addRecipe(new ShapedOreRecipe(itemSleepCharm, new Object[] { "lsl", "sbs", "lsl", 's', STICK_WOOD, 'l', LEATHER, 'b', "bed" }));
+        }
     }
 
     @Override
@@ -64,8 +65,9 @@ public class FeatureSleepCharm extends Feature {
 
             final EntityPlayer player = (EntityPlayer) entity;
 
-            if (player.isPlayerSleeping() && PlayerUtils.playerHasItem((EntityPlayer) entity, itemSleepCharm, -1))
+            if (player.isPlayerSleeping() && PlayerUtils.playerHasItem((EntityPlayer) entity, itemSleepCharm, -1)) {
                 player.sleepTimer = 100;
+            }
         }
     }
 }

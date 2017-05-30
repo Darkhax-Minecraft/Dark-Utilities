@@ -45,7 +45,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, dependencies = Constants.DEPENDENCIES, acceptedMinecraftVersions = "[1.9.4,1.10.2]")
@@ -68,8 +67,9 @@ public class DarkUtils {
      * The creative tab used for all content added by this mod.
      */
     public static final CreativeTabs TAB = new CreativeTabDarkUtils();
-    
+
     public static final NetworkHandler NETWORK = new NetworkHandler(Constants.MOD_ID);
+
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
 
@@ -110,11 +110,13 @@ public class DarkUtils {
 
         ConfigurationHandler.syncConfigData();
 
-        for (final Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES) {
             feature.onPreInit();
+        }
 
-        for (final Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES) {
             feature.setupRecipes();
+        }
 
         proxy.onPreInit();
 
@@ -125,8 +127,9 @@ public class DarkUtils {
     @EventHandler
     public void init (FMLInitializationEvent event) {
 
-        for (final Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES) {
             feature.onInit();
+        }
 
         proxy.onInit();
         AddonHandler.onInit();
@@ -135,8 +138,9 @@ public class DarkUtils {
     @EventHandler
     public void postInit (FMLPostInitializationEvent event) {
 
-        for (final Feature feature : FeatureManager.FEATURES)
+        for (final Feature feature : FeatureManager.FEATURES) {
             feature.onPostInit();
+        }
 
         proxy.onPostInit();
         AddonHandler.onPostInit();

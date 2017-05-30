@@ -59,9 +59,10 @@ public class GuiTimerAmount extends GuiScreen {
     @Override
     protected void actionPerformed (GuiButton button) throws IOException {
 
-        if (button.enabled)
-            if (button.id == 1)
+        if (button.enabled) {
+            if (button.id == 1) {
                 this.mc.displayGuiScreen((GuiScreen) null);
+            }
             else if (button.id == 0 && StringUtils.isNumeric(this.delayTextField.getText())) {
 
                 final int time = Integer.parseInt(this.delayTextField.getText());
@@ -69,6 +70,7 @@ public class GuiTimerAmount extends GuiScreen {
                 this.timer.setDelayTime(time);
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
+        }
     }
 
     @Override
@@ -81,10 +83,12 @@ public class GuiTimerAmount extends GuiScreen {
             return;
         }
 
-        if (keyCode == 1)
+        if (keyCode == 1) {
             this.actionPerformed(this.cancelBtn);
-        else if (keyCode == 28)
+        }
+        else if (keyCode == 28) {
             this.actionPerformed(this.doneBtn);
+        }
     }
 
     @Override

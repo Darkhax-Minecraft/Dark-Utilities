@@ -49,15 +49,18 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
 
             final TileEntitySneaky tile = (TileEntitySneaky) data.getTileEntity();
 
-            if (cfg.getConfig(CONFIG_SNEAKY_OWNERS) && tile.playerID != null && !tile.playerID.isEmpty() && data.getPlayer().getUniqueID().toString().equals(tile.playerID))
+            if (cfg.getConfig(CONFIG_SNEAKY_OWNERS) && tile.playerID != null && !tile.playerID.isEmpty() && data.getPlayer().getUniqueID().toString().equals(tile.playerID)) {
                 return data.getStack();
+            }
 
-            if (tile.heldState != null)
+            if (tile.heldState != null) {
                 return new ItemStack(tile.heldState.getBlock(), 1, tile.heldState.getBlock().getMetaFromState(tile.heldState));
+            }
         }
 
-        else if (data.getBlock() instanceof BlockFakeTNT)
+        else if (data.getBlock() instanceof BlockFakeTNT) {
             return new ItemStack(Blocks.TNT, 1, 0);
+        }
 
         return new ItemStack(data.getStack().getItem(), 1, 0);
     }
@@ -71,8 +74,9 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
 
-        if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && !(stack.getMetadata() > FilterType.getTypes().length))
+        if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && !(stack.getMetadata() > FilterType.getTypes().length)) {
             tip.add(I18n.format("tooltip.darkutils.filter.type") + ": " + TextFormatting.AQUA + I18n.format("tooltip.darkutils.filter.type." + FilterType.getTypes()[stack.getMetadata()]));
+        }
         else if (data.getBlock() instanceof BlockTimer && cfg.getConfig(CONFIG_TIMER_TIME) && data.getTileEntity() instanceof TileEntityTimer && !data.getTileEntity().isInvalid()) {
 
             final int delay = data.getNBTData().getInteger("TickRate");
@@ -90,8 +94,9 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
 
                 final ItemStack foodStack = ItemStackUtils.createStackFromString(foodType);
 
-                if (ItemStackUtils.isValidStack(foodStack))
+                if (ItemStackUtils.isValidStack(foodStack)) {
                     tip.add(I18n.format("tooltip.darkutils.feeder.type") + ": " + TextFormatting.BLUE + foodStack.getDisplayName());
+                }
             }
 
             tip.add(I18n.format("tooltip.darkutils.feeder.amount") + ": " + data.getMetadata());
@@ -109,8 +114,9 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
 
-        if (te != null && !te.isInvalid())
+        if (te != null && !te.isInvalid()) {
             te.writeToNBT(tag);
+        }
 
         return tag;
     }

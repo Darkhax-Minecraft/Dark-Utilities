@@ -53,23 +53,29 @@ public class FeatureTrap extends Feature {
     @Override
     public void setupRecipes () {
 
-        if (this.craftPoison)
+        if (this.craftPoison) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 0), new Object[] { "sis", 's', STONE, 'i', Items.SPIDER_EYE }));
+        }
 
-        if (this.craftWeakness)
+        if (this.craftWeakness) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 1), new Object[] { "sis", 's', STONE, 'i', Items.FERMENTED_SPIDER_EYE }));
+        }
 
-        if (this.craftHarming)
+        if (this.craftHarming) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 2), new Object[] { "sis", 's', STONE, 'i', Items.IRON_SWORD }));
+        }
 
-        if (this.craftSlowness)
+        if (this.craftSlowness) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 3), new Object[] { "sis", 's', STONE, 'i', Blocks.SOUL_SAND }));
+        }
 
-        if (this.craftFire)
+        if (this.craftFire) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 4), new Object[] { "sis", 's', STONE, 'i', Items.FLINT_AND_STEEL }));
+        }
 
-        if (this.craftWither)
+        if (this.craftWither) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 5), new Object[] { "sis", 's', STONE, 'i', ModUtils.validateCrafting(FeatureMaterial.itemMaterial) }));
+        }
     }
 
     @Override
