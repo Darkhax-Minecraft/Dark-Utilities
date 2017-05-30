@@ -1,6 +1,9 @@
 # Dark-Utilities [![](http://cf.way2muchnoise.eu/242195.svg)](https://minecraft.curseforge.com/projects/dark-utilities) [![](http://cf.way2muchnoise.eu/versions/242195.svg)](https://minecraft.curseforge.com/projects/dark-utilities)
 A special utility mod for Minecraft. Adds a bunch of new content, and has addon support for many other mods!
 
+[![Nodecraft](https://i.imgur.com/sz9PUmK.png)](https://nodecraft.com/r/darkhax)    
+This project is sponsored by Nodecraft. Use code [Darkhax](https://nodecraft.com/r/darkhax) for 30% off your first month of service!
+
 ## Source Code
 The latest source code can be found here on [GitHub](https://github.com/Darkhax-Minecraft/Dark-Utilities). If you are using Git, you can use the following command to clone the project: `git clone git:github.com/Darkhax-Minecraft/Dark-Utilities.git`
 
