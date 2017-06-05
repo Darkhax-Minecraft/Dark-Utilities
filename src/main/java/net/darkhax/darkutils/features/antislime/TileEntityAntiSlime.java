@@ -15,6 +15,6 @@ public class TileEntityAntiSlime extends TileEntity {
         final BlockPos blockpos = new BlockPos(MathHelper.floor(entPos.xCoord), 0, MathHelper.floor(entPos.zCoord));
         final Chunk chunk = entity.world.getChunkFromBlockCoords(blockpos);
         final Chunk tileChunk = this.world.getChunkFromBlockCoords(this.pos);
-        return chunk.xPosition == tileChunk.xPosition && chunk.zPosition == tileChunk.zPosition;
+        return chunk.x == tileChunk.x && chunk.z == tileChunk.z;
     }
 }

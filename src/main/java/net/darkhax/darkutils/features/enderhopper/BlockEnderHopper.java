@@ -106,7 +106,7 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
-    public boolean isPassable (IBlockAccess worldIn, BlockPos pos) {
+    public boolean blocksMovement (IBlockAccess worldIn, BlockPos pos) {
 
         return true;
     }
