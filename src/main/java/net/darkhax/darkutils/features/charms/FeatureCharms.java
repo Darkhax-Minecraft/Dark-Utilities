@@ -50,12 +50,12 @@ public class FeatureCharms extends Feature {
     @Override
     public void onRegistry () {
 
-        itemAgressionCharm = DarkUtils.REGISTRY.registerItem(new ItemAgressionCharm(), "charm_agression");
-        itemFocusSash = DarkUtils.REGISTRY.registerItem(new ItemFocusSash(), "focus_sash");
-        itemGluttonyCharm = DarkUtils.REGISTRY.registerItem(new ItemGluttonyCharm(), "charm_gluttony");
+        itemAgressionCharm = DarkUtils.REGISTRY.registerItem(new ItemCharm(), "charm_agression");
+        itemFocusSash = DarkUtils.REGISTRY.registerItem(new ItemCharm(), "focus_sash");
+        itemGluttonyCharm = DarkUtils.REGISTRY.registerItem(new ItemCharm(), "charm_gluttony");
         itemNullCharm = DarkUtils.REGISTRY.registerItem(new ItemNullCharm(), "charm_null");
-        itemPortalCharm = DarkUtils.REGISTRY.registerItem(new ItemPortalCharm(), "charm_portal");
-        itemSleepCharm = DarkUtils.REGISTRY.registerItem(new ItemSleepCharm(), "charm_sleep");
+        itemPortalCharm = DarkUtils.REGISTRY.registerItem(new ItemCharm(), "charm_portal");
+        itemSleepCharm = DarkUtils.REGISTRY.registerItem(new ItemCharm(), "charm_sleep");
 
     }
 

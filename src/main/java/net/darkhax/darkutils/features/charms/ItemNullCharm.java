@@ -2,10 +2,8 @@ package net.darkhax.darkutils.features.charms;
 
 import java.util.List;
 
-import baubles.api.BaubleType;
 import net.darkhax.bookshelf.item.ItemInventory;
 import net.darkhax.bookshelf.util.StackUtils;
-import net.darkhax.bookshelf.util.baubles.ItemBauble;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,16 +11,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemNullCharm extends ItemBauble {
-
-    public ItemNullCharm () {
-
-        this.setMaxStackSize(1);
-    }
+public class ItemNullCharm extends ItemCharm {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick (World world, EntityPlayer player, EnumHand handIn) {
@@ -54,12 +46,5 @@ public class ItemNullCharm extends ItemBauble {
         }
 
         return false;
-    }
-
-    @Override
-    @Optional.Method(modid = "baubles")
-    public BaubleType getBaubleType (ItemStack itemstack) {
-
-        return BaubleType.CHARM;
     }
 }

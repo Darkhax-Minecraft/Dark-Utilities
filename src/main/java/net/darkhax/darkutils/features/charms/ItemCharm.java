@@ -5,9 +5,9 @@ import net.darkhax.bookshelf.util.baubles.ItemBauble;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 
-public class ItemGluttonyCharm extends ItemBauble {
+public class ItemCharm extends ItemBauble {
 
-    public ItemGluttonyCharm () {
+    public ItemCharm () {
 
         this.setMaxStackSize(1);
     }
