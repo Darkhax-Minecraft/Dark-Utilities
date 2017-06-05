@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.features.agressioncharm;
+package net.darkhax.darkutils.features.charms;
 
 import baubles.api.BaubleType;
 import net.darkhax.bookshelf.util.baubles.ItemBauble;

@@ -1,4 +1,4 @@
-package net.darkhax.darkutils.features.agressioncharm;
+package net.darkhax.darkutils.features.charms;
 
 import java.util.List;
 

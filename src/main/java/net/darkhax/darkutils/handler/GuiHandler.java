@@ -1,8 +1,8 @@
 package net.darkhax.darkutils.handler;
 
 import net.darkhax.bookshelf.item.ItemInventory;
-import net.darkhax.darkutils.features.agressioncharm.ContainerFilter;
-import net.darkhax.darkutils.features.agressioncharm.GuiFilter;
+import net.darkhax.darkutils.features.charms.ContainerFilter;
+import net.darkhax.darkutils.features.charms.GuiFilter;
 import net.darkhax.darkutils.features.timer.GuiTimerAmount;
 import net.darkhax.darkutils.features.timer.TileEntityTimer;
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,13 +1,13 @@
-package net.darkhax.darkutils.features.agressioncharm;
+package net.darkhax.darkutils.features.charms;
 
 import baubles.api.BaubleType;
 import net.darkhax.bookshelf.util.baubles.ItemBauble;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 
-public class ItemGluttonyCharm extends ItemBauble {
+public class ItemFocusSash extends ItemBauble {
 
-    public ItemGluttonyCharm () {
+    public ItemFocusSash () {
 
         this.setMaxStackSize(1);
     }
