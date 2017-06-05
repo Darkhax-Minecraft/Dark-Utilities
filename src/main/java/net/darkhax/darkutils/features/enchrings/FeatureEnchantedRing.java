@@ -60,7 +60,7 @@ public class FeatureEnchantedRing extends Feature {
 
         int levels = this.handleRing(event.getEntity().getHeldItemOffhand(), event.getEnchantment());
 
-        if (allowBaubles && Loader.isModLoaded("Baubles") && event.getEntity() instanceof EntityPlayer) {
+        if (allowBaubles && Loader.isModLoaded("baubles") && event.getEntity() instanceof EntityPlayer) {
 
             levels += this.handleRing(BaubleUtils.getBauble((EntityPlayer) event.getEntity(), BaubleUtils.RING_1), event.getEnchantment());
             levels += this.handleRing(BaubleUtils.getBauble((EntityPlayer) event.getEntity(), BaubleUtils.RING_2), event.getEnchantment());
