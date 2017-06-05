@@ -122,7 +122,7 @@ public class DarkUtils {
         }
 
         // TODO move to proxy
-        if (GameUtils.isClient) {
+        if (GameUtils.isClient()) {
 
             for (final Feature feature : FeatureManager.getFeatures()) {
 
