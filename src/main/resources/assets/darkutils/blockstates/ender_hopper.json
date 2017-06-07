@@ -1,30 +1,57 @@
 {
 	"variants": {
-		"facing=down": {
+		"enabled=true,facing=down": {
 			"model": "darkutils:ender_hopper",
 			"x": 180,
 			"y": 180
 		},
-		"facing=up": {
+		"enabled=true,facing=up": {
 			"model": "darkutils:ender_hopper"
 		},
-		"facing=east": {
+		"enabled=true,facing=east": {
 			"model": "darkutils:ender_hopper",
 			"x": 90,
 			"y": 90
 		},
-		"facing=west": {
+		"enabled=true,facing=west": {
 			"model": "darkutils:ender_hopper",
 			"x": 90,
 			"y": 270
 		},
-		"facing=south": {
+		"enabled=true,facing=south": {
 			"model": "darkutils:ender_hopper",
 			"x": 90,
 			"y": 180
 		},
-		"facing=north": {
+		"enabled=true,facing=north": {
 			"model": "darkutils:ender_hopper",
+			"x": 90
+		},
+		"enabled=false,facing=down": {
+			"model": "darkutils:ender_hopper_disabled",
+			"x": 180,
+			"y": 180
+		},
+		"enabled=false,facing=up": {
+			"model": "darkutils:ender_hopper_disabled"
+		},
+		"enabled=false,facing=east": {
+			"model": "darkutils:ender_hopper_disabled",
+			"x": 90,
+			"y": 90
+		},
+		"enabled=false,facing=west": {
+			"model": "darkutils:ender_hopper_disabled",
+			"x": 90,
+			"y": 270
+		},
+		"enabled=false,facing=south": {
+			"model": "darkutils:ender_hopper_disabled",
+			"x": 90,
+			"y": 180
+		},
+		"enabled=false,facing=north": {
+			"model": "darkutils:ender_hopper_disabled",
 			"x": 90
 		}
 	}

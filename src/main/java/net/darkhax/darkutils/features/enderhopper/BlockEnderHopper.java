@@ -2,6 +2,8 @@ package net.darkhax.darkutils.features.enderhopper;
 
 import net.darkhax.bookshelf.block.BlockTileEntity;
 import net.darkhax.bookshelf.data.Blockstates;
+import net.darkhax.bookshelf.util.GameUtils;
+import net.darkhax.bookshelf.util.PlayerUtils;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -15,6 +17,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 public class BlockEnderHopper extends BlockTileEntity {
 
@@ -37,7 +40,13 @@ public class BlockEnderHopper extends BlockTileEntity {
         this.setResistance(9000f);
         this.setLightLevel(0.25f);
         this.setHarvestLevel("pickaxe", 1);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(Blockstates.FACING, EnumFacing.UP));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(Blockstates.FACING, EnumFacing.UP).withProperty(Blockstates.ENABLED, false));
+    }
+
+    @Override
+    public IBlockState getActualState (IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+
+        return state.withProperty(Blockstates.ENABLED, isEnabled(state, worldIn, pos));
     }
 
     @Override
@@ -132,6 +141,21 @@ public class BlockEnderHopper extends BlockTileEntity {
     @Override
     protected BlockStateContainer createBlockState () {
 
-        return new BlockStateContainer(this, new IProperty[] { Blockstates.FACING });
+        return new BlockStateContainer(this, new IProperty[] { Blockstates.FACING, Blockstates.ENABLED });
+    }
+
+    public static boolean isEnabled (IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+
+        if (GameUtils.isClient()) {
+
+            if (PlayerUtils.getClientPlayer().getEntityWorld().isBlockPowered(pos)) {
+
+                return false;
+            }
+        }
+
+        final EnumFacing direction = state.getValue(Blockstates.FACING);
+        final TileEntity tile = worldIn.getTileEntity(pos.offset(direction.getOpposite()));
+        return tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, direction);
     }
 }
