@@ -3,14 +3,11 @@ package net.darkhax.darkutils.features.enderhopper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
 
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasic;
 import net.darkhax.bookshelf.data.Blockstates;
 import net.darkhax.bookshelf.lib.Constants;
-import net.darkhax.bookshelf.util.MathUtils;
-import net.darkhax.bookshelf.util.MathsUtils;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,7 +24,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 public class TileEntityEnderHopper extends TileEntityBasic implements ITickable {
 
     private final Map<UUID, Integer> cooldowns = new HashMap<>();
-    
+
     public boolean showBorder = false;
 
     public AxisAlignedBB area = new AxisAlignedBB(this.pos.add(-FeatureEnderHopper.hopperRange, -FeatureEnderHopper.hopperRange, -FeatureEnderHopper.hopperRange), this.pos.add(FeatureEnderHopper.hopperRange + 1, FeatureEnderHopper.hopperRange + 1, FeatureEnderHopper.hopperRange + 1));
@@ -36,7 +33,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
     public void update () {
 
         if (this.isInvalid() || !this.getWorld().isBlockLoaded(this.getPos()) || this.world.isBlockPowered(this.pos) || this.world.isRemote) {
-            
+
             return;
         }
 
@@ -51,40 +48,42 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
                 final IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, direction);
 
                 for (final EntityItem item : items) {
-                    
-                    //If no cooldown, set to 100. If it has cooldown, reduce by one.
-                    cooldowns.put(item.getPersistentID(), (cooldowns.containsKey(item.getPersistentID())) ? cooldowns.get(item.getPersistentID()) - 1 : 100);
-                    
+
+                    // If no cooldown, set to 100. If it has cooldown, reduce by one.
+                    this.cooldowns.put(item.getPersistentID(), this.cooldowns.containsKey(item.getPersistentID()) ? this.cooldowns.get(item.getPersistentID()) - 1 : 100);
+
                     if (this.cooldowns.get(item.getPersistentID()) <= 0) {
 
                         final ItemStack foundStack = item.getEntityItem();
                         final ItemStack simulation = ItemHandlerHelper.insertItem(handler, foundStack.copy(), true);
-                        
+
                         if ((simulation.isEmpty() || foundStack.getCount() != simulation.getCount()) && !item.isDead) {
 
                             final ItemStack result = ItemHandlerHelper.insertItem(handler, foundStack, false);
 
                             if (result.isEmpty()) {
                                 item.setDead();
+                                this.cooldowns.remove(item.getPersistentID());
                             }
                             else {
                                 item.setEntityItemStack(result);
+                                this.cooldowns.put(item.getPersistentID(), 100);
                             }
                         }
                     }
 
-                    ItemStack simulation = ItemHandlerHelper.insertItemStacked(handler, item.getEntityItem(), true);
-                    
+                    final ItemStack simulation = ItemHandlerHelper.insertItemStacked(handler, item.getEntityItem(), true);
+
                     if (this.getWorld() instanceof WorldServer) {
-                        
+
                         if (simulation.isEmpty() || simulation.getCount() != item.getEntityItem().getCount()) {
-                            
-                            ((WorldServer) this.getWorld()).spawnParticle(EnumParticleTypes.PORTAL, true, item.posX, item.posY, item.posZ, 1, -0.2d + nextFloat(-0.2f, 0.2f), 1f + nextFloat(-0.2f, 0.2f), nextFloat(-0.2f, 0.2f), 0.01f, new int[0]);
+
+                            ((WorldServer) this.getWorld()).spawnParticle(EnumParticleTypes.PORTAL, true, item.posX, item.posY, item.posZ, 1, -0.2d + this.nextFloat(-0.2f, 0.2f), 1f + this.nextFloat(-0.2f, 0.2f), this.nextFloat(-0.2f, 0.2f), 0.01f, new int[0]);
                         }
-                        
+
                         else {
-                            
-                            ((WorldServer) this.getWorld()).spawnParticle(EnumParticleTypes.REDSTONE, true, item.posX + nextFloat(-0.2f, 0.2f), item.posY + 0.2f + nextFloat(-0.2f, 0.2f), item.posZ + nextFloat(-0.2f, 0.2f), 0, 0f, 0f, 0f, 0.01f, new int[] {1, 0, 0});
+
+                            ((WorldServer) this.getWorld()).spawnParticle(EnumParticleTypes.REDSTONE, true, item.posX + this.nextFloat(-0.2f, 0.2f), item.posY + 0.2f + this.nextFloat(-0.2f, 0.2f), item.posZ + this.nextFloat(-0.2f, 0.2f), 0, 0f, 0f, 0f, 0.01f, new int[] { 1, 0, 0 });
                         }
                     }
                 }
@@ -114,9 +113,9 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
 
         this.showBorder = dataTag.getBoolean("showBorder");
     }
-    
-    private float nextFloat(float min, float max)
-    {
+
+    private float nextFloat (float min, float max) {
+
         return min + Constants.RANDOM.nextFloat() * (max - min);
     }
 }
