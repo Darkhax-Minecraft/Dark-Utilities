@@ -28,7 +28,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
     @Override
     public void update () {
 
-        if (this.isInvalid() || !this.getWorld().isBlockLoaded(this.getPos())) {
+        if (this.isInvalid() || !this.getWorld().isBlockLoaded(this.getPos()) || this.world.isBlockPowered(this.pos)) {
             return;
         }
 
