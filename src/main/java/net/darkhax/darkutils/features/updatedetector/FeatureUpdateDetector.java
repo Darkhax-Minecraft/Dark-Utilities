@@ -6,12 +6,11 @@ import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Update Detector", description = "A block for detecting block updates")
 public class FeatureUpdateDetector extends Feature {
@@ -36,7 +35,7 @@ public class FeatureUpdateDetector extends Feature {
     public void setupRecipes () {
 
         if (craftable) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockDetector), new Object[] { "sps", "srs", "sps", 's', STONE, 'p', Blocks.PISTON, 'r', BLOCK_REDSTONE }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockDetector), "sps", "srs", "sps", 's', STONE, 'p', Blocks.PISTON, 'r', BLOCK_REDSTONE);
         }
     }
 }

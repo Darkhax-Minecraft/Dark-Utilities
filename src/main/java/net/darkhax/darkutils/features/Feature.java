@@ -46,13 +46,6 @@ public class Feature {
     }
 
     /**
-     * Called after all features have finished their preInit phase. Used for recipes.
-     */
-    public void setupRecipes () {
-
-    }
-
-    /**
      * Called before {@link #onPreInit()}. Allows for configuration options to be
      * detected/generated. A feature being enabled or not is handled automatically by the
      * feature manager.
@@ -113,6 +106,16 @@ public class Feature {
      */
     @SideOnly(Side.CLIENT)
     public void onClientPostInit () {
+
+    }
+
+    /**
+     * Deprecated for 1.12
+     */
+    @Deprecated
+    public void setupRecipes () {
+
+        // TODO Auto-generated method stub
 
     }
 }

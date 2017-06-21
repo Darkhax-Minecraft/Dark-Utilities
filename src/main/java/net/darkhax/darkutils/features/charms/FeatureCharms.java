@@ -14,6 +14,7 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,8 +30,6 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Charms", description = "A collection of charms which have unique effects")
 public class FeatureCharms extends Feature {
@@ -68,13 +67,13 @@ public class FeatureCharms extends Feature {
     @Override
     public void setupRecipes () {
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(itemAgressionCharm, new Object[] { "rgr", "gfg", "sgs", 's', Items.GOLDEN_SWORD, 'g', OreDictUtils.NUGGET_GOLD, 'f', Items.ROTTEN_FLESH, 'r', OreDictUtils.STRING }));
-        GameRegistry.addShapedRecipe(new ItemStack(itemFocusSash), new Object[] { " p ", "ycr", " o ", 'p', Items.BLAZE_POWDER, 'y', new ItemStack(Blocks.WOOL, 1, 4), 'c', Items.MAGMA_CREAM, 'r', new ItemStack(Blocks.WOOL, 1, 14), 'o', new ItemStack(Blocks.WOOL, 1, 1) });
-        GameRegistry.addRecipe(new ShapedOreRecipe(itemGluttonyCharm, new Object[] { " s ", "waw", " w ", 's', OreDictUtils.STRING, 'w', OreDictUtils.CROP_WHEAT, 'a', Items.GOLDEN_APPLE }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(itemNullCharm, new Object[] { " s ", "xyz", 'x', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'y', OreDictUtils.OBSIDIAN, 'z', Items.ENDER_PEARL, 's', OreDictUtils.STRING }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(itemPortalCharm, new Object[] { " s ", "oco", " o ", 's', STRING, 'o', OBSIDIAN, 'c', Items.END_CRYSTAL }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(itemPortalCharm, new Object[] { " s ", "oco", " o ", 's', STRING, 'o', OBSIDIAN, 'c', Items.ENDER_EYE }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(itemSleepCharm, new Object[] { "lsl", "sbs", "lsl", 's', STICK_WOOD, 'l', LEATHER, 'b', OreDictUtils.BED }));
+        RecipeHandler.addShapedOreRecipe(itemAgressionCharm, "rgr", "gfg", "sgs", 's', Items.GOLDEN_SWORD, 'g', OreDictUtils.NUGGET_GOLD, 'f', Items.ROTTEN_FLESH, 'r', OreDictUtils.STRING);
+        RecipeHandler.addShapedRecipe(new ItemStack(itemFocusSash), " p ", "ycr", " o ", 'p', Items.BLAZE_POWDER, 'y', new ItemStack(Blocks.WOOL, 1, 4), 'c', Items.MAGMA_CREAM, 'r', new ItemStack(Blocks.WOOL, 1, 14), 'o', new ItemStack(Blocks.WOOL, 1, 1));
+        RecipeHandler.addShapedOreRecipe(itemGluttonyCharm, " s ", "waw", " w ", 's', OreDictUtils.STRING, 'w', OreDictUtils.CROP_WHEAT, 'a', Items.GOLDEN_APPLE);
+        RecipeHandler.addShapedOreRecipe(itemNullCharm, " s ", "xyz", 'x', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'y', OreDictUtils.OBSIDIAN, 'z', Items.ENDER_PEARL, 's', OreDictUtils.STRING);
+        RecipeHandler.addShapedOreRecipe(itemPortalCharm, " s ", "oco", " o ", 's', STRING, 'o', OBSIDIAN, 'c', Items.END_CRYSTAL);
+        RecipeHandler.addShapedOreRecipe(itemPortalCharm, " s ", "oco", " o ", 's', STRING, 'o', OBSIDIAN, 'c', Items.ENDER_EYE);
+        RecipeHandler.addShapedOreRecipe(itemSleepCharm, "lsl", "sbs", "lsl", 's', STICK_WOOD, 'l', LEATHER, 'b', OreDictUtils.BED);
 
     }
 

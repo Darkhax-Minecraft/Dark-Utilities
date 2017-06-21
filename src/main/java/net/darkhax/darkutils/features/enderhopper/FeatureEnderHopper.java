@@ -6,6 +6,7 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -14,7 +15,6 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Ender Hopper", description = "A hopper which can pick up blocks within range")
 public class FeatureEnderHopper extends Feature {
@@ -52,8 +52,8 @@ public class FeatureEnderHopper extends Feature {
 
         if (craftable) {
 
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderHopper), new Object[] { " p ", "oho", 'p', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER }));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockEnderHopper), new Object[] { " p ", "oho", 'p', OreDictUtils.ENDERPEARL, 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderHopper), " p ", "oho", 'p', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER);
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderHopper), " p ", "oho", 'p', OreDictUtils.ENDERPEARL, 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER);
         }
     }
 

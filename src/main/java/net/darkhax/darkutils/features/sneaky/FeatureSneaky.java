@@ -8,6 +8,7 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -22,8 +23,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 @DUFeature(name = "Sneaky Blocks", description = "Blocks that can hide as other blocks")
 public class FeatureSneaky extends Feature {
@@ -105,28 +104,28 @@ public class FeatureSneaky extends Feature {
 
         if (craftSneakyBlock) {
 
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), new Object[] { "rrr", "rsr", "rrr", 'r', STONE, 's', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), "rrr", "rsr", "rrr", 'r', STONE, 's', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)));
 
             if (craftSneakyLever) {
-                GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);
+                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);
             }
 
             if (craftSneakyGhost) {
-                GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyGhost), blockSneakyBlock, Blocks.WOOL);
+                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyGhost), blockSneakyBlock, Blocks.WOOL);
             }
 
             if (craftSneakyTorch) {
 
-                GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.TORCH);
-                GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.REDSTONE_TORCH);
+                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.TORCH);
+                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.REDSTONE_TORCH);
             }
 
             if (craftSneakyObsidian) {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(blockSneakyObsidian), blockSneakyBlock, OBSIDIAN));
+                RecipeHandler.addShapelessOreRecipe(new ItemStack(blockSneakyObsidian), blockSneakyBlock, OBSIDIAN);
             }
 
             if (craftSneakyPlate) {
-                GameRegistry.addShapelessRecipe(new ItemStack(blockSneakyPlate), blockSneakyBlock, Blocks.WOODEN_PRESSURE_PLATE);
+                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyPlate), blockSneakyBlock, Blocks.WOODEN_PRESSURE_PLATE);
             }
         }
     }

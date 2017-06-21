@@ -4,15 +4,14 @@ import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
 import java.util.HashMap;
 
-import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Mob Filters", description = "Blocks for filtering mobs")
 public class FeatureFilter extends Feature {
@@ -49,12 +48,12 @@ public class FeatureFilter extends Feature {
 
         for (final FilterType type : FilterType.values()) {
 
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFilter, 4, type.meta), new Object[] { "gsg", "sis", "gsg", 'g', "fenceGateWood", 's', STONE, 'i', type.crafting }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockFilter, 4, type.meta), "gsg", "sis", "gsg", 'g', OreDictUtils.FENCE_GATE_WOOD, 's', STONE, 'i', type.crafting);
 
             if (craftableInverted.get(type)) {
 
-                CraftingUtils.createConversionRecipes(new ItemStack(blockFilter, 1, type.meta), new ItemStack(blockInvertedFilter, 1, type.meta));
-                CraftingUtils.createConversionRecipes(new ItemStack(blockInvertedFilter, 1, type.meta), new ItemStack(blockFilter, 1, type.meta));
+                RecipeHandler.createConversionRecipes(new ItemStack(blockFilter, 1, type.meta), new ItemStack(blockInvertedFilter, 1, type.meta));
+                RecipeHandler.createConversionRecipes(new ItemStack(blockInvertedFilter, 1, type.meta), new ItemStack(blockFilter, 1, type.meta));
             }
         }
     }

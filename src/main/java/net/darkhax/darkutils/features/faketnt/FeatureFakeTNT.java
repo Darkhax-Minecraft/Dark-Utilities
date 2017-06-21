@@ -5,6 +5,7 @@ import static net.darkhax.bookshelf.util.OreDictUtils.GUNPOWDER;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Fake TNT", description = "A safe TNT alternative")
 public class FeatureFakeTNT extends Feature {
@@ -47,7 +47,7 @@ public class FeatureFakeTNT extends Feature {
     public void setupRecipes () {
 
         if (craftable) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockFakeTNT), new Object[] { "gwg", "wgw", "gwg", 'g', GUNPOWDER, 'w', new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE) }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockFakeTNT), "gwg", "wgw", "gwg", 'g', GUNPOWDER, 'w', new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE));
         }
     }
 

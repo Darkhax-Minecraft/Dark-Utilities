@@ -10,6 +10,7 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
@@ -20,7 +21,6 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Anti Slime Block", description = "Undo slime chunks")
 public class FeatureAntiSlime extends Feature {
@@ -51,7 +51,7 @@ public class FeatureAntiSlime extends Feature {
     public void setupRecipes () {
 
         if (craftable) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockAntiSlime), new Object[] { "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)) }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockAntiSlime), "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)));
         }
     }
 

@@ -5,14 +5,13 @@ import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Dyed Slime Blocks", description = "Colorful slime blocks!")
 public class FeatureDyeSlime extends Feature {
@@ -49,7 +48,7 @@ public class FeatureDyeSlime extends Feature {
 
         if (this.craftable) {
             for (final EnumDyeColor color : EnumDyeColor.values()) {
-                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockSlime, 8, color.getMetadata()), new Object[] { "xxx", "xyx", "xxx", 'x', OreDictUtils.BLOCK_SLIME, 'y', new ItemStack(Items.DYE, 1, color.getDyeDamage()) }));
+                RecipeHandler.addShapedOreRecipe(new ItemStack(blockSlime, 8, color.getMetadata()), "xxx", "xyx", "xxx", 'x', OreDictUtils.BLOCK_SLIME, 'y', new ItemStack(Items.DYE, 1, color.getDyeDamage()));
             }
         }
     }

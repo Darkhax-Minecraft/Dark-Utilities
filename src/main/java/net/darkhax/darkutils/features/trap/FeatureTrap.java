@@ -8,13 +8,12 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Trap Blocks", description = "Trap blocks that have certain effects when stepped on")
 public class FeatureTrap extends Feature {
@@ -55,27 +54,27 @@ public class FeatureTrap extends Feature {
     public void setupRecipes () {
 
         if (this.craftPoison) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 0), new Object[] { "sis", 's', STONE, 'i', Items.SPIDER_EYE }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockTrap, 1, 0), "sis", 's', STONE, 'i', Items.SPIDER_EYE);
         }
 
         if (this.craftWeakness) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 1), new Object[] { "sis", 's', STONE, 'i', Items.FERMENTED_SPIDER_EYE }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockTrap, 1, 1), "sis", 's', STONE, 'i', Items.FERMENTED_SPIDER_EYE);
         }
 
         if (this.craftHarming) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 2), new Object[] { "sis", 's', STONE, 'i', Items.IRON_SWORD }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockTrap, 1, 2), "sis", 's', STONE, 'i', Items.IRON_SWORD);
         }
 
         if (this.craftSlowness) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 3), new Object[] { "sis", 's', STONE, 'i', Blocks.SOUL_SAND }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockTrap, 1, 3), "sis", 's', STONE, 'i', Blocks.SOUL_SAND);
         }
 
         if (this.craftFire) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 4), new Object[] { "sis", 's', STONE, 'i', Items.FLINT_AND_STEEL }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockTrap, 1, 4), "sis", 's', STONE, 'i', Items.FLINT_AND_STEEL);
         }
 
         if (this.craftWither) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTrap, 1, 5), new Object[] { "sis", 's', STONE, 'i', CraftingUtils.validateCrafting(FeatureMaterial.itemMaterial) }));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockTrap, 1, 5), "sis", 's', STONE, 'i', CraftingUtils.validateCrafting(FeatureMaterial.itemMaterial));
         }
     }
 }

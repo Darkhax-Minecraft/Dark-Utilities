@@ -8,6 +8,7 @@ import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.darkhax.darkutils.libs.Constants;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -23,10 +24,7 @@ import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 @DUFeature(name = "Crafting Materials", description = "Material items used throughout DarkUtils")
 public class FeatureMaterial extends Feature {
@@ -77,35 +75,35 @@ public class FeatureMaterial extends Feature {
     public void setupRecipes () {
 
         if (craftDustFromSkull) {
-            GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.SKULL, 1, 1));
+            RecipeHandler.addShapelessRecipe(new ItemStack(itemMaterial, 3, 0), new ItemStack(Items.SKULL, 1, 1));
         }
 
         if (craftDwindleCream) {
-            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), SLIMEBALL));
+            RecipeHandler.addShapelessOreRecipe(new ItemStack(itemMaterial, 1, 2), new ItemStack(itemMaterial, 1, 0), SLIMEBALL);
         }
 
         if (craftUnstableEnderPearl) {
-            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), ENDERPEARL));
+            RecipeHandler.addShapelessOreRecipe(new ItemStack(itemMaterial, 1, 1), new ItemStack(itemMaterial, 1, 0), ENDERPEARL);
         }
 
         if (craftDarkSugar) {
-            GameRegistry.addShapedRecipe(new ItemStack(itemMaterial, 8, 3), "xxx", "xyx", "xxx", 'x', Items.SUGAR, 'y', itemMaterial);
+            RecipeHandler.addShapedRecipe(new ItemStack(itemMaterial, 8, 3), "xxx", "xyx", "xxx", 'x', Items.SUGAR, 'y', itemMaterial);
         }
 
         if (craftSoulSand) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.SOUL_SAND, 5, 0), "xyx", "yxy", "xyx", 'x', OreDictUtils.SAND, 'y', itemMaterial));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(Blocks.SOUL_SAND, 5, 0), "xyx", "yxy", "xyx", 'x', OreDictUtils.SAND, 'y', itemMaterial);
         }
 
         if (craftBlocks) {
 
-            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 1, 0), "xx ", "xx ", 'x', FeatureMaterial.itemMaterial);
-            GameRegistry.addShapelessRecipe(new ItemStack(itemMaterial, 4, 0), new ItemStack(blockWitherDust, 3, OreDictionary.WILDCARD_VALUE));
-            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 0));
-            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 1));
-            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 2));
-            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 4), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 3));
-            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 5), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 4));
-            GameRegistry.addShapedRecipe(new ItemStack(blockWitherDust, 4, 0), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 5));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockWitherDust, 1, 0), "xx ", "xx ", 'x', FeatureMaterial.itemMaterial);
+            RecipeHandler.addShapelessRecipe(new ItemStack(itemMaterial, 4, 0), new ItemStack(blockWitherDust, 3, OreDictionary.WILDCARD_VALUE));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockWitherDust, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 0));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockWitherDust, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 1));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockWitherDust, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 2));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockWitherDust, 4, 4), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 3));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockWitherDust, 4, 5), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 4));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockWitherDust, 4, 0), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 5));
         }
     }
 

@@ -8,13 +8,12 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @DUFeature(name = "Vector Plate", description = "A block that pushes entities around")
 public class FeatureVectorPlate extends Feature {
@@ -85,9 +84,9 @@ public class FeatureVectorPlate extends Feature {
 
         if (craftVectorPlate) {
 
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockVectorPlate, 8), new Object[] { "isi", "bfb", 's', SLIMEBALL, 'b', STONE, 'f', Items.SUGAR }));
-            GameRegistry.addShapedRecipe(new ItemStack(blockFastVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockVectorPlate, 'y', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 3)));
-            GameRegistry.addShapedRecipe(new ItemStack(blockHyperVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockFastVectorPlate, 'y', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.blockWitherDust, 1, OreDictionary.WILDCARD_VALUE)));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockVectorPlate, 8), "isi", "bfb", 's', SLIMEBALL, 'b', STONE, 'f', Items.SUGAR);
+            RecipeHandler.addShapedRecipe(new ItemStack(blockFastVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockVectorPlate, 'y', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 3)));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockHyperVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockFastVectorPlate, 'y', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.blockWitherDust, 1, OreDictionary.WILDCARD_VALUE)));
         }
     }
 }

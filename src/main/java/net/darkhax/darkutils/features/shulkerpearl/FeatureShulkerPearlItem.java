@@ -6,6 +6,7 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.shulkerpearl.ShulkerDataHandler.ICustomData;
+import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.init.Blocks;
@@ -16,11 +17,8 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 @DUFeature(name = "Shulker Pearls", description = "Adds shulker pearls and related content")
 public class FeatureShulkerPearlItem extends Feature {
@@ -40,11 +38,7 @@ public class FeatureShulkerPearlItem extends Feature {
     @Override
     public void onRegistry () {
 
-        System.out.println("Registering PEARL");
         itemShulkerPearl = DarkUtils.REGISTRY.registerItem(new ItemShulkerPearl(), "shulker_pearl");
-        if (itemShulkerPearl == null) {
-            System.out.println("pearl is null :(");
-        }
         blockShulkerPearl = new BlockShulkerPearl();
         DarkUtils.REGISTRY.registerBlock(blockShulkerPearl, new ItemBlockBasic(blockShulkerPearl, BlockShulkerPearl.types, false), "pearl_block");
         OreDictionary.registerOre("blockPearl", new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
@@ -68,25 +62,16 @@ public class FeatureShulkerPearlItem extends Feature {
     public void setupRecipes () {
 
         if (this.craftEndRods) {
-            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.END_ROD), Items.CHORUS_FRUIT, "gemPearl"));
+            RecipeHandler.addShapelessOreRecipe(new ItemStack(Blocks.END_ROD), Items.CHORUS_FRUIT, "gemPearl");
         }
 
-        if (itemShulkerPearl == null) {
-
-            System.out.println("PEARL IS NULL");
-        }
-
-        if (blockShulkerPearl == null) {
-
-            System.out.println("PEARL BLOCK IS NULL");
-        }
         if (this.craftBlocks) {
 
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockShulkerPearl, 32, 0), "xxx", "xsx", "xxx", 'x', itemShulkerPearl, 's', OreDictUtils.ENDSTONE));
-            GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 0));
-            GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 1));
-            GameRegistry.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 2));
-            GameRegistry.addShapelessRecipe(new ItemStack(itemShulkerPearl), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockShulkerPearl, 32, 0), "xxx", "xsx", "xxx", 'x', itemShulkerPearl, 's', OreDictUtils.ENDSTONE);
+            RecipeHandler.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 0));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 1));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 2));
+            RecipeHandler.addShapelessRecipe(new ItemStack(itemShulkerPearl), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
         }
     }
 
