@@ -4,7 +4,7 @@ import static net.darkhax.bookshelf.util.OreDictUtils.INGOT_IRON;
 import static net.darkhax.bookshelf.util.OreDictUtils.SLIMEBALL;
 import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
-import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
@@ -86,8 +86,8 @@ public class FeatureVectorPlate extends Feature {
         if (craftVectorPlate) {
 
             RecipeHandler.addShapedOreRecipe(new ItemStack(blockVectorPlate, 8), "isi", "bfb", 's', SLIMEBALL, 'b', STONE, 'f', Items.SUGAR, 'i', INGOT_IRON);
-            RecipeHandler.addShapedRecipe(new ItemStack(blockFastVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockVectorPlate, 'y', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 3)));
-            RecipeHandler.addShapedRecipe(new ItemStack(blockHyperVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockFastVectorPlate, 'y', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.blockWitherDust, 1, OreDictionary.WILDCARD_VALUE)));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockFastVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockVectorPlate, 'y', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 3)));
+            RecipeHandler.addShapedRecipe(new ItemStack(blockHyperVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockFastVectorPlate, 'y', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.blockWitherDust, 1, OreDictionary.WILDCARD_VALUE)));
         }
     }
 }

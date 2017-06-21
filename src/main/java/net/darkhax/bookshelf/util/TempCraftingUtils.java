@@ -3,7 +3,7 @@ package net.darkhax.bookshelf.util;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class CraftingUtils {
+public class TempCraftingUtils {
 
     public static Object validateCrafting (ItemStack itemStack) {
         

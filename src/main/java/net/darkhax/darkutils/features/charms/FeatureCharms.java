@@ -7,7 +7,7 @@ import static net.darkhax.bookshelf.util.OreDictUtils.STRING;
 
 import java.util.List;
 
-import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.bookshelf.util.PlayerUtils;
 import net.darkhax.darkutils.DarkUtils;
@@ -70,7 +70,7 @@ public class FeatureCharms extends Feature {
         RecipeHandler.addShapedOreRecipe(itemAgressionCharm, "rgr", "gfg", "sgs", 's', Items.GOLDEN_SWORD, 'g', OreDictUtils.NUGGET_GOLD, 'f', Items.ROTTEN_FLESH, 'r', OreDictUtils.STRING);
         RecipeHandler.addShapedRecipe(new ItemStack(itemFocusSash), " p ", "ycr", " o ", 'p', Items.BLAZE_POWDER, 'y', new ItemStack(Blocks.WOOL, 1, 4), 'c', Items.MAGMA_CREAM, 'r', new ItemStack(Blocks.WOOL, 1, 14), 'o', new ItemStack(Blocks.WOOL, 1, 1));
         RecipeHandler.addShapedOreRecipe(itemGluttonyCharm, " s ", "waw", " w ", 's', OreDictUtils.STRING, 'w', OreDictUtils.CROP_WHEAT, 'a', Items.GOLDEN_APPLE);
-        RecipeHandler.addShapedOreRecipe(itemNullCharm, " s ", "xyz", 'x', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'y', OreDictUtils.OBSIDIAN, 'z', Items.ENDER_PEARL, 's', OreDictUtils.STRING);
+        RecipeHandler.addShapedOreRecipe(itemNullCharm, " s ", "xyz", 'x', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'y', OreDictUtils.OBSIDIAN, 'z', Items.ENDER_PEARL, 's', OreDictUtils.STRING);
         RecipeHandler.addShapedOreRecipe(itemPortalCharm, " s ", "oco", " o ", 's', STRING, 'o', OBSIDIAN, 'c', Items.END_CRYSTAL);
         RecipeHandler.addShapedOreRecipe(itemPortalCharm, " s ", "oco", " o ", 's', STRING, 'o', OBSIDIAN, 'c', Items.ENDER_EYE);
         RecipeHandler.addShapedOreRecipe(itemSleepCharm, "lsl", "sbs", "lsl", 's', STICK_WOOD, 'l', LEATHER, 'b', OreDictUtils.BED);

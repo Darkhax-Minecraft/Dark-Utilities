@@ -3,7 +3,7 @@ package net.darkhax.darkutils.features.endertether;
 import static net.darkhax.bookshelf.util.OreDictUtils.INGOT_IRON;
 import static net.darkhax.bookshelf.util.OreDictUtils.OBSIDIAN;
 
-import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
@@ -58,7 +58,7 @@ public class FeatureEnderTether extends Feature {
     public void setupRecipes () {
 
         if (craftable) {
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderTether), " u ", "oto", 'u', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH);
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderTether), " u ", "oto", 'u', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH);
         }
     }
 

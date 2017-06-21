@@ -3,7 +3,7 @@ package net.darkhax.darkutils.features.trap;
 import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
-import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
@@ -74,7 +74,7 @@ public class FeatureTrap extends Feature {
         }
 
         if (this.craftWither) {
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockTrap, 1, 5), "sis", 's', STONE, 'i', CraftingUtils.validateCrafting(FeatureMaterial.itemMaterial));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockTrap, 1, 5), "sis", 's', STONE, 'i', TempCraftingUtils.validateCrafting(FeatureMaterial.itemMaterial));
         }
     }
 }

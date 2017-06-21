@@ -3,7 +3,7 @@ package net.darkhax.darkutils.features.sneaky;
 import static net.darkhax.bookshelf.util.OreDictUtils.OBSIDIAN;
 import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 
-import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
@@ -104,7 +104,7 @@ public class FeatureSneaky extends Feature {
 
         if (craftSneakyBlock) {
 
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), "rrr", "rsr", "rrr", 'r', STONE, 's', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), "rrr", "rsr", "rrr", 'r', STONE, 's', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)));
 
             if (craftSneakyLever) {
                 RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);

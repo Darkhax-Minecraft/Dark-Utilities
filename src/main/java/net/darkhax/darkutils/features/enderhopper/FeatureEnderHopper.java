@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.features.enderhopper;
 
-import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
@@ -52,7 +52,7 @@ public class FeatureEnderHopper extends Feature {
 
         if (craftable) {
 
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderHopper), " p ", "oho", 'p', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER);
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderHopper), " p ", "oho", 'p', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER);
             RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderHopper), " p ", "oho", 'p', OreDictUtils.ENDERPEARL, 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER);
         }
     }

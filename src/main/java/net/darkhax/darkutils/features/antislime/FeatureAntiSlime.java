@@ -5,7 +5,7 @@ import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.darkhax.bookshelf.util.CraftingUtils;
+import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
@@ -51,7 +51,7 @@ public class FeatureAntiSlime extends Feature {
     public void setupRecipes () {
 
         if (craftable) {
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockAntiSlime), "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)));
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockAntiSlime), "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)));
         }
     }
 
