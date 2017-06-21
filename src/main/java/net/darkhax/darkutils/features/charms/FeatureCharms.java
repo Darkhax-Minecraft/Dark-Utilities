@@ -71,8 +71,7 @@ public class FeatureCharms extends Feature {
         GameRegistry.addRecipe(new ShapedOreRecipe(itemAgressionCharm, new Object[] { "sgs", "gfg", "sgs", 's', Items.GOLDEN_SWORD, 'g', OreDictUtils.NUGGET_GOLD, 'f', Items.ROTTEN_FLESH }));
         GameRegistry.addShapedRecipe(new ItemStack(itemFocusSash), new Object[] { " p ", "ycr", " o ", 'p', Items.BLAZE_POWDER, 'y', new ItemStack(Blocks.WOOL, 1, 4), 'c', Items.MAGMA_CREAM, 'r', new ItemStack(Blocks.WOOL, 1, 14), 'o', new ItemStack(Blocks.WOOL, 1, 1) });
         GameRegistry.addRecipe(new ShapedOreRecipe(itemGluttonyCharm, new Object[] { " s ", "waw", " w ", 's', OreDictUtils.STRING, 'w', OreDictUtils.CROP_WHEAT, 'a', Items.GOLDEN_APPLE }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(itemNullCharm, new Object[] { "xyz", 'x', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'y', OreDictUtils.OBSIDIAN, 'z', Items.ENDER_PEARL }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(itemNullCharm, new Object[] { " x ", " y ", " z ", 'x', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'y', OreDictUtils.OBSIDIAN, 'z', Items.ENDER_PEARL }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(itemNullCharm, new Object[] { " s ", "xyz", 'x', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'y', OreDictUtils.OBSIDIAN, 'z', Items.ENDER_PEARL, 's', OreDictUtils.STRING }));
         GameRegistry.addRecipe(new ShapedOreRecipe(itemPortalCharm, new Object[] { " s ", "oco", " o ", 's', STRING, 'o', OBSIDIAN, 'c', Items.END_CRYSTAL }));
         GameRegistry.addRecipe(new ShapedOreRecipe(itemPortalCharm, new Object[] { " s ", "oco", " o ", 's', STRING, 'o', OBSIDIAN, 'c', Items.ENDER_EYE }));
         GameRegistry.addRecipe(new ShapedOreRecipe(itemSleepCharm, new Object[] { "lsl", "sbs", "lsl", 's', STICK_WOOD, 'l', LEATHER, 'b', OreDictUtils.BED }));
