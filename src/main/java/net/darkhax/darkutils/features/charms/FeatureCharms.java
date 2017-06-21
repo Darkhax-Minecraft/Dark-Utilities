@@ -87,10 +87,7 @@ public class FeatureCharms extends Feature {
         if (entityBase instanceof EntityPlayer && PlayerUtils.playerHasItem((EntityPlayer) entityBase, itemFocusSash, 0) && entityBase.getHealth() >= entityBase.getMaxHealth() && event.getAmount() >= entityBase.getHealth()) {
 
             event.setAmount(entityBase.getHealth() - 1f);
-
-            if (entityBase.world.isRemote) {
-                ((EntityPlayer) entityBase).sendMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
-            }
+            ((EntityPlayer) entityBase).sendMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
         }
 
         // Agression Charm
