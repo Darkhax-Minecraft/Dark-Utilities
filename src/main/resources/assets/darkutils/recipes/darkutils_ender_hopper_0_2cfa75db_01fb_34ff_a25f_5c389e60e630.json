@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "darkutils:ender_hopper"
+  },
+  "pattern": [
+    " p ",
+    "oho"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "p": {
+      "item": "darkutils:material",
+      "data": 1
+    },
+    "h": {
+      "item": "minecraft:hopper"
+    },
+    "o": {
+      "ore": "obsidian",
+      "type": "forge:ore_dict"
+    }
+  }
+}

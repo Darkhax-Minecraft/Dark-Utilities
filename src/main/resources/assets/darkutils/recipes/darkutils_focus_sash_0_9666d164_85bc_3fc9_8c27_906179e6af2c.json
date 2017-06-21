@@ -1,0 +1,31 @@
+{
+  "result": {
+    "item": "darkutils:focus_sash"
+  },
+  "pattern": [
+    " p ",
+    "ycr",
+    " o "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "minecraft:blaze_powder"
+    },
+    "r": {
+      "item": "minecraft:wool",
+      "data": 14
+    },
+    "c": {
+      "item": "minecraft:magma_cream"
+    },
+    "y": {
+      "item": "minecraft:wool",
+      "data": 4
+    },
+    "o": {
+      "item": "minecraft:wool",
+      "data": 1
+    }
+  }
+}

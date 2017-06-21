@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "darkutils:filter",
+    "data": 7,
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "item": "darkutils:filter_inverted",
+      "data": 7
+    },
+    {
+      "item": "darkutils:filter_inverted",
+      "data": 7
+    },
+    {
+      "item": "darkutils:filter_inverted",
+      "data": 7
+    },
+    {
+      "item": "darkutils:filter_inverted",
+      "data": 7
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

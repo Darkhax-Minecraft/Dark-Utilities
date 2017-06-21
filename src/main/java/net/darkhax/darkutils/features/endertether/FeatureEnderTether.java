@@ -58,7 +58,7 @@ public class FeatureEnderTether extends Feature {
     public void setupRecipes () {
 
         if (craftable) {
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderTether), " u ", "oto", 'u', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH, 'i', INGOT_IRON);
+            RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderTether), " u ", "oto", 'u', CraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH);
         }
     }
 

@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "darkutils:update_detector"
+  },
+  "pattern": [
+    "sps",
+    "srs",
+    "sps"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "p": {
+      "item": "minecraft:piston"
+    },
+    "r": {
+      "ore": "blockRedstone",
+      "type": "forge:ore_dict"
+    },
+    "s": {
+      "ore": "stone",
+      "type": "forge:ore_dict"
+    }
+  }
+}

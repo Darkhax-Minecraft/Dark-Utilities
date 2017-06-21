@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 public class RendererEnderTether extends TileEntitySpecialRenderer<TileEntityEnderTether> {
 
     @Override
-    public void renderTileEntityAt (TileEntityEnderTether te, double x, double y, double z, float partialTicks, int destroyStage) {
+    public void render(TileEntityEnderTether te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 
         if (!te.showBorder) {
             return;

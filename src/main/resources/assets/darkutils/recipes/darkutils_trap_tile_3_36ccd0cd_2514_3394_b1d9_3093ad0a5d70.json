@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "darkutils:trap_tile",
+    "data": 3
+  },
+  "pattern": [
+    "sis"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "ore": "stone",
+      "type": "forge:ore_dict"
+    },
+    "i": {
+      "item": "minecraft:soul_sand"
+    }
+  }
+}

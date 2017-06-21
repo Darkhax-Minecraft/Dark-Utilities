@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "darkutils:slime_dyed",
+    "data": 13,
+    "count": 8
+  },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "x": {
+      "ore": "blockSlime",
+      "type": "forge:ore_dict"
+    },
+    "y": {
+      "item": "minecraft:dye",
+      "data": 2
+    }
+  }
+}

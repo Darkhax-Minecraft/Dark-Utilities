@@ -1,7 +1,6 @@
 package net.darkhax.darkutils.features.enchrings;
 
 import net.darkhax.bookshelf.events.EnchantmentModifierEvent;
-import net.darkhax.bookshelf.util.baubles.BaubleUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
@@ -60,11 +59,7 @@ public class FeatureEnchantedRing extends Feature {
 
         int levels = this.handleRing(event.getEntity().getHeldItemOffhand(), event.getEnchantment());
 
-        if (allowBaubles && Loader.isModLoaded("baubles") && event.getEntity() instanceof EntityPlayer) {
-
-            levels += this.handleRing(BaubleUtils.getBauble((EntityPlayer) event.getEntity(), BaubleUtils.RING_1), event.getEnchantment());
-            levels += this.handleRing(BaubleUtils.getBauble((EntityPlayer) event.getEntity(), BaubleUtils.RING_2), event.getEnchantment());
-        }
+        //TOOD baubles
 
         if (levels > 0) {
 

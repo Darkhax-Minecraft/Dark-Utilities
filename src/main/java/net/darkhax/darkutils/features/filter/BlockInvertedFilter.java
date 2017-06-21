@@ -95,10 +95,10 @@ public class BlockInvertedFilter extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks (Item item, CreativeTabs tab, NonNullList<ItemStack> list) {
+    public void getSubBlocks (CreativeTabs tab, NonNullList<ItemStack> list) {
 
         for (final FilterType type : FilterType.values()) {
-            list.add(new ItemStack(item, 1, type.meta));
+            list.add(new ItemStack(this, 1, type.meta));
         }
     }
 

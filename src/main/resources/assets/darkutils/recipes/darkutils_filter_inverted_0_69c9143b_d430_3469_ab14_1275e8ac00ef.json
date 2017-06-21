@@ -1,0 +1,46 @@
+{
+  "result": {
+    "item": "darkutils:filter_inverted",
+    "data": 0,
+    "count": 9
+  },
+  "ingredients": [
+    {
+      "item": "darkutils:filter",
+      "data": 0
+    },
+    {
+      "item": "darkutils:filter",
+      "data": 0
+    },
+    {
+      "item": "darkutils:filter",
+      "data": 0
+    },
+    {
+      "item": "darkutils:filter",
+      "data": 0
+    },
+    {
+      "item": "darkutils:filter",
+      "data": 0
+    },
+    {
+      "item": "darkutils:filter",
+      "data": 0
+    },
+    {
+      "item": "darkutils:filter",
+      "data": 0
+    },
+    {
+      "item": "darkutils:filter",
+      "data": 0
+    },
+    {
+      "item": "darkutils:filter",
+      "data": 0
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

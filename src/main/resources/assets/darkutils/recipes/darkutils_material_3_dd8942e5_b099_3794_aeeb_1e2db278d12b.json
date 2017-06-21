@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "darkutils:material",
+    "data": 3,
+    "count": 8
+  },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:sugar"
+    },
+    "y": {
+      "item": "darkutils:material",
+      "data": 0
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "minecraft:soul_sand",
+    "count": 5
+  },
+  "pattern": [
+    "xyx",
+    "yxy",
+    "xyx"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "x": {
+      "ore": "sand",
+      "type": "forge:ore_dict"
+    },
+    "y": {
+      "item": "darkutils:material",
+      "data": 0
+    }
+  }
+}

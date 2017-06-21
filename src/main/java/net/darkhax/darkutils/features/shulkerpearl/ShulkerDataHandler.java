@@ -41,9 +41,9 @@ public class ShulkerDataHandler {
      * @param event The forge event.
      */
     @SubscribeEvent
-    public void attachCapabilities (AttachCapabilitiesEvent.Entity event) {
+    public void attachCapabilities (AttachCapabilitiesEvent<Entity> event) {
 
-        if (event.getEntity() instanceof EntityShulker) {
+        if (event.getObject() instanceof EntityShulker) {
             event.addCapability(new ResourceLocation(Constants.MOD_ID, "shulker_info"), new Provider());
         }
     }

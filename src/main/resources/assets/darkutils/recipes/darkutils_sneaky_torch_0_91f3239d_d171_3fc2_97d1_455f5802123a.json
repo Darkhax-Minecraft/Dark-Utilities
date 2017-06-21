@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "darkutils:sneaky_torch"
+  },
+  "ingredients": [
+    {
+      "item": "darkutils:sneaky"
+    },
+    {
+      "item": "minecraft:torch"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "darkutils:charm_gluttony"
+  },
+  "pattern": [
+    " s ",
+    "waw",
+    " w "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "a": {
+      "item": "minecraft:golden_apple",
+      "data": 0
+    },
+    "s": {
+      "ore": "string",
+      "type": "forge:ore_dict"
+    },
+    "w": {
+      "ore": "cropWheat",
+      "type": "forge:ore_dict"
+    }
+  }
+}

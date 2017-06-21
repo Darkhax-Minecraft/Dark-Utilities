@@ -163,10 +163,10 @@ public class BlockTrap extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks (Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list) {
+    public void getSubBlocks (CreativeTabs tab, NonNullList<ItemStack> list) {
 
         for (final TrapType type : TrapType.values()) {
-            list.add(new ItemStack(itemIn, 1, type.meta));
+            list.add(new ItemStack(this, 1, type.meta));
         }
     }
 }

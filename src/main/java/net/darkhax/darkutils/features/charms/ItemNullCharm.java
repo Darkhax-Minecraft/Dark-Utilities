@@ -6,6 +6,7 @@ import net.darkhax.bookshelf.item.ItemInventory;
 import net.darkhax.bookshelf.util.StackUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.handler.GuiHandler;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -28,7 +29,7 @@ public class ItemNullCharm extends ItemCharm {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+    public void addInformation (ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
 
         for (final ItemStack blacklisted : ItemInventory.getContents(stack)) {
             if (!blacklisted.isEmpty()) {

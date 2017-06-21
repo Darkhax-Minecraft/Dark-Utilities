@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "darkutils:material",
+    "data": 0,
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "item": "darkutils:wither_block",
+      "data": 32767,
+      "count": 3
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

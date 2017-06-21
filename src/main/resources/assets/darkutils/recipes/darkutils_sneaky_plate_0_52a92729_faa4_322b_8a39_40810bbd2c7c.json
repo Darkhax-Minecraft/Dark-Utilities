@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "darkutils:sneaky_plate"
+  },
+  "ingredients": [
+    {
+      "item": "darkutils:sneaky"
+    },
+    {
+      "item": "minecraft:wooden_pressure_plate"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

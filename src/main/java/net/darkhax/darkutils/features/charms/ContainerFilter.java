@@ -79,10 +79,4 @@ public class ContainerFilter extends Container {
 
         return super.slotClick(slot, dragType, clickTypeIn, player);
     }
-
-    @Override
-    protected void retrySlotClick (int slotId, int clickedButton, boolean mode, EntityPlayer playerIn) {
-
-        // No RETRY >_<
-    }
 }

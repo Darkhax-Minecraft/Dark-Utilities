@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "darkutils:pearl_block",
+    "data": 0,
+    "count": 32
+  },
+  "pattern": [
+    "xxx",
+    "xsx",
+    "xxx"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "ore": "endstone",
+      "type": "forge:ore_dict"
+    },
+    "x": {
+      "item": "darkutils:shulker_pearl"
+    }
+  }
+}

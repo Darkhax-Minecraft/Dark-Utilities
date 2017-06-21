@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "minecraft:end_rod"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    {
+      "ore": "gemPearl",
+      "type": "forge:ore_dict"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

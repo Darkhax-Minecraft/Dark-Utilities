@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "darkutils:sneaky_lever"
+  },
+  "ingredients": [
+    {
+      "item": "darkutils:sneaky"
+    },
+    {
+      "item": "minecraft:lever"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

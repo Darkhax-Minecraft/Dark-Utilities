@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import javax.annotation.Nonnull;
 
+import net.darkhax.bookshelf.json.RecipeGenerator;
 import net.darkhax.bookshelf.util.StackUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -74,21 +75,22 @@ public class RecipeHandler {
 
     public static IRecipe addShapedRecipe (@Nonnull ItemStack output, Object... params) {
 
-        return GameRegistry.addShapedRecipe(output, params);
+        RecipeGenerator.createShapedRecipe(output, params);
+        return null;
     }
 
     public static void addShapelessRecipe (@Nonnull ItemStack output, Object... params) {
 
-        GameRegistry.addShapelessRecipe(output, params);
+        RecipeGenerator.createShapelessRecipe(output, params);
     }
 
     public static void addShapedOreRecipe (@Nonnull ItemStack output, Object... params) {
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(output, params));
+        RecipeGenerator.createShapedRecipe(output, params);
     }
 
     public static void addShapelessOreRecipe (@Nonnull ItemStack output, Object... params) {
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(output, params));
+        RecipeGenerator.createShapelessRecipe(output, params);
     }
 }

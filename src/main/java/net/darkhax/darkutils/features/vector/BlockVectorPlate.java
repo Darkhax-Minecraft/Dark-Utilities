@@ -106,8 +106,9 @@ public class BlockVectorPlate extends Block {
                     item.setAgeToCreativeDespawnTime();
                 }
 
-                if (FeatureVectorPlate.preventItemPickup && item.delayBeforeCanPickup < 5) {
-                    item.setPickupDelay(20);
+                if (FeatureVectorPlate.preventItemPickup) {
+                    
+                    item.setDefaultPickupDelay();
                 }
             }
         }

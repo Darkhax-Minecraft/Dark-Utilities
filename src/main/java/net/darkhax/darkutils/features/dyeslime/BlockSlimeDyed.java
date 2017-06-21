@@ -12,6 +12,8 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,17 +36,17 @@ public class BlockSlimeDyed extends BlockSlime {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks (Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list) {
+    public void getSubBlocks (CreativeTabs tab, NonNullList<ItemStack> list) {
 
         for (final EnumDyeColor enumdyecolor : EnumDyeColor.values()) {
-            list.add(new ItemStack(itemIn, 1, enumdyecolor.getMetadata()));
+            list.add(new ItemStack(this, 1, enumdyecolor.getMetadata()));
         }
     }
 
     @Override
-    public MapColor getMapColor (IBlockState state) {
-
-        return state.getValue(COLOR).getMapColor();
+    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        
+        return MapColor.getBlockColor((EnumDyeColor)state.getValue(COLOR));
     }
 
     @Override

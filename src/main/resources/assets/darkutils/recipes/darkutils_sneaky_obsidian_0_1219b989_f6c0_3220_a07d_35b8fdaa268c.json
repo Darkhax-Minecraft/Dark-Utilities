@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "darkutils:sneaky_obsidian"
+  },
+  "ingredients": [
+    {
+      "item": "darkutils:sneaky"
+    },
+    {
+      "ore": "obsidian",
+      "type": "forge:ore_dict"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

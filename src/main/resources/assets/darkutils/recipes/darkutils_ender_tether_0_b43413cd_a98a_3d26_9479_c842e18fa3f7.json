@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "darkutils:ender_tether"
+  },
+  "pattern": [
+    " u ",
+    "oto"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "t": {
+      "item": "minecraft:redstone_torch"
+    },
+    "u": {
+      "item": "darkutils:material",
+      "data": 1
+    },
+    "o": {
+      "ore": "obsidian",
+      "type": "forge:ore_dict"
+    }
+  }
+}

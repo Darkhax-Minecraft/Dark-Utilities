@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "darkutils:anti_slime"
+  },
+  "pattern": [
+    "sws",
+    "wcw",
+    "sws"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "ore": "stone",
+      "type": "forge:ore_dict"
+    },
+    "c": {
+      "item": "darkutils:material",
+      "data": 2
+    },
+    "w": {
+      "item": "minecraft:cobblestone_wall",
+      "data": 0
+    }
+  }
+}
