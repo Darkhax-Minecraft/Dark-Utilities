@@ -1,16 +1,8 @@
 package net.darkhax.darkutils.features.enchrings;
 
-import java.util.List;
-
 import net.darkhax.bookshelf.item.ItemSubType;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 //TODO add baubles back
 public class ItemRing extends ItemSubType {

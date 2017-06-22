@@ -1,16 +1,12 @@
 package net.darkhax.darkutils.features.shulkerpearl;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
-import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.shulkerpearl.ShulkerDataHandler.ICustomData;
-import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityShulker;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
@@ -53,26 +49,7 @@ public class FeatureShulkerPearlItem extends Feature {
     public void setupConfiguration (Configuration config) {
 
         this.harvestablePearls = config.getBoolean("Harvest Pearls", this.configName, true, "Should pearls be harvestable from shulkers?");
-        this.craftEndRods = config.getBoolean("Craft End Rods", this.configName, true, "Can end rods be crafted?");
         this.maxCooldown = config.getInt("Shulker Cooldown", this.configName, 6000, 0, Integer.MAX_VALUE, "The pearl harvest cooldown tile, in ticks");
-        this.craftBlocks = config.getBoolean("Craft Blocks", this.configName, true, "Can pearl blocks be crafted?");
-    }
-
-    @Override
-    public void setupRecipes () {
-
-        if (this.craftEndRods) {
-            RecipeHandler.addShapelessOreRecipe(new ItemStack(Blocks.END_ROD), Items.CHORUS_FRUIT, "gemPearl");
-        }
-
-        if (this.craftBlocks) {
-
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockShulkerPearl, 32, 0), "xxx", "xsx", "xxx", 'x', itemShulkerPearl, 's', OreDictUtils.ENDSTONE);
-            RecipeHandler.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 0));
-            RecipeHandler.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 1));
-            RecipeHandler.addShapedRecipe(new ItemStack(blockShulkerPearl, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 2));
-            RecipeHandler.addShapelessRecipe(new ItemStack(itemShulkerPearl), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
-        }
     }
 
     @Override

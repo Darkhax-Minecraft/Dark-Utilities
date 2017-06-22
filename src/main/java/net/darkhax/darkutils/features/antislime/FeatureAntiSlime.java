@@ -1,23 +1,15 @@
 package net.darkhax.darkutils.features.antislime;
 
-import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
-import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -26,8 +18,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class FeatureAntiSlime extends Feature {
 
     public static Block blockAntiSlime;
-
-    public static boolean craftable;
 
     @Override
     public void onRegistry () {
@@ -39,20 +29,6 @@ public class FeatureAntiSlime extends Feature {
     public void onPreInit () {
 
         GameRegistry.registerTileEntity(TileEntityAntiSlime.class, "anti_slime");
-    }
-
-    @Override
-    public void setupConfiguration (Configuration config) {
-
-        craftable = config.getBoolean("Craftable", this.configName, true, "Should the Anti Slime block be craftable?");
-    }
-
-    @Override
-    public void setupRecipes () {
-
-        if (craftable) {
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockAntiSlime), "sws", "wcw", "sws", 's', STONE, 'w', Blocks.COBBLESTONE_WALL, 'c', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)));
-        }
     }
 
     @Override

@@ -1,21 +1,13 @@
 package net.darkhax.darkutils.features.sneaky;
 
-import static net.darkhax.bookshelf.util.OreDictUtils.OBSIDIAN;
-import static net.darkhax.bookshelf.util.OreDictUtils.STONE;
-
-import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
-import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.config.Configuration;
@@ -46,18 +38,6 @@ public class FeatureSneaky extends Feature {
     public static Block blockSneakyPlate;
 
     public static Block blockSneakyBedrock;
-
-    public static boolean craftSneakyBlock;
-
-    public static boolean craftSneakyLever;
-
-    public static boolean craftSneakyGhost;
-
-    public static boolean craftSneakyTorch;
-
-    public static boolean craftSneakyObsidian;
-
-    public static boolean craftSneakyPlate;
 
     public static boolean opacity;
 
@@ -90,44 +70,7 @@ public class FeatureSneaky extends Feature {
     @Override
     public void setupConfiguration (Configuration config) {
 
-        craftSneakyBlock = config.getBoolean("Craft Sneaky Block", this.configName, true, "Should the sneaky block be craftable?");
-        craftSneakyLever = config.getBoolean("Craft Sneaky Lever", this.configName, true, "Should the sneaky lever be craftable?");
-        craftSneakyGhost = config.getBoolean("Craft Sneaky False Block", this.configName, true, "Should the sneaky false block be craftable?");
-        craftSneakyTorch = config.getBoolean("Craft Sneaky Torch", this.configName, true, "Should the sneaky torch be craftable?");
-        craftSneakyObsidian = config.getBoolean("Craft Sneaky Obsidian", this.configName, true, "Should the sneaky obsidian be craftable?");
-        craftSneakyPlate = config.getBoolean("Craft Sneaky Pressure Plate", this.configName, true, "Should the sneaky pressure plate be craftable?");
         opacity = config.getBoolean("Opacity", this.configName, true, "When true, all sneaky blocks will let no light through. When disabled, all light will be let through.");
-    }
-
-    @Override
-    public void setupRecipes () {
-
-        if (craftSneakyBlock) {
-
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockSneakyBlock, 8), "rrr", "rsr", "rrr", 'r', STONE, 's', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 2)));
-
-            if (craftSneakyLever) {
-                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);
-            }
-
-            if (craftSneakyGhost) {
-                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyGhost), blockSneakyBlock, Blocks.WOOL);
-            }
-
-            if (craftSneakyTorch) {
-
-                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.TORCH);
-                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.REDSTONE_TORCH);
-            }
-
-            if (craftSneakyObsidian) {
-                RecipeHandler.addShapelessOreRecipe(new ItemStack(blockSneakyObsidian), blockSneakyBlock, OBSIDIAN);
-            }
-
-            if (craftSneakyPlate) {
-                RecipeHandler.addShapelessRecipe(new ItemStack(blockSneakyPlate), blockSneakyBlock, Blocks.WOODEN_PRESSURE_PLATE);
-            }
-        }
     }
 
     @Override

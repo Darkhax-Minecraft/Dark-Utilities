@@ -1,18 +1,10 @@
 package net.darkhax.darkutils.features.endertether;
 
-import static net.darkhax.bookshelf.util.OreDictUtils.INGOT_IRON;
-import static net.darkhax.bookshelf.util.OreDictUtils.OBSIDIAN;
-
-import net.darkhax.bookshelf.util.TempCraftingUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
-import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.darkhax.darkutils.handler.RecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.config.Configuration;
@@ -27,8 +19,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class FeatureEnderTether extends Feature {
 
     public static Block blockEnderTether;
-
-    private static boolean craftable = true;
 
     protected static boolean affectPlayers = true;
 
@@ -49,17 +39,8 @@ public class FeatureEnderTether extends Feature {
     @Override
     public void setupConfiguration (Configuration config) {
 
-        craftable = config.getBoolean("Craftable", this.configName, true, "Should the Ender Tether be craftable?");
         tetherRange = config.getFloat("Tether Range", this.configName, 32f, 0.0f, 512f, "The range of the effect given by the tether. Distance is measured in blocks.");
         affectPlayers = config.getBoolean("Affect Players", this.configName, true, "Should the Ender Tether catch players using ender teleportation?");
-    }
-
-    @Override
-    public void setupRecipes () {
-
-        if (craftable) {
-            RecipeHandler.addShapedOreRecipe(new ItemStack(blockEnderTether), " u ", "oto", 'u', TempCraftingUtils.validateCrafting(new ItemStack(FeatureMaterial.itemMaterial, 1, 1)), 'o', OBSIDIAN, 't', Blocks.REDSTONE_TORCH);
-        }
     }
 
     @Override
