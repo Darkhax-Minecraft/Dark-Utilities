@@ -43,9 +43,9 @@ public class BlockSlimeDyed extends BlockSlime {
     }
 
     @Override
-    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        
-        return MapColor.getBlockColor((EnumDyeColor)state.getValue(COLOR));
+    public MapColor getMapColor (IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+
+        return MapColor.getBlockColor(state.getValue(COLOR));
     }
 
     @Override

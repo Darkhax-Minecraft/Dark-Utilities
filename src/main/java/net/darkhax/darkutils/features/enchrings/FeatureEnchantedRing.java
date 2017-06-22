@@ -55,9 +55,9 @@ public class FeatureEnchantedRing extends Feature {
     @SubscribeEvent
     public void getEnchantmentLevel (EnchantmentModifierEvent event) {
 
-        int levels = this.handleRing(event.getEntity().getHeldItemOffhand(), event.getEnchantment());
+        final int levels = this.handleRing(event.getEntity().getHeldItemOffhand(), event.getEnchantment());
 
-        //TOOD baubles
+        // TOOD baubles
 
         if (levels > 0) {
 

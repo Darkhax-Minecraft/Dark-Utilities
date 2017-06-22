@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 public class RendererEnderHopper extends TileEntitySpecialRenderer<TileEntityEnderHopper> {
 
     @Override
-    public void render(TileEntityEnderHopper te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+    public void render (TileEntityEnderHopper te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 
         if (!te.showBorder) {
             return;

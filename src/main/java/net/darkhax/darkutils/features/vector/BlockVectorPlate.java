@@ -107,7 +107,7 @@ public class BlockVectorPlate extends Block {
                 }
 
                 if (FeatureVectorPlate.preventItemPickup) {
-                    
+
                     item.setDefaultPickupDelay();
                 }
             }

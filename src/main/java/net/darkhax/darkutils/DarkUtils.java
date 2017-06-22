@@ -83,11 +83,11 @@ public class DarkUtils {
         for (final Feature feature : FeatureManager.getFeatures()) {
             feature.onInit();
         }
-        
+
         for (final Feature feature : FeatureManager.getFeatures()) {
             feature.setupRecipes();
         }
-        
+
         AddonHandler.onInit();
     }
 
@@ -100,13 +100,13 @@ public class DarkUtils {
 
         AddonHandler.onPostInit();
     }
-    
+
     @EventHandler
     @SideOnly(Side.CLIENT)
     public void clientPreInit (FMLPreInitializationEvent event) {
 
         for (final Feature feature : FeatureManager.getFeatures()) {
-        	feature.onClientPreInit();
+            feature.onClientPreInit();
         }
     }
 
@@ -115,7 +115,7 @@ public class DarkUtils {
     public void clientInit (FMLInitializationEvent event) {
 
         for (final Feature feature : FeatureManager.getFeatures()) {
-        	feature.onClientInit();
+            feature.onClientInit();
         }
     }
 
@@ -124,7 +124,7 @@ public class DarkUtils {
     public void clientPostInit (FMLPostInitializationEvent event) {
 
         for (final Feature feature : FeatureManager.getFeatures()) {
-        	feature.onClientPostInit();
+            feature.onClientPostInit();
         }
     }
 

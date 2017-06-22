@@ -25,9 +25,9 @@ public class FeatureShulkerPearlItem extends Feature {
 
     private boolean harvestablePearls = true;
 
-    private boolean craftEndRods = true;
+    private final boolean craftEndRods = true;
 
-    private boolean craftBlocks = true;
+    private final boolean craftBlocks = true;
 
     private int maxCooldown = 6000;
 
