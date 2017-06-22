@@ -6,7 +6,6 @@ import net.darkhax.bookshelf.network.NetworkHandler;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.bookshelf.util.GameUtils;
 import net.darkhax.darkutils.addons.AddonHandler;
-import net.darkhax.darkutils.common.ProxyCommon;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.FeatureManager;
@@ -21,7 +20,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -29,6 +27,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, dependencies = Constants.DEPENDENCIES)
 public class DarkUtils {
@@ -47,13 +46,6 @@ public class DarkUtils {
      * A handler for registering content.
      */
     public static final RegistryHelper REGISTRY = new RegistryHelper(Constants.MOD_ID).setTab(TAB);
-
-    /**
-     * Reference to the proxy system. This will be the client proxy on the client side, and
-     * common proxy on the server side.
-     */
-    @SidedProxy(clientSide = Constants.CLIENT_PROXY_CLASS, serverSide = Constants.SERVER_PROXY_CLASS)
-    public static ProxyCommon proxy;
 
     /**
      * Reference to the mod instance. Useful for mod specific things, such as entities.
@@ -81,8 +73,6 @@ public class DarkUtils {
             feature.onPreInit();
         }
 
-        proxy.onPreInit();
-
         AddonHandler.registerAddons();
         AddonHandler.onPreInit();
     }
@@ -93,13 +83,11 @@ public class DarkUtils {
         for (final Feature feature : FeatureManager.getFeatures()) {
             feature.onInit();
         }
-
-        System.out.println("RECIPES HAPPENED");
+        
         for (final Feature feature : FeatureManager.getFeatures()) {
             feature.setupRecipes();
         }
-
-        proxy.onInit();
+        
         AddonHandler.onInit();
     }
 
@@ -110,8 +98,34 @@ public class DarkUtils {
             feature.onPostInit();
         }
 
-        proxy.onPostInit();
         AddonHandler.onPostInit();
+    }
+    
+    @EventHandler
+    @SideOnly(Side.CLIENT)
+    public void clientPreInit (FMLPreInitializationEvent event) {
+
+        for (final Feature feature : FeatureManager.getFeatures()) {
+        	feature.onClientPreInit();
+        }
+    }
+
+    @EventHandler
+    @SideOnly(Side.CLIENT)
+    public void clientInit (FMLInitializationEvent event) {
+
+        for (final Feature feature : FeatureManager.getFeatures()) {
+        	feature.onClientInit();
+        }
+    }
+
+    @EventHandler
+    @SideOnly(Side.CLIENT)
+    public void clientPostInit (FMLPostInitializationEvent event) {
+
+        for (final Feature feature : FeatureManager.getFeatures()) {
+        	feature.onClientPostInit();
+        }
     }
 
     @SubscribeEvent
@@ -121,7 +135,6 @@ public class DarkUtils {
             feature.onRegistry();
         }
 
-        // TODO move to proxy
         if (GameUtils.isClient()) {
 
             for (final Feature feature : FeatureManager.getFeatures()) {
