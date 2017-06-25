@@ -1,6 +1,10 @@
 package net.darkhax.darkutils;
 
 import java.io.File;
+import java.util.Random;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import net.darkhax.bookshelf.network.NetworkHandler;
 import net.darkhax.bookshelf.registry.RegistryHelper;
@@ -12,7 +16,6 @@ import net.darkhax.darkutils.features.FeatureManager;
 import net.darkhax.darkutils.features.timer.PacketSyncTimer;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
 import net.darkhax.darkutils.handler.GuiHandler;
-import net.darkhax.darkutils.libs.Constants;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -29,8 +32,24 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, dependencies = Constants.DEPENDENCIES)
+@Mod(modid = DarkUtils.MOD_ID, name = DarkUtils.MOD_NAME, version = DarkUtils.VERSION_NUMBER, dependencies = DarkUtils.DEPENDENCIES)
 public class DarkUtils {
+
+    public static final String MOD_ID = "darkutils";
+
+    public static final String MOD_NAME = "Dark Utilities";
+
+    public static final String VERSION_NUMBER = "@VERSION@";
+
+    public static final String CLIENT_PROXY_CLASS = "net.darkhax.darkutils.client.ProxyClient";
+
+    public static final String SERVER_PROXY_CLASS = "net.darkhax.darkutils.common.ProxyCommon";
+
+    public static final String DEPENDENCIES = "required-after:bookshelf@[2.0.0.341,);after:waila;after:jei;";
+
+    public static final Random RANDOM = new Random();
+
+    public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 
     /**
      * The creative tab used for all content added by this mod.
@@ -40,17 +59,17 @@ public class DarkUtils {
     /**
      * A network wrapper for DarkUtils packets.
      */
-    public static final NetworkHandler NETWORK = new NetworkHandler(Constants.MOD_ID);
+    public static final NetworkHandler NETWORK = new NetworkHandler(DarkUtils.MOD_ID);
 
     /**
      * A handler for registering content.
      */
-    public static final RegistryHelper REGISTRY = new RegistryHelper(Constants.MOD_ID).setTab(TAB);
+    public static final RegistryHelper REGISTRY = new RegistryHelper(DarkUtils.MOD_ID).setTab(TAB);
 
     /**
      * Reference to the mod instance. Useful for mod specific things, such as entities.
      */
-    @Mod.Instance(Constants.MOD_ID)
+    @Mod.Instance(DarkUtils.MOD_ID)
     public static DarkUtils instance;
 
     @EventHandler

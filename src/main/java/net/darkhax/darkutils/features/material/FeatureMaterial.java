@@ -4,7 +4,6 @@ import net.darkhax.bookshelf.item.ItemBlockBasic;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
-import net.darkhax.darkutils.libs.Constants;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -62,7 +61,7 @@ public class FeatureMaterial extends Feature {
             final LootPool pool1 = table.getPool("pool1");
 
             if (pool1 != null) {
-                pool1.addEntry(new LootEntryItem(itemMaterial, dustDropWeight, 0, new LootFunction[0], new LootCondition[0], Constants.MOD_ID + ":wither_dust"));
+                pool1.addEntry(new LootEntryItem(itemMaterial, dustDropWeight, 0, new LootFunction[0], new LootCondition[0], DarkUtils.MOD_ID + ":wither_dust"));
             }
         }
     }

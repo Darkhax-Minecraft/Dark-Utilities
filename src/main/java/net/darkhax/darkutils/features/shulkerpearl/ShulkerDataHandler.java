@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.features.shulkerpearl;
 
-import net.darkhax.darkutils.libs.Constants;
+import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.nbt.NBTBase;
@@ -44,7 +44,7 @@ public class ShulkerDataHandler {
     public void attachCapabilities (AttachCapabilitiesEvent<Entity> event) {
 
         if (event.getObject() instanceof EntityShulker) {
-            event.addCapability(new ResourceLocation(Constants.MOD_ID, "shulker_info"), new Provider());
+            event.addCapability(new ResourceLocation(DarkUtils.MOD_ID, "shulker_info"), new Provider());
         }
     }
 
