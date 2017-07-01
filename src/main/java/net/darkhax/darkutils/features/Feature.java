@@ -17,13 +17,6 @@ public class Feature {
     protected String configName;
 
     /**
-     * Called when Bookshelf requests to enter the actual registry stage. Register stuff here!
-     */
-    public void onRegistry () {
-
-    }
-
-    /**
      * Called when the mod enters the preInit phase of loading. This is after
      * {@link #setupConfiguration(Configuration)} but before {@link #onClientRegistry()}.
      */
@@ -81,14 +74,6 @@ public class Feature {
      * Called while the mod is in the client side preInit phase.
      */
     @SideOnly(Side.CLIENT)
-    public void onClientRegistry () {
-
-    }
-
-    /**
-     * Called while the mod is in the client side preInit phase.
-     */
-    @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
 
     }
@@ -106,16 +91,6 @@ public class Feature {
      */
     @SideOnly(Side.CLIENT)
     public void onClientPostInit () {
-
-    }
-
-    /**
-     * Deprecated for 1.12
-     */
-    @Deprecated
-    public void setupRecipes () {
-
-        // TODO Auto-generated method stub
 
     }
 }

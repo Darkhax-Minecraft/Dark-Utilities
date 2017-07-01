@@ -19,10 +19,12 @@ import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -39,17 +41,20 @@ public class DarkUtils {
 
     public static final String MOD_NAME = "Dark Utilities";
 
-    public static final String VERSION_NUMBER = "@VERSION@";
+    public static final String VERSION_NUMBER = "${version}";
 
-    public static final String CLIENT_PROXY_CLASS = "net.darkhax.darkutils.client.ProxyClient";
+    public static final String CLIENT_PROXY_CLASS = "net.darkhax.darkutils.DarkUtilsClient";
 
-    public static final String SERVER_PROXY_CLASS = "net.darkhax.darkutils.common.ProxyCommon";
+    public static final String SERVER_PROXY_CLASS = "net.darkhax.darkutils.DarkUtilsServer";
 
     public static final String DEPENDENCIES = "required-after:bookshelf@[2.0.0.341,);after:waila;after:jei;";
 
     public static final Random RANDOM = new Random();
 
     public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
+    
+    @SidedProxy(clientSide = DarkUtils.CLIENT_PROXY_CLASS, serverSide = DarkUtils.SERVER_PROXY_CLASS)
+    public static DarkUtilsServer proxy;
 
     /**
      * The creative tab used for all content added by this mod.
@@ -87,10 +92,8 @@ public class DarkUtils {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
         ConfigurationHandler.syncConfigData();
-
-        for (final Feature feature : FeatureManager.getFeatures()) {
-            feature.onPreInit();
-        }
+        
+        proxy.preInit();
 
         AddonHandler.registerAddons();
         AddonHandler.onPreInit();
@@ -99,68 +102,19 @@ public class DarkUtils {
     @EventHandler
     public void init (FMLInitializationEvent event) {
 
-        for (final Feature feature : FeatureManager.getFeatures()) {
-            feature.onInit();
-        }
-
-        for (final Feature feature : FeatureManager.getFeatures()) {
-            feature.setupRecipes();
-        }
-
+        proxy.init();
         AddonHandler.onInit();
     }
 
     @EventHandler
     public void postInit (FMLPostInitializationEvent event) {
 
-        for (final Feature feature : FeatureManager.getFeatures()) {
-            feature.onPostInit();
-        }
-
+        proxy.postInit();
         AddonHandler.onPostInit();
-    }
-
-    @EventHandler
-    @SideOnly(Side.CLIENT)
-    public void clientPreInit (FMLPreInitializationEvent event) {
-
-        for (final Feature feature : FeatureManager.getFeatures()) {
-            feature.onClientPreInit();
-        }
-    }
-
-    @EventHandler
-    @SideOnly(Side.CLIENT)
-    public void clientInit (FMLInitializationEvent event) {
-
-        for (final Feature feature : FeatureManager.getFeatures()) {
-            feature.onClientInit();
-        }
-    }
-
-    @EventHandler
-    @SideOnly(Side.CLIENT)
-    public void clientPostInit (FMLPostInitializationEvent event) {
-
-        for (final Feature feature : FeatureManager.getFeatures()) {
-            feature.onClientPostInit();
-        }
     }
 
     @SubscribeEvent
     public void registerBlocks (RegistryEvent.Register<Block> event) {
-
-        for (final Feature feature : FeatureManager.getFeatures()) {
-            feature.onRegistry();
-        }
-
-        if (GameUtils.isClient()) {
-
-            for (final Feature feature : FeatureManager.getFeatures()) {
-
-                feature.onClientRegistry();
-            }
-        }
 
         for (final Block block : REGISTRY.getBlocks()) {
 
@@ -174,6 +128,16 @@ public class DarkUtils {
         for (final Item item : REGISTRY.getItems()) {
 
             event.getRegistry().register(item);
+        }
+    }
+    
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public void modelRegistryEvent (ModelRegistryEvent event) {
+          
+        for (final Item item : REGISTRY.getItems()) {
+            
+            REGISTRY.registerInventoryModel(item);
         }
     }
 }
