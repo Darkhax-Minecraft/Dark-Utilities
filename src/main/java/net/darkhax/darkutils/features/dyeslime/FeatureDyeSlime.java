@@ -23,10 +23,10 @@ public class FeatureDyeSlime extends Feature {
         blockSlime = new BlockSlimeDyed();
         DarkUtils.REGISTRY.registerBlock(blockSlime, new ItemBlockBasic(blockSlime, COLORS, false), "slime_dyed");
     }
-    
+
     @Override
-    public void onInit() {
-               
+    public void onInit () {
+
         for (final EnumDyeColor color : EnumDyeColor.values()) {
             OreDictionary.registerOre(OreDictUtils.BLOCK_SLIME, new ItemStack(blockSlime, 1, color.getMetadata()));
         }

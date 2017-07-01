@@ -8,10 +8,8 @@ import org.apache.logging.log4j.Logger;
 
 import net.darkhax.bookshelf.network.NetworkHandler;
 import net.darkhax.bookshelf.registry.RegistryHelper;
-import net.darkhax.bookshelf.util.GameUtils;
 import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
-import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.FeatureManager;
 import net.darkhax.darkutils.features.timer.PacketSyncTimer;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
@@ -52,7 +50,7 @@ public class DarkUtils {
     public static final Random RANDOM = new Random();
 
     public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
-    
+
     @SidedProxy(clientSide = DarkUtils.CLIENT_PROXY_CLASS, serverSide = DarkUtils.SERVER_PROXY_CLASS)
     public static DarkUtilsServer proxy;
 
@@ -92,7 +90,7 @@ public class DarkUtils {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
         ConfigurationHandler.syncConfigData();
-        
+
         proxy.preInit();
 
         AddonHandler.registerAddons();
@@ -130,13 +128,13 @@ public class DarkUtils {
             event.getRegistry().register(item);
         }
     }
-    
+
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void modelRegistryEvent (ModelRegistryEvent event) {
-          
+
         for (final Item item : REGISTRY.getItems()) {
-            
+
             REGISTRY.registerInventoryModel(item);
         }
     }

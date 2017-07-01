@@ -8,7 +8,7 @@ public class DarkUtilsServer {
     public void preInit () {
 
         for (final Feature feature : FeatureManager.getFeatures()) {
-            
+
             feature.onPreInit();
         }
     }
@@ -16,7 +16,7 @@ public class DarkUtilsServer {
     public void init () {
 
         for (final Feature feature : FeatureManager.getFeatures()) {
-            
+
             feature.onInit();
         }
     }
@@ -24,7 +24,7 @@ public class DarkUtilsServer {
     public void postInit () {
 
         for (final Feature feature : FeatureManager.getFeatures()) {
-            
+
             feature.onPostInit();
         }
     }

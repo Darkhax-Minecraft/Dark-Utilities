@@ -36,10 +36,10 @@ public class FeatureMaterial extends Feature {
         blockWitherDust = new BlockWitherDust();
         DarkUtils.REGISTRY.registerBlock(blockWitherDust, new ItemBlockBasic(blockWitherDust, BlockWitherDust.types, false), "wither_block");
     }
-    
+
     @Override
     public void onInit () {
-        
+
         OreDictionary.registerOre("blockWither", new ItemStack(blockWitherDust, 1, OreDictionary.WILDCARD_VALUE));
     }
 

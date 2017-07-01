@@ -38,10 +38,10 @@ public class FeatureShulkerPearlItem extends Feature {
             ShulkerDataHandler.init();
         }
     }
-    
+
     @Override
-    public void onInit() {
-        
+    public void onInit () {
+
         OreDictionary.registerOre("blockPearl", new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("gemPearl", itemShulkerPearl);
     }

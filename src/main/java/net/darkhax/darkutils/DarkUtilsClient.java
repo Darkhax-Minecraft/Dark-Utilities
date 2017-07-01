@@ -9,9 +9,9 @@ public class DarkUtilsClient extends DarkUtilsServer {
     public void preInit () {
 
         super.preInit();
-        
+
         for (final Feature feature : FeatureManager.getFeatures()) {
-            
+
             feature.onClientPreInit();
         }
     }
@@ -20,9 +20,9 @@ public class DarkUtilsClient extends DarkUtilsServer {
     public void init () {
 
         super.init();
-        
+
         for (final Feature feature : FeatureManager.getFeatures()) {
-            
+
             feature.onClientInit();
         }
     }
@@ -31,9 +31,9 @@ public class DarkUtilsClient extends DarkUtilsServer {
     public void postInit () {
 
         super.postInit();
-        
+
         for (final Feature feature : FeatureManager.getFeatures()) {
-            
+
             feature.onClientPostInit();
         }
     }
