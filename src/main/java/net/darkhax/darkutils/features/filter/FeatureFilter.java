@@ -13,7 +13,7 @@ public class FeatureFilter extends Feature {
     public static Block blockInvertedFilter;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         blockFilter = new BlockFilter();
         DarkUtils.REGISTRY.registerBlock(blockFilter, new ItemBlockFilter(blockFilter, FilterType.getTypes()), "filter");

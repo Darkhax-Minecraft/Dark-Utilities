@@ -11,7 +11,7 @@ public class FeatureUpdateDetector extends Feature {
     public static Block blockDetector;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         blockDetector = DarkUtils.REGISTRY.registerBlock(new BlockUpdateDetector(), "update_detector");
     }

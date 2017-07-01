@@ -36,7 +36,7 @@ public class FeatureCharms extends Feature {
     public static Item itemSleepCharm;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         itemAgressionCharm = DarkUtils.REGISTRY.registerItem(new ItemCharm(), "charm_agression");
         itemFocusSash = DarkUtils.REGISTRY.registerItem(new ItemCharm(), "focus_sash");
@@ -44,7 +44,6 @@ public class FeatureCharms extends Feature {
         itemNullCharm = DarkUtils.REGISTRY.registerItem(new ItemNullCharm(), "charm_null");
         itemPortalCharm = DarkUtils.REGISTRY.registerItem(new ItemCharm(), "charm_portal");
         itemSleepCharm = DarkUtils.REGISTRY.registerItem(new ItemCharm(), "charm_sleep");
-
     }
 
     @Override

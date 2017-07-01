@@ -20,14 +20,9 @@ public class FeatureAntiSlime extends Feature {
     public static Block blockAntiSlime;
 
     @Override
-    public void onRegistry () {
-
-        blockAntiSlime = DarkUtils.REGISTRY.registerBlock(new BlockAntiSlime(), "anti_slime");
-    }
-
-    @Override
     public void onPreInit () {
 
+        blockAntiSlime = DarkUtils.REGISTRY.registerBlock(new BlockAntiSlime(), "anti_slime");
         GameRegistry.registerTileEntity(TileEntityAntiSlime.class, "anti_slime");
     }
 

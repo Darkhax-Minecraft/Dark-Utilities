@@ -25,14 +25,9 @@ public class FeatureEnderTether extends Feature {
     public static double tetherRange = 32D;
 
     @Override
-    public void onRegistry () {
-
-        blockEnderTether = DarkUtils.REGISTRY.registerBlock(new BlockEnderTether(), "ender_tether");
-    }
-
-    @Override
     public void onPreInit () {
 
+        blockEnderTether = DarkUtils.REGISTRY.registerBlock(new BlockEnderTether(), "ender_tether");
         GameRegistry.registerTileEntity(TileEntityEnderTether.class, "ender_tether");
     }
 
@@ -45,7 +40,7 @@ public class FeatureEnderTether extends Feature {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void onClientRegistry () {
+    public void onClientPreInit () {
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnderTether.class, new RendererEnderTether());
     }

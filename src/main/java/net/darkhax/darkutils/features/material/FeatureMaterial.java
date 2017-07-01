@@ -30,11 +30,16 @@ public class FeatureMaterial extends Feature {
     private static int dustDropWeight = 1;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         itemMaterial = DarkUtils.REGISTRY.registerItem(new ItemMaterial(), "material");
         blockWitherDust = new BlockWitherDust();
         DarkUtils.REGISTRY.registerBlock(blockWitherDust, new ItemBlockBasic(blockWitherDust, BlockWitherDust.types, false), "wither_block");
+    }
+    
+    @Override
+    public void onInit () {
+        
         OreDictionary.registerOre("blockWither", new ItemStack(blockWitherDust, 1, OreDictionary.WILDCARD_VALUE));
     }
 

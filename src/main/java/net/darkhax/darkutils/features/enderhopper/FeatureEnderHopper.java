@@ -20,15 +20,10 @@ public class FeatureEnderHopper extends Feature {
     public static boolean allowBoundsRendering = true;
 
     @Override
-    public void onRegistry () {
-
-        blockEnderHopper = DarkUtils.REGISTRY.registerBlock(new BlockEnderHopper(), "ender_hopper");
-    }
-
-    @Override
     public void onPreInit () {
 
         GameRegistry.registerTileEntity(TileEntityEnderHopper.class, "ender_hopper");
+        blockEnderHopper = DarkUtils.REGISTRY.registerBlock(new BlockEnderHopper(), "ender_hopper");
     }
 
     @Override
@@ -40,7 +35,7 @@ public class FeatureEnderHopper extends Feature {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void onClientRegistry () {
+    public void onClientPreInit () {
 
         if (allowBoundsRendering) {
             ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnderHopper.class, new RendererEnderHopper());

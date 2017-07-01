@@ -11,7 +11,7 @@ public class FeatureItemGrate extends Feature {
     public static Block blockGrate;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         blockGrate = DarkUtils.REGISTRY.registerBlock(new BlockGrate(), "grate");
     }

@@ -32,7 +32,7 @@ public class FeatureEnchantedRing extends Feature {
     private static int weight;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         itemRing = DarkUtils.REGISTRY.registerItem(new ItemRing(), "ring");
     }

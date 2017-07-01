@@ -12,7 +12,7 @@ public class FeatureTimer extends Feature {
     public static Block blockTimer;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         blockTimer = new BlockTimer();
         DarkUtils.REGISTRY.registerBlock(blockTimer, "timer");

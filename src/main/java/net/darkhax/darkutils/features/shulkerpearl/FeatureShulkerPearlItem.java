@@ -25,24 +25,25 @@ public class FeatureShulkerPearlItem extends Feature {
 
     private boolean harvestablePearls = true;
 
-    private final boolean craftEndRods = true;
-
-    private final boolean craftBlocks = true;
-
     private int maxCooldown = 6000;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         itemShulkerPearl = DarkUtils.REGISTRY.registerItem(new ItemShulkerPearl(), "shulker_pearl");
         blockShulkerPearl = new BlockShulkerPearl();
         DarkUtils.REGISTRY.registerBlock(blockShulkerPearl, new ItemBlockBasic(blockShulkerPearl, BlockShulkerPearl.types, false), "pearl_block");
-        OreDictionary.registerOre("blockPearl", new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
-        OreDictionary.registerOre("gemPearl", itemShulkerPearl);
 
         if (this.harvestablePearls) {
             ShulkerDataHandler.init();
         }
+    }
+    
+    @Override
+    public void onInit() {
+        
+        OreDictionary.registerOre("blockPearl", new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
+        OreDictionary.registerOre("gemPearl", itemShulkerPearl);
     }
 
     @Override

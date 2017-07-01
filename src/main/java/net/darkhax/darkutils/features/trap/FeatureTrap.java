@@ -12,7 +12,7 @@ public class FeatureTrap extends Feature {
     public static Block blockTrap;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         blockTrap = new BlockTrap();
         DarkUtils.REGISTRY.registerBlock(blockTrap, new ItemBlockBasic(blockTrap, TrapType.getTypes()), "trap_tile");

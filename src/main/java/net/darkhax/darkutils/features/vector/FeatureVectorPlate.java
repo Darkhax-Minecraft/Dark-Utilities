@@ -32,7 +32,7 @@ public class FeatureVectorPlate extends Feature {
     private static double hyperSpeed = 1.5d;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         blockVectorPlate = new BlockVectorPlate(normalSpeed);
         DarkUtils.REGISTRY.registerBlock(blockVectorPlate, "trap_move");

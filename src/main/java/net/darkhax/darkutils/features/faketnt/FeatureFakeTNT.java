@@ -16,20 +16,15 @@ public class FeatureFakeTNT extends Feature {
     public static Block blockFakeTNT;
 
     @Override
-    public void onRegistry () {
-
-        blockFakeTNT = DarkUtils.REGISTRY.registerBlock(new BlockFakeTNT(), "fake_tnt");
-    }
-
-    @Override
     public void onPreInit () {
 
+        blockFakeTNT = DarkUtils.REGISTRY.registerBlock(new BlockFakeTNT(), "fake_tnt");
         EntityRegistry.registerModEntity(new ResourceLocation("darkutils", "fake_tnt"), EntityFakeTNT.class, "FakeTNT", 0, DarkUtils.instance, 32, 20, true);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void onClientRegistry () {
+    public void onClientPreInit () {
 
         RenderingRegistry.registerEntityRenderingHandler(EntityFakeTNT.class, new RenderFactoryTNT());
     }

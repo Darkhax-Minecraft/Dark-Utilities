@@ -42,7 +42,7 @@ public class FeatureSneaky extends Feature {
     public static boolean opacity;
 
     @Override
-    public void onRegistry () {
+    public void onPreInit () {
 
         blockSneakyBlock = new BlockSneaky();
         DarkUtils.REGISTRY.registerBlock(blockSneakyBlock, "sneaky");
