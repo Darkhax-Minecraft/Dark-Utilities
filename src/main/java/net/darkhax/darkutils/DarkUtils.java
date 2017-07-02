@@ -78,7 +78,7 @@ public class DarkUtils {
     @EventHandler
     public void onConstruction (FMLConstructionEvent event) {
 
-        ConfigurationHandler.initConfig(new File("/config/darkutils.cfg"));
+        ConfigurationHandler.initConfig(new File("config/darkutils.cfg"));
         FeatureManager.init(event.getASMHarvestedData());
         MinecraftForge.EVENT_BUS.register(this);
     }
