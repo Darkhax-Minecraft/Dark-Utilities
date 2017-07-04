@@ -39,7 +39,7 @@ public class DarkUtils {
 
     public static final String MOD_NAME = "Dark Utilities";
 
-    public static final String VERSION_NUMBER = "${version}";
+    public static final String VERSION_NUMBER = "@VERSION@";
 
     public static final String CLIENT_PROXY_CLASS = "net.darkhax.darkutils.DarkUtilsClient";
 
@@ -86,7 +86,6 @@ public class DarkUtils {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
 
-        NETWORK.register(PacketSyncTimer.class, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
         ConfigurationHandler.syncConfigData();
