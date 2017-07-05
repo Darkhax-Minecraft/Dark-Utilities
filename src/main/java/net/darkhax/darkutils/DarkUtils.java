@@ -11,7 +11,6 @@ import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.features.FeatureManager;
-import net.darkhax.darkutils.features.timer.PacketSyncTimer;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.block.Block;
@@ -45,7 +44,7 @@ public class DarkUtils {
 
     public static final String SERVER_PROXY_CLASS = "net.darkhax.darkutils.DarkUtilsServer";
 
-    public static final String DEPENDENCIES = "required-after:bookshelf@[2.0.0.408,);after:waila;after:jei;";
+    public static final String DEPENDENCIES = "required-after:bookshelf@[2.0.0.412,);after:waila;after:jei;";
 
     public static final Random RANDOM = new Random();
 
