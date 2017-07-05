@@ -83,6 +83,22 @@ item.darkutils.ring.angler.name=Angler's Ring
 item.darkutils.ring.frost.name=Frosted Ring
 item.darkutils.charm.gluttony.name=Gluttony Charm
 item.darkutils.charm.agression.name=Agression Charm
+item.darkutils.lore.tag.black.name=Black Lore Tag
+item.darkutils.lore.tag.darkblue.name=Dark Blue Lore Tag
+item.darkutils.lore.tag.darkgreen.name=Dark Green Lore Tag
+item.darkutils.lore.tag.darkaqua.name=Dark Aqua Lore Tag
+item.darkutils.lore.tag.darkred.name=Dark Red Lore Tag
+item.darkutils.lore.tag.darkpurple.name=Dark Purple Lore Tag
+item.darkutils.lore.tag.gold.name=Gold Lore Tag
+item.darkutils.lore.tag.gray.name=Gray Lore Tag
+item.darkutils.lore.tag.darkgray.name=Dark Gray Lore Tag
+item.darkutils.lore.tag.blue.name=Blue Lore Tag
+item.darkutils.lore.tag.green.name=Green Lore Tag
+item.darkutils.lore.tag.aqua.name=Aqua Lore Tag
+item.darkutils.lore.tag.red.name=Red Lore Tag
+item.darkutils.lore.tag.lightpurple.name=Light Purple Lore Tag
+item.darkutils.lore.tag.yellow.name=Yellow Lore Tag
+item.darkutils.lore.tag.white.name=White Lore Tag
 
 #Entity
 entity.DarkUtils.FakeTNT.name=Block of TNT
@@ -102,7 +118,7 @@ tooltip.darkutils.filter.type.fireres=Fire Resistant
 tooltip.darkutils.filter.type.boss=Boss
 tooltip.darkutils.disabled=This represents a crafting ingredient that has been disabled or removed!
 
-#Gui
+#Timer GUI
 gui.darkutils.timer.title=Timer Settings
 gui.darkutils.timer.delay=Timer Delay
 gui.darkutils.timer.remaining=Remaining Time
@@ -111,11 +127,20 @@ gui.darkutils.timer.desc.2=10 seconds is 200 ticks. 30 seconds is 600 ticks. A m
 gui.darkutils.timer.desc.3=Press the Done button or Enter key to save the settings. 
 gui.darkutils.timer.desc.4=The minimum is 10 and the maximum is 12000. 
 
-#GUI
-itemGroup.darkutils=Dark Utilities
+#Null Charm GUI
 container.darkutils.charm.null=Null Charm
 
-#Chat
+#Lore Tag GUI
+gui.darkutils.loretag.title=Lore Tag
+gui.darkutils.loretag.field=Lore Text
+gui.darkutils.loretag.desc.1=Enter the lore text in the field above. 
+gui.darkutils.loretag.desc.2=Each tag can only add one new line, and has a 48 character limit.
+gui.darkutils.loretag.desc.3=When finished, hit the done button. A preview will be on the tag's tooltip.
+gui.darkutils.loretag.desc.4=Combine with another item at the anvil to transfer!
+chat.darkutils.loretag.error.sync=Lore Tag out of sync. Is the connection stable?
+
+#Misc
+itemGroup.darkutils=Dark Utilities
 chat.darkutils.focussash=%sYou were saved by the focus sash!
 
 #JEI
@@ -161,6 +186,7 @@ jei.tile.darkutils.sneaky.bedrock=Similar to bedrock, however if you are in crea
 jei.item.darkutils.charm.agression=Increases the agression range of the player. Normally only the mob being hit will agro to you, but this will make all mobs of a similar type agro.
 jei.tile.darkutils.slime.dyed=A dyed variation of the vanilla slime block. Unfortunately these do not work with pistons. #BlameMojang
 jei.tile.darkutils.wither.block=A compact block of Wither Dust. Will not be blown up by withers! Also decorative!
+jei.item.darkutils.lore.tag=Allows for the lore of an item to be set. Right clicking will open a GUI to allow setting a lore field. Use an anvil to apply the tag. Can be dyed using dyes. 
 
 #Waila
 tooltip.darkutils.feeder.type=Food Type

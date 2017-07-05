@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "darkutils:items/lore_tag",
+        "layer1": "darkutils:items/lore_tag_overlay"
+    }
+}
