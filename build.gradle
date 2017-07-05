@@ -171,6 +171,15 @@ curseforge {
         changelog = getGitChangelog()
         changelogType = 'markdown'
         addGameVersion "${version_minecraft}"       
+        
+        mainArtifact(jar) {
+          
+            relations {
+
+                requiredLibrary 'bookshelf'
+            }
+        }
+        
         addArtifact(createDeobf)
         addArtifact(createSources)
         addArtifact(createJavadoc)
