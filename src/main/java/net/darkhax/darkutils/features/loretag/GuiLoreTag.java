@@ -82,7 +82,7 @@ public class GuiLoreTag extends GuiScreen {
 
             else if (button.id == 0 && !this.loreText.getText().isEmpty()) {
 
-                DarkUtils.NETWORK.sendToServer(new PacketSyncLore(this.loreText.getText()));
+                DarkUtils.NETWORK.sendToServer(new PacketSyncLore(this.format + "" + ChatFormatting.ITALIC + this.loreText.getText()));
                 StackUtils.appendLore(this.stack, this.format + "" + ChatFormatting.ITALIC + this.loreText.getText());
                 this.mc.displayGuiScreen((GuiScreen) null);
             }

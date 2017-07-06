@@ -45,6 +45,7 @@ public class ItemFormatLoreTag extends Item {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public String getUnlocalizedName (ItemStack stack) {
 
         final ChatFormatting format = getTagFormatting(stack);
@@ -52,6 +53,7 @@ public class ItemFormatLoreTag extends Item {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public String getItemStackDisplayName (ItemStack stack) {
 
         final ChatFormatting format = getTagFormatting(stack);
@@ -74,6 +76,7 @@ public class ItemFormatLoreTag extends Item {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     public static ChatFormatting getTagFormatting (ItemStack stack) {
 
         final NBTTagCompound tag = StackUtils.prepareStackTag(stack);

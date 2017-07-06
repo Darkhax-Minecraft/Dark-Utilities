@@ -34,7 +34,7 @@ public class PacketSyncLore extends SerializableMessage {
 
             if (stack.getItem() instanceof ItemFormatLoreTag) {
 
-                StackUtils.setLore(stack, ItemFormatLoreTag.getTagFormatting(stack) + "" + ChatFormatting.ITALIC + this.lore);
+                StackUtils.setLore(stack, this.lore);
             }
 
             else {
