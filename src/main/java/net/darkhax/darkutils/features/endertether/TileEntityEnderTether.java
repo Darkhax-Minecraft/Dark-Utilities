@@ -10,8 +10,8 @@ public class TileEntityEnderTether extends TileEntityBasic {
 
     public boolean showBorder = false;
 
-    public AxisAlignedBB area = new AxisAlignedBB(this.pos.add(-FeatureEnderTether.tetherRange, -FeatureEnderTether.tetherRange, -FeatureEnderTether.tetherRange), this.pos.add(FeatureEnderTether.tetherRange + 1, FeatureEnderTether.tetherRange + 1, FeatureEnderTether.tetherRange + 1));
-
+    public AxisAlignedBB area;
+    
     /**
      * Checks if an entity is close enough to the tether for it to be warped while teleporting.
      * Also checks configs for validity.
@@ -20,8 +20,13 @@ public class TileEntityEnderTether extends TileEntityBasic {
      * @return Whether or not the entity is close enough to be warped.
      */
     public boolean isEntityCloseEnough (EntityLivingBase entity) {
-
-        return this.isInvalid() || this.area == null || entity == null || entity.getCollisionBoundingBox() == null || entity instanceof EntityPlayer && !FeatureEnderTether.affectPlayers ? false : this.area.intersects(entity.getCollisionBoundingBox());
+        
+        if (area == null) {
+            
+            area = new AxisAlignedBB(this.pos.add(-FeatureEnderTether.tetherRange, -FeatureEnderTether.tetherRange, -FeatureEnderTether.tetherRange), this.pos.add(FeatureEnderTether.tetherRange + 1, FeatureEnderTether.tetherRange + 1, FeatureEnderTether.tetherRange + 1));
+        }
+        
+        return this.isInvalid() || this.area == null || entity == null || entity.isDead || entity.getEntityBoundingBox() == null || (entity instanceof EntityPlayer && !FeatureEnderTether.affectPlayers) ? false : this.area.intersects(entity.getEntityBoundingBox());
     }
 
     @Override
