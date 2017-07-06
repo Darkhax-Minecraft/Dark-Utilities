@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @DUFeature(name = "Lore Tag", description = "Tags which can set the lore of items")
 public class FeatureLoreTag extends Feature {
@@ -26,6 +27,7 @@ public class FeatureLoreTag extends Feature {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void onClientInit () {
 
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new LoreTagColor(), coloredLoreTag);
