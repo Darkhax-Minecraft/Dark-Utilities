@@ -1,8 +1,5 @@
 package net.darkhax.darkutils.features.loretag;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.darkhax.bookshelf.util.StackUtils;
@@ -22,11 +19,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemFormatLoreTag extends Item {
 
-    private final ChatFormatting[] variants;
+    private final String[] variants = { "black", "dark_blue", "dark_green", "dark_aqua", "dark_red", "dark_purple", "gold", "gray", "dark_gray", "blue", "green", "aqua", "red", "light_purple", "yellow", "white" };
 
     public ItemFormatLoreTag () {
 
-        this.variants = getVariantsFromChatFormats();
         this.setMaxStackSize(16);
         this.setHasSubtypes(true);
     }
@@ -36,12 +32,6 @@ public class ItemFormatLoreTag extends Item {
 
         player.openGui(DarkUtils.instance, GuiHandler.LORE_TAG, world, 0, 0, 0);
         return super.onItemRightClick(world, player, handIn);
-    }
-
-    @Override
-    public int getMetadata (int damage) {
-
-        return damage;
     }
 
     @Override
@@ -66,11 +56,11 @@ public class ItemFormatLoreTag extends Item {
 
         if (this.isInCreativeTab(tab)) {
 
-            for (final ChatFormatting format : this.variants) {
+            for (final String format : this.variants) {
 
                 final ItemStack stack = new ItemStack(this);
                 final NBTTagCompound tag = StackUtils.prepareStackTag(stack);
-                tag.setString("format", format.getName());
+                tag.setString("format", format);
                 subItems.add(stack);
             }
         }
@@ -82,20 +72,5 @@ public class ItemFormatLoreTag extends Item {
         final NBTTagCompound tag = StackUtils.prepareStackTag(stack);
         final ChatFormatting format = ChatFormatting.getByName(tag.getString("format"));
         return format != null ? format : ChatFormatting.WHITE;
-    }
-
-    private static ChatFormatting[] getVariantsFromChatFormats () {
-
-        final List<ChatFormatting> formatCodes = new ArrayList<>();
-
-        for (final ChatFormatting format : ChatFormatting.values()) {
-
-            if (format.isColor()) {
-
-                formatCodes.add(format);
-            }
-        }
-
-        return formatCodes.toArray(new ChatFormatting[formatCodes.size()]);
     }
 }
