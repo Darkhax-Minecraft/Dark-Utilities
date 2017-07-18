@@ -1,14 +1,17 @@
 package net.darkhax.darkutils.features.sneaky;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.ImmutableList;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
@@ -19,8 +22,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.darkhax.bookshelf.data.*;
 
 @SideOnly(Side.CLIENT)
 public class ModelSneakyBlock implements IBakedModel {
@@ -28,18 +33,45 @@ public class ModelSneakyBlock implements IBakedModel {
     @Override
     public List<BakedQuad> getQuads (IBlockState state, EnumFacing side, long rand) {
 
+        final Minecraft mc = Minecraft.getMinecraft();
         final BlockRenderLayer layer = MinecraftForgeClient.getRenderLayer();
-        final List<BakedQuad> quads = new ArrayList<>();
 
-        final IBakedModel model = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(Blocks.END_ROD.getDefaultState());
-        quads.addAll(model.getQuads(Blocks.END_ROD.getDefaultState(), side, rand));
+        if (!(state.getBlock() instanceof BlockSneaky))
+            return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getMissingModel().getQuads(state, side, rand);
 
-        if (layer == Blocks.GLASS.getBlockLayer()) {
+        final IBlockState heldState = ((IExtendedBlockState) state).getValue(Blockstates.HELD_STATE);
+        final IBlockAccess heldWorld = ((IExtendedBlockState) state).getValue(Blockstates.BLOCK_ACCESS);
+        final BlockPos heldPos = ((IExtendedBlockState) state).getValue(Blockstates.BLOCKPOS);
 
-            final IBakedModel model2 = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(Blocks.GLASS.getDefaultState());
-            quads.addAll(model2.getQuads(Blocks.GLASS.getDefaultState(), side, rand));
+        if (heldWorld == null || heldPos == null)
+            return ImmutableList.of();
+
+        if (heldState == null && layer == BlockRenderLayer.SOLID) {
+
+            final Block block = state.getBlock();
+
+            if (block instanceof BlockSneakyLever)
+                return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_lever")).getQuads(state, side, rand);
+
+            else if (block instanceof BlockSneakyTorch)
+                return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_torch")).getQuads(state, side, rand);
+
+            else if (block instanceof BlockSneakyPressurePlate)
+                return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_plate")).getQuads(state, side, rand);
+            else
+                return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_default")).getQuads(state, side, rand);
         }
-        return quads;
+
+        else if (layer != null && heldState != null && heldState.getBlock().canRenderInLayer(heldState, layer)) {
+
+            final IBlockState actualState = heldState.getBlock().getActualState(heldState, new SneakyBlockAccess(heldWorld), heldPos);
+            final IBakedModel model = mc.getBlockRendererDispatcher().getBlockModelShapes().getModelForState(actualState);
+
+            final IBlockState extended = heldState.getBlock().getExtendedState(actualState, new SneakyBlockAccess(heldWorld), heldPos);
+            return model.getQuads(extended, side, rand);
+        }
+
+        return ImmutableList.of();
     }
 
     @Override
