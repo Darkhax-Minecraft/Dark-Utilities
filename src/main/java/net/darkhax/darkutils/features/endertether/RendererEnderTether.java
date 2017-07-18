@@ -10,7 +10,7 @@ public class RendererEnderTether extends TileEntitySpecialRenderer<TileEntityEnd
     @Override
     public void render (TileEntityEnderTether te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 
-        if (!te.showBorder) {
+        if (!te.showBorder || te.area == null) {
             return;
         }
 
