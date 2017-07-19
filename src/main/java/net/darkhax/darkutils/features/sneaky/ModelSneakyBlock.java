@@ -26,6 +26,7 @@ import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.darkhax.bookshelf.data.*;
+import net.darkhax.bookshelf.util.RenderUtils;
 
 @SideOnly(Side.CLIENT)
 public class ModelSneakyBlock implements IBakedModel {
@@ -49,7 +50,44 @@ public class ModelSneakyBlock implements IBakedModel {
         if (heldState == null && layer == BlockRenderLayer.SOLID) {
 
             final Block block = state.getBlock();
-
+            IBlockState defaultState = Blocks.FIRE.getDefaultState();
+            
+            if (block == FeatureSneaky.blockSneakyBlock) {
+                
+                defaultState = Blocks.COBBLESTONE.getDefaultState();
+            }
+            
+            else if (block == FeatureSneaky.blockSneakyLever) {
+                
+                defaultState = Blocks.LEVER.getDefaultState();
+            }
+            
+            else if (block == FeatureSneaky.blockSneakyGhost) {
+                
+                defaultState = Blocks.PORTAL.getDefaultState();
+            }
+            
+            else if (block == FeatureSneaky.blockSneakyTorch) {
+                
+                defaultState = Blocks.TORCH.getDefaultState();
+            }
+            
+            else if (block == FeatureSneaky.blockSneakyObsidian) {
+                
+                defaultState = Blocks.OBSIDIAN.getDefaultState();
+            }
+            
+            else if (block == FeatureSneaky.blockSneakyPlate) {
+                
+                defaultState = Blocks.STONE_PRESSURE_PLATE.getDefaultState();
+            }
+            
+            else if (block == FeatureSneaky.blockSneakyBedrock) {
+                
+                defaultState = Blocks.BEDROCK.getDefaultState();
+            }
+            
+            return RenderUtils.getModelForState(defaultState).getQuads(defaultState, side, rand);
         }
 
         else if (layer != null && heldState != null && heldState.getBlock().canRenderInLayer(heldState, layer)) {

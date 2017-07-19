@@ -7,11 +7,18 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelRotation;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.IRegistry;
 import net.minecraftforge.client.event.ModelBakeEvent;
+import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -68,21 +75,20 @@ public class FeatureSneaky extends Feature {
 
         opacity = config.getBoolean("Opacity", this.configName, true, "When true, all sneaky blocks will let no light through. When disabled, all light will be let through.");
     }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onClientPreInit () {
-        
-        IStateMapper mapper = new StateMapSneaky();
-        ModelLoader.setCustomStateMapper(blockSneakyLever, mapper);
-        ModelLoader.setCustomStateMapper(blockSneakyPlate, mapper);
-    }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientInit () {
 
         Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColorSneaky(), blockSneakyBlock, blockSneakyLever, blockSneakyGhost, blockSneakyTorch, blockSneakyObsidian, blockSneakyPlate, blockSneakyBedrock);
+        
+        this.registerSneakyModel(blockSneakyBlock, "sneaky_default");
+        this.registerSneakyModel(blockSneakyLever, "sneaky_lever");
+        this.registerSneakyModel(blockSneakyGhost, "sneaky_default");
+        this.registerSneakyModel(blockSneakyTorch, "sneaky_torch");
+        this.registerSneakyModel(blockSneakyObsidian, "sneaky_default");
+        this.registerSneakyModel(blockSneakyPlate, "sneaky_plate");
+        this.registerSneakyModel(blockSneakyBedrock, "sneaky_default");
     }
 
     @Override
@@ -96,20 +102,14 @@ public class FeatureSneaky extends Feature {
     public void onModelBake (ModelBakeEvent event) {
         
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky", "normal"), new ModelSneakyBlock());
-        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_lever", "normal"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_lever", "powered=true"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_lever", "powered=false"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_ghost", "normal"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_torch", "normal"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_obsidian", "normal"), new ModelSneakyBlock());
-        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_plate", "normal"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_plate", "powered=true"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_plate", "powered=false"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_bedrock", "normal"), new ModelSneakyBlock());
-        
-        this.registerSneakyModel(blockSneakyBlock, "sneaky_default");
-        this.registerSneakyModel(blockSneakyLever, "sneaky_lever");
-        this.registerSneakyModel(blockSneakyGhost, "sneaky_default");
-        this.registerSneakyModel(blockSneakyTorch, "sneaky_torch");
-        this.registerSneakyModel(blockSneakyObsidian, "sneaky_default");
-        this.registerSneakyModel(blockSneakyPlate, "sneaky_plate");
-        this.registerSneakyModel(blockSneakyBedrock, "sneaky_default");
     }
 
     /**
