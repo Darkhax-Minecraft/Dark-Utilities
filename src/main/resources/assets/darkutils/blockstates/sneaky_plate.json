@@ -1,7 +1,10 @@
 {
 	"variants": {
-		"normal": {
+		"powered=false": {
 			"model": "darkutils:sneaky_plate"
-		}
+		},
+        "powered=true": {
+            "model": "darkutils:sneaky_plate"
+        }
 	}
 }

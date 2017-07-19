@@ -5,7 +5,9 @@ import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelBakeEvent;
@@ -18,12 +20,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @DUFeature(name = "Sneaky Blocks", description = "Blocks that can hide as other blocks")
 public class FeatureSneaky extends Feature {
-
-    /**
-     * A state map instance for the sneaky block model.
-     */
-    @SideOnly(Side.CLIENT)
-    private static StateMapperBase sneakyStateMap;
 
     public static Block blockSneakyBlock;
 
@@ -72,19 +68,14 @@ public class FeatureSneaky extends Feature {
 
         opacity = config.getBoolean("Opacity", this.configName, true, "When true, all sneaky blocks will let no light through. When disabled, all light will be let through.");
     }
-
+    
     @Override
     @SideOnly(Side.CLIENT)
     public void onClientPreInit () {
-
-        sneakyStateMap = new StateMapSneaky();
-        this.registerSneakyModel(blockSneakyBlock, "sneaky_default", false);
-        this.registerSneakyModel(blockSneakyLever, "sneaky_lever", false);
-        this.registerSneakyModel(blockSneakyGhost, "sneaky_default", true);
-        this.registerSneakyModel(blockSneakyTorch, "sneaky_torch", false);
-        this.registerSneakyModel(blockSneakyObsidian, "sneaky_default", true);
-        this.registerSneakyModel(blockSneakyPlate, "sneaky_plate", false);
-        this.registerSneakyModel(blockSneakyBedrock, "sneaky_default", true);
+        
+        IStateMapper mapper = new StateMapSneaky();
+        ModelLoader.setCustomStateMapper(blockSneakyLever, mapper);
+        ModelLoader.setCustomStateMapper(blockSneakyPlate, mapper);
     }
 
     @Override
@@ -103,8 +94,22 @@ public class FeatureSneaky extends Feature {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onModelBake (ModelBakeEvent event) {
-
+        
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky", "normal"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_lever", "normal"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_ghost", "normal"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_torch", "normal"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_obsidian", "normal"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_plate", "normal"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_bedrock", "normal"), new ModelSneakyBlock());
+        
+        this.registerSneakyModel(blockSneakyBlock, "sneaky_default");
+        this.registerSneakyModel(blockSneakyLever, "sneaky_lever");
+        this.registerSneakyModel(blockSneakyGhost, "sneaky_default");
+        this.registerSneakyModel(blockSneakyTorch, "sneaky_torch");
+        this.registerSneakyModel(blockSneakyObsidian, "sneaky_default");
+        this.registerSneakyModel(blockSneakyPlate, "sneaky_plate");
+        this.registerSneakyModel(blockSneakyBedrock, "sneaky_default");
     }
 
     /**
@@ -115,15 +120,9 @@ public class FeatureSneaky extends Feature {
      * @param useDefault Whether or not the default model should be used.
      */
     @SideOnly(Side.CLIENT)
-    public void registerSneakyModel (Block block, String name, boolean useDefault) {
+    public void registerSneakyModel (Block block, String name) {
 
         final Item item = Item.getItemFromBlock(block);
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:" + name, "inventory"));
-
-        if (!useDefault) {
-            ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("darkutils:" + name, "normal"));
-        }
-
-        ModelLoader.setCustomStateMapper(block, sneakyStateMap);
     }
 }

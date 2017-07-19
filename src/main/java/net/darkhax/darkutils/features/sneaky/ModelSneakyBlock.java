@@ -32,7 +32,7 @@ public class ModelSneakyBlock implements IBakedModel {
 
     @Override
     public List<BakedQuad> getQuads (IBlockState state, EnumFacing side, long rand) {
-
+        
         final Minecraft mc = Minecraft.getMinecraft();
         final BlockRenderLayer layer = MinecraftForgeClient.getRenderLayer();
 
@@ -50,23 +50,12 @@ public class ModelSneakyBlock implements IBakedModel {
 
             final Block block = state.getBlock();
 
-            if (block instanceof BlockSneakyLever)
-                return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_lever")).getQuads(state, side, rand);
-
-            else if (block instanceof BlockSneakyTorch)
-                return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_torch")).getQuads(state, side, rand);
-
-            else if (block instanceof BlockSneakyPressurePlate)
-                return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_plate")).getQuads(state, side, rand);
-            else
-                return mc.getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(new ModelResourceLocation("darkutils:sneaky_default")).getQuads(state, side, rand);
         }
 
         else if (layer != null && heldState != null && heldState.getBlock().canRenderInLayer(heldState, layer)) {
 
             final IBlockState actualState = heldState.getBlock().getActualState(heldState, new SneakyBlockAccess(heldWorld), heldPos);
             final IBakedModel model = mc.getBlockRendererDispatcher().getBlockModelShapes().getModelForState(actualState);
-
             final IBlockState extended = heldState.getBlock().getExtendedState(actualState, new SneakyBlockAccess(heldWorld), heldPos);
             return model.getQuads(extended, side, rand);
         }

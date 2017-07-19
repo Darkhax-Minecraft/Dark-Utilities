@@ -1,7 +1,10 @@
 {
 	"variants": {
-		"normal": {
+		"powered=true": {
 			"model": "darkutils:sneaky_lever"
-		}
+		},
+        "powered=false": {
+            "model": "darkutils:sneaky_lever"
+        }
 	}
 }
