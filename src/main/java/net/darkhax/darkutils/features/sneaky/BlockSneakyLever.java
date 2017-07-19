@@ -83,7 +83,7 @@ public class BlockSneakyLever extends BlockSneaky {
     @Override
     public int getStrongPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
-        return !blockState.getValue(Blockstates.POWERED).booleanValue() ? 15 : 0;
+        return blockState.getValue(Blockstates.POWERED).booleanValue() ? 15 : 0;
     }
 
     @Override
