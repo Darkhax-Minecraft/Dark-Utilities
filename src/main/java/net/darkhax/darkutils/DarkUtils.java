@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = DarkUtils.MOD_ID, name = DarkUtils.MOD_NAME, version = DarkUtils.VERSION_NUMBER, dependencies = DarkUtils.DEPENDENCIES)
+@Mod(modid = DarkUtils.MOD_ID, name = DarkUtils.MOD_NAME, version = DarkUtils.VERSION_NUMBER, dependencies = DarkUtils.DEPENDENCIES, acceptedMinecraftVersions = "[1.12,1.12.2)")
 public class DarkUtils {
 
     public static final String MOD_ID = "darkutils";
