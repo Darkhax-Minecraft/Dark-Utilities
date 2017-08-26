@@ -92,8 +92,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
 
         catch (final Exception exception) {
 
-            Constants.LOG.warn("Ender Hopper at %s in world %s failed an update tick!", this.getPos(), this.getWorld().getWorldInfo().getWorldName());
-            Constants.LOG.warn(exception);
+            Constants.LOG.warn(exception, "Ender Hopper at %s in world %s failed an update tick!", this.getPos(), this.getWorld().getWorldInfo().getWorldName());
         }
     }
 
