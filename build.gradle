@@ -22,9 +22,13 @@ buildscript {
     }
 }
 
-apply plugin: 'maven'
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.matthewprenger.cursegradle'
+apply plugin: 'maven-publish' 
+
+apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/generic/markdown-git-changelog.gradle'
+apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/minecraft/artifacts.gradle'
+apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/minecraft/maven.gradle'
 
 version = "${mod_version}" + getBuildNumber()
 group = "${mod_group}"
@@ -38,7 +42,6 @@ minecraft {
     version = "${version_minecraft}-${version_forge}"
     mappings = "${version_mcp}"
     runDir = 'run'
-    useDepAts = true
     
     replace '@VERSION@', project.version
     replaceIn "${mod_class}.java"
@@ -48,25 +51,36 @@ repositories {
 
     maven {
 
-        url "http://dvs1.progwml6.com/files/maven"
+        url 'http://dvs1.progwml6.com/files/maven'
     }
 
     maven {
 
-        url "http://maven.epoxide.org"
+        url 'https://maven.mcmoddev.com'
     }
     
     maven {
         
-        url "http://tehnut.info/maven"
+        url 'http://tehnut.info/maven'
     }
+    
+    jcenter {
+    
+        url "http://jcenter.bintray.com/"
+    }
+    
+    maven {
+    
+		url 'https://repo.elytradev.com/'
+	}
 }
 
 dependencies {
 
     deobfCompile "mcp.mobius.waila:Hwyla:${version_hwyla}"
     deobfCompile "mezz.jei:jei_1.12:${version_jei}"
-    deobfCompile "net.darkhax.bookshelf:Bookshelf:${version_bookshelf}"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.1:${version_bookshelf}"
+    deobfCompile "elucent:albedo:2.0-SNAPSHOT"
 }
 
 processResources {
@@ -88,38 +102,12 @@ processResources {
     from 'LICENSE'
 }
 
-// Taken from https://github.com/Inventory-Tweaks/inventory-tweaks/blob/develop/build.gradle
-def getGitChangelog = { ->
-    try {
-        def stdout = new ByteArrayOutputStream()
-        def gitHash = System.getenv('GIT_COMMIT')
-        def gitPrevHash = System.getenv('GIT_PREVIOUS_COMMIT')
-        def travisRange = System.getenv('TRAVIS_COMMIT_RANGE')
-        if(gitHash && gitPrevHash) {
-            exec {
-                commandLine 'git', 'log', '--pretty=tformat:- %s', '' + gitPrevHash + '...' + gitHash
-                standardOutput = stdout
-            }
-            return stdout.toString().trim()
-        } else if(travisRange) {
-            exec {
-                commandLine 'git', 'log', '--pretty=tformat:- %s', '' + travisRange
-                standardOutput = stdout
-            }
-            return stdout.toString().trim()
-        } else {
-            return "";
-        }
-    } catch(ignored) {
-        return "";
-    }
-}
-
 String getBuildNumber() {
 
     return System.getenv('BUILD_NUMBER') ? System.getenv('BUILD_NUMBER') : System.getenv('TRAVIS_BUILD_NUMBER') ? System.getenv('TRAVIS_BUILD_NUMBER') : '0';
 }
 
+//Shuts up javadoc failures
 if (JavaVersion.current().isJava8Compatible()) {
 
     allprojects {
@@ -131,64 +119,50 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
 
-task createDeobf(type: Jar) {
-
-    from sourceSets.main.output
-    classifier = 'deobf'
-}
-
-task createSources(type: Jar, dependsOn: classes) {
-
-    from sourceSets.main.allSource
-    classifier = 'sources'
-}
-
-task createJavadoc(type: Jar, dependsOn: javadoc) {
-
-    from javadoc.destinationDir
-    classifier = 'javadoc'
-}
-
-uploadArchives {
-
-    repositories {
-
-        mavenDeployer {
-
-            repository(url: "file:///var/www/html/maven")
-        }
-    }
-}
-
 curseforge {
 
-    apiKey = System.getenv('authCurse') ? System.getenv('authCurse') : '0';
+    apiKey = System.getenv('curse_auth') ? System.getenv('curse_auth') : 0
+    def versions = "${curse_versions}".split(', ')
 
     project {
 
-        id = "${id_curse}"   
+        id = "${curse_project}"
         releaseType = 'alpha'
-        changelog = getGitChangelog()
+        changelog = getGitChangelog
         changelogType = 'markdown'
-        addGameVersion "${version_minecraft}"       
-        
-        mainArtifact(jar) {
-          
-            relations {
 
-                requiredLibrary 'bookshelf'
+        versions.each {
+
+            addGameVersion "${it}"
+        }
+
+        if (project.hasProperty('curse_requirements') || project.hasProperty('curse_optionals')) {
+
+            mainArtifact(jar) {
+
+                relations {
+
+                    if (project.hasProperty('curse_requirements')) {
+                        def requirements = "${curse_requirements}".split(', ')
+                        requirements.each {
+
+                            requiredLibrary "${it}"
+                        }
+                    }
+
+                    if (project.hasProperty('curse_optionals')) {
+                        def optionals = "${curse_optionals}".split(', ')
+                        optionals.each {
+
+                            optionalLibrary "${it}"
+                        }
+                    }
+                }
             }
         }
-        
-        addArtifact(createDeobf)
-        addArtifact(createSources)
-        addArtifact(createJavadoc)
+
+        addArtifact(sourcesJar)
+        addArtifact(javadocJar)
+        addArtifact(deobfJar)
     }
-}
-
-artifacts {
-
-    archives createDeobf
-    archives createSources
-    archives createJavadoc
 }
