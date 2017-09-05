@@ -6,6 +6,7 @@ import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import net.darkhax.bookshelf.lib.LoggingHelper;
 import net.darkhax.bookshelf.network.NetworkHandler;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.darkutils.addons.AddonHandler;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
+import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -31,7 +33,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = DarkUtils.MOD_ID, name = DarkUtils.MOD_NAME, version = DarkUtils.VERSION_NUMBER, dependencies = DarkUtils.DEPENDENCIES, acceptedMinecraftVersions = "[1.12,1.12.2)")
+@Mod(modid = DarkUtils.MOD_ID, name = DarkUtils.MOD_NAME, version = DarkUtils.VERSION_NUMBER, dependencies = DarkUtils.DEPENDENCIES, acceptedMinecraftVersions = "[1.12,1.12.2)", certificateFingerprint = "@FINGERPRINT@")
 public class DarkUtils {
 
     public static final String MOD_ID = "darkutils";
@@ -48,7 +50,7 @@ public class DarkUtils {
 
     public static final Random RANDOM = new Random();
 
-    public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
+    public static final LoggingHelper LOGGER = new LoggingHelper(MOD_NAME);
 
     @SidedProxy(clientSide = DarkUtils.CLIENT_PROXY_CLASS, serverSide = DarkUtils.SERVER_PROXY_CLASS)
     public static DarkUtilsServer proxy;
@@ -135,5 +137,11 @@ public class DarkUtils {
 
             REGISTRY.registerInventoryModel(item);
         }
+    }
+    
+    @EventHandler
+    public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
+        
+        LOGGER.warn("Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported by the author!");
     }
 }

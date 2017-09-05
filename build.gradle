@@ -44,6 +44,7 @@ minecraft {
     runDir = 'run'
     useDepAts = true 
     replace '@VERSION@', project.version
+    replace '@FINGERPRINT@', project.signSHA1
     replaceIn "${mod_class}.java"
 }
 
@@ -166,3 +167,20 @@ curseforge {
         addArtifact(deobfJar)
     }
 }
+
+task signJar(type: SignJar, dependsOn: reobfJar) {
+
+    onlyIf {
+    
+        project.hasProperty('keyStore')
+    }
+    
+    keyStore = project.keyStore
+    alias = project.keyStoreAlias
+    storePass = project.keyStorePass
+    keyPass = project.keyStoreKeyPass
+    inputFile = jar.archivePath
+    outputFile = jar.archivePath
+}
+
+build.dependsOn signJar
