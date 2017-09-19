@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class LoreTagColor implements IItemColor {
 
     @Override
-    public int getColorFromItemstack (ItemStack stack, int tintIndex) {
+    public int colorMultiplier (ItemStack stack, int tintIndex) {
 
         final ChatFormatting format = ItemFormatLoreTag.getTagFormatting(stack);
         return tintIndex == 1 && format != null ? Minecraft.getMinecraft().fontRenderer.getColorCode(format.getChar()) : -1;

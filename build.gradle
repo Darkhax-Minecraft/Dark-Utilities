@@ -64,24 +64,13 @@ repositories {
         
         url 'http://tehnut.info/maven'
     }
-    
-    jcenter {
-    
-        url "http://jcenter.bintray.com/"
-    }
-    
-    maven {
-    
-		url 'https://repo.elytradev.com/'
-	}
 }
 
 dependencies {
 
     deobfCompile "mcp.mobius.waila:Hwyla:${version_hwyla}"
-    deobfCompile "mezz.jei:jei_1.12:${version_jei}"
-    deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.1:${version_bookshelf}"
-    deobfCompile "elucent:albedo:2.0-SNAPSHOT"
+    deobfCompile "mezz.jei:jei_1.12.1:${version_jei}"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.2:${version_bookshelf}"
 }
 
 processResources {

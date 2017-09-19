@@ -3,9 +3,6 @@ package net.darkhax.darkutils;
 import java.io.File;
 import java.util.Random;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import net.darkhax.bookshelf.lib.LoggingHelper;
 import net.darkhax.bookshelf.network.NetworkHandler;
 import net.darkhax.bookshelf.registry.RegistryHelper;
@@ -33,7 +30,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = DarkUtils.MOD_ID, name = DarkUtils.MOD_NAME, version = DarkUtils.VERSION_NUMBER, dependencies = DarkUtils.DEPENDENCIES, acceptedMinecraftVersions = "[1.12,1.12.2)", certificateFingerprint = "@FINGERPRINT@")
+@Mod(modid = DarkUtils.MOD_ID, name = DarkUtils.MOD_NAME, version = DarkUtils.VERSION_NUMBER, dependencies = DarkUtils.DEPENDENCIES, certificateFingerprint = "@FINGERPRINT@")
 public class DarkUtils {
 
     public static final String MOD_ID = "darkutils";
@@ -46,7 +43,7 @@ public class DarkUtils {
 
     public static final String SERVER_PROXY_CLASS = "net.darkhax.darkutils.DarkUtilsServer";
 
-    public static final String DEPENDENCIES = "required-after:bookshelf@[2.1.427,);after:waila;after:jei;";
+    public static final String DEPENDENCIES = "required-after:bookshelf@[2.1.443,);after:waila;after:jei;";
 
     public static final Random RANDOM = new Random();
 
@@ -138,10 +135,10 @@ public class DarkUtils {
             REGISTRY.registerInventoryModel(item);
         }
     }
-    
+
     @EventHandler
-    public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-        
+    public void onFingerprintViolation (FMLFingerprintViolationEvent event) {
+
         LOGGER.warn("Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported by the author!");
     }
 }

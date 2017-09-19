@@ -19,7 +19,7 @@ public class BlockEnderTether extends BlockTorch implements ITileEntityProvider 
 
     public BlockEnderTether () {
 
-        this.isBlockContainer = true;
+        this.hasTileEntity = true;
         this.setResistance(2000f);
     }
 

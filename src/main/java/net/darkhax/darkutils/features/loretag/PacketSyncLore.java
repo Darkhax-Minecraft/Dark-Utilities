@@ -1,7 +1,5 @@
 package net.darkhax.darkutils.features.loretag;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-
 import net.darkhax.bookshelf.network.SerializableMessage;
 import net.darkhax.bookshelf.util.StackUtils;
 import net.minecraft.entity.player.EntityPlayer;

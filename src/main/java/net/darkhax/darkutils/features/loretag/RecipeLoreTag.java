@@ -125,14 +125,14 @@ public class RecipeLoreTag extends net.minecraftforge.registries.IForgeRegistryE
     }
 
     @Override
-    public boolean isHidden () {
-
-        return true;
-    }
-
-    @Override
     public boolean canFit (int width, int height) {
 
         return width * height >= 2;
+    }
+
+    @Override
+    public boolean isDynamic () {
+
+        return true;
     }
 }
