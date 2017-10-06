@@ -1,0 +1,199 @@
+#Dark Utilities Polish Translation by Kaperios
+
+#Blocks
+tile.darkutils.trap.tile.poison.name=Trujaca Pulapka
+tile.darkutils.trap.tile.weakness.name=Oslabiajaca Pulapka
+tile.darkutils.trap.tile.harming.name=Szkodzaca Pulapka
+tile.darkutils.trap.tile.slowness.name=Spowalniajaca Pulapka
+tile.darkutils.trap.tile.fire.name=Podpalajaca Pulapka
+tile.darkutils.trap.tile.wither.name=Obumierajaca Pulapka
+tile.darkutils.ender.tether.name=Kresowa Peta
+tile.darkutils.trap.move.name=Wektorowa Plytka
+tile.darkutils.trap.move.fast.name=Szybka Wektorowa Plytka
+tile.darkutils.trap.move.hyper.name=Ekstremalna Wektorowa Plytka
+tile.darkutils.grate.name=Krata na Przedmioty
+tile.darkutils.filter.name=Filtr Mobów
+tile.darkutils.filter.inverted.name=Odwrotny Filtr Mobów
+tile.darkutils.timer.name=Minutnik
+tile.darkutils.anti.slime.name=Blok Anty-Szlamowy
+tile.darkutils.update.detector.name=Detektor Aktualizacji Bloku
+tile.darkutils.sneaky.name=Podstepny Blok
+tile.darkutils.sneaky.lever.name=Podtsepna Dzwignia
+tile.darkutils.sneaky.ghost.name=Podstepny Falszywy Blok
+tile.darkutils.sneaky.torch.name=Podstepna Pochodnia
+tile.darkutils.sneaky.obsidian.name=Podstepny Obsydian
+tile.darkutils.sneaky.plate.name=Podstepna Plytka Naciskowa
+tile.darkutils.eplus.name=Ciasto z Zaklinania Plus
+tile.darkutils.feeder.name=Karmnik
+tile.darkutils.fake.tnt.name=TNT
+tile.darkutils.pearl.block.default.name=Perlowy Blok
+tile.darkutils.pearl.block.brick.name=Perlowe Cegly
+tile.darkutils.pearl.block.carved.name=Wyryty Perlowy Blok
+tile.darkutils.pearl.block.chiseled.name=Rzezbiony Perlowy Blok
+tile.darkutils.ender.hopper.name=Kresowy Lej
+tile.darkutils.chest.prismarine.name=Pryzmarynowa Skrzynia
+tile.darkutils.chest.sandstone.name=Skrzynia z Piaskowca
+tile.darkutils.chest.royal.name=Królewska Skrzynia
+tile.darkutils.chest.nether.name=Piekielna Skrzynia
+tile.darkutils.chest.glass.name=Szklana Skrzynia
+tile.darkutils.chest.magic.name=Mistyczna Skrzynia
+tile.darkutils.chest.glacial.name=Lodowata Skrzynia
+tile.darkutils.chest.jungle.name=Dzunglowa Skrzynia
+tile.darkutils.sneaky.bedrock.name=Podstepna Skala Macierzysta
+tile.darkutils.slime.dyed.black.name=Czarny Blok Szlamu
+tile.darkutils.slime.dyed.red.name=Czerwony Blok Szlamu
+tile.darkutils.slime.dyed.green.name=Zielony Blok Szlamu
+tile.darkutils.slime.dyed.brown.name=Brazowy Blok Szlamu
+tile.darkutils.slime.dyed.blue.name=Niebieski Blok Szlamu
+tile.darkutils.slime.dyed.purple.name=Fioletowy Blok Szlamu
+tile.darkutils.slime.dyed.cyan.name=Blekitny Blok Szlamu
+tile.darkutils.slime.dyed.silver.name=Jasnoszary Blok Szlamu
+tile.darkutils.slime.dyed.gray.name=Szary Blok Szlamu
+tile.darkutils.slime.dyed.pink.name=Rózowy Blok Szlamu
+tile.darkutils.slime.dyed.lime.name=Limonkowy Blok Szlamu
+tile.darkutils.slime.dyed.yellow.name=Zólty Blok Szlamu
+tile.darkutils.slime.dyed.light.blue.name=Jasnoniebieski Blok Szlamu
+tile.darkutils.slime.dyed.magenta.name=Purpurowy Blok Szlamu
+tile.darkutils.slime.dyed.orange.name=Pomaranczowy Blok Szlamu
+tile.darkutils.slime.dyed.white.name=Bialy Blok Szlamu
+tile.darkutils.wither.block.name=Witherowy Blok
+tile.darkutils.wither.block.default.name=Blok z Witherowego Pylu
+tile.darkutils.wither.block.bricked.name=Cegly z Witherowego Pylu
+tile.darkutils.wither.block.carved.name=Wyryty Blok z Witherowego Pylu
+tile.darkutils.wither.block.chiseled.name=Rzezbiony Blok z Witherowego Pylu
+tile.darkutils.wither.block.magma.name=Uszkodony Blok z Witherowego Pylu
+tile.darkutils.wither.block.tiled.name=Kracisty Blok z Witherowego Pylu
+
+#Items
+item.darkutils.disabled.name=Wylaczony Przedmiot
+item.darkutils.material.wither.name=Witherowy Pyl
+item.darkutils.material.unstable.name=Niestabilna Perla Kresu
+item.darkutils.material.cream.name=Zmniejszajacy Krem
+item.darkutils.material.sugar.name=Ciemny Cukier
+item.darkutils.mystery.potion.name=Tajemnicza Mikstura
+item.darkutils.charm.portal.name=Talizman Portalu
+item.darkutils.charm.sleep.name=Talizman Spania
+item.darkutils.shulker.pearl.name=Perla Shulkera
+item.darkutils.charm.null.name=Talizman Nicosci
+item.darkutils.focus.sash.name=Opaska Skupienia
+item.darkutils.ring.pyro.name=Pierscien Piromana
+item.darkutils.ring.engineer.name=Pierscien Inzyniera
+item.darkutils.ring.depth.name=Pierscien Glebokosci
+item.darkutils.ring.titan.name=Pierscien Tytana
+item.darkutils.ring.protect.name=Pierscien Ochrony
+item.darkutils.ring.angler.name=Pierscien Wedkarza
+item.darkutils.ring.frost.name=Pierscien Mrozu
+item.darkutils.charm.gluttony.name=Talizman Obzarstwa
+item.darkutils.charm.agression.name=Talizman Agresji
+item.darkutils.lore.tag.black.name=Czarny Zmieniacz Opisiu
+item.darkutils.lore.tag.darkblue.name=Ciemnoniebieski Zmieniacz Opisiu
+item.darkutils.lore.tag.darkgreen.name=Ciemnozielony Zmieniacz Opisiu
+item.darkutils.lore.tag.darkaqua.name=Ciemnoblekitny Zmieniacz Opisiu
+item.darkutils.lore.tag.darkred.name=Ciemnoczerwony Zmieniacz Opisiu
+item.darkutils.lore.tag.darkpurple.name=Ciemnofioletowy Zmieniacz Opisiu
+item.darkutils.lore.tag.gold.name=Zloty Zmieniacz Opisiu
+item.darkutils.lore.tag.gray.name=Szary Zmieniacz Opisiu
+item.darkutils.lore.tag.darkgray.name=Ciemnoszary Zmieniacz Opisiu
+item.darkutils.lore.tag.blue.name=Niebieski Zmieniacz Opisiu
+item.darkutils.lore.tag.green.name=Zielony Zmieniacz Opisiu
+item.darkutils.lore.tag.aqua.name=Blekitny Zmieniacz Opisiu
+item.darkutils.lore.tag.red.name=Czerwony Zmieniacz Opisiu
+item.darkutils.lore.tag.lightpurple.name=Jasnofioletowy Zmieniacz Opisiu
+item.darkutils.lore.tag.yellow.name=Zólty Zmieniacz Opisiu
+item.darkutils.lore.tag.white.name=Bialy Zmieniacz Opisiu
+
+#Entity
+entity.DarkUtils.FakeTNT.name=Blok TNT
+
+#Tooltips
+tooltip.darkutils.filter.type=Typ
+tooltip.darkutils.filter.type.player=Gracz
+tooltip.darkutils.filter.type.undead=Nieumarly
+tooltip.darkutils.filter.type.arthropod=Stawonóg
+tooltip.darkutils.filter.type.monster=Potwór
+tooltip.darkutils.filter.type.animal=Zwierze
+tooltip.darkutils.filter.type.water=Wodny
+tooltip.darkutils.filter.type.baby=Dziecko
+tooltip.darkutils.filter.type.pet=Zwierze Domowe
+tooltip.darkutils.filter.type.slime=Szlam
+tooltip.darkutils.filter.type.fireres=Odporny na Ogien
+tooltip.darkutils.filter.type.boss=Boss
+tooltip.darkutils.disabled=To reprezentuje przedmiot do craftingu, który zostal wylaczony lub usuniety!
+
+#Timer GUI
+gui.darkutils.timer.title=Ustawienia Minutnika
+gui.darkutils.timer.delay=Opoznienie Minutnika
+gui.darkutils.timer.remaining=Pozostaly Czas
+gui.darkutils.timer.desc.1=Czas jest wprowadzany w tickach. W sekundzie znajudje sie 20 ticków.
+gui.darkutils.timer.desc.2=10 sekund to 200 ticków. 30 sekund to 600 ticków. W minucie jest ich 1200.
+gui.darkutils.timer.desc.3=Kliknij przycisk "Gotowe" lub klawisz Enter by zapisac ustawienia. 
+gui.darkutils.timer.desc.4=Minimum to 10, a maksimum to 12000. 
+
+#Null Charm GUI
+container.darkutils.charm.null=Talizman Nicosci
+
+#Lore Tag GUI
+gui.darkutils.loretag.title=Zmieniacz Opisu
+gui.darkutils.loretag.field=Tekst Opisu
+gui.darkutils.loretag.desc.1=Wpisz zawartosc opisu w polu powyzej. 
+gui.darkutils.loretag.desc.2=Kazdy zmieniacz moze jedna nowa linie i posiada limit 48 znaków.
+gui.darkutils.loretag.desc.3=Jezeli skonczyles, kliknij przycisk "Gotowe". Podglad bedzie widoczny w tooltipie zmieniacza.
+gui.darkutils.loretag.desc.4=Polacz z innym przedmiotem w kowadle by nadac przedmiotowi ustawiony wczesniej opis!
+chat.darkutils.loretag.error.sync=Zmieniacz opisu jest niezsynchronizowany. Czy polaczenie jest Stabilne?
+
+#Misc
+itemGroup.darkutils=Dark Utilities
+chat.darkutils.focussash=%sZostales uratowany przez opaske skupienia!
+
+#JEI
+jei.tile.darkutils.trap.tile=Te pulapki beda nadawaly efekt mobom które na nie stana. Dla przykladu spowalniajaca pulapka da efekt spowolnienia.
+jei.tile.darkutils.ender.tether=Zapobiega teleportowaniu sie Endermanów w pewnym dystansie. Przy kazdej próbie teleportacji beda one teleportowane do pety. Zapobiega on takze innym formom teleportacji.
+jei.tile.darkutils.trap.move=Wolno przesuwa moby w kierunku, w którym wskazuje. Nie dziala na kucajace moby.
+jei.tile.darkutils.trap.move.fast=Szybko przesuwa moby w kierunku, w którym wskazuje. Nie dziala na kucajace moby.
+jei.tile.darkutils.trap.move.hyper=Bardzo szybko przesuwa moby w kierunku, w którym wskazuje. Nie dziala na kucajace moby.
+jei.tile.darkutils.grate=Pozwala przedmiotom na przelatywanie ale nie pozwala na przedostanie sie innym entity.
+jei.tile.darkutils.filter=Pozwala na przedostanie sie przez niego konkretnego moba. Dla przykladu, filtr dla dzieci pozwala tylko na przepuszczenie dzieci mobów.
+jei.tile.darkutils.timer=Podstawowy zegarek z czerwonego proszku. Powoduje krótkie sygnaly redstone'owe co kilka ticków. Czas co jaki sygnal bedzie wysylany mmozna zmienic poprzez GUI.
+jei.tile.darkutils.anti.slime=Zapobiega pojawianiu sie szlamów w okolicach tego bloku. 
+jei.tile.darkutils.update.detector=Emituje krótki redstone'owy sygnal za kazdym razem kiedy zostanie zaktuaizowany poprzez block update.
+jei.tile.darkutils.sneaky=Podobny do kamienia, lecz po kliknieciu na niego normalnym blokiem, przybieze on model tego bloku. Trzymany blok nie jest zabierany.
+jei.tile.darkutils.sneaky.lever=Similar to a normal lever, lecz po kliknieciu na niego normalnym blokiem, przybieze on model tego bloku. Trzymany blok nie jest zabierany.
+jei.tile.darkutils.sneaky.ghost=Does not have a collision box, allowing entities to move through it. You can click on it with another block and it will steal the model of the block. The held block is not consumed.
+jei.tile.darkutils.sneaky.torch=Podobny do normalnej pochodni, lecz po kliknieciu na niego normalnym blokiem, przybieze on model tego bloku. Trzymany blok nie jest zabierany.
+jei.tile.darkutils.sneaky.obsidian=Podobny do obsydianu, lecz po kliknieciu na niego normalnym blokiem, przybieze on model tego bloku. Trzymany blok nie jest zabierany.
+jei.tile.darkutils.sneaky.plate=Podobny do drewnianej plytki naciskowej, lecz po kliknieciu na niego normalnym blokiem, przybieze on model tego bloku. Trzymany blok nie jest zabierany.
+jei.tile.darkutils.feeder=Karmnik moze pomiescic do 10 sztuk jedzenia. Jezeli pobliski mob lubi ten rodzaj jedzenia, moze go zjesc z karmnika. Moze byc uzyte do automatycznego rozmnazania. Moze przechowywac tylko 10 sztuk jedzenia jednego rodzaju, ale moze byc uzupelniane za pomoca leja.
+jei.tile.darkutils.fake.tnt=Znaczaco slabsza wersja normalnego TNT. Nie jest wystraczajaco silne by wysadzic jakiejkolwiek bloki, co robi z niego perfekcyjny blok do robienia zartów.
+jei.tile.darkutils.pearl.block=Dekoracyjny blok robiony z perel. Swieci jasnym swiatlem. 
+jei.tile.darkutils.ender.hopper=Teleportuje pobliskie przedmioty do kontenera, do którego jest przylaczony. Kucajac i klikajac prawym przyciskiem myszy powinien sie wyswietlic zasieg leja chyba, ze jest to wylaczone.
+jei.tile.darkutils.chest.prismarine=Dekoracyjna alternatywa dla skrzyni. Zachowuje sie jak normalna skrzynia, wliczajac rozmiar.
+jei.tile.darkutils.chest.sandstone=Dekoracyjna alternatywa dla skrzyni. Zachowuje sie jak normalna skrzynia, wliczajac rozmiar.
+jei.tile.darkutils.chest.royal=Dekoracyjna alternatywa dla skrzyni. Zachowuje sie jak normalna skrzynia, wliczajac rozmiar.
+jei.tile.darkutils.chest.nether=Dekoracyjna alternatywa dla skrzyni. Zachowuje sie jak normalna skrzynia, wliczajac rozmiar.
+jei.tile.darkutils.chest.glass=Dekoracyjna alternatywa dla skrzyni. Zachowuje sie jak normalna skrzynia, wliczajac rozmiar.
+jei.tile.darkutils.chest.magic=Dekoracyjna alternatywa dla skrzyni. Zachowuje sie jak normalna skrzynia, wliczajac rozmiar.
+jei.tile.darkutils.chest.glacial=Dekoracyjna alternatywa dla skrzyni. Zachowuje sie jak normalna skrzynia, wliczajac rozmiar.
+jei.tile.darkutils.chest.jungle=Dekoracyjna alternatywa dla skrzyni. Zachowuje sie jak normalna skrzynia, wliczajac rozmiar.
+jei.item.darkutils.material=Specjalny przedmiot uzywany w róznych przepisach.
+jei.item.darkutils.mystery.potion=Podejrzana mikstura, która prawdopodobnie ma wyjatkowe wlasciwosci. Kto wie co sie stanie jezeli ty (lub ktos inny) to wypije...
+jei.item.darkutils.charm.portal=Pozwala na natychmiastowa podróz poprzez portale jezeli posiadasz to w ekwipunku.
+jei.item.darkutils.charm.sleep=Robi spanie prostsze jezeli jest w ekwipunku.
+jei.item.darkutils.charm.null=Jezeli znajduje sie w ekwipunku, konkretne przedmioty beda niszczone w momencie podniesienia. Lista przedmiotów, które beda niszczone, moze byc ustawiona poprzez klikniecie prawego przycisku myszy z przedmiotem w rece.
+jei.item.darkutils.shulker.pearl=Blyszczaca perla zdobywana poprzez klikniecie prawym przyciskiem myszy na Shulkera. Zazwyczaj uzywane do dekoracji.
+jei.item.darkutils.focus.sash=Zapobiega smierciom jezeli znajduje sie w ekwipunku.
+jei.item.darkutils.ring=Pierscien posiada moc by podniesc poziom zaklec gracza, kiedy znajduje sie w drugiej rece lub w miejscu na pierscienie w bauble. Ten efekt kumuluje sie z aktualnymi zakleciami lecz nie sa one wymagane. Dla przykladu, jezeli masz miecz z Zakletym Ogniem II, pierscien podniesie to do Zakletego Ognia III.
+jei.tile.darkutils.filter.inverted=Zapobiega przemieszczaniu sie konkretnych typów modów przez niego. Dla przykladu, filtr dziedziecy pozwala na przechodzenie przez blok wszystkiemu oprócz dzieciecych mobów.
+jei.item.darkutils.charm.gluttony=Pozwala graczowi na niesamowicie szybkie jedzenie. Jezeli nie bedziesz uwazal, mozesz zjesc wiecej niz powinienes!
+jei.tile.darkutils.sneaky.bedrock=Podobny do skaly macierzystej, lecz gdy jestes w trybie kreatywnym mozesz zmienic jego wyglad na kazdy inny blok poprzez klikniecie prawego przycisku myszy z blokiem w reku.
+jei.item.darkutils.charm.agression=Zwieksza zasieg agresji gracza. Normalnie tylko mob, którego uderzysz bedzie zly na ciebie, ale to sprawi, ze wszystkie moby tego samego typu beda na ciebie zle.
+jei.tile.darkutils.slime.dyed=Kolorowa wariacja zwyklego bloku szlamu. Niestety nie dzialaja one z tlokami. #BlameMojang
+jei.tile.darkutils.wither.block=Kompaktowy blok zrobiony z pylu withera. Nie moze zostac wysadzony przez Withera! Takze dekoracyjny!
+jei.item.darkutils.lore.tag=Pozwala na ustawienie opisu przedmiotu. Klikniecie prawym przyciskiem myszy otworzy GUI, które pozwala na napisanie opisu. Uzyj kowadla by nadac przedmiotom opis. Moze byc kolorowane za pomoca barwników. 
+
+#Waila
+tooltip.darkutils.feeder.type=Rodzaj Jedzenia
+tooltip.darkutils.feeder.amount=Ilosc
+option.darkutils.filter.type=Typ Filtra?
+option.darkutils.timer.time=Czas Minutnika?
+option.darkutils.sneaky.owner=Podstepny dla Wlasciciela?
+option.darkutils.feeder.info=Informacje o Karmniku?
