@@ -18,7 +18,7 @@ If you are using [Gradle](https://gradle.org) to manage your dependencies, add t
 repositories {
 
     maven { 
-        url 'http://maven.epoxide.org' 
+        url 'https://maven.mcmoddev.com' 
     }
 }
 
