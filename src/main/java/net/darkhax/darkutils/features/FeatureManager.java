@@ -1,6 +1,8 @@
 package net.darkhax.darkutils.features;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -32,12 +34,21 @@ public class FeatureManager {
 
             registerFeature(feature.getKey(), annotation.name(), annotation.description());
         }
+        
+        features.sort(new Comparator<Feature>() {
+
+			@Override
+			public int compare(Feature o1, Feature o2) {
+				
+				return o2.configName.compareTo(o1.configName);
+			}
+        });
     }
 
     /**
-     * Registers a new feature with the feature manager. This will automatically create an
-     * entry in the configuration file to enable/disable this feature. If the feature has been
-     * disabled, it will not be registered. This will also handle event bus subscriptions.
+     * Registers a new feature with the feature manager. This will automatically create an entry in
+     * the configuration file to enable/disable this feature. If the feature has been disabled, it
+     * will not be registered. This will also handle event bus subscriptions.
      *
      * @param feature The feature being registered.
      * @param name The name of the feature.
