@@ -5,20 +5,10 @@ import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.model.ModelRotation;
-import net.minecraft.client.renderer.block.statemap.IStateMapper;
-import net.minecraft.client.renderer.block.statemap.StateMapperBase;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.IRegistry;
 import net.minecraftforge.client.event.ModelBakeEvent;
-import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -81,7 +71,7 @@ public class FeatureSneaky extends Feature {
     public void onClientInit () {
 
         Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColorSneaky(), blockSneakyBlock, blockSneakyLever, blockSneakyGhost, blockSneakyTorch, blockSneakyObsidian, blockSneakyPlate, blockSneakyBedrock);
-        
+
         this.registerSneakyModel(blockSneakyBlock, "sneaky_default");
         this.registerSneakyModel(blockSneakyLever, "sneaky_lever");
         this.registerSneakyModel(blockSneakyGhost, "sneaky_default");
@@ -100,7 +90,7 @@ public class FeatureSneaky extends Feature {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onModelBake (ModelBakeEvent event) {
-        
+
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky", "normal"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_lever", "powered=true"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_lever", "powered=false"), new ModelSneakyBlock());

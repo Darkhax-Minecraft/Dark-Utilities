@@ -46,7 +46,7 @@ public class DarkUtils {
     public static final NetworkHandler NETWORK = new NetworkHandler(DarkUtils.MOD_ID);
 
     public static final RegistryHelper REGISTRY = new RegistryHelper(DarkUtils.MOD_ID).setTab(TAB).enableAutoRegistration();
-    
+
     @SidedProxy(clientSide = DarkUtils.CLIENT_PROXY_CLASS, serverSide = DarkUtils.SERVER_PROXY_CLASS)
     public static DarkUtilsServer proxy;
 
