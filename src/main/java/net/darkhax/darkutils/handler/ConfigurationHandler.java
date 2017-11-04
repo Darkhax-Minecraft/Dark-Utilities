@@ -43,6 +43,8 @@ public class ConfigurationHandler {
      */
     public static boolean isFeatureEnabled (Feature feature, String name, String description) {
 
-        return config.getBoolean(name, "_features", feature.enabledByDefault(), description);
+        final boolean result = config.getBoolean(name, "_features", feature.enabledByDefault(), description);
+        syncConfigData();
+        return result;
     }
 }
