@@ -2,7 +2,6 @@ package net.darkhax.darkutils.features.enchrings;
 
 import net.darkhax.bookshelf.events.EnchantmentModifierEvent;
 import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -18,7 +17,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@DUFeature(name = "Enchanted Rings", description = "Adds rings which can increase enchantment levels")
+//@DUFeature(name = "Enchanted Rings", description = "Adds rings which can increase enchantment levels")
 public class FeatureEnchantedRing extends Feature {
 
     public static Item itemRing;
