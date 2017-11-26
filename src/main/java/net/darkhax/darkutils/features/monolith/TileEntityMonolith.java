@@ -10,6 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent.CheckSpawn;
 
 public class TileEntityMonolith extends TileEntityBasicTickable {
 
@@ -34,10 +35,15 @@ public class TileEntityMonolith extends TileEntityBasicTickable {
         return true;
     }
 
-    public boolean isInSameChunk(BlockPos pos) {
-        
+    public boolean isInSameChunk (BlockPos pos) {
+
         return WorldUtils.areSameChunk(this.getWorld(), this.pos, pos);
     }
+
+    public void onSpawnCheck (CheckSpawn event) {
+
+    }
+
     @Override
     public void onLoad () {
 
