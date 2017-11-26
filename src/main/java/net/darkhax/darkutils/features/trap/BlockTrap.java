@@ -2,6 +2,7 @@ package net.darkhax.darkutils.features.trap;
 
 import java.util.ArrayList;
 
+import net.darkhax.darkutils.handler.FakePlayerHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -137,7 +138,9 @@ public class BlockTrap extends Block {
             }
 
             if (type == 2) {
-                living.attackEntityFrom(DamageSource.MAGIC, 2.5f);
+                
+                //living.attackEntityFrom(DamageSource.MAGIC, 2.5f);
+                FakePlayerHandler.causePlayerDamage(living, 2.5f);
             }
 
             if (type == 3) {
