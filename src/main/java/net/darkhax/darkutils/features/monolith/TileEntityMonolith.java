@@ -34,6 +34,10 @@ public class TileEntityMonolith extends TileEntityBasicTickable {
         return true;
     }
 
+    public boolean isInSameChunk(BlockPos pos) {
+        
+        return WorldUtils.areSameChunk(this.getWorld(), this.pos, pos);
+    }
     @Override
     public void onLoad () {
 
