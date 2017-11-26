@@ -117,6 +117,7 @@ tooltip.darkutils.filter.type.slime=Slime
 tooltip.darkutils.filter.type.fireres=Fire Resistant
 tooltip.darkutils.filter.type.boss=Boss
 tooltip.darkutils.disabled=This represents a crafting ingredient that has been disabled or removed!
+tooltip.darkutils.monolith.invalid=There is already a monolith in this chunk.
 
 #Timer GUI
 gui.darkutils.timer.title=Timer Settings
