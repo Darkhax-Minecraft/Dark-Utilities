@@ -17,6 +17,12 @@
         },
         "variant=wither": {
             "model": "darkutils:trap_wither"
-        }
+        }, 
+		"variant=maim": {
+            "model": "darkutils:trap_maim"
+        },
+        "variant=player": {
+            "model": "darkutils:trap_player"
+        } 
     }
 }

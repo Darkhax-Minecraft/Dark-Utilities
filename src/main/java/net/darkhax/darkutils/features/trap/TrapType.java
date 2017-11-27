@@ -3,16 +3,27 @@ package net.darkhax.darkutils.features.trap;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.darkhax.darkutils.handler.FakePlayerHandler;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.IStringSerializable;
 
 public enum TrapType implements IStringSerializable {
 
-    POISON(0, "poison"),
-    WEAKNESS(1, "weakness"),
-    HARMING(2, "harming"),
-    SLOWNESS(3, "slowness"),
-    FIRE(4, "fire"),
-    WITHER(5, "wither");
+    POISON(0, "poison", new AffecterPotion(new PotionEffect(MobEffects.POISON, 100))),
+    WEAKNESS(1, "weakness", new AffecterPotion(new PotionEffect(MobEffects.WEAKNESS, 60))),
+    HARMING(2, "harming", (entity) -> entity.attackEntityFrom(DamageSource.MAGIC, 2.5f)),
+    SLOWNESS(3, "slowness", new AffecterPotion(new PotionEffect(MobEffects.SLOWNESS, 60, 2))),
+    FIRE(4, "fire", (entity) -> entity.setFire(2)),
+    WITHER(5, "wither", new AffecterPotion(new PotionEffect(MobEffects.WITHER, 60))),
+    MAIM(6, "maim", new AffecterMaim()),
+    PLAYER(7, "player", (entity) -> FakePlayerHandler.causePlayerDamage(entity, 2.5f));
 
     private static String[] nameList;
 
@@ -20,10 +31,13 @@ public enum TrapType implements IStringSerializable {
 
     public final String type;
 
-    private TrapType (int meta, String name) {
+    public final IAffecter affect;
+
+    private TrapType (int meta, String name, IAffecter affect) {
 
         this.meta = meta;
         this.type = name;
+        this.affect = affect;
     }
 
     @Override
@@ -64,4 +78,45 @@ public enum TrapType implements IStringSerializable {
         nameList = names.toArray(new String[names.size()]);
         return nameList;
     }
+
+    static interface IAffecter {
+
+        void apply (EntityLivingBase entity);
+    }
+
+    private static class AffecterPotion implements IAffecter {
+
+        private final PotionEffect effect;
+
+        public AffecterPotion (PotionEffect effect) {
+
+            this.effect = effect;
+            this.effect.setCurativeItems(new ArrayList<ItemStack>());
+        }
+
+        @Override
+        public void apply (EntityLivingBase entity) {
+
+            if (entity.getActivePotionEffect(this.effect.getPotion()) == null) {
+
+                entity.addPotionEffect(new PotionEffect(this.effect));
+            }
+        }
+    }
+
+    private static class AffecterMaim implements IAffecter {
+
+        @Override
+        public void apply (EntityLivingBase entity) {
+
+            // Doesn't affect mobs with 1 or less health, bosses, players, TODO or configurable
+            // blacklist
+            if (entity.getMaxHealth() > 1.0f && entity.isNonBoss() && !(entity instanceof EntityPlayer)) {
+
+                final IAttributeInstance inst = entity.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
+                inst.setBaseValue(Math.max(inst.getBaseValue() - 1.0f, 1.0f));
+            }
+        }
+    }
+
 }

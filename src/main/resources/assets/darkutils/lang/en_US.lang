@@ -5,6 +5,8 @@ tile.darkutils.trap.tile.harming.name=Damage Trap
 tile.darkutils.trap.tile.slowness.name=Slowness Trap
 tile.darkutils.trap.tile.fire.name=Flame Trap
 tile.darkutils.trap.tile.wither.name=Wither Trap
+tile.darkutils.trap.tile.maim.name=Maim Trap
+tile.darkutils.trap.tile.player.name=Player Trap
 tile.darkutils.ender.tether.name=Ender Tether
 tile.darkutils.trap.move.name=Vector Plate
 tile.darkutils.trap.move.fast.name=Fast Vector Plate
@@ -61,6 +63,8 @@ tile.darkutils.wither.block.carved.name=Carved Wither Dust Block
 tile.darkutils.wither.block.chiseled.name=Chiseled Wither Dust Block
 tile.darkutils.wither.block.magma.name=Corrupted Wither Dust Block
 tile.darkutils.wither.block.tiled.name=Checkered Wither Dust Block
+tile.darkutils.monolith.exp.name=Monolith of Experience
+tile.darkutils.monolith.spawning.name=Monolith of Spawning
 
 #Items
 item.darkutils.disabled.name=Disabled Item
