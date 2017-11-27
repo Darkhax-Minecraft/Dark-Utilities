@@ -10,16 +10,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent.CheckSpawn;
 
 public class TileEntityMonolith extends TileEntityBasicTickable {
 
-    WorldServer
-    public static final List<TileEntityMonolith> LOADED_MONOLITHS = new ArrayList<>();
+    public static boolean validatePosition (WorldServer world, TileEntity firstTile, BlockPos original, boolean shouldBreak) {
 
-    public static boolean validatePosition (World world, TileEntity firstTile, BlockPos original, boolean shouldBreak) {
-
-        for (final TileEntity tile : LOADED_MONOLITHS) {
+        for (final TileEntity tile : FeatureMonolith.getMonoliths(world)) {
 
             if (tile != firstTile && WorldUtils.areSameChunk(world, original, tile.getPos())) {
 
@@ -50,9 +48,9 @@ public class TileEntityMonolith extends TileEntityBasicTickable {
 
         super.onLoad();
 
-        if (!this.world.isRemote && !LOADED_MONOLITHS.contains(this)) {
+        if (!this.world.isRemote && !FeatureMonolith.isTracked(this)) {
 
-            LOADED_MONOLITHS.add(this);
+            FeatureMonolith.trackMonolith(this);
         }
     }
 
@@ -60,22 +58,22 @@ public class TileEntityMonolith extends TileEntityBasicTickable {
     public void onChunkUnload () {
 
         // Stop tracking when chunk is unloaded.
-        LOADED_MONOLITHS.remove(this);
+        FeatureMonolith.stopTrackingMonolith(this);
     }
 
     @Override
     public void onTileRemoved (World world, BlockPos pos, IBlockState state) {
 
         // Stop tracking when the tile is broken.
-        LOADED_MONOLITHS.remove(this);
+        FeatureMonolith.stopTrackingMonolith(this);
     }
 
     @Override
     public void onEntityUpdate () {
 
-        if (!this.world.isRemote) {
+        if (this.getWorld() instanceof WorldServer) {
             
-            validatePosition(this.world, this, this.pos, true);
+            validatePosition((WorldServer) this.world, this, this.pos, true);
         }
     }
 

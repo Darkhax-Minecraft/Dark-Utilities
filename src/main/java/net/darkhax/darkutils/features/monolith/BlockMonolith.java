@@ -15,6 +15,7 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -32,10 +33,16 @@ public class BlockMonolith extends BlockTileEntity implements IVariant {
     }
 
     @Override
-    public boolean canPlaceBlockAt (World worldIn, BlockPos pos) {
+    public boolean canPlaceBlockAt (World world, BlockPos pos) {
 
         // Prevents placing if there is already a chunk.
-        return !TileEntityMonolith.validatePosition(worldIn, null, pos, false) ? false : super.canPlaceBlockAt(worldIn, pos);
+        
+        if (world instanceof WorldServer) {
+            
+            return !TileEntityMonolith.validatePosition((WorldServer) world, null, pos, false) ? false : super.canPlaceBlockAt(world, pos);
+        }
+        
+        return true;
     }
 
     @Override
