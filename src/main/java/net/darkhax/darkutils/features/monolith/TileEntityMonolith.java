@@ -14,11 +14,12 @@ import net.minecraftforge.event.entity.living.LivingSpawnEvent.CheckSpawn;
 
 public class TileEntityMonolith extends TileEntityBasicTickable {
 
+    WorldServer
     public static final List<TileEntityMonolith> LOADED_MONOLITHS = new ArrayList<>();
 
     public static boolean validatePosition (World world, TileEntity firstTile, BlockPos original, boolean shouldBreak) {
 
-        for (final TileEntity tile : world.loadedTileEntityList) {
+        for (final TileEntity tile : LOADED_MONOLITHS) {
 
             if (tile != firstTile && WorldUtils.areSameChunk(world, original, tile.getPos())) {
 
@@ -72,7 +73,10 @@ public class TileEntityMonolith extends TileEntityBasicTickable {
     @Override
     public void onEntityUpdate () {
 
-        validatePosition(this.world, this, this.pos, true);
+        if (!this.world.isRemote) {
+            
+            validatePosition(this.world, this, this.pos, true);
+        }
     }
 
     @Override
