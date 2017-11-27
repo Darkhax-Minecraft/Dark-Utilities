@@ -1,8 +1,5 @@
 package net.darkhax.darkutils.features.trap;
 
-import java.util.ArrayList;
-
-import net.darkhax.darkutils.handler.FakePlayerHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -12,10 +9,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -125,41 +119,8 @@ public class BlockTrap extends Block {
         if (entity instanceof EntityLivingBase) {
 
             final EntityLivingBase living = (EntityLivingBase) entity;
-            PotionEffect effect = null;
-
-            final int type = this.getMetaFromState(state);
-
-            if (type == 0) {
-                effect = new PotionEffect(MobEffects.POISON, 100);
-            }
-
-            if (type == 1) {
-                effect = new PotionEffect(MobEffects.WEAKNESS, 60);
-            }
-
-            if (type == 2) {
-                
-                //living.attackEntityFrom(DamageSource.MAGIC, 2.5f);
-                FakePlayerHandler.causePlayerDamage(living, 2.5f);
-            }
-
-            if (type == 3) {
-                effect = new PotionEffect(MobEffects.SLOWNESS, 60, 2);
-            }
-
-            if (type == 4) {
-                living.setFire(1);
-            }
-
-            if (type == 5) {
-                effect = new PotionEffect(MobEffects.WITHER, 60);
-            }
-
-            if (effect != null) {
-
-                effect.setCurativeItems(new ArrayList<ItemStack>());
-                living.addPotionEffect(effect);
-            }
+            final TrapType type = TrapType.fromMeta(this.getMetaFromState(state));
+            type.affect.apply(living);
         }
     }
 
