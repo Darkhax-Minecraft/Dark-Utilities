@@ -42,7 +42,9 @@ public class FakePlayerHandler {
      */
     public static EntityPlayer getFakePlayer (WorldServer world) {
 
-        return FAKE_PLAYERS.putIfAbsent(world, new FakePlayerDU(world));
+        return FAKE_PLAYERS.computeIfAbsent(world, key -> {
+            return new FakePlayerDU(key);
+        });
     }
 
     /**
