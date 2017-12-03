@@ -5,6 +5,7 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDispenser;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.storage.loot.LootEntryItem;
@@ -35,6 +36,7 @@ public class FeatureMaterial extends Feature {
         itemMaterial = DarkUtils.REGISTRY.registerItem(new ItemMaterial(), "material");
         blockWitherDust = new BlockWitherDust();
         DarkUtils.REGISTRY.registerBlock(blockWitherDust, new ItemBlockBasic(blockWitherDust, BlockWitherDust.types, false), "wither_block");
+        BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(itemMaterial, new BehaviorDispenseWitherDust());
     }
 
     @Override

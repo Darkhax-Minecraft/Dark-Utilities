@@ -27,25 +27,35 @@ public class ItemMaterial extends ItemSubType {
 
         if (!world.isRemote && stack.getMetadata() == 0 && target instanceof AbstractSkeleton && !(target instanceof EntityWitherSkeleton)) {
 
-            final EntityWitherSkeleton witherSkeleton = new EntityWitherSkeleton(world);
-            witherSkeleton.copyLocationAndAnglesFrom(target);
-            witherSkeleton.setHealth(target.getHealth());
-
-            for (final EntityEquipmentSlot slot : EntityEquipmentSlot.values()) {
-
-                if (target.hasItemInSlot(slot)) {
-
-                    witherSkeleton.setItemStackToSlot(slot, target.getItemStackFromSlot(slot));
-                    target.setItemStackToSlot(slot, ItemStack.EMPTY);
-                    StackUtils.decreaseStackSize(stack, 1);
-                }
-            }
-
-            world.removeEntity(target);
-            world.spawnEntity(witherSkeleton);
+            transformEntity(world, target, stack);
             return true;
         }
 
         return false;
+    }
+
+    public static void transformEntity (World world, EntityLivingBase entity, ItemStack stack) {
+
+        if (stack.isEmpty()) {
+
+            return;
+        }
+
+        final EntityWitherSkeleton witherSkeleton = new EntityWitherSkeleton(world);
+        witherSkeleton.copyLocationAndAnglesFrom(entity);
+        witherSkeleton.setHealth(entity.getHealth());
+
+        for (final EntityEquipmentSlot slot : EntityEquipmentSlot.values()) {
+
+            if (entity.hasItemInSlot(slot)) {
+
+                witherSkeleton.setItemStackToSlot(slot, entity.getItemStackFromSlot(slot));
+                entity.setItemStackToSlot(slot, ItemStack.EMPTY);
+                StackUtils.decreaseStackSize(stack, 1);
+            }
+        }
+
+        world.removeEntity(entity);
+        world.spawnEntity(witherSkeleton);
     }
 }
