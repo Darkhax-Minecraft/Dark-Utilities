@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class FeatureMonolith extends Feature {
 
     public static final Map<WorldServer, List<TileEntityMonolith>> LOADED_MONOLITHS = new HashMap<>();
-    
+
     public static Block blockMonolith;
 
     @Override
@@ -32,35 +32,37 @@ public class FeatureMonolith extends Feature {
         GameRegistry.registerTileEntity(TileEntityMonolithEXP.class, "monolith_exp");
         GameRegistry.registerTileEntity(TileEntityMonolithSpawning.class, "monolith_spawning");
     }
-    
-    public static void trackMonolith(TileEntityMonolith tile) {
-        
+
+    public static void trackMonolith (TileEntityMonolith tile) {
+
         if (tile.getWorld() instanceof WorldServer) {
-            
+
             getMonoliths((WorldServer) tile.getWorld()).add(tile);
         }
     }
-    
-    public static void stopTrackingMonolith(TileEntityMonolith tile) {
-        
+
+    public static void stopTrackingMonolith (TileEntityMonolith tile) {
+
         if (tile.getWorld() instanceof WorldServer) {
-            
+
             getMonoliths((WorldServer) tile.getWorld()).remove(tile);
         }
     }
-    
-    public static List<TileEntityMonolith> getMonoliths(WorldServer world) {
-        
-        return LOADED_MONOLITHS.computeIfAbsent(world, key -> { return new ArrayList<TileEntityMonolith>();});
+
+    public static List<TileEntityMonolith> getMonoliths (WorldServer world) {
+
+        return LOADED_MONOLITHS.computeIfAbsent(world, key -> {
+            return new ArrayList<>();
+        });
     }
-    
-    public static boolean isTracked(TileEntityMonolith tile) {
-        
+
+    public static boolean isTracked (TileEntityMonolith tile) {
+
         if (tile.getWorld() instanceof WorldServer) {
-            
+
             return getMonoliths((WorldServer) tile.getWorld()).contains(tile);
         }
-        
+
         return false;
     }
 
@@ -72,12 +74,12 @@ public class FeatureMonolith extends Feature {
             LOADED_MONOLITHS.remove(event.getWorld());
         }
     }
-    
+
     @SubscribeEvent
     public void onMobSpawnCheck (CheckSpawn event) {
 
         if (event.getWorld() instanceof WorldServer) {
-            
+
             for (final TileEntityMonolith monolith : getMonoliths((WorldServer) event.getWorld())) {
 
                 if (monolith.isInSameChunk(new BlockPos(event.getX(), event.getY(), event.getZ()))) {
