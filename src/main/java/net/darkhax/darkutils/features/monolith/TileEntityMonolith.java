@@ -1,8 +1,5 @@
 package net.darkhax.darkutils.features.monolith;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
 import net.darkhax.bookshelf.util.WorldUtils;
 import net.minecraft.block.state.IBlockState;
@@ -72,7 +69,7 @@ public class TileEntityMonolith extends TileEntityBasicTickable {
     public void onEntityUpdate () {
 
         if (this.getWorld() instanceof WorldServer) {
-            
+
             validatePosition((WorldServer) this.world, this, this.pos, true);
         }
     }

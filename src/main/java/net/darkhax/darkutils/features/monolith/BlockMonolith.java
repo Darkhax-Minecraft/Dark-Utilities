@@ -36,12 +36,12 @@ public class BlockMonolith extends BlockTileEntity implements IVariant {
     public boolean canPlaceBlockAt (World world, BlockPos pos) {
 
         // Prevents placing if there is already a chunk.
-        
+
         if (world instanceof WorldServer) {
-            
+
             return !TileEntityMonolith.validatePosition((WorldServer) world, null, pos, false) ? false : super.canPlaceBlockAt(world, pos);
         }
-        
+
         return true;
     }
 
