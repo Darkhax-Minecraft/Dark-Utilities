@@ -2,6 +2,7 @@ package net.darkhax.darkutils.features.endertether;
 
 import java.util.Random;
 
+import net.darkhax.bookshelf.block.tileentity.TileEntityBasic;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
@@ -45,6 +46,12 @@ public class BlockEnderTether extends BlockTorch implements ITileEntityProvider 
 
     @Override
     public void breakBlock (World worldIn, BlockPos pos, IBlockState state) {
+
+        final TileEntity tile = worldIn.getTileEntity(pos);
+        if (tile instanceof TileEntityBasic) {
+
+            ((TileEntityBasic) tile).onTileRemoved(worldIn, pos, state);
+        }
 
         super.breakBlock(worldIn, pos, state);
         worldIn.removeTileEntity(pos);

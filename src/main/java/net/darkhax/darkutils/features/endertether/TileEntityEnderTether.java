@@ -1,10 +1,13 @@
 package net.darkhax.darkutils.features.endertether;
 
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasic;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class TileEntityEnderTether extends TileEntityBasic {
 
@@ -39,5 +42,30 @@ public class TileEntityEnderTether extends TileEntityBasic {
     public void readNBT (NBTTagCompound dataTag) {
 
         this.showBorder = dataTag.getBoolean("showBorder");
+    }
+
+    @Override
+    public void onLoad () {
+
+        super.onLoad();
+
+        if (!this.world.isRemote && !FeatureEnderTether.isTracked(this)) {
+
+            FeatureEnderTether.trackTether(this);
+        }
+    }
+
+    @Override
+    public void onChunkUnload () {
+
+        // Stop tracking when chunk is unloaded.
+        FeatureEnderTether.stopTrackingTether(this);
+    }
+
+    @Override
+    public void onTileRemoved (World world, BlockPos pos, IBlockState state) {
+
+        // Stop tracking when the tile is broken.
+        FeatureEnderTether.stopTrackingTether(this);
     }
 }
