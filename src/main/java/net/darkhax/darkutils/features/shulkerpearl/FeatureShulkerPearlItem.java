@@ -6,10 +6,13 @@ import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.shulkerpearl.ShulkerDataHandler.ICustomData;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -57,6 +60,22 @@ public class FeatureShulkerPearlItem extends Feature {
     public boolean usesEvents () {
 
         return true;
+    }
+
+    @SubscribeEvent
+    public void onLivingDrops (LivingDropsEvent event) {
+
+        if (event.getEntity() instanceof EntityShulker) {
+
+            final ICustomData data = ShulkerDataHandler.getData(event.getEntity());
+
+            if (data != null && data.getCooldown() <= 0) {
+
+                final Vec3d pos = event.getEntity().getPositionVector();
+                event.getDrops().add(new EntityItem(event.getEntity().getEntityWorld(), pos.x, pos.y, pos.z, new ItemStack(itemShulkerPearl)));
+                data.setCooldown(this.maxCooldown);
+            }
+        }
     }
 
     @SubscribeEvent
