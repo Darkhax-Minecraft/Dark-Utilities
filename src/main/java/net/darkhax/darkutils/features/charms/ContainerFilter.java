@@ -4,7 +4,6 @@ import net.darkhax.bookshelf.inventory.SlotFake;
 import net.darkhax.bookshelf.item.ItemInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -43,40 +42,23 @@ public class ContainerFilter extends Container {
     @Override
     public ItemStack transferStackInSlot (EntityPlayer player, int index) {
 
-        ItemStack itemstack = null;
         final Slot slot = this.inventorySlots.get(index);
 
-        if (slot != null && slot.getHasStack()) {
+        if (slot != null && slot.getHasStack() && !slot.getStack().isEmpty()) {
 
-            itemstack = slot.getStack().copy();
             for (int fakeSlotID = 0; fakeSlotID < 5; fakeSlotID++) {
 
                 final Slot fakeSlot = this.getSlot(fakeSlotID);
 
-                if (fakeSlot instanceof SlotFake && !fakeSlot.getHasStack()) {
+                // Slot doesn't have an item. Add the copy.
+                if (!fakeSlot.getHasStack()) {
 
-                    fakeSlot.putStack(itemstack);
-                    return itemstack;
+                    fakeSlot.putStack(slot.getStack());
+                    return ItemStack.EMPTY;
                 }
             }
-
-            final Slot firstFakeSlot = this.getSlot(0);
-
-            if (firstFakeSlot instanceof SlotFake) {
-                firstFakeSlot.putStack(itemstack);
-            }
         }
 
-        return itemstack;
-    }
-
-    @Override
-    public ItemStack slotClick (int slot, int dragType, ClickType clickTypeIn, EntityPlayer player) {
-
-        if (slot >= 0 && this.getSlot(slot) != null && this.getSlot(slot).getStack() == player.getHeldItemMainhand()) {
-            return null;
-        }
-
-        return super.slotClick(slot, dragType, clickTypeIn, player);
+        return ItemStack.EMPTY;
     }
 }
