@@ -1,10 +1,15 @@
 package net.darkhax.darkutils.features.vector;
 
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.oredict.OreDictionary;
 
 @DUFeature(name = "Vector Plate", description = "A block that pushes entities around")
 public class FeatureVectorPlate extends Feature {
@@ -52,5 +57,13 @@ public class FeatureVectorPlate extends Feature {
         normalSpeed = config.getFloat("Normal Speed", this.configName, 0.06f, 0f, 5f, "Speed modifier for the normal vector plate");
         fastSpeed = config.getFloat("Fast Speed", this.configName, 0.3f, 0f, 5f, "Speed modifier for the fast vector plate");
         hyperSpeed = config.getFloat("Hyper Speed", this.configName, 1.5f, 0f, 5f, "Speed modifier for the hyper vector plate");
+    }
+
+    @Override
+    public void onPreRecipe () {
+
+        DarkUtils.REGISTRY.addShapedRecipe("vector_normal", new ItemStack(blockVectorPlate, 8), "isi", "bfb", 's', OreDictUtils.SLIMEBALL, 'b', OreDictUtils.STONE, 'f', Items.SUGAR, 'i', OreDictUtils.INGOT_IRON);
+        DarkUtils.REGISTRY.addShapedRecipe("vector_fast", new ItemStack(blockFastVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockVectorPlate, 'y', new ItemStack(FeatureMaterial.itemMaterial, 1, 3));
+        DarkUtils.REGISTRY.addShapedRecipe("vector_hyper", new ItemStack(blockHyperVectorPlate, 8), "xxx", "xyx", "xxx", 'x', blockFastVectorPlate, 'y', new ItemStack(FeatureMaterial.blockWitherDust, 1, OreDictionary.WILDCARD_VALUE));
     }
 }

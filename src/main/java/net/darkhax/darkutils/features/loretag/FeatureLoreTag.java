@@ -1,15 +1,14 @@
 package net.darkhax.darkutils.features.loretag;
 
 import net.darkhax.bookshelf.BookshelfRegistry;
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.client.Minecraft;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,18 +26,19 @@ public class FeatureLoreTag extends Feature {
     }
 
     @Override
+    public void onPreRecipe () {
+
+        for (final LoreType lore : LoreType.values()) {
+
+            DarkUtils.REGISTRY.addShapedRecipe("lore_tag_" + lore.name().toLowerCase(), new ItemStack(coloredLoreTag, 1, lore.ordinal()), "bs ", "su ", "  d", 'b', Items.BOOK, 's', OreDictUtils.STRING, 'u', OreDictUtils.SLIMEBALL, 'd', lore.getCrafting());
+        }
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public void onClientInit () {
 
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new LoreTagColor(), coloredLoreTag);
-    }
-
-    @SubscribeEvent
-    public void onRecipeRegistry (RegistryEvent.Register<IRecipe> event) {
-
-        final IRecipe recipe = new RecipeLoreTag();
-        recipe.setRegistryName(new ResourceLocation("darkutils", "dye_lore_tag"));
-        event.getRegistry().register(recipe);
     }
 
     @Override

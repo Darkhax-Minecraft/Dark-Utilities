@@ -1,6 +1,7 @@
 package net.darkhax.darkutils.features.shulkerpearl;
 
 import net.darkhax.bookshelf.item.ItemBlockBasic;
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
@@ -40,6 +41,16 @@ public class FeatureShulkerPearlItem extends Feature {
         if (this.harvestablePearls) {
             ShulkerDataHandler.init();
         }
+    }
+
+    @Override
+    public void onPreRecipe () {
+
+        DarkUtils.REGISTRY.addShapedRecipe("compact_pearl", new ItemStack(blockShulkerPearl, 32, 0), "xxx", "xsx", "xxx", 'x', itemShulkerPearl, 's', OreDictUtils.ENDSTONE);
+        DarkUtils.REGISTRY.addShapedRecipe("convert_pearl_1", new ItemStack(blockShulkerPearl, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 0));
+        DarkUtils.REGISTRY.addShapedRecipe("convert_pearl_2", new ItemStack(blockShulkerPearl, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 1));
+        DarkUtils.REGISTRY.addShapedRecipe("convert_pearl_3", new ItemStack(blockShulkerPearl, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 2));
+        DarkUtils.REGISTRY.addShapelessRecipe("deconstruct_pearl", new ItemStack(itemShulkerPearl), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
     }
 
     @Override

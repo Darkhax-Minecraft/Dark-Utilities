@@ -8,10 +8,14 @@ import net.darkhax.bookshelf.network.NetworkHandler;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
+import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.FeatureManager;
 import net.darkhax.darkutils.handler.ConfigurationHandler;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -20,6 +24,8 @@ import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod(modid = DarkUtils.MOD_ID, name = DarkUtils.MOD_NAME, version = DarkUtils.VERSION_NUMBER, dependencies = DarkUtils.DEPENDENCIES, certificateFingerprint = "@FINGERPRINT@")
@@ -63,6 +69,7 @@ public class DarkUtils {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
 
+        MinecraftForge.EVENT_BUS.register(this);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
         ConfigurationHandler.syncConfigData();
@@ -85,6 +92,15 @@ public class DarkUtils {
 
         proxy.postInit();
         AddonHandler.onPostInit();
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public void registerRecipes (RegistryEvent.Register<IRecipe> event) {
+
+        for (final Feature feature : FeatureManager.getFeatures()) {
+
+            feature.onPreRecipe();
+        }
     }
 
     @EventHandler

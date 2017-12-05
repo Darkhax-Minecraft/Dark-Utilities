@@ -1,12 +1,16 @@
 package net.darkhax.darkutils.features.sneaky;
 
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.config.Configuration;
@@ -85,6 +89,19 @@ public class FeatureSneaky extends Feature {
         this.registerSneakyModel(blockSneakyPlate, "sneaky_plate");
         this.registerSneakyModel(blockSneakyBedrock, "sneaky_default");
         this.registerSneakyModel(blockSneakyButton, "sneaky_button");
+    }
+
+    @Override
+    public void onPreRecipe () {
+
+        DarkUtils.REGISTRY.addShapedRecipe("sneaky_block", new ItemStack(blockSneakyBlock, 8), "rrr", "rsr", "rrr", 'r', OreDictUtils.STONE, 's', new ItemStack(FeatureMaterial.itemMaterial, 1, 2));
+        DarkUtils.REGISTRY.addShapelessRecipe("sneaky_lever", new ItemStack(blockSneakyLever), blockSneakyBlock, Blocks.LEVER);
+        DarkUtils.REGISTRY.addShapelessRecipe("sneaky_ghost", new ItemStack(blockSneakyGhost), blockSneakyBlock, Blocks.WOOL);
+        DarkUtils.REGISTRY.addShapelessRecipe("sneaky_torch", new ItemStack(blockSneakyTorch), blockSneakyBlock, Blocks.TORCH);
+        DarkUtils.REGISTRY.addShapelessRecipe("sneaky_obsidian", new ItemStack(blockSneakyObsidian), blockSneakyBlock, Blocks.OBSIDIAN);
+        DarkUtils.REGISTRY.addShapelessRecipe("sneaky_plate", new ItemStack(blockSneakyPlate), blockSneakyBlock, Blocks.STONE_PRESSURE_PLATE);
+        DarkUtils.REGISTRY.addShapelessRecipe("sneaky_bedrock", new ItemStack(blockSneakyBedrock), blockSneakyBlock, Blocks.BEDROCK);
+        DarkUtils.REGISTRY.addShapelessRecipe("sneaky_button", new ItemStack(blockSneakyButton), blockSneakyBlock, Blocks.STONE_BUTTON);
     }
 
     @Override

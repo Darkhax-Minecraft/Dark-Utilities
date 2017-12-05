@@ -5,11 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.config.Configuration;
@@ -44,6 +48,12 @@ public class FeatureEnderTether extends Feature {
 
         tetherRange = config.getFloat("Tether Range", this.configName, 32f, 0.0f, 512f, "The range of the effect given by the tether. Distance is measured in blocks.");
         affectPlayers = config.getBoolean("Affect Players", this.configName, true, "Should the Ender Tether catch players using ender teleportation?");
+    }
+
+    @Override
+    public void onPreRecipe () {
+
+        DarkUtils.REGISTRY.addShapedRecipe("ender_tether", new ItemStack(blockEnderTether), " p ", "oto", 'p', new ItemStack(FeatureMaterial.itemMaterial, 1, 1), 'o', OreDictUtils.OBSIDIAN, 't', Blocks.REDSTONE_TORCH);
     }
 
     @Override

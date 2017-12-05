@@ -2,12 +2,16 @@ package net.darkhax.darkutils.features.charms;
 
 import java.util.List;
 
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -45,6 +49,18 @@ public class FeatureCharms extends Feature {
         itemNullCharm = (ItemCharm) DarkUtils.REGISTRY.registerItem(new ItemNullCharm(), "charm_null");
         itemPortalCharm = (ItemCharm) DarkUtils.REGISTRY.registerItem(new ItemCharm(), "charm_portal");
         itemSleepCharm = (ItemCharm) DarkUtils.REGISTRY.registerItem(new ItemCharm(), "charm_sleep");
+    }
+
+    @Override
+    public void onPreRecipe () {
+
+        DarkUtils.REGISTRY.addShapedRecipe("agression_charm", new ItemStack(itemAgressionCharm), "sgs", "gfg", "wgw", 's', OreDictUtils.STRING, 'g', OreDictUtils.NUGGET_GOLD, 'f', Items.ROTTEN_FLESH, 'w', Items.GOLDEN_SWORD);
+        DarkUtils.REGISTRY.addShapedRecipe("focus_sash", new ItemStack(itemFocusSash), " a ", "bcd", " e ", 'a', Items.BLAZE_POWDER, 'b', new ItemStack(Blocks.WOOL, 1, 4), 'c', Items.MAGMA_CREAM, 'd', new ItemStack(Blocks.WOOL, 1, 14), 'e', new ItemStack(Blocks.WOOL, 1, 1));
+        DarkUtils.REGISTRY.addShapedRecipe("gluttony_charm", new ItemStack(itemGluttonyCharm), " s ", "wgw", " w ", 's', OreDictUtils.STRING, 'w', OreDictUtils.CROP_WHEAT, 'g', Items.GOLDEN_APPLE);
+        DarkUtils.REGISTRY.addShapedRecipe("null_charm", new ItemStack(itemNullCharm), " s ", "uop", 's', OreDictUtils.STRING, 'u', new ItemStack(FeatureMaterial.itemMaterial, 1, 1), 'o', OreDictUtils.OBSIDIAN, 'p', OreDictUtils.ENDERPEARL);
+        DarkUtils.REGISTRY.addShapedRecipe("portal_charm_1", new ItemStack(itemPortalCharm), " s ", "oio", " o ", 's', OreDictUtils.STRING, 'o', OreDictUtils.OBSIDIAN, 'i', Items.ENDER_EYE);
+        DarkUtils.REGISTRY.addShapedRecipe("portal_charm_2", new ItemStack(itemPortalCharm), " s ", "oio", " o ", 's', OreDictUtils.STRING, 'o', OreDictUtils.OBSIDIAN, 'i', Items.END_CRYSTAL);
+        DarkUtils.REGISTRY.addShapedRecipe("sleep_charm", new ItemStack(itemSleepCharm), "lsl", "sbs", "lsl", 'l', OreDictUtils.LEATHER, 's', OreDictUtils.STICK_WOOD, 'b', OreDictUtils.BED);
     }
 
     @Override

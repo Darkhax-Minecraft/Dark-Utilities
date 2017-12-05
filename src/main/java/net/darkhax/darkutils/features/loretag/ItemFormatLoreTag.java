@@ -1,23 +1,21 @@
 package net.darkhax.darkutils.features.loretag;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-
-import net.darkhax.bookshelf.util.StackUtils;
+import net.darkhax.bookshelf.item.ICustomModel;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemFormatLoreTag extends Item {
+public class ItemFormatLoreTag extends Item implements ICustomModel {
 
     private final String[] variants = { "black", "dark_blue", "dark_green", "dark_aqua", "dark_red", "dark_purple", "gold", "gray", "dark_gray", "blue", "green", "aqua", "red", "light_purple", "yellow", "white" };
 
@@ -36,17 +34,9 @@ public class ItemFormatLoreTag extends Item {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public String getUnlocalizedName (ItemStack stack) {
-
-        final ChatFormatting format = getTagFormatting(stack);
-        return super.getUnlocalizedName() + "." + format.getName().replace("_", "");
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
     public String getItemStackDisplayName (ItemStack stack) {
 
-        final ChatFormatting format = getTagFormatting(stack);
+        final TextFormatting format = getFormatting(stack);
         return (format != null ? format : "") + super.getItemStackDisplayName(stack);
     }
 
@@ -56,21 +46,29 @@ public class ItemFormatLoreTag extends Item {
 
         if (this.isInCreativeTab(tab)) {
 
-            for (final String format : this.variants) {
+            for (int meta = 0; meta < this.variants.length; meta++) {
 
-                final ItemStack stack = new ItemStack(this);
-                final NBTTagCompound tag = StackUtils.prepareStackTag(stack);
-                tag.setString("format", format);
-                subItems.add(stack);
+                subItems.add(new ItemStack(this, 1, meta));
             }
         }
     }
 
-    @SideOnly(Side.CLIENT)
-    public static ChatFormatting getTagFormatting (ItemStack stack) {
+    public static TextFormatting getFormatting (ItemStack stack) {
 
-        final NBTTagCompound tag = StackUtils.prepareStackTag(stack);
-        final ChatFormatting format = ChatFormatting.getByName(tag.getString("format"));
-        return format != null ? format : ChatFormatting.WHITE;
+        return TextFormatting.values()[stack.getMetadata()];
+    }
+
+    public static LoreType getLore (ItemStack stack) {
+
+        return LoreType.values()[stack.getMetadata()];
+    }
+
+    @Override
+    public void registerMeshModels () {
+
+        for (int meta = 0; meta < this.variants.length; meta++) {
+
+            DarkUtils.REGISTRY.registerInventoryModel(this, meta, this.getRegistryName().toString());
+        }
     }
 }

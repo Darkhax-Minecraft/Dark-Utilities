@@ -89,22 +89,7 @@ item.darkutils.ring.angler.name=Angler's Ring
 item.darkutils.ring.frost.name=Frosted Ring
 item.darkutils.charm.gluttony.name=Gluttony Charm
 item.darkutils.charm.agression.name=Agression Charm
-item.darkutils.lore.tag.black.name=Black Lore Tag
-item.darkutils.lore.tag.darkblue.name=Dark Blue Lore Tag
-item.darkutils.lore.tag.darkgreen.name=Dark Green Lore Tag
-item.darkutils.lore.tag.darkaqua.name=Dark Aqua Lore Tag
-item.darkutils.lore.tag.darkred.name=Dark Red Lore Tag
-item.darkutils.lore.tag.darkpurple.name=Dark Purple Lore Tag
-item.darkutils.lore.tag.gold.name=Gold Lore Tag
-item.darkutils.lore.tag.gray.name=Gray Lore Tag
-item.darkutils.lore.tag.darkgray.name=Dark Gray Lore Tag
-item.darkutils.lore.tag.blue.name=Blue Lore Tag
-item.darkutils.lore.tag.green.name=Green Lore Tag
-item.darkutils.lore.tag.aqua.name=Aqua Lore Tag
-item.darkutils.lore.tag.red.name=Red Lore Tag
-item.darkutils.lore.tag.lightpurple.name=Light Purple Lore Tag
-item.darkutils.lore.tag.yellow.name=Yellow Lore Tag
-item.darkutils.lore.tag.white.name=White Lore Tag
+item.darkutils.lore.tag.name=Lore Tag
 
 #Entity
 entity.DarkUtils.FakeTNT.name=Block of TNT

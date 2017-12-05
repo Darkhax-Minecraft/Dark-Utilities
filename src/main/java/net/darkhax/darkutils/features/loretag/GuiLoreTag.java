@@ -15,6 +15,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -23,7 +24,9 @@ public class GuiLoreTag extends GuiScreen {
 
     private final ItemStack stack;
 
-    private final ChatFormatting format;
+    private final TextFormatting format;
+
+    private final LoreType type;
 
     private GuiTextField loreText;
 
@@ -34,7 +37,8 @@ public class GuiLoreTag extends GuiScreen {
     public GuiLoreTag (ItemStack stack) {
 
         this.stack = stack;
-        this.format = ItemFormatLoreTag.getTagFormatting(stack);
+        this.format = ItemFormatLoreTag.getFormatting(stack);
+        this.type = ItemFormatLoreTag.getLore(stack);
     }
 
     @Override
@@ -53,7 +57,7 @@ public class GuiLoreTag extends GuiScreen {
         this.loreText = new GuiTextField(2, this.fontRenderer, this.width / 2 - 150, 50, 300, 20);
         this.loreText.setMaxStringLength(48);
         this.loreText.setFocused(true);
-        this.loreText.setTextColor(this.fontRenderer.getColorCode(this.format.getChar()));
+        this.loreText.setTextColor(this.type.getColor());
 
         final List<String> lore = StackUtils.getLore(this.stack);
 

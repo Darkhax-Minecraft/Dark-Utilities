@@ -1,9 +1,13 @@
 package net.darkhax.darkutils.features.enderhopper;
 
+import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
+import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -28,6 +32,13 @@ public class FeatureEnderHopper extends Feature {
         blockEnderHopper = DarkUtils.REGISTRY.registerBlock(new BlockEnderHopper(), "ender_hopper");
 
         blockEnderPearlHopper = DarkUtils.REGISTRY.registerBlock(new BlockEnderHopper(), "ender_pearl_hopper");
+    }
+
+    @Override
+    public void onPreRecipe () {
+
+        DarkUtils.REGISTRY.addShapedRecipe("ender_hopper", new ItemStack(blockEnderHopper), " p ", "oho", 'p', new ItemStack(FeatureMaterial.itemMaterial, 1, 1), 'o', OreDictUtils.OBSIDIAN, 'h', Blocks.HOPPER);
+        DarkUtils.REGISTRY.addShapedRecipe("ender_hopper_upgrade", new ItemStack(blockEnderPearlHopper), "ppp", "php", "ppp", 'p', "gemPearl", 'h', blockEnderHopper);
     }
 
     @Override

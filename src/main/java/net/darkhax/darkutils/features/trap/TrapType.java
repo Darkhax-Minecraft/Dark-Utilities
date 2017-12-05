@@ -3,11 +3,14 @@ package net.darkhax.darkutils.features.trap;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.darkhax.darkutils.handler.FakePlayerHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -16,14 +19,14 @@ import net.minecraft.util.IStringSerializable;
 
 public enum TrapType implements IStringSerializable {
 
-    POISON(0, "poison", new AffecterPotion(new PotionEffect(MobEffects.POISON, 100))),
-    WEAKNESS(1, "weakness", new AffecterPotion(new PotionEffect(MobEffects.WEAKNESS, 60))),
-    HARMING(2, "harming", (entity) -> entity.attackEntityFrom(DamageSource.MAGIC, 2.5f)),
-    SLOWNESS(3, "slowness", new AffecterPotion(new PotionEffect(MobEffects.SLOWNESS, 60, 2))),
-    FIRE(4, "fire", (entity) -> entity.setFire(2)),
-    WITHER(5, "wither", new AffecterPotion(new PotionEffect(MobEffects.WITHER, 60))),
-    MAIM(6, "maim", new AffecterMaim()),
-    PLAYER(7, "player", (entity) -> FakePlayerHandler.causePlayerDamage(entity, 2.5f));
+    POISON(0, "poison", Items.SPIDER_EYE, new AffecterPotion(new PotionEffect(MobEffects.POISON, 100))),
+    WEAKNESS(1, "weakness", Items.FERMENTED_SPIDER_EYE, new AffecterPotion(new PotionEffect(MobEffects.WEAKNESS, 60))),
+    HARMING(2, "harming", Items.IRON_SWORD, (entity) -> entity.attackEntityFrom(DamageSource.MAGIC, 2.5f)),
+    SLOWNESS(3, "slowness", Blocks.SOUL_SAND, new AffecterPotion(new PotionEffect(MobEffects.SLOWNESS, 60, 2))),
+    FIRE(4, "fire", Items.FLINT_AND_STEEL, (entity) -> entity.setFire(2)),
+    WITHER(5, "wither", new ItemStack(FeatureMaterial.itemMaterial, 1, 0), new AffecterPotion(new PotionEffect(MobEffects.WITHER, 60))),
+    MAIM(6, "maim", Items.NETHER_STAR, new AffecterMaim()),
+    PLAYER(7, "player", Items.SKULL, (entity) -> FakePlayerHandler.causePlayerDamage(entity, 2.5f));
 
     private static String[] nameList;
 
@@ -33,10 +36,13 @@ public enum TrapType implements IStringSerializable {
 
     public final IAffecter affect;
 
-    private TrapType (int meta, String name, IAffecter affect) {
+    public final Object crafting;
+
+    private TrapType (int meta, String name, Object crafting, IAffecter affect) {
 
         this.meta = meta;
         this.type = name;
+        this.crafting = crafting;
         this.affect = affect;
     }
 

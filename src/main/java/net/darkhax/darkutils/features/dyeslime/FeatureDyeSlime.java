@@ -6,6 +6,7 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -22,6 +23,15 @@ public class FeatureDyeSlime extends Feature {
 
         blockSlime = new BlockSlimeDyed();
         DarkUtils.REGISTRY.registerBlock(blockSlime, new ItemBlockBasic(blockSlime, COLORS, false), "slime_dyed");
+    }
+
+    @Override
+    public void onPreRecipe () {
+
+        for (final EnumDyeColor dye : EnumDyeColor.values()) {
+
+            DarkUtils.REGISTRY.addShapedRecipe("dyed_slime_block_" + dye.getDyeColorName(), new ItemStack(blockSlime, 8, dye.getMetadata()), "sss", "sds", "sss", 's', OreDictUtils.BLOCK_SLIME, 'd', new ItemStack(Items.DYE, 1, dye.getDyeDamage()));
+        }
     }
 
     @Override

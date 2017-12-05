@@ -25,6 +25,13 @@ public class Feature {
     }
 
     /**
+     * Called just before recipes are registered, but after items and blocks are registered.
+     */
+    public void onPreRecipe () {
+
+    }
+
+    /**
      * Called when the mod enters the init phase of loading.
      */
     public void onInit () {
