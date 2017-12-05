@@ -88,6 +88,11 @@ public class ModelSneakyBlock implements IBakedModel {
                 defaultState = Blocks.BEDROCK.getDefaultState();
             }
 
+            else if (block == FeatureSneaky.blockSneakyButton) {
+
+                defaultState = Blocks.STONE_BUTTON.getDefaultState();
+            }
+
             return RenderUtils.getModelForState(defaultState).getQuads(defaultState, side, rand);
         }
 

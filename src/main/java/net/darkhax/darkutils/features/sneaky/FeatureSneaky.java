@@ -32,6 +32,8 @@ public class FeatureSneaky extends Feature {
 
     public static Block blockSneakyBedrock;
 
+    public static Block blockSneakyButton;
+
     public static boolean opacity;
 
     @Override
@@ -58,6 +60,9 @@ public class FeatureSneaky extends Feature {
 
         blockSneakyBedrock = new BlockSneakyBedrock();
         DarkUtils.REGISTRY.registerBlock(blockSneakyBedrock, "sneaky_bedrock");
+
+        blockSneakyButton = new BlockSneakyButton();
+        DarkUtils.REGISTRY.registerBlock(blockSneakyButton, "sneaky_button");
     }
 
     @Override
@@ -79,6 +84,7 @@ public class FeatureSneaky extends Feature {
         this.registerSneakyModel(blockSneakyObsidian, "sneaky_default");
         this.registerSneakyModel(blockSneakyPlate, "sneaky_plate");
         this.registerSneakyModel(blockSneakyBedrock, "sneaky_default");
+        this.registerSneakyModel(blockSneakyButton, "sneaky_button");
     }
 
     @Override
@@ -94,6 +100,8 @@ public class FeatureSneaky extends Feature {
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky", "normal"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_lever", "powered=true"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_lever", "powered=false"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_button", "powered=true"), new ModelSneakyBlock());
+        event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_button", "powered=false"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_ghost", "normal"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_torch", "normal"), new ModelSneakyBlock());
         event.getModelRegistry().putObject(new ModelResourceLocation("darkutils:sneaky_obsidian", "normal"), new ModelSneakyBlock());
