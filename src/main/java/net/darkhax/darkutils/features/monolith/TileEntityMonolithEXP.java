@@ -2,20 +2,51 @@ package net.darkhax.darkutils.features.monolith;
 
 import net.darkhax.bookshelf.util.ParticleUtils;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
 public class TileEntityMonolithEXP extends TileEntityMonolith {
 
     public static final int maxXP = 1995143615;
 
-    public boolean showBorder = false;
     public int storedXP = 0;
 
+    @Override
+    public boolean onBlockActivated(World worldIn, EntityPlayer playerIn) {
+        
+        // Always send info message
+        playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "EXP: " + this.storedXP), true);
+        
+        // Player wants raw exp
+        if (playerIn.isSneaking() && this.storedXP >= 15) {
+            
+            playerIn.addExperience(15);
+            this.storedXP -= 15;
+            this.markDirty();
+        }
+        
+        // Player wants bottle of exp
+        else if (playerIn.getHeldItemMainhand().getItem() == Items.GLASS_BOTTLE && this.storedXP >= 15) {
+            
+            playerIn.getHeldItemMainhand().shrink(1);
+            playerIn.addItemStackToInventory(new ItemStack(Items.EXPERIENCE_BOTTLE));
+            this.storedXP-= 15;
+            this.markDirty();
+        }
+        
+        return true;
+    }
+    
     @Override
     public void onEntityUpdate () {
 
