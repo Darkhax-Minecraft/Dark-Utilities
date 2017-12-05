@@ -45,7 +45,7 @@ public class BlockSneakyButton extends BlockSneaky {
 
     @Override
     public void randomTick (World worldIn, BlockPos pos, IBlockState state, Random random) {
-        
+
     }
 
     @Override
