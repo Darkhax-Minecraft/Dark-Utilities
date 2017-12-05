@@ -30,7 +30,7 @@ public class FeatureDyeSlime extends Feature {
 
         for (final EnumDyeColor dye : EnumDyeColor.values()) {
 
-            DarkUtils.REGISTRY.addShapedRecipe("dyed_slime_block_" + dye.getDyeColorName(), new ItemStack(blockSlime, 8, dye.getMetadata()), "sss", "sds", "sss", 's', OreDictUtils.BLOCK_SLIME, 'd', new ItemStack(Items.DYE, 1, dye.getDyeDamage()));
+            DarkUtils.REGISTRY.addShapedRecipe("dyed_slime_block_" + dye.getName(), new ItemStack(blockSlime, 8, dye.getMetadata()), "sss", "sds", "sss", 's', OreDictUtils.BLOCK_SLIME, 'd', new ItemStack(Items.DYE, 1, dye.getDyeDamage()));
         }
     }
 
