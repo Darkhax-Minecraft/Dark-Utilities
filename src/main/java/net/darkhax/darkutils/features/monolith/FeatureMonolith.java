@@ -10,6 +10,8 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent.CheckSpawn;
@@ -33,6 +35,12 @@ public class FeatureMonolith extends Feature {
         GameRegistry.registerTileEntity(TileEntityMonolithSpawning.class, "monolith_spawning");
     }
 
+    @Override
+    public void onPreRecipe () {
+        
+        DarkUtils.REGISTRY.addShapedRecipe("monolith_exp", new ItemStack(blockMonolith, 1, 0), "ppp", "pip", "bbb", 'p', "gemPearl", 'b', "blockPearl", 'i', Items.EXPERIENCE_BOTTLE);
+        DarkUtils.REGISTRY.addShapedRecipe("monolith_spawn", new ItemStack(blockMonolith, 1, 0), "ppp", "pip", "bbb", 'p', "gemPearl", 'b', "blockPearl", 'i', Items.NETHER_STAR);
+    }
     public static void trackMonolith (TileEntityMonolith tile) {
 
         if (tile.getWorld() instanceof WorldServer) {
