@@ -15,6 +15,8 @@ public class FeatureEnderHopper extends Feature {
 
     public static Block blockEnderHopper;
 
+    public static Block blockEnderPearlHopper;
+
     public static int hopperRange = 4;
 
     public static boolean allowBoundsRendering = true;
@@ -24,6 +26,8 @@ public class FeatureEnderHopper extends Feature {
 
         GameRegistry.registerTileEntity(TileEntityEnderHopper.class, "ender_hopper");
         blockEnderHopper = DarkUtils.REGISTRY.registerBlock(new BlockEnderHopper(), "ender_hopper");
+
+        blockEnderPearlHopper = DarkUtils.REGISTRY.registerBlock(new BlockEnderHopper(), "ender_pearl_hopper");
     }
 
     @Override

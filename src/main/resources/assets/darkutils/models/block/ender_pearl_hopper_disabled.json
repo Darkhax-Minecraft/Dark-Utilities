@@ -1,0 +1,8 @@
+{
+    "parent": "darkutils:block/ender_hopper_base",
+    "textures": {
+        "portal": "blocks/stone",
+		"particle": "darkutils:blocks/pearl_default",
+        "base": "darkutils:blocks/pearl_default"
+    }
+}

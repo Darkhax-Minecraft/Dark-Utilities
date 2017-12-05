@@ -52,7 +52,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
                     // If no cooldown, set to 100. If it has cooldown, reduce by one.
                     this.cooldowns.put(item.getPersistentID(), this.cooldowns.containsKey(item.getPersistentID()) ? this.cooldowns.get(item.getPersistentID()) - 1 : 100);
 
-                    if (this.cooldowns.get(item.getPersistentID()) <= 0) {
+                    if (this.cooldowns.get(item.getPersistentID()) <= 0 || this.isFast()) {
 
                         final ItemStack foundStack = item.getItem();
                         final ItemStack simulation = ItemHandlerHelper.insertItem(handler, foundStack.copy(), true);
@@ -74,7 +74,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
 
                     final ItemStack simulation = ItemHandlerHelper.insertItemStacked(handler, item.getItem(), true);
 
-                    if (this.getWorld() instanceof WorldServer) {
+                    if (!this.isFast() && this.getWorld() instanceof WorldServer) {
 
                         if (simulation.isEmpty() || simulation.getCount() != item.getItem().getCount()) {
 
@@ -94,6 +94,11 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
 
             Constants.LOG.warn(exception, "Ender Hopper at %s in world %s failed an update tick!", this.getPos(), this.getWorld().getWorldInfo().getWorldName());
         }
+    }
+
+    private boolean isFast () {
+
+        return this.getBlockType() == FeatureEnderHopper.blockEnderPearlHopper;
     }
 
     private EnumFacing getDirection () {
