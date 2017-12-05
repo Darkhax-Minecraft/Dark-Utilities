@@ -1,7 +1,7 @@
 package net.darkhax.darkutils.handler;
 
 import net.darkhax.bookshelf.item.ItemInventory;
-import net.darkhax.darkutils.features.charms.ContainerFilter;
+import net.darkhax.darkutils.features.charms.ContainerNullCharm;
 import net.darkhax.darkutils.features.charms.GuiFilter;
 import net.darkhax.darkutils.features.loretag.GuiLoreTag;
 import net.darkhax.darkutils.features.timer.GuiTimerAmount;
@@ -24,7 +24,8 @@ public class GuiHandler implements IGuiHandler {
     public Object getServerGuiElement (int id, EntityPlayer player, World world, int x, int y, int z) {
 
         if (id == FILTER) {
-            return new ContainerFilter(player.inventory, new ItemInventory(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
+
+            return new ContainerNullCharm(player.inventory, new ItemInventory(player.getHeldItemMainhand(), 27, "container.darkutils.charm.null"));
         }
 
         return null;
@@ -43,7 +44,7 @@ public class GuiHandler implements IGuiHandler {
         }
 
         else if (id == FILTER) {
-            return new GuiFilter(player.inventory, new ItemInventory(player.getHeldItemMainhand(), 5, "container.darkutils.charm.null"));
+            return new GuiFilter(player.inventory, new ItemInventory(player.getHeldItemMainhand(), 27, "container.darkutils.charm.null"));
         }
 
         else if (id == LORE_TAG) {
