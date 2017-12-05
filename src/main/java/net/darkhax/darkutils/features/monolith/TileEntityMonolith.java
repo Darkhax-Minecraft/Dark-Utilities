@@ -6,8 +6,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -42,9 +40,9 @@ public class TileEntityMonolith extends TileEntityBasicTickable {
     public void onSpawnCheck (CheckSpawn event) {
 
     }
-    
-    public boolean onBlockActivated(World worldIn, EntityPlayer playerIn) {
-        
+
+    public boolean onBlockActivated (World worldIn, EntityPlayer playerIn) {
+
         return false;
     }
 

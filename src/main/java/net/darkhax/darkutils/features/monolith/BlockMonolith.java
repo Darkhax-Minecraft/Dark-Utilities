@@ -34,14 +34,14 @@ public class BlockMonolith extends BlockTileEntity implements IVariant {
         this.setLightLevel(0.25f);
         this.setHarvestLevel("pickaxe", 1);
     }
-    
+
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        
+    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+
         final TileEntity tile = worldIn.getTileEntity(pos);
-        
+
         if (tile instanceof TileEntityMonolith) {
-            
+
             return ((TileEntityMonolith) tile).onBlockActivated(worldIn, playerIn);
         }
         return false;
@@ -125,6 +125,7 @@ public class BlockMonolith extends BlockTileEntity implements IVariant {
 
     public static boolean isEnabled (World world, BlockPos pos) {
 
+        // TODO
         return !world.isBlockPowered(pos) && world.isAirBlock(pos.up());
     }
 

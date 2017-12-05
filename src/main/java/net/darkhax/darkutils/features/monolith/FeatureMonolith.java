@@ -37,10 +37,11 @@ public class FeatureMonolith extends Feature {
 
     @Override
     public void onPreRecipe () {
-        
+
         DarkUtils.REGISTRY.addShapedRecipe("monolith_exp", new ItemStack(blockMonolith, 1, 0), "ppp", "pip", "bbb", 'p', "gemPearl", 'b', "blockPearl", 'i', Items.EXPERIENCE_BOTTLE);
         DarkUtils.REGISTRY.addShapedRecipe("monolith_spawn", new ItemStack(blockMonolith, 1, 0), "ppp", "pip", "bbb", 'p', "gemPearl", 'b', "blockPearl", 'i', Items.NETHER_STAR);
     }
+
     public static void trackMonolith (TileEntityMonolith tile) {
 
         if (tile.getWorld() instanceof WorldServer) {
