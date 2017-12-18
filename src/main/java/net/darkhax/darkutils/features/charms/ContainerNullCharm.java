@@ -40,6 +40,12 @@ public class ContainerNullCharm extends Container {
     @Override
     public ItemStack slotClick (int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player) {
 
+        // Go away evil slots
+        if (slotId < 0 || slotId >= this.inventorySlots.size()) {
+            
+            return ItemStack.EMPTY;
+        }
+        
         final Slot slot = this.inventorySlots.get(slotId);
 
         // Prevent the player from moving null charms in the null charm inventory.
