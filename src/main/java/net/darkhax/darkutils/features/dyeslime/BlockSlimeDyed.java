@@ -23,7 +23,6 @@ public class BlockSlimeDyed extends BlockSlime {
     public BlockSlimeDyed () {
 
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));
-        this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         this.setSoundType(SoundType.SLIME);
     }
 
@@ -60,6 +59,12 @@ public class BlockSlimeDyed extends BlockSlime {
         return state.getValue(COLOR).getMetadata();
     }
 
+    @Override
+    public boolean isStickyBlock(IBlockState state) {
+        
+        return true;
+    }
+    
     @Override
     protected BlockStateContainer createBlockState () {
 
