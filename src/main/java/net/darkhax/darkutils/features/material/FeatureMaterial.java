@@ -50,14 +50,14 @@ public class FeatureMaterial extends Feature {
         DarkUtils.REGISTRY.addShapedRecipe("dark_sugar", new ItemStack(itemMaterial, 8, 3), "xxx", "xyx", "xxx", 'x', Items.SUGAR, 'y', itemMaterial);
         DarkUtils.REGISTRY.addShapedRecipe("soulsand", new ItemStack(Blocks.SOUL_SAND, 5, 0), "xyx", "yxy", "xyx", 'x', OreDictUtils.SAND, 'y', itemMaterial);
 
-        DarkUtils.REGISTRY.addShapedRecipe("compact_wither", new ItemStack(blockWitherDust, 1, 0), "xx ", "xx ", 'x', new ItemStack(FeatureMaterial.itemMaterial, 1, 0));
+        DarkUtils.REGISTRY.addShapedRecipe("compact_wither", new ItemStack(blockWitherDust, 1, 0), "xx", "xx", 'x', new ItemStack(FeatureMaterial.itemMaterial, 1, 0));
         DarkUtils.REGISTRY.addShapelessRecipe("deconstruct_wither", new ItemStack(itemMaterial, 4, 0), new ItemStack(blockWitherDust, 3, OreDictionary.WILDCARD_VALUE));
-        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_1", new ItemStack(blockWitherDust, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 0));
-        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_2", new ItemStack(blockWitherDust, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 1));
-        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_3", new ItemStack(blockWitherDust, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 2));
-        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_4", new ItemStack(blockWitherDust, 4, 4), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 3));
-        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_5", new ItemStack(blockWitherDust, 4, 5), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 4));
-        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_6", new ItemStack(blockWitherDust, 4, 0), "xx ", "xx ", 'x', new ItemStack(blockWitherDust, 1, 5));
+        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_1", new ItemStack(blockWitherDust, 4, 1), "xx", "xx", 'x', new ItemStack(blockWitherDust, 1, 0));
+        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_2", new ItemStack(blockWitherDust, 4, 2), "xx", "xx", 'x', new ItemStack(blockWitherDust, 1, 1));
+        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_3", new ItemStack(blockWitherDust, 4, 3), "xx", "xx", 'x', new ItemStack(blockWitherDust, 1, 2));
+        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_4", new ItemStack(blockWitherDust, 4, 4), "xx", "xx", 'x', new ItemStack(blockWitherDust, 1, 3));
+        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_5", new ItemStack(blockWitherDust, 4, 5), "xx", "xx", 'x', new ItemStack(blockWitherDust, 1, 4));
+        DarkUtils.REGISTRY.addShapedRecipe("convert_wither_6", new ItemStack(blockWitherDust, 4, 0), "xx", "xx", 'x', new ItemStack(blockWitherDust, 1, 5));
     }
 
     @Override
