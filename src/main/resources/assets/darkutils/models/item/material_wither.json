@@ -1,6 +1,1 @@
-{
-	"parent": "item/handheld",
-	"textures": {
-		"layer0": "darkutils:items/material_wither"
-	}
-}
+{"parent":"item/handheld","textures":{"layer0":"darkutils:items/material_wither"}}

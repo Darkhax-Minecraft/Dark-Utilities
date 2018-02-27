@@ -1,7 +1,1 @@
-{
-	"variants": {
-		"normal": {
-			"model": "darkutils:sneaky_obsidian"
-		}
-	}
-}
+{"variants":{"normal":{"model":"darkutils:sneaky_obsidian"}}}

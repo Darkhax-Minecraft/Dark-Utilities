@@ -1,7 +1,1 @@
-{
-	"variants": {
-		"normal": {
-			"model": "darkutils:sneaky_bedrock"
-		}
-	}
-}
+{"variants":{"normal":{"model":"darkutils:sneaky_bedrock"}}}

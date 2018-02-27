@@ -1,6 +1,1 @@
-{
-	"parent": "block/cube_all",
-	"textures": {
-		"all": "darkutils:blocks/wither_carved"
-	}
-}
+{"parent":"block/cube_all","textures":{"all":"darkutils:blocks/wither_carved"}}

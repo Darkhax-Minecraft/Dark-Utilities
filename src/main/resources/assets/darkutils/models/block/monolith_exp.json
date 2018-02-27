@@ -1,8 +1,1 @@
-{
-    "parent": "darkutils:block/monolith",
-    "textures": {
-	    "particle": "darkutils:blocks/pearl_default",
-        "base": "darkutils:blocks/pearl_default",
-        "overlay": "darkutils:blocks/exp"
-    }
-}
+{"parent":"darkutils:block/monolith","textures":{"particle":"darkutils:blocks/pearl_default","base":"darkutils:blocks/pearl_default","overlay":"darkutils:blocks/exp"}}

@@ -1,8 +1,1 @@
-{
-    "parent": "darkutils:block/trap_base",
-    "textures": {
-        "particle": "darkutils:blocks/trap_player",
-        "design": "darkutils:blocks/trap_player",
-        "pad": "darkutils:blocks/trap_base"
-    }
-}
+{"parent":"darkutils:block/trap_base","textures":{"particle":"darkutils:blocks/trap_player","design":"darkutils:blocks/trap_player","pad":"darkutils:blocks/trap_base"}}

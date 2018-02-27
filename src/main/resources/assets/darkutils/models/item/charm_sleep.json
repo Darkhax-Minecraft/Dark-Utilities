@@ -1,6 +1,1 @@
-{
-	"parent": "item/handheld",
-	"textures": {
-		"layer0": "darkutils:items/charm_sleep"
-	}
-}
+{"parent":"item/handheld","textures":{"layer0":"darkutils:items/charm_sleep"}}

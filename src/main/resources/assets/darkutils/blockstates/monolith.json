@@ -1,10 +1,1 @@
-{
-	"variants": {
-		"variant=exp": {
-			"model": "darkutils:monolith_exp"
-		},
-		"variant=spawning": {
-			"model": "darkutils:monolith_spawning"
-		}
-	}
-}
+{"variants":{"variant\u003dexp":{"model":"darkutils:monolith_exp"},"variant\u003dspawning":{"model":"darkutils:monolith_spawning"}}}

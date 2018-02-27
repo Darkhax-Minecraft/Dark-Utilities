@@ -1,6 +1,1 @@
-{
-    "parent": "block/button_inventory",
-    "textures": {
-        "texture": "darkutils:blocks/trap_base"
-    }
-}
+{"parent":"block/button_inventory","textures":{"texture":"darkutils:blocks/trap_base"}}

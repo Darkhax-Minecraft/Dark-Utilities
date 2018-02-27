@@ -1,9 +1,1 @@
-{
-	"parent": "darkutils:block/timer",
-	"textures": {
-		"type": "darkutils:blocks/timer_on",
-		"base": "blocks/stone_slab_top",
-		"torch": "darkutils:blocks/redstone_torch_on",
-		"particle": "darkutils:blocks/timer_on"
-	}
-}
+{"parent":"darkutils:block/timer","textures":{"type":"darkutils:blocks/timer_on","base":"blocks/stone_slab_top","torch":"darkutils:blocks/redstone_torch_on","particle":"darkutils:blocks/timer_on"}}

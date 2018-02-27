@@ -1,10 +1,1 @@
-{
-	"variants": {
-		"powered=false": {
-			"model": "darkutils:sneaky_plate"
-		},
-        "powered=true": {
-            "model": "darkutils:sneaky_plate"
-        }
-	}
-}
+{"variants":{"powered\u003dfalse":{"model":"darkutils:sneaky_plate"},"powered\u003dtrue":{"model":"darkutils:sneaky_plate"}}}

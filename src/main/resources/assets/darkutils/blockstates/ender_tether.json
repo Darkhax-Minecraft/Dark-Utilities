@@ -1,9 +1,1 @@
-{
-    "variants": {
-        "facing=up": { "model": "darkutils:ender_tether" },
-        "facing=east": { "model": "darkutils:ender_tether_wall" },
-        "facing=south": { "model": "darkutils:ender_tether_wall", "y": 90 },
-        "facing=west": { "model": "darkutils:ender_tether_wall", "y": 180 },
-        "facing=north": { "model": "darkutils:ender_tether_wall", "y": 270 }
-    }
-}
+{"variants":{"facing\u003dup":{"model":"darkutils:ender_tether"},"facing\u003deast":{"model":"darkutils:ender_tether_wall"},"facing\u003dsouth":{"model":"darkutils:ender_tether_wall","y":90.0},"facing\u003dwest":{"model":"darkutils:ender_tether_wall","y":180.0},"facing\u003dnorth":{"model":"darkutils:ender_tether_wall","y":270.0}}}

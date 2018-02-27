@@ -1,7 +1,1 @@
-{
-    "parent": "block/tnt",
-    "textures" : {
-        
-        "side" : "darkutils:blocks/fake_tnt"
-    }
-}
+{"parent":"block/tnt","textures":{"side":"darkutils:blocks/fake_tnt"}}

@@ -1,7 +1,1 @@
-{
-	"variants": {
-		"normal": {
-			"model": "darkutils:grate"
-		}
-	}
-}
+{"variants":{"normal":{"model":"darkutils:grate"}}}

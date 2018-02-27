@@ -1,10 +1,1 @@
-{
-	"variants": {
-		"powered=false": {
-			"model": "darkutils:timer_off"
-		},
-		"powered=true": {
-			"model": "darkutils:timer_on"
-		}
-	}
-}
+{"variants":{"powered\u003dfalse":{"model":"darkutils:timer_off"},"powered\u003dtrue":{"model":"darkutils:timer_on"}}}

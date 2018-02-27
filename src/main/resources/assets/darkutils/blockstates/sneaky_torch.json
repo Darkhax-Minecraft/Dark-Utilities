@@ -1,7 +1,1 @@
-{
-	"variants": {
-		"normal": {
-			"model": "darkutils:sneaky_torch"
-		}
-	}
-}
+{"variants":{"normal":{"model":"darkutils:sneaky_torch"}}}

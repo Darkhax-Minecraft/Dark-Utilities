@@ -1,6 +1,1 @@
-{
-    "parent": "block/torch_wall",
-    "textures": {
-        "torch": "darkutils:blocks/ender_tether"
-    }
-}
+{"parent":"block/torch_wall","textures":{"torch":"darkutils:blocks/ender_tether"}}

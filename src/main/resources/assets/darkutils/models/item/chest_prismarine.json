@@ -1,7 +1,1 @@
-{
-	"parent": "bookshelf:block/basic_chest",
-	"textures": {
-		"texture": "darkutils:entity/chest/prismarine_single",
-		"particle": "darkutils:entity/chest/prismarine_single"
-	}
-}
+{"parent":"bookshelf:block/basic_chest","textures":{"texture":"darkutils:entity/chest/prismarine_single","particle":"darkutils:entity/chest/prismarine_single"}}

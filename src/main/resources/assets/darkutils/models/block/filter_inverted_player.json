@@ -1,9 +1,1 @@
-{
-    "parent": "darkutils:block/framed_cube",
-    "textures": {
-        "particle": "darkutils:blocks/stone_white",
-        "frame": "darkutils:blocks/stone_white",
-		"innerCube": "darkutils:blocks/stone_white",
-		"image": "darkutils:items/head_player"
-    }
-}
+{"parent":"darkutils:block/framed_cube","textures":{"particle":"darkutils:blocks/stone_white","frame":"darkutils:blocks/stone_white","innerCube":"darkutils:blocks/stone_white","image":"darkutils:items/head_player"}}

@@ -1,6 +1,1 @@
-{
-    "parent": "block/pressure_plate_up",
-    "textures": {
-        "texture": "darkutils:blocks/trap_base"
-    }
-}
+{"parent":"block/pressure_plate_up","textures":{"texture":"darkutils:blocks/trap_base"}}

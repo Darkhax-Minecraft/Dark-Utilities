@@ -1,6 +1,1 @@
-{
-	"parent": "item/handheld",
-	"textures": {
-		"layer0": "darkutils:items/shulker_pearl"
-	}
-}
+{"parent":"item/handheld","textures":{"layer0":"darkutils:items/shulker_pearl"}}

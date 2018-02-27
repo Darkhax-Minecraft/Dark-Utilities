@@ -1,7 +1,1 @@
-{
-	"variants": {
-		"normal": {
-			"model": "darkutils:anti_slime"
-		}
-	}
-}
+{"variants":{"normal":{"model":"darkutils:anti_slime"}}}
