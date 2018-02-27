@@ -11,7 +11,7 @@ public class AddonHandler {
     /**
      * A registry for holding all mod addons between DarkUtils and other mods.
      */
-    public static List<ModAddon> addonRegistry = new ArrayList<>();
+    public static final List<ModAddon> ADDONS = new ArrayList<>();
 
     /**
      * Registers the standard handlers with the registry.
@@ -25,7 +25,7 @@ public class AddonHandler {
      */
     public static void onPreInit () {
 
-        for (final ModAddon addon : addonRegistry) {
+        for (final ModAddon addon : ADDONS) {
             addon.onPreInit();
         }
     }
@@ -39,7 +39,7 @@ public class AddonHandler {
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.darkutils.addons.waila.DarkUtilsTileProvider.registerAddon");
         }
 
-        for (final ModAddon addon : addonRegistry) {
+        for (final ModAddon addon : ADDONS) {
             addon.onInit();
         }
     }
@@ -49,7 +49,7 @@ public class AddonHandler {
      */
     public static void onPostInit () {
 
-        for (final ModAddon addon : addonRegistry) {
+        for (final ModAddon addon : ADDONS) {
             addon.onPostInit();
         }
     }
