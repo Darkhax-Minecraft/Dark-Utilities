@@ -12,6 +12,7 @@ public class BlockSneakyGhost extends BlockSneaky {
     }
 
     @Override
+    @Deprecated
     public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 
         return null;

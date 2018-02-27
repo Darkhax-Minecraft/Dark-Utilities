@@ -27,18 +27,21 @@ public class BlockAntiSlime extends BlockContainer {
     }
 
     @Override
+    @Deprecated
     public boolean isFullCube (IBlockState state) {
 
         return false;
     }
 
     @Override
+    @Deprecated
     public boolean isOpaqueCube (IBlockState state) {
 
         return false;
     }
 
     @Override
+    @Deprecated
     public EnumBlockRenderType getRenderType (IBlockState state) {
 
         return EnumBlockRenderType.MODEL;

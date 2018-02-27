@@ -55,6 +55,7 @@ public class BlockUpdateDetector extends Block {
     }
 
     @Override
+    @Deprecated
     public boolean canProvidePower (IBlockState state) {
 
         return true;

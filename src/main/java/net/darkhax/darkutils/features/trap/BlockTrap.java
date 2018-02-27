@@ -54,6 +54,7 @@ public class BlockTrap extends Block {
     }
 
     @Override
+    @Deprecated
     public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
 
         return BOUNDS;
@@ -66,6 +67,7 @@ public class BlockTrap extends Block {
     }
 
     @Override
+    @Deprecated
     public void neighborChanged (IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 
         this.checkForDrop(worldIn, pos, state);
@@ -78,6 +80,7 @@ public class BlockTrap extends Block {
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
         return this.getDefaultState().withProperty(VARIANT, TrapType.fromMeta(meta));
@@ -96,18 +99,21 @@ public class BlockTrap extends Block {
     }
 
     @Override
+    @Deprecated
     public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 
         return NULL_AABB;
     }
 
     @Override
+    @Deprecated
     public boolean isFullCube (IBlockState state) {
 
         return false;
     }
 
     @Override
+    @Deprecated
     public boolean isOpaqueCube (IBlockState state) {
 
         return false;

@@ -37,6 +37,7 @@ public class BlockSneakyLever extends BlockSneaky {
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
         return this.getDefaultState().withProperty(Blockstates.POWERED, meta == 0 ? false : true);
@@ -75,18 +76,21 @@ public class BlockSneakyLever extends BlockSneaky {
     }
 
     @Override
+    @Deprecated
     public int getWeakPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
         return blockState.getValue(Blockstates.POWERED).booleanValue() ? 15 : 0;
     }
 
     @Override
+    @Deprecated
     public int getStrongPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
         return blockState.getValue(Blockstates.POWERED).booleanValue() ? 15 : 0;
     }
 
     @Override
+    @Deprecated
     public boolean canProvidePower (IBlockState state) {
 
         return true;

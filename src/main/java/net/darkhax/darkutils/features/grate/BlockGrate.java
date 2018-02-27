@@ -33,12 +33,14 @@ public class BlockGrate extends Block {
     }
 
     @Override
+    @Deprecated
     public boolean isFullCube (IBlockState state) {
 
         return false;
     }
 
     @Override
+    @Deprecated
     public boolean isOpaqueCube (IBlockState state) {
 
         return false;
@@ -52,6 +54,7 @@ public class BlockGrate extends Block {
     }
 
     @Override
+    @Deprecated
     public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
 
         return BOUNDS;

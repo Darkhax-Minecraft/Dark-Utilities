@@ -58,6 +58,7 @@ public class BlockEnderTether extends BlockTorch implements ITileEntityProvider 
     }
 
     @Override
+    @Deprecated
     public boolean eventReceived (IBlockState state, World worldIn, BlockPos pos, int id, int param) {
 
         super.eventReceived(state, worldIn, pos, id, param);

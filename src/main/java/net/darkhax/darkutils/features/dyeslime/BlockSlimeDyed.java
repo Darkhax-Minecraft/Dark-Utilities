@@ -42,12 +42,14 @@ public class BlockSlimeDyed extends BlockSlime {
     }
 
     @Override
+    @Deprecated
     public MapColor getMapColor (IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 
         return MapColor.getBlockColor(state.getValue(COLOR));
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
         return this.getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));

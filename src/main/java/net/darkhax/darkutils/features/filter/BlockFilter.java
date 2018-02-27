@@ -46,6 +46,7 @@ public class BlockFilter extends Block {
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
         return this.getDefaultState().withProperty(VARIANT, FilterType.fromMeta(meta));
@@ -64,18 +65,21 @@ public class BlockFilter extends Block {
     }
 
     @Override
+    @Deprecated
     public boolean isFullCube (IBlockState state) {
 
         return false;
     }
 
     @Override
+    @Deprecated
     public boolean isOpaqueCube (IBlockState state) {
 
         return false;
     }
 
     @Override
+    @Deprecated
     public void addCollisionBoxToList (IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity collidingEntity, boolean p_185477_7_) {
 
         final int meta = state.getValue(VARIANT).meta;

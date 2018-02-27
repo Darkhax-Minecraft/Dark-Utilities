@@ -43,6 +43,7 @@ public class BlockShulkerPearl extends Block {
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
         return this.getDefaultState().withProperty(VARIANT, EnumType.byMetadata(meta));

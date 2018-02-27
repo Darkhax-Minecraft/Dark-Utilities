@@ -44,6 +44,7 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
+    @Deprecated
     public IBlockState getActualState (IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 
         return state.withProperty(Blockstates.ENABLED, isEnabled(state, worldIn, pos));
@@ -64,6 +65,7 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateForPlacement (World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 
         return this.blockState.getBaseState().withProperty(Blockstates.FACING, facing);
@@ -76,6 +78,7 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
+    @Deprecated
     public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
 
         final EnumFacing direction = state.getValue(Blockstates.FACING);
@@ -103,12 +106,14 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
+    @Deprecated
     public AxisAlignedBB getCollisionBoundingBox (IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 
         return NULL_AABB;
     }
 
     @Override
+    @Deprecated
     public boolean isFullCube (IBlockState state) {
 
         return false;
@@ -121,12 +126,14 @@ public class BlockEnderHopper extends BlockTileEntity {
     }
 
     @Override
+    @Deprecated
     public boolean isOpaqueCube (IBlockState state) {
 
         return false;
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
         return this.getDefaultState().withProperty(Blockstates.FACING, EnumFacing.getFront(meta));

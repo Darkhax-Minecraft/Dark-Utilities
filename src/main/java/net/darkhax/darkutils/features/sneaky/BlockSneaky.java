@@ -84,6 +84,7 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
+    @Deprecated
     public EnumBlockRenderType getRenderType (IBlockState state) {
 
         return EnumBlockRenderType.MODEL;
@@ -108,6 +109,7 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
         return this.getDefaultState();
@@ -129,12 +131,14 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
+    @Deprecated
     public boolean isOpaqueCube (IBlockState state) {
 
         return false;
     }
 
     @Override
+    @Deprecated
     public boolean isFullCube (IBlockState state) {
 
         return false;
@@ -200,6 +204,7 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
+    @Deprecated
     public boolean shouldSideBeRendered (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
         final TileEntity tile = blockAccess.getTileEntity(pos);

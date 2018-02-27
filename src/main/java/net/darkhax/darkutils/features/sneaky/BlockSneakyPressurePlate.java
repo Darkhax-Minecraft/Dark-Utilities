@@ -40,12 +40,14 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
         return this.getDefaultState().withProperty(Blockstates.POWERED, meta == 0 ? false : true);
     }
 
     @Override
+    @Deprecated
     public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
 
         return BOUNDS;
@@ -125,18 +127,21 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
     }
 
     @Override
+    @Deprecated
     public int getWeakPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
         return this.getRedstoneStrength(blockState);
     }
 
     @Override
+    @Deprecated
     public int getStrongPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
         return side == EnumFacing.UP ? this.getRedstoneStrength(blockState) : 0;
     }
 
     @Override
+    @Deprecated
     public boolean canProvidePower (IBlockState state) {
 
         return true;

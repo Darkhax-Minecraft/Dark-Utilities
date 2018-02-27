@@ -48,6 +48,7 @@ public class BlockTimer extends BlockContainer {
     }
 
     @Override
+    @Deprecated
     public AxisAlignedBB getBoundingBox (IBlockState state, IBlockAccess source, BlockPos pos) {
 
         return BOUNDS;
@@ -72,18 +73,21 @@ public class BlockTimer extends BlockContainer {
     }
 
     @Override
+    @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
         return this.getDefaultState().withProperty(Blockstates.POWERED, meta == 1);
     }
 
     @Override
+    @Deprecated
     public boolean canProvidePower (IBlockState state) {
 
         return true;
     }
 
     @Override
+    @Deprecated
     public int getWeakPower (IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
         return state.getValue(Blockstates.POWERED) ? 15 : 0;
@@ -104,12 +108,14 @@ public class BlockTimer extends BlockContainer {
     }
 
     @Override
+    @Deprecated
     public boolean isOpaqueCube (IBlockState state) {
 
         return false;
     }
 
     @Override
+    @Deprecated
     public boolean isFullCube (IBlockState state) {
 
         return false;
@@ -123,6 +129,7 @@ public class BlockTimer extends BlockContainer {
     }
 
     @Override
+    @Deprecated
     public EnumBlockRenderType getRenderType (IBlockState state) {
 
         return EnumBlockRenderType.MODEL;
