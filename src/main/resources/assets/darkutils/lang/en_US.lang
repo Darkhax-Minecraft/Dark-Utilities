@@ -131,6 +131,24 @@ gui.darkutils.loretag.desc.3=When finished, hit the done button. A preview will 
 gui.darkutils.loretag.desc.4=Combine with another item at the anvil to transfer!
 chat.darkutils.loretag.error.sync=Lore Tag out of sync. Is the connection stable?
 
+#Banner Pattern
+item.banner.du_vector_plate.black=Black Vector Pattern
+item.banner.du_vector_plate.red=Red Vector Pattern
+item.banner.du_vector_plate.green=Green Vector Pattern
+item.banner.du_vector_plate.brown=Brown Vector Pattern
+item.banner.du_vector_plate.blue=Blue Vector Pattern
+item.banner.du_vector_plate.purple=Purple Vector Pattern
+item.banner.du_vector_plate.cyan=Cyan Vector Pattern
+item.banner.du_vector_plate.silver=Silver Vector Pattern
+item.banner.du_vector_plate.gray=Gray Vector Pattern
+item.banner.du_vector_plate.pink=Pink Vector Pattern
+item.banner.du_vector_plate.lime=Lime Vector Pattern
+item.banner.du_vector_plate.yellow=Yellow Vector Pattern
+item.banner.du_vector_plate.lightBlue=LightBlue Vector Pattern
+item.banner.du_vector_plate.magenta=Magenta Vector Pattern
+item.banner.du_vector_plate.orange=Orange Vector Pattern
+item.banner.du_vector_plate.white=White Vector Pattern
+
 #Misc
 itemGroup.darkutils=Dark Utilities
 chat.darkutils.focussash=%sYou were saved by the focus sash!

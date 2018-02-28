@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.features.vector;
 
+import net.darkhax.bookshelf.util.BannerUtils;
 import net.darkhax.bookshelf.util.OreDictUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
@@ -7,6 +8,7 @@ import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
@@ -40,13 +42,16 @@ public class FeatureVectorPlate extends Feature {
     public void onPreInit () {
 
         blockVectorPlate = new BlockVectorPlate(normalSpeed);
-        DarkUtils.REGISTRY.registerBlock(blockVectorPlate, "trap_move");
+        final ItemBlock itemVectorPlate = new ItemBlock(blockVectorPlate);
+        DarkUtils.REGISTRY.registerBlock(blockVectorPlate, itemVectorPlate, "trap_move");
 
         blockFastVectorPlate = new BlockVectorPlate(fastSpeed);
         DarkUtils.REGISTRY.registerBlock(blockFastVectorPlate, "trap_move_fast");
 
         blockHyperVectorPlate = new BlockVectorPlate(hyperSpeed);
         DarkUtils.REGISTRY.registerBlock(blockHyperVectorPlate, "trap_move_hyper");
+
+        BannerUtils.addCraftingPattern("du_vector_plate", "du_vector_plate", new ItemStack(itemVectorPlate));
     }
 
     @Override
