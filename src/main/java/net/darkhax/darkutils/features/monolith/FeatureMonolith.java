@@ -60,9 +60,7 @@ public class FeatureMonolith extends Feature {
 
     public static List<TileEntityMonolith> getMonoliths (WorldServer world) {
 
-        return LOADED_MONOLITHS.computeIfAbsent(world, key -> {
-            return new ArrayList<>();
-        });
+        return LOADED_MONOLITHS.computeIfAbsent(world, key -> new ArrayList<TileEntityMonolith>());
     }
 
     public static boolean isTracked (TileEntityMonolith tile) {
@@ -89,6 +87,7 @@ public class FeatureMonolith extends Feature {
 
         if (event.getWorld() instanceof WorldServer) {
 
+            // This loop is cause of CME
             for (final TileEntityMonolith monolith : getMonoliths((WorldServer) event.getWorld())) {
 
                 if (monolith.isInSameChunk(new BlockPos(event.getX(), event.getY(), event.getZ()))) {
