@@ -10,6 +10,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -137,5 +138,12 @@ public class BlockTrap extends Block {
         for (final TrapType type : TrapType.values()) {
             list.add(new ItemStack(this, 1, type.meta));
         }
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getBlockLayer () {
+
+        return BlockRenderLayer.CUTOUT;
     }
 }

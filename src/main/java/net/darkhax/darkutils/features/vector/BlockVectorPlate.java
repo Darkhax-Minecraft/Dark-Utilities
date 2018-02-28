@@ -10,12 +10,15 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockVectorPlate extends Block {
 
@@ -152,6 +155,13 @@ public class BlockVectorPlate extends Block {
         return state.getValue(FACING).getHorizontalIndex();
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getBlockLayer () {
+
+        return BlockRenderLayer.CUTOUT;
+    }
+    
     @Override
     public boolean canSpawnInBlock () {
 
