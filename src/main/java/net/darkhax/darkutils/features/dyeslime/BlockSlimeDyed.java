@@ -62,11 +62,11 @@ public class BlockSlimeDyed extends BlockSlime {
     }
 
     @Override
-    public boolean isStickyBlock(IBlockState state) {
-        
+    public boolean isStickyBlock (IBlockState state) {
+
         return true;
     }
-    
+
     @Override
     protected BlockStateContainer createBlockState () {
 

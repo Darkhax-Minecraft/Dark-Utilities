@@ -42,10 +42,10 @@ public class ContainerNullCharm extends Container {
 
         // Go away evil slots
         if (slotId < 0 || slotId >= this.inventorySlots.size()) {
-            
+
             return ItemStack.EMPTY;
         }
-        
+
         final Slot slot = this.inventorySlots.get(slotId);
 
         // Prevent the player from moving null charms in the null charm inventory.

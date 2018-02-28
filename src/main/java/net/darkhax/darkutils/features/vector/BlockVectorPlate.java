@@ -161,7 +161,7 @@ public class BlockVectorPlate extends Block {
 
         return BlockRenderLayer.CUTOUT;
     }
-    
+
     @Override
     public boolean canSpawnInBlock () {
 

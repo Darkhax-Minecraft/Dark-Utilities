@@ -60,7 +60,7 @@ public class FeatureMonolith extends Feature {
 
     public static List<TileEntityMonolith> getMonoliths (WorldServer world) {
 
-        return LOADED_MONOLITHS.computeIfAbsent(world, key -> new ArrayList<TileEntityMonolith>());
+        return LOADED_MONOLITHS.computeIfAbsent(world, key -> new ArrayList<>());
     }
 
     public static boolean isTracked (TileEntityMonolith tile) {

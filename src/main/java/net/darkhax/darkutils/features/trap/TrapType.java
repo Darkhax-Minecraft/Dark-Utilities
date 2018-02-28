@@ -122,9 +122,9 @@ public enum TrapType implements IStringSerializable {
                 final IAttributeInstance inst = entity.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
                 inst.setBaseValue(Math.max(inst.getBaseValue() - 1.0f, 1.0f));
             }
-            
+
             else {
-                
+
                 entity.attackEntityFrom(DamageSource.OUT_OF_WORLD, 4f);
             }
         }

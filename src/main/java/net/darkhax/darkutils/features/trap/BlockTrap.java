@@ -139,7 +139,7 @@ public class BlockTrap extends Block {
             list.add(new ItemStack(this, 1, type.meta));
         }
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer () {
