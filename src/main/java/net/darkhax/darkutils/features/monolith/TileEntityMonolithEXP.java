@@ -101,14 +101,12 @@ public class TileEntityMonolithEXP extends TileEntityMonolith {
     @Override
     public void writeNBT (NBTTagCompound dataTag) {
 
-        super.writeNBT(dataTag);
         dataTag.setInteger("exp", this.storedXP);
     }
 
     @Override
     public void readNBT (NBTTagCompound dataTag) {
 
-        super.readNBT(dataTag);
         this.storedXP = dataTag.getInteger("exp");
     }
 }
