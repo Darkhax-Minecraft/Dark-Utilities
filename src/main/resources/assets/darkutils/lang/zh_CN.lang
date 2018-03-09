@@ -236,12 +236,12 @@ jei.item.darkutils.material.wither=仅用于合成，无其他作用。
 jei.item.darkutils.material.unstable=仅用于合成，无其他作用。
 jei.item.darkutils.material.cream=仅用于合成，无其他作用。
 jei.item.darkutils.material.sugar=仅用于合成，无其他作用。
-jei.tile.darkutils.wither.block.default=一直装饰性方块，可用于合成。
-jei.tile.darkutils.wither.block.bricked=一直装饰性方块，可用于合成。
-jei.tile.darkutils.wither.block.carved=一直装饰性方块，可用于合成。
-jei.tile.darkutils.wither.block.chiseled=一直装饰性方块，可用于合成。
-jei.tile.darkutils.wither.block.magma=一直装饰性方块，可用于合成。
-jei.tile.darkutils.wither.block.tiled=一直装饰性方块，可用于合成。
+jei.tile.darkutils.wither.block.default=一种装饰性方块，可用于合成。
+jei.tile.darkutils.wither.block.bricked=一种装饰性方块，可用于合成。
+jei.tile.darkutils.wither.block.carved=一种装饰性方块，可用于合成。
+jei.tile.darkutils.wither.block.chiseled=一种装饰性方块，可用于合成。
+jei.tile.darkutils.wither.block.magma=一种装饰性方块，可用于合成。
+jei.tile.darkutils.wither.block.tiled=一种装饰性方块，可用于合成。
 
 #Waila
 tooltip.darkutils.feeder.type=食物类型
