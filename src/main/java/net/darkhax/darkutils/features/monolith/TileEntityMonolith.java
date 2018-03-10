@@ -21,6 +21,10 @@ public abstract class TileEntityMonolith extends TileEntityBasicTickable {
         return isValidPos;
     }
 
+    public void onBlockBroken (World world, BlockPos pos) {
+
+    }
+
     public boolean isInSameChunk (BlockPos pos) {
 
         return WorldUtils.areSameChunk(this.pos, pos);
