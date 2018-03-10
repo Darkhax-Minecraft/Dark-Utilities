@@ -51,6 +51,19 @@ public class TileEntityMonolithEXP extends TileEntityMonolith {
     }
 
     @Override
+    public void onBlockBroken (World world, BlockPos pos) {
+
+        while (this.storedXP > 0) {
+
+            final int amountToTake = Math.min(this.storedXP, 100);
+            this.storedXP -= amountToTake;
+
+            final EntityXPOrb xp = new EntityXPOrb(world, pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, amountToTake);
+            world.spawnEntity(xp);
+        }
+    }
+
+    @Override
     public void onEntityUpdate () {
 
         boolean hasKilled = false;
