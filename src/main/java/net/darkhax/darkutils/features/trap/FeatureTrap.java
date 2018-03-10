@@ -30,7 +30,7 @@ public class FeatureTrap extends Feature {
 
             DarkUtils.REGISTRY.addShapedRecipe("trap_" + type.getName().toLowerCase(), new ItemStack(blockTrap, 1, type.meta), "sis", 's', OreDictUtils.STONE, 'i', type.crafting);
         }
-        
+
         DarkUtils.REGISTRY.addShapedRecipe("trap_anchor", new ItemStack(blockTrapAnchor), "tst", "s s", "tst", 't', FeatureVectorPlate.blockVectorPlate, 's', OreDictUtils.SLIMEBALL);
     }
 }

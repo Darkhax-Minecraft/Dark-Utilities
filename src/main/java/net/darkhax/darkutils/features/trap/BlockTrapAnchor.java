@@ -106,17 +106,17 @@ public class BlockTrapAnchor extends Block {
     public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
 
         final EnumFacing direction = state.getValue(FACING);
-        
+
         if (!entity.isSneaking()) {
-            
+
             if (entity instanceof EntityLiving && entity.isNonBoss()) {
-                
+
                 final BlockPos offset = pos.offset(direction, 5);
-                EntityLiving living = (EntityLiving) entity;
+                final EntityLiving living = (EntityLiving) entity;
                 living.getLookHelper().setLookPosition(offset.getX(), offset.getY(), offset.getZ(), 90f, 0f);
                 living.getLookHelper().onUpdateLook();
             }
-            
+
             entity.setPosition(pos.getX() + 0.5f, pos.getY() + 0.0625D, pos.getZ() + 0.5f);
         }
     }
