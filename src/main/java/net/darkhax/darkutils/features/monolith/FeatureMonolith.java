@@ -32,7 +32,7 @@ public class FeatureMonolith extends Feature {
     public void onPreRecipe () {
 
         DarkUtils.REGISTRY.addShapedRecipe("monolith_exp", new ItemStack(blockMonolith, 1, 0), "ppp", "pip", "bbb", 'p', "gemPearl", 'b', "blockPearl", 'i', Items.EXPERIENCE_BOTTLE);
-        DarkUtils.REGISTRY.addShapedRecipe("monolith_spawn", new ItemStack(blockMonolith, 1, 0), "ppp", "pip", "bbb", 'p', "gemPearl", 'b', "blockPearl", 'i', Items.NETHER_STAR);
+        DarkUtils.REGISTRY.addShapedRecipe("monolith_spawn", new ItemStack(blockMonolith, 1, 1), "ppp", "pip", "bbb", 'p', "gemPearl", 'b', "blockPearl", 'i', Items.NETHER_STAR);
     }
 
     public static List<TileEntityMonolith> getMonolithInChunk (World world, BlockPos pos) {
