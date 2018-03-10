@@ -1,5 +1,5 @@
 {
-	"parent": "darkutils:block/torch_wall_retexturable",
+	"bookshelf": "bookshelf:block/torch_wall_retexturable",
 	"textures": {
 	    "base": "blocks/obsidian",
 		"tip": "blocks/portal",
