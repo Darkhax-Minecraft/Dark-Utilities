@@ -28,6 +28,8 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSneaky extends BlockContainer {
 
@@ -145,6 +147,7 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public boolean canRenderInLayer (IBlockState state, BlockRenderLayer layer) {
 
         return true;
@@ -170,6 +173,7 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public boolean addHitEffects (IBlockState state, World world, RayTraceResult hitPos, ParticleManager renderer) {
 
         final TileEntity tile = world.getTileEntity(hitPos.getBlockPos());
@@ -187,6 +191,7 @@ public class BlockSneaky extends BlockContainer {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public boolean addDestroyEffects (World world, BlockPos pos, ParticleManager renderer) {
 
         final TileEntity tile = world.getTileEntity(pos);
@@ -205,6 +210,7 @@ public class BlockSneaky extends BlockContainer {
 
     @Override
     @Deprecated
+    @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
         final TileEntity tile = blockAccess.getTileEntity(pos);
