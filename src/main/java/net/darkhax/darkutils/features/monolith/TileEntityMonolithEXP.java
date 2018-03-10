@@ -24,24 +24,27 @@ public class TileEntityMonolithEXP extends TileEntityMonolith {
     @Override
     public boolean onBlockActivated (World worldIn, EntityPlayer playerIn) {
 
-        // Always send info message
-        playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "EXP: " + this.storedXP), true);
+        if (!worldIn.isRemote) {
 
-        // Player wants raw exp
-        if (playerIn.isSneaking() && this.storedXP >= 15) {
+            // Always send info message
+            playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "EXP: " + this.storedXP), true);
 
-            playerIn.addExperience(15);
-            this.storedXP -= 15;
-            this.markDirty();
-        }
+            // Player wants raw exp
+            if (playerIn.isSneaking() && this.storedXP >= 15) {
 
-        // Player wants bottle of exp
-        else if (playerIn.getHeldItemMainhand().getItem() == Items.GLASS_BOTTLE && this.storedXP >= 15) {
+                playerIn.addExperience(15);
+                this.storedXP -= 15;
+                this.markDirty();
+            }
 
-            playerIn.getHeldItemMainhand().shrink(1);
-            playerIn.addItemStackToInventory(new ItemStack(Items.EXPERIENCE_BOTTLE));
-            this.storedXP -= 15;
-            this.markDirty();
+            // Player wants bottle of exp
+            else if (playerIn.getHeldItemMainhand().getItem() == Items.GLASS_BOTTLE && this.storedXP >= 15) {
+
+                playerIn.getHeldItemMainhand().shrink(1);
+                playerIn.addItemStackToInventory(new ItemStack(Items.EXPERIENCE_BOTTLE));
+                this.storedXP -= 15;
+                this.markDirty();
+            }
         }
 
         return true;
