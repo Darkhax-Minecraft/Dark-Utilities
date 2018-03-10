@@ -17,9 +17,9 @@ import net.minecraft.world.chunk.Chunk;
 
 public class TileEntityMonolithEXP extends TileEntityMonolith {
 
-    public static final int maxXP = 1995143615;
+    private static final int MAX_EXP = 1995143615;
 
-    public int storedXP = 0;
+    private int storedXP = 0;
 
     @Override
     public boolean onBlockActivated (World worldIn, EntityPlayer playerIn) {
@@ -86,7 +86,7 @@ public class TileEntityMonolithEXP extends TileEntityMonolith {
 
     public int consumeXP (int exp) {
 
-        final int consumed = Math.min(maxXP - this.storedXP, Math.min(10000, exp));
+        final int consumed = Math.min(MAX_EXP - this.storedXP, Math.min(10000, exp));
         this.storedXP += consumed;
         return exp - consumed;
     }
