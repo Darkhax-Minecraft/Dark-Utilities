@@ -55,7 +55,8 @@ public class TileEntityMonolithEXP extends TileEntityMonolith {
 
         while (this.storedXP > 0) {
 
-            final int amountToTake = Math.min(this.storedXP, 100);
+            final int extractAmount = Math.max(1, this.storedXP / 6);
+            final int amountToTake = Math.min(this.storedXP, extractAmount);
             this.storedXP -= amountToTake;
 
             final EntityXPOrb xp = new EntityXPOrb(world, pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, amountToTake);
