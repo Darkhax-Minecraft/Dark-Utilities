@@ -67,7 +67,7 @@ public class BlockMonolith extends BlockTileEntity implements IVariant {
     @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
-        return this.getDefaultState().withProperty(VARIANT, EnumType.byMetadata(meta));
+        return this.getDefaultState().withProperty(VARIANT, EnumType.values()[meta]);
     }
 
     @Override
@@ -80,6 +80,12 @@ public class BlockMonolith extends BlockTileEntity implements IVariant {
     protected BlockStateContainer createBlockState () {
 
         return new BlockStateContainer(this, new IProperty[] { VARIANT });
+    }
+
+    @Override
+    public int damageDropped (IBlockState state) {
+
+        return this.getMetaFromState(state);
     }
 
     @Override
@@ -121,7 +127,6 @@ public class BlockMonolith extends BlockTileEntity implements IVariant {
 
     public static boolean isEnabled (World world, BlockPos pos) {
 
-        // TODO
         return !world.isBlockPowered(pos) && world.isAirBlock(pos.up());
     }
 
@@ -135,8 +140,6 @@ public class BlockMonolith extends BlockTileEntity implements IVariant {
 
         EXP(0, "exp"),
         SPAWNING(1, "spawning");
-
-        private static final EnumType[] META_LOOKUP = new EnumType[values().length];
 
         private final int meta;
 
@@ -159,26 +162,10 @@ public class BlockMonolith extends BlockTileEntity implements IVariant {
             return this.name;
         }
 
-        public static EnumType byMetadata (int meta) {
-
-            if (meta < 0 || meta >= META_LOOKUP.length) {
-                meta = 0;
-            }
-
-            return META_LOOKUP[meta];
-        }
-
         @Override
         public String getName () {
 
             return this.name;
-        }
-
-        static {
-
-            for (final EnumType type : values()) {
-                META_LOOKUP[type.getMetadata()] = type;
-            }
         }
     }
 }
