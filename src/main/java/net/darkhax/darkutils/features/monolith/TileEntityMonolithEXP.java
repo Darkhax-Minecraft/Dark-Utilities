@@ -53,9 +53,10 @@ public class TileEntityMonolithEXP extends TileEntityMonolith {
     @Override
     public void onBlockBroken (World world, BlockPos pos) {
 
-        while (this.storedXP > 0) {
+        final int extractAmount = Math.max(1, this.storedXP / 6);
 
-            final int extractAmount = Math.max(1, this.storedXP / 6);
+        while (this.storedXP > 0 && !world.isRemote) {
+
             final int amountToTake = Math.min(this.storedXP, extractAmount);
             this.storedXP -= amountToTake;
 
