@@ -6,12 +6,11 @@ import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent.CheckSpawn;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -40,17 +39,13 @@ public class FeatureAntiSlime extends Feature {
     }
 
     @SubscribeEvent
-    public void checkSpawn (EntityJoinWorldEvent event) {
+    public void checkSpawn (CheckSpawn event) {
 
         if (event.getEntity() instanceof EntitySlime && !event.getEntity().hasCustomName()) {
 
-            for (final TileEntity tile : event.getWorld().loadedTileEntityList) {
+            for (final TileEntity tile : event.getWorld().getChunkFromBlockCoords(event.getEntity().getPosition()).getTileEntityMap().values()) {
 
-                if (tile instanceof TileEntityAntiSlime && ((TileEntityAntiSlime) tile).shareChunks((EntityLivingBase) event.getEntity())) {
-
-                    if (event.getWorld().isBlockPowered(tile.getPos())) {
-                        continue;
-                    }
+                if (tile instanceof TileEntityAntiSlime && !event.getWorld().isBlockPowered(tile.getPos())) {
 
                     event.setCanceled(true);
                     event.getEntity().setDead();
