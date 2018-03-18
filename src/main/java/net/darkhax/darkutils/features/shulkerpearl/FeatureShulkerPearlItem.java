@@ -50,7 +50,7 @@ public class FeatureShulkerPearlItem extends Feature {
         DarkUtils.REGISTRY.addShapedRecipe("convert_pearl_1", new ItemStack(blockShulkerPearl, 4, 1), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 0));
         DarkUtils.REGISTRY.addShapedRecipe("convert_pearl_2", new ItemStack(blockShulkerPearl, 4, 2), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 1));
         DarkUtils.REGISTRY.addShapedRecipe("convert_pearl_3", new ItemStack(blockShulkerPearl, 4, 3), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 2));
-        DarkUtils.REGISTRY.addShapelessRecipe("deconstruct_pearl", new ItemStack(itemShulkerPearl), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(blockShulkerPearl, 1, OreDictionary.WILDCARD_VALUE));
+        DarkUtils.REGISTRY.addShapedRecipe("convert_pearl_0", new ItemStack(blockShulkerPearl, 4, 0), "xx ", "xx ", 'x', new ItemStack(blockShulkerPearl, 1, 3));
     }
 
     @Override
