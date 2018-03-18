@@ -1,8 +1,1 @@
-{
-	"bookshelf": "bookshelf:block/torch_wall_retexturable",
-	"textures": {
-	    "base": "blocks/obsidian",
-		"tip": "blocks/portal",
-		"particle": "blocks/obsidian"
-	}
-}
+{"parent":"block/torch_wall","textures":{"torch":"darkutils:blocks/ender_tether"}} 
