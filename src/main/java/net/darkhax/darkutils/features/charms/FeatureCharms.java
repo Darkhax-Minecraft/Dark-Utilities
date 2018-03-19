@@ -3,11 +3,11 @@ package net.darkhax.darkutils.features.charms;
 import java.util.List;
 
 import net.darkhax.bookshelf.util.OreDictUtils;
+import net.darkhax.bookshelf.util.PlayerUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.features.DUFeature;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.material.FeatureMaterial;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -19,11 +19,11 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 @DUFeature(name = "Charms", description = "A collection of charms which have unique effects")
 public class FeatureCharms extends Feature {
@@ -133,28 +133,18 @@ public class FeatureCharms extends Feature {
     }
 
     @SubscribeEvent
-    public void onPlayerUpdate (LivingUpdateEvent event) {
+    public void onPlayerUpdate (TickEvent.PlayerTickEvent event) {
 
         // Portal Charm
-        final Entity entity = event.getEntity();
+        if (PlayerUtils.inPortal(event.player) && itemPortalCharm.hasItem(event.player)) {
 
-        if (entity instanceof EntityPlayer && entity.inPortal) {
-
-            final EntityPlayer player = (EntityPlayer) entity;
-
-            if (itemPortalCharm.hasItem(player)) {
-                player.portalCounter = 100;
-            }
+            PlayerUtils.setPortalTimer(event.player, 100);
         }
 
         // Sleep Charm
-        if (entity instanceof EntityPlayer) {
+        else if (event.player.isPlayerSleeping() && itemSleepCharm.hasItem(event.player)) {
 
-            final EntityPlayer player = (EntityPlayer) entity;
-
-            if (player.isPlayerSleeping() && itemSleepCharm.hasItem(player)) {
-                player.sleepTimer = 100;
-            }
+            PlayerUtils.setSleepTimer(event.player, 100);
         }
     }
 }
