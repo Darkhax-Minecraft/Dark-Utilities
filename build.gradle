@@ -42,7 +42,7 @@ minecraft {
     version = "${version_minecraft}-${version_forge}"
     mappings = "${version_mcp}"
     runDir = 'run'
-    useDepAts = true 
+    
     replace '@VERSION@', project.version
     replace '@FINGERPRINT@', project.findProperty('signSHA1')
     replaceIn "${mod_class}.java"
