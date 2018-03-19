@@ -11,6 +11,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent.CheckSpawn;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -47,7 +48,7 @@ public class FeatureAntiSlime extends Feature {
 
                 if (tile instanceof TileEntityAntiSlime && !event.getWorld().isBlockPowered(tile.getPos())) {
 
-                    event.setCanceled(true);
+                    event.setResult(Result.DENY);
                     event.getEntity().setDead();
                     break;
                 }
