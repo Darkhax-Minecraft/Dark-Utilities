@@ -6,7 +6,6 @@ import java.util.Random;
 import net.darkhax.bookshelf.lib.LoggingHelper;
 import net.darkhax.bookshelf.network.NetworkHandler;
 import net.darkhax.bookshelf.registry.RegistryHelper;
-import net.darkhax.darkutils.addons.AddonHandler;
 import net.darkhax.darkutils.creativetab.CreativeTabDarkUtils;
 import net.darkhax.darkutils.features.Feature;
 import net.darkhax.darkutils.features.FeatureManager;
@@ -75,23 +74,18 @@ public class DarkUtils {
         ConfigurationHandler.syncConfigData();
 
         proxy.preInit();
-
-        AddonHandler.registerAddons();
-        AddonHandler.onPreInit();
     }
 
     @EventHandler
     public void init (FMLInitializationEvent event) {
 
         proxy.init();
-        AddonHandler.onInit();
     }
 
     @EventHandler
     public void postInit (FMLPostInitializationEvent event) {
 
         proxy.postInit();
-        AddonHandler.onPostInit();
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
