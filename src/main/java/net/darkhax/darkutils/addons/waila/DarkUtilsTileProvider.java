@@ -5,7 +5,9 @@ import java.util.List;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
+import mcp.mobius.waila.api.IWailaPlugin;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import mcp.mobius.waila.api.WailaPlugin;
 import net.darkhax.darkutils.features.faketnt.BlockFakeTNT;
 import net.darkhax.darkutils.features.filter.BlockFilter;
 import net.darkhax.darkutils.features.filter.FilterType;
@@ -14,7 +16,6 @@ import net.darkhax.darkutils.features.sneaky.TileEntitySneaky;
 import net.darkhax.darkutils.features.timer.BlockTimer;
 import net.darkhax.darkutils.features.timer.TileEntityTimer;
 import net.darkhax.darkutils.features.updatedetector.BlockUpdateDetector;
-import net.darkhax.darkutils.features.vector.BlockVectorPlate;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -27,15 +28,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class DarkUtilsTileProvider implements IWailaDataProvider {
+@WailaPlugin
+public class DarkUtilsTileProvider implements IWailaPlugin, IWailaDataProvider {
 
     private static final String CONFIG_FILTER_TYPE = "darkutils.filter.type";
 
     private static final String CONFIG_TIMER_TIME = "darkutils.timer.time";
 
     private static final String CONFIG_SNEAKY_OWNERS = "darkutils.sneaky.owner";
-
-    private static final String CONFIG_FEEDER_INFO = "darkutils.feeder.info";
 
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
@@ -71,9 +71,10 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
 
-        if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && !(stack.getMetadata() > FilterType.getTypes().length)) {
+        if (data.getBlock() instanceof BlockFilter && cfg.getConfig(CONFIG_FILTER_TYPE) && stack.getMetadata() <= FilterType.getTypes().length) {
             tip.add(I18n.format("tooltip.darkutils.filter.type") + ": " + TextFormatting.AQUA + I18n.format("tooltip.darkutils.filter.type." + FilterType.getTypes()[stack.getMetadata()]));
         }
+
         else if (data.getBlock() instanceof BlockTimer && cfg.getConfig(CONFIG_TIMER_TIME) && data.getTileEntity() instanceof TileEntityTimer && !data.getTileEntity().isInvalid()) {
 
             final int delay = data.getNBTData().getInteger("TickRate");
@@ -96,30 +97,28 @@ public class DarkUtilsTileProvider implements IWailaDataProvider {
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
 
         if (te != null && !te.isInvalid()) {
+
             te.writeToNBT(tag);
         }
 
         return tag;
     }
 
-    public static void registerAddon (IWailaRegistrar register) {
+    @Override
+    public void register (IWailaRegistrar register) {
 
-        final DarkUtilsTileProvider dataProvider = new DarkUtilsTileProvider();
+        register.registerStackProvider(this, BlockUpdateDetector.class);
+        register.registerStackProvider(this, BlockSneaky.class);
+        register.registerStackProvider(this, BlockFakeTNT.class);
 
-        register.registerStackProvider(dataProvider, BlockVectorPlate.class);
-        register.registerStackProvider(dataProvider, BlockUpdateDetector.class);
-        register.registerStackProvider(dataProvider, BlockSneaky.class);
-        register.registerStackProvider(dataProvider, BlockFakeTNT.class);
+        register.registerBodyProvider(this, BlockFilter.class);
+        register.registerBodyProvider(this, BlockTimer.class);
 
-        register.registerBodyProvider(dataProvider, BlockFilter.class);
-        register.registerBodyProvider(dataProvider, BlockTimer.class);
-
-        register.registerNBTProvider(dataProvider, BlockTimer.class);
-        register.registerNBTProvider(dataProvider, BlockSneaky.class);
+        register.registerNBTProvider(this, BlockTimer.class);
+        register.registerNBTProvider(this, BlockSneaky.class);
 
         register.addConfig("DarkUtils", CONFIG_FILTER_TYPE);
         register.addConfig("DarkUtils", CONFIG_TIMER_TIME);
         register.addConfig("DarkUtils", CONFIG_SNEAKY_OWNERS);
-        register.addConfig("DarkUtils", CONFIG_FEEDER_INFO);
     }
 }
