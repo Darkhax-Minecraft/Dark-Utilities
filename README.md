@@ -27,7 +27,3 @@ dependencies {
     compile "net.darkhax.darkutils:DarkUtilities:MCVERSION-MODVERSION"
 }
 ``` 
-
-## Credits
-* [Darkhax](https://github.com/darkhax) - Lead developer of the Dark Utilities mod.
-* [Lclc98](https://github.com/lclc98) - Maintainer of build system and gradle setup. 
