@@ -7,6 +7,7 @@ import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.handler.GuiHandler;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -133,5 +134,11 @@ public class BlockTimer extends BlockContainer {
     public EnumBlockRenderType getRenderType (IBlockState state) {
 
         return EnumBlockRenderType.MODEL;
+    }
+
+    @Override
+    public BlockFaceShape getBlockFaceShape (IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+
+        return BlockFaceShape.UNDEFINED;
     }
 }
