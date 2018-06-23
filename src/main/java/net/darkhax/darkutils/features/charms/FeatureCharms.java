@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -28,6 +29,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 @DUFeature(name = "Charms", description = "A collection of charms which have unique effects")
 public class FeatureCharms extends Feature {
 
+    public static boolean restrictBaubles = true;
+    
     public static ItemCharm itemAgressionCharm;
 
     public static ItemCharm itemFocusSash;
@@ -61,6 +64,12 @@ public class FeatureCharms extends Feature {
         DarkUtils.REGISTRY.addShapedRecipe("portal_charm_1", new ItemStack(itemPortalCharm), " s ", "oio", " o ", 's', OreDictUtils.STRING, 'o', OreDictUtils.OBSIDIAN, 'i', Items.ENDER_EYE);
         DarkUtils.REGISTRY.addShapedRecipe("portal_charm_2", new ItemStack(itemPortalCharm), " s ", "oio", " o ", 's', OreDictUtils.STRING, 'o', OreDictUtils.OBSIDIAN, 'i', Items.END_CRYSTAL);
         DarkUtils.REGISTRY.addShapedRecipe("sleep_charm", new ItemStack(itemSleepCharm), "lsl", "sbs", "lsl", 'l', OreDictUtils.LEATHER, 's', OreDictUtils.STICK_WOOD, 'b', OreDictUtils.BED);
+    }
+    
+    @Override
+    public void setupConfiguration (Configuration config) {
+
+        restrictBaubles = config.getBoolean("restrictBaubles", this.configName, true, "Should charms be restricted to the charm slot in baubles?");
     }
 
     @Override

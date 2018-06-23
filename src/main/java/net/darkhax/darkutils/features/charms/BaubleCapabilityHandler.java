@@ -12,7 +12,7 @@ public class BaubleCapabilityHandler implements ICapabilityProvider {
 
     public static final BaubleCapabilityHandler INSTANCE = new BaubleCapabilityHandler();
 
-    private static IBauble bauble = new BaubleItem(BaubleType.CHARM);
+    private static IBauble bauble = new BaubleItem(FeatureCharms.restrictBaubles ? BaubleType.CHARM : BaubleType.TRINKET);
 
     @Override
     public boolean hasCapability (Capability<?> capability, EnumFacing facing) {
