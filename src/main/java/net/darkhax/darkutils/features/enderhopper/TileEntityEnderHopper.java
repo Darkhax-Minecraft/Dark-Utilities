@@ -54,7 +54,7 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
 
                     if (this.cooldowns.get(item.getPersistentID()) <= 0) {
 
-                        final ItemStack foundStack = item.getEntityItem();
+                        final ItemStack foundStack = item.getItem();
                         final ItemStack simulation = ItemHandlerHelper.insertItem(handler, foundStack.copy(), true);
 
                         if ((simulation.isEmpty() || foundStack.getCount() != simulation.getCount()) && !item.isDead) {
@@ -66,17 +66,17 @@ public class TileEntityEnderHopper extends TileEntityBasic implements ITickable 
                                 this.cooldowns.remove(item.getPersistentID());
                             }
                             else {
-                                item.setEntityItemStack(result);
+                                item.setItem(result);
                                 this.cooldowns.put(item.getPersistentID(), 100);
                             }
                         }
                     }
 
-                    final ItemStack simulation = ItemHandlerHelper.insertItemStacked(handler, item.getEntityItem(), true);
+                    final ItemStack simulation = ItemHandlerHelper.insertItemStacked(handler, item.getItem(), true);
 
                     if (this.getWorld() instanceof WorldServer) {
 
-                        if (simulation.isEmpty() || simulation.getCount() != item.getEntityItem().getCount()) {
+                        if (simulation.isEmpty() || simulation.getCount() != item.getItem().getCount()) {
 
                             ((WorldServer) this.getWorld()).spawnParticle(EnumParticleTypes.PORTAL, true, item.posX, item.posY, item.posZ, 1, -0.2d + this.nextFloat(-0.2f, 0.2f), 1f + this.nextFloat(-0.2f, 0.2f), this.nextFloat(-0.2f, 0.2f), 0.01f, new int[0]);
                         }
