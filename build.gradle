@@ -63,7 +63,7 @@ repositories {
 
     maven {
 
-        url "http://maven.epoxide.org"
+        url "http://maven.mcmoddev.com"
     }
     
     maven {
