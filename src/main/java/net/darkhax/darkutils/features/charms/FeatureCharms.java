@@ -90,9 +90,9 @@ public class FeatureCharms extends Feature {
         }
 
         // Agression Charm
-        if (event.getSource() != null && event.getSource().getEntity() instanceof EntityPlayer) {
+        if (event.getSource() != null && event.getSource().getTrueSource() instanceof EntityPlayer) {
 
-            final EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
+            final EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
 
             if (PlayerUtils.playerHasItem(player, itemAgressionCharm, 0)) {
                 for (final EntityLivingBase entity : player.getEntityWorld().getEntitiesWithinAABB(event.getEntityLiving().getClass(), player.getEntityBoundingBox().expand(32, 32, 32))) {
@@ -118,7 +118,7 @@ public class FeatureCharms extends Feature {
         final List<ItemStack> charms = PlayerUtils.getStacksFromPlayer(event.getEntityPlayer(), itemNullCharm, 0);
 
         for (final ItemStack charm : charms) {
-            if (ItemNullCharm.isBlackListed(event.getItem().getEntityItem(), charm)) {
+            if (ItemNullCharm.isBlackListed(event.getItem().getItem(), charm)) {
 
                 event.getItem().setDead();
                 event.setCanceled(true);
