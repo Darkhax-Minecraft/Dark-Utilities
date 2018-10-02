@@ -44,7 +44,7 @@ public class FeatureAntiSlime extends Feature {
 
         if (event.getEntity() instanceof EntitySlime && !event.getEntity().hasCustomName()) {
 
-            for (final TileEntity tile : event.getWorld().getChunkFromBlockCoords(event.getEntity().getPosition()).getTileEntityMap().values()) {
+            for (final TileEntity tile : event.getWorld().getChunk(event.getEntity().getPosition()).getTileEntityMap().values()) {
 
                 if (tile instanceof TileEntityAntiSlime && !event.getWorld().isBlockPowered(tile.getPos())) {
 

@@ -104,7 +104,7 @@ public class BlockTrapAnchor extends Block {
     }
 
     @Override
-    public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
+    public void onEntityCollision (World world, BlockPos pos, IBlockState state, Entity entity) {
 
         final EnumFacing direction = state.getValue(FACING);
 
@@ -137,7 +137,7 @@ public class BlockTrapAnchor extends Block {
     @Override
     public IBlockState getStateFromMeta (int meta) {
 
-        return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
+        return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));
     }
 
     @Override
@@ -148,7 +148,7 @@ public class BlockTrapAnchor extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer () {
+    public BlockRenderLayer getRenderLayer () {
 
         return BlockRenderLayer.CUTOUT;
     }

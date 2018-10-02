@@ -106,14 +106,14 @@ public class BlockVectorPlate extends Block {
     }
 
     @Override
-    public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
+    public void onEntityCollision (World world, BlockPos pos, IBlockState state, Entity entity) {
 
         final EnumFacing direction = state.getValue(FACING).getOpposite();
 
         if (!entity.isSneaking()) {
 
-            entity.motionX += this.speed * direction.getFrontOffsetX();
-            entity.motionZ += this.speed * direction.getFrontOffsetZ();
+            entity.motionX += this.speed * direction.getXOffset();
+            entity.motionZ += this.speed * direction.getZOffset();
 
             if (entity instanceof EntityItem) {
 
@@ -146,7 +146,7 @@ public class BlockVectorPlate extends Block {
     @Override
     public IBlockState getStateFromMeta (int meta) {
 
-        return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
+        return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));
     }
 
     @Override
@@ -157,7 +157,7 @@ public class BlockVectorPlate extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer () {
+    public BlockRenderLayer getRenderLayer () {
 
         return BlockRenderLayer.CUTOUT;
     }

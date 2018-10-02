@@ -25,7 +25,7 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
 
                 for (int meta = 0; meta < variants.length; meta++) {
 
-                    final String key = "jei." + item.getUnlocalizedName() + "." + variants[meta];
+                    final String key = "jei." + item.getTranslationKey() + "." + variants[meta];
                     registry.addIngredientInfo(new ItemStack(item, 1, meta), ItemStack.class, key);
                     this.validateKey(key);
                 }
@@ -33,7 +33,7 @@ public class DarkUtilsJEIPlugin implements IModPlugin {
 
             else {
 
-                final String key = "jei." + item.getUnlocalizedName();
+                final String key = "jei." + item.getTranslationKey();
                 registry.addIngredientInfo(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), ItemStack.class, key);
                 this.validateKey(key);
             }

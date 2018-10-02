@@ -27,7 +27,7 @@ public class BlockGrate extends Block {
     }
 
     @Override
-    public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
+    public void onEntityCollision (World world, BlockPos pos, IBlockState state, Entity entity) {
 
         if (entity instanceof EntityItem) {
             entity.setPositionAndUpdate(pos.getX() + 0.5f, pos.getY() - 0.2f, pos.getZ() + 0.5f);
@@ -50,7 +50,7 @@ public class BlockGrate extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer () {
+    public BlockRenderLayer getRenderLayer () {
 
         return BlockRenderLayer.CUTOUT;
     }

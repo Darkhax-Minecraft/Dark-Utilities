@@ -122,7 +122,7 @@ public class BlockTrap extends Block {
     }
 
     @Override
-    public void onEntityCollidedWithBlock (World world, BlockPos pos, IBlockState state, Entity entity) {
+    public void onEntityCollision (World world, BlockPos pos, IBlockState state, Entity entity) {
 
         if (entity instanceof EntityLivingBase) {
 
@@ -143,7 +143,7 @@ public class BlockTrap extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer () {
+    public BlockRenderLayer getRenderLayer () {
 
         return BlockRenderLayer.CUTOUT;
     }
