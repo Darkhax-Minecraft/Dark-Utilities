@@ -15,7 +15,7 @@ public class CreativeTabDarkUtils extends CreativeTabs {
     }
 
     @Override
-    public ItemStack getTabIconItem () {
+    public ItemStack createIcon () {
 
         if (DarkUtils.REGISTRY.getBlocks().size() > 0) {
             return new ItemStack(Item.getItemFromBlock(DarkUtils.REGISTRY.getBlocks().get(0)));

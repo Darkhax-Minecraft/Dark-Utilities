@@ -32,7 +32,7 @@ public class BlockFakeTNT extends BlockTNT {
     }
 
     @Override
-    public void onBlockDestroyedByExplosion (World worldIn, BlockPos pos, Explosion explosionIn) {
+    public void onExplosionDestroy (World worldIn, BlockPos pos, Explosion explosionIn) {
 
         if (!worldIn.isRemote) {
 

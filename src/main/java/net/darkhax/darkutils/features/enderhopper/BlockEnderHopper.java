@@ -137,7 +137,7 @@ public class BlockEnderHopper extends BlockTileEntity {
     @Deprecated
     public IBlockState getStateFromMeta (int meta) {
 
-        return this.getDefaultState().withProperty(Blockstates.FACING, EnumFacing.getFront(meta));
+        return this.getDefaultState().withProperty(Blockstates.FACING, EnumFacing.byIndex(meta));
     }
 
     @Override

@@ -37,7 +37,7 @@ public class FeatureMonolith extends Feature {
 
     public static List<TileEntityMonolith> getMonolithInChunk (World world, BlockPos pos) {
 
-        return world.getChunkFromBlockCoords(pos).getTileEntityMap().values().stream().filter(TileEntityMonolith.class::isInstance).map(TileEntityMonolith.class::cast).collect(Collectors.toList());
+        return world.getChunk(pos).getTileEntityMap().values().stream().filter(TileEntityMonolith.class::isInstance).map(TileEntityMonolith.class::cast).collect(Collectors.toList());
     }
 
     @Override

@@ -75,7 +75,7 @@ public class TileEntityMonolithEXP extends TileEntityMonolith {
             return;
         }
 
-        final Chunk chunk = this.getWorld().getChunkFromBlockCoords(this.getPos());
+        final Chunk chunk = this.getWorld().getChunk(this.getPos());
         final ChunkPos chunkPos = chunk.getPos();
 
         final AxisAlignedBB bounds = new AxisAlignedBB(new BlockPos(chunkPos.getXStart(), 0, chunkPos.getZStart()), new BlockPos(chunkPos.getXEnd(), 255, chunkPos.getZEnd()));
