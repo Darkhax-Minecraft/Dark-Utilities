@@ -89,6 +89,26 @@ public class GuiTimerAmount extends GuiScreen {
         else if (keyCode == 28) {
             this.actionPerformed(this.doneBtn);
         }
+        
+        // TextFied controls
+		if (this.delayTextField.isFocused()) {
+			// left key
+			if (keyCode == 203) {
+				this.delayTextField.setCursorPosition(this.delayTextField.getCursorPosition() - 1);
+			}
+			// right key
+			else if (keyCode == 205) {
+				this.delayTextField.setCursorPosition(this.delayTextField.getCursorPosition() + 1);
+			}
+			// up key
+			else if (keyCode == 200) {
+				this.delayTextField.setCursorPosition(0);
+			}
+			// down key
+			else if (keyCode == 208) {
+				this.delayTextField.setCursorPosition(this.delayTextField.getText().length());
+			}
+		}
     }
 
     @Override
