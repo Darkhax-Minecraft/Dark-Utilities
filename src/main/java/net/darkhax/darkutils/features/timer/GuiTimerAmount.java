@@ -18,6 +18,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiTimerAmount extends GuiScreen {
 
     private final TileEntityTimer timer;
+	
+    private boolean disabledGUI;
 
     private GuiTextField delayTextField;
 
@@ -42,16 +44,18 @@ public class GuiTimerAmount extends GuiScreen {
     public void initGui () {
 
         Keyboard.enableRepeatEvents(true);
+		disabledGUI = this.timer.isDisabled();
+		
         this.buttonList.clear();
         this.buttonList.add(this.doneBtn = new GuiButton(0, this.width / 2 - 4 - 150, this.height / 4 + 120 + 12, 150, 20, I18n.format("gui.done", new Object[0])));
         this.buttonList.add(this.cancelBtn = new GuiButton(1, this.width / 2 + 4, this.height / 4 + 120 + 12, 150, 20, I18n.format("gui.cancel", new Object[0])));
-        this.delayTextField = new GuiTextField(2, this.fontRenderer, this.width / 2 - 150, 50, 300, 20);
+        this.delayTextField = new GuiTextField(2, this.fontRenderer, this.width / 2 - 150, 50, 260, 20);
         this.delayTextField.setMaxStringLength(5);
         this.delayTextField.setFocused(true);
         this.delayTextField.setText("" + this.timer.getDelayTime());
         this.doneBtn.enabled = this.delayTextField.getText().trim().length() > 0 && StringUtils.isNumeric(this.delayTextField.getText());
         
-        this.buttonList.add(this.cancelBtn = new GuiButton(2, this.width / 2 + 150, this.height / 2, 20, 40, !this.disabled ? "ON" : "OFF"));
+        this.buttonList.add(this.disableBtn = new GuiButton(2, this.width / 2 + 120, 50, 30, 20, !disabledGUI ? "ON" : "OFF"));
     }
 
     @Override
@@ -65,17 +69,18 @@ public class GuiTimerAmount extends GuiScreen {
 
         if (button.enabled) {
             if (button.id == 2) {
-                this.disabled ^= 1;
-                button.setText(!this.disabled ? "ON" : "OFF");
-            }
+                    disabledGUI = !disabledGUI;
+                    button.displayString = !disabledGUI ? "ON" : "OFF";
+            }			
             else if (button.id == 1) {
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
             else if (button.id == 0 && StringUtils.isNumeric(this.delayTextField.getText())) {
 
                 final int time = Integer.parseInt(this.delayTextField.getText());
-                DarkUtils.NETWORK.sendToServer(new PacketSyncTimer(this.timer.getPos(), time));
+                DarkUtils.NETWORK.sendToServer(new PacketSyncTimer(this.timer.getPos(), time, disabledGUI));
                 this.timer.setDelayTime(time);
+                this.timer.setDisabled(disabledGUI);
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
         }
