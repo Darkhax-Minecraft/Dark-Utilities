@@ -145,6 +145,13 @@ public class BlockSneaky extends BlockContainer {
 
         return false;
     }
+    
+    @Override
+    @Deprecated
+    public boolean canSpawnInBlock() {
+
+        return false;
+    }    
 
     @Override
     @SideOnly(Side.CLIENT)
