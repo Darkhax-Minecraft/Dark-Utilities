@@ -24,6 +24,8 @@ public class GuiTimerAmount extends GuiScreen {
     private GuiButton doneBtn;
 
     private GuiButton cancelBtn;
+	
+    private GuiButton disableBtn;
 
     public GuiTimerAmount (TileEntityTimer timer) {
 
@@ -48,6 +50,8 @@ public class GuiTimerAmount extends GuiScreen {
         this.delayTextField.setFocused(true);
         this.delayTextField.setText("" + this.timer.getDelayTime());
         this.doneBtn.enabled = this.delayTextField.getText().trim().length() > 0 && StringUtils.isNumeric(this.delayTextField.getText());
+	    
+	this.buttonList.add(this.cancelBtn = new GuiButton(2, this.width / 2 + 150, this.height / 2, 20, 40, !this.disabled ? "ON" : "OFF"));
     }
 
     @Override
@@ -60,7 +64,11 @@ public class GuiTimerAmount extends GuiScreen {
     protected void actionPerformed (GuiButton button) throws IOException {
 
         if (button.enabled) {
-            if (button.id == 1) {
+	    if (button.id == 2) {
+	        this.disabled ^= 1;
+		button.setText(!this.disabled ? "ON" : "OFF");
+	    }
+            else if (button.id == 1) {
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
             else if (button.id == 0 && StringUtils.isNumeric(this.delayTextField.getText())) {
