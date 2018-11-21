@@ -18,12 +18,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiTimerAmount extends GuiScreen {
 
     private final TileEntityTimer timer;
+	
+    private boolean disabledGUI;
 
     private GuiTextField delayTextField;
 
     private GuiButton doneBtn;
 
     private GuiButton cancelBtn;
+    
+    private GuiButton disableBtn;
 
     public GuiTimerAmount (TileEntityTimer timer) {
 
@@ -40,14 +44,18 @@ public class GuiTimerAmount extends GuiScreen {
     public void initGui () {
 
         Keyboard.enableRepeatEvents(true);
+		disabledGUI = this.timer.isDisabled();
+		
         this.buttonList.clear();
         this.buttonList.add(this.doneBtn = new GuiButton(0, this.width / 2 - 4 - 150, this.height / 4 + 120 + 12, 150, 20, I18n.format("gui.done", new Object[0])));
         this.buttonList.add(this.cancelBtn = new GuiButton(1, this.width / 2 + 4, this.height / 4 + 120 + 12, 150, 20, I18n.format("gui.cancel", new Object[0])));
-        this.delayTextField = new GuiTextField(2, this.fontRenderer, this.width / 2 - 150, 50, 300, 20);
+        this.delayTextField = new GuiTextField(2, this.fontRenderer, this.width / 2 - 150, 50, 260, 20);
         this.delayTextField.setMaxStringLength(5);
         this.delayTextField.setFocused(true);
         this.delayTextField.setText("" + this.timer.getDelayTime());
         this.doneBtn.enabled = this.delayTextField.getText().trim().length() > 0 && StringUtils.isNumeric(this.delayTextField.getText());
+        
+        this.buttonList.add(this.disableBtn = new GuiButton(2, this.width / 2 + 120, 50, 30, 20, !disabledGUI ? "ON" : "OFF"));
     }
 
     @Override
@@ -60,14 +68,19 @@ public class GuiTimerAmount extends GuiScreen {
     protected void actionPerformed (GuiButton button) throws IOException {
 
         if (button.enabled) {
-            if (button.id == 1) {
+            if (button.id == 2) {
+                    disabledGUI = !disabledGUI;
+                    button.displayString = !disabledGUI ? "ON" : "OFF";
+            }			
+            else if (button.id == 1) {
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
             else if (button.id == 0 && StringUtils.isNumeric(this.delayTextField.getText())) {
 
                 final int time = Integer.parseInt(this.delayTextField.getText());
-                DarkUtils.NETWORK.sendToServer(new PacketSyncTimer(this.timer.getPos(), time));
+                DarkUtils.NETWORK.sendToServer(new PacketSyncTimer(this.timer.getPos(), time, disabledGUI));
                 this.timer.setDelayTime(time);
+                this.timer.setDisabled(disabledGUI);
                 this.mc.displayGuiScreen((GuiScreen) null);
             }
         }
@@ -91,24 +104,24 @@ public class GuiTimerAmount extends GuiScreen {
         }
         
         // TextFied controls
-		if (this.delayTextField.isFocused()) {
-			// left key
-			if (keyCode == 203) {
-				this.delayTextField.setCursorPosition(this.delayTextField.getCursorPosition() - 1);
-			}
-			// right key
-			else if (keyCode == 205) {
-				this.delayTextField.setCursorPosition(this.delayTextField.getCursorPosition() + 1);
-			}
-			// up key
-			else if (keyCode == 200) {
-				this.delayTextField.setCursorPosition(0);
-			}
-			// down key
-			else if (keyCode == 208) {
-				this.delayTextField.setCursorPosition(this.delayTextField.getText().length());
-			}
-		}
+        if (this.delayTextField.isFocused()) {
+            // left key
+            if (keyCode == 203) {
+                this.delayTextField.setCursorPosition(this.delayTextField.getCursorPosition() - 1);
+            }
+            // right key
+            else if (keyCode == 205) {
+                this.delayTextField.setCursorPosition(this.delayTextField.getCursorPosition() + 1);
+            }
+            // up key
+            else if (keyCode == 200) {
+                this.delayTextField.setCursorPosition(0);
+            }
+            // down key
+            else if (keyCode == 208) {
+                this.delayTextField.setCursorPosition(this.delayTextField.getText().length());
+            }
+        }
     }
 
     @Override

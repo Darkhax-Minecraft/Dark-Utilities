@@ -13,12 +13,15 @@ public class TileEntityTimer extends TileEntityBasicTickable {
     private int currentTime = 0;
 
     private int delayTime = 100;
-
+	
+	private boolean disabled = false;
+	
     @Override
     public void writeNBT (NBTTagCompound dataTag) {
 
         dataTag.setInteger("CurrentTime", this.currentTime);
         dataTag.setInteger("TickRate", this.delayTime);
+        dataTag.setBoolean("Disabled", this.disabled);
     }
 
     @Override
@@ -26,12 +29,13 @@ public class TileEntityTimer extends TileEntityBasicTickable {
 
         this.currentTime = dataTag.getInteger("CurrentTime");
         this.delayTime = dataTag.getInteger("TickRate");
+		this.disabled = dataTag.getBoolean("Disabled");
     }
 
     @Override
     public void onEntityUpdate () {
 
-        if (this.world.isBlockPowered(this.pos)) {
+        if (this.world.isBlockPowered(this.pos) || this.disabled) {
             return;
         }
 
@@ -60,6 +64,16 @@ public class TileEntityTimer extends TileEntityBasicTickable {
 
         return this.delayTime;
     }
+	
+	public boolean isDisabled () {
+		
+		return this.disabled;
+	}
+	
+	public void setDisabled (boolean disable) {
+		
+	    this.disabled = disable;
+	}
 
     public void setDelayTime (int tickRate) {
 
