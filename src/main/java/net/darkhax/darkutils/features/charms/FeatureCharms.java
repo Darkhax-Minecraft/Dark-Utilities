@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.init.MobEffects;
 import net.minecraft.util.CombatRules;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.config.Configuration;
@@ -119,8 +120,6 @@ public class FeatureCharms extends Feature {
                 if (k > 0)
                     damage = CombatRules.getDamageAfterMagicAbsorb(damage, (float)k);
             
-                // damage = entityBase.applyArmorCalculations(event.getSource(), damage);
-                // damage = entityBase.applyPotionDamageCalculations(event.getSource(), damage);
                 
                 float maxHealth = entityBase.getMaxHealth();
                 maxHealth += entityBase.getAbsorptionAmount();
@@ -128,7 +127,7 @@ public class FeatureCharms extends Feature {
                 if (damage >= maxHealth && maxHealth > 1) {
                     event.setAmount(maxHealth - 1f);
                     event.getSource().setDamageIsAbsolute();
-                    entityBase.sendMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
+                    entityBase.sendStatusMessage( new TextComponentTranslation("chat.darkutils.focussash").setStyle(new Style().setColor(TextFormatting.GOLD)), true);
                 }
 
             }
