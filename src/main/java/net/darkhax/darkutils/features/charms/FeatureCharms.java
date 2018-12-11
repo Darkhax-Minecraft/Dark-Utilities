@@ -96,9 +96,18 @@ public class FeatureCharms extends Feature {
             final EntityPlayer entityBase = (EntityPlayer) event.getEntityLiving();
 
             // Focus Sash
-            if (entityBase instanceof EntityPlayer && itemFocusSash.hasItem(entityBase) && entityBase.getHealth() >= entityBase.getMaxHealth() && event.getAmount() >= entityBase.getHealth()) {
+            if (entityBase instanceof EntityPlayer && itemFocusSash.hasItem(entityBase) && entityBase.getHealth() >= entityBase.getMaxHealth()) {
+                
+                float damage = event.getAmount();
+                damage = applyArmorCalculations(event.getSource(), damage);
+                damage = applyPotionDamageCalculations(event.getSource(), damage);
+                
+                float maxHealth = entityBase.getMaxHealth();
+                maxHealth += entityBase.getAbsorptionAmount();
+                
+                if (damage >= maxHealth)
+                    event.setAmount = maxHealth - 1f;
 
-                event.setAmount(entityBase.getHealth() - 1f);
                 entityBase.sendMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
             }
         }
