@@ -106,7 +106,7 @@ public class FeatureCharms extends Feature {
                 maxHealth += entityBase.getAbsorptionAmount();
                 
                 if (damage >= maxHealth)
-                    event.setAmount = maxHealth - 1f;
+                    event.setAmount(maxHealth - 1f);
 
                 entityBase.sendMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
             }
