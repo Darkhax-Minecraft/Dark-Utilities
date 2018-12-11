@@ -91,7 +91,7 @@ public class FeatureCharms extends Feature {
     @SubscribeEvent
     public void onLivingHurt (LivingHurtEvent event) {
 
-        if (event.getEntityLiving() instanceof EntityPlayer) {
+        if (event.getEntityLiving() instanceof EntityPlayer && !event.getSource().canHarmInCreative()) {
 
             final EntityPlayer entityBase = (EntityPlayer) event.getEntityLiving();
 
