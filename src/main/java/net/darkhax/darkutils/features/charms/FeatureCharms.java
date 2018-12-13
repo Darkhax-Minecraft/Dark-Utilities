@@ -24,6 +24,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
@@ -96,43 +97,6 @@ public class FeatureCharms extends Feature {
     @SubscribeEvent
     public void onLivingHurt (LivingHurtEvent event) {
 
-        if (event.getEntityLiving() instanceof EntityPlayer && !event.getSource().canHarmInCreative()) {
-
-            final EntityPlayer entityBase = (EntityPlayer) event.getEntityLiving();
-
-            // Focus Sash
-            if (entityBase instanceof EntityPlayer && itemFocusSash.hasItem(entityBase) && entityBase.getHealth() >= entityBase.getMaxHealth()) {
-                float damage = event.getAmount();
-                
-                // Apply Armor
-                damage = ArmorProperties.applyArmor(entityBase, entityBase.inventory.armorInventory, event.getSource(), damage);
-                
-                // Apply RESISTANCE effect
-                if (entityBase.isPotionActive(MobEffects.RESISTANCE)) {
-                    int i = (entityBase.getActivePotionEffect(MobEffects.RESISTANCE).getAmplifier() + 1) * 5;
-                    int j = 25 - i;
-                    float f = damage * (float)j;
-                    damage = f / 25.0F;
-                }
-                
-                // Apply Enchantments dmg reduc
-                int k = EnchantmentHelper.getEnchantmentModifierDamage(entityBase.getArmorInventoryList(), event.getSource());
-                if (k > 0)
-                    damage = CombatRules.getDamageAfterMagicAbsorb(damage, (float)k);
-            
-                
-                float maxHealth = entityBase.getMaxHealth();
-                maxHealth += entityBase.getAbsorptionAmount();
-                
-                if (damage >= maxHealth && maxHealth > 1) {
-                    event.setAmount(maxHealth - 1f);
-                    event.getSource().setDamageIsAbsolute();
-                    entityBase.sendStatusMessage( new TextComponentTranslation("chat.darkutils.focussash").setStyle(new Style().setColor(TextFormatting.GOLD)), true);
-                }
-
-            }
-        }
-
         // Agression Charm
         if (event.getSource() != null && event.getSource().getTrueSource() instanceof EntityPlayer) {
 
@@ -145,7 +109,26 @@ public class FeatureCharms extends Feature {
             }
         }
     }
-
+    
+    @SubscribeEvent
+    public void onLivingDamage (LivingDamageEvent event) {
+        
+        // Focus Sash
+        if (event.getEntityLiving() instanceof EntityPlayer && !event.getSource().canHarmInCreative()) {
+            final EntityPlayer entityBase = (EntityPlayer) event.getEntityLiving();
+            
+            if (entityBase instanceof EntityPlayer && itemFocusSash.hasItem(entityBase) && entityBase.getHealth() >= entityBase.getMaxHealth()) {
+                float damage = event.getAmount();
+                float maxHealth = entityBase.getMaxHealth();
+                
+                if (damage >= maxHealth && maxHealth > 1) {
+                    event.setAmount(maxHealth - 1f);
+                    entityBase.sendStatusMessage( new TextComponentTranslation("chat.darkutils.focussash").setStyle(new Style().setColor(TextFormatting.GOLD)), true);
+                }
+            }
+        }
+    }
+    
     @SubscribeEvent
     public void onItemUse (LivingEntityUseItemEvent.Tick event) {
 
