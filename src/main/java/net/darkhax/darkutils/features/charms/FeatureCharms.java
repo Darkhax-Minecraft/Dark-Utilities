@@ -12,6 +12,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -120,7 +121,7 @@ public class FeatureCharms extends Feature {
     public void onItemUse (LivingEntityUseItemEvent.Tick event) {
 
         // Gluttony Charm
-        if (event.getEntityLiving() instanceof EntityPlayer && itemGluttonyCharm.hasItem((EntityPlayer) event.getEntityLiving()) && !event.getItem().isEmpty() && event.getItem().getItem() instanceof ItemFood) {
+        if (event.getEntityLiving() instanceof EntityPlayer && itemGluttonyCharm.hasItem((EntityPlayer) event.getEntityLiving()) && event.getItem().getItemUseAction() == EnumAction.EAT) {
             event.setDuration(0);
         }
     }
