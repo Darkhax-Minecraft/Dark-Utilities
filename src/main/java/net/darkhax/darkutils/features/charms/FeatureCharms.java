@@ -16,10 +16,12 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
@@ -92,18 +94,6 @@ public class FeatureCharms extends Feature {
     @SubscribeEvent
     public void onLivingHurt (LivingHurtEvent event) {
 
-        if (event.getEntityLiving() instanceof EntityPlayer) {
-
-            final EntityPlayer entityBase = (EntityPlayer) event.getEntityLiving();
-
-            // Focus Sash
-            if (entityBase instanceof EntityPlayer && itemFocusSash.hasItem(entityBase) && entityBase.getHealth() >= entityBase.getMaxHealth() && event.getAmount() >= entityBase.getHealth()) {
-
-                event.setAmount(entityBase.getHealth() - 1f);
-                entityBase.sendMessage(new TextComponentTranslation("chat.darkutils.focussash", TextFormatting.GREEN));
-            }
-        }
-
         // Agression Charm
         if (event.getSource() != null && event.getSource().getTrueSource() instanceof EntityPlayer) {
 
@@ -116,7 +106,26 @@ public class FeatureCharms extends Feature {
             }
         }
     }
-
+    
+    @SubscribeEvent
+    public void onLivingDamage (LivingDamageEvent event) {
+        
+        // Focus Sash
+        if (event.getEntityLiving() instanceof EntityPlayer && !event.getSource().canHarmInCreative()) {
+            final EntityPlayer entityBase = (EntityPlayer) event.getEntityLiving();
+            
+            if (entityBase instanceof EntityPlayer && itemFocusSash.hasItem(entityBase) && entityBase.getHealth() >= entityBase.getMaxHealth()) {
+                float damage = event.getAmount();
+                float maxHealth = entityBase.getMaxHealth();
+                
+                if (damage >= maxHealth && maxHealth > 1) {
+                    event.setAmount(maxHealth - 1f);
+                    entityBase.sendStatusMessage( new TextComponentTranslation("chat.darkutils.focussash").setStyle(new Style().setColor(TextFormatting.GOLD)), true);
+                }
+            }
+        }
+    }
+    
     @SubscribeEvent
     public void onItemUse (LivingEntityUseItemEvent.Tick event) {
 
