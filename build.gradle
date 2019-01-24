@@ -67,11 +67,6 @@ repositories {
         
         url 'http://tehnut.info/maven'
     }
-    
-    maven { 
-    
-        url 'https://jitpack.io' 
-    }
 }
 
 dependencies {
@@ -79,7 +74,7 @@ dependencies {
     deobfCompile "mcp.mobius.waila:Hwyla:${version_hwyla}"
     deobfCompile "mezz.jei:jei_1.12.2:${version_jei}"
     deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.2:${version_bookshelf}"
-    compile 'com.github.Azanor:Baubles:7035b13'
+    deobfCompile "com.azanor:Baubles:${version_baubles}"
 }
 
 processResources {
