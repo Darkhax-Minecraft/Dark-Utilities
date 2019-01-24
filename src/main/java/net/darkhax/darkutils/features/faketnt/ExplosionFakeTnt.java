@@ -25,4 +25,10 @@ public class ExplosionFakeTnt extends ExplosionBase {
             this.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState(), 11);
         }
     }
+    
+    @Override
+    public boolean canAffectEntity (Entity entity) {
+        
+        return false;
+    }
 }
