@@ -56,7 +56,7 @@ public class FeatureSneaky extends Feature {
         blockSneakyTorch = new BlockSneakyTorch();
         DarkUtils.REGISTRY.registerBlock(blockSneakyTorch, "sneaky_torch");
 
-        blockSneakyObsidian = new BlockSneaky().setHardness(20f).setResistance(2000f);
+        blockSneakyObsidian = new BlockSneaky().setHardness(50f).setResistance(6000f);
         DarkUtils.REGISTRY.registerBlock(blockSneakyObsidian, "sneaky_obsidian");
 
         blockSneakyPlate = new BlockSneakyPressurePlate();
