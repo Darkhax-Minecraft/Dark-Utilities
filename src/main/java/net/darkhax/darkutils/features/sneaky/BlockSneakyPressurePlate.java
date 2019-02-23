@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.darkhax.bookshelf.data.Blockstates;
+import net.minecraft.block.BlockRedstoneRepeater;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -88,7 +89,7 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
             }
         }
     }
-
+    
     /**
      * Updates the pressure plate when stepped on
      */
@@ -124,6 +125,15 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
 
         worldIn.notifyNeighborsOfStateChange(pos, this, false);
         worldIn.notifyNeighborsOfStateChange(pos.down(), this, false);
+        
+        for (EnumFacing side : EnumFacing.HORIZONTALS) {
+        	
+            BlockPos blockpos = pos.offset(side.getOpposite()).up();
+            if(net.minecraftforge.event.ForgeEventFactory.onNeighborNotify(worldIn, pos, worldIn.getBlockState(pos), java.util.EnumSet.of(side.getOpposite()), false).isCanceled())
+                return;
+            worldIn.neighborChanged(blockpos, this, pos);
+            worldIn.notifyNeighborsOfStateExcept(blockpos, this, side);
+        }
     }
 
     @Override
@@ -137,7 +147,7 @@ public class BlockSneakyPressurePlate extends BlockSneaky {
     @Deprecated
     public int getStrongPower (IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 
-        return side == EnumFacing.UP ? this.getRedstoneStrength(blockState) : 0;
+        return this.getRedstoneStrength(blockState);
     }
 
     @Override
