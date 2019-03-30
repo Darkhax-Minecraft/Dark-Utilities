@@ -15,6 +15,8 @@ import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.IStringSerializable;
 
 public enum FilterType implements IStringSerializable {
@@ -117,7 +119,8 @@ public enum FilterType implements IStringSerializable {
                 return living instanceof EntitySlime;
 
             case 9:
-                return living.isImmuneToFire();
+                return living.isImmuneToFire() ||
+                        living.getActivePotionEffect(MobEffects.FIRE_RESISTANCE) != null;
 
             case 10:
                 return !living.isNonBoss();
