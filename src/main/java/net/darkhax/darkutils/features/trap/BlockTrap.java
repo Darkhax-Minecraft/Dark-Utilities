@@ -133,6 +133,12 @@ public class BlockTrap extends Block {
     }
 
     @Override
+    public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
+    	
+        return true;
+    }
+    
+    @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks (CreativeTabs tab, NonNullList<ItemStack> list) {
 
