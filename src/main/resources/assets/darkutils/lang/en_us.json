@@ -1,0 +1,10 @@
+{
+  "block.darkutils.blank_plate": "Blank Plate",
+  "block.darkutils.vector_plate": "Vector Plate",
+  "block.darkutils.vector_plate_fast": "Fast Vector Plate",
+  "block.darkutils.vector_plate_extreme": "Extreme Vector Plate",
+  "block.darkutils.redstone_randomizer": "Redstone Randomizer",
+  "block.darkutils.export_plate": "Export Plate",
+  "block.darkutils.export_plate_fast": "Fast Export Plate",
+  "block.darkutils.export_plate_extreme": "Extreme Export Plate"
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "enabled=true": {
+      "model": "darkutils:block/redstone_randomizer_on"
+    },
+    "enabled=false": {
+      "model": "darkutils:block/redstone_randomizer_off"
+    }
+  }
+}

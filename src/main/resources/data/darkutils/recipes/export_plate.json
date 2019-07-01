@@ -1,0 +1,20 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    " B ",
+    "BDB",
+    " B "
+  ],
+  "key": {
+    "B": {
+      "item": "darkutils:vector_plate"
+    },
+    "D": {
+      "item": "minecraft:hopper"
+    }
+  },
+  "result": {
+    "item": "darkutils:export_plate",
+    "count": 4
+  }
+}

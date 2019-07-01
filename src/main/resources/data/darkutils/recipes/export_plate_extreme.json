@@ -1,0 +1,20 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:gold_nugget"
+    },
+    "A": {
+      "item": "darkutils:export_plate_fast"
+    }
+  },
+  "result": {
+    "item": "darkutils:export_plate_extreme",
+    "count": 4
+  }
+}

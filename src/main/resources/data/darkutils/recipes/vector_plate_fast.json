@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "BBB",
+    "SDS",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "darkutils:vector_plate"
+    },
+    "S": {
+      "item": "minecraft:iron_nugget"
+    },
+    "D": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "item": "darkutils:vector_plate_fast",
+    "count": 6
+  }
+}

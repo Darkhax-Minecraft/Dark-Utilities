@@ -3,7 +3,7 @@ loaderVersion="[25,)"
 issueTrackerURL="https://github.com/Darkhax-Minecraft/Dark-Utilities/issues"
 
 [[mods]]
-modId="darkutilities"
+modId="darkutils"
 version="${version}"
 displayName="${mod_name}"
 displayURL="${mod_download}"
@@ -24,5 +24,12 @@ ${mod_description}
     modId="minecraft"
     mandatory=true
     versionRange="[1.13.2]"
+    ordering="NONE"
+    side="BOTH"
+	
+[[dependencies.darkutilities]]
+    modId="bookshelf"
+    mandatory=true
+    versionRange="[3.0.4]"
     ordering="NONE"
     side="BOTH"

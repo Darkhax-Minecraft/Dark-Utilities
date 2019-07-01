@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "darkutils:block/redstone_randomizer_off"
+  }
+}

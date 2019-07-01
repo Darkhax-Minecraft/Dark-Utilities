@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "BBB",
+    "SDS",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "darkutils:blank_plate"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "D": {
+      "item": "minecraft:slime_ball"
+    }
+  },
+  "result": {
+    "item": "darkutils:vector_plate",
+    "count": 6
+  }
+}
