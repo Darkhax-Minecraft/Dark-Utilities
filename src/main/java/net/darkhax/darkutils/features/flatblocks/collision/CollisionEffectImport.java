@@ -3,6 +3,7 @@ package net.darkhax.darkutils.features.flatblocks.collision;
 import net.darkhax.bookshelf.util.InventoryUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -52,7 +53,9 @@ public class CollisionEffectImport extends CollisionEffectPush {
                         // If there are any leftover items, spawn them on the ground.
                         if (!remaining.isEmpty()) {
 
-                            final ItemEntity item = new ItemEntity(world, entity.posX, entity.posY, entity.posZ, remaining);
+                            final ItemEntity item = new ItemEntity(EntityType.ITEM, world);
+                            item.setItem(remaining);
+                            item.setPosition(entity.posX, entity.posY, entity.posZ);
                             item.lifespan = remaining.getEntityLifespan(world);
                             world.addEntity(item);
                         }

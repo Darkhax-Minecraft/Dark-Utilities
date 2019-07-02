@@ -54,7 +54,7 @@ public class Content {
 
         this.slimeCrucible = registry.registerBlock(new BlockSlimeCrucible(BlockFlatTile.BLOCK_PROPERTIES), "slime_crucible");
 
-        this.tileTickingEffect = registry.registerTileEntity(TileEntityTickingEffect::new, "ticking_tile");
-        this.tileSlimeCrucible = registry.registerTileEntity(TileEntitySlimeCrucible::new, "slime_crucible");
+        this.tileTickingEffect = registry.registerTileEntity(TileEntityTickingEffect::new, "ticking_tile", exportPlate, exportPlateFast, exportPlateHyper);
+        this.tileSlimeCrucible = registry.registerTileEntity(TileEntitySlimeCrucible::new, "slime_crucible", slimeCrucible);
     }
 }

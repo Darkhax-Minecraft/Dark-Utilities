@@ -5,9 +5,12 @@ import org.apache.logging.log4j.Logger;
 
 import net.darkhax.bookshelf.item.ItemGroupBase;
 import net.darkhax.bookshelf.registry.RegistryHelper;
+import net.darkhax.darkutils.features.slimecrucible.TileEntitySlimeCrucible;
+import net.darkhax.darkutils.tileentity.TileEntityRendererSlimeThing;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -33,8 +36,9 @@ public class DarkUtils {
         content = new Content(REGISTRY);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
     }
-
-    private void onClientSetup (FMLClientSetupEvent event) {
-
+    
+    private void onClientSetup(FMLClientSetupEvent event) {
+    	
+    	ClientRegistry.bindTileEntitySpecialRenderer( TileEntitySlimeCrucible.class, new TileEntityRendererSlimeThing());
     }
 }

@@ -2,6 +2,7 @@ package net.darkhax.darkutils.features.flatblocks.tick;
 
 import net.darkhax.bookshelf.util.InventoryUtils;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -28,7 +29,9 @@ public class TickEffectExport implements TickEffect {
 
                     final ItemStack stackToSpawn = itemStack.split(1);
 
-                    final ItemEntity item = new ItemEntity(world, pos.getX() + 0.5f, pos.getY() + 0.2f, pos.getZ() + 0.5f, stackToSpawn);
+                    final ItemEntity item = new ItemEntity(EntityType.ITEM, world);
+                    item.setItem(stackToSpawn);
+                    item.setPosition(pos.getX() + 0.5f, pos.getY() + 0.2f, pos.getZ() + 0.5f);
                     item.lifespan = stackToSpawn.getEntityLifespan(world);
                     world.addEntity(item);
                     break;

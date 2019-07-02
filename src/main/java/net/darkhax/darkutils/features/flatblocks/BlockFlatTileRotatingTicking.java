@@ -58,13 +58,4 @@ public class BlockFlatTileRotatingTicking extends BlockFlatTileRotating implemen
         final TileEntity tileentity = worldIn.getTileEntity(pos);
         return tileentity != null && tileentity.receiveClientEvent(id, param);
     }
-
-    @Override
-    public void onReplaced (BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-
-        if (state.getBlock() != newState.getBlock()) {
-            super.onReplaced(state, worldIn, pos, newState, isMoving);
-            worldIn.removeTileEntity(pos);
-        }
-    }
 }
