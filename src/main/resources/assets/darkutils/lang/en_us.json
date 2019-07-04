@@ -6,5 +6,9 @@
   "block.darkutils.redstone_randomizer": "Redstone Randomizer",
   "block.darkutils.export_plate": "Export Plate",
   "block.darkutils.export_plate_fast": "Fast Export Plate",
-  "block.darkutils.export_plate_extreme": "Extreme Export Plate"
+  "block.darkutils.export_plate_extreme": "Extreme Export Plate",
+  "block.darkutils.import_plate": "Import Plate",
+  "block.darkutils.import_plate_fast": "Fast Import Plate",
+  "block.darkutils.import_plate_extreme": "Extreme Import Plate",
+  "block.darkutils.slime_crucible_green": "Green Slime Crucible"
 }
