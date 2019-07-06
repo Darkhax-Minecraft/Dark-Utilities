@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import afu.org.checkerframework.checker.javari.qual.ThisMutable;
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.IInventory;
@@ -96,7 +97,9 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
         
         if (block instanceof ISlimeCrucibleBlock) {
             
-            final SlimeCrucibleType slimeCrucibleType = ((ISlimeCrucibleBlock) block).getSlimeType();
+            final SlimeCrucibleType slimeCrucibleType = ((ISlimeCrucibleBlock) block).getCrucibleType();
+            
+            System.out.println(this.validTypes.length);
             
             return slimeCrucibleType.matchesAny(this.validTypes) && this.input.test(input);
         }
@@ -132,7 +135,7 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
                 DarkUtils.LOG.warn("The slime food recipe {} has no valid types. It will not be obtainable. Some valid vanilla types are {}, {}, and {}.", recipeId, SlimeCrucibleType.ALL, SlimeCrucibleType.GREEN, SlimeCrucibleType.MAGMA);
             }
             
-            return new RecipeSlimeFood(recipeId, input, points);
+            return new RecipeSlimeFood(recipeId, input, points, types.toArray(new SlimeCrucibleType[types.size()]));
         }
         
         @Override
