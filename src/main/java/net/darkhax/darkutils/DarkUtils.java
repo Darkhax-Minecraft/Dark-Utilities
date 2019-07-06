@@ -55,6 +55,5 @@ public class DarkUtils {
         containerType.setRegistryName("darkutils:slime_crucible");
         ScreenManager.registerFactory(containerType, ScreenSlimeCrucible::new);
         event.getRegistry().register(containerType);
-        System.out.println("Registered");
     }
 }

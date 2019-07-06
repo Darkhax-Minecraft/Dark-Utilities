@@ -5,9 +5,9 @@ import java.util.function.Consumer;
 
 import com.google.common.collect.Lists;
 
+import net.darkhax.bookshelf.inventory.InventoryListenable;
+import net.darkhax.bookshelf.inventory.SlotOutput;
 import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.InventoryListener;
-import net.darkhax.darkutils.SlotOutput;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftResultInventory;
@@ -38,7 +38,7 @@ public class ContainerSlimeCrucible extends Container {
     final Slot slotInput;
     final Slot slotOutput;
     
-    private final InventoryListener inventory = new InventoryListener(1, this::onCraftMatrixChanged);
+    private final InventoryListenable inventory = new InventoryListenable(1, this::onCraftMatrixChanged);
     private final CraftResultInventory reultInventory = new CraftResultInventory();
     
     public ContainerSlimeCrucible(int id, PlayerInventory playerInv) {

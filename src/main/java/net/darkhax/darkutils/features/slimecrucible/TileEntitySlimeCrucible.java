@@ -3,8 +3,8 @@ package net.darkhax.darkutils.features.slimecrucible;
 import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
+import net.darkhax.bookshelf.util.WorldUtils;
 import net.darkhax.darkutils.DarkUtils;
-import net.darkhax.darkutils.TempUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.entity.monster.SlimeEntity;
@@ -126,7 +126,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     
     public static float getSlimePointsForItem (World world, ItemStack inputStack, Block crucibleBlock) {
         
-        for (final IRecipe<?> recipeCandidate : TempUtils.getRecipes(DarkUtils.content.recipeTypeSlimeFood, world.getRecipeManager()).values()) {
+        for (final IRecipe<?> recipeCandidate : WorldUtils.getRecipes(DarkUtils.content.recipeTypeSlimeFood, world.getRecipeManager()).values()) {
             
             if (recipeCandidate instanceof RecipeSlimeFood) {
                 
