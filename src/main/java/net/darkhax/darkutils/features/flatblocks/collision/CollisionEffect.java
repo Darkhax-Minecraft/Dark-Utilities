@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 
 @FunctionalInterface
 public interface CollisionEffect {
-
+    
     /**
      * This functional interface is used by the flat tile blocks in this mod. They are applied
      * to an entity when that entity collides with the block.

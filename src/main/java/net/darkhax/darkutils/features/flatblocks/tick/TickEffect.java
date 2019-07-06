@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 
 @FunctionalInterface
 public interface TickEffect {
-
+    
     /**
      * This functional interface is used by the flat tile blocks in this mod. This tick effect
      * will be applied based on the specified tick rate.

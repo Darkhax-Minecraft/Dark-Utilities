@@ -14,46 +14,46 @@ import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
 public class BlockFlatTileRotatingTicking extends BlockFlatTileRotating implements ITileEntityProvider {
-
+    
     private final TickEffect tickEffect;
     private final int tickRate;
-
-    public BlockFlatTileRotatingTicking (CollisionEffect collisionEffect, TickEffect tickEffect, int tickRate) {
-
+    
+    public BlockFlatTileRotatingTicking(CollisionEffect collisionEffect, TickEffect tickEffect, int tickRate) {
+        
         this(BLOCK_PROPERTIES, collisionEffect, tickEffect, tickRate);
     }
-
-    public BlockFlatTileRotatingTicking (Properties properties, CollisionEffect collisionEffect, TickEffect tickEffect, int tickRate) {
-
+    
+    public BlockFlatTileRotatingTicking(Properties properties, CollisionEffect collisionEffect, TickEffect tickEffect, int tickRate) {
+        
         super(properties, collisionEffect);
         this.tickEffect = tickEffect;
         this.tickRate = tickRate;
     }
-
+    
     @Override
     public int tickRate (IWorldReader world) {
-
+        
         return this.tickRate;
     }
-
+    
     @Override
     public void tick (BlockState state, World world, BlockPos pos, Random random) {
-
+        
         if (this.tickEffect != null) {
-
+            
             this.tickEffect.apply(state, world, pos);
         }
     }
-
+    
     @Override
     public TileEntity createNewTileEntity (IBlockReader worldIn) {
-
+        
         return new TileEntityTickingEffect();
     }
-
+    
     @Override
     public boolean eventReceived (BlockState state, World worldIn, BlockPos pos, int id, int param) {
-
+        
         super.eventReceived(state, worldIn, pos, id, param);
         final TileEntity tileentity = worldIn.getTileEntity(pos);
         return tileentity != null && tileentity.receiveClientEvent(id, param);
