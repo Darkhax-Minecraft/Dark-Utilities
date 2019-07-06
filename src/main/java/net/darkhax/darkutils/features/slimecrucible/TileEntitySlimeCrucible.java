@@ -170,11 +170,11 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     @Nullable
     public SlimeCrucibleType getCrucibleType () {
         
-        final Block block = this.world.getBlockState(this.getPos()).getBlock();
+        final Block block = this.getBlockState().getBlock();
         
         if (block instanceof ISlimeCrucibleBlock) {
             
-            return ((ISlimeCrucibleBlock) block).getSlimeType();
+            return ((ISlimeCrucibleBlock) block).getCrucibleType();
         }
         
         return null;

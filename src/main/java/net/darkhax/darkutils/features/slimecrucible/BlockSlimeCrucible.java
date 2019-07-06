@@ -23,7 +23,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.ServerWorld;
 import net.minecraft.world.World;
 
-public class BlockSlimeCrucible extends ContainerBlock {
+public class BlockSlimeCrucible extends ContainerBlock implements ISlimeCrucibleBlock {
     
     private static final VoxelShape boundsFullCube = VoxelShapes.fullCube();
     private static final VoxelShape boundsCollision = VoxelShapes.combineAndSimplify(boundsFullCube, Block.makeCuboidShape(2.0D, Math.max(2, 1), 2.0D, 14.0D, 16.0D, 14.0D), IBooleanFunction.ONLY_FIRST);
@@ -121,11 +121,6 @@ public class BlockSlimeCrucible extends ContainerBlock {
         return false;
     }
     
-    public SlimeCrucibleType getCrucibleType () {
-        
-        return this.type;
-    }
-    
     @Override
     public void onBlockPlacedBy (World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         
@@ -140,5 +135,11 @@ public class BlockSlimeCrucible extends ContainerBlock {
             }
         }
         
+    }
+
+    @Override
+    public SlimeCrucibleType getCrucibleType () {
+        
+        return this.type;
     }
 }
