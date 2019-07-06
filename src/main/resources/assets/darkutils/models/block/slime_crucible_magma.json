@@ -1,0 +1,10 @@
+{
+    "parent": "darkutils:block/empty_drum_block",
+    "textures": {
+        "particle": "minecraft:block/magma",
+        "top": "darkutils:block/slime_crucible_top_magma",
+        "bottom": "darkutils:block/slime_crucible_bottom_magma",
+        "side": "darkutils:block/slime_crucible_side_magma",
+        "inside": "darkutils:block/slime_crucible_bottom_magma"
+    }
+}
