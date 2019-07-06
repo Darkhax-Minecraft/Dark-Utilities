@@ -7,7 +7,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import afu.org.checkerframework.checker.javari.qual.ThisMutable;
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.IInventory;
@@ -98,8 +97,6 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
         if (block instanceof ISlimeCrucibleBlock) {
             
             final SlimeCrucibleType slimeCrucibleType = ((ISlimeCrucibleBlock) block).getCrucibleType();
-            
-            System.out.println(this.validTypes.length);
             
             return slimeCrucibleType.matchesAny(this.validTypes) && this.input.test(input);
         }
