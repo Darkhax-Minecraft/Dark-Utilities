@@ -11,10 +11,12 @@ import net.darkhax.darkutils.features.flatblocks.collision.CollisionEffectPush;
 import net.darkhax.darkutils.features.flatblocks.tick.TickEffect;
 import net.darkhax.darkutils.features.flatblocks.tick.TickEffectExport;
 import net.darkhax.darkutils.features.slimecrucible.BlockSlimeCrucible;
+import net.darkhax.darkutils.features.slimecrucible.ContainerSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.RecipeSlimeFood;
 import net.darkhax.darkutils.features.slimecrucible.SlimeCrucibleType;
 import net.darkhax.darkutils.features.slimecrucible.TileEntitySlimeCrucible;
 import net.minecraft.block.Block;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.tileentity.TileEntityType;
@@ -53,6 +55,11 @@ public class Content {
     public final TileEntityType<TileEntityTickingEffect> tileTickingEffect;
     public final TileEntityType<TileEntitySlimeCrucible> tileSlimeCrucible;
     
+    /**
+     * CONTAINERS
+     */
+    public final ContainerType<ContainerSlimeCrucible> containerSlimeCrucible;
+    
     public Content(RegistryHelper registry) {
         
         this.recipeTypeSlimeFood = registry.registerRecipeType("slime_food");
@@ -82,5 +89,7 @@ public class Content {
         
         this.tileTickingEffect = registry.registerTileEntity(TileEntityTickingEffect::new, "ticking_tile", this.exportPlate, this.exportPlateFast, this.exportPlateHyper);
         this.tileSlimeCrucible = registry.registerTileEntity(TileEntitySlimeCrucible::new, "slime_crucible", this.slimeCrucibleGreen, this.slimeCrucibleMagma);
+        
+        this.containerSlimeCrucible = registry.registerContainer(ContainerSlimeCrucible::new, "slime_crucible");
     }
 }

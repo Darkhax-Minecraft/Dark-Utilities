@@ -48,7 +48,7 @@ public class ContainerSlimeCrucible extends Container {
     
     public ContainerSlimeCrucible(int id, PlayerInventory playerInventory, final IWorldPosCallable worldPosition) {
         
-        super(DarkUtils.containerType, id);
+        super(DarkUtils.content.containerSlimeCrucible, id);
         this.worldPosition = worldPosition;
         this.world = playerInventory.player.world;
         this.slotInput = this.addSlot(new Slot(this.inventory, 0, 20, 33));
@@ -147,7 +147,7 @@ public class ContainerSlimeCrucible extends Container {
     @Override
     public ContainerType<?> getType () {
         
-        return DarkUtils.containerType;
+        return DarkUtils.content.containerSlimeCrucible;
     }
     
     public void setUpdateListener (Consumer<IInventory> listener) {

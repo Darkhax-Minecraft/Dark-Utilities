@@ -136,7 +136,7 @@ public class BlockSlimeCrucible extends ContainerBlock implements ISlimeCrucible
         }
         
     }
-
+    
     @Override
     public SlimeCrucibleType getCrucibleType () {
         
