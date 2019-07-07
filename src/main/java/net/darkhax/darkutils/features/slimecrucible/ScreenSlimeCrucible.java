@@ -82,13 +82,8 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             
             int textureY = this.ySize;
             
-            if (!this.container.getAvailableRecipes().get(i).isValid(this.container.slotInput.getStack(), this.container.getCrucibleType(), 1000f)) {
-                
-                textureY += 54;
-            }
-            
             // Render the selected/pressed version of the button.
-            else if (i == this.container.getSelectedRecipe()) {
+            if (i == this.container.getSelectedRecipe()) {
                 textureY += 18;
             }
             
@@ -113,29 +108,15 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeItemX = selectionBoxX + recipeIndex % 4 * 16;
             final int recipeRow = recipeIndex / 4;
             final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
-            this.tempRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, 0xff000000);
             
-            if (!this.container.getAvailableRecipes().get(i).isValid(this.container.slotInput.getStack(), this.container.getCrucibleType(), 1000f)) {
+            if (!this.container.getAvailableRecipes().get(i).isValid(this.container.slotInput.getStack(), this.container.getCrucibleType(), 100f)) {
                 
-                GlStateManager.color4f(1, 1, 1, 0.3f);
-                GlStateManager.disableTexture();   
-                GlStateManager.disableDepthTest();
-                GlStateManager.enableBlend(); 
-                Tessellator tessellator = Tessellator.getInstance();
-                BufferBuilder tes = tessellator.getBuffer();
-                tes.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
-                //x & y - position on screen in pixels
-                //(the same as you use when drawing GUI
-                net.minecraft.client.renderer.ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+                this.tempRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, 0x80808080);
+            }
+                        
+            else {
                 
-                int x = recipeItemX;
-                int y = recipeItemY;
-                tes.pos(x, y + 16, itemRenderer.zLevel).endVertex();
-                tes.pos(x + 16, y + 16, itemRenderer.zLevel).endVertex();
-                tes.pos(x + 16, y, itemRenderer.zLevel).endVertex();
-                tes.pos(x, y, itemRenderer.zLevel).endVertex();
-                tessellator.draw();
-                GlStateManager.enableTexture();
+                this.tempRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, 0xffffffff);
             }
         }
         
