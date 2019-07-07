@@ -2,15 +2,22 @@ package net.darkhax.darkutils.features.slimecrucible;
 
 import java.util.List;
 
+import org.lwjgl.opengl.GL11;
+
 import com.mojang.blaze3d.platform.GlStateManager;
 
+import net.darkhax.darkutils.TempItemRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.renderer.vertex.VertexBuffer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.crafting.StonecuttingRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
@@ -21,7 +28,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible> {
     
-    private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/stonecutter.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation("darkutils", "textures/gui/container/slime_crucible.png");
+    private final TempItemRenderer tempRenderer = new TempItemRenderer(Minecraft.getInstance().getItemRenderer());
     private float sliderProgress;
     private boolean mouseBeingDragged;
     private int recipeIndexOffset;
@@ -74,8 +82,13 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             
             int textureY = this.ySize;
             
+            if (!this.container.getAvailableRecipes().get(i).isValid(this.container.slotInput.getStack(), this.container.getCrucibleType(), 1000f)) {
+                
+                textureY += 54;
+            }
+            
             // Render the selected/pressed version of the button.
-            if (i == this.container.getSelectedRecipe()) {
+            else if (i == this.container.getSelectedRecipe()) {
                 textureY += 18;
             }
             
@@ -92,17 +105,41 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
     private void renderRecipeOutputs (int selectionBoxX, int selectionBoxY, int lastRecipeIndex) {
         
         RenderHelper.enableGUIStandardItemLighting();
-        final List<StonecuttingRecipe> list = this.container.getAvailableRecipes();
-        
+        final List<RecipeSlimeCrafting> list = this.container.getAvailableRecipes();
+
         for (int i = this.recipeIndexOffset; i < lastRecipeIndex && i < this.container.getAvailableRecipesSize(); i++) {
-            
+          
             final int recipeIndex = i - this.recipeIndexOffset;
             final int recipeItemX = selectionBoxX + recipeIndex % 4 * 16;
             final int recipeRow = recipeIndex / 4;
             final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
-            this.minecraft.getItemRenderer().renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY);
+            this.tempRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, 0xff000000);
+            
+            if (!this.container.getAvailableRecipes().get(i).isValid(this.container.slotInput.getStack(), this.container.getCrucibleType(), 1000f)) {
+                
+                GlStateManager.color4f(1, 1, 1, 0.3f);
+                GlStateManager.disableTexture();   
+                GlStateManager.disableDepthTest();
+                GlStateManager.enableBlend(); 
+                Tessellator tessellator = Tessellator.getInstance();
+                BufferBuilder tes = tessellator.getBuffer();
+                tes.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
+                //x & y - position on screen in pixels
+                //(the same as you use when drawing GUI
+                net.minecraft.client.renderer.ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+                
+                int x = recipeItemX;
+                int y = recipeItemY;
+                tes.pos(x, y + 16, itemRenderer.zLevel).endVertex();
+                tes.pos(x + 16, y + 16, itemRenderer.zLevel).endVertex();
+                tes.pos(x + 16, y, itemRenderer.zLevel).endVertex();
+                tes.pos(x, y, itemRenderer.zLevel).endVertex();
+                tessellator.draw();
+                GlStateManager.enableTexture();
+            }
         }
         
+
         RenderHelper.disableStandardItemLighting();
     }
     
