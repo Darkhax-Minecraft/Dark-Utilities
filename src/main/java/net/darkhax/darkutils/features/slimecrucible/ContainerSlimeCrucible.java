@@ -3,6 +3,8 @@ package net.darkhax.darkutils.features.slimecrucible;
 import java.util.List;
 import java.util.function.Consumer;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.Lists;
 
 import net.darkhax.bookshelf.inventory.InventoryListenable;
@@ -10,6 +12,7 @@ import net.darkhax.bookshelf.inventory.SlotOutput;
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.CraftResultInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Container;
@@ -17,8 +20,6 @@ import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.StonecuttingRecipe;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.IntReferenceHolder;
@@ -29,10 +30,14 @@ import net.minecraft.world.World;
 
 public class ContainerSlimeCrucible extends Container {
     
+    @Nullable
+    private final ServerPlayerEntity playerEntity;
     private final IWorldPosCallable worldPosition;
+    private final World playerWorld;
     private final IntReferenceHolder selectedRecipe = IntReferenceHolder.single();
-    private final World world;
-    private List<StonecuttingRecipe> availableRecipes = Lists.newArrayList();
+    private boolean hasSyncedType = false;
+    private SlimeCrucibleType crucibleType;
+    private List<RecipeSlimeCrafting> availableRecipes = Lists.newArrayList();
     private ItemStack currentInput = ItemStack.EMPTY;
     private long lastSoundPlayingTick;
     final Slot slotInput;
@@ -49,10 +54,21 @@ public class ContainerSlimeCrucible extends Container {
     public ContainerSlimeCrucible(int id, PlayerInventory playerInventory, final IWorldPosCallable worldPosition) {
         
         super(DarkUtils.content.containerSlimeCrucible, id);
+        this.playerEntity = playerInventory.player instanceof ServerPlayerEntity ? (ServerPlayerEntity) playerInventory.player : null;
+        this.playerWorld = playerInventory.player.world;
         this.worldPosition = worldPosition;
-        this.world = playerInventory.player.world;
         this.slotInput = this.addSlot(new Slot(this.inventory, 0, 20, 33));
         this.slotOutput = this.addSlot(new SlotOutput(this.reultInventory, 1, 143, 33, this::onOutputSlotChanged));
+        
+        this.worldPosition.consume((world, pos) -> {
+            
+            TileEntity tileEntity = world.getTileEntity(pos);
+
+            if (tileEntity instanceof TileEntitySlimeCrucible) {
+                
+                this.setCrucibleType(((TileEntitySlimeCrucible) tileEntity).getCrucibleType());
+            }
+        });
         
         // Add player inventory
         for (int row = 0; row < 3; row++) {
@@ -72,12 +88,23 @@ public class ContainerSlimeCrucible extends Container {
         this.func_216958_a(this.selectedRecipe);
     }
     
+    public void setCrucibleType(SlimeCrucibleType type) {
+        
+        this.crucibleType = type;
+        this.updateAvailableRecipes();
+    }
+    
+    public SlimeCrucibleType getCrucibleType() {
+        
+        return this.crucibleType;
+    }
+    
     public int getSelectedRecipe () {
         
         return this.selectedRecipe.get();
     }
     
-    public List<StonecuttingRecipe> getAvailableRecipes () {
+    public List<RecipeSlimeCrafting> getAvailableRecipes () {
         
         return this.availableRecipes;
     }
@@ -111,33 +138,60 @@ public class ContainerSlimeCrucible extends Container {
     }
     
     @Override
+    public void detectAndSendChanges() {
+        
+        super.detectAndSendChanges();
+        
+        if (!this.hasSyncedType && this.playerEntity != null && this.getType() != null) {
+            
+            DarkUtils.NETWORK.sendToPlayer(this.playerEntity, new MessageSyncCrucibleType(this.getCrucibleType().getRegistryName()));
+            this.hasSyncedType = true;
+        }
+    }
+    
+    @Override
     public void onCraftMatrixChanged (IInventory inventoryIn) {
         
         final ItemStack inputStack = this.slotInput.getStack();
-        if (inputStack.getItem() != this.currentInput.getItem()) {
-            this.currentInput = inputStack.copy();
-            this.updateAvailableRecipes(inventoryIn, inputStack);
-        }
         
+        if (inputStack.getItem() != this.currentInput.getItem()) {
+            
+            this.currentInput = inputStack.copy();
+        }
+
+        // TODO check if the item is still valid before resetting.
+        this.selectedRecipe.set(-1);
+        this.slotOutput.putStack(ItemStack.EMPTY);
     }
     
-    private void updateAvailableRecipes (IInventory inventory, ItemStack inputStack) {
+    private void updateAvailableRecipes () {
         
         this.availableRecipes.clear();
         this.selectedRecipe.set(-1);
         this.slotOutput.putStack(ItemStack.EMPTY);
-        if (!inputStack.isEmpty()) {
-            this.availableRecipes = this.world.getRecipeManager().getRecipes(IRecipeType.STONECUTTING, inventory, this.world);
+        
+        if (this.getCrucibleType() != null) {
+            
+            for (RecipeSlimeCrafting recipe : DarkUtils.getRecipeList(DarkUtils.content.recipeTypeSlimeCrafting, this.playerWorld.getRecipeManager())) {
+                
+                if (recipe.isValid(this.getCrucibleType())) {
+                    
+                    this.availableRecipes.add(recipe);
+                }
+            }
         }
     }
     
     private void updateOutputs () {
         
-        if (!this.availableRecipes.isEmpty()) {
-            final StonecuttingRecipe stonecuttingrecipe = this.availableRecipes.get(this.selectedRecipe.get());
-            this.slotOutput.putStack(stonecuttingrecipe.getCraftingResult(this.inventory));
+        if (!this.availableRecipes.isEmpty() && this.selectedRecipe.get() >= 0 && this.selectedRecipe.get() < this.availableRecipes.size()) {
+            
+            final RecipeSlimeCrafting recipeSelected = this.availableRecipes.get(this.selectedRecipe.get());
+            this.slotOutput.putStack(recipeSelected.getCraftingResult(this.inventory));
         }
+        
         else {
+            
             this.slotOutput.putStack(ItemStack.EMPTY);
         }
         
@@ -166,7 +220,7 @@ public class ContainerSlimeCrucible extends Container {
         
         super.onContainerClosed(playerIn);
         this.reultInventory.removeStackFromSlot(1);
-        this.worldPosition.consume( (worldIn, posIn) -> this.clearContainer(playerIn, playerIn.world, this.inventory));
+        this.worldPosition.consume( (world, posIn) -> this.clearContainer(playerIn, playerIn.world, this.inventory));
     }
     
     private void onOutputSlotChanged (PlayerEntity player, ItemStack stack) {
@@ -183,19 +237,12 @@ public class ContainerSlimeCrucible extends Container {
     
     private void playCraftingSound (World world, BlockPos pos) {
         
-        final TileEntity tileEntity = world.getTileEntity(pos);
-        
-        if (tileEntity instanceof TileEntitySlimeCrucible) {
+        if (this.getCrucibleType() != null) {
             
-            final SlimeCrucibleType type = ((TileEntitySlimeCrucible) tileEntity).getCrucibleType();
-            
-            if (type != null) {
-                
-                final long worldTime = world.getGameTime();
-                if (this.lastSoundPlayingTick != worldTime) {
-                    world.playSound((PlayerEntity) null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    this.lastSoundPlayingTick = worldTime;
-                }
+            final long worldTime = world.getGameTime();
+            if (this.lastSoundPlayingTick != worldTime) {
+                world.playSound((PlayerEntity) null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                this.lastSoundPlayingTick = worldTime;
             }
         }
     }

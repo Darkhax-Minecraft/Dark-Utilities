@@ -12,6 +12,7 @@ import net.darkhax.darkutils.features.flatblocks.tick.TickEffect;
 import net.darkhax.darkutils.features.flatblocks.tick.TickEffectExport;
 import net.darkhax.darkutils.features.slimecrucible.BlockSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.ContainerSlimeCrucible;
+import net.darkhax.darkutils.features.slimecrucible.RecipeSlimeCrafting;
 import net.darkhax.darkutils.features.slimecrucible.RecipeSlimeFood;
 import net.darkhax.darkutils.features.slimecrucible.SlimeCrucibleType;
 import net.darkhax.darkutils.features.slimecrucible.TileEntitySlimeCrucible;
@@ -24,10 +25,16 @@ import net.minecraft.tileentity.TileEntityType;
 public class Content {
     
     /*
-     * RECIPE SYSTEMS
+     * RECIPE TYPES
      */
     public final IRecipeType<RecipeSlimeFood> recipeTypeSlimeFood;
+    public final IRecipeType<RecipeSlimeCrafting> recipeTypeSlimeCrafting;
+    
+    /**
+     * RECIPE SERIALIZERS
+     */
     public final IRecipeSerializer<RecipeSlimeFood> recipeSerializerSlimeFood;
+    public final IRecipeSerializer<RecipeSlimeCrafting> recipeSerializerSlimeCrafting;
     
     /**
      * BLOCKS
@@ -63,7 +70,10 @@ public class Content {
     public Content(RegistryHelper registry) {
         
         this.recipeTypeSlimeFood = registry.registerRecipeType("slime_food");
+        this.recipeTypeSlimeCrafting = registry.registerRecipeType("slime_crafting");
+        
         this.recipeSerializerSlimeFood = registry.registerRecipeSerializer(RecipeSlimeFood.SERIALIZER, "slime_food");
+        this.recipeSerializerSlimeCrafting = registry.registerRecipeSerializer(RecipeSlimeCrafting.SERIALIZER, "slime_crafting");
         
         final CollisionEffect effectVectorPlate = new CollisionEffectPush(0.06d);
         final CollisionEffect effectVectorPlateFast = new CollisionEffectPush(0.3d);

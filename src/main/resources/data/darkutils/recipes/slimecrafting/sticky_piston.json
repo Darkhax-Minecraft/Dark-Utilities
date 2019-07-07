@@ -1,0 +1,13 @@
+{
+  "type": "darkutils:slime_crafting",
+  "validTypes": [
+    "darkutils:green"
+  ],
+  "input": {
+    "item": "minecraft:piston"
+  },
+  "output": {
+    "item": "minecraft:sticky_piston"
+  },
+  "points": 1
+}
