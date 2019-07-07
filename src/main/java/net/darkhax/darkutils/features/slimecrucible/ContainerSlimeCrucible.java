@@ -1,7 +1,10 @@
 package net.darkhax.darkutils.features.slimecrucible;
 
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
@@ -134,6 +137,7 @@ public class ContainerSlimeCrucible extends Container {
             this.updateOutputs();
         }
         
+        //TODO let items be eaten
         return true;
     }
     
@@ -162,17 +166,18 @@ public class ContainerSlimeCrucible extends Container {
         // TODO check if the item is still valid before resetting.
         this.selectedRecipe.set(-1);
         this.slotOutput.putStack(ItemStack.EMPTY);
+        this.updateAvailableRecipes();
     }
     
     private void updateAvailableRecipes () {
         
         this.availableRecipes.clear();
-        this.selectedRecipe.set(-1);
-        this.slotOutput.putStack(ItemStack.EMPTY);
         
         if (this.getCrucibleType() != null) {
             
-            for (RecipeSlimeCrafting recipe : DarkUtils.getRecipeList(DarkUtils.content.recipeTypeSlimeCrafting, this.playerWorld.getRecipeManager())) {
+            Collection<RecipeSlimeCrafting> recipes = DarkUtils.getRecipeList(DarkUtils.content.recipeTypeSlimeCrafting, this.playerWorld.getRecipeManager());
+            recipes = recipes.stream().sorted(Comparator.comparingInt(recipe -> recipe.isValid(this.currentInput, this.getCrucibleType(), 1000f) ? 0 : 1)).collect(Collectors.toList());
+            for (RecipeSlimeCrafting recipe : recipes) {
                 
                 if (recipe.isValid(this.getCrucibleType())) {
                     
