@@ -275,7 +275,7 @@ public class ContainerSlimeCrucible extends Container {
             
             final long worldTime = world.getGameTime();
             if (this.lastSoundPlayingTick != worldTime) {
-                world.playSound((PlayerEntity) null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.playSound((PlayerEntity) null, pos, this.getCrucibleType().getCraftingSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
                 this.lastSoundPlayingTick = worldTime;
             }
         }

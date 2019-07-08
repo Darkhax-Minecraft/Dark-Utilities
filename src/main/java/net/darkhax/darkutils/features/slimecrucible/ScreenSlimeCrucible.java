@@ -196,7 +196,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
                 
                 if (relativeClickX >= 0.0D && relativeClickY >= 0.0D && relativeClickX < 16.0D && relativeClickY < 18.0D && this.container.enchantItem(this.minecraft.player, recipeId)) {
                     
-                    Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(SoundEvents.BLOCK_SLIME_BLOCK_STEP, 1.0F));
+                    Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(this.container.getCrucibleType().getCraftingSound(), 1.0F));
                     this.minecraft.playerController.sendEnchantPacket(this.container.windowId, recipeId);
                     return true;
                 }
