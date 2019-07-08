@@ -27,9 +27,9 @@ public class SlimeCrucibleType {
      */
     private static final Map<ResourceLocation, SlimeCrucibleType> REGISTRY_MAP = new HashMap<>();
     
-    public static final SlimeCrucibleType ALL = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "all"), 0f, null, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundEvents.ENTITY_GENERIC_EXPLODE);
-    public static final SlimeCrucibleType GREEN = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "green"), 64f, EntityType.SLIME::create, SoundEvents.ENTITY_SLIME_SQUISH, SoundEvents.ENTITY_SLIME_JUMP);
-    public static final SlimeCrucibleType MAGMA = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "magma"), 32f, EntityType.MAGMA_CUBE::create, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, SoundEvents.ENTITY_MAGMA_CUBE_JUMP);
+    public static final SlimeCrucibleType ALL = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "all"), 0, null, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundEvents.ENTITY_GENERIC_EXPLODE);
+    public static final SlimeCrucibleType GREEN = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "green"), 64, EntityType.SLIME::create, SoundEvents.ENTITY_SLIME_SQUISH, SoundEvents.ENTITY_SLIME_JUMP);
+    public static final SlimeCrucibleType MAGMA = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "magma"), 32, EntityType.MAGMA_CUBE::create, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, SoundEvents.ENTITY_MAGMA_CUBE_JUMP);
     
     /**
      * Gets the ID of the entity. This is used for serialization of types in recipes.
@@ -55,7 +55,7 @@ public class SlimeCrucibleType {
     /**
      * The maximum number of slime that can be held by a crucible.
      */
-    private final float maxSlimePoints;
+    private final int maxSlimePoints;
     
     /**
      * A function that is used to build the slime in the crucible. This is primarily used on
@@ -63,7 +63,7 @@ public class SlimeCrucibleType {
      */
     private final Function<World, SlimeEntity> entityBuilder;
     
-    public SlimeCrucibleType(ResourceLocation id, float maxSlimePoints, Function<World, SlimeEntity> entityBuilder, SoundEvent craftingSound, SoundEvent happySound) {
+    public SlimeCrucibleType(ResourceLocation id, int maxSlimePoints, Function<World, SlimeEntity> entityBuilder, SoundEvent craftingSound, SoundEvent happySound) {
         
         this.id = id;
         this.maxSlimePoints = maxSlimePoints;
@@ -198,7 +198,7 @@ public class SlimeCrucibleType {
      * 
      * @return The maximum number of slime points that a slime can be fed.
      */
-    public float getMaxSlimePoints () {
+    public int getMaxSlimePoints () {
         
         return this.maxSlimePoints;
     }

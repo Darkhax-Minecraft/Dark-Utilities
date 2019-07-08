@@ -30,7 +30,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.RenderPlayerEvent;
 
 public class ContainerSlimeCrucible extends Container {
     
@@ -177,7 +176,7 @@ public class ContainerSlimeCrucible extends Container {
         if (this.getCrucibleType() != null) {
             
             Collection<RecipeSlimeCrafting> recipes = DarkUtils.getRecipeList(DarkUtils.content.recipeTypeSlimeCrafting, this.playerWorld.getRecipeManager());
-            recipes = recipes.stream().sorted(Comparator.comparingInt(recipe -> recipe.isValid(this.currentInput, this.getCrucibleType(), 1000f) ? 0 : 1)).collect(Collectors.toList());
+            recipes = recipes.stream().sorted(Comparator.comparingInt(recipe -> recipe.isValid(this.currentInput, this.getCrucibleType(), 100) ? 0 : 1)).collect(Collectors.toList());
             for (RecipeSlimeCrafting recipe : recipes) {
                 
                 if (recipe.isValid(this.getCrucibleType())) {

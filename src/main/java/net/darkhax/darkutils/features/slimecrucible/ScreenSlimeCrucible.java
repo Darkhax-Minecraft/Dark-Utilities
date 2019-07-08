@@ -120,7 +120,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeRow = recipeIndex / 4;
             final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
             
-            if (!this.container.getAvailableRecipes().get(i).isValid(this.container.slotInput.getStack(), this.container.getCrucibleType(), 100f)) {
+            if (!this.container.getAvailableRecipes().get(i).isValid(this.container.slotInput.getStack(), this.container.getCrucibleType(), 100)) {
                 
                 this.tempRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, 0x80808080);
             }

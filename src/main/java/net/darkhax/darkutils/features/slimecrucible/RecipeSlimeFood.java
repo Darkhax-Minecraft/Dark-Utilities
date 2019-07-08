@@ -27,11 +27,11 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
     public static final Serializer SERIALIZER = new Serializer();
     
     private final Ingredient input;
-    private final float points;
+    private final int points;
     private final ResourceLocation id;
     private final SlimeCrucibleType[] validTypes;
     
-    public RecipeSlimeFood(ResourceLocation id, Ingredient input, float points, SlimeCrucibleType... types) {
+    public RecipeSlimeFood(ResourceLocation id, Ingredient input, int points, SlimeCrucibleType... types) {
         
         this.id = id;
         this.input = input;
@@ -81,7 +81,7 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
         return new ItemStack(Items.SLIME_BALL);
     }
     
-    public float getSlimePoints () {
+    public int getSlimePoints () {
         
         return this.points;
     }
@@ -111,7 +111,7 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
             
             final JsonElement inputElement = JSONUtils.isJsonArray(json, "input") ? JSONUtils.getJsonArray(json, "input") : JSONUtils.getJsonObject(json, "input");
             final Ingredient input = Ingredient.deserialize(inputElement);
-            final float points = JSONUtils.getFloat(json, "points");
+            final int points = JSONUtils.getInt(json, "points");
             
             final JsonArray typesArray = JSONUtils.getJsonArray(json, "validTypes");
             final Set<SlimeCrucibleType> types = new HashSet<>();
@@ -139,7 +139,7 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
         public RecipeSlimeFood read (ResourceLocation recipeId, PacketBuffer buffer) {
             
             final Ingredient input = Ingredient.read(buffer);
-            final float points = buffer.readFloat();
+            final int points = buffer.readInt();
             final SlimeCrucibleType[] types = new SlimeCrucibleType[buffer.readInt()];
             
             for (int i = 0; i < types.length; i++) {
@@ -154,7 +154,7 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
         public void write (PacketBuffer buffer, RecipeSlimeFood recipe) {
             
             recipe.input.write(buffer);
-            buffer.writeFloat(recipe.points);
+            buffer.writeInt(recipe.points);
             buffer.writeInt(recipe.validTypes.length);
             
             for (final SlimeCrucibleType type : recipe.validTypes) {

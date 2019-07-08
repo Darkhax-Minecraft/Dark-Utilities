@@ -27,7 +27,7 @@ import net.minecraftforge.common.util.Constants.NBT;
 public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements INamedContainerProvider, INameable {
     
     private ITextComponent customName;
-    private float slimePoints = 0.0f;
+    private int slimePoints = 0;
     
     private Direction sideToFace = Direction.SOUTH;
     private double slimeHeightOffset = 0.2f;
@@ -44,7 +44,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     @Override
     public void writeNBT (CompoundNBT dataTag) {
         
-        dataTag.putFloat("SlimePoints", this.slimePoints);
+        dataTag.putInt("SlimePoints", this.slimePoints);
         
         if (this.customName != null) {
             dataTag.putString("CustomName", ITextComponent.Serializer.toJson(this.customName));
@@ -54,7 +54,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     @Override
     public void readNBT (CompoundNBT dataTag) {
         
-        this.slimePoints = dataTag.getFloat("SlimePoints");
+        this.slimePoints = dataTag.getInt("SlimePoints");
         
         if (dataTag.contains("CustomName", NBT.TAG_STRING)) {
             this.customName = ITextComponent.Serializer.fromJson(dataTag.getString("CustomName"));
@@ -119,12 +119,12 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
         return this.slimeHeightOffset;
     }
     
-    public float getContainedSlimePoints () {
+    public int getContainedSlimePoints () {
         
         return this.slimePoints;
     }
     
-    public static float getSlimePointsForItem (World world, ItemStack inputStack, Block crucibleBlock) {
+    public static int getSlimePointsForItem (World world, ItemStack inputStack, Block crucibleBlock) {
         
         for (final IRecipe<?> recipeCandidate : WorldUtils.getRecipes(DarkUtils.content.recipeTypeSlimeFood, world.getRecipeManager()).values()) {
             
@@ -139,7 +139,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
             }
         }
         
-        return ComposterBlock.CHANCES.getOrDefault(inputStack.getItem(), 0.0f) * 5f;
+        return MathHelper.floor(ComposterBlock.CHANCES.getOrDefault(inputStack.getItem(), 0.0f) * 5f);
     }
     
     public float getSquishFactor () {
@@ -162,7 +162,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
         this.squishAmount = amount;
     }
     
-    public void setSlimePoints (float newPoints) {
+    public void setSlimePoints (int newPoints) {
         
         this.slimePoints = Math.min(newPoints, this.getCrucibleType().getMaxSlimePoints());
     }

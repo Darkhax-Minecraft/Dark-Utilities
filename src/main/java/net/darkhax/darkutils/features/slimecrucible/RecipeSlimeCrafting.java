@@ -8,7 +8,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import net.darkhax.darkutils.DarkUtils;
-import net.minecraft.block.Block;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -29,11 +28,11 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
     
     private final Ingredient input;
     private final ItemStack output;
-    private final float points;
+    private final int points;
     private final ResourceLocation id;
     private final SlimeCrucibleType[] validTypes;
     
-    public RecipeSlimeCrafting(ResourceLocation id, Ingredient input, ItemStack output, float points, SlimeCrucibleType... types) {
+    public RecipeSlimeCrafting(ResourceLocation id, Ingredient input, ItemStack output, int points, SlimeCrucibleType... types) {
         
         this.id = id;
         this.input = input;
@@ -100,7 +99,7 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
         return slimeCrucibleType.matchesAny(this.validTypes);
     }
     
-    public boolean isValid (ItemStack input, SlimeCrucibleType slimeCrucibleType, float containedPoints) {
+    public boolean isValid (ItemStack input, SlimeCrucibleType slimeCrucibleType, int containedPoints) {
         
         return slimeCrucibleType.matchesAny(this.validTypes) && this.input.test(input) && this.points <= containedPoints;
     }
@@ -113,7 +112,7 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
             final JsonElement inputElement = JSONUtils.isJsonArray(json, "input") ? JSONUtils.getJsonArray(json, "input") : JSONUtils.getJsonObject(json, "input");
             final ItemStack output = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "output"));
             final Ingredient input = Ingredient.deserialize(inputElement);
-            final float points = JSONUtils.getFloat(json, "points");
+            final int points = JSONUtils.getInt(json, "points");
             
             final JsonArray typesArray = JSONUtils.getJsonArray(json, "validTypes");
             final Set<SlimeCrucibleType> types = new HashSet<>();
@@ -142,7 +141,7 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
             
             final Ingredient input = Ingredient.read(buffer);
             final ItemStack output = buffer.readItemStack();
-            final float points = buffer.readFloat();
+            final int points = buffer.readInt();
             final SlimeCrucibleType[] types = new SlimeCrucibleType[buffer.readInt()];
             
             for (int i = 0; i < types.length; i++) {
@@ -158,7 +157,7 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
             
             recipe.input.write(buffer);
             buffer.writeItemStack(recipe.output);
-            buffer.writeFloat(recipe.points);
+            buffer.writeInt(recipe.points);
             buffer.writeInt(recipe.validTypes.length);
             
             for (final SlimeCrucibleType type : recipe.validTypes) {
