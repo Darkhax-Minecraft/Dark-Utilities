@@ -16,5 +16,8 @@
   "container.darkutils.slime_crucible.magma": "Magma Slime Crucible",
   
   "tooltips.darkutils.input": "Input: %s",
-  "tooltips.darkutils.output": "Output: %s"
+  "tooltips.darkutils.output": "Output: %s",
+  "tooltips.darkutils.slime_points": "%s: %d",
+  "tooltips.darkutils.slime_crucible.material.green": "Slime",
+  "tooltips.darkutils.slime_crucible.material.magma": "Magma"
 }

@@ -52,13 +52,10 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         final int selectionBoxY = this.guiTop + 14;
         final int lastRecipeIndex = this.recipeIndexOffset + 12;
         
-        this.renderHoveredToolTip(mouseX, mouseY);
-        this.renderRecipeTooltips(selectionBoxX, selectionBoxY, mouseX, mouseY, lastRecipeIndex);
-        
         if (this.renderEntity != null) {
             
             final int x = this.guiLeft + 28;
-            final int y = this.guiTop + 40;
+            final int y = this.guiTop + 38;
             InventoryScreen.drawEntityOnScreen(x, y, 30, x - mouseX, y - mouseY, this.renderEntity);
         }
         
@@ -66,6 +63,9 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             
             this.renderEntity = this.container.getCrucibleType().createSlime(this.clientWorld);
         }
+        
+        this.renderHoveredToolTip(mouseX, mouseY);
+        this.renderRecipeTooltips(selectionBoxX, selectionBoxY, mouseX, mouseY, lastRecipeIndex);
     }
     
     @Override
@@ -159,10 +159,21 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
                 final List<String> tooltip = new ArrayList<>();
                 tooltip.add(I18n.format("tooltips.darkutils.input", inputs[(int) (this.clientWorld.getGameTime() / 20 % inputs.length)].getDisplayName().getFormattedText()));
                 tooltip.add(I18n.format("tooltips.darkutils.output", recipe.getRecipeOutput().getDisplayName().getFormattedText()));
+                tooltip.add(I18n.format("tooltips.darkutils.slime_points", this.container.getCrucibleType().getMaterialName().getFormattedText(), recipe.getSlimePoints()));
                 this.renderTooltip(tooltip, mouseX, mouseY);
                 
                 break;
             }
+        }
+        
+        final int x = this.guiLeft + 20;
+        final int y = this.guiTop + 22;
+        
+        if (mouseX >= x && mouseY >= y && mouseX < x + 16 && mouseY < y + 16) {
+            
+            final List<String> tooltip = new ArrayList<>();
+            tooltip.add(I18n.format("tooltips.darkutils.slime_points", this.container.getCrucibleType().getMaterialName().getFormattedText(), this.container.getSlimePoints()));
+            this.renderTooltip(tooltip, mouseX, mouseY);
         }
     }
     
