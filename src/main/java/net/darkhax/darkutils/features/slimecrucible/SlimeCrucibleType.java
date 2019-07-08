@@ -27,9 +27,9 @@ public class SlimeCrucibleType {
      */
     private static final Map<ResourceLocation, SlimeCrucibleType> REGISTRY_MAP = new HashMap<>();
     
-    public static final SlimeCrucibleType ALL = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "all"), 0, null, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundEvents.ENTITY_GENERIC_EXPLODE);
-    public static final SlimeCrucibleType GREEN = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "green"), 64, EntityType.SLIME::create, SoundEvents.ENTITY_SLIME_SQUISH, SoundEvents.ENTITY_SLIME_JUMP);
-    public static final SlimeCrucibleType MAGMA = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "magma"), 32, EntityType.MAGMA_CUBE::create, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, SoundEvents.ENTITY_MAGMA_CUBE_JUMP);
+    public static final SlimeCrucibleType ALL = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "all"), 0, null, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundEvents.ENTITY_GENERIC_EXPLODE, 0);
+    public static final SlimeCrucibleType GREEN = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "green"), 64, EntityType.SLIME::create, SoundEvents.ENTITY_SLIME_SQUISH, SoundEvents.ENTITY_SLIME_JUMP, 0xff33cc00);
+    public static final SlimeCrucibleType MAGMA = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "magma"), 32, EntityType.MAGMA_CUBE::create, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, 0xff663300);
     
     /**
      * Gets the ID of the entity. This is used for serialization of types in recipes.
@@ -63,18 +63,24 @@ public class SlimeCrucibleType {
     private final int maxSlimePoints;
     
     /**
+     * A color used in the slime crucible when the mouse is over a potential recipe.
+     */
+    private final int overlayColor;
+    
+    /**
      * A function that is used to build the slime in the crucible. This is primarily used on
      * the client for the tile entity renderer but can safely be used on both sides.
      */
     private final Function<World, SlimeEntity> entityBuilder;
     
-    public SlimeCrucibleType(ResourceLocation id, int maxSlimePoints, Function<World, SlimeEntity> entityBuilder, SoundEvent craftingSound, SoundEvent happySound) {
+    public SlimeCrucibleType(ResourceLocation id, int maxSlimePoints, Function<World, SlimeEntity> entityBuilder, SoundEvent craftingSound, SoundEvent happySound, int overlayColor) {
         
         this.id = id;
         this.maxSlimePoints = maxSlimePoints;
         this.entityBuilder = entityBuilder;
         this.craftingSound = craftingSound;
         this.happySound = happySound;
+        this.overlayColor = overlayColor;
         this.containerName = new TranslationTextComponent("container." + id.getNamespace() + ".slime_crucible." + id.getPath());
         this.materialName = new TranslationTextComponent("tooltips." + id.getNamespace() + ".slime_crucible.material." + id.getPath());
         REGISTRY_MAP.put(id, this);
@@ -217,5 +223,14 @@ public class SlimeCrucibleType {
     public int getMaxSlimePoints () {
         
         return this.maxSlimePoints;
+    }
+    
+    /**
+     * Gets the overlay color for the slime type. This is used by the crucible gui for rendering the hovered state of recipes in the GUI.
+     * @return The overlay color for the slime type.
+     */
+    public int getOverlayColor() {
+        
+        return this.overlayColor;
     }
 }

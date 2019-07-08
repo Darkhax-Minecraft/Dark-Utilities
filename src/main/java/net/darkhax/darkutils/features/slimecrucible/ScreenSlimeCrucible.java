@@ -29,7 +29,6 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
     
     private static final ResourceLocation TEXTURE = new ResourceLocation("darkutils", "textures/gui/container/slime_crucible.png");
     private final World clientWorld;
-    private final TempItemRenderer tempRenderer = new TempItemRenderer(Minecraft.getInstance().getItemRenderer());
     private float sliderProgress;
     private boolean mouseBeingDragged;
     private int recipeIndexOffset;
@@ -101,6 +100,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeY = selectionBoxY + recipeRow * 18 + 2;
             final boolean canCraftRecipe = this.container.canCraft(i);
             int textureY = this.ySize;
+            int color = 0xffffffff;
             
             if (!canCraftRecipe) {
                 
@@ -117,9 +117,10 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             else if (mouseX >= recipeX && mouseY >= recipeY && mouseX < recipeX + 16 && mouseY < recipeY + 18) {
                 
                 textureY += 36;
+                color = this.container.getCrucibleType().getOverlayColor();
             }
             
-            this.blit(recipeX, recipeY - 1, 0, textureY, 16, 18);
+            TempItemRenderer.drawModalRectWithCustomSizedTexture(recipeX, recipeY - 1, this.blitOffset, 0, textureY, 16, 18, 256, 256, color);
         }
     }
     
@@ -135,7 +136,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeRow = recipeIndex / 4;
             final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
             
-            this.tempRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, this.container.canCraft(i) ? 0xffffffff : 0x80808080);
+            TempItemRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, this.container.canCraft(i) ? 0xffffffff : 0x80808080);
         }
         
         RenderHelper.disableStandardItemLighting();
