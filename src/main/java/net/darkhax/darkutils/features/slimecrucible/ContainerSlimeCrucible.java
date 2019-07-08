@@ -64,6 +64,7 @@ public class ContainerSlimeCrucible extends Container {
         this.worldPosition = worldPosition;
         this.slotInput = this.addSlot(new Slot(this.inventory, 0, 20, 49));
         this.slotOutput = this.addSlot(new SlotOutput(this.reultInventory, 1, 143, 33, this::onOutputSlotChanged));
+        this.selectedRecipe.set(-1);
         
         this.worldPosition.consume( (world, pos) -> {
             
