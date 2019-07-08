@@ -2,26 +2,22 @@ package net.darkhax.darkutils.features.slimecrucible;
 
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
 import com.mojang.blaze3d.platform.GlStateManager;
 
 import net.darkhax.darkutils.TempItemRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
-import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.renderer.vertex.VertexBuffer;
+import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -29,15 +25,18 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible> {
     
     private static final ResourceLocation TEXTURE = new ResourceLocation("darkutils", "textures/gui/container/slime_crucible.png");
+    private final World clientWorld;
     private final TempItemRenderer tempRenderer = new TempItemRenderer(Minecraft.getInstance().getItemRenderer());
     private float sliderProgress;
     private boolean mouseBeingDragged;
     private int recipeIndexOffset;
     private boolean showRecipes;
+    private SlimeEntity renderEntity;
     
     public ScreenSlimeCrucible(ContainerSlimeCrucible container, PlayerInventory playerInventory, ITextComponent title) {
         
         super(container, playerInventory, title);
+        this.clientWorld = playerInventory.player.world;
         container.setUpdateListener(this::listenToContainerUpdate);
     }
     
@@ -46,6 +45,18 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         
         super.render(mouseX, mouseY, partialTicks);
         this.renderHoveredToolTip(mouseX, mouseY);
+        
+        if (renderEntity != null) {
+            
+            int x = this.guiLeft + 28;
+            int y = this.guiTop + 40;
+            InventoryScreen.drawEntityOnScreen(x, y, 30, x - mouseX, y - mouseY, this.renderEntity);
+        }
+        
+        else if (this.container.getType() != null) {
+            
+            this.renderEntity = this.container.getCrucibleType().createSlime(this.clientWorld);
+        }
     }
     
     @Override

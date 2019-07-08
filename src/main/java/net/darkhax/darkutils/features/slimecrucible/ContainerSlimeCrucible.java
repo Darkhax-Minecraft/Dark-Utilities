@@ -30,6 +30,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 
 public class ContainerSlimeCrucible extends Container {
     
@@ -60,7 +61,7 @@ public class ContainerSlimeCrucible extends Container {
         this.playerEntity = playerInventory.player instanceof ServerPlayerEntity ? (ServerPlayerEntity) playerInventory.player : null;
         this.playerWorld = playerInventory.player.world;
         this.worldPosition = worldPosition;
-        this.slotInput = this.addSlot(new Slot(this.inventory, 0, 20, 33));
+        this.slotInput = this.addSlot(new Slot(this.inventory, 0, 20, 49));
         this.slotOutput = this.addSlot(new SlotOutput(this.reultInventory, 1, 143, 33, this::onOutputSlotChanged));
         
         this.worldPosition.consume((world, pos) -> {
