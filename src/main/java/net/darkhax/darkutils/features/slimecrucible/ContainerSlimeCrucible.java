@@ -12,6 +12,7 @@ import com.google.common.collect.Lists;
 
 import net.darkhax.bookshelf.inventory.InventoryListenable;
 import net.darkhax.bookshelf.inventory.SlotOutput;
+import net.darkhax.bookshelf.util.WorldUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -38,9 +39,10 @@ public class ContainerSlimeCrucible extends Container {
     private final IWorldPosCallable worldPosition;
     private final World playerWorld;
     private final IntReferenceHolder selectedRecipe = IntReferenceHolder.single();
+    private final IntReferenceHolder slimePoints = IntReferenceHolder.single();
     private boolean hasSyncedType = false;
     private SlimeCrucibleType crucibleType;
-    private List<RecipeSlimeCrafting> availableRecipes = Lists.newArrayList();
+    private final List<RecipeSlimeCrafting> availableRecipes = Lists.newArrayList();
     private ItemStack currentInput = ItemStack.EMPTY;
     private long lastSoundPlayingTick;
     final Slot slotInput;
@@ -63,13 +65,14 @@ public class ContainerSlimeCrucible extends Container {
         this.slotInput = this.addSlot(new Slot(this.inventory, 0, 20, 49));
         this.slotOutput = this.addSlot(new SlotOutput(this.reultInventory, 1, 143, 33, this::onOutputSlotChanged));
         
-        this.worldPosition.consume((world, pos) -> {
+        this.worldPosition.consume( (world, pos) -> {
             
-            TileEntity tileEntity = world.getTileEntity(pos);
-
+            final TileEntity tileEntity = world.getTileEntity(pos);
+            
             if (tileEntity instanceof TileEntitySlimeCrucible) {
                 
                 this.setCrucibleType(((TileEntitySlimeCrucible) tileEntity).getCrucibleType());
+                this.slimePoints.set(((TileEntitySlimeCrucible) tileEntity).getContainedSlimePoints());
             }
         });
         
@@ -89,15 +92,26 @@ public class ContainerSlimeCrucible extends Container {
         }
         
         this.func_216958_a(this.selectedRecipe);
+        this.func_216958_a(this.slimePoints);
     }
     
-    public void setCrucibleType(SlimeCrucibleType type) {
+    public boolean canCraft (int recipeIndex) {
+        
+        return this.canCraft(this.getAvailableRecipes().get(recipeIndex));
+    }
+    
+    public boolean canCraft (RecipeSlimeCrafting recipe) {
+        
+        return recipe.isValid(this.getCurrentInput(), this.getCrucibleType(), this.getSlimePoints());
+    }
+    
+    public void setCrucibleType (SlimeCrucibleType type) {
         
         this.crucibleType = type;
         this.updateAvailableRecipes();
     }
     
-    public SlimeCrucibleType getCrucibleType() {
+    public SlimeCrucibleType getCrucibleType () {
         
         return this.crucibleType;
     }
@@ -105,6 +119,11 @@ public class ContainerSlimeCrucible extends Container {
     public int getSelectedRecipe () {
         
         return this.selectedRecipe.get();
+    }
+    
+    public int getSlimePoints () {
+        
+        return this.slimePoints.get();
     }
     
     public List<RecipeSlimeCrafting> getAvailableRecipes () {
@@ -132,17 +151,18 @@ public class ContainerSlimeCrucible extends Container {
     @Override
     public boolean enchantItem (PlayerEntity playerIn, int id) {
         
-        if (id >= 0 && id < this.availableRecipes.size()) {
+        if (id >= 0 && id < this.availableRecipes.size() && this.canCraft(id)) {
             this.selectedRecipe.set(id);
             this.updateOutputs();
+            return true;
         }
         
-        //TODO let items be eaten
-        return true;
+        // TODO let items be eaten
+        return false;
     }
     
     @Override
-    public void detectAndSendChanges() {
+    public void detectAndSendChanges () {
         
         super.detectAndSendChanges();
         
@@ -162,11 +182,16 @@ public class ContainerSlimeCrucible extends Container {
             
             this.currentInput = inputStack.copy();
         }
-
+        
         // TODO check if the item is still valid before resetting.
         this.selectedRecipe.set(-1);
         this.slotOutput.putStack(ItemStack.EMPTY);
         this.updateAvailableRecipes();
+    }
+    
+    public ItemStack getCurrentInput () {
+        
+        return this.currentInput;
     }
     
     private void updateAvailableRecipes () {
@@ -175,9 +200,9 @@ public class ContainerSlimeCrucible extends Container {
         
         if (this.getCrucibleType() != null) {
             
-            Collection<RecipeSlimeCrafting> recipes = DarkUtils.getRecipeList(DarkUtils.content.recipeTypeSlimeCrafting, this.playerWorld.getRecipeManager());
-            recipes = recipes.stream().sorted(Comparator.comparingInt(recipe -> recipe.isValid(this.currentInput, this.getCrucibleType(), 100) ? 0 : 1)).collect(Collectors.toList());
-            for (RecipeSlimeCrafting recipe : recipes) {
+            Collection<RecipeSlimeCrafting> recipes = WorldUtils.getRecipeList(DarkUtils.content.recipeTypeSlimeCrafting, this.playerWorld.getRecipeManager());
+            recipes = recipes.stream().sorted(Comparator.comparingInt(recipe -> this.canCraft(recipe) ? 0 : 1)).collect(Collectors.toList());
+            for (final RecipeSlimeCrafting recipe : recipes) {
                 
                 if (recipe.isValid(this.getCrucibleType())) {
                     

@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.features.slimecrucible;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -10,9 +11,11 @@ import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
@@ -44,12 +47,18 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
     public void render (int mouseX, int mouseY, float partialTicks) {
         
         super.render(mouseX, mouseY, partialTicks);
-        this.renderHoveredToolTip(mouseX, mouseY);
         
-        if (renderEntity != null) {
+        final int selectionBoxX = this.guiLeft + 52;
+        final int selectionBoxY = this.guiTop + 14;
+        final int lastRecipeIndex = this.recipeIndexOffset + 12;
+        
+        this.renderHoveredToolTip(mouseX, mouseY);
+        this.renderRecipeTooltips(selectionBoxX, selectionBoxY, mouseX, mouseY, lastRecipeIndex);
+        
+        if (this.renderEntity != null) {
             
-            int x = this.guiLeft + 28;
-            int y = this.guiTop + 40;
+            final int x = this.guiLeft + 28;
+            final int y = this.guiTop + 40;
             InventoryScreen.drawEntityOnScreen(x, y, 30, x - mouseX, y - mouseY, this.renderEntity);
         }
         
@@ -79,7 +88,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         final int selectionBoxY = this.guiTop + 14;
         final int lastRecipeIndex = this.recipeIndexOffset + 12;
         this.renderRecipeOutputButtons(mouseX, mouseY, selectionBoxX, selectionBoxY, lastRecipeIndex);
-        this.renderRecipeOutputs(selectionBoxX, selectionBoxY, lastRecipeIndex);
+        this.renderRecipeOutputs(selectionBoxX, mouseX, mouseY, selectionBoxY, lastRecipeIndex);
     }
     
     private void renderRecipeOutputButtons (int mouseX, int mouseY, int selectionBoxX, int selectionBoxY, int lastRecipeIndex) {
@@ -90,11 +99,17 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeX = selectionBoxX + recipeIndex % 4 * 16;
             final int recipeRow = recipeIndex / 4;
             final int recipeY = selectionBoxY + recipeRow * 18 + 2;
-            
+            final boolean canCraftRecipe = this.container.canCraft(i);
             int textureY = this.ySize;
             
+            if (!canCraftRecipe) {
+                
+                textureY += 54;
+            }
+            
             // Render the selected/pressed version of the button.
-            if (i == this.container.getSelectedRecipe()) {
+            else if (i == this.container.getSelectedRecipe()) {
+                
                 textureY += 18;
             }
             
@@ -108,31 +123,47 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         }
     }
     
-    private void renderRecipeOutputs (int selectionBoxX, int selectionBoxY, int lastRecipeIndex) {
+    private void renderRecipeOutputs (int selectionBoxX, int mouseX, int mouseY, int selectionBoxY, int lastRecipeIndex) {
         
         RenderHelper.enableGUIStandardItemLighting();
         final List<RecipeSlimeCrafting> list = this.container.getAvailableRecipes();
-
+        
         for (int i = this.recipeIndexOffset; i < lastRecipeIndex && i < this.container.getAvailableRecipesSize(); i++) {
-          
+            
             final int recipeIndex = i - this.recipeIndexOffset;
             final int recipeItemX = selectionBoxX + recipeIndex % 4 * 16;
             final int recipeRow = recipeIndex / 4;
             final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
             
-            if (!this.container.getAvailableRecipes().get(i).isValid(this.container.slotInput.getStack(), this.container.getCrucibleType(), 100)) {
-                
-                this.tempRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, 0x80808080);
-            }
-                        
-            else {
-                
-                this.tempRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, 0xffffffff);
-            }
+            this.tempRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, this.container.canCraft(i) ? 0xffffffff : 0x80808080);
         }
         
-
         RenderHelper.disableStandardItemLighting();
+    }
+    
+    private void renderRecipeTooltips (int selectionBoxX, int selectionBoxY, int mouseX, int mouseY, int lastRecipeIndex) {
+        
+        for (int i = this.recipeIndexOffset; i < lastRecipeIndex && i < this.container.getAvailableRecipesSize(); i++) {
+            
+            final int recipeIndex = i - this.recipeIndexOffset;
+            final int recipeItemX = selectionBoxX + recipeIndex % 4 * 16;
+            final int recipeRow = recipeIndex / 4;
+            final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
+            
+            // Attempt to render tooltip
+            if (mouseX >= recipeItemX && mouseY >= recipeItemY && mouseX < recipeItemX + 16 && mouseY < recipeItemY + 18) {
+                
+                final RecipeSlimeCrafting recipe = this.container.getAvailableRecipes().get(i);
+                final ItemStack[] inputs = recipe.getValidItemStacks();
+                
+                final List<String> tooltip = new ArrayList<>();
+                tooltip.add(I18n.format("tooltips.darkutils.input", inputs[(int) (this.clientWorld.getGameTime() / 20 % inputs.length)].getDisplayName().getFormattedText()));
+                tooltip.add(I18n.format("tooltips.darkutils.output", recipe.getRecipeOutput().getDisplayName().getFormattedText()));
+                this.renderTooltip(tooltip, mouseX, mouseY);
+                
+                break;
+            }
+        }
     }
     
     @Override

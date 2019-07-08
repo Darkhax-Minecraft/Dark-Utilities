@@ -83,15 +83,20 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
         return new ItemStack(Items.SLIME_BALL);
     }
     
+    @Override
+    public boolean isDynamic () {
+        
+        return true;
+    }
+    
     public float getSlimePoints () {
         
         return this.points;
     }
     
-    @Override
-    public boolean isDynamic () {
+    public ItemStack[] getValidItemStacks () {
         
-        return true;
+        return this.input.getMatchingStacks();
     }
     
     public boolean isValid (SlimeCrucibleType slimeCrucibleType) {

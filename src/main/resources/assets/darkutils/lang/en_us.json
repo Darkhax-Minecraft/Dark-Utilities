@@ -13,5 +13,8 @@
   "block.darkutils.slime_crucible_green": "Green Slime Crucible",
   
   "container.darkutils.slime_crucible.green": "Green Slime Crucible",
-  "container.darkutils.slime_crucible.magma": "Magma Slime Crucible"
+  "container.darkutils.slime_crucible.magma": "Magma Slime Crucible",
+  
+  "tooltips.darkutils.input": "Input: %s",
+  "tooltips.darkutils.output": "Output: %s"
 }
