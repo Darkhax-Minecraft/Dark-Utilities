@@ -183,9 +183,12 @@ public class ContainerSlimeCrucible extends Container {
             this.currentInput = inputStack.copy();
         }
         
-        // TODO check if the item is still valid before resetting.
-        this.selectedRecipe.set(-1);
-        this.slotOutput.putStack(ItemStack.EMPTY);
+        if (this.getSelectedRecipe() == -1 || !this.getAvailableRecipes().get(this.getSelectedRecipe()).isValid(inputStack, this.getCrucibleType(), this.getSlimePoints())) {
+            
+            this.selectedRecipe.set(-1);
+            this.slotOutput.putStack(ItemStack.EMPTY);
+        }
+        
         this.updateAvailableRecipes();
     }
     
