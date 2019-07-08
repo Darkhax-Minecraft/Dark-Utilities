@@ -1,0 +1,13 @@
+{
+  "type": "darkutils:slime_crafting",
+  "validTypes": [
+    "darkutils:green"
+  ],
+  "input": {
+    "item": "minecraft:slime_ball"
+  },
+  "output": {
+    "item": "minecraft:slime_block"
+  },
+  "points": 8
+}
