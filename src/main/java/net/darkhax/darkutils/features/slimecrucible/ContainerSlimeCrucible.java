@@ -205,7 +205,8 @@ public class ContainerSlimeCrucible extends Container {
         if (this.getCrucibleType() != null) {
             
             Collection<RecipeSlimeCrafting> recipes = WorldUtils.getRecipeList(DarkUtils.content.recipeTypeSlimeCrafting, this.playerWorld.getRecipeManager());
-            recipes = recipes.stream().sorted(Comparator.comparingInt(recipe -> this.canCraft(recipe) ? 0 : 1)).collect(Collectors.toList());
+            recipes = recipes.stream().sorted(Comparator.comparingInt(recipe -> this.canCraft(recipe) ? -1 : recipe.isHidden() ? 1 : 0)).collect(Collectors.toList());
+            
             for (final RecipeSlimeCrafting recipe : recipes) {
                 
                 if (recipe.isValid(this.getCrucibleType())) {

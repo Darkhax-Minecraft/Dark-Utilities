@@ -102,6 +102,11 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             int textureY = this.ySize;
             int color = 0xffffffff;
             
+            if (!canCraftRecipe && this.container.getAvailableRecipes().get(i).isHidden()) {
+                
+                continue;
+            }
+            
             if (!canCraftRecipe) {
                 
                 textureY += 54;
@@ -136,6 +141,11 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeRow = recipeIndex / 4;
             final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
             
+            if (!this.container.canCraft(i) && this.container.getAvailableRecipes().get(i).isHidden()) {
+                
+                continue;
+            }
+            
             TempItemRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, this.container.canCraft(i) ? 0xffffffff : 0x80808080);
         }
         
@@ -157,11 +167,14 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
                 final RecipeSlimeCrafting recipe = this.container.getAvailableRecipes().get(i);
                 final ItemStack[] inputs = recipe.getValidItemStacks();
                 
-                final List<String> tooltip = new ArrayList<>();
-                tooltip.add(I18n.format("tooltips.darkutils.input", inputs[(int) (this.clientWorld.getGameTime() / 20 % inputs.length)].getDisplayName().getFormattedText()));
-                tooltip.add(I18n.format("tooltips.darkutils.output", recipe.getRecipeOutput().getDisplayName().getFormattedText()));
-                tooltip.add(I18n.format("tooltips.darkutils.slime_points", this.container.getCrucibleType().getMaterialName().getFormattedText(), recipe.getSlimePoints()));
-                this.renderTooltip(tooltip, mouseX, mouseY);
+                if (!recipe.isHidden() || this.container.canCraft(i)) {
+                    
+                    final List<String> tooltip = new ArrayList<>();
+                    tooltip.add(I18n.format("tooltips.darkutils.input", inputs[(int) (this.clientWorld.getGameTime() / 20 % inputs.length)].getDisplayName().getFormattedText()));
+                    tooltip.add(I18n.format("tooltips.darkutils.output", recipe.getRecipeOutput().getDisplayName().getFormattedText()));
+                    tooltip.add(I18n.format("tooltips.darkutils.slime_points", this.container.getCrucibleType().getMaterialName().getFormattedText(), recipe.getSlimePoints()));
+                    this.renderTooltip(tooltip, mouseX, mouseY);
+                }
                 
                 break;
             }
