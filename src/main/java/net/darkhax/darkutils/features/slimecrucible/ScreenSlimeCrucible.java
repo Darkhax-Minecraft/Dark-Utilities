@@ -84,7 +84,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         }
         
         // If the entity doesn't exist and the type isn't null, create a new entity.
-        else if (this.container.getType() != null) {
+        else if (this.container.getCrucibleType() != null) {
             
             this.renderEntity = this.container.getCrucibleType().createSlime(this.clientWorld);
         }
