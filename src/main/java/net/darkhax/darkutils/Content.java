@@ -17,6 +17,10 @@ import net.darkhax.darkutils.features.slimecrucible.RecipeSlimeFood;
 import net.darkhax.darkutils.features.slimecrucible.SlimeCrucibleType;
 import net.darkhax.darkutils.features.slimecrucible.TileEntitySlimeCrucible;
 import net.minecraft.block.Block;
+import net.minecraft.block.Block.Properties;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
@@ -94,8 +98,8 @@ public class Content {
         this.exportPlateHyper = registry.registerBlock(new BlockFlatTileRotatingTicking(effectVectorPlate, exportEffect, 1), "export_plate_extreme");
         this.importPlateHyper = registry.registerBlock(new BlockFlatTileRotating(new CollisionEffectImport(1.5d, 32)), "import_plate_extreme");
         
-        this.slimeCrucibleGreen = registry.registerBlock(new BlockSlimeCrucible(BlockFlatTile.BLOCK_PROPERTIES, SlimeCrucibleType.GREEN), "slime_crucible_green");
-        this.slimeCrucibleMagma = registry.registerBlock(new BlockSlimeCrucible(BlockFlatTile.BLOCK_PROPERTIES, SlimeCrucibleType.MAGMA), "slime_crucible_magma");
+        this.slimeCrucibleGreen = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.CLAY, MaterialColor.GRASS).slipperiness(0.8F).hardnessAndResistance(0.6F).sound(SoundType.SLIME), SlimeCrucibleType.GREEN), "slime_crucible_green");
+        this.slimeCrucibleMagma = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.ROCK, MaterialColor.NETHERRACK).lightValue(3).hardnessAndResistance(0.5F), SlimeCrucibleType.MAGMA), "slime_crucible_magma");
         
         this.tileTickingEffect = registry.registerTileEntity(TileEntityTickingEffect::new, "ticking_tile", this.exportPlate, this.exportPlateFast, this.exportPlateHyper);
         this.tileSlimeCrucible = registry.registerTileEntity(TileEntitySlimeCrucible::new, "slime_crucible", this.slimeCrucibleGreen, this.slimeCrucibleMagma);
