@@ -15,9 +15,9 @@
   "container.darkutils.slime_crucible.green": "Green Slime Crucible",
   "container.darkutils.slime_crucible.magma": "Magma Slime Crucible",
   
-  "tooltips.darkutils.input": "Input: %s",
-  "tooltips.darkutils.output": "Output: %s",
-  "tooltips.darkutils.slime_points": "%s: %d",
+  "tooltips.darkutils.input": "Input: %s%s x %d",
+  "tooltips.darkutils.slime_points": "%s:%s %d",
+  "tooltips.darkutils.slime_crucible.info": "Click on the slime or crucible with food to get more %s.",
   "tooltips.darkutils.slime_crucible.material.green": "Slime",
   "tooltips.darkutils.slime_crucible.material.magma": "Magma"
 }

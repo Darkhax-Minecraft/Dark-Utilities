@@ -113,6 +113,11 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
         return this.inputCount;
     }
     
+    public boolean isValid(ItemStack input) {
+        
+        return input.getCount() >= this.getInputCount() && this.input.test(input);
+    }
+    
     public boolean isValid (SlimeCrucibleType slimeCrucibleType) {
         
         return slimeCrucibleType.matchesAny(this.validTypes);
