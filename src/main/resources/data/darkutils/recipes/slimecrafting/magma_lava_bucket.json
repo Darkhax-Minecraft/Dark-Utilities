@@ -1,0 +1,13 @@
+{
+  "type": "darkutils:slime_crafting",
+  "validTypes": [
+    "darkutils:magma"
+  ],
+  "input": {
+    "item": "minecraft:bucket"
+  },
+  "output": {
+    "item": "minecraft:lava_bucket"
+  },
+  "points": 16
+}
