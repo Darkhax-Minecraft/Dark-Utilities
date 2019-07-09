@@ -8,7 +8,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import net.darkhax.darkutils.DarkUtils;
-import net.minecraft.block.Block;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -92,16 +91,9 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
         return true;
     }
     
-    public boolean isValid (ItemStack input, Block block) {
+    public boolean isValid (ItemStack input, SlimeCrucibleType type) {
         
-        if (block instanceof ISlimeCrucibleBlock) {
-            
-            final SlimeCrucibleType slimeCrucibleType = ((ISlimeCrucibleBlock) block).getCrucibleType();
-            
-            return slimeCrucibleType.matchesAny(this.validTypes) && this.input.test(input);
-        }
-        
-        return false;
+        return type.matchesAny(this.validTypes) && this.input.test(input);
     }
     
     private static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<RecipeSlimeFood> {

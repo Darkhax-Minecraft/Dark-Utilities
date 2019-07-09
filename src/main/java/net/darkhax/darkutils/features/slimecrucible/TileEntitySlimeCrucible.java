@@ -124,7 +124,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
         return this.slimePoints;
     }
     
-    public static int getSlimePointsForItem (World world, ItemStack inputStack, Block crucibleBlock) {
+    public static int getSlimePointsForItem (World world, ItemStack inputStack, SlimeCrucibleType type) {
         
         for (final IRecipe<?> recipeCandidate : WorldUtils.getRecipes(DarkUtils.content.recipeTypeSlimeFood, world.getRecipeManager()).values()) {
             
@@ -132,7 +132,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
                 
                 final RecipeSlimeFood slimeRecipe = (RecipeSlimeFood) recipeCandidate;
                 
-                if (slimeRecipe.isValid(inputStack, crucibleBlock)) {
+                if (slimeRecipe.isValid(inputStack, type)) {
                     
                     return slimeRecipe.getSlimePoints();
                 }

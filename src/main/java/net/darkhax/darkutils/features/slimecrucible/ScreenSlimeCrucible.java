@@ -18,6 +18,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -228,6 +229,18 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
                 
                 this.mouseBeingDragged = true;
             }
+        }
+        
+        final int x = this.guiLeft + 20;
+        final int y = this.guiTop + 22;
+        
+        ItemStack mouseItem = playerInventory.getItemStack();
+        if (mouseX >= x && mouseY >= y && mouseX < x + 16 && mouseY < y + 16 && this.container.enchantItem(this.minecraft.player, -42)) {
+            
+            this.minecraft.playerController.sendEnchantPacket(this.container.windowId, -42);
+            this.renderEntity.squishAmount = 1f;
+            Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(this.renderEntity.getEatSound(mouseItem), 1.0F));
+            return true;
         }
         
         return super.mouseClicked(mouseX, mouseY, buttonId);

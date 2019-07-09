@@ -82,7 +82,7 @@ public class BlockSlimeCrucible extends ContainerBlock implements ISlimeCrucible
             
             final ItemStack heldItem = player.getHeldItem(handIn);
             
-            final int points = TileEntitySlimeCrucible.getSlimePointsForItem(world, heldItem, this);
+            final int points = TileEntitySlimeCrucible.getSlimePointsForItem(world, heldItem, this.type);
             
             // If the item can be eaten, try to eat the item and modify the state of the
             // crucible.

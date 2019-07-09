@@ -157,7 +157,28 @@ public class ContainerSlimeCrucible extends Container {
             return true;
         }
         
-        // TODO let items be eaten
+        if (id == -42) {
+            
+            ItemStack mouseStack = playerIn.inventory.getItemStack();
+            int itemPoints = TileEntitySlimeCrucible.getSlimePointsForItem(this.playerWorld, mouseStack, this.getCrucibleType());
+            
+            if (itemPoints > 0 && this.getSlimePoints() < this.getCrucibleType().getMaxSlimePoints()) {
+                
+                this.worldPosition.consume((world, pos) -> {
+                    
+                    final TileEntity tile = world.getTileEntity(pos);
+                    
+                    if (tile instanceof TileEntitySlimeCrucible) {
+                        
+                        ((TileEntitySlimeCrucible) tile).addSlimePoints(itemPoints);
+                    }
+                });
+                
+                mouseStack.shrink(1);
+                return true;
+            }
+        }
+        
         return false;
     }
     
