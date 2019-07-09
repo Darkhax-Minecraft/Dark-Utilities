@@ -27,16 +27,18 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
     public static final Serializer SERIALIZER = new Serializer();
     
     private final Ingredient input;
+    private final int inputCount;
     private final ItemStack output;
     private final int points;
     private final ResourceLocation id;
     private final SlimeCrucibleType[] validTypes;
     private final boolean isHidden;
     
-    public RecipeSlimeCrafting(ResourceLocation id, Ingredient input, ItemStack output, int points, Boolean isHidden, SlimeCrucibleType... types) {
+    public RecipeSlimeCrafting(ResourceLocation id, Ingredient input, int inputCount, ItemStack output, int points, Boolean isHidden, SlimeCrucibleType... types) {
         
         this.id = id;
         this.input = input;
+        this.inputCount = inputCount;
         this.output = output;
         this.points = points;
         this.validTypes = types;
@@ -91,7 +93,7 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
         return true;
     }
     
-    public float getSlimePoints () {
+    public int getSlimePoints () {
         
         return this.points;
     }
@@ -100,10 +102,15 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
         
         return this.input.getMatchingStacks();
     }
-
+    
     public boolean isHidden () {
         
         return this.isHidden;
+    }
+    
+    public int getInputCount () {
+        
+        return this.inputCount;
     }
     
     public boolean isValid (SlimeCrucibleType slimeCrucibleType) {
@@ -113,7 +120,7 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
     
     public boolean isValid (ItemStack input, SlimeCrucibleType slimeCrucibleType, int containedPoints) {
         
-        return slimeCrucibleType.matchesAny(this.validTypes) && this.input.test(input) && this.points <= containedPoints;
+        return input.getCount() >= this.getInputCount() && slimeCrucibleType.matchesAny(this.validTypes) && this.input.test(input) && this.points <= containedPoints;
     }
     
     private static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<RecipeSlimeCrafting> {
@@ -124,6 +131,7 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
             final JsonElement inputElement = JSONUtils.isJsonArray(json, "input") ? JSONUtils.getJsonArray(json, "input") : JSONUtils.getJsonObject(json, "input");
             final ItemStack output = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "output"));
             final Ingredient input = Ingredient.deserialize(inputElement);
+            final int inputCount = JSONUtils.getInt(json, "inputCount", 1);
             final int points = JSONUtils.getInt(json, "points");
             final boolean isHidden = JSONUtils.getBoolean(json, "isHidden", false);
             final JsonArray typesArray = JSONUtils.getJsonArray(json, "validTypes");
@@ -145,13 +153,14 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
                 DarkUtils.LOG.warn("The slime food recipe {} has no valid types. It will not be obtainable. Some valid vanilla types are {}, {}, and {}.", recipeId, SlimeCrucibleType.ALL, SlimeCrucibleType.GREEN, SlimeCrucibleType.MAGMA);
             }
             
-            return new RecipeSlimeCrafting(recipeId, input, output, points, isHidden, types.toArray(new SlimeCrucibleType[types.size()]));
+            return new RecipeSlimeCrafting(recipeId, input, inputCount, output, points, isHidden, types.toArray(new SlimeCrucibleType[types.size()]));
         }
         
         @Override
         public RecipeSlimeCrafting read (ResourceLocation recipeId, PacketBuffer buffer) {
             
             final Ingredient input = Ingredient.read(buffer);
+            final int inputCount = buffer.readInt();
             final ItemStack output = buffer.readItemStack();
             final int points = buffer.readInt();
             final boolean isHidden = buffer.readBoolean();
@@ -162,13 +171,14 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
                 types[i] = SlimeCrucibleType.getType(buffer.readResourceLocation());
             }
             
-            return new RecipeSlimeCrafting(recipeId, input, output, points, isHidden, types);
+            return new RecipeSlimeCrafting(recipeId, input, inputCount, output, points, isHidden, types);
         }
         
         @Override
         public void write (PacketBuffer buffer, RecipeSlimeCrafting recipe) {
             
             recipe.input.write(buffer);
+            buffer.writeInt(recipe.inputCount);
             buffer.writeItemStack(recipe.output);
             buffer.writeInt(recipe.points);
             buffer.writeBoolean(recipe.isHidden);

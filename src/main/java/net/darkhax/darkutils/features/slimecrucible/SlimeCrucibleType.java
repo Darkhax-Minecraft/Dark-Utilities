@@ -226,10 +226,12 @@ public class SlimeCrucibleType {
     }
     
     /**
-     * Gets the overlay color for the slime type. This is used by the crucible gui for rendering the hovered state of recipes in the GUI.
+     * Gets the overlay color for the slime type. This is used by the crucible gui for
+     * rendering the hovered state of recipes in the GUI.
+     * 
      * @return The overlay color for the slime type.
      */
-    public int getOverlayColor() {
+    public int getOverlayColor () {
         
         return this.overlayColor;
     }

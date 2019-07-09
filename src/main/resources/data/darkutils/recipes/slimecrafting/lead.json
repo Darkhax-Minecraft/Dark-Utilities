@@ -4,9 +4,9 @@
     "darkutils:green"
   ],
   "input": {
-    "item": "minecraft:string",
-    "count": "4"
+    "item": "minecraft:string"
   },
+  "inputCount": 4,
   "output": {
     "item": "minecraft:lead",
     "count": 2

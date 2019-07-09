@@ -162,9 +162,14 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
         this.squishAmount = amount;
     }
     
-    public void setSlimePoints (int newPoints) {
+    public void addSlimePoints (int points) {
         
-        this.slimePoints = Math.min(newPoints, this.getCrucibleType().getMaxSlimePoints());
+        this.slimePoints = Math.min(this.slimePoints + points, this.getCrucibleType().getMaxSlimePoints());
+    }
+    
+    public void removeSlimePoints (int points) {
+        
+        this.slimePoints = Math.max(0, this.slimePoints - points);
     }
     
     @Nullable

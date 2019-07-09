@@ -1,6 +1,5 @@
 package net.darkhax.darkutils;
 
-import java.awt.Color;
 import java.util.Random;
 
 import javax.annotation.Nullable;
@@ -193,8 +192,8 @@ public class TempItemRenderer {
     }
     
     public static void drawModalRectWithCustomSizedTexture (int x, int y, int z, float u, float v, int width, int height, float textureWidth, float textureHeight, int color) {
-
-        drawModalRectWithCustomSizedTexture(x, y, z, u, v, width, height, textureWidth, textureHeight, (color >> 16) & 0xFF, (color >> 8) & 0xFF, (color >> 0) & 0xFF, (color >> 24) & 0xff);
+        
+        drawModalRectWithCustomSizedTexture(x, y, z, u, v, width, height, textureWidth, textureHeight, color >> 16 & 0xFF, color >> 8 & 0xFF, color >> 0 & 0xFF, color >> 24 & 0xff);
     }
     
     public static void drawModalRectWithCustomSizedTexture (int x, int y, int z, float u, float v, int width, int height, float textureWidth, float textureHeight, int red, int green, int blue, int alpha) {

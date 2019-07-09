@@ -17,7 +17,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
@@ -113,7 +112,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             }
             
             // Render the selected/pressed version of the button.
-            else if (i == this.container.getSelectedRecipe()) {
+            else if (i == this.container.getSelectedRecipeId()) {
                 
                 textureY += 18;
             }

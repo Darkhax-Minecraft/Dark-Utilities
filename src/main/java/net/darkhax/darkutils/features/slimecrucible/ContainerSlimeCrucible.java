@@ -116,7 +116,7 @@ public class ContainerSlimeCrucible extends Container {
         return this.crucibleType;
     }
     
-    public int getSelectedRecipe () {
+    public int getSelectedRecipeId () {
         
         return this.selectedRecipe.get();
     }
@@ -164,13 +164,13 @@ public class ContainerSlimeCrucible extends Container {
     @Override
     public void detectAndSendChanges () {
         
-        this.worldPosition.consume((worldIn, pos) -> {
+        this.worldPosition.consume( (worldIn, pos) -> {
             
-            TileEntity tileEntity = worldIn.getTileEntity(pos);
+            final TileEntity tileEntity = worldIn.getTileEntity(pos);
             
             if (tileEntity instanceof TileEntitySlimeCrucible) {
                 
-                int currentSlimePoints = ((TileEntitySlimeCrucible) tileEntity).getContainedSlimePoints();
+                final int currentSlimePoints = ((TileEntitySlimeCrucible) tileEntity).getContainedSlimePoints();
                 
                 if (this.getSlimePoints() != currentSlimePoints) {
                     
@@ -193,12 +193,12 @@ public class ContainerSlimeCrucible extends Container {
         
         final ItemStack inputStack = this.slotInput.getStack();
         
-        if (inputStack.getItem() != this.currentInput.getItem()) {
+        if (!ItemStack.areItemStacksEqual(inputStack, this.currentInput)) {
             
             this.currentInput = inputStack.copy();
         }
         
-        if (this.getSelectedRecipe() == -1 || !this.getAvailableRecipes().get(this.getSelectedRecipe()).isValid(inputStack, this.getCrucibleType(), this.getSlimePoints())) {
+        if (this.getSelectedRecipeId() == -1 || !this.getAvailableRecipes().get(this.getSelectedRecipeId()).isValid(inputStack, this.getCrucibleType(), this.getSlimePoints())) {
             
             this.selectedRecipe.set(-1);
             this.slotOutput.putStack(ItemStack.EMPTY);
@@ -272,9 +272,28 @@ public class ContainerSlimeCrucible extends Container {
         this.worldPosition.consume( (world, posIn) -> this.clearContainer(playerIn, playerIn.world, this.inventory));
     }
     
+    public RecipeSlimeCrafting getSelectedRecipe () {
+        
+        return this.availableRecipes.get(this.getSelectedRecipeId());
+    }
+    
     private void onOutputSlotChanged (PlayerEntity player, ItemStack stack) {
         
-        final ItemStack inputStack = this.slotInput.decrStackSize(1);
+        RecipeSlimeCrafting recipe = this.getSelectedRecipe();
+        final ItemStack inputStack = this.slotInput.decrStackSize(recipe.getInputCount());
+        
+        this.worldPosition.consume( (world, pos) -> {
+            
+            final int consumedPoints = recipe.getSlimePoints();
+            this.slimePoints.set(this.getSlimePoints() - consumedPoints);
+            final TileEntity tileEntity = world.getTileEntity(pos);
+            
+            if (tileEntity instanceof TileEntitySlimeCrucible) {
+                
+                final TileEntitySlimeCrucible crucible = (TileEntitySlimeCrucible) tileEntity;
+                crucible.removeSlimePoints(consumedPoints);
+            }
+        });
         
         if (!inputStack.isEmpty()) {
             this.updateOutputs();

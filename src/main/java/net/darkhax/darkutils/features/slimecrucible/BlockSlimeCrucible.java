@@ -86,10 +86,10 @@ public class BlockSlimeCrucible extends ContainerBlock implements ISlimeCrucible
             
             // If the item can be eaten, try to eat the item and modify the state of the
             // crucible.
-            if (points > 0) {
+            if (points > 0 && crucible.getContainedSlimePoints() <= this.getCrucibleType().getMaxSlimePoints()) {
                 
                 // Increases the slime points.
-                crucible.setSlimePoints(crucible.getContainedSlimePoints() + points);
+                crucible.addSlimePoints(points);
                 
                 if (world instanceof ServerWorld) {
                     
@@ -108,6 +108,7 @@ public class BlockSlimeCrucible extends ContainerBlock implements ISlimeCrucible
                 // Plays the eating sound for the slime. This can be changed by the entity if
                 // it overrides getEatSound.
                 world.playSound(null, pos.getX() + 0.5f, pos.getY() + 1.25f, pos.getZ() + 0.5f, crucible.getContainedSlime(world).getEatSound(heldItem), SoundCategory.BLOCKS, 0.5F + 0.5F * world.rand.nextInt(2), (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 1.0F);
+                heldItem.shrink(1);
                 return true;
             }
             
