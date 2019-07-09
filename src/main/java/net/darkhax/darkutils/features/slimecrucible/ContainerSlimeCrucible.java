@@ -28,7 +28,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.IntReferenceHolder;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -164,6 +163,21 @@ public class ContainerSlimeCrucible extends Container {
     
     @Override
     public void detectAndSendChanges () {
+        
+        this.worldPosition.consume((worldIn, pos) -> {
+            
+            TileEntity tileEntity = worldIn.getTileEntity(pos);
+            
+            if (tileEntity instanceof TileEntitySlimeCrucible) {
+                
+                int currentSlimePoints = ((TileEntitySlimeCrucible) tileEntity).getContainedSlimePoints();
+                
+                if (this.getSlimePoints() != currentSlimePoints) {
+                    
+                    this.slimePoints.set(currentSlimePoints);
+                }
+            }
+        });
         
         super.detectAndSendChanges();
         
