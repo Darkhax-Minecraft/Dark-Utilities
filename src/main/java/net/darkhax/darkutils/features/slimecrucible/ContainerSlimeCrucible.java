@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.Service.State;
 
 import net.darkhax.bookshelf.inventory.InventoryListenable;
 import net.darkhax.bookshelf.inventory.SlotOutput;
