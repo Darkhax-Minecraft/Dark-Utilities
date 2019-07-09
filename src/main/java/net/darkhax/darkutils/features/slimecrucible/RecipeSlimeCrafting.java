@@ -22,16 +22,51 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
+/**
+ * This class represents a slime crafting recipe. These recipes are crafted at a slime
+ * crucible, using foot to generate slime which can be used in recipes.
+ */
 public class RecipeSlimeCrafting implements IRecipe<IInventory> {
     
+    /**
+     * An instance of the serializer for slime crafting recipes.
+     */
     public static final Serializer SERIALIZER = new Serializer();
     
+    /**
+     * The input ingredient. This is the item (or items) required to craft the recipe.
+     */
     private final Ingredient input;
+    
+    /**
+     * The amount of items required for the recipe to be valid.
+     */
     private final int inputCount;
+    
+    /**
+     * The output item that the player receives when crafting this recipe.
+     */
     private final ItemStack output;
+    
+    /**
+     * The amount of slime points required to craft this recipe.
+     */
     private final int points;
+    
+    /**
+     * A namespaced Id associated with the recipe.
+     */
     private final ResourceLocation id;
+    
+    /**
+     * An array of slime crucible types that are able to craft this recipe.
+     */
     private final SlimeCrucibleType[] validTypes;
+    
+    /**
+     * Whether or not this recipe is hidden. Hidden recipes do not show up in the GUI unless
+     * players have already provided the valid input item.
+     */
     private final boolean isHidden;
     
     public RecipeSlimeCrafting(ResourceLocation id, Ingredient input, int inputCount, ItemStack output, int points, Boolean isHidden, SlimeCrucibleType... types) {
@@ -46,8 +81,10 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
     }
     
     @Override
+    @Deprecated
     public boolean matches (IInventory inv, World worldIn) {
         
+        // This method is not intended to be used. Use the various isValid methods instead.
         return this.input.test(inv.getStackInSlot(0));
     }
     
@@ -93,41 +130,86 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
         return true;
     }
     
+    /**
+     * Gets the amount of required slime points.
+     * 
+     * @return The amount of required slime points.
+     */
     public int getSlimePoints () {
         
         return this.points;
     }
     
+    /**
+     * Gets an array of valid input items.
+     * 
+     * @return An array of valid inputs.
+     */
     public ItemStack[] getValidItemStacks () {
         
         return this.input.getMatchingStacks();
     }
     
+    /**
+     * Checks if the recipe is hidden. Hidden recipes are not shown to the player unless the
+     * player has already inserted the valid input.
+     * 
+     * @return Whether or not the recipe is hidden.
+     */
     public boolean isHidden () {
         
         return this.isHidden;
     }
     
+    /**
+     * Gets the amount of the input item required to craft this recipe.
+     * 
+     * @return The required amount of the input item.
+     */
     public int getInputCount () {
         
         return this.inputCount;
     }
     
+    /**
+     * Checks if a given input is valid for this recipe.
+     * 
+     * @param input The input to test.
+     * @return Whether or not the input is valid for this recipe.
+     */
     public boolean isValid (ItemStack input) {
         
         return input.getCount() >= this.getInputCount() && this.input.test(input);
     }
     
+    /**
+     * Checks if a slime crucible type is valid for this recipe.
+     * 
+     * @param slimeCrucibleType The crucible type to check.
+     * @return Whether or not the crcuble type is valid.
+     */
     public boolean isValid (SlimeCrucibleType slimeCrucibleType) {
         
         return slimeCrucibleType.matchesAny(this.validTypes);
     }
     
+    /**
+     * Checks if a recipe can be crafted using all required crafting context information.
+     * 
+     * @param input The input to validate.
+     * @param slimeCrucibleType The crucible type to validate.
+     * @param containedPoints The amount of available slime points.
+     * @return Whether or not the recipe can be crafted in the provided context.
+     */
     public boolean isValid (ItemStack input, SlimeCrucibleType slimeCrucibleType, int containedPoints) {
         
-        return input.getCount() >= this.getInputCount() && slimeCrucibleType.matchesAny(this.validTypes) && this.input.test(input) && this.points <= containedPoints;
+        return this.isValid(input) && this.isValid(slimeCrucibleType) && this.points <= containedPoints;
     }
     
+    /**
+     * A serializer which allows the recipe to be serialized from json files, and minecraft's
+     * packet buffer.
+     */
     private static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<RecipeSlimeCrafting> {
         
         @Override

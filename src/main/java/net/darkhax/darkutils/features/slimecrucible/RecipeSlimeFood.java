@@ -21,13 +21,34 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
+/**
+ * A recipe for items that can be eaten by slime crucibles.
+ */
 public class RecipeSlimeFood implements IRecipe<IInventory> {
     
+    /**
+     * A serializer for this type of recipe.
+     */
     public static final Serializer SERIALIZER = new Serializer();
     
+    /**
+     * The input ingredient.
+     */
     private final Ingredient input;
+    
+    /**
+     * The amount of points to generate.
+     */
     private final int points;
+    
+    /**
+     * A namespaced Id for the recipe.
+     */
     private final ResourceLocation id;
+    
+    /**
+     * The types of slime crucible where this recipe can be used.
+     */
     private final SlimeCrucibleType[] validTypes;
     
     public RecipeSlimeFood(ResourceLocation id, Ingredient input, int points, SlimeCrucibleType... types) {
@@ -39,20 +60,26 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
     }
     
     @Override
+    @Deprecated
     public boolean matches (IInventory inv, World worldIn) {
         
+        // This method is not used internally.
         return this.input.test(inv.getStackInSlot(0));
     }
     
     @Override
+    @Deprecated
     public ItemStack getCraftingResult (IInventory inv) {
         
+        // This recipe has no output
         return ItemStack.EMPTY;
     }
     
     @Override
+    @Deprecated
     public ItemStack getRecipeOutput () {
         
+        // This recipe has no output.
         return ItemStack.EMPTY;
     }
     
@@ -80,22 +107,38 @@ public class RecipeSlimeFood implements IRecipe<IInventory> {
         return new ItemStack(Items.SLIME_BALL);
     }
     
-    public int getSlimePoints () {
-        
-        return this.points;
-    }
-    
     @Override
     public boolean isDynamic () {
         
         return true;
     }
     
+    /**
+     * Gets the amount of slime points produced by this recipe.
+     * 
+     * @return The amount of slime points produced.
+     */
+    public int getSlimePoints () {
+        
+        return this.points;
+    }
+    
+    /**
+     * Checks if the recipe is valid for the given context.
+     * 
+     * @param input The input item.
+     * @param type The crucible type trying to eat the food.
+     * @return Whether or not the recipe is valid with the given context.
+     */
     public boolean isValid (ItemStack input, SlimeCrucibleType type) {
         
         return type.matchesAny(this.validTypes) && this.input.test(input);
     }
     
+    /**
+     * A serializer used to serialize this recipe from json and to/from the vanilla packet
+     * buffer.
+     */
     private static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<RecipeSlimeFood> {
         
         @Override

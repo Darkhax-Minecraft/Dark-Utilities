@@ -27,8 +27,20 @@ public class SlimeCrucibleType {
      */
     private static final Map<ResourceLocation, SlimeCrucibleType> REGISTRY_MAP = new HashMap<>();
     
+    /**
+     * A general catch-all crucible type. This is used by crafting recipes as a wildcard to
+     * allow them to work with all slime crucibles.
+     */
     public static final SlimeCrucibleType ALL = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "all"), 0, null, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundEvents.ENTITY_GENERIC_EXPLODE, 0);
+    
+    /**
+     * The green slime crucible type.
+     */
     public static final SlimeCrucibleType GREEN = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "green"), 64, EntityType.SLIME::create, SoundEvents.ENTITY_SLIME_SQUISH, SoundEvents.ENTITY_SLIME_JUMP, 0xff33cc00);
+    
+    /**
+     * The magma cube crucible type.
+     */
     public static final SlimeCrucibleType MAGMA = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "magma"), 32, EntityType.MAGMA_CUBE::create, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, 0xff663300);
     
     /**

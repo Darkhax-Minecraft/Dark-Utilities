@@ -28,11 +28,35 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible> {
     
     private static final ResourceLocation TEXTURE = new ResourceLocation("darkutils", "textures/gui/container/slime_crucible.png");
+    
+    /**
+     * An instance of the client world.
+     */
     private final World clientWorld;
+    
+    /**
+     * The progress of the scroll bar.
+     */
     private float sliderProgress;
+    
+    /**
+     * Whether or not the mouse is being dragged over the scroll bar.
+     */
     private boolean mouseBeingDragged;
+    
+    /**
+     * The amount of recipes to offset by the scroll bar.
+     */
     private int recipeIndexOffset;
+    
+    /**
+     * Whether or not recipes can be shown.
+     */
     private boolean showRecipes;
+    
+    /**
+     * The client side entity to be rendered into the GUI.
+     */
     private SlimeEntity renderEntity;
     
     public ScreenSlimeCrucible(ContainerSlimeCrucible container, PlayerInventory playerInventory, ITextComponent title) {
@@ -51,6 +75,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         final int selectionBoxY = this.guiTop + 14;
         final int lastRecipeIndex = this.recipeIndexOffset + 12;
         
+        // Render the slime entity onto the GUI
         if (this.renderEntity != null) {
             
             final int x = this.guiLeft + 28;
@@ -58,12 +83,16 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             InventoryScreen.drawEntityOnScreen(x, y, 30, x - mouseX, y - mouseY, this.renderEntity);
         }
         
+        // If the entity doesn't exist and the type isn't null, create a new entity.
         else if (this.container.getType() != null) {
             
             this.renderEntity = this.container.getCrucibleType().createSlime(this.clientWorld);
         }
         
+        // Render the vanilla inventory tooltips.
         this.renderHoveredToolTip(mouseX, mouseY);
+        
+        // Render custom tooltps.
         this.renderRecipeTooltips(selectionBoxX, selectionBoxY, mouseX, mouseY, lastRecipeIndex);
     }
     
@@ -86,12 +115,26 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         final int selectionBoxX = this.guiLeft + 52;
         final int selectionBoxY = this.guiTop + 14;
         final int lastRecipeIndex = this.recipeIndexOffset + 12;
+        
+        // Render the recipe output backgrounds.
         this.renderRecipeOutputButtons(mouseX, mouseY, selectionBoxX, selectionBoxY, lastRecipeIndex);
-        this.renderRecipeOutputs(selectionBoxX, mouseX, mouseY, selectionBoxY, lastRecipeIndex);
+        
+        // Render the recipe output item icons.
+        this.renderRecipeOutputs(mouseX, mouseY, selectionBoxX, selectionBoxY, lastRecipeIndex);
     }
     
+    /**
+     * Renders the button backgrounds for the recipe outputs.
+     * 
+     * @param mouseX The x position of the mouse.
+     * @param mouseY The y position of the mouse.
+     * @param selectionBoxX The starting x position of the selection box.
+     * @param selectionBoxY The starting y position of the selection box.
+     * @param lastRecipeIndex The last recipe index to display.
+     */
     private void renderRecipeOutputButtons (int mouseX, int mouseY, int selectionBoxX, int selectionBoxY, int lastRecipeIndex) {
         
+        // Iterate through the first 12 or less recipes to show.
         for (int i = this.recipeIndexOffset; i < lastRecipeIndex && i < this.container.getAvailableRecipesSize(); i++) {
             
             final int recipeIndex = i - this.recipeIndexOffset;
@@ -102,11 +145,13 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             int textureY = this.ySize;
             int color = 0xffffffff;
             
+            // If the player can't craft it, and it's hidden, the recipe is not rendered.
             if (!canCraftRecipe && this.container.getAvailableRecipes().get(i).isHidden()) {
                 
                 continue;
             }
             
+            // If the recipe can be crafted shift to the brighter texture.
             if (!canCraftRecipe) {
                 
                 textureY += 54;
@@ -129,11 +174,21 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         }
     }
     
-    private void renderRecipeOutputs (int selectionBoxX, int mouseX, int mouseY, int selectionBoxY, int lastRecipeIndex) {
+    /**
+     * Renders the output itemstack of the visible recipes.
+     * 
+     * @param mouseX The x position of the mouse.
+     * @param mouseY The y position of the mouse.
+     * @param selectionBoxX The starting x position of the selection box.
+     * @param selectionBoxY The starting y position of the selection box.
+     * @param lastRecipeIndex The last recipe index to display.
+     */
+    private void renderRecipeOutputs (int mouseX, int mouseY, int selectionBoxX, int selectionBoxY, int lastRecipeIndex) {
         
         RenderHelper.enableGUIStandardItemLighting();
         final List<RecipeSlimeCrafting> list = this.container.getAvailableRecipes();
         
+        // Iterate the first 12 or less visible recipes.
         for (int i = this.recipeIndexOffset; i < lastRecipeIndex && i < this.container.getAvailableRecipesSize(); i++) {
             
             final int recipeIndex = i - this.recipeIndexOffset;
@@ -141,6 +196,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeRow = recipeIndex / 4;
             final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
             
+            // Skip recipes that can't be crafted and are hidden.
             if (!this.container.canCraft(i) && this.container.getAvailableRecipes().get(i).isHidden()) {
                 
                 continue;
@@ -161,7 +217,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeRow = recipeIndex / 4;
             final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
             
-            // Attempt to render tooltip
+            // Render the tooltip for the recipe if one is under the mouse.
             if (mouseX >= recipeItemX && mouseY >= recipeItemY && mouseX < recipeItemX + 16 && mouseY < recipeItemY + 18) {
                 
                 final RecipeSlimeCrafting recipe = this.container.getAvailableRecipes().get(i);
@@ -184,6 +240,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             }
         }
         
+        // Render a tooltip if the player has a mouse over the slime entity.
         final int x = this.guiLeft + 20;
         final int y = this.guiTop + 22;
         
@@ -201,6 +258,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         
         this.mouseBeingDragged = false;
         
+        // Handle clicking on a recipe output button.
         if (this.showRecipes) {
             
             final int selectionBoxX = this.guiLeft + 52;
@@ -229,6 +287,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             }
         }
         
+        // Handle clicking on the slime entity.
         final int x = this.guiLeft + 20;
         final int y = this.guiTop + 22;
         
@@ -248,6 +307,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
     public boolean mouseDragged (double mouseX, double mouseY, int mouseButtonId, double dragX, double dragY) {
         
         if (this.mouseBeingDragged && this.canScroll()) {
+            
             final int i = this.guiTop + 14;
             final int j = i + 54;
             this.sliderProgress = ((float) mouseY - i - 7.5F) / (j - i - 15.0F);
@@ -255,41 +315,60 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             this.recipeIndexOffset = (int) (this.sliderProgress * this.getHiddenRows() + 0.5D) * 4;
             return true;
         }
-        else {
-            return super.mouseDragged(mouseX, mouseY, mouseButtonId, dragX, dragY);
-        }
+        
+        return super.mouseDragged(mouseX, mouseY, mouseButtonId, dragX, dragY);
     }
     
     @Override
     public boolean mouseScrolled (double mouseX, double mouseY, double mouseDelta) {
         
+        // Handle scrolling through the recipes
         if (this.canScroll()) {
-            final int i = this.getHiddenRows();
-            this.sliderProgress = (float) (this.sliderProgress - mouseDelta / i);
+            
+            final int hiddenRows = this.getHiddenRows();
+            this.sliderProgress = (float) (this.sliderProgress - mouseDelta / hiddenRows);
             this.sliderProgress = MathHelper.clamp(this.sliderProgress, 0.0F, 1.0F);
-            this.recipeIndexOffset = (int) (this.sliderProgress * i + 0.5D) * 4;
+            this.recipeIndexOffset = (int) (this.sliderProgress * hiddenRows + 0.5D) * 4;
         }
         
         return true;
     }
     
+    /**
+     * Checks if there are enough recipes for players to be able to scroll.
+     * 
+     * @return Whether or not there are enough recipes available to allow scrolling.
+     */
     private boolean canScroll () {
         
         return this.showRecipes && this.container.getAvailableRecipesSize() > 12;
     }
     
+    /**
+     * Get the amount of rows which are being hidden.
+     * 
+     * @return The amount of hidden rows.
+     */
     protected int getHiddenRows () {
         
         final int size = this.container.getAvailableRecipesSize();
         return size > 12 ? (size + 3) / 4 - 3 : 0;
     }
     
+    /**
+     * A hooks that is called when the container has it's contents changed.
+     * 
+     * @param inventory An inventory listener.
+     */
     private void listenToContainerUpdate (IInventory inventory) {
         
+        // Update the state of the container.
         this.container.onCraftMatrixChanged(inventory);
         this.showRecipes = this.container.canDisplayRecipes();
         
+        // Reset the scrolling state back to the start.
         if (!this.showRecipes) {
+            
             this.sliderProgress = 0.0F;
             this.recipeIndexOffset = 0;
         }
