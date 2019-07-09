@@ -12,13 +12,11 @@ import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.client.util.RecipeBookCategories;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -172,11 +170,11 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
                 if (!recipe.isHidden() || this.container.canCraft(i)) {
                     
                     final List<String> tooltip = new ArrayList<>();
-                    tooltip.add( recipe.getRecipeOutput().getDisplayName().getFormattedText());
+                    tooltip.add(recipe.getRecipeOutput().getDisplayName().getFormattedText());
                     
-                    TextFormatting inputColor = recipe.isValid(this.container.getCurrentInput()) ? TextFormatting.GREEN : TextFormatting.RED;
-                    TextFormatting slimeColor = recipe.getSlimePoints() <= this.container.getSlimePoints() ? TextFormatting.GREEN : TextFormatting.RED;
-                    ItemStack inputStack = inputs[(int) (this.clientWorld.getGameTime() / 20 % inputs.length)];
+                    final TextFormatting inputColor = recipe.isValid(this.container.getCurrentInput()) ? TextFormatting.GREEN : TextFormatting.RED;
+                    final TextFormatting slimeColor = recipe.getSlimePoints() <= this.container.getSlimePoints() ? TextFormatting.GREEN : TextFormatting.RED;
+                    final ItemStack inputStack = inputs[(int) (this.clientWorld.getGameTime() / 20 % inputs.length)];
                     tooltip.add(TextFormatting.GRAY + I18n.format("tooltips.darkutils.input", inputColor, inputStack.getDisplayName().getFormattedText(), recipe.getInputCount()));
                     tooltip.add(TextFormatting.GRAY + I18n.format("tooltips.darkutils.slime_points", this.container.getCrucibleType().getMaterialName().getFormattedText(), slimeColor, recipe.getSlimePoints()));
                     this.renderTooltip(tooltip, mouseX, mouseY);
@@ -234,7 +232,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         final int x = this.guiLeft + 20;
         final int y = this.guiTop + 22;
         
-        ItemStack mouseItem = playerInventory.getItemStack();
+        final ItemStack mouseItem = this.playerInventory.getItemStack();
         if (mouseX >= x && mouseY >= y && mouseX < x + 16 && mouseY < y + 16 && this.container.enchantItem(this.minecraft.player, -42)) {
             
             this.minecraft.playerController.sendEnchantPacket(this.container.windowId, -42);

@@ -113,7 +113,7 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
         return this.inputCount;
     }
     
-    public boolean isValid(ItemStack input) {
+    public boolean isValid (ItemStack input) {
         
         return input.getCount() >= this.getInputCount() && this.input.test(input);
     }

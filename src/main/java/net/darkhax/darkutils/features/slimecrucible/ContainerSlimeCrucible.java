@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.Service.State;
 
 import net.darkhax.bookshelf.inventory.InventoryListenable;
 import net.darkhax.bookshelf.inventory.SlotOutput;
@@ -144,8 +145,7 @@ public class ContainerSlimeCrucible extends Container {
     @Override
     public boolean canInteractWith (PlayerEntity playerIn) {
         
-        return true; // isWithinUsableDistance(this.worldPosition, playerIn,
-                     // Blocks.STONECUTTER);
+        return WorldUtils.isWithinDistanceAndUsable(this.worldPosition, playerIn, state -> state.getBlock() instanceof ISlimeCrucibleBlock, 64d);
     }
     
     @Override
@@ -159,12 +159,12 @@ public class ContainerSlimeCrucible extends Container {
         
         if (id == -42) {
             
-            ItemStack mouseStack = playerIn.inventory.getItemStack();
-            int itemPoints = TileEntitySlimeCrucible.getSlimePointsForItem(this.playerWorld, mouseStack, this.getCrucibleType());
+            final ItemStack mouseStack = playerIn.inventory.getItemStack();
+            final int itemPoints = TileEntitySlimeCrucible.getSlimePointsForItem(this.playerWorld, mouseStack, this.getCrucibleType());
             
             if (itemPoints > 0 && this.getSlimePoints() < this.getCrucibleType().getMaxSlimePoints()) {
                 
-                this.worldPosition.consume((world, pos) -> {
+                this.worldPosition.consume( (world, pos) -> {
                     
                     final TileEntity tile = world.getTileEntity(pos);
                     
@@ -300,7 +300,7 @@ public class ContainerSlimeCrucible extends Container {
     
     private void onOutputSlotChanged (PlayerEntity player, ItemStack stack) {
         
-        RecipeSlimeCrafting recipe = this.getSelectedRecipe();
+        final RecipeSlimeCrafting recipe = this.getSelectedRecipe();
         final ItemStack inputStack = this.slotInput.decrStackSize(recipe.getInputCount());
         
         this.worldPosition.consume( (world, pos) -> {
