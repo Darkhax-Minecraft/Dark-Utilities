@@ -91,8 +91,8 @@ public class ContainerSlimeCrucible extends Container {
             this.addSlot(new Slot(playerInventory, slotIndex, 8 + slotIndex * 18, 142));
         }
         
-        this.func_216958_a(this.selectedRecipe);
-        this.func_216958_a(this.slimePoints);
+        this.trackInt(this.selectedRecipe);
+        this.trackInt(this.slimePoints);
     }
     
     public boolean canCraft (int recipeIndex) {
