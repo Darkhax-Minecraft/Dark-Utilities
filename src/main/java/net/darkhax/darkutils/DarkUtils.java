@@ -12,7 +12,6 @@ import net.darkhax.darkutils.network.NetworkHandlerClient;
 import net.darkhax.darkutils.network.NetworkHandlerServer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -27,7 +26,7 @@ public class DarkUtils {
     
     public static final Logger LOG = LogManager.getLogger(MOD_NAME);
     
-    public static final ItemGroup ITEM_GROUP = new ItemGroupBase(MOD_ID, () -> new ItemStack(Items.APPLE));
+    public static final ItemGroup ITEM_GROUP = new ItemGroupBase(MOD_ID, () -> new ItemStack(DarkUtils.content.vectorPlate));
     
     public static final NetworkHelper NETWORK = new NetworkHelper(new ResourceLocation(MOD_ID, "main"), "2.0.X");
     
