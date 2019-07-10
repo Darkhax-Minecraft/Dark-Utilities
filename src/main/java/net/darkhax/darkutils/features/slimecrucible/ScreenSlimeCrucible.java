@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 
-import net.darkhax.darkutils.TempItemRenderer;
+import net.darkhax.bookshelf.util.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -170,7 +170,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
                 color = this.container.getCrucibleType().getOverlayColor();
             }
             
-            TempItemRenderer.drawModalRectWithCustomSizedTexture(recipeX, recipeY - 1, this.blitOffset, 0, textureY, 16, 18, 256, 256, color);
+            RenderUtils.drawTexturedRect(recipeX, recipeY - 1, this.blitOffset, 0, textureY, 16, 18, 256, 256, color);
         }
     }
     
@@ -202,7 +202,7 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
                 continue;
             }
             
-            TempItemRenderer.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, this.container.canCraft(i) ? 0xffffffff : 0x80808080);
+            RenderUtils.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, this.container.canCraft(i) ? 0xffffffff : 0x80808080);
         }
         
         RenderHelper.disableStandardItemLighting();
