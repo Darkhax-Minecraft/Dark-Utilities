@@ -1,4 +1,5 @@
 {
+  "itemGroup.darkutils": "Dark Utilities",
   "block.darkutils.blank_plate": "Blank Plate",
   "block.darkutils.vector_plate": "Vector Plate",
   "block.darkutils.vector_plate_fast": "Fast Vector Plate",
@@ -11,6 +12,7 @@
   "block.darkutils.import_plate_fast": "Fast Import Plate",
   "block.darkutils.import_plate_extreme": "Extreme Import Plate",
   "block.darkutils.slime_crucible_green": "Green Slime Crucible",
+  "block.darkutils.slime_crucible_magma": "Magma Cube Crucible",
   
   "container.darkutils.slime_crucible.green": "Green Slime Crucible",
   "container.darkutils.slime_crucible.magma": "Magma Slime Crucible",
