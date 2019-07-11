@@ -24,7 +24,7 @@ apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Co
 
 loadSecrets()
 
-version = "${mod_version}" + getBuildNumber()
+version = "${mod_version}"// + getBuildNumber()
 group = "${mod_group}"
 archivesBaseName = "${mod_name}-${version_minecraft}"
 
