@@ -1,13 +1,16 @@
 {
   "type": "crafting_shaped",
   "pattern": [
-    " A ",
-    "ABA",
-    " A "
+    "BAB",
+    "ASA",
+    "BAB"
   ],
   "key": {
     "B": {
       "item": "minecraft:gold_nugget"
+    },
+    "S": {
+      "item": "minecraft:sugar"
     },
     "A": {
       "item": "darkutils:export_plate_fast"

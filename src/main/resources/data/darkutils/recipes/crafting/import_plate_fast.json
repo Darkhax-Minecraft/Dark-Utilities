@@ -13,11 +13,11 @@
       "item": "minecraft:sugar"
     },
     "A": {
-      "item": "darkutils:export_plate"
+      "item": "darkutils:import_plate"
     }
   },
   "result": {
-    "item": "darkutils:export_plate_fast",
+    "item": "darkutils:import_plate_fast",
     "count": 4
   }
 }

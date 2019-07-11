@@ -10,11 +10,11 @@
       "item": "darkutils:vector_plate"
     },
     "B": {
-      "item": "minecraft:hopper"
+      "item": "minecraft:chest"
     }
   },
   "result": {
-    "item": "darkutils:export_plate",
+    "item": "darkutils:import_plate",
     "count": 4
   }
 }

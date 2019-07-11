@@ -7,17 +7,17 @@
   ],
   "key": {
     "B": {
-      "item": "minecraft:iron_nugget"
+      "item": "minecraft:gold_nugget"
     },
     "S": {
       "item": "minecraft:sugar"
     },
     "A": {
-      "item": "darkutils:export_plate"
+      "item": "darkutils:import_plate_fast"
     }
   },
   "result": {
-    "item": "darkutils:export_plate_fast",
+    "item": "darkutils:import_plate_extreme",
     "count": 4
   }
 }
