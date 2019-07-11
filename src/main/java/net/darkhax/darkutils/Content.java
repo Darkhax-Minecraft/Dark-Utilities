@@ -91,11 +91,11 @@ public class Content {
         this.importPlate = registry.registerBlock(new BlockFlatTileRotating(new CollisionEffectImport(0.06d, 1)), "import_plate");
         
         this.vectorPlateFast = registry.registerBlock(new BlockFlatTileRotating(effectVectorPlateFast), "vector_plate_fast");
-        this.exportPlateFast = registry.registerBlock(new BlockFlatTileRotatingTicking(effectVectorPlate, exportEffect, 5), "export_plate_fast");
+        this.exportPlateFast = registry.registerBlock(new BlockFlatTileRotatingTicking(effectVectorPlateFast, exportEffect, 5), "export_plate_fast");
         this.importPlateFast = registry.registerBlock(new BlockFlatTileRotating(new CollisionEffectImport(0.3d, 16)), "import_plate_fast");
         
         this.vectorPlateHyper = registry.registerBlock(new BlockFlatTileRotating(effectVectorPlateExtreme), "vector_plate_extreme");
-        this.exportPlateHyper = registry.registerBlock(new BlockFlatTileRotatingTicking(effectVectorPlate, exportEffect, 1), "export_plate_extreme");
+        this.exportPlateHyper = registry.registerBlock(new BlockFlatTileRotatingTicking(effectVectorPlateExtreme, exportEffect, 1), "export_plate_extreme");
         this.importPlateHyper = registry.registerBlock(new BlockFlatTileRotating(new CollisionEffectImport(1.5d, 32)), "import_plate_extreme");
         
         this.slimeCrucibleGreen = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.CLAY, MaterialColor.GRASS).slipperiness(0.8F).hardnessAndResistance(0.6F).sound(SoundType.SLIME), SlimeCrucibleType.GREEN), "slime_crucible_green");
