@@ -1,0 +1,18 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "DOD"
+  ],
+  "key": {
+    "D": {
+      "item": "darkutils:blank_plate"
+    },
+    "O": {
+      "item": "minecraft:fermented_spider_eye"
+    }
+  },
+  "result": {
+    "item": "darkutils:rune_weakness",
+    "count": 2
+  }
+}

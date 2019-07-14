@@ -1,0 +1,18 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "DOD"
+  ],
+  "key": {
+    "D": {
+      "item": "darkutils:blank_plate"
+    },
+    "O": {
+      "item": "minecraft:prismarine_crystals"
+    }
+  },
+  "result": {
+    "item": "darkutils:rune_fatigue",
+    "count": 2
+  }
+}

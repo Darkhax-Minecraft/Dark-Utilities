@@ -1,0 +1,8 @@
+{
+  "parent": "darkutils:block/trap_base",
+  "textures": {
+    "particle": "darkutils:block/rune_poison",
+    "design": "darkutils:block/rune_poison",
+    "pad": "darkutils:block/trap_base"
+  }
+}

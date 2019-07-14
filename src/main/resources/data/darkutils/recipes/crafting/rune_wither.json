@@ -1,0 +1,18 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "DOD"
+  ],
+  "key": {
+    "D": {
+      "item": "darkutils:blank_plate"
+    },
+    "O": {
+      "item": "minecraft:wither_rose"
+    }
+  },
+  "result": {
+    "item": "darkutils:rune_wither",
+    "count": 2
+  }
+}

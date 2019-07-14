@@ -1,0 +1,18 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "DOD"
+  ],
+  "key": {
+    "D": {
+      "item": "darkutils:blank_plate"
+    },
+    "O": {
+      "item": "minecraft:flint_and_steel"
+    }
+  },
+  "result": {
+    "item": "darkutils:rune_fire",
+    "count": 2
+  }
+}

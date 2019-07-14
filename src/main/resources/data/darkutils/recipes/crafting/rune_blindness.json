@@ -1,0 +1,18 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "DOD"
+  ],
+  "key": {
+    "D": {
+      "item": "darkutils:blank_plate"
+    },
+    "O": {
+      "item": "minecraft:ink_sac"
+    }
+  },
+  "result": {
+    "item": "darkutils:rune_blindness",
+    "count": 2
+  }
+}

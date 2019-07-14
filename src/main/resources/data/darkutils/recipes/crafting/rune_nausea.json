@@ -1,0 +1,18 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "DOD"
+  ],
+  "key": {
+    "D": {
+      "item": "darkutils:blank_plate"
+    },
+    "O": {
+      "item": "minecraft:nether_wart"
+    }
+  },
+  "result": {
+    "item": "darkutils:rune_nausea",
+    "count": 2
+  }
+}
