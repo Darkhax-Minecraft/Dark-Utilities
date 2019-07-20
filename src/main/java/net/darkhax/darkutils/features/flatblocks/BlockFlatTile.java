@@ -144,11 +144,11 @@ public class BlockFlatTile extends Block implements IBucketPickupHandler, ILiqui
         return placedState;
     }
     
-    @Override
-    public BlockRenderLayer getRenderLayer () {
-        
-        return BlockRenderLayer.TRANSLUCENT;
-    }
+//    @Override
+//    public BlockRenderLayer getRenderLayer () {
+//        
+//        return BlockRenderLayer.TRANSLUCENT;
+//    }
     
     @Override
     public void neighborChanged (BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
