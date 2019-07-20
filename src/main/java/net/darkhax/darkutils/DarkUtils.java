@@ -37,9 +37,8 @@ public class DarkUtils {
     public DarkUtils() {
         
         registry = DistExecutor.runForDist( () -> () -> new RegistryHelperClient(MOD_ID, LOG, ITEM_GROUP), () -> () -> new RegistryHelper(MOD_ID, LOG, ITEM_GROUP));
-        registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
-        content = DistExecutor.runForDist( () -> () -> new ContentClient(registry), () -> () -> new Content(registry));
-        
+        content = DistExecutor.runForDist( () -> () -> new ContentClient(registry), () -> () -> new Content(registry));        
         NETWORK.registerEnqueuedMessage(MessageSyncCrucibleType.class, NetworkHandlerServer::encodeStageMessage, t -> NetworkHandlerClient.decodeStageMessage(t), (t, u) -> NetworkHandlerClient.processSyncStagesMessage(t, u));
+        registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
     }
 }
