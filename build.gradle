@@ -66,12 +66,18 @@ repositories {
 
         url 'https://maven.mcmoddev.com'
     }
+    
+    maven {
+
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
 }
 
 dependencies {
 
     minecraft "net.minecraftforge:forge:${version_forge}"
 	compile fg.deobf(group: 'net.darkhax.bookshelf', name: 'Bookshelf-1.14.3', version: "${version_bookshelf}")
+	compile fg.deobf(project.dependencies.create("mezz.jei:jei-1.14.3:6.0.0.8") { transitive = false })
 }
 
 jar {
