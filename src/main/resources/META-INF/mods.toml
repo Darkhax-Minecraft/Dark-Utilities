@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[27,)"
+loaderVersion="[28,)"
 issueTrackerURL="https://github.com/Darkhax-Minecraft/Dark-Utilities/issues"
 
 [[mods]]
@@ -16,20 +16,20 @@ ${mod_description}
 [[dependencies.darkutilities]]
     modId="forge"
     mandatory=true
-    versionRange="[27,)"
+    versionRange="[28,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.darkutilities]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14.2]"
+    versionRange="[1.14.4]"
     ordering="NONE"
     side="BOTH"
 	
 [[dependencies.darkutilities]]
     modId="bookshelf"
     mandatory=true
-    versionRange="[4.1.31]"
+    versionRange="[4.2.33]"
     ordering="NONE"
     side="BOTH"
