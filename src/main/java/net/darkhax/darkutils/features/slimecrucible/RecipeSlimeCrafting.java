@@ -130,6 +130,12 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
         return true;
     }
     
+    @Override
+    public boolean canFit (int width, int height) {
+        
+        return true;
+    }
+    
     /**
      * Gets the amount of required slime points.
      * 
