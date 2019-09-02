@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "darkutils:rune_slowness",
+    "darkutils:rune_wither",
+    "darkutils:rune_weakness",
+    "darkutils:rune_fire",
+    "darkutils:rune_poison",
+    "darkutils:rune_fatigue",
+    "darkutils:rune_hunger",
+    "darkutils:rune_nausea",
+    "darkutils:rune_blindness",
+    "darkutils:rune_glowing"
+  ]
+}

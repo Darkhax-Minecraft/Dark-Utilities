@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "darkutils:dust_purify",
+    "darkutils:dust_fiendish",
+    "darkutils:dust_corrupt"
+  ]
+}

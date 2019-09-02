@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "darkutils:vector_plate",
+    "darkutils:export_plate",
+    "darkutils:import_plate",
+    "darkutils:vector_plate_fast",
+    "darkutils:export_plate_fast",
+    "darkutils:import_plate_fast",
+    "darkutils:vector_plate_extreme",
+    "darkutils:export_plate_extreme",
+    "darkutils:import_plate_extreme",
+  ]
+}
