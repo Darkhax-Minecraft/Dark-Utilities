@@ -14,7 +14,6 @@ import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -143,12 +142,6 @@ public class BlockFlatTile extends Block implements IBucketPickupHandler, ILiqui
         
         return placedState;
     }
-    
-//    @Override
-//    public BlockRenderLayer getRenderLayer () {
-//        
-//        return BlockRenderLayer.TRANSLUCENT;
-//    }
     
     @Override
     public void neighborChanged (BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
