@@ -1,0 +1,14 @@
+{
+  "type": "darkutils:dust_change",
+  "item": {
+    "item": "darkutils:dust_corrupt"
+  },
+  "input": {
+    "type": "bookshelf:block",
+    "block": "minecraft:nether_wart_block"
+  },
+  "output": {
+    "type": "bookshelf:block",
+    "block": "chorus_flower"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "darkutils:dust_change",
+  "item": {
+    "item": "darkutils:dust_purify"
+  },
+  "input": {
+    "type": "bookshelf:block",
+    "block": "minecraft:netherrack"
+  },
+  "output": {
+    "type": "bookshelf:block",
+    "block": "minecraft:cobblestone"
+  }
+}

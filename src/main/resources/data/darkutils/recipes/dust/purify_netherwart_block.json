@@ -1,0 +1,14 @@
+{
+  "type": "darkutils:dust_change",
+  "item": {
+    "item": "darkutils:dust_purify"
+  },
+  "input": {
+    "type": "bookshelf:block",
+    "block": "minecraft:nether_wart_block"
+  },
+  "output": {
+    "type": "bookshelf:block_list",
+    "blocks": ["minecraft:brown_mushroom_block", "minecraft:red_mushroom_block", "minecraft:mushroom_stem"]
+  }
+}

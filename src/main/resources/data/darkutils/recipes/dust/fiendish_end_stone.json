@@ -1,0 +1,14 @@
+{
+  "type": "darkutils:dust_change",
+  "item": {
+    "item": "darkutils:dust_fiendish"
+  },
+  "input": {
+    "type": "bookshelf:block",
+    "block": "minecraft:end_stone"
+  },
+  "output": {
+    "type": "bookshelf:block",
+    "block": "minecraft:netherrack"
+  }
+}
