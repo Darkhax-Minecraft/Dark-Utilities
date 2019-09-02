@@ -1,0 +1,8 @@
+{
+  "parent": "darkutils:block/framed_block_image",
+  "textures": {
+    "particle": "darkutils:block/filter_inverted_open",
+    "frame": "darkutils:block/filter_inverted_open",
+    "image": "minecraft:item/blaze_powder"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "darkutils:block/framed_block",
+  "textures": {
+    "particle": "darkutils:block/filter_inverted_closed",
+    "frame": "darkutils:block/filter_inverted_closed"
+  }
+}

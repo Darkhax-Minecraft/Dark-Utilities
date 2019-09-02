@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "forge:fence_gates/wooden"
+    },
+    "S": {
+      "tag": "forge:stone"
+    },
+    "I": {
+      "item": "minecraft:bone"
+    }
+  },
+  "result": {
+    "item": "darkutils:filter_undead",
+    "count": 4
+  }
+}

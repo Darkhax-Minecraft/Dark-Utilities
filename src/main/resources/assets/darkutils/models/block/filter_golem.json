@@ -1,0 +1,8 @@
+{
+  "parent": "darkutils:block/framed_block_image",
+  "textures": {
+    "particle": "darkutils:block/filter_open",
+    "frame": "darkutils:block/filter_open",
+    "image": "darkutils:block/head_golem"
+  }
+}

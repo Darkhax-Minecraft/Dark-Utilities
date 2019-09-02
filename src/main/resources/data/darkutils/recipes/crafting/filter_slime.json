@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "forge:fence_gates/wooden"
+    },
+    "S": {
+      "tag": "forge:stone"
+    },
+    "I": {
+      "item": "minecraft:slime_ball"
+    }
+  },
+  "result": {
+    "item": "darkutils:filter_slime",
+    "count": 4
+  }
+}
