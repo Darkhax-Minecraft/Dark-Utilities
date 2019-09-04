@@ -6,7 +6,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.BlockRenderLayer;
@@ -22,7 +21,6 @@ import net.minecraft.world.World;
 
 public class BlockFilter extends Block {
     
-    public static final BooleanProperty INVERTED = BooleanProperty.create("inverted");
     public static final VoxelShape EMPTY = Block.makeCuboidShape(0.0D, 0.0D, 0.00D, 0.0D, 0.0D, 0.0D);
     public static final Properties BLOCK_PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(3f, 10f);
     private final IFilterTest filter;
@@ -51,14 +49,14 @@ public class BlockFilter extends Block {
     
     public boolean shouldInvertFilter (BlockState state, IBlockReader world, BlockPos pos) {
         
-        return state.get(INVERTED);
+        return state.get(BlockStateProperties.INVERTED);
     }
     
     @Override
     protected void fillStateContainer (StateContainer.Builder<Block, BlockState> builder) {
         
         super.fillStateContainer(builder);
-        builder.add(BlockStateProperties.POWERED, INVERTED);
+        builder.add(BlockStateProperties.POWERED, BlockStateProperties.INVERTED);
     }
     
     @Override
@@ -77,7 +75,7 @@ public class BlockFilter extends Block {
             
             if (!world.isRemote) {
                 
-                world.setBlockState(pos, state.with(INVERTED, !state.get(INVERTED)), 3);
+                world.setBlockState(pos, state.with(BlockStateProperties.INVERTED, !state.get(BlockStateProperties.INVERTED)), 3);
                 world.playEvent(1008, pos, 0);
             }
             
