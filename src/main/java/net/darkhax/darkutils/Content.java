@@ -10,6 +10,7 @@ import net.darkhax.darkutils.features.flatblocks.BlockFlatTileRotating;
 import net.darkhax.darkutils.features.flatblocks.BlockFlatTileRotatingTicking;
 import net.darkhax.darkutils.features.flatblocks.TileEffects;
 import net.darkhax.darkutils.features.flatblocks.TileEntityTickingEffect;
+import net.darkhax.darkutils.features.grates.BlockItemGrate;
 import net.darkhax.darkutils.features.slimecrucible.BlockSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.ContainerSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.RecipeSlimeCrafting;
@@ -24,7 +25,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -96,6 +96,8 @@ public class Content {
     public final Block filterWater;
     public final Block filterNamed;
     
+    public final Block itemGrate;
+    
     /**
      * ITEMS
      */
@@ -118,7 +120,7 @@ public class Content {
     public final ContainerType<ContainerSlimeCrucible> containerSlimeCrucible;
     
     public Content(RegistryHelper registry) {
-        
+
         // Recipes
         this.recipeTypeSlimeFood = registry.registerRecipeType("slime_food");
         this.recipeTypeSlimeCrafting = registry.registerRecipeType("slime_crafting");
@@ -174,6 +176,8 @@ public class Content {
         this.filterGolem = registry.registerBlock(new BlockFilter(Filters::filterGolem), "filter_golem");
         this.filterWater = registry.registerBlock(new BlockFilter(Filters::filterWater), "filter_water");
         this.filterNamed = registry.registerBlock(new BlockFilter(Filters::filterNamed), "filter_named");
+        
+        this.itemGrate = registry.registerBlock(new BlockItemGrate(Properties.create(Material.IRON).hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)), "item_grate");
         
         // Items
         this.slimeEgg = registry.registerItem(new ItemMobSpawner(EntityType.SLIME), "egg_slime");
