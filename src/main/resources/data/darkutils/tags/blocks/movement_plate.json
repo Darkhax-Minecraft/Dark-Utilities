@@ -9,6 +9,6 @@
     "darkutils:import_plate_fast",
     "darkutils:vector_plate_extreme",
     "darkutils:export_plate_extreme",
-    "darkutils:import_plate_extreme",
+    "darkutils:import_plate_extreme"
   ]
 }
