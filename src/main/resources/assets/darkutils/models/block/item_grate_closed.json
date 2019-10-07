@@ -3,6 +3,6 @@
   "textures": {
     "particle": "minecraft:block/stone_bricks",
     "frame": "minecraft:block/stone_bricks",
-    "grate": "minecraft:block/iron_block"
+    "grate": "darkutils:block/iron_sheet"
   }
 }
