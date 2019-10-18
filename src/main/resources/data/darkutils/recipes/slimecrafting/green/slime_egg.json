@@ -1,0 +1,15 @@
+{
+  "type": "darkutils:slime_crafting",
+  "validTypes": [
+    "darkutils:green"
+  ],
+  "input": {
+    "item": "minecraft:egg"
+  },
+  "inputCount": 1,
+  "output": {
+    "item": "darkutils:egg_slime"
+  },
+  "isHidden": true,
+  "points": 64
+}

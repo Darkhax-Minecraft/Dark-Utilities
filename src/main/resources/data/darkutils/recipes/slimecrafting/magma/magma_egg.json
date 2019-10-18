@@ -1,0 +1,15 @@
+{
+  "type": "darkutils:slime_crafting",
+  "validTypes": [
+    "darkutils:magma"
+  ],
+  "input": {
+    "item": "minecraft:egg"
+  },
+  "inputCount": 1,
+  "output": {
+    "item": "darkutils:egg_magma"
+  },
+  "isHidden": true,
+  "points": 32
+}
