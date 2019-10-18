@@ -1,0 +1,1 @@
+{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"darkutils:filter_fire_immune"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}
