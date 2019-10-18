@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.features.slimecrucible;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -243,7 +244,7 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
             
             if (types.isEmpty()) {
                 
-                DarkUtils.LOG.warn("The slime food recipe {} has no valid types. It will not be obtainable. Some valid vanilla types are {}, {}, and {}.", recipeId, SlimeCrucibleType.ALL, SlimeCrucibleType.GREEN, SlimeCrucibleType.MAGMA);
+                DarkUtils.LOG.warn("The slime food recipe {} has no valid types. It will not be obtainable. Some valid vanilla types are {}.", recipeId, Arrays.toString(SlimeCrucibleType.getTypeKeys().toArray()));
             }
             
             return new RecipeSlimeCrafting(recipeId, input, inputCount, output, points, isHidden, types.toArray(new SlimeCrucibleType[types.size()]));

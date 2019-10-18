@@ -20,6 +20,7 @@ import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 
@@ -307,7 +308,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
             return this.getCrucibleType().getContainerDisplayName(this.getBlockState(), this.getWorld(), this.getPos());
         }
         
-        return SlimeCrucibleType.GREEN.getContainerDisplayName(this.getBlockState(), this.getWorld(), this.getPos());
+        return new StringTextComponent("Error");
     }
     
     @Override

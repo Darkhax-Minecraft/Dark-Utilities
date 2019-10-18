@@ -13,6 +13,7 @@
   "block.darkutils.import_plate_extreme": "Extreme Import Plate",
   "block.darkutils.slime_crucible_green": "Green Slime Crucible",
   "block.darkutils.slime_crucible_magma": "Magma Cube Crucible",
+  "block.darkutils.slime_crucible_wither": "Wither Slime Crucible",
   "block.darkutils.rune_poison": "Toxic Trap",
   "block.darkutils.rune_weakness": "Weakening Trap",
   "block.darkutils.rune_slowness": "Slowing Trap",
@@ -44,18 +45,21 @@
   
   "item.darkutils.egg_slime": "Slime Egg",
   "item.darkutils.egg_magma": "Magma Egg",
+  "item.darkutils.egg_wither": "Withering Slime Egg",
   "item.darkutils.dust_purify": "Purification Powder",
   "item.darkutils.dust_fiendish": "Fiendish Powder",
   "item.darkutils.dust_corrupt": "Corruption Powder",
   
   "container.darkutils.slime_crucible.green": "Green Slime Crucible",
   "container.darkutils.slime_crucible.magma": "Magma Slime Crucible",
+  "container.darkutils.slime_crucible.wither": "Wither Slime Crucible",
   
   "tooltips.darkutils.input": "Input: %s%s x %d",
   "tooltips.darkutils.slime_points": "%s:%s %d",
   "tooltips.darkutils.slime_crucible.info": "Click on the slime or crucible with food to get more %s.",
   "tooltips.darkutils.slime_crucible.material.green": "Slime",
   "tooltips.darkutils.slime_crucible.material.magma": "Magma",
+  "tooltips.darkutils.slime_crucible.material.wither": "Wither",
   
   "tooltip.darkutils.blank_plate.short": "Has no effect. Used for crafting and decoration.",
   "tooltip.darkutils.vector_plate.short": "Pushes mobs and entities in the direction it's pointing.",
@@ -70,6 +74,7 @@
   "tooltip.darkutils.import_plate_extreme.short": "Puts items into the inventory of blocks in front of it.",
   "tooltip.darkutils.slime_crucible_green.short": "Crafts items using slime.",
   "tooltip.darkutils.slime_crucible_magma.short": "Crafts items using magma cream.",
+  "tooltip.darkutils.slime_crucible_wither.short": "Crafts items using decay.",
   "tooltip.darkutils.rune_poison.short": "Poisons mobs that touch it.",
   "tooltip.darkutils.rune_weakness.short": "Weakens mobs that touch it.",
   "tooltip.darkutils.rune_slowness.short": "Slows mobs that touch it.",
@@ -100,7 +105,16 @@
   "tooltip.darkutils.item_grate.short": "Allows items to pass through it.",  
   "tooltip.darkutils.egg_slime.short": "Summons a green slime.",
   "tooltip.darkutils.egg_magma.short": "Summons a magma slime.",
+  "tooltip.darkutils.egg_wither.short": "Summons a wither slime.",
   "tooltip.darkutils.dust_purify.short": "Purifies blocks into surface world versions.",
   "tooltip.darkutils.dust_fiendish.short": "Twists blocks into nether world versions.",
-  "tooltip.darkutils.dust_corrupt.short": "Corrupts blocks into ender world versions."
+  "tooltip.darkutils.dust_corrupt.short": "Corrupts blocks into ender world versions.",
+  
+  "entity.darkutils.wither_slime": "Withering Slime",
+  "item.darkutils.wither_slime_spawn_egg": "Withering Slime Spawn Egg",
+  
+  "item.minecraft.potion.effect.decay": "Potion of Decay",
+  "item.minecraft.splash_potion.effect.decay": "Splash Potion of Decay",
+  "item.minecraft.tipped_arrow.effect.decay": "Arrow of Decay",
+  "item.minecraft.lingering_potion.effect.decay": "Lingering Potion of Decay"
 }

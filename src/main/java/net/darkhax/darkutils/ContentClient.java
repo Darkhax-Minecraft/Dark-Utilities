@@ -5,6 +5,8 @@ import net.darkhax.bookshelf.registry.RegistryHelperClient;
 import net.darkhax.darkutils.features.slimecrucible.RenderSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.ScreenSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.TileEntitySlimeCrucible;
+import net.darkhax.darkutils.features.witherslime.EntitySlimeWither;
+import net.darkhax.darkutils.features.witherslime.RenderSlimeWither;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -25,12 +27,15 @@ public class ContentClient extends Content {
             
             // Gui Screens
             clientRegistry.registerGuiScreen(this.containerSlimeCrucible, ScreenSlimeCrucible::new);
+            
+            // Entities
+            clientRegistry.registerEntityRenderer(EntitySlimeWither.class, RenderSlimeWither::new);
         }
     }
     
-    public static void addTooltips(ItemTooltipEvent event) {
+    public static void addTooltips (ItemTooltipEvent event) {
         
-        ResourceLocation id = event.getItemStack().getItem().getRegistryName();
+        final ResourceLocation id = event.getItemStack().getItem().getRegistryName();
         
         if ("darkutils".equals(id.getNamespace())) {
             

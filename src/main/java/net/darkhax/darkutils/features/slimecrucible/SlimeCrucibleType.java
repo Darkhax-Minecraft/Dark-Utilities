@@ -2,17 +2,16 @@ package net.darkhax.darkutils.features.slimecrucible;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -26,22 +25,6 @@ public class SlimeCrucibleType {
      * {@link #getType(ResourceLocation)}.
      */
     private static final Map<ResourceLocation, SlimeCrucibleType> REGISTRY_MAP = new HashMap<>();
-    
-    /**
-     * A general catch-all crucible type. This is used by crafting recipes as a wildcard to
-     * allow them to work with all slime crucibles.
-     */
-    public static final SlimeCrucibleType ALL = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "all"), 0, null, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundEvents.ENTITY_GENERIC_EXPLODE, 0);
-    
-    /**
-     * The green slime crucible type.
-     */
-    public static final SlimeCrucibleType GREEN = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "green"), 64, EntityType.SLIME::create, SoundEvents.ENTITY_SLIME_SQUISH, SoundEvents.ENTITY_SLIME_JUMP, 0xff33cc00);
-    
-    /**
-     * The magma cube crucible type.
-     */
-    public static final SlimeCrucibleType MAGMA = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "magma"), 32, EntityType.MAGMA_CUBE::create, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, 0xff663300);
     
     /**
      * Gets the ID of the entity. This is used for serialization of types in recipes.
@@ -121,7 +104,7 @@ public class SlimeCrucibleType {
         
         if (this.entityBuilder == null) {
             
-            throw new IllegalArgumentException(this == ALL ? "Someone tried to create an instance of the ALL slime type. This is an unsupported operation." : "The slime type " + this.id + " does not have an entityBuilder. This is not allowed.");
+            throw new IllegalArgumentException(this == DarkUtils.content.crucibleTypeAll ? "Someone tried to create an instance of the ALL slime type. This is an unsupported operation." : "The slime type " + this.id + " does not have an entityBuilder. This is not allowed.");
         }
         
         return this.entityBuilder.apply(world);
@@ -156,7 +139,7 @@ public class SlimeCrucibleType {
      */
     public boolean matches (SlimeCrucibleType otherType) {
         
-        return this == ALL || otherType == this || otherType == ALL;
+        return this == DarkUtils.content.crucibleTypeAll || otherType == this || otherType == DarkUtils.content.crucibleTypeAll;
     }
     
     /**
@@ -246,5 +229,10 @@ public class SlimeCrucibleType {
     public int getOverlayColor () {
         
         return this.overlayColor;
+    }
+    
+    public static Set<ResourceLocation> getTypeKeys () {
+        
+        return REGISTRY_MAP.keySet();
     }
 }

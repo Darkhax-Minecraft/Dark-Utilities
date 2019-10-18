@@ -18,18 +18,28 @@ import net.darkhax.darkutils.features.slimecrucible.RecipeSlimeFood;
 import net.darkhax.darkutils.features.slimecrucible.SlimeCrucibleType;
 import net.darkhax.darkutils.features.slimecrucible.TileEntitySlimeCrucible;
 import net.darkhax.darkutils.features.spawnitems.ItemMobSpawner;
+import net.darkhax.darkutils.features.witherslime.EntitySlimeWither;
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.Properties;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
+import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvents;
+import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class Content {
     
@@ -66,6 +76,7 @@ public class Content {
     
     public final Block slimeCrucibleGreen;
     public final Block slimeCrucibleMagma;
+    public final Block slimeCrucibleWither;
     
     public final Block runePoison;
     public final Block runeWeakness;
@@ -103,6 +114,7 @@ public class Content {
      */
     public final Item slimeEgg;
     public final Item magmaEgg;
+    public final Item witherEgg;
     
     public final Item dustPurify;
     public final Item dustFiendish;
@@ -119,8 +131,28 @@ public class Content {
      */
     public final ContainerType<ContainerSlimeCrucible> containerSlimeCrucible;
     
+    /**
+     * ENTITIES
+     */
+    public final EntityType<EntitySlimeWither> witherSlimeType;
+    
+    /**
+     * POTIONS
+     */
+    public final Potion POTION_DECAY = new Potion("decay", new EffectInstance(Effects.WITHER, 900));
+    public final Potion POTION_LONG_DECAY = new Potion("decay", new EffectInstance(Effects.WITHER, 1800));
+    public final Potion POTION_STRONG_DECAY = new Potion("decay", new EffectInstance(Effects.WITHER, 432, 1));
+    
+    /**
+     * SLIME CRUCIBLE TYPES
+     */
+    public final SlimeCrucibleType crucibleTypeAll;
+    public final SlimeCrucibleType crucibleTypeGreen;
+    public final SlimeCrucibleType crucibleTypeMagma;
+    public final SlimeCrucibleType crucibleTypeWither;
+    
     public Content(RegistryHelper registry) {
-
+        
         // Recipes
         this.recipeTypeSlimeFood = registry.registerRecipeType("slime_food");
         this.recipeTypeSlimeCrafting = registry.registerRecipeType("slime_crafting");
@@ -129,6 +161,15 @@ public class Content {
         this.recipeSerializerSlimeFood = registry.registerRecipeSerializer(RecipeSlimeFood.SERIALIZER, "slime_food");
         this.recipeSerializerSlimeCrafting = registry.registerRecipeSerializer(RecipeSlimeCrafting.SERIALIZER, "slime_crafting");
         this.recipeSerializerDustChange = registry.registerRecipeSerializer(RecipeDustChange.SERIALIZER, "dust_change");
+        
+        // Entities
+        this.witherSlimeType = registry.registerMob(EntitySlimeWither.class, EntitySlimeWither::new, EntityClassification.MONSTER, "wither_slime", 2f, 2f, 5, 3, 0x656565, 0x3484199);
+        
+        // Slime Crucibles
+        this.crucibleTypeAll = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "all"), 0, null, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundEvents.ENTITY_GENERIC_EXPLODE, 0);
+        this.crucibleTypeGreen = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "green"), 64, EntityType.SLIME::create, SoundEvents.ENTITY_SLIME_SQUISH, SoundEvents.ENTITY_SLIME_JUMP, 0xff33cc00);
+        this.crucibleTypeMagma = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "magma"), 32, EntityType.MAGMA_CUBE::create, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, SoundEvents.ENTITY_MAGMA_CUBE_JUMP, 0xff663300);
+        this.crucibleTypeWither = new SlimeCrucibleType(new ResourceLocation(DarkUtils.MOD_ID, "wither"), 32, this.witherSlimeType::create, SoundEvents.ENTITY_WITHER_AMBIENT, SoundEvents.ENTITY_WITHER_SHOOT, 0xffffff);
         
         // Blocks
         this.blankPlate = registry.registerBlock(new BlockFlatTile(), "blank_plate");
@@ -156,9 +197,10 @@ public class Content {
         this.runeBlindness = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_BLINDNESS), "rune_blindness");
         this.runeNausea = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_NAUSEA), "rune_nausea");
         
-        this.slimeCrucibleGreen = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.CLAY, MaterialColor.GRASS).slipperiness(0.8F).hardnessAndResistance(0.6F).sound(SoundType.SLIME), SlimeCrucibleType.GREEN), "slime_crucible_green");
-        this.slimeCrucibleMagma = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.ROCK, MaterialColor.NETHERRACK).lightValue(3).hardnessAndResistance(0.5F), SlimeCrucibleType.MAGMA), "slime_crucible_magma");
-
+        this.slimeCrucibleGreen = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.CLAY, MaterialColor.GRASS).slipperiness(0.8f).hardnessAndResistance(0.6F).sound(SoundType.SLIME), this.crucibleTypeGreen), "slime_crucible_green");
+        this.slimeCrucibleMagma = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.ROCK, MaterialColor.NETHERRACK).lightValue(3).hardnessAndResistance(0.5F), this.crucibleTypeMagma), "slime_crucible_magma");
+        this.slimeCrucibleWither = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.CLAY, MaterialColor.BLACK).slipperiness(0.8f).hardnessAndResistance(1f), this.crucibleTypeWither), "slime_crucible_wither");
+        
         this.filterPlayer = registry.registerBlock(new BlockFilter(Filters::filterPlayer), "filter_player");
         this.filterUndead = registry.registerBlock(new BlockFilter(Filters::filterUndead), "filter_undead");
         this.filterArthropod = registry.registerBlock(new BlockFilter(Filters::filterArthropod), "filter_arthropod");
@@ -182,6 +224,7 @@ public class Content {
         // Items
         this.slimeEgg = registry.registerItem(new ItemMobSpawner(EntityType.SLIME), "egg_slime");
         this.magmaEgg = registry.registerItem(new ItemMobSpawner(EntityType.MAGMA_CUBE), "egg_magma");
+        this.witherEgg = registry.registerItem(new ItemMobSpawner(this.witherSlimeType), "egg_wither");
         
         this.dustPurify = registry.registerItem(new Item(new Item.Properties()), "dust_purify");
         this.dustFiendish = registry.registerItem(new Item(new Item.Properties()), "dust_fiendish");
@@ -189,7 +232,7 @@ public class Content {
         
         // Tiles
         this.tileTickingEffect = registry.registerTileEntity(TileEntityTickingEffect::new, "ticking_tile", this.exportPlate, this.exportPlateFast, this.exportPlateHyper);
-        this.tileSlimeCrucible = registry.registerTileEntity(TileEntitySlimeCrucible::new, "slime_crucible", this.slimeCrucibleGreen, this.slimeCrucibleMagma);
+        this.tileSlimeCrucible = registry.registerTileEntity(TileEntitySlimeCrucible::new, "slime_crucible", this.slimeCrucibleGreen, this.slimeCrucibleMagma, this.slimeCrucibleWither);
         
         // Containers
         this.containerSlimeCrucible = registry.registerContainer(ContainerSlimeCrucible::new, "slime_crucible");
@@ -198,5 +241,20 @@ public class Content {
         DispenserBlock.registerDispenseBehavior(this.dustPurify, DustDispensorBehaviour.BEHAVIOR);
         DispenserBlock.registerDispenseBehavior(this.dustFiendish, DustDispensorBehaviour.BEHAVIOR);
         DispenserBlock.registerDispenseBehavior(this.dustCorrupt, DustDispensorBehaviour.BEHAVIOR);
+        
+        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(Potion.class, this::registerPotions);
+    }
+    
+    private void registerPotions (Register<Potion> event) {
+        
+        final IForgeRegistry<Potion> registry = event.getRegistry();
+        this.POTION_DECAY.setRegistryName("darkutils", "decay");
+        registry.register(this.POTION_DECAY);
+        
+        this.POTION_LONG_DECAY.setRegistryName("darkutils", "long_decay");
+        registry.register(this.POTION_LONG_DECAY);
+        
+        this.POTION_STRONG_DECAY.setRegistryName("darkutils", "strong_decay");
+        registry.register(this.POTION_STRONG_DECAY);
     }
 }
