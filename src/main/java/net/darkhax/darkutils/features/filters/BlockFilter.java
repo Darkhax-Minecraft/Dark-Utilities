@@ -69,7 +69,7 @@ public class BlockFilter extends Block {
     }
     
     @Override
-    public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+    public boolean onBlockActivated (BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         
         if (player.isSneaking()) {
             
@@ -83,16 +83,16 @@ public class BlockFilter extends Block {
         }
         
         return false;
-     }
+    }
     
     @Override
     public void neighborChanged (BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         
-        boolean isBlockPowered = worldIn.isBlockPowered(pos);
+        final boolean isBlockPowered = worldIn.isBlockPowered(pos);
         
         if (!worldIn.isRemote && state.get(BlockStateProperties.POWERED) != isBlockPowered) {
             
-            worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.5f);
+            worldIn.playSound((PlayerEntity) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.5f);
             worldIn.setBlockState(pos, state.with(BlockStateProperties.POWERED, isBlockPowered));
         }
         
@@ -140,7 +140,8 @@ public class BlockFilter extends Block {
     }
     
     @Override
-    public BlockRenderLayer getRenderLayer() {
+    public BlockRenderLayer getRenderLayer () {
+        
         return BlockRenderLayer.CUTOUT;
-     }
+    }
 }

@@ -50,11 +50,11 @@ public class BlockItemGrate extends Block {
     @Override
     public void neighborChanged (BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         
-        boolean isBlockPowered = worldIn.isBlockPowered(pos);
+        final boolean isBlockPowered = worldIn.isBlockPowered(pos);
         
         if (!worldIn.isRemote && state.get(BlockStateProperties.POWERED) != isBlockPowered) {
             
-            worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.5f);
+            worldIn.playSound((PlayerEntity) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.5f);
             worldIn.setBlockState(pos, state.with(BlockStateProperties.POWERED, isBlockPowered));
         }
         
@@ -89,21 +89,22 @@ public class BlockItemGrate extends Block {
     public VoxelShape getCollisionShape (BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         
         if (context.getEntity() instanceof ItemEntity && !state.get(BlockStateProperties.POWERED)) {
-
+            
             return VoxelShapes.empty();
         }
         
         return SHAPE;
     }
     
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    @Override
+    public VoxelShape getShape (BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         
         return SHAPE;
-     }
+    }
     
     @Override
-    public BlockRenderLayer getRenderLayer() {
+    public BlockRenderLayer getRenderLayer () {
         
         return BlockRenderLayer.CUTOUT;
-     }
+    }
 }
