@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 
+import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.bookshelf.util.RenderUtils;
+import net.darkhax.bookshelf.util.RenderUtils.IQuadColorHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -174,6 +176,13 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
         }
     }
     
+    public static final IQuadColorHandler DARKEN_QUAD_COLORS = (stack, quad, providedColor) -> {
+        
+        final int originalColor = RenderUtils.DEFAULT_QUAD_COLORS.getColorForQuad(stack, quad, providedColor);
+        
+        return MathsUtils.multiplyColor(originalColor, 0.6f);
+    };
+    
     /**
      * Renders the output itemstack of the visible recipes.
      * 
@@ -195,14 +204,15 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeItemX = selectionBoxX + recipeIndex % 4 * 16;
             final int recipeRow = recipeIndex / 4;
             final int recipeItemY = selectionBoxY + recipeRow * 18 + 2;
+            final boolean canCraft = this.container.canCraft(i);
             
             // Skip recipes that can't be crafted and are hidden.
-            if (!this.container.canCraft(i) && this.container.getAvailableRecipes().get(i).isHidden()) {
+            if (!canCraft && this.container.getAvailableRecipes().get(i).isHidden()) {
                 
                 continue;
             }
             
-            RenderUtils.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, this.container.canCraft(i) ? 0xffffffff : 0x80808080);
+            RenderUtils.renderItemAndEffectIntoGUI(list.get(i).getRecipeOutput(), recipeItemX, recipeItemY, -1, canCraft ? RenderUtils.DEFAULT_QUAD_COLORS : DARKEN_QUAD_COLORS);
         }
         
         RenderHelper.disableStandardItemLighting();
