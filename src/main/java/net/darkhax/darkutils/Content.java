@@ -34,9 +34,12 @@ import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.potion.Potion;
+import net.minecraft.stats.IStatFormatter;
+import net.minecraft.stats.Stats;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -151,6 +154,13 @@ public class Content {
     public final SlimeCrucibleType crucibleTypeMagma;
     public final SlimeCrucibleType crucibleTypeWither;
     
+    /**
+     * STATS
+     */
+    public final ResourceLocation statSlimeCrucibleInteract;
+    public final ResourceLocation statSlimeCrucibleItemsCrafted;
+    public final ResourceLocation statSlimeCrucibleFeed;
+    
     public Content(RegistryHelper registry) {
         
         // Recipes
@@ -242,6 +252,11 @@ public class Content {
         DispenserBlock.registerDispenseBehavior(this.dustFiendish, DustDispensorBehaviour.BEHAVIOR);
         DispenserBlock.registerDispenseBehavior(this.dustCorrupt, DustDispensorBehaviour.BEHAVIOR);
         
+        // Stats
+        this.statSlimeCrucibleInteract = this.registerCustom("slime_crucible_interact");
+        this.statSlimeCrucibleItemsCrafted = this.registerCustom("slime_crucible_items_crafted");
+        this.statSlimeCrucibleFeed = this.registerCustom("slime_crucible_fed");
+        
         FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(Potion.class, this::registerPotions);
     }
     
@@ -256,5 +271,18 @@ public class Content {
         
         this.POTION_STRONG_DECAY.setRegistryName("darkutils", "strong_decay");
         registry.register(this.POTION_STRONG_DECAY);
+    }
+    
+    private ResourceLocation registerCustom (String key) {
+        
+        return this.registerCustom(key, IStatFormatter.DEFAULT);
+    }
+    
+    private ResourceLocation registerCustom (String key, IStatFormatter formatter) {
+        
+        final ResourceLocation resourcelocation = new ResourceLocation("darkutils", key);
+        Registry.register(Registry.CUSTOM_STAT, key, resourcelocation);
+        Stats.CUSTOM.get(resourcelocation, formatter);
+        return resourcelocation;
     }
 }

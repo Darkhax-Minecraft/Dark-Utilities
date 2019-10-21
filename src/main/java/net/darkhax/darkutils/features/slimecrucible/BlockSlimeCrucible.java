@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.features.slimecrucible;
 
+import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -100,6 +101,8 @@ public class BlockSlimeCrucible extends ContainerBlock implements ISlimeCrucible
                         
                         serverWorld.spawnParticle(new ItemParticleData(ParticleTypes.ITEM, heldItem), pos.getX() + 0.5d, pos.getY() + 1.25d, pos.getZ() + 0.5d, 1, world.rand.nextDouble() * 0.45 - 0.45, 0d, world.rand.nextDouble() * 0.45 - 0.45, 0d);
                     }
+                    
+                    player.addStat(DarkUtils.content.statSlimeCrucibleFeed);
                 }
                 
                 // Makes the slime do a little squish when fed.
@@ -115,6 +118,12 @@ public class BlockSlimeCrucible extends ContainerBlock implements ISlimeCrucible
             else {
                 
                 player.openContainer(state.getContainer(world, pos));
+                
+                if (!world.isRemote) {
+                    
+                    player.addStat(DarkUtils.content.statSlimeCrucibleInteract);
+                }
+                
                 return true;
             }
         }

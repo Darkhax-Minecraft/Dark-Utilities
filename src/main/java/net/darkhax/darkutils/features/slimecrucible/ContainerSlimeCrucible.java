@@ -14,6 +14,7 @@ import net.darkhax.bookshelf.inventory.InventoryListenable;
 import net.darkhax.bookshelf.inventory.SlotOutput;
 import net.darkhax.bookshelf.util.WorldUtils;
 import net.darkhax.darkutils.DarkUtils;
+import net.darkhax.darkutils.features.slimecrucible.SlimeCrucibleEvents.RecipeCraftedEvent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -30,6 +31,7 @@ import net.minecraft.util.IntReferenceHolder;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ContainerSlimeCrucible extends Container {
     
@@ -326,20 +328,28 @@ public class ContainerSlimeCrucible extends Container {
         return this.availableRecipes.get(this.getSelectedRecipeId());
     }
     
+    private ItemStack tempCraftingStack = ItemStack.EMPTY;
+    
     /**
      * Handles the output slot being changed by the player.
      * 
      * @param player The player who changed the slot.
      * @param stack The newly created ItemStack.
      */
-    private void onOutputSlotChanged (PlayerEntity player, ItemStack stack) {
+    private ItemStack onOutputSlotChanged (PlayerEntity player, ItemStack stack) {
         
         final RecipeSlimeCrafting recipe = this.getSelectedRecipe();
         final ItemStack inputStack = this.slotInput.decrStackSize(recipe.getInputCount());
+        final ItemStack outputCopy = stack;
         
         // Remove the consumed slime points from the tile and from the container.
         this.worldPosition.consume( (world, pos) -> {
             
+            final RecipeCraftedEvent event = new RecipeCraftedEvent(recipe, player, world, pos, outputCopy);
+            MinecraftForge.EVENT_BUS.post(event);
+            this.tempCraftingStack = event.getOutput();
+            
+            this.playerEntity.addStat(DarkUtils.content.statSlimeCrucibleItemsCrafted);
             final int consumedPoints = recipe.getSlimePoints();
             this.slimePoints.set(this.getSlimePoints() - consumedPoints);
             final TileEntity tileEntity = world.getTileEntity(pos);
@@ -357,11 +367,16 @@ public class ContainerSlimeCrucible extends Container {
             this.updateOutputs();
         }
         
+        stack = this.tempCraftingStack;
+        this.tempCraftingStack = ItemStack.EMPTY;
+        
         // Call the creation hook on the item so they can run their effects.
         stack.getItem().onCreated(stack, player.world, player);
         
         // Play the crafting sound on the server.
         this.worldPosition.consume(this::playCraftingSound);
+        
+        return stack;
     }
     
     /**
@@ -430,6 +445,11 @@ public class ContainerSlimeCrucible extends Container {
                     if (tile instanceof TileEntitySlimeCrucible) {
                         
                         ((TileEntitySlimeCrucible) tile).addSlimePoints(itemPoints);
+                        
+                        if (this.playerEntity != null) {
+                            
+                            this.playerEntity.addStat(DarkUtils.content.statSlimeCrucibleFeed);
+                        }
                     }
                 });
                 

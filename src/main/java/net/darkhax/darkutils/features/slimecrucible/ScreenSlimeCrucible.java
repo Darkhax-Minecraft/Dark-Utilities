@@ -8,6 +8,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.bookshelf.util.RenderUtils;
 import net.darkhax.bookshelf.util.RenderUtils.IQuadColorHandler;
+import net.darkhax.darkutils.features.slimecrucible.SlimeCrucibleEvents.RecipeVisibleEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -25,6 +26,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
 
 @OnlyIn(Dist.CLIENT)
 public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible> {
@@ -144,11 +146,18 @@ public class ScreenSlimeCrucible extends ContainerScreen<ContainerSlimeCrucible>
             final int recipeRow = recipeIndex / 4;
             final int recipeY = selectionBoxY + recipeRow * 18 + 2;
             final boolean canCraftRecipe = this.container.canCraft(i);
+            final RecipeSlimeCrafting recipe = this.container.getAvailableRecipes().get(i);
             int textureY = this.ySize;
             int color = 0xffffffff;
             
+            boolean isRecipeVisible = recipe.isHidden() ? canCraftRecipe : true;
+            
+            final RecipeVisibleEvent event = new RecipeVisibleEvent(recipe, Minecraft.getInstance().player, isRecipeVisible);
+            MinecraftForge.EVENT_BUS.post(event);
+            isRecipeVisible = event.isVisible();
+            
             // If the player can't craft it, and it's hidden, the recipe is not rendered.
-            if (!canCraftRecipe && this.container.getAvailableRecipes().get(i).isHidden()) {
+            if (!isRecipeVisible) {
                 
                 continue;
             }

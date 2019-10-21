@@ -116,5 +116,9 @@
   "item.minecraft.potion.effect.decay": "Potion of Decay",
   "item.minecraft.splash_potion.effect.decay": "Splash Potion of Decay",
   "item.minecraft.tipped_arrow.effect.decay": "Arrow of Decay",
-  "item.minecraft.lingering_potion.effect.decay": "Lingering Potion of Decay"
+  "item.minecraft.lingering_potion.effect.decay": "Lingering Potion of Decay",
+  
+  "stat.darkutils.slime_crucible_items_crafted": "Items Created With Slime Crucible",
+  "stat.darkutils.slime_crucible_fed": "Slime Crucibles Fed",
+  "stat.darkutils.slime_crucible_interact": "Interactions with Slime Crucible"
 }
