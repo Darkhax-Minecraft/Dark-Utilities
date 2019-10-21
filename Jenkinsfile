@@ -18,5 +18,17 @@ pipeline {
 				}
             }
         }
+        
+        stage('Build') {
+        
+		    steps {
+			
+			    withCredentials([file(credentialsId: 'mod_build_secrets', variable: 'ORG_GRADLE_PROJECT_secretFile')]) {
+			
+			        echo 'Building project.'
+                    sh './gradlew build publish curseforge --stacktrace --warn'
+			    }
+			}
+        }
     }
 }
