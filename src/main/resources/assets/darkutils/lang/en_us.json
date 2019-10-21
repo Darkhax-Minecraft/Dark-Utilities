@@ -14,6 +14,8 @@
   "block.darkutils.slime_crucible_green": "Green Slime Crucible",
   "block.darkutils.slime_crucible_magma": "Magma Cube Crucible",
   "block.darkutils.slime_crucible_wither": "Wither Slime Crucible",
+  "block.darkutils.rune_damage": "Damage Trap",
+  "block.darkutils.rune_damage_player": "Player Damage Trap",
   "block.darkutils.rune_poison": "Toxic Trap",
   "block.darkutils.rune_weakness": "Weakening Trap",
   "block.darkutils.rune_slowness": "Slowing Trap",
@@ -76,6 +78,8 @@
   "tooltip.darkutils.slime_crucible_magma.short": "Crafts items using magma cream.",
   "tooltip.darkutils.slime_crucible_wither.short": "Crafts items using decay.",
   "tooltip.darkutils.rune_poison.short": "Poisons mobs that touch it.",
+  "tooltip.darkutils.rune_damage.short": "Damages mobs that touch it with magic damage.",
+  "tooltip.darkutils.rune_damage_player.short": "Damages mobs that touch it with player damage. Mobs killed will drop EXP and loot.",
   "tooltip.darkutils.rune_weakness.short": "Weakens mobs that touch it.",
   "tooltip.darkutils.rune_slowness.short": "Slows mobs that touch it.",
   "tooltip.darkutils.rune_wither.short": "Inflicts mobs with withering.",
@@ -109,7 +113,7 @@
   "tooltip.darkutils.dust_purify.short": "Purifies blocks into surface world versions.",
   "tooltip.darkutils.dust_fiendish.short": "Twists blocks into nether world versions.",
   "tooltip.darkutils.dust_corrupt.short": "Corrupts blocks into ender world versions.",
-  
+  "tooltip.darkutils.wither_slime_spawn_egg.short": "Spawns a Withering Slime.";
   "entity.darkutils.wither_slime": "Withering Slime",
   "item.darkutils.wither_slime_spawn_egg": "Withering Slime Spawn Egg",
   

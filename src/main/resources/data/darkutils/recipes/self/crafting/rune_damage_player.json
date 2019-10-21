@@ -1,0 +1,26 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    " S ",
+    "CMC",
+    "PPP"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:diamond_sword"
+    },
+    "C": {
+      "tag": "forge:dyes/cyan"
+    },
+    "M": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "P": {
+      "item": "darkutils:blank_plate"
+    }
+  },
+  "result": {
+    "item": "darkutils:rune_damage_player",
+    "count": 3
+  }
+}

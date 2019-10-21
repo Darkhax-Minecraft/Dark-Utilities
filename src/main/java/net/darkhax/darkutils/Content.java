@@ -77,6 +77,8 @@ public class Content {
     public final Block slimeCrucibleMagma;
     public final Block slimeCrucibleWither;
     
+    public final Block runeDamage;
+    public final Block runeDamagePlayer;
     public final Block runePoison;
     public final Block runeWeakness;
     public final Block runeSlowness;
@@ -192,6 +194,8 @@ public class Content {
         this.exportPlateHyper = registry.registerBlock(new BlockFlatTileRotatingTicking(TileEffects.PUSH_STRONG, TileEffects.EXPORT_INVENTORY, 1), "export_plate_extreme");
         this.importPlateHyper = registry.registerBlock(new BlockFlatTileRotating(TileEffects.IMPORT_STRONG), "import_plate_extreme");
         
+        this.runeDamage = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_DAMAGE), "rune_damage");
+        this.runeDamagePlayer = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_DAMAGE_PLAYER), "rune_damage_player");
         this.runePoison = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_POISON), "rune_poison");
         this.runeWeakness = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_WEAKNESS), "rune_weakness");
         this.runeSlowness = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_SLOWNESS), "rune_slowness");
