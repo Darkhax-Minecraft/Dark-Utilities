@@ -2,6 +2,7 @@ package net.darkhax.darkutils;
 
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.darkutils.features.dust.DustDispensorBehaviour;
+import net.darkhax.darkutils.features.dust.DustHandler;
 import net.darkhax.darkutils.features.dust.RecipeDustChange;
 import net.darkhax.darkutils.features.filters.BlockFilter;
 import net.darkhax.darkutils.features.filters.Filters;
@@ -37,6 +38,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
+import net.minecraftforge.common.MinecraftForge;
 
 public class Content {
     
@@ -233,6 +235,7 @@ public class Content {
         this.dustPurify = registry.registerItem(new Item(new Item.Properties()), "dust_purify");
         this.dustFiendish = registry.registerItem(new Item(new Item.Properties()), "dust_fiendish");
         this.dustCorrupt = registry.registerItem(new Item(new Item.Properties()), "dust_corrupt");
+        MinecraftForge.EVENT_BUS.addListener(DustHandler::onPlayerUseItem);
         
         // Tiles
         this.tileTickingEffect = registry.registerTileEntity(TileEntityTickingEffect::new, "ticking_tile", this.exportPlate, this.exportPlateFast, this.exportPlateHyper);
@@ -247,9 +250,9 @@ public class Content {
         DispenserBlock.registerDispenseBehavior(this.dustCorrupt, DustDispensorBehaviour.BEHAVIOR);
         
         // Potions
-        potionDecay = registry.registerPotion(new Potion("decay", new EffectInstance(Effects.WITHER, 900)), "decay");
-        potionDecayLong = registry.registerPotion(new Potion("decay", new EffectInstance(Effects.WITHER, 1800)), "long_decay");
-        potionDecayStrong = registry.registerPotion(new Potion("decay", new EffectInstance(Effects.WITHER, 432, 1)), "strong_decay");
+        this.potionDecay = registry.registerPotion(new Potion("decay", new EffectInstance(Effects.WITHER, 900)), "decay");
+        this.potionDecayLong = registry.registerPotion(new Potion("decay", new EffectInstance(Effects.WITHER, 1800)), "long_decay");
+        this.potionDecayStrong = registry.registerPotion(new Potion("decay", new EffectInstance(Effects.WITHER, 432, 1)), "strong_decay");
         
         // Stats
         this.statSlimeCrucibleInteract = registry.registerStat("slime_crucible_interact");

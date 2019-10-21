@@ -7,16 +7,12 @@ import net.darkhax.bookshelf.item.ItemGroupBase;
 import net.darkhax.bookshelf.network.NetworkHelper;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.bookshelf.registry.RegistryHelperClient;
-import net.darkhax.darkutils.features.dust.DustHandler;
 import net.darkhax.darkutils.features.slimecrucible.MessageSyncCrucibleType;
 import net.darkhax.darkutils.network.NetworkHandlerClient;
 import net.darkhax.darkutils.network.NetworkHandlerServer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -44,8 +40,5 @@ public class DarkUtils {
         content = DistExecutor.runForDist( () -> () -> new ContentClient(registry), () -> () -> new Content(registry));
         NETWORK.registerEnqueuedMessage(MessageSyncCrucibleType.class, NetworkHandlerServer::encodeStageMessage, t -> NetworkHandlerClient.decodeStageMessage(t), (t, u) -> NetworkHandlerClient.processSyncStagesMessage(t, u));
         registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
-        
-        MinecraftForge.EVENT_BUS.addListener(DustHandler::onPlayerUseItem);
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST, ContentClient::addTooltips));
     }
 }
