@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/Darkhax-Minecraft/Dark-Utilities/issues"
 [[mods]]
 modId="darkutils"
 version="${version}"
-displayName="${mod_name}"
+displayName="Dark Utilities"
 displayURL="${mod_download}"
 credits="${mod_credits}"
 authors="${mod_authors}"
