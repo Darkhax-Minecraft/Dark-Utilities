@@ -74,7 +74,12 @@ repositories {
 
     maven {
 
-        url "http://maven.mcmoddev.com"
+        url 'http://maven.mcmoddev.com'
+    }
+    
+    maven {
+
+        url 'http://dvs1.progwml6.com/files/maven'
     }
 }
 
@@ -83,6 +88,9 @@ dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
     
     compile fg.deobf(project.dependencies.create("net.darkhax.bookshelf:Bookshelf-1.14.4:${bookshelf_version}"))
+    compile fg.deobf(project.dependencies.create("mezz.jei:jei-1.14.4:${jei_version}"))
+    compile fg.deobf("slimeknights.mantle:Mantle:1.14.4-${mantle_version}")
+    compile fg.deobf("slimeknights.tconstruct:TConstruct:1.14.4-${tconstruct_version}")
 }
 
 jar {
