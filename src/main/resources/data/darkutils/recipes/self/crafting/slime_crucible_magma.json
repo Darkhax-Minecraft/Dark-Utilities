@@ -1,0 +1,22 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "S S",
+    "SCS",
+    "BBB"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:magma_cream"
+    },
+    "C": {
+      "item": "minecraft:composter"
+    },
+    "B": {
+      "item": "minecraft:magma_block"
+    }
+  },
+  "result": {
+    "item": "darkutils:slime_crucible_magma"
+  }
+}

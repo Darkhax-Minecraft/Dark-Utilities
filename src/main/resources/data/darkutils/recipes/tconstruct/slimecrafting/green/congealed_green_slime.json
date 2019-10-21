@@ -1,0 +1,21 @@
+{
+  "type": "darkutils:slime_crafting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "validTypes": [
+    "darkutils:green"
+  ],
+  "input": {
+    "item": "minecraft:slime_ball"
+  },
+  "inputCount": 1,
+  "output": {
+    "item": "tconstruct:congealed_green_slime",
+    "count": 1
+  },
+  "points": 3
+}

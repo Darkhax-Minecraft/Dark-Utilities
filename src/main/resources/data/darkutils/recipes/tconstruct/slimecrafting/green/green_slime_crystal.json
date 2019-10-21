@@ -1,0 +1,21 @@
+{
+  "type": "darkutils:slime_crafting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "validTypes": [
+    "darkutils:green"
+  ],
+  "input": {
+    "item": "minecraft:prismarine_crystals"
+  },
+  "inputCount": 4,
+  "output": {
+    "item": "tconstruct:green_slime_crystal",
+    "count": 1
+  },
+  "points": 16
+}
