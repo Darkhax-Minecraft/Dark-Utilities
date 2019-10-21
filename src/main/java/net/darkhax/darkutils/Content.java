@@ -34,15 +34,9 @@ import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.potion.Potion;
-import net.minecraft.stats.IStatFormatter;
-import net.minecraft.stats.Stats;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.registry.Registry;
-import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.IForgeRegistry;
 
 public class Content {
     
@@ -142,9 +136,9 @@ public class Content {
     /**
      * POTIONS
      */
-    public final Potion POTION_DECAY = new Potion("decay", new EffectInstance(Effects.WITHER, 900));
-    public final Potion POTION_LONG_DECAY = new Potion("decay", new EffectInstance(Effects.WITHER, 1800));
-    public final Potion POTION_STRONG_DECAY = new Potion("decay", new EffectInstance(Effects.WITHER, 432, 1));
+    public final Potion potionDecay;
+    public final Potion potionDecayLong;
+    public final Potion potionDecayStrong;
     
     /**
      * SLIME CRUCIBLE TYPES
@@ -252,37 +246,14 @@ public class Content {
         DispenserBlock.registerDispenseBehavior(this.dustFiendish, DustDispensorBehaviour.BEHAVIOR);
         DispenserBlock.registerDispenseBehavior(this.dustCorrupt, DustDispensorBehaviour.BEHAVIOR);
         
+        // Potions
+        potionDecay = registry.registerPotion(new Potion("decay", new EffectInstance(Effects.WITHER, 900)), "decay");
+        potionDecayLong = registry.registerPotion(new Potion("decay", new EffectInstance(Effects.WITHER, 1800)), "long_decay");
+        potionDecayStrong = registry.registerPotion(new Potion("decay", new EffectInstance(Effects.WITHER, 432, 1)), "strong_decay");
+        
         // Stats
-        this.statSlimeCrucibleInteract = this.registerCustom("slime_crucible_interact");
-        this.statSlimeCrucibleItemsCrafted = this.registerCustom("slime_crucible_items_crafted");
-        this.statSlimeCrucibleFeed = this.registerCustom("slime_crucible_fed");
-        
-        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(Potion.class, this::registerPotions);
-    }
-    
-    private void registerPotions (Register<Potion> event) {
-        
-        final IForgeRegistry<Potion> registry = event.getRegistry();
-        this.POTION_DECAY.setRegistryName("darkutils", "decay");
-        registry.register(this.POTION_DECAY);
-        
-        this.POTION_LONG_DECAY.setRegistryName("darkutils", "long_decay");
-        registry.register(this.POTION_LONG_DECAY);
-        
-        this.POTION_STRONG_DECAY.setRegistryName("darkutils", "strong_decay");
-        registry.register(this.POTION_STRONG_DECAY);
-    }
-    
-    private ResourceLocation registerCustom (String key) {
-        
-        return this.registerCustom(key, IStatFormatter.DEFAULT);
-    }
-    
-    private ResourceLocation registerCustom (String key, IStatFormatter formatter) {
-        
-        final ResourceLocation resourcelocation = new ResourceLocation("darkutils", key);
-        Registry.register(Registry.CUSTOM_STAT, key, resourcelocation);
-        Stats.CUSTOM.get(resourcelocation, formatter);
-        return resourcelocation;
+        this.statSlimeCrucibleInteract = registry.registerStat("slime_crucible_interact");
+        this.statSlimeCrucibleItemsCrafted = registry.registerStat("slime_crucible_items_crafted");
+        this.statSlimeCrucibleFeed = registry.registerStat("slime_crucible_fed");
     }
 }
