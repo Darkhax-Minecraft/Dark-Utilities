@@ -93,8 +93,8 @@ public class SlimeCrucibleType {
     }
     
     /**
-     * Creates the slime entity represented by this type. Note that {@link #ALL} is an internal
-     * type used for matching and will try to crash if you call this on it.
+     * Creates the slime entity represented by this type. Note that ALL is an internal type
+     * used for matching and will try to crash if you call this on it.
      * 
      * @param world An instance of the world. The entity will not be spawned into the world,
      *        but is required for constructing entity objects.
@@ -131,8 +131,8 @@ public class SlimeCrucibleType {
     
     /**
      * Checks if the crucible type matches another one. This is used by recipes to make sure
-     * the player is using the right one. Be default a type only matches if either type is
-     * {@link #ALL} or the types are the same.
+     * the player is using the right one. Be default a type only matches if either type is ALL
+     * or the types are the same.
      * 
      * @param otherType The other type you want to match.
      * @return Whether or not the types match for crafting purposes.

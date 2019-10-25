@@ -1,6 +1,8 @@
 package net.darkhax.darkutils;
 
 import net.darkhax.bookshelf.registry.RegistryHelper;
+import net.darkhax.darkutils.features.charms.CharmEffects;
+import net.darkhax.darkutils.features.charms.ItemCharm;
 import net.darkhax.darkutils.features.dust.DustDispensorBehaviour;
 import net.darkhax.darkutils.features.dust.DustHandler;
 import net.darkhax.darkutils.features.dust.RecipeDustChange;
@@ -121,6 +123,11 @@ public class Content {
     public final Item dustFiendish;
     public final Item dustCorrupt;
     
+    public final Item sleepCharm;
+    public final Item portalCharm;
+    public final Item experienceCharm;
+    public final Item gluttonyCharm;
+    
     /**
      * TILE ENTITIES
      */
@@ -240,6 +247,11 @@ public class Content {
         this.dustFiendish = registry.registerItem(new Item(new Item.Properties()), "dust_fiendish");
         this.dustCorrupt = registry.registerItem(new Item(new Item.Properties()), "dust_corrupt");
         MinecraftForge.EVENT_BUS.addListener(DustHandler::onPlayerUseItem);
+        
+        this.portalCharm = registry.registerItem(new ItemCharm().setTickingEffect(CharmEffects::applyPortalCharmEffect), "charm_portal");
+        this.sleepCharm = registry.registerItem(new ItemCharm().setTickingEffect(CharmEffects::applySleepCharmEffect), "charm_sleep");
+        this.experienceCharm = registry.registerItem(new ItemCharm().setTickingEffect(CharmEffects::applyExperienceCharmTickEffect).addEvent(CharmEffects::handleExpCharmBlock).addEvent(CharmEffects::handleExpCharmEntity), "charm_experience");
+        this.gluttonyCharm = registry.registerItem(new ItemCharm().addEvent(CharmEffects::handleGluttonCharm), "charm_gluttony");
         
         // Tiles
         this.tileTickingEffect = registry.registerTileEntity(TileEntityTickingEffect::new, "ticking_tile", this.exportPlate, this.exportPlateFast, this.exportPlateHyper);

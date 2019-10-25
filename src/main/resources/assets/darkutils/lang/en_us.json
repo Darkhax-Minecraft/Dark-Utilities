@@ -51,6 +51,16 @@
   "item.darkutils.dust_purify": "Purification Powder",
   "item.darkutils.dust_fiendish": "Fiendish Powder",
   "item.darkutils.dust_corrupt": "Corruption Powder",
+  "item.darkutils.charm_portal": "Portal Charm",
+  "item.darkutils.charm_sleep": "Sleep Charm",
+  "item.darkutils.charm_experience": "Experience Charm",
+  "item.darkutils.charm_food": "Gluttony Charm",
+  
+  "item.darkutils.wither_slime_spawn_egg": "Withering Slime Spawn Egg", 
+  "item.minecraft.potion.effect.decay": "Potion of Decay",
+  "item.minecraft.splash_potion.effect.decay": "Splash Potion of Decay",
+  "item.minecraft.tipped_arrow.effect.decay": "Arrow of Decay",
+  "item.minecraft.lingering_potion.effect.decay": "Lingering Potion of Decay",
   
   "container.darkutils.slime_crucible.green": "Green Slime Crucible",
   "container.darkutils.slime_crucible.magma": "Magma Slime Crucible",
@@ -113,14 +123,13 @@
   "tooltip.darkutils.dust_purify.short": "Purifies blocks into surface world versions.",
   "tooltip.darkutils.dust_fiendish.short": "Twists blocks into nether world versions.",
   "tooltip.darkutils.dust_corrupt.short": "Corrupts blocks into ender world versions.",
-  "tooltip.darkutils.wither_slime_spawn_egg.short": "Spawns a Withering Slime.";
-  "entity.darkutils.wither_slime": "Withering Slime",
-  "item.darkutils.wither_slime_spawn_egg": "Withering Slime Spawn Egg",
+  "tooltip.darkutils.wither_slime_spawn_egg.short": "Spawns a Withering Slime.",
+  "tooltip.darkutils.charm_portal.short": "Allows the wearer to instantly pass through portals.",
+  "tooltip.darkutils.charm_sleep.short": "Allows players to sleep without delay. Slowly reduces the insomnia counter.",
+  "tooltip.darkutils.charm_experience.short": "Allows the user to instantly pick up EXP without delay.",
+  "tooltip.darkutils.charm_food.short": "Allows the user to instantly eat food.",
   
-  "item.minecraft.potion.effect.decay": "Potion of Decay",
-  "item.minecraft.splash_potion.effect.decay": "Splash Potion of Decay",
-  "item.minecraft.tipped_arrow.effect.decay": "Arrow of Decay",
-  "item.minecraft.lingering_potion.effect.decay": "Lingering Potion of Decay",
+  "entity.darkutils.wither_slime": "Withering Slime",
   
   "stat.darkutils.slime_crucible_items_crafted": "Items Created With Slime Crucible",
   "stat.darkutils.slime_crucible_fed": "Slime Crucibles Fed",

@@ -7,6 +7,7 @@ import net.darkhax.bookshelf.item.ItemGroupBase;
 import net.darkhax.bookshelf.network.NetworkHelper;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.bookshelf.registry.RegistryHelperClient;
+import net.darkhax.darkutils.addons.AddonManager;
 import net.darkhax.darkutils.features.slimecrucible.MessageSyncCrucibleType;
 import net.darkhax.darkutils.network.NetworkHandlerClient;
 import net.darkhax.darkutils.network.NetworkHandlerServer;
@@ -34,11 +35,16 @@ public class DarkUtils {
     
     public static Content content;
     
+    public static AddonManager addons;
+    
     public DarkUtils() {
         
         registry = DistExecutor.runForDist( () -> () -> new RegistryHelperClient(MOD_ID, LOG, ITEM_GROUP), () -> () -> new RegistryHelper(MOD_ID, LOG, ITEM_GROUP));
         content = DistExecutor.runForDist( () -> () -> new ContentClient(registry), () -> () -> new Content(registry));
         NETWORK.registerEnqueuedMessage(MessageSyncCrucibleType.class, NetworkHandlerServer::encodeStageMessage, t -> NetworkHandlerClient.decodeStageMessage(t), (t, u) -> NetworkHandlerClient.processSyncStagesMessage(t, u));
         registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
+        
+        // Addons
+        addons = new AddonManager();
     }
 }

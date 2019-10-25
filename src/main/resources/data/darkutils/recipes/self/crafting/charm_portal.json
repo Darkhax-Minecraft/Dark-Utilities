@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "SSS",
+    "OCO",
+    " O "
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:string"
+    },
+    "O": {
+      "tag": "forge:obsidian"
+    },
+    "C": {
+      "item": "minecraft:end_crystal"
+    }
+  },
+  "result": {
+    "item": "darkutils:charm_portal",
+    "count": 1
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "SWS",
+    "BPY",
+    "SRS"
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:string"
+    },
+    "W": {
+      "tag": "forge:dyes/white"
+    },
+    "B": {
+      "tag": "forge:dyes/black"
+    },
+    "Y": {
+      "tag": "forge:dyes/yellow"
+    },
+    "R": {
+      "tag": "forge:dyes/red"
+    },
+    "P": {
+      "item": "minecraft:phantom_membrane"
+    }
+  },
+  "result": {
+    "item": "darkutils:charm_sleep",
+    "count": 1
+  }
+}

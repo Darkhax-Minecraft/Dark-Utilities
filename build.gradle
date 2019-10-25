@@ -81,6 +81,10 @@ repositories {
 
         url 'http://dvs1.progwml6.com/files/maven'
     }
+    
+    maven {
+        url = "https://maven.theillusivec4.top/"
+    }
 }
 
 dependencies {
@@ -91,6 +95,7 @@ dependencies {
     compile fg.deobf(project.dependencies.create("mezz.jei:jei-1.14.4:${jei_version}"))
     compile fg.deobf("slimeknights.mantle:Mantle:1.14.4-${mantle_version}")
     compile fg.deobf("slimeknights.tconstruct:TConstruct:1.14.4-${tconstruct_version}")
+    compile fg.deobf("top.theillusivec4.curios:curios:FORGE-1.14.4-${curios_version}")
 }
 
 jar {
