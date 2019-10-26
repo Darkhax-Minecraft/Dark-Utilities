@@ -9,12 +9,18 @@ import net.minecraft.state.IProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.Event.Result;
 
 public class DustHandler {
     
     public static void onPlayerUseItem (PlayerInteractEvent.RightClickBlock event) {
         
-        tryBlockConversion(event.getWorld(), event.getPos(), event.getItemStack());
+        boolean didConvert = tryBlockConversion(event.getWorld(), event.getPos(), event.getItemStack());
+        
+        if (didConvert) {
+        	
+        	event.setUseItem(Result.ALLOW);
+        }
     }
     
     public static boolean tryBlockConversion (World world, BlockPos pos, ItemStack item) {
@@ -39,6 +45,7 @@ public class DustHandler {
                     
                     world.playEvent(2001, pos, Block.getStateId(newState));
                     world.setBlockState(pos, newState, 11);
+                    item.shrink(1);
                 }
                 
                 return true;
