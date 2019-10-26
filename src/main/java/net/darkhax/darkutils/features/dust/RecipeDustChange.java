@@ -126,6 +126,7 @@ public class RecipeDustChange implements IRecipe<IInventory> {
         @Override
         public void write (PacketBuffer buffer, RecipeDustChange recipe) {
             
+        	recipe.item.write(buffer);
             recipe.input.serialize(buffer);
             recipe.output.serialize(buffer);
         }
