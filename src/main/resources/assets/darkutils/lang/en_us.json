@@ -54,7 +54,7 @@
   "item.darkutils.charm_portal": "Portal Charm",
   "item.darkutils.charm_sleep": "Sleep Charm",
   "item.darkutils.charm_experience": "Experience Charm",
-  "item.darkutils.charm_food": "Gluttony Charm",
+  "item.darkutils.charm_gluttony": "Gluttony Charm",
   
   "item.darkutils.wither_slime_spawn_egg": "Withering Slime Spawn Egg", 
   "item.minecraft.potion.effect.decay": "Potion of Decay",
@@ -127,7 +127,7 @@
   "tooltip.darkutils.charm_portal.short": "Allows the wearer to instantly pass through portals.",
   "tooltip.darkutils.charm_sleep.short": "Allows players to sleep without delay. Slowly reduces the insomnia counter.",
   "tooltip.darkutils.charm_experience.short": "Allows the user to instantly pick up EXP without delay.",
-  "tooltip.darkutils.charm_food.short": "Allows the user to instantly eat food.",
+  "tooltip.darkutils.charm_gluttony.short": "Allows the user to instantly eat food.",
   
   "entity.darkutils.wither_slime": "Withering Slime",
   
