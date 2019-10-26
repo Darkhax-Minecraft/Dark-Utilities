@@ -1,7 +1,7 @@
 {
     "parent": "darkutils:block/empty_drum_block",
     "textures": {
-        "particle": "minecraft:block/slime_crucible_bottom_wither",
+        "particle": "darkutils:block/slime_crucible_bottom_wither",
         "top": "darkutils:block/slime_crucible_top_wither",
         "bottom": "darkutils:block/slime_crucible_bottom_wither",
         "side": "darkutils:block/slime_crucible_side_wither",
