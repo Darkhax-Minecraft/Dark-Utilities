@@ -1,5 +1,7 @@
 package net.darkhax.darkutils.features.enderhopper;
 
+import javax.annotation.Nullable;
+
 import net.darkhax.bookshelf.util.InventoryUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -24,7 +26,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-public class BlockEnderHopper extends Block implements ITileEntityProvider {
+public class BlockEnderHopper extends Block {
     
     private static final Properties PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(50.0F, 1200.0F);
     protected static final BooleanProperty SHOW_BORDER = BooleanProperty.create("darkutils_show_border");
@@ -122,12 +124,6 @@ public class BlockEnderHopper extends Block implements ITileEntityProvider {
     }
     
     @Override
-    public TileEntity createNewTileEntity (IBlockReader worldIn) {
-        
-        return new TileEntityEnderHopper();
-    }
-    
-    @Override
     public boolean eventReceived (BlockState state, World worldIn, BlockPos pos, int id, int param) {
         
         super.eventReceived(state, worldIn, pos, id, param);
@@ -144,4 +140,16 @@ public class BlockEnderHopper extends Block implements ITileEntityProvider {
      public BlockState mirror(BlockState state, Mirror mirrorIn) {
         return state.rotate(mirrorIn.toRotation(state.get(BlockStateProperties.FACING)));
      }
+    
+    @Override
+    public boolean hasTileEntity(BlockState state) {
+        
+        return true;
+    }
+
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+
+        return new TileEntityEnderHopper();
+    }
 }
