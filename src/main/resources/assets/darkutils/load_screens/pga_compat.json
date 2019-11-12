@@ -1,0 +1,7 @@
+{
+	"screens" : [{
+			"COMMENT" : "Public Gui Anouncement support", 
+			"class" : "net.darkhax.darkutils.features.slimecrucible.ScreenSlimeCrucible", 
+			"texture" : "darkutils:textures/gui/container/slime_crucible.png"
+		}]
+}
