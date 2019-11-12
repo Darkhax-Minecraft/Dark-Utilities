@@ -177,7 +177,7 @@ public class Content {
     public final ResourceLocation statSlimeCrucibleFeed;
     
     public Content(RegistryHelper registry) {
-        
+
         // Recipes
         this.recipeTypeSlimeFood = registry.registerRecipeType("slime_food");
         this.recipeTypeSlimeCrafting = registry.registerRecipeType("slime_crafting");

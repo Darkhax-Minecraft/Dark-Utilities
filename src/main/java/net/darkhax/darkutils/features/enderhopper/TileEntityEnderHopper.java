@@ -5,13 +5,9 @@ import java.util.List;
 import net.darkhax.bookshelf.Bookshelf;
 import net.darkhax.bookshelf.util.InventoryUtils;
 import net.darkhax.darkutils.DarkUtils;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.merchant.villager.WanderingTraderEntity;
-import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -21,7 +17,6 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldType;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.items.IItemHandler;
 
@@ -119,13 +114,13 @@ public class TileEntityEnderHopper extends TileEntity implements ITickableTileEn
         }
     }
     
-    private static float getOffset() {
+    private static float getOffset () {
         
         return nextFloat(-0.2f, 0.2f);
     }
     
     private static float nextFloat (float min, float max) {
-
+        
         return min + Bookshelf.RANDOM.nextFloat() * (max - min);
     }
 }

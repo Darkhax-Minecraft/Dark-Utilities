@@ -1,11 +1,8 @@
 package net.darkhax.darkutils.features.enderhopper;
 
-import javax.annotation.Nullable;
-
 import net.darkhax.bookshelf.util.InventoryUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
@@ -132,24 +129,26 @@ public class BlockEnderHopper extends Block {
     }
     
     @Override
-    public BlockState rotate(BlockState state, Rotation rot) {
+    public BlockState rotate (BlockState state, Rotation rot) {
+        
         return state.with(BlockStateProperties.FACING, rot.rotate(state.get(BlockStateProperties.FACING)));
-     }
-
-    @Override
-     public BlockState mirror(BlockState state, Mirror mirrorIn) {
-        return state.rotate(mirrorIn.toRotation(state.get(BlockStateProperties.FACING)));
-     }
+    }
     
     @Override
-    public boolean hasTileEntity(BlockState state) {
+    public BlockState mirror (BlockState state, Mirror mirrorIn) {
+        
+        return state.rotate(mirrorIn.toRotation(state.get(BlockStateProperties.FACING)));
+    }
+    
+    @Override
+    public boolean hasTileEntity (BlockState state) {
         
         return true;
     }
-
+    
     @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-
+    public TileEntity createTileEntity (BlockState state, IBlockReader world) {
+        
         return new TileEntityEnderHopper();
     }
 }

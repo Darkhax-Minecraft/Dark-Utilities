@@ -13,7 +13,7 @@ public class RenderEnderHopper extends TileEntityRenderer<TileEntityEnderHopper>
         
         final BlockState state = tile.getWorld().getBlockState(tile.getPos());
         
-        //TODO fix
+        // TODO fix
         if (state.get(BlockEnderHopper.SHOW_BORDER)) {
             
         }

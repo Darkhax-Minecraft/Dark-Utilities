@@ -15,12 +15,12 @@ public class DustHandler {
     
     public static void onPlayerUseItem (PlayerInteractEvent.RightClickBlock event) {
         
-        boolean didConvert = tryBlockConversion(event.getWorld(), event.getPos(), event.getItemStack());
-
+        final boolean didConvert = tryBlockConversion(event.getWorld(), event.getPos(), event.getItemStack());
+        
         if (didConvert) {
-        	
-        	event.setUseBlock(Result.DENY);
-        	event.setUseItem(Result.DENY);
+            
+            event.setUseBlock(Result.DENY);
+            event.setUseItem(Result.DENY);
         }
     }
     
@@ -31,14 +31,15 @@ public class DustHandler {
         // Loop through all dust recipes
         for (final RecipeDustChange recipe : WorldUtils.getRecipeList(DarkUtils.content.recipeTypeDustChange, world.getRecipeManager())) {
             
-        	// Test if the dust recipe is valid
+            // Test if the dust recipe is valid
             if (recipe.isValid(oldState, item)) {
                 
                 if (!world.isRemote) {
                     
                     BlockState newState = recipe.getOutput(world.getRandom()).getDefaultState();
                     
-                    // Copy all applicable properties of the existing state to the converted state.
+                    // Copy all applicable properties of the existing state to the converted
+                    // state.
                     for (final IProperty oldProperty : oldState.getProperties()) {
                         
                         if (newState.has(oldProperty)) {
