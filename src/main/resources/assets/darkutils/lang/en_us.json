@@ -44,6 +44,7 @@
   "block.darkutils.filter_illager": "Mob Filter (Illager)",
   "block.darkutils.filter_boss": "Mob Filter (Boss)",
   "block.darkutils.item_grate": "Item Grate",
+  "block.darkutils.ender_hopper": "Ender Hopper",
   
   "item.darkutils.egg_slime": "Slime Egg",
   "item.darkutils.egg_magma": "Magma Egg",
@@ -116,7 +117,8 @@
   "tooltip.darkutils.filter_raid.short": "Allows raid mobs to walk through it.",
   "tooltip.darkutils.filter_illager.short": "Allows illagers to walk through it.",
   "tooltip.darkutils.filter_boss.short": "Allows bosses to walk through it.",
-  "tooltip.darkutils.item_grate.short": "Allows items to pass through it.",  
+  "tooltip.darkutils.item_grate.short": "Allows items to pass through it.",
+  "tooltip.darkutils.ender_hopper.short": "Vacuums up nearby items and puts them in an inventory.",
   "tooltip.darkutils.egg_slime.short": "Summons a green slime.",
   "tooltip.darkutils.egg_magma.short": "Summons a magma slime.",
   "tooltip.darkutils.egg_wither.short": "Summons a wither slime.",

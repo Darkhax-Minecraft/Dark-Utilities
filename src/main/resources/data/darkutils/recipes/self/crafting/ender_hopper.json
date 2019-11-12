@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "OEO",
+    "OHO",
+    " O "
+  ],
+  "key": {
+    "O": {
+      "tag": "forge:obsidian"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    }
+  },
+  "result": {
+    "item": "darkutils:ender_hopper",
+    "count": 1
+  }
+}
