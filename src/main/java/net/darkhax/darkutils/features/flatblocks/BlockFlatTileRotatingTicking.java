@@ -5,7 +5,6 @@ import java.util.Random;
 import net.darkhax.darkutils.features.flatblocks.collision.CollisionEffect;
 import net.darkhax.darkutils.features.flatblocks.tick.TickEffect;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -13,7 +12,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
-public class BlockFlatTileRotatingTicking extends BlockFlatTileRotating implements ITileEntityProvider {
+public class BlockFlatTileRotatingTicking extends BlockFlatTileRotating {
     
     private final TickEffect tickEffect;
     private final int tickRate;
@@ -46,16 +45,22 @@ public class BlockFlatTileRotatingTicking extends BlockFlatTileRotating implemen
     }
     
     @Override
-    public TileEntity createNewTileEntity (IBlockReader worldIn) {
-        
-        return new TileEntityTickingEffect();
-    }
-    
-    @Override
     public boolean eventReceived (BlockState state, World worldIn, BlockPos pos, int id, int param) {
         
         super.eventReceived(state, worldIn, pos, id, param);
         final TileEntity tileentity = worldIn.getTileEntity(pos);
         return tileentity != null && tileentity.receiveClientEvent(id, param);
+    }
+    
+    @Override
+    public boolean hasTileEntity (BlockState state) {
+        
+        return true;
+    }
+    
+    @Override
+    public TileEntity createTileEntity (BlockState state, IBlockReader world) {
+        
+        return new TileEntityTickingEffect();
     }
 }
