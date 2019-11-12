@@ -3,6 +3,8 @@ package net.darkhax.darkutils;
 import net.darkhax.bookshelf.client.model.FullbrightBakedModel;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.bookshelf.registry.RegistryHelperClient;
+import net.darkhax.darkutils.features.enderhopper.RenderEnderHopper;
+import net.darkhax.darkutils.features.enderhopper.TileEntityEnderHopper;
 import net.darkhax.darkutils.features.slimecrucible.RenderSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.ScreenSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.TileEntitySlimeCrucible;
@@ -28,6 +30,7 @@ public class ContentClient extends Content {
             
             // Tile Entity Renders
             clientRegistry.setSpecialRenderer(TileEntitySlimeCrucible.class, new RenderSlimeCrucible());
+            clientRegistry.setSpecialRenderer(TileEntityEnderHopper.class, new RenderEnderHopper());
             
             // Gui Screens
             clientRegistry.registerGuiScreen(this.containerSlimeCrucible, ScreenSlimeCrucible::new);

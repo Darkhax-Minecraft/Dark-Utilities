@@ -1,0 +1,6 @@
+{
+  "parent": "darkutils:block/ender_hopper_base",
+  "textures": {
+    "portal": "block/stone"
+  }
+}

@@ -6,6 +6,8 @@ import net.darkhax.darkutils.features.charms.ItemCharm;
 import net.darkhax.darkutils.features.dust.DustDispensorBehaviour;
 import net.darkhax.darkutils.features.dust.DustHandler;
 import net.darkhax.darkutils.features.dust.RecipeDustChange;
+import net.darkhax.darkutils.features.enderhopper.BlockEnderHopper;
+import net.darkhax.darkutils.features.enderhopper.TileEntityEnderHopper;
 import net.darkhax.darkutils.features.filters.BlockFilter;
 import net.darkhax.darkutils.features.filters.Filters;
 import net.darkhax.darkutils.features.flatblocks.BlockFlatTile;
@@ -30,8 +32,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.potion.EffectInstance;
@@ -40,6 +44,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
+import net.minecraftforge.common.BasicTrade;
 import net.minecraftforge.common.MinecraftForge;
 
 public class Content {
@@ -112,6 +117,10 @@ public class Content {
     
     public final Block itemGrate;
     
+    public final Block enderHopper;
+    
+    // public final Block enderTether;
+    
     /**
      * ITEMS
      */
@@ -133,6 +142,7 @@ public class Content {
      */
     public final TileEntityType<TileEntityTickingEffect> tileTickingEffect;
     public final TileEntityType<TileEntitySlimeCrucible> tileSlimeCrucible;
+    public final TileEntityType<TileEntityEnderHopper> tileEnderHopper;
     
     /**
      * CONTAINERS
@@ -238,6 +248,8 @@ public class Content {
         
         this.itemGrate = registry.registerBlock(new BlockItemGrate(Properties.create(Material.IRON).hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)), "item_grate");
         
+        this.enderHopper = registry.registerBlock(new BlockEnderHopper(), "ender_hopper");
+        
         // Items
         this.slimeEgg = registry.registerItem(new ItemMobSpawner(EntityType.SLIME), "egg_slime");
         this.magmaEgg = registry.registerItem(new ItemMobSpawner(EntityType.MAGMA_CUBE), "egg_magma");
@@ -256,6 +268,7 @@ public class Content {
         // Tiles
         this.tileTickingEffect = registry.registerTileEntity(TileEntityTickingEffect::new, "ticking_tile", this.exportPlate, this.exportPlateFast, this.exportPlateHyper);
         this.tileSlimeCrucible = registry.registerTileEntity(TileEntitySlimeCrucible::new, "slime_crucible", this.slimeCrucibleGreen, this.slimeCrucibleMagma, this.slimeCrucibleWither);
+        this.tileEnderHopper = registry.registerTileEntity(TileEntityEnderHopper::new, "ender_hopper", this.enderHopper);
         
         // Containers
         this.containerSlimeCrucible = registry.registerContainer(ContainerSlimeCrucible::new, "slime_crucible");
@@ -274,5 +287,18 @@ public class Content {
         this.statSlimeCrucibleInteract = registry.registerStat("slime_crucible_interact");
         this.statSlimeCrucibleItemsCrafted = registry.registerStat("slime_crucible_items_crafted");
         this.statSlimeCrucibleFeed = registry.registerStat("slime_crucible_fed");
+        
+        // Wandering Trades
+        registry.addBasicWanderingTrade(new BasicTrade(24, new ItemStack(this.dustFiendish, 8), 9, 5));
+        registry.addBasicWanderingTrade(new BasicTrade(24, new ItemStack(this.dustCorrupt, 8), 9, 5));
+        registry.addBasicWanderingTrade(new BasicTrade(24, new ItemStack(this.dustPurify, 8), 9, 5));
+        
+        registry.addRareWanderingTrade(new BasicTrade(30, new ItemStack(this.portalCharm), 1, 30));
+        registry.addRareWanderingTrade(new BasicTrade(30, new ItemStack(this.sleepCharm), 1, 30));
+        registry.addRareWanderingTrade(new BasicTrade(30, new ItemStack(this.gluttonyCharm), 1, 30));
+        registry.addRareWanderingTrade(new BasicTrade(30, new ItemStack(this.experienceCharm), 1, 30));
+        
+        // Villager Trades
+        registry.registerVillagerTrade(VillagerProfession.CLERIC, 3, new BasicTrade(12, new ItemStack(this.dustPurify, 8), 9, 5));
     }
 }
