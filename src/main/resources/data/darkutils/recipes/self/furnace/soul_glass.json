@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:soul_sand"
+  },
+  "result": "darkutils:soul_glass",
+  "experience": 0.5,
+  "cookingtime": 200
+}
