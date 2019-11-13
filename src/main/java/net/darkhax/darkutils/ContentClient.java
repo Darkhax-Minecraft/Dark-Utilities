@@ -60,6 +60,7 @@ public class ContentClient extends Content {
             this.makeFullBrightFlatTile(clientRegistry, this.runeHunger);
             this.makeFullBrightFlatTile(clientRegistry, this.runeBlindness);
             this.makeFullBrightFlatTile(clientRegistry, this.runeNausea);
+            this.makeFullBrightFlatTile(clientRegistry, this.anchorPlate);
         }
         
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST, this::addTooltips);

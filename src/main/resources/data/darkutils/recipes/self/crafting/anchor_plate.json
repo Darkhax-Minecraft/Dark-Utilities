@@ -1,0 +1,20 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    " S ",
+    "SPS",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:slimeballs"
+    },
+    "P": {
+      "item": "darkutils:blank_plate"
+    }
+  },
+  "result": {
+    "item": "darkutils:anchor_plate",
+    "count": 1
+  }
+}

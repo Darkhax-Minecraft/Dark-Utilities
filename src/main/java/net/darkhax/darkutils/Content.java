@@ -15,6 +15,7 @@ import net.darkhax.darkutils.features.flatblocks.BlockFlatTileRotating;
 import net.darkhax.darkutils.features.flatblocks.BlockFlatTileRotatingTicking;
 import net.darkhax.darkutils.features.flatblocks.TileEffects;
 import net.darkhax.darkutils.features.flatblocks.TileEntityTickingEffect;
+import net.darkhax.darkutils.features.flatblocks.collision.CollisionEffectAnchor;
 import net.darkhax.darkutils.features.glass.BlockDarkGlass;
 import net.darkhax.darkutils.features.grates.BlockItemGrate;
 import net.darkhax.darkutils.features.redstone.BlockRedstoneRandomizer;
@@ -101,6 +102,8 @@ public class Content {
     public final Block runeHunger;
     public final Block runeBlindness;
     public final Block runeNausea;
+    
+    public final Block anchorPlate;
     
     public final Block filterPlayer;
     public final Block filterUndead;
@@ -233,6 +236,8 @@ public class Content {
         this.runeHunger = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_HUNGER), "rune_hunger");
         this.runeBlindness = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_BLINDNESS), "rune_blindness");
         this.runeNausea = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_NAUSEA), "rune_nausea");
+        
+        this.anchorPlate = registry.registerBlock(new BlockFlatTileRotating(new CollisionEffectAnchor()), "anchor_plate");
         
         this.slimeCrucibleGreen = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.CLAY, MaterialColor.GRASS).slipperiness(0.8f).hardnessAndResistance(0.6F).sound(SoundType.SLIME), this.crucibleTypeGreen), "slime_crucible_green");
         this.slimeCrucibleMagma = registry.registerBlock(new BlockSlimeCrucible(Properties.create(Material.ROCK, MaterialColor.NETHERRACK).lightValue(3).hardnessAndResistance(0.5F), this.crucibleTypeMagma), "slime_crucible_magma");
