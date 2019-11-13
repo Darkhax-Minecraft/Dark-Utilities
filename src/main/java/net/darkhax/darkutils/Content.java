@@ -17,6 +17,7 @@ import net.darkhax.darkutils.features.flatblocks.TileEffects;
 import net.darkhax.darkutils.features.flatblocks.TileEntityTickingEffect;
 import net.darkhax.darkutils.features.grates.BlockItemGrate;
 import net.darkhax.darkutils.features.redstone.BlockRedstoneRandomizer;
+import net.darkhax.darkutils.features.redstone.BlockShieldedRedstone;
 import net.darkhax.darkutils.features.slimecrucible.BlockSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.ContainerSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.RecipeSlimeCrafting;
@@ -28,6 +29,7 @@ import net.darkhax.darkutils.features.witherslime.EntitySlimeWither;
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.Properties;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.PistonBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -121,6 +123,8 @@ public class Content {
     public final Block enderHopper;
     
     public final Block redstoneRandomizer;
+    
+    public final Block shieldedRedstone;
     
     // public final Block enderTether;
     
@@ -254,6 +258,7 @@ public class Content {
         this.enderHopper = registry.registerBlock(new BlockEnderHopper(), "ender_hopper");
         
         this.redstoneRandomizer = registry.registerBlock(new BlockRedstoneRandomizer(), "redstone_randomizer");
+        this.shieldedRedstone = registry.registerBlock(new BlockShieldedRedstone(), "shielded_redstone");
         
         // Items
         this.slimeEgg = registry.registerItem(new ItemMobSpawner(EntityType.SLIME), "egg_slime");

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "darkutils:block/shielded_redstone",
+      "x": 90
+    },
+    "facing=up": {
+      "model": "darkutils:block/shielded_redstone",
+      "x": 270
+    },
+    "facing=north": {
+      "model": "darkutils:block/shielded_redstone"
+    },
+    "facing=south": {
+      "model": "darkutils:block/shielded_redstone",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "darkutils:block/shielded_redstone",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "darkutils:block/shielded_redstone",
+      "y": 90
+    }
+  }
+}

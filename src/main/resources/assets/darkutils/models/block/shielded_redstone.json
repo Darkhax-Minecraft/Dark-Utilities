@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "block/furnace_top",
+        "front": "darkutils:block/shielded_redstone_face",
+        "side": "block/furnace_side"
+    }
+}
