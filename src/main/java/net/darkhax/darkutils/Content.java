@@ -16,6 +16,7 @@ import net.darkhax.darkutils.features.flatblocks.BlockFlatTileRotatingTicking;
 import net.darkhax.darkutils.features.flatblocks.TileEffects;
 import net.darkhax.darkutils.features.flatblocks.TileEntityTickingEffect;
 import net.darkhax.darkutils.features.grates.BlockItemGrate;
+import net.darkhax.darkutils.features.redstone.BlockRedstoneRandomizer;
 import net.darkhax.darkutils.features.slimecrucible.BlockSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.ContainerSlimeCrucible;
 import net.darkhax.darkutils.features.slimecrucible.RecipeSlimeCrafting;
@@ -119,6 +120,8 @@ public class Content {
     
     public final Block enderHopper;
     
+    public final Block redstoneRandomizer;
+    
     // public final Block enderTether;
     
     /**
@@ -177,7 +180,7 @@ public class Content {
     public final ResourceLocation statSlimeCrucibleFeed;
     
     public Content(RegistryHelper registry) {
-
+        
         // Recipes
         this.recipeTypeSlimeFood = registry.registerRecipeType("slime_food");
         this.recipeTypeSlimeCrafting = registry.registerRecipeType("slime_crafting");
@@ -249,6 +252,8 @@ public class Content {
         this.itemGrate = registry.registerBlock(new BlockItemGrate(Properties.create(Material.IRON).hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL)), "item_grate");
         
         this.enderHopper = registry.registerBlock(new BlockEnderHopper(), "ender_hopper");
+        
+        this.redstoneRandomizer = registry.registerBlock(new BlockRedstoneRandomizer(), "redstone_randomizer");
         
         // Items
         this.slimeEgg = registry.registerItem(new ItemMobSpawner(EntityType.SLIME), "egg_slime");

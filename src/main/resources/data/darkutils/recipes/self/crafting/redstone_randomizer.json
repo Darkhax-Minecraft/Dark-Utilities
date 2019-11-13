@@ -1,0 +1,26 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "CCC",
+    "QER",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "Q": {
+      "tag": "forge:gems/quartz"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+	"R": {
+	  "tag": "forge:dusts/redstone"
+	}
+  },
+  "result": {
+    "item": "darkutils:redstone_randomizer",
+    "count": 1
+  }
+}
