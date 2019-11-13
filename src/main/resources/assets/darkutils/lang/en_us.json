@@ -48,6 +48,7 @@
   "block.darkutils.shielded_redstone": "Shielded Redstone Block",
   "block.darkutils.dark_glass": "Dark Glass",
   "block.darkutils.anchor_plate": "Anchor Plate",
+  "block.darkutils.soul_glass": "Soul Glass",
   
   "item.darkutils.egg_slime": "Slime Egg",
   "item.darkutils.egg_magma": "Magma Egg",
@@ -125,6 +126,7 @@
   "tooltip.darkutils.shielded_redstone.short": "Emits a redstone signal from only one face.",
   "tooltip.darkutils.dark_glass.short": "You can see through it, but it doesn't let light through.",
   "tooltip.darkutils.anchor_plate.short": "Traps a mob and forces them to look in the specified direction.",
+  "tooltip.darkutils.soul_glass.short": "Emits a redstone signal when touching glass.",
   
   "tooltip.darkutils.egg_slime.short": "Summons a green slime.",
   "tooltip.darkutils.egg_magma.short": "Summons a magma slime.",

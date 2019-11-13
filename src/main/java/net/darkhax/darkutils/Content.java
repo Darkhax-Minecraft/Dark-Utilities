@@ -17,6 +17,7 @@ import net.darkhax.darkutils.features.flatblocks.TileEffects;
 import net.darkhax.darkutils.features.flatblocks.TileEntityTickingEffect;
 import net.darkhax.darkutils.features.flatblocks.collision.CollisionEffectAnchor;
 import net.darkhax.darkutils.features.glass.BlockDarkGlass;
+import net.darkhax.darkutils.features.glass.BlockSoulGlass;
 import net.darkhax.darkutils.features.grates.BlockItemGrate;
 import net.darkhax.darkutils.features.redstone.BlockRedstoneRandomizer;
 import net.darkhax.darkutils.features.redstone.BlockShieldedRedstone;
@@ -52,6 +53,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.common.BasicTrade;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.extensions.IForgeBlock;
 
 public class Content {
     
@@ -131,6 +133,7 @@ public class Content {
     public final Block shieldedRedstone;
     
     public final Block darkGlass;
+    public final Block soulGlass;
     
     // public final Block enderTether;
     
@@ -269,6 +272,7 @@ public class Content {
         this.shieldedRedstone = registry.registerBlock(new BlockShieldedRedstone(), "shielded_redstone");
         
         this.darkGlass = registry.registerBlock(new BlockDarkGlass(), "dark_glass");
+        this.soulGlass = registry.registerBlock(new BlockSoulGlass(), "soul_glass");
         
         // Items
         this.slimeEgg = registry.registerItem(new ItemMobSpawner(EntityType.SLIME), "egg_slime");
