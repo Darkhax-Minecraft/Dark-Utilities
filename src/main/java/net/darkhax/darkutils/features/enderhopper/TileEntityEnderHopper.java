@@ -127,6 +127,6 @@ public class TileEntityEnderHopper extends TileEntity implements ITickableTileEn
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
         
-        return collectionBounds;
+        return  collectionBounds != null ? collectionBounds : super.getRenderBoundingBox();
     }
 }
