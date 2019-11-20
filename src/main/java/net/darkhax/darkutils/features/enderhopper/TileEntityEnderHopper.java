@@ -123,4 +123,10 @@ public class TileEntityEnderHopper extends TileEntity implements ITickableTileEn
         
         return min + Bookshelf.RANDOM.nextFloat() * (max - min);
     }
+    
+    @Override
+    public AxisAlignedBB getRenderBoundingBox() {
+        
+        return collectionBounds;
+    }
 }
