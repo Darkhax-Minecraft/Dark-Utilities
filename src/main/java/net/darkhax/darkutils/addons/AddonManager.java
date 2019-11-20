@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.addons;
 
-import net.darkhax.darkutils.ModExecutor;
+import net.darkhax.bookshelf.util.ModUtils;
 import net.darkhax.darkutils.addons.curio.CurioAddon;
 import net.darkhax.darkutils.addons.curio.ICurioAddon;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -19,7 +19,7 @@ public class AddonManager {
     
     private void onCommonSetup (FMLCommonSetupEvent event) {
         
-        this.curio = ModExecutor.runIfPresent("curios", () -> () -> new CurioAddon(), () -> () -> ICurioAddon.DEFAULT);
+        this.curio = ModUtils.callIfPresent("curios", () -> () -> new CurioAddon(), () -> () -> ICurioAddon.DEFAULT);
     }
     
     private void enqueIMC (InterModEnqueueEvent event) {
