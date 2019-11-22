@@ -2,11 +2,12 @@ package net.darkhax.darkutils.features.glass;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.GlassBlock;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.StainedGlassBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.DyeColor;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
@@ -17,11 +18,11 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-public class BlockSoulGlass extends GlassBlock {
+public class BlockSoulGlass extends StainedGlassBlock {
 
     public BlockSoulGlass() {
         
-        super(Properties.create(Material.GLASS).hardnessAndResistance(0.3F).sound(SoundType.GLASS));
+        super(DyeColor.BROWN, Properties.create(Material.GLASS).hardnessAndResistance(0.3F).sound(SoundType.GLASS));
         this.setDefaultState(this.getDefaultState().with(BlockStateProperties.ENABLED, false));
     }
     
