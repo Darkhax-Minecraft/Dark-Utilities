@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -22,6 +23,8 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.EmptyHandler;
 
 public class BlockEnderHopper extends Block {
     
@@ -117,7 +120,8 @@ public class BlockEnderHopper extends Block {
     
     private static boolean hasInventory (World world, BlockPos pos, Direction facing) {
         
-        return InventoryUtils.getInventory(world, pos, facing) != null;
+        IItemHandler inventory = InventoryUtils.getInventory(world, pos, facing);
+        return inventory != null && inventory != EmptyHandler.INSTANCE && inventory.getSlots() > 0;
     }
     
     @Override
