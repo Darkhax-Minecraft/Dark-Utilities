@@ -48,7 +48,7 @@ public class TileEntityEnderHopper extends TileEntity implements ITickableTileEn
         if (this.lastPos == null || this.lastPos == BlockPos.ZERO || this.lastPos != this.pos) {
             
             this.lastPos = this.pos;
-            this.collectionBounds = new AxisAlignedBB(this.pos.getX() - 5d, this.pos.getY() - 5d, this.pos.getZ() - 5d, this.pos.getX() + 5d, this.getPos().getY() + 5d, this.getPos().getZ() + 5d);
+            this.collectionBounds = new AxisAlignedBB(this.pos.getX() - 5d, this.pos.getY() - 5d, this.pos.getZ() - 5d, this.pos.getX() + 5d, this.pos.getY() + 5d, this.pos.getZ() + 5d);
         }
         
         if (this.world.isRemote) {
@@ -63,7 +63,7 @@ public class TileEntityEnderHopper extends TileEntity implements ITickableTileEn
         if (state.get(BlockStateProperties.ENABLED) && this.collectionBounds != null) {
             
             final Direction accessingFace = state.get(BlockStateProperties.FACING);
-            final BlockPos invPos = this.getPos().offset(accessingFace.getOpposite());
+            final BlockPos invPos = this.pos.offset(accessingFace.getOpposite());
             final IItemHandler inventory = InventoryUtils.getInventory(this.world, invPos, accessingFace);
             
             // If the inventory exists, start the process.

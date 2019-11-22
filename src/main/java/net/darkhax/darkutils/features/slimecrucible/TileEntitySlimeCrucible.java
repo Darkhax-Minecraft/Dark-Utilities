@@ -72,7 +72,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     }
     
     @Override
-    public void writeNBT (CompoundNBT dataTag) {
+    public void serialize (CompoundNBT dataTag) {
         
         dataTag.putInt("SlimePoints", this.slimePoints);
         
@@ -83,7 +83,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     }
     
     @Override
-    public void readNBT (CompoundNBT dataTag) {
+    public void deserialize (CompoundNBT dataTag) {
         
         this.slimePoints = dataTag.getInt("SlimePoints");
         
@@ -94,9 +94,9 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     }
     
     @Override
-    public void onEntityUpdate () {
+    public void onTileTick () {
         
-        final BlockPos pos = this.getPos();
+        final BlockPos pos = this.pos;
         
         final PlayerEntity player = this.world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 4.5, curPlayer -> !curPlayer.isSpectator() && !curPlayer.isInvisible());
         
@@ -292,7 +292,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     @Override
     public Container createMenu (int id, PlayerInventory playerInventory, PlayerEntity player) {
         
-        return new ContainerSlimeCrucible(id, playerInventory, IWorldPosCallable.of(this.getWorld(), this.getPos()));
+        return new ContainerSlimeCrucible(id, playerInventory, IWorldPosCallable.of(this.getWorld(), this.pos));
     }
     
     @Override
@@ -305,7 +305,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
         
         if (this.getCrucibleType() != null) {
             
-            return this.getCrucibleType().getContainerDisplayName(this.getBlockState(), this.getWorld(), this.getPos());
+            return this.getCrucibleType().getContainerDisplayName(this.getBlockState(), this.getWorld(), this.pos);
         }
         
         return new StringTextComponent("Error");
