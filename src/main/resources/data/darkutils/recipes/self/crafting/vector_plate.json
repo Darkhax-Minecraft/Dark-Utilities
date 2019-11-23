@@ -13,7 +13,7 @@
       "item": "minecraft:sugar"
     },
     "D": {
-      "item": "minecraft:slime_ball"
+      "tag": "forge:slimeballs"
     }
   },
   "result": {
