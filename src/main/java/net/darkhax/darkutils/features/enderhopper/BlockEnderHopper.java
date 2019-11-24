@@ -3,15 +3,21 @@ package net.darkhax.darkutils.features.enderhopper;
 import net.darkhax.bookshelf.util.InventoryUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.IBucketPickupHandler;
+import net.minecraft.block.ILiquidContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.fluid.IFluidState;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Mirror;
@@ -26,7 +32,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
-public class BlockEnderHopper extends Block {
+public class BlockEnderHopper extends Block implements IBucketPickupHandler, ILiquidContainer {
     
     private static final Properties PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(50.0F, 1200.0F);
     protected static final BooleanProperty SHOW_BORDER = BooleanProperty.create("darkutils_show_border");
@@ -46,6 +52,7 @@ public class BlockEnderHopper extends Block {
         defaultState = defaultState.with(BlockStateProperties.FACING, Direction.UP);
         defaultState = defaultState.with(BlockStateProperties.ENABLED, true);
         defaultState = defaultState.with(SHOW_BORDER, false);
+        defaultState = defaultState.with(BlockStateProperties.WATERLOGGED, false);
         this.setDefaultState(defaultState);
     }
     
@@ -64,7 +71,13 @@ public class BlockEnderHopper extends Block {
     @Override
     public BlockState getStateForPlacement (BlockItemUseContext context) {
         
-        return this.getDefaultState().with(BlockStateProperties.FACING, context.getFace()).with(BlockStateProperties.ENABLED, hasInventory(context.getWorld(), context.getPos().offset(context.getFace().getOpposite()), context.getFace()));
+        final IFluidState preExistingFluidState = context.getWorld().getFluidState(context.getPos());
+        BlockState placedState = this.getDefaultState();
+        placedState = placedState.with(BlockStateProperties.FACING, context.getFace());
+        placedState = placedState.with(BlockStateProperties.ENABLED, hasInventory(context.getWorld(), context.getPos().offset(context.getFace().getOpposite()), context.getFace()));
+        placedState = placedState.with(BlockStateProperties.WATERLOGGED, preExistingFluidState.getFluid() == Fluids.WATER);
+        
+        return placedState;
     }
     
     @Override
@@ -104,11 +117,56 @@ public class BlockEnderHopper extends Block {
     @Override
     protected void fillStateContainer (StateContainer.Builder<Block, BlockState> builder) {
         
-        builder.add(BlockStateProperties.FACING, BlockStateProperties.ENABLED, SHOW_BORDER);
+        builder.add(BlockStateProperties.FACING, BlockStateProperties.ENABLED, SHOW_BORDER, BlockStateProperties.WATERLOGGED);
+    }
+    
+    @Override
+    public boolean canContainFluid (IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
+        
+        return true;
+    }
+    
+    @Override
+    public boolean receiveFluid (IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+        
+        if (!state.get(BlockStateProperties.WATERLOGGED) && fluidStateIn.getFluid() == Fluids.WATER) {
+            
+            if (!worldIn.isRemote()) {
+                
+                worldIn.setBlockState(pos, state.with(BlockStateProperties.WATERLOGGED, Boolean.valueOf(true)), 3);
+                worldIn.getPendingFluidTicks().scheduleTick(pos, fluidStateIn.getFluid(), fluidStateIn.getFluid().getTickRate(worldIn));
+            }
+            
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public Fluid pickupFluid (IWorld worldIn, BlockPos pos, BlockState state) {
+        
+        if (state.get(BlockStateProperties.WATERLOGGED)) {
+            
+            worldIn.setBlockState(pos, state.with(BlockStateProperties.WATERLOGGED, Boolean.valueOf(false)), 3);
+            return Fluids.WATER;
+        }
+        
+        return Fluids.EMPTY;
+    }
+    
+    @Override
+    public IFluidState getFluidState (BlockState state) {
+        
+        return state.get(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }
     
     @Override
     public BlockState updatePostPlacement (BlockState myState, Direction facing, BlockState facingState, IWorld world, BlockPos myPos, BlockPos facingPos) {
+        
+        if (myState.get(BlockStateProperties.WATERLOGGED)) {
+            
+            world.getPendingFluidTicks().scheduleTick(myPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
         
         if (facing.getOpposite() == myState.get(BlockStateProperties.FACING)) {
             
@@ -154,5 +212,11 @@ public class BlockEnderHopper extends Block {
     public TileEntity createTileEntity (BlockState state, IBlockReader world) {
         
         return new TileEntityEnderHopper();
+    }
+    
+    @Override
+    public BlockRenderLayer getRenderLayer () {
+        
+        return BlockRenderLayer.CUTOUT;
     }
 }
