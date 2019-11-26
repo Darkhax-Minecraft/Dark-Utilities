@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "darkutils:slime_crucible_green",
-    "darkutils:slime_crucible_magma"
+    "darkutils:slime_crucible_magma",
+    "darkutils:slime_crucible_wither"
   ]
 }
