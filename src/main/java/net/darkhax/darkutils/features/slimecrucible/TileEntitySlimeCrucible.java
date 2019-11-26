@@ -96,16 +96,16 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     @Override
     public void onTileTick () {
         
-        final BlockPos pos = this.pos;
+        final BlockPos pos = this.getPos();
         
-        final PlayerEntity player = this.world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 4.5, curPlayer -> !curPlayer.isSpectator() && !curPlayer.isInvisible());
+        final PlayerEntity player = this.getWorld().getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 4.5, curPlayer -> !curPlayer.isSpectator() && !curPlayer.isInvisible());
         
         // Rotate the slime towards the closest player, and modify the height offset to reveal
         // the slime.
         if (player != null) {
             
-            final double distX = player.posX - (this.pos.getX() + 0.5F);
-            final double distZ = player.posZ - (this.pos.getZ() + 0.5F);
+            final double distX = player.posX - (this.getPos().getX() + 0.5F);
+            final double distZ = player.posZ - (this.getPos().getZ() + 0.5F);
             final double angle = MathHelper.atan2(distX, distZ) * 180.0 / Math.PI;
             this.sideToFace = Direction.fromAngle(angle + 180).getOpposite();
             
@@ -292,7 +292,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
     @Override
     public Container createMenu (int id, PlayerInventory playerInventory, PlayerEntity player) {
         
-        return new ContainerSlimeCrucible(id, playerInventory, IWorldPosCallable.of(this.getWorld(), this.pos));
+        return new ContainerSlimeCrucible(id, playerInventory, IWorldPosCallable.of(this.getWorld(), this.getPos()));
     }
     
     @Override
@@ -305,7 +305,7 @@ public class TileEntitySlimeCrucible extends TileEntityBasicTickable implements 
         
         if (this.getCrucibleType() != null) {
             
-            return this.getCrucibleType().getContainerDisplayName(this.getBlockState(), this.getWorld(), this.pos);
+            return this.getCrucibleType().getContainerDisplayName(this.getBlockState(), this.getWorld(), this.getPos());
         }
         
         return new StringTextComponent("Error");

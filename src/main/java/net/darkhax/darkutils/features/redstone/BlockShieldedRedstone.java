@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
 public class BlockShieldedRedstone extends Block {
-
+    
     public BlockShieldedRedstone() {
         
         super(Properties.create(Material.ROCK).hardnessAndResistance(3.5F));
@@ -28,20 +28,21 @@ public class BlockShieldedRedstone extends Block {
     }
     
     @Override
-    public boolean canProvidePower(BlockState state) {
+    public boolean canProvidePower (BlockState state) {
         
         return true;
-     }
-
+    }
+    
     @Override
-     public int getWeakPower(BlockState state, IBlockReader blockAccess, BlockPos pos, Direction side) {
+    public int getWeakPower (BlockState state, IBlockReader blockAccess, BlockPos pos, Direction side) {
         
         return side.getOpposite() == state.get(BlockStateProperties.FACING) ? 15 : 0;
-     }
+    }
     
+    @Override
     @Nullable
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
-
+    public BlockState getStateForPlacement (BlockItemUseContext context) {
+        
         return super.getStateForPlacement(context).with(BlockStateProperties.FACING, context.getNearestLookingDirection().getOpposite());
     }
 }

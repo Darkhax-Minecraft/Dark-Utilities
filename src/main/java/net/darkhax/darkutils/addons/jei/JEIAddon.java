@@ -11,13 +11,13 @@ import net.minecraft.util.ResourceLocation;
 
 @JeiPlugin
 public class JEIAddon implements IModPlugin {
-
+    
     private static final ResourceLocation ID = new ResourceLocation("darkutils", "jei_support");
     
     @Override
-    public void registerRecipes(IRecipeRegistration registration) {
-
-        for (Item item : DarkUtils.registry.getItems()) {
+    public void registerRecipes (IRecipeRegistration registration) {
+        
+        for (final Item item : DarkUtils.registry.getItems()) {
             
             registration.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM, "tooltip.darkutils." + item.getRegistryName().getPath() + ".long");
         }

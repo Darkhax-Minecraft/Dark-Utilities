@@ -19,7 +19,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
 public class BlockSoulGlass extends StainedGlassBlock {
-
+    
     public BlockSoulGlass() {
         
         super(DyeColor.BROWN, Properties.create(Material.GLASS).hardnessAndResistance(0.3F).sound(SoundType.GLASS));
@@ -27,10 +27,10 @@ public class BlockSoulGlass extends StainedGlassBlock {
     }
     
     @Override
-    public BlockRenderLayer getRenderLayer() {
+    public BlockRenderLayer getRenderLayer () {
         
         return BlockRenderLayer.TRANSLUCENT;
-     }
+    }
     
     @Override
     protected void fillStateContainer (StateContainer.Builder<Block, BlockState> builder) {
@@ -40,11 +40,10 @@ public class BlockSoulGlass extends StainedGlassBlock {
     }
     
     @Override
-    public void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+    public void neighborChanged (BlockState state, World world, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         
         world.setBlockState(pos, state.with(BlockStateProperties.ENABLED, isNearLava(pos, world)));
     }
-        
     
     @Override
     public BlockState getStateForPlacement (BlockItemUseContext context) {
@@ -53,20 +52,20 @@ public class BlockSoulGlass extends StainedGlassBlock {
     }
     
     @Override
-    public boolean canProvidePower(BlockState state) {
+    public boolean canProvidePower (BlockState state) {
         
         return state.get(BlockStateProperties.ENABLED);
-     }
-
+    }
+    
     @Override
-     public int getWeakPower(BlockState state, IBlockReader blockAccess, BlockPos pos, Direction side) {
+    public int getWeakPower (BlockState state, IBlockReader blockAccess, BlockPos pos, Direction side) {
         
         return state.get(BlockStateProperties.ENABLED) ? 15 : 0;
-     }
+    }
     
-    private static boolean isNearLava(BlockPos pos, IWorld world) {
+    private static boolean isNearLava (BlockPos pos, IWorld world) {
         
-        for (Direction side : Direction.values()) {
+        for (final Direction side : Direction.values()) {
             
             final IFluidState state = world.getFluidState(pos.offset(side));
             

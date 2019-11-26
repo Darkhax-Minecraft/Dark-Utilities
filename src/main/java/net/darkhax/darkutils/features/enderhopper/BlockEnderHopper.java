@@ -11,7 +11,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -178,7 +177,7 @@ public class BlockEnderHopper extends Block implements IBucketPickupHandler, ILi
     
     private static boolean hasInventory (World world, BlockPos pos, Direction facing) {
         
-        IItemHandler inventory = InventoryUtils.getInventory(world, pos, facing);
+        final IItemHandler inventory = InventoryUtils.getInventory(world, pos, facing);
         return inventory != null && inventory != EmptyHandler.INSTANCE && inventory.getSlots() > 0;
     }
     

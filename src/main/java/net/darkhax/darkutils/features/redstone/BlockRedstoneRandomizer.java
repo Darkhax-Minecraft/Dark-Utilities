@@ -16,7 +16,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public class BlockRedstoneRandomizer extends Block {
-
+    
     public BlockRedstoneRandomizer() {
         
         super(Properties.create(Material.ROCK).hardnessAndResistance(3.5F).tickRandomly());
@@ -24,9 +24,9 @@ public class BlockRedstoneRandomizer extends Block {
     }
     
     @Override
-    public void tick(BlockState state, World world, BlockPos pos, Random random) {
+    public void tick (BlockState state, World world, BlockPos pos, Random random) {
         
-        world.setBlockState(pos, state.with(BlockStateProperties.ENABLED, !(state.get(BlockStateProperties.ENABLED))));
+        world.setBlockState(pos, state.with(BlockStateProperties.ENABLED, !state.get(BlockStateProperties.ENABLED)));
     }
     
     @Override
@@ -37,20 +37,21 @@ public class BlockRedstoneRandomizer extends Block {
     }
     
     @Override
-    public boolean canProvidePower(BlockState state) {
+    public boolean canProvidePower (BlockState state) {
         
         return state.get(BlockStateProperties.ENABLED);
-     }
-
-    @Override
-     public int getWeakPower(BlockState state, IBlockReader blockAccess, BlockPos pos, Direction side) {
-        
-        return state.get(BlockStateProperties.ENABLED) && side.getOpposite() == state.get(BlockStateProperties.HORIZONTAL_FACING)? 15 : 0;
-     }
+    }
     
+    @Override
+    public int getWeakPower (BlockState state, IBlockReader blockAccess, BlockPos pos, Direction side) {
+        
+        return state.get(BlockStateProperties.ENABLED) && side.getOpposite() == state.get(BlockStateProperties.HORIZONTAL_FACING) ? 15 : 0;
+    }
+    
+    @Override
     @Nullable
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
-
+    public BlockState getStateForPlacement (BlockItemUseContext context) {
+        
         BlockState placedState = super.getStateForPlacement(context);
         
         for (final Direction facing : context.getNearestLookingDirections()) {
