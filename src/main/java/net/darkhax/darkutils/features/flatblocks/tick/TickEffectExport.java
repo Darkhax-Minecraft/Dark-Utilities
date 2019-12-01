@@ -10,8 +10,16 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.EmptyHandler;
 
 public class TickEffectExport implements TickEffect {
+    
+    private final int extractSpeed;
+    
+    public TickEffectExport(int extractSpeed) {
+        
+        this.extractSpeed = extractSpeed;
+    }
     
     @Override
     public void apply (BlockState state, World world, BlockPos pos) {
@@ -19,20 +27,20 @@ public class TickEffectExport implements TickEffect {
         final Direction pointingDirection = state.get(BlockStateProperties.HORIZONTAL_FACING);
         final IItemHandler connectedInventory = InventoryUtils.getInventory(world, pos.offset(pointingDirection.getOpposite()), pointingDirection);
         
-        if (connectedInventory != null) {
+        if (connectedInventory != null && connectedInventory != EmptyHandler.INSTANCE) {
             
             for (int slot = 0; slot < connectedInventory.getSlots(); slot++) {
                 
-                final ItemStack itemStack = connectedInventory.getStackInSlot(slot);
+                final ItemStack simulated = connectedInventory.extractItem(slot, extractSpeed, true);
                 
-                if (!itemStack.isEmpty()) {
+                if (!simulated.isEmpty()) {
                     
-                    final ItemStack stackToSpawn = itemStack.split(1);
+                    final ItemStack extracted = connectedInventory.extractItem(slot, extractSpeed, false);
                     
                     final ItemEntity item = new ItemEntity(EntityType.ITEM, world);
-                    item.setItem(stackToSpawn);
+                    item.setItem(extracted);
                     item.setPosition(pos.getX() + 0.5f, pos.getY() + 0.2f, pos.getZ() + 0.5f);
-                    item.lifespan = stackToSpawn.getEntityLifespan(world);
+                    item.lifespan = extracted.getEntityLifespan(world);
                     world.addEntity(item);
                     break;
                 }

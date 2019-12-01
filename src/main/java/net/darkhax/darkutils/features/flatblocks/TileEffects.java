@@ -29,8 +29,12 @@ public class TileEffects {
     public static final CollisionEffect PUSH_STRONG = new CollisionEffectPush(1.5d);
     
     public static final CollisionEffect IMPORT_WEAK = new CollisionEffectImport(0.06d, 1);
-    public static final CollisionEffect IMPORT_NORMAL = new CollisionEffectImport(0.3d, 16);
-    public static final CollisionEffect IMPORT_STRONG = new CollisionEffectImport(1.5d, 32);
+    public static final CollisionEffect IMPORT_NORMAL = new CollisionEffectImport(0.3d, 8);
+    public static final CollisionEffect IMPORT_STRONG = new CollisionEffectImport(1.5d, 16);
+    
+    public static final TickEffect EXPORT_WEAK = new TickEffectExport(1);
+    public static final TickEffect EXPORT_NORMAL = new TickEffectExport(8);
+    public static final TickEffect EXPORT_STRONG = new TickEffectExport(16);
     
     public static final CollisionEffect RUNE_DAMAGE = TileEffects::effectRuneDamage;
     public static final CollisionEffect RUNE_DAMAGE_PLAYER = TileEffects::effectRunePlayerDamage;
@@ -44,8 +48,6 @@ public class TileEffects {
     public static final CollisionEffect RUNE_HUNGER = TileEffects::effectRuneHunger;
     public static final CollisionEffect RUNE_BLINDNESS = TileEffects::effectRuneBlindess;
     public static final CollisionEffect RUNE_NAUSEA = TileEffects::effectRuneNausea;
-    
-    public static final TickEffect EXPORT_INVENTORY = new TickEffectExport();
     
     private static void effectRunePlayerDamage (BlockState state, World world, BlockPos pos, Entity entity) {
         
