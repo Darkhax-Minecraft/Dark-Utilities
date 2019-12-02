@@ -31,11 +31,11 @@ public class TickEffectExport implements TickEffect {
             
             for (int slot = 0; slot < connectedInventory.getSlots(); slot++) {
                 
-                final ItemStack simulated = connectedInventory.extractItem(slot, extractSpeed, true);
+                final ItemStack simulated = connectedInventory.extractItem(slot, this.extractSpeed, true);
                 
                 if (!simulated.isEmpty()) {
                     
-                    final ItemStack extracted = connectedInventory.extractItem(slot, extractSpeed, false);
+                    final ItemStack extracted = connectedInventory.extractItem(slot, this.extractSpeed, false);
                     
                     final ItemEntity item = new ItemEntity(EntityType.ITEM, world);
                     item.setItem(extracted);

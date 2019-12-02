@@ -139,12 +139,12 @@ public class RecipeSlimeCrafting implements IRecipe<IInventory> {
     }
     
     @Override
-    public NonNullList<Ingredient> getIngredients() {
+    public NonNullList<Ingredient> getIngredients () {
         
         final NonNullList<Ingredient> ingredients = NonNullList.create();
         ingredients.add(this.input);
         return ingredients;
-     }
+    }
     
     /**
      * Gets the amount of required slime points.

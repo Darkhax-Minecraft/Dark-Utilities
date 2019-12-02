@@ -31,9 +31,7 @@ import net.darkhax.darkutils.features.spawnitems.ItemMobSpawner;
 import net.darkhax.darkutils.features.witherslime.EntitySlimeWither;
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.Properties;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.PistonBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -53,7 +51,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.common.BasicTrade;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.extensions.IForgeBlock;
 
 public class Content {
     
@@ -135,8 +132,6 @@ public class Content {
     public final Block darkGlass;
     public final Block soulGlass;
     
-    // public final Block enderTether;
-    
     /**
      * ITEMS
      */
@@ -216,15 +211,15 @@ public class Content {
         this.blankPlate = registry.registerBlock(new BlockFlatTile(), "blank_plate");
         
         this.vectorPlate = registry.registerBlock(new BlockFlatTileRotating(TileEffects.PUSH_WEAK), "vector_plate");
-        this.exportPlate = registry.registerBlock(new BlockFlatTileRotatingTicking(TileEffects.PUSH_WEAK, TileEffects.EXPORT_INVENTORY, 10), "export_plate");
+        this.exportPlate = registry.registerBlock(new BlockFlatTileRotatingTicking(TileEffects.PUSH_WEAK, TileEffects.EXPORT_WEAK, 10), "export_plate");
         this.importPlate = registry.registerBlock(new BlockFlatTileRotating(TileEffects.IMPORT_WEAK), "import_plate");
         
         this.vectorPlateFast = registry.registerBlock(new BlockFlatTileRotating(TileEffects.PUSH_NORMAL), "vector_plate_fast");
-        this.exportPlateFast = registry.registerBlock(new BlockFlatTileRotatingTicking(TileEffects.PUSH_NORMAL, TileEffects.EXPORT_INVENTORY, 5), "export_plate_fast");
+        this.exportPlateFast = registry.registerBlock(new BlockFlatTileRotatingTicking(TileEffects.PUSH_NORMAL, TileEffects.EXPORT_NORMAL, 10), "export_plate_fast");
         this.importPlateFast = registry.registerBlock(new BlockFlatTileRotating(TileEffects.IMPORT_NORMAL), "import_plate_fast");
         
         this.vectorPlateHyper = registry.registerBlock(new BlockFlatTileRotating(TileEffects.PUSH_STRONG), "vector_plate_extreme");
-        this.exportPlateHyper = registry.registerBlock(new BlockFlatTileRotatingTicking(TileEffects.PUSH_STRONG, TileEffects.EXPORT_INVENTORY, 1), "export_plate_extreme");
+        this.exportPlateHyper = registry.registerBlock(new BlockFlatTileRotatingTicking(TileEffects.PUSH_STRONG, TileEffects.EXPORT_STRONG, 10), "export_plate_extreme");
         this.importPlateHyper = registry.registerBlock(new BlockFlatTileRotating(TileEffects.IMPORT_STRONG), "import_plate_extreme");
         
         this.runeDamage = registry.registerBlock(new BlockFlatTile(TileEffects.RUNE_DAMAGE), "rune_damage");
