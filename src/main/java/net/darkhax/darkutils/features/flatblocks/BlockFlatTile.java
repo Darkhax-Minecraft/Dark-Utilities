@@ -43,7 +43,7 @@ public class BlockFlatTile extends Block implements IBucketPickupHandler, ILiqui
     
     public BlockFlatTile(Properties properties, CollisionEffect collisionEffect) {
         
-        super(properties);
+        super(properties.doesNotBlockMovement());
         this.collisionEffect = collisionEffect;
         
         BlockState defaultState = this.stateContainer.getBaseState();
