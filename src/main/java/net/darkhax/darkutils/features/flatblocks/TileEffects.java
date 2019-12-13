@@ -9,6 +9,7 @@ import net.darkhax.darkutils.features.flatblocks.collision.CollisionEffectImport
 import net.darkhax.darkutils.features.flatblocks.collision.CollisionEffectPush;
 import net.darkhax.darkutils.features.flatblocks.tick.TickEffect;
 import net.darkhax.darkutils.features.flatblocks.tick.TickEffectExport;
+import net.darkhax.darkutils.temp.FakePlayerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -18,7 +19,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.util.FakePlayerFactory;
 
 public class TileEffects {
     
