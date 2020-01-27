@@ -7,15 +7,15 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.FakePlayer;
 
 public class DUFakePlayer extends FakePlayer {
-
+    
     public DUFakePlayer(ServerWorld world, GameProfile name) {
         
         super(world, name);
     }
     
     @Override
-    public boolean isPotionApplicable(EffectInstance potioneffectIn) {
+    public boolean isPotionApplicable (EffectInstance potioneffectIn) {
         
-      return false;
+        return false;
     }
 }
