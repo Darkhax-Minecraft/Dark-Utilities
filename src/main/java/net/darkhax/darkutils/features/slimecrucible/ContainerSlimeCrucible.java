@@ -544,6 +544,11 @@ public class ContainerSlimeCrucible extends Container {
     @Override
     public ItemStack transferStackInSlot (PlayerEntity playerIn, int index) {
         
+        if (playerIn.world.isRemote) {
+            
+            return ItemStack.EMPTY;
+        }
+        
         ItemStack itemstack = ItemStack.EMPTY;
         final Slot slot = this.inventorySlots.get(index);
         
