@@ -24,25 +24,28 @@ public class TickEffectExport implements TickEffect {
     @Override
     public void apply (BlockState state, World world, BlockPos pos) {
         
-        final Direction pointingDirection = state.get(BlockStateProperties.HORIZONTAL_FACING);
-        final IItemHandler connectedInventory = InventoryUtils.getInventory(world, pos.offset(pointingDirection.getOpposite()), pointingDirection);
-        
-        if (connectedInventory != null && connectedInventory != EmptyHandler.INSTANCE) {
+        if (!world.isBlockPowered(pos)) {
             
-            for (int slot = 0; slot < connectedInventory.getSlots(); slot++) {
+            final Direction pointingDirection = state.get(BlockStateProperties.HORIZONTAL_FACING);
+            final IItemHandler connectedInventory = InventoryUtils.getInventory(world, pos.offset(pointingDirection.getOpposite()), pointingDirection);
+            
+            if (connectedInventory != null && connectedInventory != EmptyHandler.INSTANCE) {
                 
-                final ItemStack simulated = connectedInventory.extractItem(slot, this.extractSpeed, true);
-                
-                if (!simulated.isEmpty()) {
+                for (int slot = 0; slot < connectedInventory.getSlots(); slot++) {
                     
-                    final ItemStack extracted = connectedInventory.extractItem(slot, this.extractSpeed, false);
+                    final ItemStack simulated = connectedInventory.extractItem(slot, this.extractSpeed, true);
                     
-                    final ItemEntity item = new ItemEntity(EntityType.ITEM, world);
-                    item.setItem(extracted);
-                    item.setPosition(pos.getX() + 0.5f, pos.getY() + 0.2f, pos.getZ() + 0.5f);
-                    item.lifespan = extracted.getEntityLifespan(world);
-                    world.addEntity(item);
-                    break;
+                    if (!simulated.isEmpty()) {
+                        
+                        final ItemStack extracted = connectedInventory.extractItem(slot, this.extractSpeed, false);
+                        
+                        final ItemEntity item = new ItemEntity(EntityType.ITEM, world);
+                        item.setItem(extracted);
+                        item.setPosition(pos.getX() + 0.5f, pos.getY() + 0.2f, pos.getZ() + 0.5f);
+                        item.lifespan = extracted.getEntityLifespan(world);
+                        world.addEntity(item);
+                        break;
+                    }
                 }
             }
         }
