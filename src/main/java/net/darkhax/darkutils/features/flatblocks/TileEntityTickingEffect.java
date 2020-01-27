@@ -23,11 +23,19 @@ public class TileEntityTickingEffect extends TileEntity implements ITickableTile
     @Override
     public void tick () {
         
-        this.timer++;
-        
-        if (this.timer >= this.getBlockState().getBlock().tickRate(this.world)) {
+        if (!this.world.isBlockPowered(this.pos)) {
             
-            this.world.getPendingBlockTicks().scheduleTick(new BlockPos(this.pos), this.getBlockState().getBlock(), this.getBlockState().getBlock().tickRate(this.world));
+            this.timer++;
+            
+            if (this.timer >= this.getBlockState().getBlock().tickRate(this.world)) {
+                
+                this.world.getPendingBlockTicks().scheduleTick(new BlockPos(this.pos), this.getBlockState().getBlock(), this.getBlockState().getBlock().tickRate(this.world));
+                this.timer = 0;
+            }
+        }
+        
+        else {
+            
             this.timer = 0;
         }
     }
