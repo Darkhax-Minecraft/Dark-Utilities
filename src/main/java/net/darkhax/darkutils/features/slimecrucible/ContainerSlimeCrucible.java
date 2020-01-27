@@ -302,7 +302,7 @@ public class ContainerSlimeCrucible extends Container {
     private void updateOutputs () {
         
         // Check if a valid recipe has been selected.
-        if (!this.availableRecipes.isEmpty() && this.selectedRecipe.get() >= 0 && this.selectedRecipe.get() < this.availableRecipes.size()) {
+        if (!this.availableRecipes.isEmpty() && this.selectedRecipe.get() >= 0 && this.selectedRecipe.get() < this.availableRecipes.size() && this.canCraft(this.selectedRecipe.get())) {
             
             // Set the output slot to hold the output of the current selected recipe.
             this.slotOutput.putStack(this.getSelectedRecipe().getCraftingResult(this.inventory));
