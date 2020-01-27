@@ -91,7 +91,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.gluttonyCharm;
             final PlayerEntity player = (PlayerEntity) event.getEntityLiving();
             
-            if (event.getItem().isFood() && PlayerUtils.getItemCountInInv(player, charm) > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player)) {
+            if (event.getItem().isFood() && (PlayerUtils.getItemCountInInv(player, charm) > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player))) {
                 
                 event.setDuration(0);
             }
