@@ -312,6 +312,8 @@ public class ContainerSlimeCrucible extends Container {
         else {
             
             this.slotOutput.putStack(ItemStack.EMPTY);
+            this.selectedRecipe.set(-1);
+            this.updateAvailableRecipes();
         }
         
         // Force an update attempt to the client.
