@@ -11,6 +11,7 @@ import net.darkhax.darkutils.features.slimecrucible.TileEntitySlimeCrucible;
 import net.darkhax.darkutils.features.witherslime.EntitySlimeWither;
 import net.darkhax.darkutils.features.witherslime.RenderSlimeWither;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -68,11 +69,16 @@ public class ContentClient extends Content {
     
     private void addTooltips (ItemTooltipEvent event) {
         
-        final ResourceLocation id = event.getItemStack().getItem().getRegistryName();
+        final ItemStack stack = event.getItemStack();
         
-        if ("darkutils".equals(id.getNamespace())) {
+        if (!stack.isEmpty() && stack.getItem() != null) {
             
-            event.getToolTip().add(new TranslationTextComponent("tooltip.darkutils." + id.getPath() + ".short").applyTextStyle(TextFormatting.GRAY));
+            final ResourceLocation id = stack.getItem().getRegistryName();
+            
+            if (id != null && "darkutils".equals(id.getNamespace())) {
+                
+                event.getToolTip().add(new TranslationTextComponent("tooltip.darkutils." + id.getPath() + ".short").applyTextStyle(TextFormatting.GRAY));
+            }
         }
     }
     
