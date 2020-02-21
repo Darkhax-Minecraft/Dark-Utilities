@@ -25,7 +25,7 @@ public class CollisionEffectImport extends CollisionEffectPush {
     @Override
     public void additionalEffects (BlockState state, World world, BlockPos pos, Entity entity) {
         
-        if (entity instanceof ItemEntity) {
+        if (entity instanceof ItemEntity && !entity.world.isRemote) {
             
             final ItemEntity itemEntity = (ItemEntity) entity;
             final Direction insertSide = state.get(BlockStateProperties.HORIZONTAL_FACING);
@@ -43,6 +43,7 @@ public class CollisionEffectImport extends CollisionEffectPush {
                     // Check if the simulated insert stack can be accepted into the inventory.
                     if (inventory.isItemValid(slot, pickupStack) && inventory.insertItem(slot, pickupStack, true).getCount() != pickupStack.getCount()) {
                         
+                        System.out.println("Taken into slot " + slot);
                         // Actually split the picked up stack so it can be legitimately
                         // inserted.
                         final ItemStack actualPickupStack = itemEntity.getItem().split(this.insertAmount);
