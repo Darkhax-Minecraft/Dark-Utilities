@@ -43,7 +43,6 @@ public class CollisionEffectImport extends CollisionEffectPush {
                     // Check if the simulated insert stack can be accepted into the inventory.
                     if (inventory.isItemValid(slot, pickupStack) && inventory.insertItem(slot, pickupStack, true).getCount() != pickupStack.getCount()) {
                         
-                        System.out.println("Taken into slot " + slot);
                         // Actually split the picked up stack so it can be legitimately
                         // inserted.
                         final ItemStack actualPickupStack = itemEntity.getItem().split(this.insertAmount);
