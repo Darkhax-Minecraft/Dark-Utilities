@@ -13,7 +13,7 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class BlockRedstoneRandomizer extends Block {
     
@@ -24,7 +24,7 @@ public class BlockRedstoneRandomizer extends Block {
     }
     
     @Override
-    public void tick (BlockState state, World world, BlockPos pos, Random random) {
+    public void tick (BlockState state, ServerWorld world, BlockPos pos, Random random) {
         
         world.setBlockState(pos, state.with(BlockStateProperties.ENABLED, !state.get(BlockStateProperties.ENABLED)));
     }
@@ -58,7 +58,7 @@ public class BlockRedstoneRandomizer extends Block {
             
             if (facing.getAxis().isHorizontal()) {
                 
-                placedState = placedState.with(BlockStateProperties.HORIZONTAL_FACING, facing);
+                placedState = placedState.with(BlockStateProperties.HORIZONTAL_FACING, facing.getOpposite());
                 break;
             }
         }

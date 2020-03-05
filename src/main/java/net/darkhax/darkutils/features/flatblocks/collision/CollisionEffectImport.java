@@ -55,7 +55,7 @@ public class CollisionEffectImport extends CollisionEffectPush {
                             
                             final ItemEntity item = new ItemEntity(EntityType.ITEM, world);
                             item.setItem(remaining);
-                            item.setPosition(entity.posX, entity.posY, entity.posZ);
+                            item.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
                             item.lifespan = remaining.getEntityLifespan(world);
                             world.addEntity(item);
                         }

@@ -12,7 +12,6 @@ import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
@@ -127,12 +126,6 @@ public class BlockItemGrate extends Block implements IBucketPickupHandler, ILiqu
     }
     
     @Override
-    public boolean isSolid (BlockState state) {
-        
-        return false;
-    }
-    
-    @Override
     public boolean causesSuffocation (BlockState state, IBlockReader world, BlockPos pos) {
         
         return false;
@@ -159,11 +152,5 @@ public class BlockItemGrate extends Block implements IBucketPickupHandler, ILiqu
     public VoxelShape getShape (BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         
         return SHAPE;
-    }
-    
-    @Override
-    public BlockRenderLayer getRenderLayer () {
-        
-        return BlockRenderLayer.CUTOUT;
     }
 }

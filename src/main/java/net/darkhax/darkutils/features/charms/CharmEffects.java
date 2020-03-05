@@ -26,7 +26,8 @@ public class CharmEffects {
                 ((PlayerEntity) user).sleepTimer = 100;
             }
             
-            // Passively decrease the time since last rest stat. This is what phantom spawning
+            // Passively decrease the time since last rest stat. This is what phantom
+            // spawning
             // looks at.
             if (user instanceof ServerPlayerEntity) {
                 
@@ -63,7 +64,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.experienceCharm;
             final PlayerEntity player = event.getAttackingPlayer();
             
-            if (PlayerUtils.getItemCountInInv(player, charm) > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player)) {
+            if (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player)) {
                 
                 event.setDroppedExperience(event.getDroppedExperience() + event.getEntity().world.rand.nextInt(5));
             }
@@ -77,7 +78,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.experienceCharm;
             final PlayerEntity player = event.getPlayer();
             
-            if (PlayerUtils.getItemCountInInv(player, charm) > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player)) {
+            if (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player)) {
                 
                 event.setExpToDrop(event.getExpToDrop() + event.getWorld().getRandom().nextInt(5));
             }
@@ -91,7 +92,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.gluttonyCharm;
             final PlayerEntity player = (PlayerEntity) event.getEntityLiving();
             
-            if (event.getItem().isFood() && (PlayerUtils.getItemCountInInv(player, charm) > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player))) {
+            if (event.getItem().isFood() && (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player))) {
                 
                 event.setDuration(0);
             }

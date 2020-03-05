@@ -103,7 +103,7 @@ public class TileEntityEnderHopper extends TileEntity implements ITickableTileEn
                             
                             if (this.world instanceof ServerWorld) {
                                 
-                                ((ServerWorld) this.world).spawnParticle(ParticleTypes.PORTAL, itemEntity.posX, itemEntity.posY, itemEntity.posZ, 5, getOffset(), getOffset(), getOffset(), 0.01);
+                                ((ServerWorld) this.world).spawnParticle(ParticleTypes.PORTAL, itemEntity.getPosX(), itemEntity.getPosY(), itemEntity.getPosZ(), 5, getOffset(), getOffset(), getOffset(), 0.01);
                             }
                             
                             return;

@@ -16,7 +16,7 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Mirror;
@@ -56,15 +56,15 @@ public class BlockEnderHopper extends Block implements IBucketPickupHandler, ILi
     }
     
     @Override
-    public boolean onBlockActivated (BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated (BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         
-        if (player.isSneaking()) {
+        if (player.isShiftKeyDown()) {
             
             worldIn.setBlockState(pos, state.with(SHOW_BORDER, !state.get(SHOW_BORDER)));
-            return true;
+            return ActionResultType.SUCCESS;
         }
         
-        return false;
+        return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
     }
     
     @Override
@@ -211,11 +211,5 @@ public class BlockEnderHopper extends Block implements IBucketPickupHandler, ILi
     public TileEntity createTileEntity (BlockState state, IBlockReader world) {
         
         return new TileEntityEnderHopper();
-    }
-    
-    @Override
-    public BlockRenderLayer getRenderLayer () {
-        
-        return BlockRenderLayer.CUTOUT;
     }
 }

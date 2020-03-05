@@ -91,11 +91,9 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${forge_version}"
     
-    compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.14.4:${bookshelf_version}")
-    compile fg.deobf("mezz.jei:jei-1.14.4:${jei_version}")
-    compile fg.deobf("slimeknights.mantle:Mantle:1.14.4-${mantle_version}")
-    compile fg.deobf("slimeknights.tconstruct:TConstruct:1.14.4-${tconstruct_version}")
-    compile fg.deobf("top.theillusivec4.curios:curios:FORGE-1.14.4-${curios_version}")
+    compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.15.2:${bookshelf_version}")
+    compile fg.deobf("mezz.jei:jei-1.15.2:${jei_version}")
+    compile fg.deobf("top.theillusivec4.curios:curios:FORGE-1.15.2-${curios_version}")
 }
 
 jar {

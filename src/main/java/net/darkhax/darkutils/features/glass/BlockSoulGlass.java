@@ -11,7 +11,6 @@ import net.minecraft.item.DyeColor;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -22,14 +21,8 @@ public class BlockSoulGlass extends StainedGlassBlock {
     
     public BlockSoulGlass() {
         
-        super(DyeColor.BROWN, Properties.create(Material.GLASS).hardnessAndResistance(0.3F).sound(SoundType.GLASS));
+        super(DyeColor.BROWN, Properties.create(Material.GLASS).hardnessAndResistance(0.3F).sound(SoundType.GLASS).notSolid());
         this.setDefaultState(this.getDefaultState().with(BlockStateProperties.ENABLED, false));
-    }
-    
-    @Override
-    public BlockRenderLayer getRenderLayer () {
-        
-        return BlockRenderLayer.TRANSLUCENT;
     }
     
     @Override

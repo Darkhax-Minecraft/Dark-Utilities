@@ -17,11 +17,11 @@ public class CollisionEffectAnchor implements CollisionEffect {
         
         final Direction direction = state.get(BlockStateProperties.HORIZONTAL_FACING);
         
-        if (!entity.isSneaking()) {
+        if (!entity.isShiftKeyDown()) {
             
             if (entity instanceof LivingEntity && entity.isNonBoss()) {
                 
-                final BlockPos offset = pos.offset(direction, 5);
+                final BlockPos offset = pos.offset(direction.getOpposite(), 5);
                 final LivingEntity living = (LivingEntity) entity;
                 living.lookAt(EntityAnchorArgument.Type.EYES, new Vec3d(offset.getX() + 0.5f, offset.getY() + 1.5f, offset.getZ() + 0.5f));
             }

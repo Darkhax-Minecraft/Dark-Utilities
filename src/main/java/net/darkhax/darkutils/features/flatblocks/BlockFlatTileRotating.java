@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Mirror;
@@ -29,15 +30,15 @@ public class BlockFlatTileRotating extends BlockFlatTile {
     }
     
     @Override
-    public boolean onBlockActivated (BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated (BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         
-        if (player.isSneaking()) {
+        if (player.isShiftKeyDown()) {
             
-            worldIn.setBlockState(pos, this.rotate(state, Rotation.CLOCKWISE_90));
-            return true;
+            world.setBlockState(pos, this.rotate(state, Rotation.CLOCKWISE_90));
+            return ActionResultType.SUCCESS;
         }
         
-        return false;
+        return super.onBlockActivated(state, world, pos, player, handIn, hit);
     }
     
     @Override

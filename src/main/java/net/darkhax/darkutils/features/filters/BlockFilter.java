@@ -8,7 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
@@ -69,9 +69,9 @@ public class BlockFilter extends Block {
     }
     
     @Override
-    public boolean onBlockActivated (BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated (BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         
-        if (player.isSneaking()) {
+        if (player.isShiftKeyDown()) {
             
             if (!world.isRemote) {
                 
@@ -79,10 +79,10 @@ public class BlockFilter extends Block {
                 world.playEvent(1008, pos, 0);
             }
             
-            return true;
+            return ActionResultType.SUCCESS;
         }
         
-        return false;
+        return super.onBlockActivated(state, world, pos, player, handIn, hit);
     }
     
     @Override
@@ -103,12 +103,6 @@ public class BlockFilter extends Block {
     public boolean canSpawnInBlock () {
         
         return true;
-    }
-    
-    @Override
-    public boolean isSolid (BlockState state) {
-        
-        return state.get(BlockStateProperties.POWERED);
     }
     
     @Override
@@ -137,11 +131,5 @@ public class BlockFilter extends Block {
         }
         
         return super.getCollisionShape(state, world, pos, context);
-    }
-    
-    @Override
-    public BlockRenderLayer getRenderLayer () {
-        
-        return BlockRenderLayer.CUTOUT;
     }
 }

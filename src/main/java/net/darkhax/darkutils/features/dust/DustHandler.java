@@ -1,6 +1,6 @@
 package net.darkhax.darkutils.features.dust;
 
-import net.darkhax.bookshelf.util.WorldUtils;
+import net.darkhax.bookshelf.util.RecipeUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -29,7 +29,7 @@ public class DustHandler {
         final BlockState oldState = world.getBlockState(pos);
         
         // Loop through all dust recipes
-        for (final RecipeDustChange recipe : WorldUtils.getRecipeList(DarkUtils.content.recipeTypeDustChange, world.getRecipeManager())) {
+        for (final RecipeDustChange recipe : RecipeUtils.getRecipeList(DarkUtils.content.recipeTypeDustChange, world.getRecipeManager())) {
             
             // Test if the dust recipe is valid
             if (recipe.isValid(oldState, item)) {

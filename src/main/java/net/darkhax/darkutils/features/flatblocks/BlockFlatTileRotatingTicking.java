@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 @SuppressWarnings("deprecation")
 public class BlockFlatTileRotatingTicking extends BlockFlatTileRotating {
@@ -36,7 +37,7 @@ public class BlockFlatTileRotatingTicking extends BlockFlatTileRotating {
     }
     
     @Override
-    public void tick (BlockState state, World world, BlockPos pos, Random random) {
+    public void tick (BlockState state, ServerWorld world, BlockPos pos, Random rand) {
         
         if (this.tickEffect != null) {
             

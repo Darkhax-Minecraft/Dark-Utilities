@@ -1,23 +1,20 @@
 package net.darkhax.darkutils;
 
-import net.darkhax.bookshelf.client.model.FullbrightBakedModel;
 import net.darkhax.bookshelf.registry.RegistryHelper;
-import net.darkhax.bookshelf.registry.RegistryHelperClient;
-import net.darkhax.darkutils.features.enderhopper.RenderEnderHopper;
-import net.darkhax.darkutils.features.enderhopper.TileEntityEnderHopper;
-import net.darkhax.darkutils.features.slimecrucible.RenderSlimeCrucible;
-import net.darkhax.darkutils.features.slimecrucible.ScreenSlimeCrucible;
-import net.darkhax.darkutils.features.slimecrucible.TileEntitySlimeCrucible;
-import net.darkhax.darkutils.features.witherslime.EntitySlimeWither;
-import net.darkhax.darkutils.features.witherslime.RenderSlimeWither;
-import net.minecraft.block.Block;
+import net.minecraft.block.GlassBlock;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class ContentClient extends Content {
     
@@ -25,46 +22,8 @@ public class ContentClient extends Content {
         
         super(registry);
         
-        if (registry instanceof RegistryHelperClient) {
-            
-            final RegistryHelperClient clientRegistry = (RegistryHelperClient) registry;
-            
-            // Tile Entity Renders
-            clientRegistry.setSpecialRenderer(TileEntitySlimeCrucible.class, new RenderSlimeCrucible());
-            clientRegistry.setSpecialRenderer(TileEntityEnderHopper.class, new RenderEnderHopper());
-            
-            // Gui Screens
-            clientRegistry.registerGuiScreen(this.containerSlimeCrucible, ScreenSlimeCrucible::new);
-            
-            // Entities
-            clientRegistry.registerEntityRenderer(EntitySlimeWither.class, RenderSlimeWither::new);
-            
-            // Block Model Overrides
-            this.makeFullBrightFlatTile(clientRegistry, this.vectorPlate);
-            this.makeFullBrightFlatTile(clientRegistry, this.vectorPlateFast);
-            this.makeFullBrightFlatTile(clientRegistry, this.vectorPlateHyper);
-            this.makeFullBrightFlatTile(clientRegistry, this.importPlate);
-            this.makeFullBrightFlatTile(clientRegistry, this.importPlateFast);
-            this.makeFullBrightFlatTile(clientRegistry, this.importPlateHyper);
-            this.makeFullBrightFlatTile(clientRegistry, this.exportPlate);
-            this.makeFullBrightFlatTile(clientRegistry, this.exportPlateFast);
-            this.makeFullBrightFlatTile(clientRegistry, this.exportPlateHyper);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeDamage);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeDamagePlayer);
-            this.makeFullBrightFlatTile(clientRegistry, this.runePoison);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeWeakness);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeSlowness);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeWither);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeFire);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeFatigue);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeGlowing);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeHunger);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeBlindness);
-            this.makeFullBrightFlatTile(clientRegistry, this.runeNausea);
-            this.makeFullBrightFlatTile(clientRegistry, this.anchorPlate);
-        }
-        
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST, this::addTooltips);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
     }
     
     private void addTooltips (ItemTooltipEvent event) {
@@ -82,12 +41,56 @@ public class ContentClient extends Content {
         }
     }
     
-    private void makeFullBrightFlatTile (RegistryHelperClient registry, Block tile) {
+    private void onClientSetup (FMLClientSetupEvent event) {
         
-        final ResourceLocation blockId = tile.getRegistryName();
-        registry.registerModelFactory(blockId, (original, ctx) -> {
-            
-            return new FullbrightBakedModel(original, 0.007f, new ResourceLocation(blockId.getNamespace(), "block/" + blockId.getPath()));
-        });
+        RenderTypeLookup.setRenderLayer(this.vectorPlate, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.exportPlate, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.importPlate, RenderType.getCutout());
+        
+        RenderTypeLookup.setRenderLayer(this.vectorPlateFast, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.exportPlateFast, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.importPlateFast, RenderType.getCutout());
+        
+        RenderTypeLookup.setRenderLayer(this.vectorPlateHyper, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.exportPlateHyper, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.importPlateHyper, RenderType.getCutout());
+        
+        RenderTypeLookup.setRenderLayer(this.runeDamage, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeDamagePlayer, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runePoison, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeWeakness, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeSlowness, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeWither, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeFire, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeFatigue, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeGlowing, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeHunger, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeBlindness, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.runeNausea, RenderType.getCutout());
+        
+        RenderTypeLookup.setRenderLayer(this.anchorPlate, RenderType.getCutout());
+        
+        RenderTypeLookup.setRenderLayer(this.filterPlayer, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterUndead, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterArthropod, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterIllager, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterRaid, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterHostile, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterAnimal, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterChild, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterPet, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterSlime, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterBoss, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterVillager, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterFireImmune, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterExplosionImmune, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterGolem, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterWater, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(this.filterNamed, RenderType.getCutout());
+        
+        RenderTypeLookup.setRenderLayer(this.itemGrate, RenderType.getCutout());
+        
+        RenderTypeLookup.setRenderLayer(this.soulGlass, RenderType.getTranslucent());
+        RenderTypeLookup.setRenderLayer(this.darkGlass, RenderType.getTranslucent());
     }
 }
