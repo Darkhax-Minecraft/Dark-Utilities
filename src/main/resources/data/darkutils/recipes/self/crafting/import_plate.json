@@ -10,7 +10,7 @@
       "item": "darkutils:vector_plate"
     },
     "B": {
-      "item": "minecraft:chest"
+      "tag": "forge:chests"
     }
   },
   "result": {
