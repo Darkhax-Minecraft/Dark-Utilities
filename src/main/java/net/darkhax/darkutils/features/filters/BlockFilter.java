@@ -18,6 +18,8 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockFilter extends Block {
     
@@ -115,6 +117,13 @@ public class BlockFilter extends Block {
     public boolean isNormalCube (BlockState state, IBlockReader world, BlockPos pos) {
         
         return state.get(BlockStateProperties.POWERED);
+    }
+    
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public boolean isViewBlocking (BlockState state, IBlockReader worldIn, BlockPos pos) {
+        
+        return true;
     }
     
     @Override
