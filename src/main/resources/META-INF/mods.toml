@@ -4,6 +4,7 @@ issueTrackerURL="https://github.com/Darkhax-Minecraft/Dark-Utilities/issues"
 
 [[mods]]
 modId="darkutils"
+updateJSONURL="https://updates.blamejared.com/get?n=darkutils&gv=1.15.2"
 version="${version}"
 displayName="Dark Utilities"
 displayURL="${mod_download}"
