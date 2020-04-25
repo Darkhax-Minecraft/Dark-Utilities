@@ -32,7 +32,7 @@ public class BlockFlatTileRotating extends BlockFlatTile {
     @Override
     public ActionResultType onBlockActivated (BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         
-        if (player.isShiftKeyDown()) {
+        if (player.isSneaking()) {
             
             world.setBlockState(pos, this.rotate(state, Rotation.CLOCKWISE_90));
             return ActionResultType.SUCCESS;

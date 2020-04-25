@@ -22,7 +22,7 @@ public class CollisionEffectPush implements CollisionEffect {
     @Override
     public void apply (BlockState state, World world, BlockPos pos, Entity entity) {
         
-        if (!entity.isShiftKeyDown()) {
+        if (!entity.isSneaking()) {
             
             final Direction direction = state.get(BlockStateProperties.HORIZONTAL_FACING);
             entity.setMotion(entity.getMotion().add(this.velocity * direction.getXOffset(), 0, this.velocity * direction.getZOffset()));

@@ -73,7 +73,7 @@ public class BlockFilter extends Block {
     @Override
     public ActionResultType onBlockActivated (BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         
-        if (player.isShiftKeyDown()) {
+        if (player.isSneaking()) {
             
             if (!world.isRemote) {
                 

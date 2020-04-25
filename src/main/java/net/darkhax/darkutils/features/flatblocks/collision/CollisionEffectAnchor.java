@@ -17,7 +17,7 @@ public class CollisionEffectAnchor implements CollisionEffect {
         
         final Direction direction = state.get(BlockStateProperties.HORIZONTAL_FACING);
         
-        if (!entity.isShiftKeyDown()) {
+        if (!entity.isSneaking()) {
             
             if (entity instanceof LivingEntity && entity.isNonBoss()) {
                 

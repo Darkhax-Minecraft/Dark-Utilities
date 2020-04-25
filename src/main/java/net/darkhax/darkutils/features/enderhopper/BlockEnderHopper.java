@@ -58,7 +58,7 @@ public class BlockEnderHopper extends Block implements IBucketPickupHandler, ILi
     @Override
     public ActionResultType onBlockActivated (BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         
-        if (player.isShiftKeyDown()) {
+        if (player.isSneaking()) {
             
             worldIn.setBlockState(pos, state.with(SHOW_BORDER, !state.get(SHOW_BORDER)));
             return ActionResultType.SUCCESS;
