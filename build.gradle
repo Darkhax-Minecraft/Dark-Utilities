@@ -296,7 +296,7 @@ task updateVersionTracker {
     doLast {
         def body = [
             'author': "${project.findProperty('mod_vendor')}",
-            'projectName': "${project.findProperty('mod_name').toLowerCase()}",
+            'projectName': "darkutils",
             'gameVersion': "${project.findProperty('minecraft_version')}",
             'projectVersion': "${version}",
             'homepage': "${project.findProperty('mod_download')}",
