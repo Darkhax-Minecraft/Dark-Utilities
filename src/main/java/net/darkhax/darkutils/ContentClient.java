@@ -1,15 +1,12 @@
 package net.darkhax.darkutils;
 
 import net.darkhax.bookshelf.registry.RegistryHelper;
-import net.minecraft.block.GlassBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -36,7 +33,7 @@ public class ContentClient extends Content {
             
             if (id != null && "darkutils".equals(id.getNamespace())) {
                 
-                event.getToolTip().add(new TranslationTextComponent("tooltip.darkutils." + id.getPath() + ".short").applyTextStyle(TextFormatting.GRAY));
+                event.getToolTip().add(new TranslationTextComponent("tooltip.darkutils." + id.getPath() + ".short").func_240699_a_(TextFormatting.GRAY));
             }
         }
     }
@@ -90,7 +87,6 @@ public class ContentClient extends Content {
         
         RenderTypeLookup.setRenderLayer(this.itemGrate, RenderType.getCutout());
         
-        RenderTypeLookup.setRenderLayer(this.soulGlass, RenderType.getTranslucent());
         RenderTypeLookup.setRenderLayer(this.darkGlass, RenderType.getTranslucent());
     }
 }

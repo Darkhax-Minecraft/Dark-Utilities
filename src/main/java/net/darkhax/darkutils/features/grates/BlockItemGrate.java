@@ -7,8 +7,8 @@ import net.minecraft.block.ILiquidContainer;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -51,7 +51,7 @@ public class BlockItemGrate extends Block implements IBucketPickupHandler, ILiqu
     }
     
     @Override
-    public boolean receiveFluid (IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+    public boolean receiveFluid (IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
         
         if (!state.get(BlockStateProperties.WATERLOGGED) && fluidStateIn.getFluid() == Fluids.WATER) {
             
@@ -79,7 +79,7 @@ public class BlockItemGrate extends Block implements IBucketPickupHandler, ILiqu
     }
     
     @Override
-    public IFluidState getFluidState (BlockState state) {
+    public FluidState getFluidState (BlockState state) {
         
         return state.get(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }
@@ -98,7 +98,7 @@ public class BlockItemGrate extends Block implements IBucketPickupHandler, ILiqu
     @Override
     public BlockState getStateForPlacement (BlockItemUseContext context) {
         
-        final IFluidState preExistingFluidState = context.getWorld().getFluidState(context.getPos());
+        final FluidState preExistingFluidState = context.getWorld().getFluidState(context.getPos());
         BlockState placedState = super.getStateForPlacement(context);
         placedState = placedState.with(BlockStateProperties.POWERED, context.getWorld().isBlockPowered(context.getPos()));
         placedState = placedState.with(BlockStateProperties.WATERLOGGED, preExistingFluidState.getFluid() == Fluids.WATER);
@@ -123,18 +123,6 @@ public class BlockItemGrate extends Block implements IBucketPickupHandler, ILiqu
     public boolean canSpawnInBlock () {
         
         return true;
-    }
-    
-    @Override
-    public boolean causesSuffocation (BlockState state, IBlockReader world, BlockPos pos) {
-        
-        return false;
-    }
-    
-    @Override
-    public boolean isNormalCube (BlockState state, IBlockReader world, BlockPos pos) {
-        
-        return false;
     }
     
     @Override

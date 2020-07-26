@@ -9,8 +9,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -70,7 +70,7 @@ public class BlockEnderHopper extends Block implements IBucketPickupHandler, ILi
     @Override
     public BlockState getStateForPlacement (BlockItemUseContext context) {
         
-        final IFluidState preExistingFluidState = context.getWorld().getFluidState(context.getPos());
+        final FluidState preExistingFluidState = context.getWorld().getFluidState(context.getPos());
         BlockState placedState = this.getDefaultState();
         placedState = placedState.with(BlockStateProperties.FACING, context.getFace());
         placedState = placedState.with(BlockStateProperties.ENABLED, hasInventory(context.getWorld(), context.getPos().offset(context.getFace().getOpposite()), context.getFace()));
@@ -126,7 +126,7 @@ public class BlockEnderHopper extends Block implements IBucketPickupHandler, ILi
     }
     
     @Override
-    public boolean receiveFluid (IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+    public boolean receiveFluid (IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
         
         if (!state.get(BlockStateProperties.WATERLOGGED) && fluidStateIn.getFluid() == Fluids.WATER) {
             
@@ -154,7 +154,7 @@ public class BlockEnderHopper extends Block implements IBucketPickupHandler, ILi
     }
     
     @Override
-    public IFluidState getFluidState (BlockState state) {
+    public FluidState getFluidState (BlockState state) {
         
         return state.get(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }

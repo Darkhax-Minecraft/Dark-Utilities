@@ -7,7 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
 public class CollisionEffectAnchor implements CollisionEffect {
@@ -23,7 +23,7 @@ public class CollisionEffectAnchor implements CollisionEffect {
                 
                 final BlockPos offset = pos.offset(direction.getOpposite(), 5);
                 final LivingEntity living = (LivingEntity) entity;
-                living.lookAt(EntityAnchorArgument.Type.EYES, new Vec3d(offset.getX() + 0.5f, offset.getY() + 1.5f, offset.getZ() + 0.5f));
+                living.lookAt(EntityAnchorArgument.Type.EYES, new Vector3d(offset.getX() + 0.5f, offset.getY() + 1.5f, offset.getZ() + 0.5f));
             }
             
             entity.setPosition(pos.getX() + 0.5f, pos.getY() + 0.0625D, pos.getZ() + 0.5f);

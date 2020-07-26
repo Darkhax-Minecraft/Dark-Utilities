@@ -82,7 +82,7 @@ public class Filters {
     
     public static boolean filterFireImmune (BlockState state, BlockPos pos, IBlockReader world, Entity entity) {
         
-        return entity instanceof LivingEntity && (((LivingEntity) entity).isImmuneToFire() || ((LivingEntity) entity).isPotionActive(Effects.FIRE_RESISTANCE));
+        return entity instanceof LivingEntity && (entity.func_230279_az_() || ((LivingEntity) entity).isPotionActive(Effects.FIRE_RESISTANCE));
     }
     
     public static boolean filterExplosionImmune (BlockState state, BlockPos pos, IBlockReader world, Entity entity) {

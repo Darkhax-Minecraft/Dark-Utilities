@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import net.darkhax.bookshelf.item.ItemGroupBase;
 import net.darkhax.bookshelf.network.NetworkHelper;
 import net.darkhax.bookshelf.registry.RegistryHelper;
-import net.darkhax.darkutils.addons.AddonManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -25,21 +24,16 @@ public class DarkUtils {
     
     public static final ItemGroup ITEM_GROUP = new ItemGroupBase(MOD_ID, () -> new ItemStack(DarkUtils.content.vectorPlate));
     
-    public static final NetworkHelper NETWORK = new NetworkHelper(new ResourceLocation(MOD_ID, "main"), "3.0.X");
+    public static final NetworkHelper NETWORK = new NetworkHelper(new ResourceLocation(MOD_ID, "main"), "4.0.X");
     
     public static RegistryHelper registry;
     
     public static Content content;
     
-    public static AddonManager addons;
-    
     public DarkUtils() {
         
-        registry = new RegistryHelper(MOD_ID, LOG, ITEM_GROUP);
+        registry = new RegistryHelper(MOD_ID, LOG).withItemGroup(ITEM_GROUP);
         content = DistExecutor.runForDist( () -> () -> new ContentClient(registry), () -> () -> new Content(registry));
         registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
-        
-        // Addons
-        addons = new AddonManager();
     }
 }

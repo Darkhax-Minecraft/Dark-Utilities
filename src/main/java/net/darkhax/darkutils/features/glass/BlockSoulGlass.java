@@ -5,7 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.StainedGlassBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.DyeColor;
 import net.minecraft.state.StateContainer;
@@ -60,7 +60,7 @@ public class BlockSoulGlass extends StainedGlassBlock {
         
         for (final Direction side : Direction.values()) {
             
-            final IFluidState state = world.getFluidState(pos.offset(side));
+            final FluidState state = world.getFluidState(pos.offset(side));
             
             if (!state.isEmpty() && state.isTagged(FluidTags.LAVA)) {
                 

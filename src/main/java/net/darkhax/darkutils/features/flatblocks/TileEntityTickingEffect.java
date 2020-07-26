@@ -1,10 +1,11 @@
 package net.darkhax.darkutils.features.flatblocks;
 
 import net.darkhax.darkutils.DarkUtils;
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.server.ServerWorld;
 
 public class TileEntityTickingEffect extends TileEntity implements ITickableTileEntity {
     
@@ -23,13 +24,15 @@ public class TileEntityTickingEffect extends TileEntity implements ITickableTile
     @Override
     public void tick () {
         
-        if (!this.world.isBlockPowered(this.pos)) {
+        if (this.world instanceof ServerWorld && !this.world.isBlockPowered(this.pos)) {
             
             this.timer++;
             
-            if (this.timer >= this.getBlockState().getBlock().tickRate(this.world)) {
+            final Block block = this.getBlockState().getBlock();
+            
+            if (block instanceof BlockFlatTileRotatingTicking && this.timer >= ((BlockFlatTileRotatingTicking) block).getTickRate()) {
                 
-                this.world.getPendingBlockTicks().scheduleTick(new BlockPos(this.pos), this.getBlockState().getBlock(), this.getBlockState().getBlock().tickRate(this.world));
+                block.tick(this.getBlockState(), (ServerWorld) this.world, this.pos, this.world.rand);
                 this.timer = 0;
             }
         }

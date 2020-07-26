@@ -17,7 +17,7 @@ public class JEIAddon implements IModPlugin {
     @Override
     public void registerRecipes (IRecipeRegistration registration) {
         
-        for (final Item item : DarkUtils.registry.getItems()) {
+        for (final Item item : DarkUtils.registry.items.getValues()) {
             
             registration.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM, "tooltip.darkutils." + item.getRegistryName().getPath() + ".long");
         }

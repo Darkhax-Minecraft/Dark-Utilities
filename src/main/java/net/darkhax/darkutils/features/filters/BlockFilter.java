@@ -18,13 +18,11 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockFilter extends Block {
     
     public static final VoxelShape EMPTY = Block.makeCuboidShape(0.0D, 0.0D, 0.00D, 0.0D, 0.0D, 0.0D);
-    public static final Properties BLOCK_PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(3f, 10f);
+    public static final Properties BLOCK_PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(3f, 10f).setSuffocates((a, b, c) -> false);
     private final IFilterTest filter;
     
     public BlockFilter(IFilterTest filter) {
@@ -103,25 +101,6 @@ public class BlockFilter extends Block {
     
     @Override
     public boolean canSpawnInBlock () {
-        
-        return true;
-    }
-    
-    @Override
-    public boolean causesSuffocation (BlockState state, IBlockReader world, BlockPos pos) {
-        
-        return state.get(BlockStateProperties.POWERED);
-    }
-    
-    @Override
-    public boolean isNormalCube (BlockState state, IBlockReader world, BlockPos pos) {
-        
-        return state.get(BlockStateProperties.POWERED);
-    }
-    
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public boolean isViewBlocking (BlockState state, IBlockReader worldIn, BlockPos pos) {
         
         return true;
     }

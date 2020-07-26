@@ -9,8 +9,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.Entity;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -87,7 +87,7 @@ public class BlockFlatTile extends Block implements IBucketPickupHandler, ILiqui
     }
     
     @Override
-    public boolean receiveFluid (IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+    public boolean receiveFluid (IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
         
         if (!state.get(BlockStateProperties.WATERLOGGED) && fluidStateIn.getFluid() == Fluids.WATER) {
             
@@ -115,7 +115,7 @@ public class BlockFlatTile extends Block implements IBucketPickupHandler, ILiqui
     }
     
     @Override
-    public IFluidState getFluidState (BlockState state) {
+    public FluidState getFluidState (BlockState state) {
         
         return state.get(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }
@@ -134,7 +134,7 @@ public class BlockFlatTile extends Block implements IBucketPickupHandler, ILiqui
     @Override
     public BlockState getStateForPlacement (BlockItemUseContext context) {
         
-        final IFluidState preExistingFluidState = context.getWorld().getFluidState(context.getPos());
+        final FluidState preExistingFluidState = context.getWorld().getFluidState(context.getPos());
         
         BlockState placedState = super.getStateForPlacement(context);
         placedState = placedState.with(BlockStateProperties.WATERLOGGED, preExistingFluidState.getFluid() == Fluids.WATER);

@@ -64,7 +64,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.experienceCharm;
             final PlayerEntity player = event.getAttackingPlayer();
             
-            if (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player)) {
+            if (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0) {
                 
                 event.setDroppedExperience(event.getDroppedExperience() + event.getEntity().world.rand.nextInt(5));
             }
@@ -78,7 +78,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.experienceCharm;
             final PlayerEntity player = event.getPlayer();
             
-            if (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player)) {
+            if (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0) {
                 
                 event.setExpToDrop(event.getExpToDrop() + event.getWorld().getRandom().nextInt(5));
             }
@@ -92,7 +92,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.gluttonyCharm;
             final PlayerEntity player = (PlayerEntity) event.getEntityLiving();
             
-            if (event.getItem().isFood() && (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0 || DarkUtils.addons.curios().hasCurioItem(charm, player))) {
+            if (event.getItem().isFood() && PlayerUtils.getStacksFromPlayer(player, charm).size() > 0) {
                 
                 event.setDuration(0);
             }
