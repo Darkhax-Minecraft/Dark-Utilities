@@ -35,3 +35,9 @@ ${mod_description}
     versionRange="[6.2,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.darkutilities]]
+    modId="runelic"
+    mandatory=true
+    versionRange="[1,)"
+    ordering="AFTER"
+    side="BOTH"
