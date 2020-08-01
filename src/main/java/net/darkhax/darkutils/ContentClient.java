@@ -33,7 +33,7 @@ public class ContentClient extends Content {
             
             if (id != null && "darkutils".equals(id.getNamespace())) {
                 
-                event.getToolTip().add(new TranslationTextComponent("tooltip.darkutils." + id.getPath() + ".short").func_240699_a_(TextFormatting.GRAY));
+                event.getToolTip().add(new TranslationTextComponent("tooltip.darkutils." + id.getPath() + ".short").mergeStyle(TextFormatting.GRAY));
             }
         }
     }

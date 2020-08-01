@@ -94,6 +94,7 @@ dependencies {
     compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.1:${bookshelf_version}")
     compile fg.deobf("mezz.jei:jei-1.16.1:${jei_version}")
     compile fg.deobf("top.theillusivec4.curios:curios:FORGE-1.16.1-${curios_version}")
+	compile fg.deobf("net.darkhax.runelic:Runelic-1.16.1:${runelic_version}")
 }
 
 jar {

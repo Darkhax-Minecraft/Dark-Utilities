@@ -31,9 +31,9 @@ public class DarkUtils {
     public static Content content;
     
     public DarkUtils() {
-        
+       
         registry = new RegistryHelper(MOD_ID, LOG).withItemGroup(ITEM_GROUP);
-        content = DistExecutor.runForDist( () -> () -> new ContentClient(registry), () -> () -> new Content(registry));
+        content = DistExecutor.unsafeRunForDist( () -> () -> new ContentClient(registry), () -> () -> new Content(registry));
         registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
     }
 }

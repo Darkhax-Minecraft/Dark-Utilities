@@ -18,7 +18,6 @@ import net.darkhax.darkutils.features.flatblocks.TileEffects;
 import net.darkhax.darkutils.features.flatblocks.TileEntityTickingEffect;
 import net.darkhax.darkutils.features.flatblocks.collision.CollisionEffectAnchor;
 import net.darkhax.darkutils.features.glass.BlockDarkGlass;
-import net.darkhax.darkutils.features.glass.BlockSoulGlass;
 import net.darkhax.darkutils.features.grates.BlockItemGrate;
 import net.darkhax.darkutils.features.redstone.BlockRedstoneRandomizer;
 import net.darkhax.darkutils.features.redstone.BlockShieldedRedstone;
