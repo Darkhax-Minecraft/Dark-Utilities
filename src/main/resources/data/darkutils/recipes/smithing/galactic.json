@@ -1,0 +1,10 @@
+{
+  "type": "bookshelf:smithing_repair_cost",
+  "base": {
+    "type": "bookshelf:enchant_breakable"
+  },
+  "addition": {
+    "item": "darkutils:book_restore"
+  },
+  "reduction": 128
+}

@@ -1,0 +1,10 @@
+{
+  "type": "bookshelf:smithing_font",
+  "base": {
+    "type": "bookshelf:enchant_breakable"
+  },
+  "addition": {
+    "item": "darkutils:book_runelic"
+  },
+  "font": "runelic:runelic"
+}

@@ -26,10 +26,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Util;
 import net.minecraft.util.datafix.TypeReferences;
+import net.minecraftforge.common.BasicTrade;
 
 public class Content {
     
@@ -99,6 +102,10 @@ public class Content {
     public final Item portalCharm;
     public final Item experienceCharm;
     public final Item gluttonyCharm;
+    
+    public final Item bookGalactic;
+    public final Item bookRunelic;
+    public final Item bookRestore;
     
     /**
      * TILE ENTITIES
@@ -175,18 +182,27 @@ public class Content {
         this.experienceCharm = registry.items.register(new ItemCharm().setTickingEffect(CharmEffects::applyExperienceCharmTickEffect).addEvent(CharmEffects::handleExpCharmBlock).addEvent(CharmEffects::handleExpCharmEntity), "charm_experience");
         this.gluttonyCharm = registry.items.register(new ItemCharm().addEvent(CharmEffects::handleGluttonCharm), "charm_gluttony");
         
+        this.bookGalactic = registry.items.register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON)), "book_galactic");
+        this.bookRunelic = registry.items.register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON)), "book_runelic");
+        this.bookRestore = registry.items.register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON)), "book_restore");
+        
         // Tiles
         this.tileTickingEffect = register("ticking_tile", TileEntityTickingEffect::new, this.exportPlate, this.exportPlateFast, this.exportPlateHyper);
         registry.tileEntities.register(this.tileTickingEffect);
         
         this.tileEnderHopper = register("ender_hopper", TileEntityEnderHopper::new, this.enderHopper);
         registry.tileEntities.register(this.tileEnderHopper);
+        
+        // Villager Trades
+        registry.trades.addBasicWanderingTrade(new BasicTrade(10, new ItemStack(this.bookGalactic), 5, 30, 1.3f));
+        registry.trades.addBasicWanderingTrade(new BasicTrade(10, new ItemStack(this.bookRunelic), 5, 30, 1.3f));
+        registry.trades.addRareWanderingTrade(new BasicTrade(20, new ItemStack(this.bookRestore), 2, 30, 1.7f));
     }
     
     @Deprecated // Hopefully forge will do something with this.
     private static <T extends TileEntity> TileEntityType<T> register (String key, Supplier<? extends T> factoryIn, Block... validBlocks) {
         
-        final Type<?> type = Util.attemptDataFix(TypeReferences.BLOCK_ENTITY, "darkutils" + key);
+        final Type<?> type = Util.attemptDataFix(TypeReferences.BLOCK_ENTITY, "darkutils:" + key);
         final TileEntityType.Builder<T> builder = TileEntityType.Builder.create(factoryIn, validBlocks);
         final TileEntityType<T> tileType = builder.build(type);
         tileType.setRegistryName("darkutils", key);
