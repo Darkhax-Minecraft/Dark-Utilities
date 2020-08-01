@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 public class BlockFilter extends Block {
     
     public static final VoxelShape EMPTY = Block.makeCuboidShape(0.0D, 0.0D, 0.00D, 0.0D, 0.0D, 0.0D);
-    public static final Properties BLOCK_PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(3f, 10f).setSuffocates((a, b, c) -> false);
+    public static final Properties BLOCK_PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(3f, 10f).setSuffocates( (a, b, c) -> false);
     private final IFilterTest filter;
     
     public BlockFilter(IFilterTest filter) {
