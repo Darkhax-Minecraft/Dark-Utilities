@@ -1,6 +1,7 @@
 modLoader="javafml"
 loaderVersion="[32,)"
 issueTrackerURL="https://github.com/Darkhax-Minecraft/Dark-Utilities/issues"
+license="Source: LGPL v2.1, Textures: ARR"
 
 [[mods]]
 modId="darkutils"
