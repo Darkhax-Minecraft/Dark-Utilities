@@ -27,8 +27,7 @@ public class CharmEffects {
             }
             
             // Passively decrease the time since last rest stat. This is what phantom
-            // spawning
-            // looks at.
+            // spawning looks at.
             if (user instanceof ServerPlayerEntity) {
                 
                 final Stat<?> sleepStat = Stats.CUSTOM.get(Stats.TIME_SINCE_REST);
@@ -94,7 +93,7 @@ public class CharmEffects {
             
             if (event.getItem().isFood() && PlayerUtils.getStacksFromPlayer(player, charm).size() > 0) {
                 
-                event.setDuration(0);
+                event.setDuration(1);
             }
         }
     }
