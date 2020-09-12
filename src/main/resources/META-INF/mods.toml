@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="[33,)"
+loaderVersion="[34,)"
 issueTrackerURL="https://github.com/Darkhax-Minecraft/Dark-Utilities/issues"
 license="Source: LGPL v2.1, Textures: ARR"
 
 [[mods]]
 modId="darkutils"
-updateJSONURL="https://updates.blamejared.com/get?n=darkutils&gv=1.16.2"
+updateJSONURL="https://updates.blamejared.com/get?n=darkutils&gv=1.16.3"
 version="${version}"
 displayName="Dark Utilities"
 displayURL="${mod_download}"
@@ -18,26 +18,26 @@ ${mod_description}
 [[dependencies.darkutilities]]
     modId="forge"
     mandatory=true
-    versionRange="[33,)"
+    versionRange="[34,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.darkutilities]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.2]"
+    versionRange="[1.16.3]"
     ordering="NONE"
     side="BOTH"
 	
 [[dependencies.darkutilities]]
     modId="bookshelf"
     mandatory=true
-    versionRange="[7,)"
+    versionRange="[8,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.darkutilities]]
     modId="runelic"
     mandatory=true
-    versionRange="[2,)"
+    versionRange="[5,)"
     ordering="AFTER"
     side="BOTH"
