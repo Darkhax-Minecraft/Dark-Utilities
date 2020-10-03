@@ -2,6 +2,7 @@ package net.darkhax.darkutils.features.charms;
 
 import net.darkhax.bookshelf.util.PlayerUtils;
 import net.darkhax.darkutils.DarkUtils;
+import net.darkhax.darkutils.addons.curios.CuriosAddon;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -13,6 +14,10 @@ import net.minecraft.stats.Stats;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.ModList;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharmEffects {
     
@@ -63,7 +68,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.experienceCharm;
             final PlayerEntity player = event.getAttackingPlayer();
             
-            if (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0) {
+            if (getStacksFromPlayer(player, charm).size() > 0) {
                 
                 event.setDroppedExperience(event.getDroppedExperience() + event.getEntity().world.rand.nextInt(5));
             }
@@ -77,7 +82,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.experienceCharm;
             final PlayerEntity player = event.getPlayer();
             
-            if (PlayerUtils.getStacksFromPlayer(player, charm).size() > 0) {
+            if (getStacksFromPlayer(player, charm).size() > 0) {
                 
                 event.setExpToDrop(event.getExpToDrop() + event.getWorld().getRandom().nextInt(5));
             }
@@ -91,10 +96,24 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.gluttonyCharm;
             final PlayerEntity player = (PlayerEntity) event.getEntityLiving();
             
-            if (event.getItem().isFood() && PlayerUtils.getStacksFromPlayer(player, charm).size() > 0) {
+            if (event.getItem().isFood() && getStacksFromPlayer(player, charm).size() > 0) {
                 
                 event.setDuration(1);
             }
         }
+    }
+
+    public static List<ItemStack> getStacksFromPlayer(PlayerEntity player, Item item) {
+
+        List<ItemStack> stacks = new ArrayList<>();
+
+        if (ModList.get().isLoaded("curios")) {
+
+            stacks.addAll(CuriosAddon.getStacksFromPlayer(player, item));
+        }
+
+        stacks.addAll(PlayerUtils.getStacksFromPlayer(player, item));
+
+        return stacks;
     }
 }

@@ -15,29 +15,36 @@ description='''
 ${mod_description}
 '''
 
-[[dependencies.darkutilities]]
+[[dependencies.darkutils]]
     modId="forge"
     mandatory=true
     versionRange="[34,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.darkutilities]]
+[[dependencies.darkutils]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.16.3]"
     ordering="NONE"
     side="BOTH"
 	
-[[dependencies.darkutilities]]
+[[dependencies.darkutils]]
     modId="bookshelf"
     mandatory=true
     versionRange="[8,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.darkutilities]]
+[[dependencies.darkutils]]
     modId="runelic"
     mandatory=true
     versionRange="[5,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.darkutils]]
+    modId="curios"
+    mandatory=false
+    versionRange="[1.16.3-4.0.0.0,)"
     ordering="AFTER"
     side="BOTH"

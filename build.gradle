@@ -87,6 +87,7 @@ repositories {
     }
     
     maven {
+
         url = "https://maven.theillusivec4.top/"
     }
 }
@@ -98,6 +99,7 @@ dependencies {
     compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.3:${bookshelf_version}")
     compile fg.deobf("mezz.jei:jei-1.16.2:${jei_version}")
 	compile fg.deobf("net.darkhax.runelic:Runelic-1.16.3:${runelic_version}")
+    compile fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 }
 
 jar {
