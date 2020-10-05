@@ -87,7 +87,7 @@ public class Filters {
     
     public static boolean filterExplosionImmune (BlockState state, BlockPos pos, IBlockReader world, Entity entity) {
         
-        return entity instanceof LivingEntity && ((LivingEntity) entity).isImmuneToExplosions();
+        return entity instanceof LivingEntity && entity.isImmuneToExplosions();
     }
     
     public static boolean filterGolem (BlockState state, BlockPos pos, IBlockReader world, Entity entity) {

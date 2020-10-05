@@ -48,7 +48,7 @@ public class CharmEffects {
         if (user instanceof PlayerEntity) {
             
             // Set portal counter above the threshold for instant entry.
-            ((PlayerEntity) user).portalCounter = 100;
+            ((user).portalCounter = 100;
         }
     }
     

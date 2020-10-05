@@ -92,7 +92,7 @@ public class BlockFilter extends Block {
         
         if (!worldIn.isRemote && state.get(BlockStateProperties.POWERED) != isBlockPowered) {
             
-            worldIn.playSound((PlayerEntity) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.5f);
+            worldIn.playSound(null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.5f);
             worldIn.setBlockState(pos, state.with(BlockStateProperties.POWERED, isBlockPowered));
         }
         

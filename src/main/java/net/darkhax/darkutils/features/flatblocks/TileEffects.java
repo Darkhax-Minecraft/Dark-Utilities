@@ -50,19 +50,12 @@ public class TileEffects {
     public static final CollisionEffect RUNE_NAUSEA = TileEffects::effectRuneNausea;
     
     private static void effectRunePlayerDamage (BlockState state, World world, BlockPos pos, Entity entity) {
-        
-        if (entity instanceof LivingEntity && world instanceof ServerWorld) {
-            
-            ((LivingEntity) entity).attackEntityFrom(DamageSource.causePlayerDamage(FakePlayerFactory.get((ServerWorld) world, PLAYER_RUNE_PROFILE)), 4f);
-        }
+        if (entity instanceof LivingEntity && world instanceof ServerWorld)
+            entity.attackEntityFrom(DamageSource.causePlayerDamage(FakePlayerFactory.get((ServerWorld) world, PLAYER_RUNE_PROFILE)), 4f);
     }
     
     private static void effectRuneDamage (BlockState state, World world, BlockPos pos, Entity entity) {
-        
-        if (entity instanceof LivingEntity) {
-            
-            ((LivingEntity) entity).attackEntityFrom(DamageSource.MAGIC, 4f);
-        }
+        if (entity instanceof LivingEntity) entity.attackEntityFrom(DamageSource.MAGIC, 4f);
     }
     
     private static void effectRunePoison (BlockState state, World world, BlockPos pos, Entity entity) {
@@ -98,11 +91,7 @@ public class TileEffects {
     }
     
     private static void effectRuneFire (BlockState state, World world, BlockPos pos, Entity entity) {
-        
-        if (entity instanceof LivingEntity) {
-            
-            ((LivingEntity) entity).setFire(4);
-        }
+        if (entity instanceof LivingEntity) entity.setFire(4);
     }
     
     private static void effectRuneFatigue (BlockState state, World world, BlockPos pos, Entity entity) {
