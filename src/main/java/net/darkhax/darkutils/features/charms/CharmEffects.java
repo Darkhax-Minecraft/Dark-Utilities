@@ -1,6 +1,7 @@
 package net.darkhax.darkutils.features.charms;
 
 import net.darkhax.bookshelf.util.PlayerUtils;
+import net.darkhax.darkutils.DarkConfig;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.addons.curios.CuriosAddon;
 import net.minecraft.entity.Entity;
@@ -88,6 +89,21 @@ public class CharmEffects {
             }
         }
     }
+
+    private static boolean isFoodItem(ItemStack stack) {
+        
+        if (stack.isEmpty()) {
+            return false;
+        }
+        
+        String registryName = stack.getItem().getRegistryName().toString();
+        boolean food = stack.getItem().isFood();
+        
+        boolean allowed = DarkConfig.COMMON.gluttonyCharmAdditionalFoodItems.get().contains(registryName);
+        boolean blocked = DarkConfig.COMMON.gluttonyCharmBlockedFoodItems.get().contains(registryName);
+        
+        return (food || allowed) && !blocked;
+    }
     
     public static void handleGluttonCharm (LivingEntityUseItemEvent.Tick event) {
         
@@ -96,7 +112,7 @@ public class CharmEffects {
             final Item charm = DarkUtils.content.gluttonyCharm;
             final PlayerEntity player = (PlayerEntity) event.getEntityLiving();
             
-            if (event.getItem().isFood() && getStacksFromPlayer(player, charm).size() > 0) {
+            if (isFoodItem(event.getItem()) && getStacksFromPlayer(player, charm).size() > 0) {
                 
                 event.setDuration(1);
             }
