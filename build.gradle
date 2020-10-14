@@ -52,7 +52,7 @@ minecraft {
         client {
 
             workingDirectory project.file('run')
-			taskName "${mod_name}".replaceAll("\\s","") + 'Client'
+            taskName "${mod_name}".replaceAll("\\s","") + 'Client'
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -68,7 +68,7 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-			taskName "${mod_name}".replaceAll("\\s","") + 'Server'
+            taskName "${mod_name}".replaceAll("\\s","") + 'Server'
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
