@@ -14,21 +14,21 @@ description='''
 ${mod_description}
 '''
 
-[[dependencies.darkutilities]]
+[[dependencies.darkutils]]
     modId="forge"
     mandatory=true
     versionRange="[31,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.darkutilities]]
+[[dependencies.darkutils]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.15.2]"
     ordering="NONE"
     side="BOTH"
 	
-[[dependencies.darkutilities]]
+[[dependencies.darkutils]]
     modId="bookshelf"
     mandatory=true
     versionRange="[5.5.33,)"
