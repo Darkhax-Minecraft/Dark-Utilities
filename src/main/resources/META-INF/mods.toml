@@ -25,7 +25,7 @@ ${mod_description}
 [[dependencies.darkutils]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.3, 1.16.4]"
+    versionRange="[1.16.4]"
     ordering="NONE"
     side="BOTH"
 	
@@ -33,19 +33,5 @@ ${mod_description}
     modId="bookshelf"
     mandatory=true
     versionRange="[9,)"
-    ordering="AFTER"
-    side="BOTH"
-	
-[[dependencies.darkutils]]
-    modId="runelic"
-    mandatory=true
-    versionRange="[6,)"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.darkutils]]
-    modId="curios"
-    mandatory=false
-    versionRange="[1.16.3-4.0.0.0,)"
     ordering="AFTER"
     side="BOTH"
