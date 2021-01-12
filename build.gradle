@@ -78,12 +78,12 @@ repositories {
 
     maven {
 
-        url 'http://maven.mcmoddev.com'
+        url 'https://maven.blamejared.com'
     }
     
     maven {
 
-        url 'http://dvs1.progwml6.com/files/maven'
+        url 'https://dvs1.progwml6.com/files/maven'
     }
     
     maven {
