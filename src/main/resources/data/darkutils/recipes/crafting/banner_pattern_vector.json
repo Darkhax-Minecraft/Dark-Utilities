@@ -1,0 +1,17 @@
+{
+  "type": "bookshelf:crafting_shapeless_with_damage",
+  "ingredients": [
+    {
+	  "type": "bookshelf:any_shear"
+    },
+    {
+      "item": "minecraft:paper"
+    },
+	{
+	  "item": "darkutils:vector_plate"
+	}
+  ],
+  "result": {
+    "item": "darkutils:vector_plate_banner_pattern"
+  }
+}

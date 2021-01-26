@@ -166,5 +166,26 @@
   "tooltip.darkutils.charm_gluttony.long": "Allows the user to instantly eat food. Can be anywhere in the inventory or the offhand slot.",
   "tooltip.darkutils.book_galactic.long": "When combined with any tool in the Smithing Table, the tool will be renamed to use the Standard Galactic Alphabe.",
   "tooltip.darkutils.book_runelic.long": "When combined with any tool in the Smithing Table, the tool will be renamed to use the Runelic alphabet.",
-  "tooltip.darkutils.book_restore.long": "When combined with any tool in the Smithing Table, the repair cost penalty of that tool will be reset."
+  "tooltip.darkutils.book_restore.long": "When combined with any tool in the Smithing Table, the repair cost penalty of that tool will be reset.",
+  
+  "item.darkutils.vector_plate_banner_pattern": "Banner Pattern",
+  "item.darkutils.vector_plate_banner_pattern.desc": "Vector",
+  "tooltip.darkutils.vector_plate_banner_pattern.short": "Applies the vector plate arrow to banners.",
+  "tooltip.darkutils.vector_plate_banner_pattern.long": "Applies the vector plate arrow to banners when used in the Loom. Can be dyed any of the 16 wool colors.",
+  "block.minecraft.banner.darkutils_vector_plate.black": "Black Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.red": "Red Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.green": "Green Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.brown": "Brown Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.blue": "Blue Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.purple": "Purple Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.cyan": "Cyan Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.silver": "Silver Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.gray": "Gray Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.pink": "Pink Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.lime": "Lime Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.yellow": "Yellow Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.lightBlue": "LightBlue Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.magenta": "Magenta Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.orange": "Orange Vector Pattern",
+  "block.minecraft.banner.darkutils_vector_plate.white": "White Vector Pattern"
 }

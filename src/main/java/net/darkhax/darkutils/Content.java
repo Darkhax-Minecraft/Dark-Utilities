@@ -25,9 +25,11 @@ import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.tileentity.BannerPattern;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Util;
@@ -185,7 +187,8 @@ public class Content {
         this.bookGalactic = registry.items.register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON)), "book_galactic");
         this.bookRunelic = registry.items.register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON)), "book_runelic");
         this.bookRestore = registry.items.register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON)), "book_restore");
-        
+        registerItemPattern(registry, "vector_plate", Rarity.UNCOMMON);
+                
         // Tiles
         this.tileTickingEffect = register("ticking_tile", TileEntityTickingEffect::new, this.exportPlate, this.exportPlateFast, this.exportPlateHyper);
         registry.tileEntities.register(this.tileTickingEffect);
@@ -207,5 +210,14 @@ public class Content {
         final TileEntityType<T> tileType = builder.build(type);
         tileType.setRegistryName("darkutils", key);
         return tileType;
+    }
+    
+    /**
+     * TODO Remove in 1.17
+     */
+    public void registerItemPattern (RegistryHelper registry, String id, Rarity rarity) {
+        
+        final BannerPattern pattern = registry.banners.registerPattern(id, true);
+        registry.items.register(new BannerPatternItem(pattern, new Item.Properties().maxStackSize(1).rarity(rarity)), id + "_banner_pattern");
     }
 }
