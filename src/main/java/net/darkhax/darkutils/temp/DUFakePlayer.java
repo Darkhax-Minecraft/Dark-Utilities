@@ -11,6 +11,7 @@ public class DUFakePlayer extends FakePlayer {
     public DUFakePlayer(ServerWorld world, GameProfile name) {
         
         super(world, name);
+        this.abilities.disableDamage = true;
     }
     
     @Override
