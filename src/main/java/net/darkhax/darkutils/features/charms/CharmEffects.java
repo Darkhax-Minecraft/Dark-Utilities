@@ -1,5 +1,8 @@
 package net.darkhax.darkutils.features.charms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.darkhax.bookshelf.util.PlayerUtils;
 import net.darkhax.darkutils.DarkUtils;
 import net.darkhax.darkutils.addons.curios.CuriosAddon;
@@ -15,9 +18,6 @@ import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.ModList;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CharmEffects {
     
@@ -102,18 +102,18 @@ public class CharmEffects {
             }
         }
     }
-
-    public static List<ItemStack> getStacksFromPlayer(PlayerEntity player, Item item) {
-
-        List<ItemStack> stacks = new ArrayList<>();
-
+    
+    public static List<ItemStack> getStacksFromPlayer (PlayerEntity player, Item item) {
+        
+        final List<ItemStack> stacks = new ArrayList<>();
+        
         if (ModList.get().isLoaded("curios")) {
-
+            
             stacks.addAll(CuriosAddon.getStacksFromPlayer(player, item));
         }
-
+        
         stacks.addAll(PlayerUtils.getStacksFromPlayer(player, item));
-
+        
         return stacks;
     }
 }

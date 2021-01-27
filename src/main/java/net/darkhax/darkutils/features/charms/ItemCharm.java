@@ -47,22 +47,22 @@ public class ItemCharm extends Item {
             this.inventoryTickEffect.accept(user, stack);
         }
     }
-
+    
     @Nullable
-    public BiConsumer<Entity, ItemStack> getInventoryTickEffect() {
-
+    public BiConsumer<Entity, ItemStack> getInventoryTickEffect () {
+        
         return this.inventoryTickEffect;
     }
-
+    
     @Nullable
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
-
+    public ICapabilityProvider initCapabilities (ItemStack stack, @Nullable CompoundNBT nbt) {
+        
         if (ModList.get().isLoaded("curios")) {
-
+            
             return CuriosAddon.getCapabilityProvider(this);
         }
-
+        
         return null;
     }
 }

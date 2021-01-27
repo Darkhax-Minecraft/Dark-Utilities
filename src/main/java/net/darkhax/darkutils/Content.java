@@ -187,8 +187,8 @@ public class Content {
         this.bookGalactic = registry.items.register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON)), "book_galactic");
         this.bookRunelic = registry.items.register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON)), "book_runelic");
         this.bookRestore = registry.items.register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON)), "book_restore");
-        registerItemPattern(registry, "vector_plate", Rarity.UNCOMMON);
-                
+        this.registerItemPattern(registry, "vector_plate", Rarity.UNCOMMON);
+        
         // Tiles
         this.tileTickingEffect = register("ticking_tile", TileEntityTickingEffect::new, this.exportPlate, this.exportPlateFast, this.exportPlateHyper);
         registry.tileEntities.register(this.tileTickingEffect);

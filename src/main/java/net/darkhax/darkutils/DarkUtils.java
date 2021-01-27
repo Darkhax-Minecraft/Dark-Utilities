@@ -1,17 +1,17 @@
 package net.darkhax.darkutils;
 
-import net.darkhax.darkutils.addons.curios.CuriosAddon;
-import net.minecraftforge.fml.ModList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.darkhax.bookshelf.item.ItemGroupBase;
 import net.darkhax.bookshelf.network.NetworkHelper;
 import net.darkhax.bookshelf.registry.RegistryHelper;
+import net.darkhax.darkutils.addons.curios.CuriosAddon;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -38,7 +38,7 @@ public class DarkUtils {
         content = DistExecutor.unsafeRunForDist( () -> () -> new ContentClient(registry), () -> () -> new Content(registry));
         registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
         if (ModList.get().isLoaded("curios")) {
-
+            
             FMLJavaModLoadingContext.get().getModEventBus().register(CuriosAddon.class);
         }
     }
