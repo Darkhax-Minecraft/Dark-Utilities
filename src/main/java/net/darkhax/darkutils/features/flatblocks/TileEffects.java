@@ -19,6 +19,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.util.FakePlayer;
 
 public class TileEffects {
     
@@ -53,7 +54,15 @@ public class TileEffects {
         
         if (entity instanceof LivingEntity && world instanceof ServerWorld) {
             
-            ((LivingEntity) entity).attackEntityFrom(DamageSource.causePlayerDamage(FakePlayerFactory.get((ServerWorld) world, PLAYER_RUNE_PROFILE)), 4f);
+            final LivingEntity target = (LivingEntity) entity;
+            final FakePlayer player = FakePlayerFactory.get((ServerWorld) world, PLAYER_RUNE_PROFILE);
+            
+            target.attackEntityFrom(DamageSource.causePlayerDamage(player), 4f);
+            
+            if (target.getRevengeTarget() == player) {
+                
+                target.setRevengeTarget(null);
+            }
         }
     }
     
