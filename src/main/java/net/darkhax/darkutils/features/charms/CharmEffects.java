@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.UseAction;
 import net.minecraft.stats.ServerStatisticsManager;
 import net.minecraft.stats.Stat;
 import net.minecraft.stats.Stats;
@@ -95,8 +96,9 @@ public class CharmEffects {
             
             final Item charm = DarkUtils.content.gluttonyCharm;
             final PlayerEntity player = (PlayerEntity) event.getEntityLiving();
+            final ItemStack using = event.getItem();
             
-            if (event.getItem().isFood() && getStacksFromPlayer(player, charm).size() > 0) {
+            if ((using.isFood() || using.getUseAction() == UseAction.DRINK || using.getUseAction() == UseAction.EAT) && getStacksFromPlayer(player, charm).size() > 0) {
                 
                 event.setDuration(1);
             }
