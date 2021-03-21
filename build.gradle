@@ -307,3 +307,25 @@ task signJar(type: SignJar, dependsOn: jar) {
 }
 
 build.dependsOn signJar
+
+task setupDebugServer() {
+    dependsOn 'configServerProps'
+    dependsOn 'configEula'
+}
+
+task configServerProps(type: WriteProperties) {
+
+    outputFile = file('run/server.properties')
+    property 'online-mode', false
+    property 'motd', "Testing server for ${project.findProperty('mod_name')}."
+}
+
+task configEula(type: WriteProperties) {
+
+    outputFile = file('run/eula.txt')
+    property 'eula', true
+    
+    doLast {
+        project.logger.warn("You have agreed to Mojang's EULA! https://account.mojang.com/documents/minecraft_eula");
+    }
+}
