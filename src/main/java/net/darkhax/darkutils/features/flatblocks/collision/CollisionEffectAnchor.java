@@ -37,7 +37,7 @@ public class CollisionEffectAnchor implements CollisionEffect {
                 }
                 
                 final ITextComponent blockName = state.getBlock().getTranslatedName().mergeStyle(TextFormatting.BLUE);
-                final ITextComponent warning = new TranslationTextComponent("gui.message.anchor_plate_warning", keyName, blockName).mergeStyle(TextFormatting.DARK_GRAY);
+                final ITextComponent warning = new TranslationTextComponent("gui.message.anchor_plate_warning", keyName, blockName);
                 ((PlayerEntity) entity).sendStatusMessage(warning, true);
             }
             

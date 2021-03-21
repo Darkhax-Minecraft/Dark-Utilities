@@ -55,6 +55,7 @@
   "item.darkutils.book_restore": "Restoration Tome",
   
   "gui.message.anchor_plate_warning": "Press %s to dismount the %s.",
+  "gui.message.vector_plate_warning": "Hold %s to stop being pushed by the %s.",
   
   "tooltip.darkutils.blank_plate.short": "Has no effect. Used for crafting and decoration.",
   "tooltip.darkutils.vector_plate.short": "Pushes mobs and entities in the direction it's pointing.",
