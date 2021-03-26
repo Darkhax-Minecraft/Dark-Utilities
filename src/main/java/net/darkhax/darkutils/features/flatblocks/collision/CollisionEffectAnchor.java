@@ -1,5 +1,6 @@
 package net.darkhax.darkutils.features.flatblocks.collision;
 
+import net.darkhax.darkutils.DarkUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.arguments.EntityAnchorArgument;
@@ -16,9 +17,19 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.EnderTeleportEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
 public class CollisionEffectAnchor implements CollisionEffect {
+    
+    public CollisionEffectAnchor() {
+        
+        MinecraftForge.EVENT_BUS.addListener(this::onEnderTeleport);
+        MinecraftForge.EVENT_BUS.addListener(this::onMobDespawn);
+    }
     
     @Override
     public void apply (BlockState state, World world, BlockPos pos, Entity entity) {
@@ -49,6 +60,22 @@ public class CollisionEffectAnchor implements CollisionEffect {
             }
             
             entity.setPosition(pos.getX() + 0.5f, pos.getY() + 0.0625D, pos.getZ() + 0.5f);
+        }
+    }
+    
+    public void onEnderTeleport (EnderTeleportEvent event) {
+        
+        if (!(event.getEntity() instanceof PlayerEntity) && event.getEntity().world.getBlockState(event.getEntity().getPosition()).getBlock() == DarkUtils.content.anchorPlate) {
+            
+            event.setCanceled(true);
+        }
+    }
+    
+    public void onMobDespawn (LivingSpawnEvent.AllowDespawn event) {
+        
+        if (event.getWorld().getBlockState(event.getEntity().getPosition()).getBlock() == DarkUtils.content.anchorPlate) {
+            
+            event.setResult(Result.DENY);
         }
     }
 }
