@@ -9,6 +9,7 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
@@ -18,11 +19,13 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockFilter extends Block {
     
     public static final VoxelShape EMPTY = Block.makeCuboidShape(0.0D, 0.0D, 0.00D, 0.0D, 0.0D, 0.0D);
-    public static final Properties BLOCK_PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(3f, 10f).setSuffocates( (a, b, c) -> false);
+    public static final Properties BLOCK_PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(3f, 10f).setSuffocates( (a, b, c) -> false).setBlocksVision( (a, b, c) -> false).notSolid();
     private final IFilterTest filter;
     
     public BlockFilter(IFilterTest filter) {
@@ -119,5 +122,12 @@ public class BlockFilter extends Block {
         }
         
         return super.getCollisionShape(state, world, pos, context);
+    }
+    
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side) {
+        
+        return adjacentBlockState.isIn(this);
     }
 }
