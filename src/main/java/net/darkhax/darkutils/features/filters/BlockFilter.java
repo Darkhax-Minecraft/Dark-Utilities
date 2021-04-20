@@ -126,7 +126,7 @@ public class BlockFilter extends Block {
     
     @Override
     @OnlyIn(Dist.CLIENT)
-    public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side) {
+    public boolean isSideInvisible (BlockState state, BlockState adjacentBlockState, Direction side) {
         
         return adjacentBlockState.isIn(this);
     }

@@ -46,7 +46,7 @@ public class CollisionEffectPush implements CollisionEffect {
                 ((PlayerEntity) entity).sendStatusMessage(warning, true);
             }
             
-            final Direction direction = state.get(BlockStateProperties.HORIZONTAL_FACING);            
+            final Direction direction = state.get(BlockStateProperties.HORIZONTAL_FACING);
             entity.setMotion(entity.getMotion().add(this.velocity * (direction.getXOffset() * 1.5), 0, this.velocity * (direction.getZOffset() * 1.5)));
             this.additionalEffects(state, world, pos, entity);
         }
