@@ -19,8 +19,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
-import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
 public class CollisionEffectAnchor implements CollisionEffect {
@@ -28,7 +26,6 @@ public class CollisionEffectAnchor implements CollisionEffect {
     public CollisionEffectAnchor() {
         
         MinecraftForge.EVENT_BUS.addListener(this::onEnderTeleport);
-        MinecraftForge.EVENT_BUS.addListener(this::onMobDespawn);
     }
     
     @Override
@@ -65,17 +62,15 @@ public class CollisionEffectAnchor implements CollisionEffect {
     
     public void onEnderTeleport (EnderTeleportEvent event) {
         
-        if (!(event.getEntity() instanceof PlayerEntity) && event.getEntity().world.getBlockState(event.getEntity().getPosition()).getBlock() == DarkUtils.content.anchorPlate) {
+        if (!(event.getEntity() instanceof PlayerEntity)) {
             
-            event.setCanceled(true);
-        }
-    }
-    
-    public void onMobDespawn (LivingSpawnEvent.AllowDespawn event) {
-        
-        if (event.getWorld().getBlockState(event.getEntity().getPosition()).getBlock() == DarkUtils.content.anchorPlate) {
+            final World world = event.getEntity().world;
+            final BlockPos pos = event.getEntity().getPosition();
             
-            event.setResult(Result.DENY);
+            if (world.isBlockLoaded(pos) && world.getBlockState(pos).getBlock() == DarkUtils.content.anchorPlate) {
+                
+                event.setCanceled(true);
+            }
         }
     }
 }
