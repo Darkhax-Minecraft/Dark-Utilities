@@ -1,0 +1,8 @@
+{
+  "parent": "darkutils:block/trap_base",
+  "textures": {
+    "particle": "darkutils:block/hunger_plate",
+    "design": "darkutils:block/hunger_plate",
+    "pad": "darkutils:block/dark_stone"
+  }
+}

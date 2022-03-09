@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[39,)"
+license = "${mod_license}"
+issueTrackerURL = "${mod_issues}"
+
+[[mods]]
+modId = "${mod_id}"
+updateJSONURL="https://updates.blamejared.com/get?n=${mod_id}&gv=${minecraft_version}"
+version = "${file.jarVersion}"
+displayName = "${mod_name}"
+displayURL = "${mod_homepage}"
+credits = "This project is made possible with Patreon support from players like you. Thank you! ${mod_supporters}"
+authors = "${mod_author}"
+description = '''
+${mod_description}
+'''
+itemIcon = "darkutils:vector_plate"
+
+[[dependencies.${ mod_id }]]
+modId = "forge"
+mandatory = true
+versionRange = "[39,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.${ mod_id }]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18,1.19)"
+ordering = "NONE"
+side = "CLIENT"

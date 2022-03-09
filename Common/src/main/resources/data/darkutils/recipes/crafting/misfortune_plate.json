@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:misfortune_plate",
+  "pattern": [
+    "FBF",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:misfortune_plate",
+    "count": 3
+  }
+}

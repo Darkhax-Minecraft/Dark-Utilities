@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:filter_fire_immune",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "bookshelf:fence_gates"
+    },
+    "S": {
+      "tag": "bookshelf:stones"
+    },
+    "I": {
+      "item": "minecraft:blaze_powder"
+    }
+  },
+  "result": {
+    "item": "darkutils:filter_fire_immune",
+    "count": 4
+  }
+}

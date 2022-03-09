@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "darkutils:tome_pigpen"
+    },
+    "title": {
+      "translate": "advancements.darkutils.adventure.pigpen.title",
+      "font": "pigpen:pigpen"
+    },
+    "description": {
+      "translate": "advancements.darkutils.adventure.pigpen.description",
+      "font": "minecraft:default"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_tome": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "darkutils:tome_pigpen"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_tome"
+    ]
+  ]
+}

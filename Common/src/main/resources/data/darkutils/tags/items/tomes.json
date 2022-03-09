@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "darkutils:tome_enchanting",
+    "darkutils:tome_shadows",
+    "darkutils:tome_sga",
+    "darkutils:tome_illager",
+    "darkutils:tome_runelic",
+    "darkutils:tome_pigpen"
+  ]
+}

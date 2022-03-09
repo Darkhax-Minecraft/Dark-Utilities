@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:filter_child",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "bookshelf:fence_gates"
+    },
+    "S": {
+      "tag": "bookshelf:stones"
+    },
+    "I": {
+      "item": "minecraft:egg"
+    }
+  },
+  "result": {
+    "item": "darkutils:filter_child",
+    "count": 4
+  }
+}

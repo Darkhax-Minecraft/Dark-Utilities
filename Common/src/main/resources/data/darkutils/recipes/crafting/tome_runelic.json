@@ -1,0 +1,27 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:tome_runelic",
+  "pattern": [
+    "RWR",
+    "VBV",
+    "RWR"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "W": {
+      "item": "minecraft:nether_wart"
+    },
+    "V": {
+      "item": "minecraft:weeping_vines"
+    },
+    "B": {
+      "item": "minecraft:writable_book"
+    }
+  },
+  "result": {
+    "item": "darkutils:tome_runelic",
+    "count": 1
+  }
+}

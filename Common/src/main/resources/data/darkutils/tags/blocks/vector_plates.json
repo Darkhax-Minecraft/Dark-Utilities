@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "darkutils:vector_plate",
+    "darkutils:vector_plate_fast",
+    "darkutils:vector_plate_extreme",
+    "darkutils:vector_plate_ultra"
+  ]
+}

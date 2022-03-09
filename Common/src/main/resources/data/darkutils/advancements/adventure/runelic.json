@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "darkutils:tome_runelic"
+    },
+    "title": {
+      "translate": "advancements.darkutils.adventure.runelic.title",
+      "font": "runelic:runelic"
+    },
+    "description": {
+      "translate": "advancements.darkutils.adventure.runelic.description",
+      "font": "minecraft:default"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_tome": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "darkutils:tome_runelic"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_tome"
+    ]
+  ]
+}

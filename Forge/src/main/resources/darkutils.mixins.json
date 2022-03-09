@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.darkhax.darkutilities.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinPlayer",
+    "AccessorPlayer"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "darkutils.refmap.json"
+}

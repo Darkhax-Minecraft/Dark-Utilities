@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:fatigue_plate",
+  "pattern": [
+    "BFB",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:prismarine_crystals"
+    },
+    "B": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:fatigue_plate",
+    "count": 3
+  }
+}

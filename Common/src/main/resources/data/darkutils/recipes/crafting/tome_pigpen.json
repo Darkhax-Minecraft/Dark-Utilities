@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:tome_pigpen",
+  "pattern": [
+    "PCP",
+    "CBC",
+    "PCP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:porkchop"
+    },
+    "C": {
+      "item": "minecraft:brick"
+    },
+    "B": {
+      "item": "minecraft:writable_book"
+    }
+  },
+  "result": {
+    "item": "darkutils:tome_pigpen",
+    "count": 1
+  }
+}

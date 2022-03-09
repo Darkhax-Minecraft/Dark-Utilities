@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "darkutils:vector_plate_ultra"
+    },
+    "title": {
+      "translate": "advancements.darkutils.adventure.plate_ultra.title"
+    },
+    "description": {
+      "translate": "advancements.darkutils.adventure.plate_ultra.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "darkutils:vector_plate_ultra"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_plate"
+    ]
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:slowness_plate",
+  "pattern": [
+    "BFB",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:snow_block"
+    },
+    "B": {
+      "item": "minecraft:soul_sand"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:slowness_plate",
+    "count": 3
+  }
+}

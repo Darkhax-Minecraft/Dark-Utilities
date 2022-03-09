@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:weakness_plate",
+  "pattern": [
+    "BFB",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:fermented_spider_eye"
+    },
+    "B": {
+      "item": "minecraft:brown_mushroom"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:weakness_plate",
+    "count": 3
+  }
+}

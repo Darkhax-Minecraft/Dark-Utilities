@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "powered=true,hidden=false": {
+      "model": "darkutils:block/blank_plate"
+    },
+    "powered=false,hidden=false": {
+      "model": "darkutils:block/slowness_plate"
+    },
+    "hidden=true": {
+      "model": "darkutils:block/hidden_plate"
+    }
+  }
+}

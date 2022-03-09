@@ -1,0 +1,27 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:damage_plate_player",
+  "pattern": [
+    " S ",
+    "CMC",
+    "PPP"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:diamond_sword"
+    },
+    "C": {
+      "item": "minecraft:warped_fungus"
+    },
+    "M": {
+      "item": "minecraft:player_head"
+    },
+    "P": {
+      "item": "darkutils:damage_plate"
+    }
+  },
+  "result": {
+    "item": "darkutils:damage_plate_player",
+    "count": 3
+  }
+}

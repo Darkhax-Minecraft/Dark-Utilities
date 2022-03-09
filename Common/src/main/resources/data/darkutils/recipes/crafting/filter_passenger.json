@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:filter_passenger",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "bookshelf:fence_gates"
+    },
+    "S": {
+      "tag": "bookshelf:stones"
+    },
+    "I": {
+      "item": "minecraft:minecart"
+    }
+  },
+  "result": {
+    "item": "darkutils:filter_passenger",
+    "count": 4
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:tome_pillager",
+  "pattern": [
+    "LEL",
+    "EBE",
+    "LTL"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "T": {
+      "item": "minecraft:totem_of_undying"
+    },
+    "B": {
+      "item": "minecraft:writable_book"
+    }
+  },
+  "result": {
+    "item": "darkutils:tome_illager",
+    "count": 1
+  }
+}

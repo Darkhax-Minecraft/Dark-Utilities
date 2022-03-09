@@ -1,8 +1,0 @@
-{
-  "parent": "darkutils:block/trap_base",
-  "textures": {
-    "particle": "darkutils:block/export_plate",
-    "design": "darkutils:block/export_plate",
-    "pad": "darkutils:block/trap_base"
-  }
-}

@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:flame_plate",
+  "pattern": [
+    "BFB",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:flame_plate",
+    "count": 3
+  }
+}

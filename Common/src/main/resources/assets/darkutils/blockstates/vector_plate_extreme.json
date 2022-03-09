@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "facing=north,powered=false,hidden=false": {
+      "model": "darkutils:block/vector_plate_extreme"
+    },
+    "facing=east,powered=false,hidden=false": {
+      "model": "darkutils:block/vector_plate_extreme",
+      "y": 90
+    },
+    "facing=south,powered=false,hidden=false": {
+      "model": "darkutils:block/vector_plate_extreme",
+      "y": 180
+    },
+    "facing=west,powered=false,hidden=false": {
+      "model": "darkutils:block/vector_plate_extreme",
+      "y": 270
+    },
+    "powered=true,hidden=false": {
+      "model": "darkutils:block/blank_plate"
+    },
+    "hidden=true": {
+      "model": "darkutils:block/hidden_plate"
+    }
+  }
+}

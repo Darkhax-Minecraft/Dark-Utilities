@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:hunger_plate",
+  "pattern": [
+    "BFB",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:nether_wart"
+    },
+    "B": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:hunger_plate",
+    "count": 3
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:damage_plate",
+  "pattern": [
+    "FSF",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "tag": "darkutils:plate_base"
+    },
+    "S": {
+      "item": "minecraft:golden_sword"
+    },
+    "F": {
+      "item": "minecraft:crimson_fungus"
+    }
+  },
+  "result": {
+    "item": "darkutils:damage_plate",
+    "count": 3
+  }
+}

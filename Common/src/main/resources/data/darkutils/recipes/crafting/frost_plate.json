@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:frost_plate",
+  "pattern": [
+    "FBF",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:snowball"
+    },
+    "B": {
+      "item": "minecraft:powder_snow_bucket"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:frost_plate",
+    "count": 3
+  }
+}

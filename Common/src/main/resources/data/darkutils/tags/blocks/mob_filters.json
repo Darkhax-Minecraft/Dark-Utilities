@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "darkutils:filter_player",
+    "darkutils:filter_undead",
+    "darkutils:filter_arthropod",
+    "darkutils:filter_illager",
+    "darkutils:filter_raider",
+    "darkutils:filter_hostile",
+    "darkutils:filter_animal",
+    "darkutils:filter_child",
+    "darkutils:filter_pet",
+    "darkutils:filter_slime",
+    "darkutils:filter_villager",
+    "darkutils:filter_fire_immune",
+    "darkutils:filter_golem",
+    "darkutils:filter_water",
+    "darkutils:filter_named",
+    "darkutils:filter_freeze_immune",
+    "darkutils:filter_passenger",
+    "darkutils:filter_equipment"
+  ]
+}

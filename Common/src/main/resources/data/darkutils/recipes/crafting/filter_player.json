@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:filter_player",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "bookshelf:fence_gates"
+    },
+    "S": {
+      "tag": "bookshelf:stones"
+    },
+    "I": {
+      "item": "minecraft:golden_pickaxe"
+    }
+  },
+  "result": {
+    "item": "darkutils:filter_player",
+    "count": 4
+  }
+}

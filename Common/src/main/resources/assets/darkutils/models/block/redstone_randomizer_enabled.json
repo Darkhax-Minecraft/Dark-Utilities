@@ -1,0 +1,8 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "darkutils:block/bundled_dark_stone",
+    "front": "darkutils:block/redstone_randomizer_enabled",
+    "side": "darkutils:block/bundled_dark_stone"
+  }
+}

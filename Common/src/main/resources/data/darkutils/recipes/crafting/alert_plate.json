@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:alert_plate",
+  "pattern": [
+    "FBF",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "B": {
+      "item": "minecraft:glow_ink_sac"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:alert_plate",
+    "count": 3
+  }
+}

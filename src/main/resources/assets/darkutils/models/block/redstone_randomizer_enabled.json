@@ -1,8 +1,0 @@
-{
-    "parent": "block/orientable",
-    "textures": {
-        "top": "block/furnace_top",
-        "front": "darkutils:block/redstone_randomizer_enabled",
-        "side": "block/furnace_side"
-    }
-}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "powered=true,inverted=false": {
+      "model": "darkutils:block/filter_closed"
+    },
+    "powered=true,inverted=true": {
+      "model": "darkutils:block/filter_inverted_closed"
+    },
+    "powered=false,inverted=false": {
+      "model": "darkutils:block/filter_freeze_immune"
+    },
+    "powered=false,inverted=true": {
+      "model": "darkutils:block/filter_inverted_freeze_immune"
+    }
+  }
+}

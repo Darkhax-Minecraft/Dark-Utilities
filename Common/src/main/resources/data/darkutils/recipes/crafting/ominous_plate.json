@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:omen_plate",
+  "pattern": [
+    "FBF",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:nether_wart"
+    },
+    "B": {
+      "item": "minecraft:totem_of_undying"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:omen_plate",
+    "count": 3
+  }
+}

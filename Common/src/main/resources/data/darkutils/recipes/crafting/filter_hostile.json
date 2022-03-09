@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:filter_hostile",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "bookshelf:fence_gates"
+    },
+    "S": {
+      "tag": "bookshelf:stones"
+    },
+    "I": {
+      "item": "minecraft:rotten_flesh"
+    }
+  },
+  "result": {
+    "item": "darkutils:filter_hostile",
+    "count": 4
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#darkutils:flat_tiles",
+    "#darkutils:mob_filters",
+    "darkutils:redstone_randomizer",
+    "darkutils:shielded_redstone"
+  ]
+}

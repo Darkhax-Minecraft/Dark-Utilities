@@ -1,0 +1,23 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:damage_plate_maim",
+  "pattern": [
+    "FSF",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "tag": "darkutils:plate_base"
+    },
+    "S": {
+      "item": "minecraft:iron_sword"
+    },
+    "F": {
+      "item": "minecraft:shroomlight"
+    }
+  },
+  "result": {
+    "item": "darkutils:damage_plate_maim",
+    "count": 3
+  }
+}

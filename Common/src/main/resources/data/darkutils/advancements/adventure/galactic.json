@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "darkutils:tome_sga"
+    },
+    "title": {
+      "translate": "advancements.darkutils.adventure.galactic.title",
+      "font": "minecraft:alt"
+    },
+    "description": {
+      "translate": "advancements.darkutils.adventure.galactic.description",
+      "font": "minecraft:default"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_tome": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "darkutils:tome_sga"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_tome"
+    ]
+  ]
+}

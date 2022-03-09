@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "darkutils:blank_plate",
+    "#darkutils:vector_plates",
+    "#darkutils:damage_plates",
+    "darkutils:flame_plate",
+    "darkutils:slowness_plate",
+    "darkutils:fatigue_plate",
+    "darkutils:darkness_plate",
+    "darkutils:hunger_plate",
+    "darkutils:weakness_plate",
+    "darkutils:poison_plate",
+    "darkutils:wither_plate",
+    "darkutils:alert_plate",
+    "darkutils:levitation_plate",
+    "darkutils:misfortune_plate",
+    "darkutils:slowfall_plate",
+    "darkutils:omen_plate",
+    "darkutils:frost_plate"
+  ]
+}

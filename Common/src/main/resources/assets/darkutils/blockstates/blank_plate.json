@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hidden=false": {
+      "model": "darkutils:block/blank_plate"
+    },
+    "hidden=true": {
+      "model": "darkutils:block/hidden_plate"
+    }
+  }
+}
