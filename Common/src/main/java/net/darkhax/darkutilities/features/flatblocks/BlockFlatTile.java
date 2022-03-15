@@ -30,11 +30,6 @@ public class BlockFlatTile extends Block implements SimpleWaterloggedBlock {
 
     private final CollisionEffect collisionEffect;
 
-    public BlockFlatTile() {
-
-        this(null);
-    }
-
     public BlockFlatTile(CollisionEffect collisionEffect) {
 
         this(BLOCK_PROPERTIES, collisionEffect);

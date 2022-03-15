@@ -1,5 +1,7 @@
 package net.darkhax.darkutilities.features.filters;
 
+import net.darkhax.bookshelf.api.block.IBindRenderLayer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -25,7 +27,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Predicate;
 
-public class BlockEntityFilter extends Block {
+public class BlockEntityFilter extends Block implements IBindRenderLayer {
 
     public static final Properties BLOCK_PROPERTIES = Properties.of(Material.WOOD, MaterialColor.COLOR_BROWN).strength(3f, 10f).isSuffocating((a, b, c) -> false).isViewBlocking((a, b, c) -> false).noOcclusion();
 
@@ -136,5 +138,11 @@ public class BlockEntityFilter extends Block {
     public boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos) {
 
         return state.getFluidState().isEmpty();
+    }
+
+    @Override
+    public RenderType getRenderLayerToBind() {
+        
+        return RenderType.translucent();
     }
 }

@@ -22,7 +22,7 @@ public abstract class MixinPlayer extends Entity {
     @Inject(method = "getPortalWaitTime()I", at = @At("HEAD"), cancellable = true)
     public void getPortalWaitTime(CallbackInfoReturnable<Integer> callback) {
 
-        if (this.isInsidePortal && DarkUtilsCommon.getInstance().content.portalCharm.doesEntityHave(this)) {
+        if (this.isInsidePortal && DarkUtilsCommon.hasItem(this, DarkUtilsCommon.getInstance().content.portalCharm)) {
 
             callback.setReturnValue(1);
         }

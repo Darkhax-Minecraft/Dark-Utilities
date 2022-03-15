@@ -11,14 +11,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(Constants.MOD_ID)
 public class DarkUtilsForge {
 
-    private final DarkUtilsCommon common = DarkUtilsCommon.getInstance();
-
     public DarkUtilsForge() {
 
-        if (Services.PLATFORM.isPhysicalClient()) {
-
-            new DarkUtilsForgeClient(this.common);
-        }
+        DarkUtilsCommon.getInstance();
 
         if (Services.PLATFORM.isModLoaded("curios")) {
 

@@ -23,11 +23,9 @@ public class FlatTileEffects {
     public static final BlockFlatTile.CollisionEffect DAMAGE_GENERIC = livingEffect(e -> e.hurt(DamageSource.GENERIC, 6f));
     public static final BlockFlatTile.CollisionEffect DAMAGE_MAIM = livingEffect(e -> {
 
-        final float damage = Math.min(e.getHealth() - 1f, 8f);
+        if (e.getHealth() >= 2f) {
 
-        if (e.getHealth() - damage >= 2f) {
-
-            e.hurt(DamageSource.GENERIC, damage);
+            e.hurt(DamageSource.GENERIC, 1f);
         }
     });
     public static final BlockFlatTile.CollisionEffect DAMAGE_PLAYER = livingEffect(e -> DAMAGE_PLAYER_SOURCE.causeDamage(e, 6f));

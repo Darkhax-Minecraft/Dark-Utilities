@@ -2,6 +2,7 @@ package net.darkhax.darkutilities.features.filters;
 
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.Entity;
@@ -47,9 +48,9 @@ public class Filters {
         return e -> e instanceof LivingEntity living && living.getMobType() == type;
     }
 
-    private static Predicate<Entity> tagFilter(Tag.Named<EntityType<?>> tag) {
+    private static Predicate<Entity> tagFilter(TagKey<EntityType<?>> tag) {
 
-        return e -> tag.contains(e.getType());
+        return e -> e.getType().is(tag);
     }
 
     private static Predicate<Entity> hasEquipment() {

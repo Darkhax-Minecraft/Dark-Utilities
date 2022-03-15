@@ -2,6 +2,7 @@ package net.darkhax.darkutilities;
 
 import net.darkhax.bookshelf.api.Services;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class DarkUtilsCommon {
 
@@ -24,6 +26,7 @@ public class DarkUtilsCommon {
     public DarkUtilsCommon() {
 
         this.content = new Content();
+        Services.REGISTRIES.loadContent(content);
         Services.EVENTS.addItemTooltipListener(this::addDescriptionTooltips);
 
         // Test vanilla player inventory for charm items.
@@ -50,9 +53,14 @@ public class DarkUtilsCommon {
         }
     }
 
-    public static boolean hasItem(Player player, Item item) {
+    public static boolean hasItem(Entity entity, Supplier<Item> item) {
 
-        return charmResolvers.stream().anyMatch(func -> func.apply(player, s -> s.is(item)));
+        if (entity instanceof Player player) {
+
+            return charmResolvers.stream().anyMatch(func -> func.apply(player, s -> s.is(item.get())));
+        }
+
+        return false;
     }
 
     private static boolean hasItemInVanillaInventory(Player player, Predicate<ItemStack> predicate) {
