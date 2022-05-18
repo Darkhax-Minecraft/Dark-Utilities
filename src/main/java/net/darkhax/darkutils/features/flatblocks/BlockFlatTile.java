@@ -26,7 +26,6 @@ public class BlockFlatTile extends Block implements IBucketPickupHandler, ILiqui
     
     public static final Properties BLOCK_PROPERTIES = Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(3f, 10f);
     public static final VoxelShape BOUNDS = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
-    public static final VoxelShape EFFECT_BOUNDS = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D);
     
     private final CollisionEffect collisionEffect;
     
@@ -54,8 +53,8 @@ public class BlockFlatTile extends Block implements IBucketPickupHandler, ILiqui
     
     @Override
     public void onEntityCollision (BlockState state, World world, BlockPos pos, Entity entity) {
-        
-        if (this.collisionEffect != null && !state.get(BlockStateProperties.POWERED) && EFFECT_BOUNDS.getBoundingBox().offset(pos).intersects(entity.getBoundingBox())) {
+
+        if (this.collisionEffect != null && !state.get(BlockStateProperties.POWERED) && entity.getPosY() <= (double) pos.getY() + 0.4d) {
             
             this.collisionEffect.apply(state, world, pos, entity);
         }
