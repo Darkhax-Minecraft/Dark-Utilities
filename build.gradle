@@ -17,11 +17,10 @@ apply plugin: 'com.matthewprenger.cursegradle'
 apply plugin: 'maven-publish' 
 apply plugin: 'eclipse'
 
-apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/generic/secrets.gradle'
-apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/generic/markdown-git-changelog.gradle'
-apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/minecraft/artifacts.gradle'
-//apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/minecraft/maven_local_nomcp.gradle'
-apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/generic/patreon.gradle'
+apply from: './gradle/secrets.gradle'
+apply from: './gradle/markdown-git-changelog.gradle'
+apply from: './gradle/artifacts.gradle'
+apply from: './gradle/patreon.gradle'
 
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
@@ -42,20 +41,20 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 minecraft {
 
     mappings channel: 'snapshot', version: "${mcp_version}".toString()
-	
+    
     if (project.hasProperty('mod_at')) {
     
         accessTransformer = file(findProperty('mod_at'))
     }
-	
+    
     runs {
         client {
-		
+        
             workingDirectory project.file('run')
-			taskName "${mod_name}".replaceAll("\\s","") + 'Client'
+            taskName "${mod_name}Client"
 
             mods {
-                gamestages {
+                modclient {
                     source sourceSets.main
                 }
             }
@@ -63,10 +62,10 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-			taskName "${mod_name}".replaceAll("\\s","") + 'Server'
-			
+            taskName "${mod_name}Server"
+            
             mods {
-                gamestages {
+                modserver {
                     source sourceSets.main
                 }
             }
@@ -80,12 +79,12 @@ repositories {
 
         url 'https://maven.blamejared.com'
     }
-    
+
     maven {
 
         url 'https://dvs1.progwml6.com/files/maven'
     }
-    
+
     maven {
 
         url = "https://maven.theillusivec4.top/"
@@ -95,10 +94,10 @@ repositories {
 dependencies {
 
     minecraft "net.minecraftforge:forge:${forge_version}"
-    
-    compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.5:${bookshelf_version}")
+
+    compile fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.16.5:${bookshelf_version}")
     compile fg.deobf("mezz.jei:jei-1.16.5:${jei_version}")
-	compile fg.deobf("net.darkhax.runelic:Runelic-1.16.5:${runelic_version}")
+    compile fg.deobf("net.darkhax.runelic:Runelic-1.16.5:${runelic_version}")
     compile fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 }
 
@@ -152,24 +151,6 @@ processResources {
     
         exclude 'META-INF/mods.toml'
     }
-	
-	doLast {
-	
-	    def jsonMinifyStart = System.currentTimeMillis()
-	    def jsonMinified = 0
-		def jsonBytesSaved = 0
-		
-	    fileTree(dir: outputs.files.asPath, include: '**/*.json').each {
-		
-			File file = it
-			jsonMinified++
-			def oldLength = file.length()
-			file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
-			jsonBytesSaved += oldLength - file.length()
-		}
-		
-		println('Minified ' + jsonMinified + ' json files. Saved ' + jsonBytesSaved + ' bytes. Took ' + (System.currentTimeMillis() - jsonMinifyStart) + 'ms.')
-	}
 }
 
 curseforge {
@@ -180,7 +161,7 @@ curseforge {
 
         id = "${curse_project}"
         releaseType = 'alpha'
-        changelog = getGitChangelog() + "\n\nHuge thanks to my supporters on [Patreon](https://www.patreon.com/Darkhax?MCChangelog?${mod_name})\n\n" + getPledgeLog()
+        changelog = getGitChangelog() + "\n\nLike the mod? Consider following me on [Twitter](https://twitter.com/darkhaxdev) and joining the [Discord](https://discord.darkhax.net)\n\nHuge thanks to my supporters on [Patreon](https://www.patreon.com/Darkhax?MCChangelog?${mod_name})\n\n" + getPledgeLog()
         changelogType = 'markdown'
 
         versions.each {
@@ -256,7 +237,7 @@ task updateVersionTracker {
     doLast {
         def body = [
             'author': "${project.findProperty('mod_vendor')}",
-            'projectName': "darkutils",
+            'projectName': "${project.findProperty('mod_name').toLowerCase()}",
             'gameVersion': "${project.findProperty('minecraft_version')}",
             'projectVersion': "${version}",
             'homepage': "${project.findProperty('mod_download')}",
@@ -276,7 +257,6 @@ task updateVersionTracker {
         println "VersionCheck Response: ${req.getInputStream().getText()}"
     }
 }
-
 
 // Jar Signing
 import net.minecraftforge.gradle.common.task.SignJar
@@ -299,7 +279,7 @@ task signJar(type: SignJar, dependsOn: jar) {
         inputFile = jar.archivePath
         outputFile = jar.archivePath
     }
-    
+
     else {
     
         project.logger.warn('Could not sign ' + jar.archivePath.getName() + '. No keyStore property could be found')
@@ -307,28 +287,6 @@ task signJar(type: SignJar, dependsOn: jar) {
 }
 
 build.dependsOn signJar
-
-task setupDebugServer() {
-    dependsOn 'configServerProps'
-    dependsOn 'configEula'
-}
-
-task configServerProps(type: WriteProperties) {
-
-    outputFile = file('run/server.properties')
-    property 'online-mode', false
-    property 'motd', "Testing server for ${project.findProperty('mod_name')}."
-}
-
-task configEula(type: WriteProperties) {
-
-    outputFile = file('run/eula.txt')
-    property 'eula', true
-    
-    doLast {
-        project.logger.warn("You have agreed to Mojang's EULA! https://account.mojang.com/documents/minecraft_eula");
-    }
-}
 
 publishing {
 
