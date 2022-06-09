@@ -30,12 +30,10 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-    
-    modImplementation "com.terraformersmc:modmenu:${modmenu_version}"
-    modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
-    modImplementation "net.darkhax.bookshelf:Bookshelf-Fabric-1.18.2:${project.ext.bookshelf_version}"
-    modImplementation "net.darkhax.runelic:Runelic-Fabric-1.18.2:${project.ext.runelic_version}"
-    modImplementation "net.darkhax.pigpen:PigPen-Fabric-1.18.2:${project.ext.pigpen_version}"
+
+    modImplementation "net.darkhax.bookshelf:Bookshelf-Fabric-${project.ext.minecraft_version}:${project.ext.bookshelf_version}"
+    modImplementation "net.darkhax.runelic:Runelic-Fabric-${project.ext.minecraft_version}:${project.ext.runelic_version}"
+    modImplementation "net.darkhax.pigpen:PigPen-Fabric-${project.ext.minecraft_version}:${project.ext.pigpen_version}"
     modImplementation "dev.emi:trinkets:${project.ext.trinkets_version}"
     
     implementation project(":Common")

@@ -16,7 +16,7 @@
     "sources": "${mod_source}",
     "issues": "${mod_issues}"
   },
-  "icon": "assets/${mod_id}/textures/logo.png",
+  "icon": "assets/${mod_id}/textures/block/vector_plate.png",
   "license": "${mod_license}",
   "environment": "*",
   "entrypoints": {
@@ -28,12 +28,11 @@
     "${mod_id}.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.13",
+    "fabricloader": ">=0.14",
     "fabric": "*",
-    "minecraft": "1.18.x",
+    "minecraft": "1.19.x",
     "java": ">=17",
-    "fabric-resource-loader-v0": ">=0",
-    "bookshelf": ">=13.0.7"
+    "bookshelf": ">=14.0.2"
   },
   "custom": {
     "modmenu": {

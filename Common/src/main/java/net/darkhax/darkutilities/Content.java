@@ -21,7 +21,6 @@ import net.darkhax.darkutilities.features.tomes.ItemTomeFont;
 import net.darkhax.darkutilities.features.tomes.TomeEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
@@ -183,7 +182,7 @@ public class Content extends RegistryDataProvider {
 
     private void createTooltips(ResourceLocation id, Item item) {
 
-        this.tooltipCache.put(item, new TranslatableComponent("tooltip." + id.getNamespace() + "." + id.getPath()).withStyle(ChatFormatting.DARK_GRAY));
+        this.tooltipCache.put(item, Component.translatable("tooltip." + id.getNamespace() + "." + id.getPath()).withStyle(ChatFormatting.DARK_GRAY));
     }
 
     private Block getVectorPlateUltra() {

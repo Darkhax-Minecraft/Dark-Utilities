@@ -4,7 +4,6 @@ import net.darkhax.bookshelf.api.util.TextHelper;
 import net.darkhax.bookshelf.mixin.block.entity.AccessorSignBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -34,7 +33,7 @@ public class ItemTomeFont extends ItemTome {
 
         super(null, fontifyEntity(fontId), fontifyBlock(fontId));
         this.fontId = fontId;
-        this.fontPreview = TextHelper.applyFont(new TranslatableComponent("font." + fontId.getNamespace() + "." + fontId.getPath() + ".preview"), this.fontId);
+        this.fontPreview = TextHelper.applyFont(Component.translatable("font." + fontId.getNamespace() + "." + fontId.getPath() + ".preview"), this.fontId);
     }
 
     @Override
