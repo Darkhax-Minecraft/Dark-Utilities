@@ -13,6 +13,8 @@ import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
@@ -36,7 +38,7 @@ public class Filters {
     public static final Predicate<Entity> VILLAGER = e -> e instanceof AbstractVillager;
     public static final Predicate<Entity> FIRE_IMMUNE = e -> e instanceof LivingEntity living && (living.fireImmune() || living.hasEffect(MobEffects.FIRE_RESISTANCE));
     public static final Predicate<Entity> GOLEM = e -> e instanceof AbstractGolem;
-    public static final Predicate<Entity> WATER = e -> e instanceof WaterAnimal || e instanceof LivingEntity living && living.getMobType() == MobType.WATER;
+    public static final Predicate<Entity> WATER = e -> e instanceof WaterAnimal || (e instanceof LivingEntity living && living.getMobType() == MobType.WATER) || e instanceof Drowned || e instanceof Frog;
     public static final Predicate<Entity> NAMED = Entity::hasCustomName;
     public static final Predicate<Entity> FREEZE_IMMUNE = tagFilter(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES);
     public static final Predicate<Entity> EQUIPMENT = hasEquipment();
