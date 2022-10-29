@@ -34,6 +34,12 @@ As of January 11th 2021 officially published builds will be signed. You can vali
 
 
 ## Sponsors
-<img src="https://nodecraft.com/assets/images/logo-dark.png" width="384" height="90">
+<a href="https://nodecraft.com/r/darkhax" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://nodecraft.com/assets/images/logo.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://nodecraft.com/assets/images/logo-dark.png">
+    <img alt="Nodecraft Sponsorship Logo" src="https://nodecraft.com/assets/images/logo-dark.png" width="384" height="90">
+  </picture>
+</a>
 
 This project is sponsored by Nodecraft. Use code [Darkhax](https://nodecraft.com/r/darkhax) for 30% off your first month of service!
