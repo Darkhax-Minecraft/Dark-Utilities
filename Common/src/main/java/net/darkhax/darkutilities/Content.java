@@ -97,9 +97,8 @@ public class Content extends RegistryDataProvider {
     public Content() {
 
         super(Constants.MOD_ID);
-        this.withCreativeTab(this::getCrativeTabIcon);
+        this.withItemTab(this::getCrativeTabIcon);
         this.withAutoItemBlocks();
-        this.bindBlockRenderLayers();
         this.items.addRegistryListener(this::createTooltips);
 
         this.blankPlate = this.createFlatBlock(null, "blank_plate");
@@ -190,9 +189,9 @@ public class Content extends RegistryDataProvider {
         return this.vectorPlateUltra.get();
     }
 
-    private ItemLike getCrativeTabIcon() {
+    private ItemStack getCrativeTabIcon() {
 
-        return this.vectorPlate.get();
+        return new ItemStack(this.vectorPlate.get());
     }
 
     private IRegistryObject<Block> createFlatBlock(@Nullable BlockFlatTile.CollisionEffect effect, String id) {
