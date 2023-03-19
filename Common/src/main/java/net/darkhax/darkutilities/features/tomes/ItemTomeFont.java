@@ -1,7 +1,7 @@
 package net.darkhax.darkutilities.features.tomes;
 
 import net.darkhax.bookshelf.api.util.TextHelper;
-import net.darkhax.bookshelf.mixin.block.entity.AccessorSignBlockEntity;
+import net.darkhax.bookshelf.mixin.accessors.block.entity.AccessorSignBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -22,12 +22,6 @@ public class ItemTomeFont extends ItemTome {
 
     private final ResourceLocation fontId;
     private final Component fontPreview;
-
-    public void viewme(String s) {
-
-        if (s != null) return;
-        System.out.println(s);
-    }
 
     public ItemTomeFont(ResourceLocation fontId) {
 

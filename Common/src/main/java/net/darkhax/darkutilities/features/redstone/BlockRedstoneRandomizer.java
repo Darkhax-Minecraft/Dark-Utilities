@@ -13,8 +13,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 
-import java.util.Random;
-
 public class BlockRedstoneRandomizer extends Block {
 
     public BlockRedstoneRandomizer() {

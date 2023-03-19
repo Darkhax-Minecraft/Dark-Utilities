@@ -2,8 +2,7 @@ package net.darkhax.darkutilities.features.charms;
 
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.bookshelf.api.util.MathsHelper;
-import net.darkhax.bookshelf.mixin.effect.AccessorMobEffectInstance;
-import net.darkhax.darkutilities.Constants;
+import net.darkhax.bookshelf.mixin.accessors.effect.AccessorMobEffectInstance;
 import net.darkhax.darkutilities.mixin.AccessorPlayer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;

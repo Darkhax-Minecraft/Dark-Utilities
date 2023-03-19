@@ -30,9 +30,9 @@
   "depends": {
     "fabricloader": ">=0.14.9",
     "fabric": "*",
-    "minecraft": "1.19.x",
+    "minecraft": "1.19.4",
     "java": ">=17",
-    "bookshelf": ">=17"
+    "bookshelf": ">=18"
   },
   "custom": {
     "modmenu": {
