@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "darkutils:damage_plate"
+          "name": "darkutils:fatigue_plate"
         }
       ],
       "conditions": [
