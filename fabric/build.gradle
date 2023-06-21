@@ -182,7 +182,7 @@ modrinth {
     versionType.set("release")
     uploadFile.set(tasks.remapJar)
     dependencies {
-        required.project("fabric-api")
+        required.project('fabric-api')
         required.project('bookshelf-lib')
         required.project('runelic')
         required.project('pig-pen-cipher')
