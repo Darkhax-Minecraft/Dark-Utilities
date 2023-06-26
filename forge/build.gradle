@@ -72,6 +72,7 @@ dependencies {
     implementation fg.deobf("net.darkhax.runelic:Runelic-Forge-${project.ext.minecraft_version}:${project.ext.runelic_version}")
     implementation fg.deobf("net.darkhax.pigpen:PigPen-Forge-${project.ext.minecraft_version}:${project.ext.pigpen_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.ext.curios_version}")
+    implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     compileOnly project(':common')
 

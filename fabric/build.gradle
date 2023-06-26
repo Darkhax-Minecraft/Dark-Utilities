@@ -36,6 +36,7 @@ dependencies {
     modImplementation "net.darkhax.bookshelf:Bookshelf-Fabric-${project.ext.minecraft_version}:${project.ext.bookshelf_version}"
     modImplementation "net.darkhax.runelic:Runelic-Fabric-${project.ext.minecraft_version}:${project.ext.runelic_version}"
     modImplementation "net.darkhax.pigpen:PigPen-Fabric-${project.ext.minecraft_version}:${project.ext.pigpen_version}"
+    modImplementation "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
     //modImplementation "dev.emi:trinkets:${project.ext.trinkets_version}"
     
     implementation project(':common')
