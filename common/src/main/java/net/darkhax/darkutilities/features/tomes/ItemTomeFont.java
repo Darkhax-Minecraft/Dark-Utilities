@@ -3,6 +3,7 @@ package net.darkhax.darkutilities.features.tomes;
 import net.darkhax.bookshelf.api.util.TextHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -78,7 +79,14 @@ public class ItemTomeFont extends ItemTome {
 
             for (int i = 0; i < 4; i++) {
 
-                newText = newText.setMessage(i, TextHelper.applyFont(text.getMessage(i, false).copy(), fontId));
+                final Component lineText = text.getMessage(i, false);
+
+                if (lineText.getContents() == ComponentContents.EMPTY) {
+
+                    continue;
+                }
+
+                newText = newText.setMessage(i, TextHelper.applyFont(lineText.copy(), fontId));
             }
 
             return newText;
