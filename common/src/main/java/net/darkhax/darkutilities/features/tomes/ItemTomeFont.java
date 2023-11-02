@@ -1,7 +1,6 @@
 package net.darkhax.darkutilities.features.tomes;
 
 import net.darkhax.bookshelf.api.util.TextHelper;
-import net.darkhax.bookshelf.mixin.accessors.block.entity.AccessorSignBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -74,10 +73,15 @@ public class ItemTomeFont extends ItemTome {
 
     private static UnaryOperator<SignText> applySignFont(ResourceLocation fontId) {
         return text -> {
+
+            SignText newText = text;
+
             for (int i = 0; i < 4; i++) {
-                text.setMessage(i, TextHelper.applyFont(text.getMessage(i, false), fontId));
+
+                newText = newText.setMessage(i, TextHelper.applyFont(text.getMessage(i, false).copy(), fontId));
             }
-            return text;
+
+            return newText;
         };
     }
 
