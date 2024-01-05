@@ -1,8 +1,8 @@
 plugins {
-    id 'net.minecraftforge.gradle'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
     id 'net.darkhax.curseforgegradle'
     id 'com.modrinth.minotaur'
-    id 'org.spongepowered.mixin'
 }
 
 apply from: '../gradle/patreon.gradle'
@@ -71,7 +71,7 @@ dependencies {
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
     implementation fg.deobf("net.darkhax.runelic:Runelic-Forge-${project.ext.minecraft_version}:${project.ext.runelic_version}")
     implementation fg.deobf("net.darkhax.pigpen:PigPen-Forge-${project.ext.minecraft_version}:${project.ext.pigpen_version}")
-    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.ext.curios_version}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${project.ext.curios_version}")
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     compileOnly project(':common')

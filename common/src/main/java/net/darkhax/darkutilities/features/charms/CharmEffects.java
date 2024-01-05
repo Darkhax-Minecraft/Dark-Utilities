@@ -1,6 +1,5 @@
 package net.darkhax.darkutilities.features.charms;
 
-import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.bookshelf.api.util.MathsHelper;
 import net.darkhax.bookshelf.mixin.accessors.effect.AccessorMobEffectInstance;
 import net.darkhax.darkutilities.mixin.AccessorPlayer;
@@ -22,7 +21,7 @@ public class CharmEffects {
         if (user instanceof LivingEntity living && !living.getActiveEffects().isEmpty()) {
 
             final CompoundTag effectTag = stack.hasTag() ? stack.getTagElement("effect") : null;
-            final float chance = Serializers.FLOAT.fromNBT(effectTag, "chance", 1f);
+            final float chance = effectTag != null && effectTag.contains("chance") ? effectTag.getFloat("chance") : 1f;
 
             for (MobEffectInstance effect : living.getActiveEffects()) {
 
