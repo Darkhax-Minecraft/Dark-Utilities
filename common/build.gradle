@@ -18,7 +18,7 @@ dependencies {
     compileOnly group: 'net.darkhax.bookshelf', name: "Bookshelf-Common-${project.ext.minecraft_version}", version: project.ext.bookshelf_version
     compileOnly group: 'net.darkhax.runelic', name: "Runelic-Common-${project.ext.minecraft_version}", version: project.ext.runelic_version
     compileOnly group: 'net.darkhax.pigpen', name: "PigPen-Common-${project.ext.minecraft_version}", version: project.ext.pigpen_version
-    compileOnly group: 'mezz.jei', name: "jei-${minecraft_version}-common-api", version: jei_version
+    //compileOnly group: 'mezz.jei', name: "jei-${minecraft_version}-common-api", version: jei_version
 }
 
 processResources {

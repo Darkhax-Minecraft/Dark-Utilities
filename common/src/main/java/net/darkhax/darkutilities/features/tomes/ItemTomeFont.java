@@ -1,9 +1,12 @@
 package net.darkhax.darkutilities.features.tomes;
 
 import net.darkhax.bookshelf.api.util.TextHelper;
+import net.minecraft.client.gui.screens.inventory.SignEditScreen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentContents;
+import net.minecraft.network.chat.contents.PlainTextContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -81,7 +84,7 @@ public class ItemTomeFont extends ItemTome {
 
                 final Component lineText = text.getMessage(i, false);
 
-                if (lineText.getContents() == ComponentContents.EMPTY) {
+                if (lineText == CommonComponents.EMPTY || lineText.getContents() == PlainTextContents.EMPTY) {
 
                     continue;
                 }
