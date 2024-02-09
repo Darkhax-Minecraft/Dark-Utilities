@@ -60,6 +60,8 @@ public class Content extends RegistryDataProvider {
     public final IRegistryObject<Block> omenPlate;
     public final IRegistryObject<Block> frostPlate;
     public final IRegistryObject<Block> maimPlate;
+    public final IRegistryObject<Block> smitePlate;
+    public final IRegistryObject<Block> banePlate;
     public final IRegistryObject<Block> filterPlayer;
     public final IRegistryObject<Block> filterUndead;
     public final IRegistryObject<Block> filterArthropod;
@@ -122,6 +124,8 @@ public class Content extends RegistryDataProvider {
         this.misfortunePlate = this.createFlatBlock(FlatTileEffects.UNLUCK, "misfortune_plate");
         this.slowfallPlate = this.createFlatBlock(FlatTileEffects.SLOWFALL, "slowfall_plate");
         this.omenPlate = this.createFlatBlock(FlatTileEffects.OMEN, "omen_plate");
+        this.smitePlate = this.createFlatBlock(FlatTileEffects.SMITE, "smite_plate");
+        this.banePlate = this.createFlatBlock(FlatTileEffects.BANE, "bane_plate");
         this.frostPlate = this.createFlatBlock(FlatTileEffects.FROST, "frost_plate");
         this.filterPlayer = this.createFilter(Filters.PLAYER, "filter_player");
         this.filterUndead = this.createFilter(Filters.UNDEAD, "filter_undead");

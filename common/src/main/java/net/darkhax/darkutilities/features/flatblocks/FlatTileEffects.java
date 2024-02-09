@@ -11,6 +11,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.level.Level;
 
 import java.util.function.Consumer;
@@ -60,6 +61,17 @@ public class FlatTileEffects {
 
             e.hurt(e.level().damageSources().inFire(), 1f);
             e.setSecondsOnFire(4);
+        }
+    });
+    public static final BlockFlatTile.CollisionEffect SMITE = livingEffect(e -> {
+        if (e.getMobType() == MobType.UNDEAD) {
+            e.hurt(e.level().damageSources().generic(), 12f);
+        }
+    });
+    public static final BlockFlatTile.CollisionEffect BANE = livingEffect(e -> {
+        if (e.getMobType() == MobType.ARTHROPOD) {
+            e.hurt(e.level().damageSources().generic(), 12f);
+            e.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 3));
         }
     });
 

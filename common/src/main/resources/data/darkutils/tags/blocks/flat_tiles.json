@@ -17,6 +17,8 @@
     "darkutils:misfortune_plate",
     "darkutils:slowfall_plate",
     "darkutils:omen_plate",
-    "darkutils:frost_plate"
+    "darkutils:frost_plate",
+    "darkutils:smite_plate",
+    "darkutils:bane_plate"
   ]
 }

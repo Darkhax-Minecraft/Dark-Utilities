@@ -1,0 +1,8 @@
+{
+  "parent": "darkutils:block/trap_base",
+  "textures": {
+    "particle": "darkutils:block/bane_plate",
+    "design": "darkutils:block/bane_plate",
+    "pad": "darkutils:block/dark_stone"
+  }
+}
