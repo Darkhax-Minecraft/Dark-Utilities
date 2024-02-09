@@ -1,0 +1,20 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:anchor_plate",
+  "pattern": [
+    "FFF",
+    "SSS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:slime_ball"
+    },
+    "S": {
+      "tag": "darkutils:plate_base"
+    }
+  },
+  "result": {
+    "item": "darkutils:anchor_plate",
+    "count": 3
+  }
+}

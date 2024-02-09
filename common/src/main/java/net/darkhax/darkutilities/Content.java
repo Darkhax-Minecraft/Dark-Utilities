@@ -62,6 +62,7 @@ public class Content extends RegistryDataProvider {
     public final IRegistryObject<Block> maimPlate;
     public final IRegistryObject<Block> smitePlate;
     public final IRegistryObject<Block> banePlate;
+    public final IRegistryObject<Block> anchorPlate;
     public final IRegistryObject<Block> filterPlayer;
     public final IRegistryObject<Block> filterUndead;
     public final IRegistryObject<Block> filterArthropod;
@@ -127,6 +128,7 @@ public class Content extends RegistryDataProvider {
         this.smitePlate = this.createFlatBlock(FlatTileEffects.SMITE, "smite_plate");
         this.banePlate = this.createFlatBlock(FlatTileEffects.BANE, "bane_plate");
         this.frostPlate = this.createFlatBlock(FlatTileEffects.FROST, "frost_plate");
+        this.anchorPlate = this.createFlatBlockRotatable(FlatTileEffects.ANCHOR, "anchor_plate");
         this.filterPlayer = this.createFilter(Filters.PLAYER, "filter_player");
         this.filterUndead = this.createFilter(Filters.UNDEAD, "filter_undead");
         this.filterArthropod = this.createFilter(Filters.ARTHROPOD, "filter_arthropod");

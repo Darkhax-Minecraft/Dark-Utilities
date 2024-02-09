@@ -1,5 +1,8 @@
 package net.darkhax.darkutilities.features.flatblocks;
 
+import net.minecraft.commands.arguments.EntityAnchorArgument;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -12,7 +15,10 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.function.Consumer;
 
@@ -74,6 +80,17 @@ public class FlatTileEffects {
             e.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 3));
         }
     });
+
+    public static final BlockFlatTile.CollisionEffect ANCHOR = (state, world, pos, entity) -> {
+
+        if (entity instanceof LivingEntity living && !living.isCrouching() && !(living instanceof Player)) {
+
+            final Direction direction = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+            final BlockPos offset = pos.relative(direction.getOpposite(), 5);
+            living.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3(offset.getX() + 0.5f, offset.getY() + 1.5f, offset.getZ() + 0.5f));
+            entity.setPos(pos.getX() + 0.5f, pos.getY() + 0.0625D, pos.getZ() + 0.5f);
+        }
+    };
 
     private static BlockFlatTile.CollisionEffect statusEffect(MobEffect effect, int duration, int amplifier) {
 
