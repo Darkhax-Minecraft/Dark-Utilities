@@ -22,8 +22,9 @@ public class BlockRedstoneRandomizer extends Block {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
 
+        super.randomTick(state, world, pos, random);
         world.setBlockAndUpdate(pos, state.cycle(BlockStateProperties.ENABLED));
     }
 
