@@ -1,0 +1,7 @@
+{
+  "type": "darkutils:smithing_font_name",
+  "template": {
+    "item": "darkutils:rune_nyctography"
+  },
+  "font": "nyctography:nyctography"
+}

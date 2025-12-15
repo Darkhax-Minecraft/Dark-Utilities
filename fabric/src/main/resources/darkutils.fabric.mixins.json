@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "package": "net.darkhax.darkutilities.common.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "minVersion": "0.8"
+}

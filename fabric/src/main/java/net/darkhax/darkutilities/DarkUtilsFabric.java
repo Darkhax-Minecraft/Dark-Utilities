@@ -6,7 +6,5 @@ public class DarkUtilsFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
-        DarkUtilsCommon.getInstance();
     }
 }

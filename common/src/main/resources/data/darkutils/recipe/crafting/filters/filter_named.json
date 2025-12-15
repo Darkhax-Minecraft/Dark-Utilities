@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:filter_named",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "minecraft:fence_gates"
+    },
+    "S": {
+      "tag": "c:stones"
+    },
+    "I": {
+      "item": "minecraft:name_tag"
+    }
+  },
+  "result": {
+    "id": "darkutils:filter_named",
+    "count": 4
+  }
+}

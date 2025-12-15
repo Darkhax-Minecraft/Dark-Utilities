@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "darkutils:dark_stones"
+    },
+    "C": {
+      "item": "darkutils:blank_plate"
+    },
+    "S": {
+      "item": "darkutils:rune_illager"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "darkutils:rune_illager"
+  }
+}

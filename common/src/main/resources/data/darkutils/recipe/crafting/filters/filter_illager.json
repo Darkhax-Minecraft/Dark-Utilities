@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:filter_illager",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "minecraft:fence_gates"
+    },
+    "S": {
+      "tag": "c:stones"
+    },
+    "I": {
+      "item": "minecraft:crossbow"
+    }
+  },
+  "result": {
+    "id": "darkutils:filter_illager",
+    "count": 4
+  }
+}

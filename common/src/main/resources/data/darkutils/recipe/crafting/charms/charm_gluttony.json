@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:redstone_randomizer",
+  "pattern": [
+    "SWS",
+    "WGW",
+    " W "
+  ],
+  "key": {
+    "S": {
+      "tag": "c:strings"
+    },
+    "G": {
+      "tag": "c:ingots/gold"
+    },
+    "W": {
+      "item": "minecraft:sculk"
+    }
+  },
+  "result": {
+    "id": "darkutils:charm_gluttony",
+    "count": 1
+  }
+}

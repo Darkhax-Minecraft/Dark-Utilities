@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:filter_water",
+  "pattern": [
+    "SFS",
+    "FIF",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "tag": "minecraft:fence_gates"
+    },
+    "S": {
+      "tag": "c:stones"
+    },
+    "I": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "id": "darkutils:filter_water",
+    "count": 4
+  }
+}

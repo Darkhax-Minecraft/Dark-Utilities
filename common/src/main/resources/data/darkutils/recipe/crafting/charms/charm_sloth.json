@@ -1,0 +1,33 @@
+{
+  "type": "crafting_shaped",
+  "group": "darkutils:redstone_randomizer",
+  "pattern": [
+    "SWS",
+    "BGY",
+    " R "
+  ],
+  "key": {
+    "S": {
+      "tag": "c:strings"
+    },
+    "G": {
+      "tag": "c:ingots/gold"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    },
+    "B": {
+      "item": "minecraft:black_wool"
+    },
+    "Y": {
+      "item": "minecraft:yellow_wool"
+    },
+    "R": {
+      "item": "minecraft:red_wool"
+    }
+  },
+  "result": {
+    "id": "darkutils:charm_sloth",
+    "count": 1
+  }
+}

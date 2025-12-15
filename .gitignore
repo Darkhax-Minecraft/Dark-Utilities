@@ -11,7 +11,8 @@ out
 *.ipr
 *.iws
 *.iml
-.idea
+.idea/*
+!.idea/scopes
 
 # gradle
 build
@@ -21,3 +22,4 @@ build
 eclipse
 run
 runs
+.profileconfig.json

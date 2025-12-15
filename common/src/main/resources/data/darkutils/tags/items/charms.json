@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "darkutils:charm_sleep",
-    "darkutils:charm_warding",
-    "darkutils:charm_portal"
-  ]
-}
