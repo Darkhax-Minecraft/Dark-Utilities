@@ -15,10 +15,6 @@ public class BlockFlatTileRotatableLightningUpgrade extends BlockFlatTileRotatab
 
     private final Supplier<Block> upgradeTo;
 
-    public BlockFlatTileRotatableLightningUpgrade(CollisionEffect collisionEffect, Supplier<Block> upgradeTo) {
-        this(BlockFlatTile.BLOCK_PROPERTIES, collisionEffect, upgradeTo);
-    }
-
     public BlockFlatTileRotatableLightningUpgrade(Properties properties, CollisionEffect collisionEffect, Supplier<Block> upgradeTo) {
         super(properties, collisionEffect);
         this.upgradeTo = upgradeTo;

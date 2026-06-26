@@ -1,41 +1,36 @@
 package net.darkhax.darkutilities.common.features.charms;
 
-import net.darkhax.bookshelf.common.api.function.CachedSupplier;
-import net.darkhax.darkutilities.common.Constants;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.darkhax.darkutilities.common.DarkUtils;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-
-import java.util.function.Supplier;
+import org.jspecify.annotations.Nullable;
 
 public class ItemCharm extends Item {
 
-    public static final Supplier<Item> GLUTTONY = CachedSupplier.of(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "charm_gluttony"));
-    
+    public static final TagKey<Item> GLUTTONY = TagKey.create(Registries.ITEM, DarkUtils.id("charm_gluttony"));
+
     private final CharmEffect effect;
-
-    public ItemCharm() {
-        this(null);
-    }
-
-    public ItemCharm(CharmEffect effect) {
-        this(new Properties().stacksTo(1), effect);
-    }
 
     public ItemCharm(Properties properties, CharmEffect effect) {
         super(properties);
         this.effect = effect;
     }
 
-    @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity user, int slotIndex, boolean selected) {
-        super.inventoryTick(stack, world, user, slotIndex, selected);
-        if (this.effect != null && user instanceof LivingEntity living) {
-            this.effect.onUserTick(stack, world, living);
+    public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot) {
+        super.inventoryTick(itemStack, level, owner, slot);
+        this.tickEffect(itemStack, level, owner);
+    }
+
+    public void tickEffect(ItemStack itemStack, Level level, Entity owner) {
+        if (this.effect != null && owner instanceof LivingEntity living) {
+            this.effect.onUserTick(itemStack, level, living);
         }
     }
 }

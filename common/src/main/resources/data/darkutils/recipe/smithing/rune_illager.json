@@ -1,7 +1,10 @@
 {
   "type": "darkutils:smithing_font_name",
-  "template": {
-    "item": "darkutils:rune_illager"
+  "template": "darkutils:rune_illager",
+  "base": {
+    "type": "bookshelf:any",
+    "fabric:type": "bookshelf:any"
   },
+  "addition": "#minecraft:dyes",
   "font": "minecraft:illageralt"
 }

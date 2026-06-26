@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:fatigue_plate",
+  "category": "redstone",
   "pattern": [
     "BFB",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:prismarine_crystals"
-    },
-    "B": {
-      "item": "minecraft:prismarine_shard"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:prismarine_crystals",
+    "B": "minecraft:prismarine_shard",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:fatigue_plate",

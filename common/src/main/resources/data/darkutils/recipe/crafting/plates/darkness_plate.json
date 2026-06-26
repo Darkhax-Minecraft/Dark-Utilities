@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:darkness_plate",
+  "category": "redstone",
   "pattern": [
     "BFB",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:phantom_membrane"
-    },
-    "B": {
-      "item": "minecraft:ink_sac"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:phantom_membrane",
+    "B": "minecraft:ink_sac",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:darkness_plate",

@@ -16,7 +16,7 @@ public class MixinItem {
 
     @Inject(method = "getUseDuration", at = @At("RETURN"), cancellable = true)
     private void getUseDuration(ItemStack stack, LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
-        if (stack.has(DataComponents.FOOD) && cir.getReturnValue() > 5 && CharmEffects.hasCharm(entity, ItemCharm.GLUTTONY.get())) {
+        if (stack.has(DataComponents.FOOD) && cir.getReturnValue() > 5 && CharmEffects.hasCharm(entity, ItemCharm.GLUTTONY)) {
             cir.setReturnValue(5);
         }
     }

@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface AccessorMobEffectInstance {
 
     @Invoker("tickDownDuration")
-    int darkutils$tickDownDuration();
+    void darkutils$tickDownDuration();
 }

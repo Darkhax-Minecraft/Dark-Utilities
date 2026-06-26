@@ -1,21 +1,15 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:vector_plate_extreme",
+  "category": "redstone",
   "pattern": [
     "BBB",
     "SDS",
     "BBB"
   ],
   "key": {
-    "B": {
-      "item": "darkutils:vector_plate_fast"
-    },
-    "S": {
-      "item": "minecraft:redstone"
-    },
-    "D": {
-      "item": "minecraft:sugar"
-    }
+    "B": "darkutils:vector_plate_fast",
+    "S": "minecraft:redstone",
+    "D": "minecraft:sugar"
   },
   "result": {
     "id": "darkutils:vector_plate_extreme",

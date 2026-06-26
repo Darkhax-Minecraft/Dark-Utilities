@@ -1,21 +1,15 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:shielded_redstone",
+  "category": "redstone",
   "pattern": [
     "CCC",
     "CGR",
     "CCC"
   ],
   "key": {
-    "C": {
-      "tag": "darkutils:dark_stones"
-    },
-    "G": {
-      "item": "minecraft:glass"
-    },
-    "R": {
-      "item": "minecraft:redstone_block"
-    }
+    "C": "#darkutils:dark_stones",
+    "G": "minecraft:glass",
+    "R": "minecraft:redstone_block"
   },
   "result": {
     "id": "darkutils:shielded_redstone",

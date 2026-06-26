@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:damage_plate",
+  "category": "redstone",
   "pattern": [
     "FSF",
     "BBB"
   ],
   "key": {
-    "B": {
-      "tag": "darkutils:plate_base"
-    },
-    "S": {
-      "item": "minecraft:golden_sword"
-    },
-    "F": {
-      "item": "minecraft:crimson_fungus"
-    }
+    "B": "#darkutils:plate_base",
+    "S": "minecraft:golden_sword",
+    "F": "minecraft:crimson_fungus"
   },
   "result": {
     "id": "darkutils:damage_plate",

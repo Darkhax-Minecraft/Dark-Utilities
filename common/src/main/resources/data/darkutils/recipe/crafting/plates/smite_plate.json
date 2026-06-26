@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:smite_plate",
+  "category": "redstone",
   "pattern": [
     "FBF",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:ghast_tear"
-    },
-    "B": {
-      "item": "minecraft:iron_sword"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:ghast_tear",
+    "B": "minecraft:iron_sword",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:smite_plate",

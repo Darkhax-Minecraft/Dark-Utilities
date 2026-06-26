@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:damage_plate_maim",
+  "category": "redstone",
   "pattern": [
     "FSF",
     "BBB"
   ],
   "key": {
-    "B": {
-      "tag": "darkutils:plate_base"
-    },
-    "S": {
-      "item": "minecraft:iron_sword"
-    },
-    "F": {
-      "item": "minecraft:shroomlight"
-    }
+    "B": "#darkutils:plate_base",
+    "S": "minecraft:iron_sword",
+    "F": "minecraft:shroomlight"
   },
   "result": {
     "id": "darkutils:damage_plate_maim",

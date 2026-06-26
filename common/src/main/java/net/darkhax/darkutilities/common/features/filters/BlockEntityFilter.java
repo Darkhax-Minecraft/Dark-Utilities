@@ -13,27 +13,31 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jspecify.annotations.Nullable;
 
+import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 public class BlockEntityFilter extends Block implements IBlockHooks {
 
-    public static final Properties BLOCK_PROPERTIES = Properties.of().mapColor(MapColor.WOOD).strength(3f, 10f).isSuffocating((a, b, c) -> false).isViewBlocking((a, b, c) -> false).noOcclusion();
+    public static final UnaryOperator<BlockBehaviour.Properties> PROPERTIES = p -> p.mapColor(MapColor.WOOD).strength(3f, 10f).isSuffocating((_, _, _) -> false).isViewBlocking((_, _, _) -> false).noOcclusion();
 
     private final Predicate<Entity> filter;
 
-    public static Supplier<Block> of(Predicate<Entity> filter) {
-        return () -> new BlockEntityFilter(filter, BLOCK_PROPERTIES);
+    public static Function<Properties, Block> of(Predicate<Entity> filter) {
+        return p -> new BlockEntityFilter(filter, p);
     }
 
     public BlockEntityFilter(Predicate<Entity> filter, Properties properties) {
@@ -64,7 +68,7 @@ public class BlockEntityFilter extends Block implements IBlockHooks {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (player.isCrouching()) {
-            if (!world.isClientSide) {
+            if (!world.isClientSide()) {
                 world.setBlock(pos, state.setValue(BlockStateProperties.INVERTED, !state.getValue(BlockStateProperties.INVERTED)), 3);
                 world.levelEvent(1008, pos, 0);
             }
@@ -74,13 +78,13 @@ public class BlockEntityFilter extends Block implements IBlockHooks {
     }
 
     @Override
-    public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-        final boolean isBlockPowered = world.hasNeighborSignal(pos);
-        if (!world.isClientSide && state.getValue(BlockStateProperties.POWERED) != isBlockPowered) {
-            world.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, 0.5f);
-            world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.POWERED, isBlockPowered));
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
+        final boolean isBlockPowered = level.hasNeighborSignal(pos);
+        if (!level.isClientSide() && state.getValue(BlockStateProperties.POWERED) != isBlockPowered) {
+            level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, 0.5f);
+            level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.POWERED, isBlockPowered));
         }
-        super.neighborChanged(state, world, pos, block, fromPos, isMoving);
+        super.neighborChanged(state, level, pos, block, orientation, movedByPiston);
     }
 
     @Override
@@ -108,7 +112,7 @@ public class BlockEntityFilter extends Block implements IBlockHooks {
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos) {
-        return state.getFluidState().isEmpty();
+    protected int getLightDampening(BlockState state) {
+        return 15;
     }
 }

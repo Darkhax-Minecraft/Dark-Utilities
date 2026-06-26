@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:flame_plate",
+  "category": "redstone",
   "pattern": [
     "BFB",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:flint_and_steel"
-    },
-    "B": {
-      "item": "minecraft:blaze_powder"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:flint_and_steel",
+    "B": "minecraft:blaze_powder",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:flame_plate",

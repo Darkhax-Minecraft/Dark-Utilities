@@ -6,8 +6,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
@@ -17,7 +17,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.Vec3;
 
@@ -25,7 +24,7 @@ import java.util.function.Consumer;
 
 public class FlatTileEffects {
 
-    private static final ResourceKey<DamageType> FAKE_PLAYER_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath("bookshelf", "fake_player"));
+    private static final ResourceKey<DamageType> FAKE_PLAYER_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.fromNamespaceAndPath("bookshelf", "fake_player"));
 
     public static final BlockFlatTile.CollisionEffect PUSH_WEAK = new CollisionEffectPush(0.06d);
     public static final BlockFlatTile.CollisionEffect PUSH_NORMAL = new CollisionEffectPush(0.3d);
@@ -39,8 +38,8 @@ public class FlatTileEffects {
         }
     });
     public static final BlockFlatTile.CollisionEffect DAMAGE_PLAYER = livingEffect(e -> e.hurt(getSource(e.level(), FAKE_PLAYER_DAMAGE), 6f));
-    public static final BlockFlatTile.CollisionEffect SLOWNESS = statusEffect(MobEffects.MOVEMENT_SLOWDOWN, 100, 1);
-    public static final BlockFlatTile.CollisionEffect FATIGUE = statusEffect(MobEffects.DIG_SLOWDOWN, 100, 1);
+    public static final BlockFlatTile.CollisionEffect SLOWNESS = statusEffect(MobEffects.SLOWNESS, 100, 1);
+    public static final BlockFlatTile.CollisionEffect FATIGUE = statusEffect(MobEffects.MINING_FATIGUE, 100, 1);
     public static final BlockFlatTile.CollisionEffect DARKNESS = statusEffect(MobEffects.BLINDNESS, 100, 1);
     public static final BlockFlatTile.CollisionEffect HUNGER = statusEffect(MobEffects.HUNGER, 100, 0);
     public static final BlockFlatTile.CollisionEffect WEAKNESS = statusEffect(MobEffects.WEAKNESS, 100, 0);
@@ -67,25 +66,24 @@ public class FlatTileEffects {
         }
     });
     public static final BlockFlatTile.CollisionEffect SMITE = livingEffect(e -> {
-        if (e.getType().is(EntityTypeTags.UNDEAD)) {
+        if (e.is(EntityTypeTags.UNDEAD)) {
             e.hurt(e.level().damageSources().generic(), 12f);
         }
     });
     public static final BlockFlatTile.CollisionEffect BANE = livingEffect(e -> {
-        if (e.getType().is(EntityTypeTags.ARTHROPOD)) {
+        if (e.is(EntityTypeTags.ARTHROPOD)) {
             e.hurt(e.level().damageSources().generic(), 12f);
-            e.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 3));
+            e.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 20, 3));
         }
     });
 
     public static final BlockFlatTile.CollisionEffect ANCHOR = (state, world, pos, entity) -> {
-
         if (entity instanceof LivingEntity living && !living.isCrouching() && !(living instanceof Player)) {
-
             final Direction direction = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
             final BlockPos offset = pos.relative(direction.getOpposite(), 5);
             living.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3(offset.getX() + 0.5f, offset.getY() + 1.5f, offset.getZ() + 0.5f));
             entity.setPos(pos.getX() + 0.5f, pos.getY() + 0.0625D, pos.getZ() + 0.5f);
+            entity.resetFallDistance();
         }
     };
 
@@ -106,9 +104,8 @@ public class FlatTileEffects {
     }
 
     private static DamageSource getSource(Level level, ResourceKey<DamageType> id) {
-
-        final Registry<DamageType> registry = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE);
-        final Holder.Reference<DamageType> damage = registry.getHolderOrThrow(id);
+        final Registry<DamageType> registry = level.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE);
+        final Holder.Reference<DamageType> damage = registry.get(id).orElseThrow();
         return new DamageSource(damage);
     }
 }

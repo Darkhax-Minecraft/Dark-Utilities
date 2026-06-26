@@ -9,17 +9,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class BlockFlatTileRotatable extends BlockFlatTile {
 
-    public static Supplier<Block> of(CollisionEffect effect) {
-        return () -> new BlockFlatTileRotatable(BLOCK_PROPERTIES, effect);
+    public static Function<Properties, Block> of(CollisionEffect effect) {
+        return p -> new BlockFlatTileRotatable(p, effect);
     }
 
     public BlockFlatTileRotatable(Properties properties, CollisionEffect collisionEffect) {

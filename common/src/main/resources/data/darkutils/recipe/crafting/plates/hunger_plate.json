@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:hunger_plate",
+  "category": "redstone",
   "pattern": [
     "BFB",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:nether_wart"
-    },
-    "B": {
-      "item": "minecraft:rotten_flesh"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:nether_wart",
+    "B": "minecraft:rotten_flesh",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:hunger_plate",

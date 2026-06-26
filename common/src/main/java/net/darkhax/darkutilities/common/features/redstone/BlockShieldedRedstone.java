@@ -13,9 +13,8 @@ import net.minecraft.world.level.material.MapColor;
 
 public class BlockShieldedRedstone extends Block {
 
-    public BlockShieldedRedstone() {
-
-        super(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).strength(3.5f));
+    public BlockShieldedRedstone(BlockBehaviour.Properties properties) {
+        super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH));
     }
 

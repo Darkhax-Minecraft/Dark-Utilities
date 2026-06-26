@@ -3,6 +3,6 @@
   "textures": {
     "particle": "darkutils:block/filter_open",
     "frame": "darkutils:block/filter_open",
-    "image": "minecraft:item/slime_ball"
+    "image": "darkutils:block/mob_filter/slime"
   }
 }

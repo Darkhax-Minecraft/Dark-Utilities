@@ -1,5 +1,6 @@
 {
   "type": "crafting_shaped",
+  "category": "redstone",
   "group": "darkutils:damage_plate_player",
   "pattern": [
     " S ",
@@ -7,18 +8,10 @@
     "PPP"
   ],
   "key": {
-    "S": {
-      "item": "minecraft:diamond_sword"
-    },
-    "C": {
-      "item": "minecraft:warped_fungus"
-    },
-    "M": {
-      "item": "minecraft:player_head"
-    },
-    "P": {
-      "item": "darkutils:damage_plate"
-    }
+    "S": "minecraft:diamond_sword",
+    "C": "minecraft:warped_fungus",
+    "M": "minecraft:player_head",
+    "P": "darkutils:damage_plate"
   },
   "result": {
     "id": "darkutils:damage_plate_player",

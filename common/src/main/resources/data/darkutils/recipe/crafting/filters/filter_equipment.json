@@ -1,21 +1,15 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:filter_equipment",
+  "category": "redstone",
   "pattern": [
     "SFS",
     "FIF",
     "SFS"
   ],
   "key": {
-    "F": {
-      "tag": "minecraft:fence_gates"
-    },
-    "S": {
-      "tag": "c:stones"
-    },
-    "I": {
-      "item": "minecraft:golden_chestplate"
-    }
+    "F": "#minecraft:fence_gates",
+    "S": "#c:stones",
+    "I": "minecraft:golden_chestplate"
   },
   "result": {
     "id": "darkutils:filter_equipment",

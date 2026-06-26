@@ -3,6 +3,6 @@
   "textures": {
     "particle": "darkutils:block/filter_inverted_open",
     "frame": "darkutils:block/filter_inverted_open",
-    "image": "minecraft:item/blaze_powder"
+    "image": "darkutils:block/mob_filter/fire_immune"
   }
 }

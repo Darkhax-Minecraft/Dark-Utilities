@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:wither_plate",
+  "category": "redstone",
   "pattern": [
     "FBF",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:flint"
-    },
-    "B": {
-      "item": "minecraft:wither_rose"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:flint",
+    "B": "minecraft:wither_rose",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:wither_plate",

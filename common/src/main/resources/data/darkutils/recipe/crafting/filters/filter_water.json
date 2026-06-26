@@ -1,21 +1,15 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:filter_water",
+  "category": "redstone",
   "pattern": [
     "SFS",
     "FIF",
     "SFS"
   ],
   "key": {
-    "F": {
-      "tag": "minecraft:fence_gates"
-    },
-    "S": {
-      "tag": "c:stones"
-    },
-    "I": {
-      "item": "minecraft:water_bucket"
-    }
+    "F": "#minecraft:fence_gates",
+    "S": "#c:stones",
+    "I": "minecraft:water_bucket"
   },
   "result": {
     "id": "darkutils:filter_water",

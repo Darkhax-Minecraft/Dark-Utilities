@@ -15,9 +15,9 @@ import net.minecraft.world.level.material.MapColor;
 
 public class BlockRedstoneRandomizer extends Block {
 
-    public BlockRedstoneRandomizer() {
+    public BlockRedstoneRandomizer(BlockBehaviour.Properties properties) {
 
-        super(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).strength(3.5f).randomTicks());
+        super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(BlockStateProperties.ENABLED, false).setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH));
     }
 

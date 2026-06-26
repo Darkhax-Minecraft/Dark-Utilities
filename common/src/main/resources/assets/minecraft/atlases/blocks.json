@@ -1,0 +1,99 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/bell",
+      "sprite": "darkutils:block/mob_filter/raider"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/blaze_powder",
+      "sprite": "darkutils:block/mob_filter/fire_immune"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/bone",
+      "sprite": "darkutils:block/mob_filter/undead"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/egg",
+      "sprite": "darkutils:block/mob_filter/child"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/villager_spawn_egg",
+      "sprite": "darkutils:block/mob_filter/villager"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/golden_chestplate",
+      "sprite": "darkutils:block/mob_filter/equipment"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/wolf_spawn_egg",
+      "sprite": "darkutils:block/mob_filter/pet"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/minecart",
+      "sprite": "darkutils:block/mob_filter/passenger"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/name_tag",
+      "sprite": "darkutils:block/mob_filter/named"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/rotten_flesh",
+      "sprite": "darkutils:block/mob_filter/hostile"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/slime_spawn_egg",
+      "sprite": "darkutils:block/mob_filter/slime"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/snowball",
+      "sprite": "darkutils:block/mob_filter/freeze_immune"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/spider_spawn_egg",
+      "sprite": "darkutils:block/mob_filter/arthropod"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/water_bucket",
+      "sprite": "darkutils:block/mob_filter/water"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/sheep_spawn_egg",
+      "sprite": "darkutils:block/mob_filter/animal"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/iron_golem_spawn_egg",
+      "sprite": "darkutils:block/mob_filter/golem"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/pillager_spawn_egg",
+      "sprite": "darkutils:block/mob_filter/illager"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/zombie_spawn_egg",
+      "sprite": "darkutils:block/mob_filter/zombie"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/piglin_spawn_egg",
+      "sprite": "darkutils:block/mob_filter/piglin"
+    }
+  ]
+}

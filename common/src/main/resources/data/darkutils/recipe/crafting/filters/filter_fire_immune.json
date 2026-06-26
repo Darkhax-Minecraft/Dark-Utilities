@@ -1,21 +1,15 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:filter_fire_immune",
+  "category": "redstone",
   "pattern": [
     "SFS",
     "FIF",
     "SFS"
   ],
   "key": {
-    "F": {
-      "tag": "minecraft:fence_gates"
-    },
-    "S": {
-      "tag": "c:stones"
-    },
-    "I": {
-      "item": "minecraft:blaze_powder"
-    }
+    "F": "#minecraft:fence_gates",
+    "S": "#c:stones",
+    "I": "minecraft:blaze_powder"
   },
   "result": {
     "id": "darkutils:filter_fire_immune",

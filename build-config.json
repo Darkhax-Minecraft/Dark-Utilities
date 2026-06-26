@@ -1,0 +1,104 @@
+{
+  "mod": {
+    "name": "DarkUtilities",
+    "group": "net.darkhax.darkutilities",
+    "authors": [
+      "Darkhax"
+    ],
+    "id": "darkutils",
+    "license": "LGPL v2.1",
+    "description": "A bit of everything.",
+    "repo": "https://github.com/Darkhax-Minecraft/Dark-Utilities",
+    "client": false
+  },
+  "curseforge": {
+    "slug": "dark-utilities",
+    "id": "242195"
+  },
+  "modrinth": {
+    "slug": "dark-utilities",
+    "id": "CkqTAIaP"
+  },
+  "dependencies": [
+    {
+      "name": "Bookshelf",
+      "type": "required",
+      "mod_id": {
+        "id": "bookshelf"
+      },
+      "maven": {
+        "common": "net.darkhax.bookshelf:bookshelf-common-26.1.2:26.1.2.12",
+        "neoforge": "net.darkhax.bookshelf:bookshelf-neoforge-26.1.2:26.1.2.12",
+        "fabric": "net.darkhax.bookshelf:bookshelf-fabric-26.1.2:26.1.2.12"
+      },
+      "curseforge": {
+        "slug": "bookshelf",
+        "id": "228525"
+      },
+      "modrinth": {
+        "slug": "bookshelf-lib",
+        "id": "uy4Cnpcm"
+      }
+    },
+    {
+      "name": "Runelic",
+      "type": "soft_dep",
+      "mod_id": {
+        "id": "runelic"
+      },
+      "maven": {
+        "common": "net.darkhax.runelic:runelic-common-26.1.2:26.1.2.3",
+        "neoforge": "net.darkhax.runelic:runelic-neoforge-26.1.2:26.1.2.3",
+        "fabric": "net.darkhax.runelic:runelic-fabric-26.1.2:26.1.2.3"
+      },
+      "curseforge": {
+        "slug": "runelic",
+        "id": "393149"
+      },
+      "modrinth": {
+        "slug": "runelic",
+        "id": "P4Xi5huA"
+      }
+    },
+    {
+      "name": "PigPenCipher",
+      "type": "soft_dep",
+      "mod_id": {
+        "id": "pigpen"
+      },
+      "maven": {
+        "common": "net.darkhax.pigpen:pigpen-common-26.1.2:26.1.2.4",
+        "neoforge": "net.darkhax.pigpen:pigpen-neoforge-26.1.2:26.1.2.4",
+        "fabric": "net.darkhax.pigpen:pigpen-fabric-26.1.2:26.1.2.4"
+      },
+      "curseforge": {
+        "slug": "pig-pen-cipher",
+        "id": "396234"
+      },
+      "modrinth": {
+        "slug": "pig-pen-cipher",
+        "id": "2xZPITh8"
+      }
+    },
+    {
+      "name": "Nyctography",
+      "type": "soft_dep",
+      "mod_id": {
+        "id": "nyctography"
+      },
+      "maven": {
+        "common": "net.darkhax.nyctography:nyctography-common-26.1.2:26.1.2.3",
+        "neoforge": "net.darkhax.nyctography:nyctography-neoforge-26.1.2:26.1.2.3",
+        "fabric": "net.darkhax.nyctography:nyctography-fabric-26.1.2:26.1.2.3"
+      },
+      "curseforge": {
+        "slug": "nyctography",
+        "id": "1126493"
+      },
+      "modrinth": {
+        "slug": "nyctography",
+        "id": "ViRnT7xw"
+      }
+    }
+  ]
+}

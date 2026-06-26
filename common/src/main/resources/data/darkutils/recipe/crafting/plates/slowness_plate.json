@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:slowness_plate",
+  "category": "redstone",
   "pattern": [
     "BFB",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:snow_block"
-    },
-    "B": {
-      "item": "minecraft:soul_sand"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:snow_block",
+    "B": "minecraft:soul_sand",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:slowness_plate",

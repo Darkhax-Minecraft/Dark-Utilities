@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "darkutils:dark_stones"
-    },
-    "C": {
-      "item": "darkutils:blank_plate"
-    },
-    "S": {
-      "item": "darkutils:rune_builder"
-    }
+    "#": "#darkutils:dark_stones",
+    "C": "darkutils:blank_plate",
+    "S": "darkutils:rune_builder"
   },
   "pattern": [
     "#S#",

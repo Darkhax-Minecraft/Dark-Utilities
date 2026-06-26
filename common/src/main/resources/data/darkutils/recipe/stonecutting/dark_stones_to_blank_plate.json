@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "darkutils:dark_stones"
-  },
+  "ingredient": "#darkutils:dark_stones",
   "result": {
     "id": "darkutils:blank_plate"
   },

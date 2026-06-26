@@ -1,21 +1,15 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:filter_freeze_immune",
+  "category": "redstone",
   "pattern": [
     "SFS",
     "FIF",
     "SFS"
   ],
   "key": {
-    "F": {
-      "tag": "minecraft:fence_gates"
-    },
-    "S": {
-      "tag": "c:stones"
-    },
-    "I": {
-      "item": "minecraft:powder_snow_bucket"
-    }
+    "F": "#minecraft:fence_gates",
+    "S": "#c:stones",
+    "I": "minecraft:powder_snow_bucket"
   },
   "result": {
     "id": "darkutils:filter_freeze_immune",

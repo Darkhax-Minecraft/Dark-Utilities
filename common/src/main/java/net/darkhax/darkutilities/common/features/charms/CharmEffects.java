@@ -4,9 +4,11 @@ import net.darkhax.darkutilities.common.mixin.AccessorMobEffectInstance;
 import net.darkhax.darkutilities.common.mixin.AccessorPlayer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -52,17 +54,13 @@ public enum CharmEffects {
     private static void gluttonyCharmTick(ItemStack stack, Level level, LivingEntity user) {
     }
 
-    public static boolean hasCharm(LivingEntity entity, Item charm) {
+    public static boolean hasCharm(LivingEntity entity, TagKey<Item> charmTag) {
         if (entity instanceof Player player) {
-            for (ItemStack stack : player.getInventory().items) {
-                if (stack.is(charm)) {
-                    return true;
-                }
-            }
+            return player.getInventory().contains(charmTag);
         }
         else {
-            for (ItemStack stack : entity.getAllSlots()) {
-                if (stack.is(charm)) {
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                if (entity.getItemBySlot(slot).is(charmTag)) {
                     return true;
                 }
             }

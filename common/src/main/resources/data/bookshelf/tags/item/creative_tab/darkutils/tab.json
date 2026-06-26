@@ -30,6 +30,8 @@
     "darkutils:filter_arthropod",
     "darkutils:filter_illager",
     "darkutils:filter_raider",
+    "darkutils:filter_zombie",
+    "darkutils:filter_piglin",
     "darkutils:filter_hostile",
     "darkutils:filter_animal",
     "darkutils:filter_child",

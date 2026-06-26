@@ -3,6 +3,6 @@
   "textures": {
     "particle": "darkutils:block/filter_inverted_open",
     "frame": "darkutils:block/filter_inverted_open",
-    "image": "minecraft:item/snowball"
+    "image": "darkutils:block/mob_filter/freeze_immune"
   }
 }

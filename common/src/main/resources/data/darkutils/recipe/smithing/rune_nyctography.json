@@ -1,7 +1,10 @@
 {
   "type": "darkutils:smithing_font_name",
-  "template": {
-    "item": "darkutils:rune_nyctography"
+  "template": "darkutils:rune_nyctography",
+  "base": {
+    "type": "bookshelf:any",
+    "fabric:type": "bookshelf:any"
   },
+  "addition": "#minecraft:dyes",
   "font": "nyctography:nyctography"
 }

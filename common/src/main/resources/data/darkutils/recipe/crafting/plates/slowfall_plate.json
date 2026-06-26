@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:slowfall_plate",
+  "category": "redstone",
   "pattern": [
     "FBF",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:feather"
-    },
-    "B": {
-      "item": "minecraft:phantom_membrane"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:feather",
+    "B": "minecraft:phantom_membrane",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:slowfall_plate",

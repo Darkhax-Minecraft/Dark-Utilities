@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:misfortune_plate",
+  "category": "redstone",
   "pattern": [
     "FBF",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:phantom_membrane"
-    },
-    "B": {
-      "item": "minecraft:gold_ingot"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:phantom_membrane",
+    "B": "minecraft:gold_ingot",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:misfortune_plate",

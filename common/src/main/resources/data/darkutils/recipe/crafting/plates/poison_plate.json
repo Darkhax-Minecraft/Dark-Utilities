@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:poison_plate",
+  "category": "redstone",
   "pattern": [
     "BFB",
     "SSS"
   ],
   "key": {
-    "B": {
-      "item": "minecraft:poisonous_potato"
-    },
-    "F": {
-      "item": "minecraft:spider_eye"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "B": "minecraft:poisonous_potato",
+    "F": "minecraft:spider_eye",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:poison_plate",

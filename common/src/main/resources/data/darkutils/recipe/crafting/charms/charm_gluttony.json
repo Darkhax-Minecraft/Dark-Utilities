@@ -1,21 +1,15 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:redstone_randomizer",
+  "category": "equipment",
   "pattern": [
     "SWS",
     "WGW",
     " W "
   ],
   "key": {
-    "S": {
-      "tag": "c:strings"
-    },
-    "G": {
-      "tag": "c:ingots/gold"
-    },
-    "W": {
-      "item": "minecraft:sculk"
-    }
+    "S": "#c:strings",
+    "G": "#c:ingots/gold",
+    "W": "minecraft:sculk"
   },
   "result": {
     "id": "darkutils:charm_gluttony",

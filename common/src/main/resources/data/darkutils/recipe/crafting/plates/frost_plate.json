@@ -1,20 +1,14 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:frost_plate",
+  "category": "redstone",
   "pattern": [
     "FBF",
     "SSS"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:snowball"
-    },
-    "B": {
-      "item": "minecraft:powder_snow_bucket"
-    },
-    "S": {
-      "tag": "darkutils:plate_base"
-    }
+    "F": "minecraft:snowball",
+    "B": "minecraft:powder_snow_bucket",
+    "S": "#darkutils:plate_base"
   },
   "result": {
     "id": "darkutils:frost_plate",

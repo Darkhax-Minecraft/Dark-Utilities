@@ -1,21 +1,15 @@
 {
   "type": "crafting_shaped",
-  "group": "darkutils:filter_slime",
+  "category": "redstone",
   "pattern": [
     "SFS",
     "FIF",
     "SFS"
   ],
   "key": {
-    "F": {
-      "tag": "minecraft:fence_gates"
-    },
-    "S": {
-      "tag": "c:stones"
-    },
-    "I": {
-      "tag": "c:slime_balls"
-    }
+    "F": "#minecraft:fence_gates",
+    "S": "#c:stones",
+    "I": "#c:slime_balls"
   },
   "result": {
     "id": "darkutils:filter_slime",

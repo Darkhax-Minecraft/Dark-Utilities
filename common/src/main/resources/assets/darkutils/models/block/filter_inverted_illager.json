@@ -3,6 +3,6 @@
   "textures": {
     "particle": "darkutils:block/filter_inverted_open",
     "frame": "darkutils:block/filter_inverted_open",
-    "image": "darkutils:block/head_illager"
+    "image": "darkutils:block/mob_filter/illager"
   }
 }
