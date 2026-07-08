@@ -4,13 +4,13 @@ issueTrackerURL = "https://github.com/Darkhax-Minecraft/Dark-Utilities/issues"
 
 [[mods]]
 modId = "darkutils"
-version = "26.1.2.0"
+version = "26.2.0.0"
 displayName = "DarkUtilities"
-updateJSONURL = "https://updates.blamejared.com/get?n=darkutils&gv=26.1.2&ml=neoforge"
+updateJSONURL = "https://updates.blamejared.com/get?n=darkutils&gv=26.2&ml=neoforge"
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/dark-utilities"
 logoFile = "logo_darkutils.png"
 logoBlur = false
-credits = "This project is made possible with Patreon support from players like you. Thank you! lothrazar, techsquirrel, Keyana , Darkosto, Tobias Ward, noobanidus"
+credits = "This project is made possible with Patreon support from players like you. Thank you! lothrazar, techsquirrel, Tobias Ward, noobanidus"
 authors = "Darkhax"
 description = "A bit of everything."
 
@@ -23,14 +23,14 @@ config = "darkutils.neoforge.mixins.json"
 [[dependencies.darkutils]]
 modId = "minecraft"
 type = "required"
-versionRange = "26.1"
+versionRange = "26.2"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.darkutils]]
 modId = "neoforge"
 type = "required"
-versionRange = "[26.1.0.1-beta,)"
+versionRange = "[26.2.0.8-beta,)"
 ordering = "NONE"
 side = "BOTH"
 

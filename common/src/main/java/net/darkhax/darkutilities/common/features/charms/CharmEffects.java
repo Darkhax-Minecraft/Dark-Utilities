@@ -31,7 +31,7 @@ public enum CharmEffects {
         if (user instanceof LivingEntity living && !living.getActiveEffects().isEmpty()) {
             for (MobEffectInstance effectInstance : living.getActiveEffects()) {
                 final MobEffect effect = effectInstance.getEffect().value();
-                if (!effectInstance.isAmbient() && effect.getCategory() == MobEffectCategory.HARMFUL && !effect.isInstantenous() && effectInstance instanceof AccessorMobEffectInstance accessor) {
+                if (!effectInstance.isAmbient() && effect.getCategory() == MobEffectCategory.HARMFUL && !effect.isInstantaneous() && effectInstance instanceof AccessorMobEffectInstance accessor) {
                     accessor.darkutils$tickDownDuration();
                 }
             }

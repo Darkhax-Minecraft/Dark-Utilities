@@ -27,9 +27,9 @@
         "id": "bookshelf"
       },
       "maven": {
-        "common": "net.darkhax.bookshelf:bookshelf-common-26.1.2:26.1.2.12",
-        "neoforge": "net.darkhax.bookshelf:bookshelf-neoforge-26.1.2:26.1.2.12",
-        "fabric": "net.darkhax.bookshelf:bookshelf-fabric-26.1.2:26.1.2.12"
+        "common": "net.darkhax.bookshelf:bookshelf-common-26.2:26.2.0.4",
+        "neoforge": "net.darkhax.bookshelf:bookshelf-neoforge-26.2:26.2.0.4",
+        "fabric": "net.darkhax.bookshelf:bookshelf-fabric-26.2:26.2.0.4"
       },
       "curseforge": {
         "slug": "bookshelf",
@@ -47,9 +47,9 @@
         "id": "runelic"
       },
       "maven": {
-        "common": "net.darkhax.runelic:runelic-common-26.1.2:26.1.2.3",
-        "neoforge": "net.darkhax.runelic:runelic-neoforge-26.1.2:26.1.2.3",
-        "fabric": "net.darkhax.runelic:runelic-fabric-26.1.2:26.1.2.3"
+        "common": "net.darkhax.runelic:runelic-common-26.2:26.2.0.1",
+        "neoforge": "net.darkhax.runelic:runelic-neoforge-26.2:26.2.0.1",
+        "fabric": "net.darkhax.runelic:runelic-fabric-26.2:26.2.0.1"
       },
       "curseforge": {
         "slug": "runelic",
@@ -67,9 +67,9 @@
         "id": "pigpen"
       },
       "maven": {
-        "common": "net.darkhax.pigpen:pigpen-common-26.1.2:26.1.2.4",
-        "neoforge": "net.darkhax.pigpen:pigpen-neoforge-26.1.2:26.1.2.4",
-        "fabric": "net.darkhax.pigpen:pigpen-fabric-26.1.2:26.1.2.4"
+        "common": "net.darkhax.pigpen:pigpen-common-26.2:26.2.0.1",
+        "neoforge": "net.darkhax.pigpen:pigpen-neoforge-26.2:26.2.0.1",
+        "fabric": "net.darkhax.pigpen:pigpen-fabric-26.2:26.2.0.1"
       },
       "curseforge": {
         "slug": "pig-pen-cipher",
@@ -87,9 +87,9 @@
         "id": "nyctography"
       },
       "maven": {
-        "common": "net.darkhax.nyctography:nyctography-common-26.1.2:26.1.2.3",
-        "neoforge": "net.darkhax.nyctography:nyctography-neoforge-26.1.2:26.1.2.3",
-        "fabric": "net.darkhax.nyctography:nyctography-fabric-26.1.2:26.1.2.3"
+        "common": "net.darkhax.nyctography:nyctography-common-26.2:26.2.0.1",
+        "neoforge": "net.darkhax.nyctography:nyctography-neoforge-26.2:26.2.0.1",
+        "fabric": "net.darkhax.nyctography:nyctography-fabric-26.2:26.2.0.1"
       },
       "curseforge": {
         "slug": "nyctography",
