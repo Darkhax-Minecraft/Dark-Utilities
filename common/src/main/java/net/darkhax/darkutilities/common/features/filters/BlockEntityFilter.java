@@ -32,7 +32,7 @@ import java.util.function.UnaryOperator;
 
 public class BlockEntityFilter extends Block implements IBlockHooks {
 
-    public static final UnaryOperator<BlockBehaviour.Properties> PROPERTIES = p -> p.mapColor(MapColor.WOOD).strength(3f, 10f).isSuffocating((_, _, _) -> false).isViewBlocking((_, _, _) -> false).noOcclusion();
+    public static final UnaryOperator<BlockBehaviour.Properties> PROPERTIES = p -> p.mapColor(MapColor.WOOD).strength(3f, 10f).isSuffocating((_, _, _) -> false).isViewBlocking((_, _, _, _) -> false).noOcclusion();
 
     private final Predicate<Entity> filter;
 

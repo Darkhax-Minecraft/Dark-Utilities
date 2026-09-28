@@ -2,7 +2,7 @@
   "type": "darkutils:smithing_font_name",
   "template": "darkutils:rune_pigpen",
   "base": {
-    "type": "bookshelf:any",
+    "neoforge:ingredient_type": "bookshelf:any",
     "fabric:type": "bookshelf:any"
   },
   "addition": "#minecraft:dyes",
